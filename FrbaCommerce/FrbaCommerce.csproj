@@ -198,12 +198,6 @@
     <Compile Include="Facturar Publicaciones\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generar Publicacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,11 +222,17 @@
     <Compile Include="Listado Estadistico\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Form1.cs">
+    <Compile Include="Login\Elección_Rol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Login\Elección_Rol.Designer.cs">
+      <DependentUpon>Elección_Rol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -298,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Elección_Rol.resx">
+      <DependentUpon>Elección_Rol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

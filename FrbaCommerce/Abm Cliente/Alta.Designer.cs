@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btmGuardar = new System.Windows.Forms.Button();
-            this.btmLimpiar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmBoxTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtBoxFechaNac = new System.Windows.Forms.TextBox();
@@ -58,24 +58,25 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btmGuardar
+            // btnGuardar
             // 
-            this.btmGuardar.Location = new System.Drawing.Point(186, 367);
-            this.btmGuardar.Name = "btmGuardar";
-            this.btmGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btmGuardar.TabIndex = 16;
-            this.btmGuardar.Text = "Guardar";
-            this.btmGuardar.UseVisualStyleBackColor = true;
-            this.btmGuardar.Click += new System.EventHandler(this.btmGuardar_Click);
+            this.btnGuardar.Location = new System.Drawing.Point(186, 367);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(75, 23);
+            this.btnGuardar.TabIndex = 16;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btmGuardar_Click);
             // 
-            // btmLimpiar
+            // btnLimpiar
             // 
-            this.btmLimpiar.Location = new System.Drawing.Point(12, 367);
-            this.btmLimpiar.Name = "btmLimpiar";
-            this.btmLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btmLimpiar.TabIndex = 15;
-            this.btmLimpiar.Text = "Limpiar";
-            this.btmLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Location = new System.Drawing.Point(12, 367);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiar.TabIndex = 15;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btmLimpiar_Click);
             // 
             // groupBox1
             // 
@@ -310,8 +311,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(282, 402);
-            this.Controls.Add(this.btmGuardar);
-            this.Controls.Add(this.btmLimpiar);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Alta";
             this.Text = "Alta";
@@ -323,8 +324,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btmGuardar;
-        private System.Windows.Forms.Button btmLimpiar;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmBoxTipoDoc;
         private System.Windows.Forms.TextBox txtBoxFechaNac;

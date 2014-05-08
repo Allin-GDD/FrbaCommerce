@@ -17,14 +17,16 @@ namespace FrbaCommerce.Abm_Cliente
             InitializeComponent();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btmGuardar_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btmLimpiar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

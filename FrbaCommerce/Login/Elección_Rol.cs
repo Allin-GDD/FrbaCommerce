@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Login
 {
-    public partial class Form1 : Form
+    public partial class Elección_Rol : Form
     {
-        public Form1()
+        public Elección_Rol()
         {
             InitializeComponent();
         }
