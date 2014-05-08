@@ -16,4 +16,10 @@ namespace FrbaCommerce.Registro_de_Usuario
             InitializeComponent();
         }
 
-    }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+     }
+}

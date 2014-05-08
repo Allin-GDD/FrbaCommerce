@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.Generar_Publicacion
 {
-    partial class Form1
+    partial class Generar_Publi
     {
         /// <summary>
         /// Required designer variable.

@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnNuevoUser = new System.Windows.Forms.Button();
+            this.btnLoginUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -42,7 +42,6 @@
             this.label1.Size = new System.Drawing.Size(158, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bienvenidos a FRBA Commerce";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -53,34 +52,36 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Elija una de la siguientes opciones:";
             // 
-            // button1
+            // btnNuevoUser
             // 
-            this.button1.Location = new System.Drawing.Point(62, 102);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Registrar un nuevo usuario";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnNuevoUser.Location = new System.Drawing.Point(62, 102);
+            this.btnNuevoUser.Name = "btnNuevoUser";
+            this.btnNuevoUser.Size = new System.Drawing.Size(158, 23);
+            this.btnNuevoUser.TabIndex = 2;
+            this.btnNuevoUser.Text = "Registrar un nuevo usuario";
+            this.btnNuevoUser.UseVisualStyleBackColor = true;
+            this.btnNuevoUser.Click += new System.EventHandler(this.btnNuevoUser_Click);
             // 
-            // button2
+            // btnLoginUser
             // 
-            this.button2.Location = new System.Drawing.Point(62, 143);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Ingresar con un usuario existente";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLoginUser.Location = new System.Drawing.Point(62, 143);
+            this.btnLoginUser.Name = "btnLoginUser";
+            this.btnLoginUser.Size = new System.Drawing.Size(158, 23);
+            this.btnLoginUser.TabIndex = 3;
+            this.btnLoginUser.Text = "Ingresar con un usuario existente";
+            this.btnLoginUser.UseVisualStyleBackColor = true;
+            this.btnLoginUser.Click += new System.EventHandler(this.btnLoginUser_Click);
             // 
-            // Form1
+            // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 194);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnLoginUser);
+            this.Controls.Add(this.btnNuevoUser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Inicio";
             this.Text = "Bienvenidos";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -91,8 +92,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnNuevoUser;
+        private System.Windows.Forms.Button btnLoginUser;
 
     }
 }
