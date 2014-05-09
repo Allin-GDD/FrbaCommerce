@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Editar_Publicacion
 {
-    public partial class Form1 : Form
+    public partial class Editar_Publicacion_Publicada : Form
     {
-        public Form1()
+        public Editar_Publicacion_Publicada()
         {
             InitializeComponent();
         }
