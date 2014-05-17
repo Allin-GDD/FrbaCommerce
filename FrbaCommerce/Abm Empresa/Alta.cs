@@ -20,5 +20,10 @@ namespace FrbaCommerce.Abm_Empresa
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

@@ -60,6 +60,8 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Cliente\Cliente.cs" />
+    <Compile Include="Abm Cliente\ClienteDAL.cs" />
     <Compile Include="Abm Cliente\Listado de selección.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,10 +140,12 @@
     <Compile Include="ABM Rol\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rubro\Alta.cs">
+    <Compile Include="alumno.cs" />
+    <Compile Include="alumnoDAL.cs" />
+    <Compile Include="Calificar Vendedor\Abm Rubro\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Rubro\Alta.Designer.cs">
+    <Compile Include="Calificar Vendedor\Abm Rubro\Alta.Designer.cs">
       <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Visibilidad\Alta.cs">
@@ -180,17 +184,24 @@
     <Compile Include="Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConexion.cs" />
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Comprar-Ofertar\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Editar Publicacion\Form1.cs">
+    <Compile Include="Editar Publicacion\Editar_Publicacion_Borrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Editar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Editar Publicacion\Editar_Publicacion_Borrada.Designer.cs">
+      <DependentUpon>Editar_Publicacion_Borrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\Editar_Publicacion_Publicada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\Editar_Publicacion_Publicada.Designer.cs">
+      <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
@@ -204,11 +215,11 @@
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicacion\Form1.cs">
+    <Compile Include="Generar Publicacion\Generar_Publi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Generar Publicacion\Generar_Publi.Designer.cs">
+      <DependentUpon>Generar_Publi.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion de Preguntas\Form1.cs">
       <SubType>Form</SubType>
@@ -239,6 +250,12 @@
     </Compile>
     <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="pestaña1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pestaña1.Designer.cs">
+      <DependentUpon>pestaña1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -287,7 +304,7 @@
     <EmbeddedResource Include="ABM Rol\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Rubro\Alta.resx">
+    <EmbeddedResource Include="Calificar Vendedor\Abm Rubro\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Alta.resx">
@@ -305,6 +322,15 @@
     <EmbeddedResource Include="Abm Visibilidad\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Borrada.resx">
+      <DependentUpon>Editar_Publicacion_Borrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Publicada.resx">
+      <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\Generar_Publi.resx">
+      <DependentUpon>Generar_Publi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pestaña1.resx">
+      <DependentUpon>pestaña1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -23,12 +23,24 @@ namespace FrbaCommerce
         {
             Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
             Reg1.Show();
+                  
         }
 
         private void btnLoginUser_Click(object sender, EventArgs e)
         {
             Login.Login Log1 = new Login.Login();
             Log1.Show();
+     
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pestaña1 pest = new pestaña1();
+            pest.Show();
+        
+
         }
     }
 }
