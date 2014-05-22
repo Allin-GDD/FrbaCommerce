@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FrbaCommerce.Abm_Cliente
-{
-    class Cliente
+namespace FrbaCommerce.Entidades
+    {
+    class Ent_Cliente
     {
         public String Nombre { get; set; }
         public String Apellido { get; set; }
         public String Mail { get; set; }
-        public Int64 Id { get; set; }
         public Int64 Dni { get; set; }
         public String Fecha_Nac { get; set; }
         public String Dom_Calle { get; set; }
@@ -20,12 +19,14 @@ namespace FrbaCommerce.Abm_Cliente
         public String Cod_Postal { get; set; }
         public Int16 Tipo_dni { get; set; }
         public String Telefono { get; set; }
+        public String Localidad { get; set; }
     
-    public Cliente() {}
-    public Cliente(Int64 pId,String pNombre, String pApellido, Int64 pDni, Int16 pTipo_dni, String pMail,String pFecha_Nac,
-        String pDom_Calle, Int64  pNro_Calle, Int64 pPiso, String pDpto, String pCod_Postal, String pTelefono ){
+    public Ent_Cliente() {}
+    public Ent_Cliente(String pNombre, String pApellido, Int64 pDni, Int16 pTipo_dni, String pMail, String pFecha_Nac,
+        String pDom_Calle, Int64 pNro_Calle, Int64 pPiso, String pDpto, String pCod_Postal, String pTelefono, String pLocalidad)
+    {
 
-            this.Id = pId;
+      
             this.Nombre = pNombre;
             this.Apellido = pApellido;
             this.Dni = pDni;
@@ -37,6 +38,7 @@ namespace FrbaCommerce.Abm_Cliente
             this.Piso = pPiso;
             this.Cod_Postal = pCod_Postal;
             this.Telefono = pTelefono;
+            this.Localidad = pLocalidad;
 
     }
 }

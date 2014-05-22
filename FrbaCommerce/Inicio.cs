@@ -21,6 +21,7 @@ namespace FrbaCommerce
 
         private void btnNuevoUser_Click(object sender, EventArgs e)
         {
+           
             Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
             Reg1.Show();
                   
@@ -37,10 +38,10 @@ namespace FrbaCommerce
 
         private void button1_Click(object sender, EventArgs e)
         {
-            pestaña1 pest = new pestaña1();
+           /* pestaña1 pest = new pestaña1();
             pest.Show();
         
-
+            */
         }
     }
 }

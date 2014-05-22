@@ -60,8 +60,8 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Cliente\Cliente.cs" />
-    <Compile Include="Abm Cliente\ClienteDAL.cs" />
+    <Compile Include="Entidades\Ent_Cliente.cs" />
+    <Compile Include="Datos\Dat_Cliente.cs" />
     <Compile Include="Abm Cliente\Listado de selección.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,8 +140,6 @@
     <Compile Include="ABM Rol\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="alumno.cs" />
-    <Compile Include="alumnoDAL.cs" />
     <Compile Include="Calificar Vendedor\Abm Rubro\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +201,7 @@
     <Compile Include="Editar Publicacion\Editar_Publicacion_Publicada.Designer.cs">
       <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Ent_TipoDeDoc.cs" />
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,12 +249,6 @@
     </Compile>
     <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="pestaña1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="pestaña1.Designer.cs">
-      <DependentUpon>pestaña1.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -339,9 +332,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="pestaña1.resx">
-      <DependentUpon>pestaña1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
