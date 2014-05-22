@@ -16,8 +16,11 @@ namespace FrbaCommerce.Abm_Cliente
         public Alta()
         {
             InitializeComponent();
-            cboTipoDoc.Items.Add("DNI");
-            cboTipoDoc.Items.Add("CUIT");
+            cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
+            cboTipoDoc.DisplayMember = "tipo";
+            cboTipoDoc.ValueMember = "codigo";
+            /*cboTipoDoc.Items.Add("DNI");
+            cboTipoDoc.Items.Add("CUIT");*/
 
 
         }
@@ -67,7 +70,7 @@ namespace FrbaCommerce.Abm_Cliente
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
             ClearTextBoxes();
-            ClearComboBoxes();
+        
         }
 
         //funcion que limpia todos los text box con textos
@@ -90,29 +93,8 @@ namespace FrbaCommerce.Abm_Cliente
             func(Controls);
         }
 
-        public void ClearComboBoxes()
-        {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is ComboBox)
-                        (control as ComboBox).Items.Clear();
-                    else
-                        func(control.Controls);
-            };
-
-            func(Controls);
-        }
-
-
-        private void cboTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-   
-
-
-        }
+       
+     
     }
 }
 

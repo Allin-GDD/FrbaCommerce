@@ -122,7 +122,7 @@
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(130, 21);
             this.cboTipoDoc.TabIndex = 34;
-            this.cboTipoDoc.SelectedIndexChanged += new System.EventHandler(this.cboTipoDoc_SelectedIndexChanged);
+           
             // 
             // txtNroCalle
             // 

@@ -22,8 +22,29 @@ namespace FrbaCommerce.Datos
 
             return retorno;
         }
+     
+         public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
+         {
 
+             List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
 
+             SqlConnection conexion = DBConexion.obtenerConexion();
+             SqlCommand Comando = new SqlCommand("Select Codigo, Nombre from Tipo_Doc", conexion);
+             SqlDataReader lectura = Comando.ExecuteReader();
+
+             while (lectura.Read())
+             {
+                 Entidades.Ent_TipoDeDoc pTipoDeDoc = new Entidades.Ent_TipoDeDoc();
+                 pTipoDeDoc.codigo = lectura.GetInt16(0);
+                 pTipoDeDoc.tipo = lectura.GetString(1);
+
+                 listaDeTipos.Add(pTipoDeDoc);
+             }
+             return listaDeTipos;
+         }
+    
+    }
+}
 
      /*   public static int BuscarTipo(Entidades.Ent_TipoDeDoc pTipoDeDoc) {
             int retorno = 0;
@@ -46,7 +67,7 @@ namespace FrbaCommerce.Datos
 
         
         
-        /* public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
+        public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
          {
 
              List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
@@ -64,8 +85,4 @@ namespace FrbaCommerce.Datos
                  listaDeTipos.Add(pTipoDeDoc);
              }
              return listaDeTipos;
-         }*/
-
-
-    }
-}
+}*/
