@@ -8,7 +8,8 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
-         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos(){
+         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
+         {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
@@ -20,7 +21,7 @@ namespace FrbaCommerce.Datos
             {
                 Entidades.Ent_Telefono pTelefono = new Entidades.Ent_Telefono();
 
-                pTelefono.telefono = lectura.GetString(0);
+                pTelefono.Telefono = lectura.GetString(0);
 
                 listaDeTelefonos.Add(pTelefono);
             }
@@ -30,7 +31,7 @@ namespace FrbaCommerce.Datos
         
         }
         
-        public static int AgregarCliente(Entidades.Ent_Cliente pCliente)
+         public static int AgregarCliente(Entidades.Ent_Cliente pCliente)
         {
             int retorno = 0;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
@@ -65,6 +66,8 @@ namespace FrbaCommerce.Datos
              return listaDeTipos;
          }
     
+
+
     }
 }
 

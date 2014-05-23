@@ -60,6 +60,7 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Dat_Telefonos.cs" />
     <Compile Include="Entidades\Ent_Cliente.cs" />
     <Compile Include="Datos\Dat_Cliente.cs" />
     <Compile Include="Abm Cliente\Listado de selección.cs">
@@ -201,6 +202,7 @@
     <Compile Include="Editar Publicacion\Editar_Publicacion_Publicada.Designer.cs">
       <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Ent_Telefono.cs" />
     <Compile Include="Entidades\Ent_TipoDeDoc.cs" />
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>

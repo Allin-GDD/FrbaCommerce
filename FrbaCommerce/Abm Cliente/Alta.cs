@@ -19,15 +19,23 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
+           List<Entidades.Ent_Telefono> listaTelefonos =  Datos.Dat_Cliente.obtenerTodosLosTelefonos();
+
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
         {
-            
-           try
+            try
             {
-                Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
-                inicializarCliente(cliente);
+                try
+                {
+                    Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+                    inicializarCliente(cliente);
+
+                    Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
+                    ptelefono.Telefono = cliente.Telefono;
+
+                    Datos.Dat_Telefonos.validarTelefono(ptelefono);
 
                     int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
 
@@ -38,19 +46,26 @@ namespace FrbaCommerce.Abm_Cliente
                     else
                     {
                         Mensajes.Errores.ErrorAlGuardarDatos();
-                        
-                    }
-               
-            }
 
-            catch (FormatException)
-            {
-                Mensajes.Errores.ErrorAlIngresarDatos();
+                    }
+
+                }
+
+                catch (FormatException)
+                {
+                    Mensajes.Errores.ErrorAlIngresarDatos();
+                }
             }
-        }
-       
+            catch (InvalidOperationException ex)
+                 {
+                     MessageBox.Show(ex.Message);
+    }
+            }
         
-        private void inicializarCliente(Entidades.Ent_Cliente cliente)
+
+       
+            
+            private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
@@ -60,8 +75,15 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Mail = Convert.ToString(txtMail.Text);
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
             cliente.Nro_Calle = Convert.ToInt64(txtNroCalle.Text);
-            cliente.Piso = Convert.ToInt64(txtNroPiso.Text);//no me importa que sea nulo
-            cliente.Dpto = Convert.ToString(txtDpto.Text);//no me importa que sea nulo
+            cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
+
+           /* if (txtNroPiso.Text != null)
+            {
+                cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
+            }
+            else { cliente.Piso = ' '; };*/
+           
+            cliente.Dpto = txtDpto.Text;//no me importa que sea nulo
             cliente.Cod_Postal = Convert.ToString(txtCodPostal.Text);
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
