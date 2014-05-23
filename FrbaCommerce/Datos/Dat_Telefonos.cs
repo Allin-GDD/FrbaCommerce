@@ -13,7 +13,7 @@ namespace FrbaCommerce.Datos
 
             foreach (Entidades.Ent_Telefono telefono in listaDeTelefonos){
                 if (ptelefono == telefono) { 
-                throw new System.InvalidOperationException("El número ingresado ya pertenece a otro cliente");
+                throw new Excepciones.DuplicacionDeDatos("El número ingresado ya pertenece a otro cliente");
                 }
             }
 

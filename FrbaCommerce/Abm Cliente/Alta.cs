@@ -20,49 +20,54 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
            List<Entidades.Ent_Telefono> listaTelefonos =  Datos.Dat_Cliente.obtenerTodosLosTelefonos();
-
+           List<Entidades.Ent_Dni> listaDNI =  Datos.Dat_Dni.obtenerTodosLosDni();
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                try
-                {
-                    Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+           Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
                     inicializarCliente(cliente);
 
+            try
+            {
+            
                     Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-                    ptelefono.Telefono = cliente.Telefono;
+                         ptelefono.Telefono = cliente.Telefono;
 
+                    Datos.Dat_Cliente.validarNulidad(cliente);
+                   // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
+
+                    // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
+                    //hacer el de arriba
                     Datos.Dat_Telefonos.validarTelefono(ptelefono);
+                   
+            }
 
-                    int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+             catch (Excepciones.DuplicacionDeDatos)
 
-                    if (resultado > 0)
-                    {
-                        Mensajes.Exitos.ExitoAlGuardaLosDatos();
-                    }
-                    else
-                    {
-                        Mensajes.Errores.ErrorAlGuardarDatos();
-
-                    }
-
-                }
-
-                catch (FormatException)
                 {
                     Mensajes.Errores.ErrorAlIngresarDatos();
                 }
-            }
+
+               
             catch (InvalidOperationException ex)
                  {
                      MessageBox.Show(ex.Message);
-    }
-            }
-        
+                 }
 
+            int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+
+            if (resultado > 0)
+            {
+                Mensajes.Exitos.ExitoAlGuardaLosDatos();
+            }
+            else
+            {
+                Mensajes.Errores.ErrorAlGuardarDatos();
+
+            }
+           
+        }
        
             
             private void inicializarCliente(Entidades.Ent_Cliente cliente)

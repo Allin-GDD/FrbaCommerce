@@ -204,6 +204,7 @@
     </Compile>
     <Compile Include="Entidades\Ent_Telefono.cs" />
     <Compile Include="Entidades\Ent_TipoDeDoc.cs" />
+    <Compile Include="Excepciones\Class1.cs" />
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
