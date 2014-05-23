@@ -13,5 +13,10 @@ namespace FrbaCommerce.Mensajes
             MessageBox.Show("Error al ingresar los datos", "Ingreso de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static void ErrorAlGuardarDatos()
+        {
+            MessageBox.Show("Los datos no se han podido guardar", "Guardar Cliente", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+         
+        }
     }
 }

@@ -33,11 +33,12 @@ namespace FrbaCommerce.Abm_Cliente
 
                     if (resultado > 0)
                     {
-                        MessageBox.Show("Datos guardados exitosamente", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Mensajes.Exitos.ExitoAlGuardaLosDatos();
                     }
                     else
                     {
-                        MessageBox.Show("Los datos no se han podido guardar", "Guardar Cliente", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                        Mensajes.Errores.ErrorAlGuardarDatos();
+                        
                     }
                
             }
@@ -47,31 +48,34 @@ namespace FrbaCommerce.Abm_Cliente
                 Mensajes.Errores.ErrorAlIngresarDatos();
             }
         }
-
+       
+        
         private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
-            cliente.Nombre = txtNombre.Text;
-            cliente.Apellido = txtApellido.Text;
+            cliente.Nombre = Convert.ToString(txtNombre.Text);
+            cliente.Apellido = Convert.ToString(txtApellido.Text);
             cliente.Dni = Convert.ToInt64(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
             cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
-            cliente.Mail = txtMail.Text;
-            cliente.Dom_Calle = txtCalle.Text;
+            cliente.Mail = Convert.ToString(txtMail.Text);
+            cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
             cliente.Nro_Calle = Convert.ToInt64(txtNroCalle.Text);
-            cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
-            cliente.Dpto = txtDpto.Text;
-            cliente.Cod_Postal = txtCodPostal.Text;
-            cliente.Telefono = txtTelefono.Text;
-            cliente.Localidad = txtLocalidad.Text;
+            cliente.Piso = Convert.ToInt64(txtNroPiso.Text);//no me importa que sea nulo
+            cliente.Dpto = Convert.ToString(txtDpto.Text);//no me importa que sea nulo
+            cliente.Cod_Postal = Convert.ToString(txtCodPostal.Text);
+            cliente.Telefono = Convert.ToString(txtTelefono.Text);
+            cliente.Localidad = Convert.ToString(txtLocalidad.Text);
+
         }
 
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
+           
             ClearTextBoxes();
-        
         }
-
+        
+        
         
         public void ClearTextBoxes()
         {
@@ -89,7 +93,6 @@ namespace FrbaCommerce.Abm_Cliente
             func(Controls);
         }
 
-       
-     
+
     }
 }
