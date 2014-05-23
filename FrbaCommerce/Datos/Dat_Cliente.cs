@@ -8,6 +8,10 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
+        /*public static int ValidarTelefono(Entidades.Ent_Cliente pCliente) { 
+        
+        }*/
+        
         public static int AgregarCliente(Entidades.Ent_Cliente pCliente)
         {
             int retorno = 0;

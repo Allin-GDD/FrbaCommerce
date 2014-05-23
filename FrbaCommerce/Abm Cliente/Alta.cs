@@ -19,15 +19,37 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
-            /*cboTipoDoc.Items.Add("DNI");
-            cboTipoDoc.Items.Add("CUIT");*/
-
-
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+            
+           try
+            {
+                Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+                inicializarCliente(cliente);
+
+                    int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+
+                    if (resultado > 0)
+                    {
+                        MessageBox.Show("Datos guardados exitosamente", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Los datos no se han podido guardar", "Guardar Cliente", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+                    }
+               
+            }
+
+            catch (FormatException)
+            {
+                Mensajes.Errores.ErrorAlIngresarDatos();
+            }
+        }
+
+        private void inicializarCliente(Entidades.Ent_Cliente cliente)
+        {
             cliente.Nombre = txtNombre.Text;
             cliente.Apellido = txtApellido.Text;
             cliente.Dni = Convert.ToInt64(txtDNI.Text);
@@ -41,31 +63,8 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Cod_Postal = txtCodPostal.Text;
             cliente.Telefono = txtTelefono.Text;
             cliente.Localidad = txtLocalidad.Text;
-
-            //me dice cuales son los text box vacios
-            var emptyTextboxes = from tb in this.Controls.OfType<TextBox>()
-                                 where string.IsNullOrEmpty(tb.Text)
-                                 select tb;
-
-
-            if (emptyTextboxes.Any())
-            {
-                MessageBox.Show("Error al ingresar los datos", "Ingreso de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
-
-                if (resultado > 0)
-                {
-                    MessageBox.Show("Datos guardados exitosamente", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Los datos no se han podido guardar", "Guardar Cliente", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
-                }
-            }
         }
+
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
@@ -73,9 +72,6 @@ namespace FrbaCommerce.Abm_Cliente
         
         }
 
-        //funcion que limpia todos los text box con textos
-      
-        
         
         public void ClearTextBoxes()
         {
@@ -97,34 +93,3 @@ namespace FrbaCommerce.Abm_Cliente
      
     }
 }
-
-       /* private void llenarComboBox(){
-        //se declara una variable de tipo SqlConnection
-            SqlConnection conexion = new SqlConnection();
-               //se indica la cadena de conexion
-            conexion.ConnectionString = @"Data source = MATÍAS-PC\SQLSERVER2008; Initial catalog = GD1C2014 ; User Id = gd; Password = gd2014 ";
-            //código para llenar el comboBox
-             DataSet ds = new DataSet();
-             //indicamos la consulta en SQL
-            SqlDataAdapter da = new SqlDataAdapter("SELECT Nombre FROM Tipo_Doc", conexion);
-            //se indica el nombre de la tabla
-             da.Fill(ds, "Tipo_Doc");
-        cboTipoDoc.DataSource = ds.Tables[0].DefaultView;
-             //se especifica el campo de la tabla
-            cboTipoDoc.ValueMember = "Nombre";}
-
-   
-        */
-       
-   
-            
-            
-            /*cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
-           cboTipoDoc.DisplayMember = "tipo";
-           cboTipoDoc.ValueMember = "codigo";*/
- 
-    
-
-    
-      
-
