@@ -51,10 +51,10 @@ namespace FrbaCommerce.Datos
              return listaDeTipos;
          }
 
-        public static List<Entidades.Ent_Cliente> obtenerTodosLosDni()
+        public static List<Entidades.Ent_Dni> obtenerTodosLosDni()
         {
 
-            List<Entidades.Ent_Cliente> listaDeDni = new List<Entidades.Ent_Cliente>();
+            List<Entidades.Ent_Dni> listaDeDni = new List<Entidades.Ent_Dni>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand Comando = new SqlCommand("Select Dni from Clientes", conexion);
@@ -63,8 +63,7 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-                pDni = lectura.GetInt32(0);
-              
+                pDni.Dni = lectura.GetInt64(0);
 
                 listaDeDni.Add(pDni);
             }

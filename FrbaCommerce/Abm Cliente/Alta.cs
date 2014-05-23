@@ -20,7 +20,7 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
            List<Entidades.Ent_Telefono> listaTelefonos =  Datos.Dat_Cliente.obtenerTodosLosTelefonos();
-           List<Entidades.Ent_Dni> listaDNI =  Datos.Dat_Dni.obtenerTodosLosDni();
+           List<Entidades.Ent_Dni> listaDNI =  Datos.Dat_Cliente.obtenerTodosLosDni();
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
