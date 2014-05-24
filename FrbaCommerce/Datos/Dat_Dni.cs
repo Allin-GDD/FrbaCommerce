@@ -13,7 +13,7 @@ namespace FrbaCommerce.Datos
 
             foreach (Entidades.Ent_Dni dni in listaDni)
             {
-                if (pdni == dni)
+                if (pdni.Dni == dni.Dni)
                 {
                     throw new Excepciones.DuplicacionDeDatos("El documento ingresado ya pertenece a otro cliente");
                 }

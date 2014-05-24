@@ -12,7 +12,7 @@ namespace FrbaCommerce.Datos
             List<Entidades.Ent_Telefono> listaDeTelefonos = Datos.Dat_Cliente.obtenerTodosLosTelefonos();
 
             foreach (Entidades.Ent_Telefono telefono in listaDeTelefonos){
-                if (ptelefono == telefono) { 
+                if (ptelefono.Telefono == telefono.Telefono) { 
                 throw new Excepciones.DuplicacionDeDatos("El número ingresado ya pertenece a otro cliente");
                 }
             }

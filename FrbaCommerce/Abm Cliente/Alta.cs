@@ -52,18 +52,11 @@ namespace FrbaCommerce.Abm_Cliente
 
                         }
 
-                    }catch (FormatException)
-                    {
-                        Mensajes.Errores.ErrorAlIngresarDatos();
-                    }
-                    catch (Excepciones.DuplicacionDeDatos ex)
+                    }catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    catch (InvalidOperationException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                   
                   
 
           
@@ -94,6 +87,7 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
 
+            //throw new FormatException();
         }
 
 
