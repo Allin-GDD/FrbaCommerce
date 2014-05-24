@@ -8,8 +8,10 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
-         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
-         {
+
+
+        public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
+        {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
@@ -27,29 +29,29 @@ namespace FrbaCommerce.Datos
             }
             return listaDeTelefonos;
 
-         
-        
+
+
         }
-     
-         public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
-         {
 
-             List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
+        public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
+        {
 
-             SqlConnection conexion = DBConexion.obtenerConexion();
-             SqlCommand Comando = new SqlCommand("Select Codigo, Nombre from Tipo_Doc", conexion);
-             SqlDataReader lectura = Comando.ExecuteReader();
+            List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
 
-             while (lectura.Read())
-             {
-                 Entidades.Ent_TipoDeDoc pTipoDeDoc = new Entidades.Ent_TipoDeDoc();
-                 pTipoDeDoc.codigo = lectura.GetInt16(0);
-                 pTipoDeDoc.tipo = lectura.GetString(1);
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand Comando = new SqlCommand("Select Codigo, Nombre from Tipo_Doc", conexion);
+            SqlDataReader lectura = Comando.ExecuteReader();
 
-                 listaDeTipos.Add(pTipoDeDoc);
-             }
-             return listaDeTipos;
-         }
+            while (lectura.Read())
+            {
+                Entidades.Ent_TipoDeDoc pTipoDeDoc = new Entidades.Ent_TipoDeDoc();
+                pTipoDeDoc.codigo = lectura.GetInt16(0);
+                pTipoDeDoc.tipo = lectura.GetString(1);
+
+                listaDeTipos.Add(pTipoDeDoc);
+            }
+            return listaDeTipos;
+        }
 
         public static List<Entidades.Ent_Dni> obtenerTodosLosDni()
         {
@@ -69,28 +71,9 @@ namespace FrbaCommerce.Datos
                 listaDeDni.Add(pDni);
             }
 
-         
+
             return listaDeDni;
         }
-
-       /* public static void validarNulidad(Entidades.Ent_Cliente pcliente)
-        {
-            if (pcliente.Dni == null)
-            {
-
-                throw new Excepciones.NulidadDeCamposACompletar("Faltan datos obligatorios");
-            }
-
-            if (pcliente.Tipo_dni == null)
-            {
-                throw new Excepciones.NulidadDeCamposACompletar("Falta dato obligatorio");
-
-            }
-            // podemos agregar mas datos para fijarnos la nulidad
-
-        }*/
-
-
 
         public static int AgregarCliente(Entidades.Ent_Cliente pCliente)
         {
@@ -107,7 +90,8 @@ namespace FrbaCommerce.Datos
             return retorno;
         }
 
-    }
-}
 
-     
+
+    }
+
+}

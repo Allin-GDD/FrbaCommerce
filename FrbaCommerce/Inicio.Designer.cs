@@ -75,13 +75,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(62, 160);
+            this.button1.Location = new System.Drawing.Point(62, 162);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(158, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Ejecutar Prueba";
+            this.button1.Text = "Salir";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Inicio
             // 
@@ -94,6 +94,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Inicio";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenidos";
             this.ResumeLayout(false);
             this.PerformLayout();
