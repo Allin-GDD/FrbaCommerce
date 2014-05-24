@@ -35,4 +35,20 @@ namespace FrbaCommerce.Excepciones
         {
             }
     }
+    public class ValoresFueraDeRango : System.Exception
+    {
+        public ValoresFueraDeRango() 
+        { 
+            }
+        public ValoresFueraDeRango(string message)
+            : base (message)
+        {
+            }
+        public ValoresFueraDeRango(string message, Exception inner)
+
+            : base(message, inner)
+        {
+            }
+    }
+    
 }

@@ -73,7 +73,7 @@ namespace FrbaCommerce.Datos
             return listaDeDni;
         }
 
-        public static void validarNulidad(Entidades.Ent_Cliente pcliente)
+       /* public static void validarNulidad(Entidades.Ent_Cliente pcliente)
         {
             if (pcliente.Dni == null)
             {
@@ -88,7 +88,10 @@ namespace FrbaCommerce.Datos
             }
             // podemos agregar mas datos para fijarnos la nulidad
 
-        }
+        }*/
+
+
+
         public static int AgregarCliente(Entidades.Ent_Cliente pCliente)
         {
             int retorno = 0;

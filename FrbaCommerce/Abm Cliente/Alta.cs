@@ -25,19 +25,21 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btmGuardar_Click(object sender, EventArgs e)
         {
-           Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
-                    
+            Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+         
+           
+                 try
+                    {
+                        validarNulidadDeDatosIngresados();   
+                        inicializarCliente(cliente);
 
-                    try
-                    {   inicializarCliente(cliente);
+                       // Datos.Dat_Cliente.validarNulidad(cliente);
 
                         Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
                         Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-                        
 
-                        
+                       
 
-                        Datos.Dat_Cliente.validarNulidad(cliente);
                         // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
 
                         // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
@@ -73,10 +75,61 @@ namespace FrbaCommerce.Abm_Cliente
           
            
         }
+
+        private void validarNulidadDeDatosIngresados()
+        {
+            if(string.IsNullOrEmpty(txtNombre.Text)){
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Nombre");
+            }
+            if(string.IsNullOrEmpty(txtApellido.Text)){
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Apellido");
+            }
+            if(string.IsNullOrEmpty(txtDNI.Text)){
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: DNI");
+            }
+            if(string.IsNullOrEmpty(txtLocalidad.Text)){
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Localidad");
+            }
+            if (string.IsNullOrEmpty(txtCalle.Text))
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Calle");
+            }
+            if (string.IsNullOrEmpty(txtNroCalle.Text))
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Número de Calle");
+            }
+            if (string.IsNullOrEmpty(txtCalle.Text))
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Domicilio");
+            }
+
+            if (string.IsNullOrEmpty(txtCodPostal.Text))
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Código Postal");
+            }
+            if (string.IsNullOrEmpty(txtFechaNac.Text))
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Fecha de Nacimiento");
+            }
+            /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS DEVUELVE MENSAJES DIFERENTES
+             * 
+             * Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (TextBox control in controls)
+                    if (String.IsNullOrEmpty(control.Text))
+                    {
+                        throw new Excepciones.NulidadDeCamposACompletar("Faltan datos obligatorios");
+                    };
+            };*/
+        }
+        
        
             
-            private void inicializarCliente(Entidades.Ent_Cliente cliente)
+       private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
+
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
             cliente.Dni = Convert.ToInt32(txtDNI.Text);
@@ -86,31 +139,25 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
             cliente.Nro_Calle = Convert.ToInt32(txtNroCalle.Text);
             cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
-
-           /* if (txtNroPiso.Text != null)
-            {
-                cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
-            }
-            else { cliente.Piso = ' '; };*/
-
-            cliente.Dpto = Convert.ToString(txtDpto.Text);//no me importa que sea nulo
+            cliente.Dpto = Convert.ToString(txtDpto.Text);
             cliente.Cod_Postal = Convert.ToString(txtCodPostal.Text);
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
 
-            //throw new FormatException();
+            
         }
 
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
            
-            ClearTextBoxes();
+            LimpiaTextBoxes();
+            LimpiaMaskedTextBoxes();
         }
         
         
         
-        public void ClearTextBoxes()
+        public void LimpiaTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
 
@@ -118,9 +165,33 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 foreach (Control control in controls)
                     if (control is TextBox)
+                    {
                         (control as TextBox).Clear();
+                    }
                     else
+                    {
                         func(control.Controls);
+                    }
+            };
+
+            func(Controls);
+        }
+
+        public void LimpiaMaskedTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is MaskedTextBox)
+                    {
+                        (control as MaskedTextBox).Clear();
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
             };
 
             func(Controls);
