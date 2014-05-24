@@ -21,7 +21,6 @@ namespace FrbaCommerce
 
         private void btnNuevoUser_Click(object sender, EventArgs e)
         {
-           
             Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
             Reg1.Show();
                   

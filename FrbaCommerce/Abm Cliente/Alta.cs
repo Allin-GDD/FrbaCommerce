@@ -54,6 +54,7 @@ namespace FrbaCommerce.Abm_Cliente
                 if (resultado > 0)
                 {
                     Mensajes.Exitos.ExitoAlGuardaLosDatos();
+                    this.Close();
                 }
                 else
                 {

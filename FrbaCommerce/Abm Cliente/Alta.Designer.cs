@@ -335,6 +335,7 @@
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Alta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
