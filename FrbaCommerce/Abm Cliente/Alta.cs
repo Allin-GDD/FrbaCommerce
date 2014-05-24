@@ -26,46 +26,47 @@ namespace FrbaCommerce.Abm_Cliente
         private void btmGuardar_Click(object sender, EventArgs e)
         {
            Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
-                    inicializarCliente(cliente);
+                    
 
-            try
-            {
-            
-                    Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-                         ptelefono.Telefono = cliente.Telefono;
+                    try
+                    {   inicializarCliente(cliente);
+                        Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
+                        ptelefono.Telefono = cliente.Telefono;
+                        Datos.Dat_Cliente.validarNulidad(cliente);
+                        // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
 
-                    Datos.Dat_Cliente.validarNulidad(cliente);
-                   // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
+                        // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
+                        //hacer el de arriba
+                        Datos.Dat_Telefonos.validarTelefono(ptelefono);
 
-                    // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
-                    //hacer el de arriba
-                    Datos.Dat_Telefonos.validarTelefono(ptelefono);
-                   
-            }
 
-             catch (Excepciones.DuplicacionDeDatos)
+                        int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
 
-                {
-                    Mensajes.Errores.ErrorAlIngresarDatos();
-                }
+                        if (resultado > 0)
+                        {
+                            Mensajes.Exitos.ExitoAlGuardaLosDatos();
+                        }
+                        else
+                        {
+                            Mensajes.Errores.ErrorAlGuardarDatos();
 
-               
-            catch (InvalidOperationException ex)
-                 {
-                     MessageBox.Show(ex.Message);
-                 }
+                        }
 
-            int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+                    }catch (FormatException)
+                    {
+                        Mensajes.Errores.ErrorAlIngresarDatos();
+                    }
+                    catch (Excepciones.DuplicacionDeDatos ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                  
 
-            if (resultado > 0)
-            {
-                Mensajes.Exitos.ExitoAlGuardaLosDatos();
-            }
-            else
-            {
-                Mensajes.Errores.ErrorAlGuardarDatos();
-
-            }
+          
            
         }
        
@@ -74,13 +75,13 @@ namespace FrbaCommerce.Abm_Cliente
         {
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
-            cliente.Dni = Convert.ToInt64(txtDNI.Text);
+            cliente.Dni = Convert.ToDecimal(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
             cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
             cliente.Mail = Convert.ToString(txtMail.Text);
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
-            cliente.Nro_Calle = Convert.ToInt64(txtNroCalle.Text);
-            cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
+            cliente.Nro_Calle = Convert.ToDecimal(txtNroCalle.Text);
+            cliente.Piso = Convert.ToDecimal(txtNroPiso.Text);
 
            /* if (txtNroPiso.Text != null)
             {

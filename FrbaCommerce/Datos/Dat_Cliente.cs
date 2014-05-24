@@ -69,8 +69,7 @@ namespace FrbaCommerce.Datos
                 listaDeDni.Add(pDni);
             }
 
-            // nose que esta andando mal q tira error aca , esto genera el error en Alta y en Dat_Dni
-           //  
+         
             return listaDeDni;
         }
 
