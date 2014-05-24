@@ -20,77 +20,77 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
 
-           List<Entidades.Ent_Telefono> listaTelefonos =  Datos.Dat_Cliente.obtenerTodosLosTelefonos();
-           List<Entidades.Ent_Dni> listaDNI =  Datos.Dat_Cliente.obtenerTodosLosDni();
+            List<Entidades.Ent_Telefono> listaTelefonos = Datos.Dat_Cliente.obtenerTodosLosTelefonos();
+            List<Entidades.Ent_Dni> listaDNI = Datos.Dat_Cliente.obtenerTodosLosDni();
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
-         
-           
-                 try
-                    {
-                        validarNulidadDeDatosIngresados();   
-                        //ACA TIENE QUE HACER ALGO PARA QUE DIGA SI LO QUE DEVUELVE ES LO QUE PIDE, PQ SINO DEVUELVE:
-                        //"LA CADENA DE ENTRADA NO TIENE EL MISMO FORMATO"
-                        inicializarCliente(cliente);
-
-                       // Datos.Dat_Cliente.validarNulidad(cliente);
-
-                        Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-                        Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-
-                       
-
-                        // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
-
-                        // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
-                        //hacer el de arriba
-
-                        ptelefono.Telefono = cliente.Telefono;
-                        pDni.Dni = cliente.Dni;
-
-                        
-                        Datos.Dat_Telefonos.validarTelefono(ptelefono);
-                        Datos.Dat_Dni.validarDni(pDni);
 
 
-                        int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+            try
+            {
+                validarNulidadDeDatosIngresados();
+                validarTipoDeDatosIngresados();
+                //ACA TIENE QUE HACER ALGO PARA QUE DIGA SI LO QUE DEVUELVE ES LO QUE PIDE, PQ SINO DEVUELVE:
+                //"LA CADENA DE ENTRADA NO TIENE EL MISMO FORMATO"
+                inicializarCliente(cliente);
 
-                        if (resultado > 0)
-                        {
-                            Mensajes.Exitos.ExitoAlGuardaLosDatos();
-                        }
-                        else
-                        {
-                            Mensajes.Errores.ErrorAlGuardarDatos();
 
-                        }
 
-                    }catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                    }
-                   
-                  
+                Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
+                Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
 
-          
-           
+
+                ptelefono.Telefono = cliente.Telefono;
+                pDni.Dni = cliente.Dni;
+
+
+                Datos.Dat_Telefonos.validarTelefono(ptelefono);
+                Datos.Dat_Dni.validarDni(pDni);
+
+
+                int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+
+                if (resultado > 0)
+                {
+                    Mensajes.Exitos.ExitoAlGuardaLosDatos();
+                }
+                else
+                {
+                    Mensajes.Errores.ErrorAlGuardarDatos();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+
+
+
         }
 
         private void validarNulidadDeDatosIngresados()
         {
-            if(string.IsNullOrEmpty(txtNombre.Text)){
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Nombre");
             }
-            if(string.IsNullOrEmpty(txtApellido.Text)){
+            if (string.IsNullOrEmpty(txtApellido.Text))
+            {
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Apellido");
             }
-            if(string.IsNullOrEmpty(txtDNI.Text)){
+            if (string.IsNullOrEmpty(txtDNI.Text))
+            {
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: DNI");
             }
-            if(string.IsNullOrEmpty(txtLocalidad.Text)){
+            if (string.IsNullOrEmpty(txtLocalidad.Text))
+            {
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Localidad");
             }
             if (string.IsNullOrEmpty(txtCalle.Text))
@@ -114,7 +114,7 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Fecha de Nacimiento");
             }
-            /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS DEVUELVE MENSAJES DIFERENTES
+            /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS PERO NO DEVUELVE MENSAJES DIFERENTES
              * LO PODEMOS USAR PARA AHORRAR CODIGO, PERO ES LO MISMO
              * Action<Control.ControlCollection> func = null;
 
@@ -127,12 +127,38 @@ namespace FrbaCommerce.Abm_Cliente
                     };
             };*/
         }
-        
-       
-            
-       private void inicializarCliente(Entidades.Ent_Cliente cliente)
+
+        private void validarTipoDeDatosIngresados()
         {
-           
+
+            Decimal expectedDecimal;
+
+            if (!Decimal.TryParse(txtDNI.Text, out expectedDecimal))
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo DNI");
+            }
+
+            if (!Decimal.TryParse(txtNroCalle.Text, out expectedDecimal))
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo Número de Calle");
+
+            }
+            if (!Decimal.TryParse(txtNroPiso.Text, out expectedDecimal))
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo Piso");
+            }
+
+
+
+
+        }
+
+
+
+
+        private void inicializarCliente(Entidades.Ent_Cliente cliente)
+        {
+
 
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
@@ -148,19 +174,19 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
 
-            
+
         }
 
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
-           
+
             LimpiaTextBoxes();
             LimpiaMaskedTextBoxes();
         }
-        
-        
-        
+
+
+
         public void LimpiaTextBoxes()
         {
             Action<Control.ControlCollection> func = null;
