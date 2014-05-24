@@ -9,13 +9,13 @@ namespace FrbaCommerce.Datos
     {
         public static void validarDni(Entidades.Ent_Dni pdni)
         {
-            List<Entidades.Ent_Dni> listaDni = Datos.Dat_Cliente.obtenerTodosLosDni();
+            List<Entidades.Ent_Dni> listaDnies = Datos.Dat_Cliente.obtenerTodosLosDni();
 
-            foreach (Entidades.Ent_Dni dni in listaDni)
+            foreach (Entidades.Ent_Dni dni in listaDnies)
             {
                 if (pdni.Dni == dni.Dni)
                 {
-                    throw new Excepciones.DuplicacionDeDatos("El documento ingresado ya pertenece a otro cliente");
+                    throw new Excepciones.DuplicacionDeDatos("El número de documento ingresado ya pertenece a otro cliente");
                 }
             }
 

@@ -30,14 +30,25 @@ namespace FrbaCommerce.Abm_Cliente
 
                     try
                     {   inicializarCliente(cliente);
+
                         Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-                        ptelefono.Telefono = cliente.Telefono;
+                        Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
+                        
+
+                        
+
                         Datos.Dat_Cliente.validarNulidad(cliente);
                         // no me acuerdo si ya hacia esto de la nulidad pero por las dudas lo hice 
 
                         // Datos.Cliente.validarDniYTipo(pcliente.Dni,pcliente.Tipo_Doc);
                         //hacer el de arriba
+
+                        ptelefono.Telefono = cliente.Telefono;
+                        pDni.Dni = cliente.Dni;
+
+                        
                         Datos.Dat_Telefonos.validarTelefono(ptelefono);
+                        Datos.Dat_Dni.validarDni(pDni);
 
 
                         int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
@@ -54,7 +65,7 @@ namespace FrbaCommerce.Abm_Cliente
 
                     }catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     }
                    
                   
@@ -68,21 +79,21 @@ namespace FrbaCommerce.Abm_Cliente
         {
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
-            cliente.Dni = Convert.ToDecimal(txtDNI.Text);
+            cliente.Dni = Convert.ToInt32(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
             cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
             cliente.Mail = Convert.ToString(txtMail.Text);
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
-            cliente.Nro_Calle = Convert.ToDecimal(txtNroCalle.Text);
-            cliente.Piso = Convert.ToDecimal(txtNroPiso.Text);
+            cliente.Nro_Calle = Convert.ToInt32(txtNroCalle.Text);
+            cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
 
            /* if (txtNroPiso.Text != null)
             {
                 cliente.Piso = Convert.ToInt64(txtNroPiso.Text);
             }
             else { cliente.Piso = ' '; };*/
-           
-            cliente.Dpto = txtDpto.Text;//no me importa que sea nulo
+
+            cliente.Dpto = Convert.ToString(txtDpto.Text);//no me importa que sea nulo
             cliente.Cod_Postal = Convert.ToString(txtCodPostal.Text);
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
