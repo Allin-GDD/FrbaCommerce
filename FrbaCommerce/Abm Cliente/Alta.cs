@@ -19,6 +19,7 @@ namespace FrbaCommerce.Abm_Cliente
             cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
             cboTipoDoc.DisplayMember = "tipo";
             cboTipoDoc.ValueMember = "codigo";
+
            List<Entidades.Ent_Telefono> listaTelefonos =  Datos.Dat_Cliente.obtenerTodosLosTelefonos();
            List<Entidades.Ent_Dni> listaDNI =  Datos.Dat_Cliente.obtenerTodosLosDni();
         }
@@ -31,6 +32,8 @@ namespace FrbaCommerce.Abm_Cliente
                  try
                     {
                         validarNulidadDeDatosIngresados();   
+                        //ACA TIENE QUE HACER ALGO PARA QUE DIGA SI LO QUE DEVUELVE ES LO QUE PIDE, PQ SINO DEVUELVE:
+                        //"LA CADENA DE ENTRADA NO TIENE EL MISMO FORMATO"
                         inicializarCliente(cliente);
 
                        // Datos.Dat_Cliente.validarNulidad(cliente);
@@ -112,7 +115,7 @@ namespace FrbaCommerce.Abm_Cliente
                 throw new Excepciones.NulidadDeCamposACompletar("Falta el dato: Fecha de Nacimiento");
             }
             /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS DEVUELVE MENSAJES DIFERENTES
-             * 
+             * LO PODEMOS USAR PARA AHORRAR CODIGO, PERO ES LO MISMO
              * Action<Control.ControlCollection> func = null;
 
             func = (controls) =>
@@ -129,6 +132,7 @@ namespace FrbaCommerce.Abm_Cliente
             
        private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
+           
 
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
