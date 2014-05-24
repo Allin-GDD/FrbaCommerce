@@ -31,6 +31,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNroCalle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +65,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(186, 367);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
-            this.btnGuardar.TabIndex = 16;
+            this.btnGuardar.TabIndex = 32;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btmGuardar_Click);
@@ -75,7 +75,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(12, 367);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 15;
+            this.btnLimpiar.TabIndex = 33;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btmLimpiar_Click);
@@ -111,9 +111,18 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(258, 349);
-            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabIndex = 88;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
+            // 
+            // txtFechaNac
+            // 
+            this.txtFechaNac.Location = new System.Drawing.Point(124, 319);
+            this.txtFechaNac.Mask = "00/00/0000";
+            this.txtFechaNac.Name = "txtFechaNac";
+            this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
+            this.txtFechaNac.TabIndex = 31;
+            this.txtFechaNac.ValidatingType = typeof(System.DateTime);
             // 
             // cboTipoDoc
             // 
@@ -121,15 +130,14 @@
             this.cboTipoDoc.Location = new System.Drawing.Point(118, 111);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(130, 21);
-            this.cboTipoDoc.TabIndex = 34;
-           
+            this.cboTipoDoc.TabIndex = 13;
             // 
             // txtNroCalle
             // 
             this.txtNroCalle.Location = new System.Drawing.Point(86, 214);
             this.txtNroCalle.Name = "txtNroCalle";
             this.txtNroCalle.Size = new System.Drawing.Size(162, 20);
-            this.txtNroCalle.TabIndex = 33;
+            this.txtNroCalle.TabIndex = 21;
             // 
             // label1
             // 
@@ -137,7 +145,7 @@
             this.label1.Location = new System.Drawing.Point(11, 219);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
-            this.label1.TabIndex = 32;
+            this.label1.TabIndex = 20;
             this.label1.Text = "Nro Calle";
             // 
             // lblFechaNac
@@ -146,7 +154,7 @@
             this.lblFechaNac.Location = new System.Drawing.Point(11, 321);
             this.lblFechaNac.Name = "lblFechaNac";
             this.lblFechaNac.Size = new System.Drawing.Size(106, 13);
-            this.lblFechaNac.TabIndex = 28;
+            this.lblFechaNac.TabIndex = 30;
             this.lblFechaNac.Text = "Fecha de nacimiento";
             // 
             // txtCodPostal
@@ -154,7 +162,7 @@
             this.txtCodPostal.Location = new System.Drawing.Point(86, 292);
             this.txtCodPostal.Name = "txtCodPostal";
             this.txtCodPostal.Size = new System.Drawing.Size(162, 20);
-            this.txtCodPostal.TabIndex = 27;
+            this.txtCodPostal.TabIndex = 29;
             // 
             // lblCodPostal
             // 
@@ -162,7 +170,7 @@
             this.lblCodPostal.Location = new System.Drawing.Point(11, 295);
             this.lblCodPostal.Name = "lblCodPostal";
             this.lblCodPostal.Size = new System.Drawing.Size(61, 13);
-            this.lblCodPostal.TabIndex = 26;
+            this.lblCodPostal.TabIndex = 28;
             this.lblCodPostal.Text = "Cód. Postal";
             // 
             // txtDpto
@@ -186,7 +194,7 @@
             this.txtLocalidad.Location = new System.Drawing.Point(86, 266);
             this.txtLocalidad.Name = "txtLocalidad";
             this.txtLocalidad.Size = new System.Drawing.Size(162, 20);
-            this.txtLocalidad.TabIndex = 23;
+            this.txtLocalidad.TabIndex = 27;
             // 
             // lblLocalidad
             // 
@@ -194,7 +202,7 @@
             this.lblLocalidad.Location = new System.Drawing.Point(11, 269);
             this.lblLocalidad.Name = "lblLocalidad";
             this.lblLocalidad.Size = new System.Drawing.Size(53, 13);
-            this.lblLocalidad.TabIndex = 22;
+            this.lblLocalidad.TabIndex = 26;
             this.lblLocalidad.Text = "Localidad";
             // 
             // txtNroPiso
@@ -202,7 +210,7 @@
             this.txtNroPiso.Location = new System.Drawing.Point(87, 240);
             this.txtNroPiso.Name = "txtNroPiso";
             this.txtNroPiso.Size = new System.Drawing.Size(55, 20);
-            this.txtNroPiso.TabIndex = 21;
+            this.txtNroPiso.TabIndex = 23;
             // 
             // lblNroPiso
             // 
@@ -210,7 +218,7 @@
             this.lblNroPiso.Location = new System.Drawing.Point(11, 243);
             this.lblNroPiso.Name = "lblNroPiso";
             this.lblNroPiso.Size = new System.Drawing.Size(27, 13);
-            this.lblNroPiso.TabIndex = 20;
+            this.lblNroPiso.TabIndex = 22;
             this.lblNroPiso.Text = "Piso";
             // 
             // txtCalle
@@ -317,16 +325,6 @@
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
-            // 
-            // txtFechaNac
-            // 
-            this.txtFechaNac.Location = new System.Drawing.Point(124, 319);
-            this.txtFechaNac.Mask = "00/00/0000";
-            this.txtFechaNac.Name = "txtFechaNac";
-            this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
-            this.txtFechaNac.TabIndex = 35;
-            this.txtFechaNac.ValidatingType = typeof(System.DateTime);
-           
             // 
             // Alta
             // 

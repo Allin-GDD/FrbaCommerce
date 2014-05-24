@@ -9,7 +9,7 @@ namespace FrbaCommerce.Entidades
     {
        
         
-            public Int64 Dni { get; set; }
+            public Decimal Dni { get; set; }
         }
     
 }

@@ -63,7 +63,8 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-                pDni.Dni = lectura.GetInt64(0);
+
+                pDni.Dni = lectura.GetDecimal(0);
 
                 listaDeDni.Add(pDni);
             }
