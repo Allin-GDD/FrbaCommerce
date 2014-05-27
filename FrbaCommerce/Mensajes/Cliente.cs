@@ -7,7 +7,7 @@ namespace FrbaCommerce.Mensajes
 {
     class Cliente
     {
-        internal static void ValidarNombre(string p)
+        internal static void ValidarNulidadNombre(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -15,7 +15,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarApellido(string p)
+        internal static void ValidarNulidadApellido(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -23,7 +23,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarDNI(string p)
+        internal static void ValidarNulidadDNI(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -31,7 +31,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarLocalidad(string p)
+        internal static void ValidarNulidadLocalidad(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -39,7 +39,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarDomicilio(string p)
+        internal static void ValidarNulidadDomicilio(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -47,7 +47,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarNroCalle(string p)
+        internal static void ValidarNulidadNroCalle(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -55,7 +55,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarFechaNac(string p)
+        internal static void ValidarNulidadFechaNac(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -63,7 +63,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarCodPostal(string p)
+        internal static void ValidarNulidadCodPostal(string p)
         {
             if (string.IsNullOrEmpty(p))
             {
@@ -97,6 +97,34 @@ namespace FrbaCommerce.Mensajes
             {
                 throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo Piso");
             }
+
+        }
+
+        internal static void ValidarFecha(string p)
+        {
+            DateTime fechaLimiteInferior = new DateTime(1900, 1, 1, 0, 0, 0);
+            DateTime fechaLimiteSuperior = new DateTime(3000, 1, 1, 0, 0, 0);
+            DateTime time = DateTime.Parse(p);
+
+           /*ESTO ES REBUSCADO, COMPARAR SI ESTA INGRESANDO BIEN EL DÍA Y FECHA. 
+            * if(time.Month > 12) {
+                throw new Excepciones.ValoresConTiposDiferentes("El mes ingresado no es válido");
+            }
+
+            if (time.Day > 31) {
+                throw new Excepciones.ValoresConTiposDiferentes("El día ingresado no es válido");  
+            }
+            */
+
+            int i = time.CompareTo(fechaLimiteInferior);
+            int j = time.CompareTo(fechaLimiteSuperior);
+
+            if( (i <= 0) || (j >= 0))
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("La Fecha ingresada no es valida. Estas fuera del rango disponible");
+
+            }
+
 
         }
     }

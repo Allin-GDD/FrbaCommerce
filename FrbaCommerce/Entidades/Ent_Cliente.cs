@@ -22,8 +22,7 @@ namespace FrbaCommerce.Entidades
         public String Localidad { get; set; }
     
     public Ent_Cliente() {}
-    public Ent_Cliente(String pNombre, String pApellido, Decimal pDni, Int16 pTipo_dni, String pMail, String pFecha_Nac,
-        String pDom_Calle, Decimal pNro_Calle, Decimal pPiso, String pDpto, String pCod_Postal, String pTelefono, String pLocalidad)
+    public Ent_Cliente(String pNombre, String pApellido, Decimal pDni, Int16 pTipo_dni, String pMail, String pFecha_Nac,String pDom_Calle, Decimal pNro_Calle, Decimal pPiso, String pDpto, String pCod_Postal, String pTelefono, String pLocalidad)
     {
 
       

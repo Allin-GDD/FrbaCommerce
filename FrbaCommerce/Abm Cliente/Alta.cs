@@ -28,26 +28,18 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                //Verifica si los datos ingresados son correctos
+                //Verifica si los datos ingresados no son nulos
                 validarNulidadDeDatosIngresados();
+                //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
-
+                //Verifica si la fecha está dentro del limite
+                validarFecha();
                 //Verifica si el DNI y Telefono ya no existen
-                
-                //Después se puede mover
-                List<Entidades.Ent_Telefono> listaTelefonos = Datos.Dat_Cliente.obtenerTodosLosTelefonos();
-                List<Entidades.Ent_Dni> listaDNI = Datos.Dat_Cliente.obtenerTodosLosDni();
-                Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-                Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-                ptelefono.Telefono = txtTelefono.Text;
-                pDni.Dni = Convert.ToDecimal(txtDNI.Text);
-                Datos.Dat_Telefonos.validarTelefono(ptelefono);
-                Datos.Dat_Dni.validarDni(pDni);
-
-
+                verificarDNIyTelefono();
+           
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
-
+                
                 //Agrega el cliente a la DB
                 int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
 
@@ -74,17 +66,35 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
+        private void verificarDNIyTelefono()
+        {
+            List<Entidades.Ent_Telefono> listaTelefonos = Datos.Dat_Cliente.obtenerTodosLosTelefonos();
+            List<Entidades.Ent_Dni> listaDNI = Datos.Dat_Cliente.obtenerTodosLosDni();
+
+            Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
+            Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
+            ptelefono.Telefono = txtTelefono.Text;
+            pDni.Dni = Convert.ToDecimal(txtDNI.Text);
+            Datos.Dat_Telefonos.validarTelefono(ptelefono);
+            Datos.Dat_Dni.validarDni(pDni);
+        }
+
+        private void validarFecha()
+        {
+            Mensajes.Cliente.ValidarFecha(txtFechaNac.Text);
+        }
+
         private void validarNulidadDeDatosIngresados()
         {
 
-            Mensajes.Cliente.ValidarNombre(txtNombre.Text);
-            Mensajes.Cliente.ValidarApellido(txtApellido.Text);
-            Mensajes.Cliente.ValidarDNI(txtDNI.Text);
-            Mensajes.Cliente.ValidarLocalidad(txtLocalidad.Text);
-            Mensajes.Cliente.ValidarDomicilio(txtCalle.Text);
-            Mensajes.Cliente.ValidarNroCalle(txtNroCalle.Text);
-            Mensajes.Cliente.ValidarCodPostal(txtCodPostal.Text);
-            Mensajes.Cliente.ValidarFechaNac(txtFechaNac.Text);
+            Mensajes.Cliente.ValidarNulidadNombre(txtNombre.Text);
+            Mensajes.Cliente.ValidarNulidadApellido(txtApellido.Text);
+            Mensajes.Cliente.ValidarNulidadDNI(txtDNI.Text);
+            Mensajes.Cliente.ValidarNulidadLocalidad(txtLocalidad.Text);
+            Mensajes.Cliente.ValidarNulidadDomicilio(txtCalle.Text);
+            Mensajes.Cliente.ValidarNulidadNroCalle(txtNroCalle.Text);
+            Mensajes.Cliente.ValidarNulidadCodPostal(txtCodPostal.Text);
+            Mensajes.Cliente.ValidarNulidadFechaNac(txtFechaNac.Text);
 
             /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS PERO NO DEVUELVE MENSAJES DIFERENTES
              * LO PODEMOS USAR PARA AHORRAR CODIGO, PERO ES LO MISMO
@@ -103,8 +113,11 @@ namespace FrbaCommerce.Abm_Cliente
         private void validarTipoDeDatosIngresados()
         {
             Mensajes.Cliente.ValidarTipoDni(txtDNI.Text);
-            Mensajes.Cliente.ValidarTipoNroCalle(txtDNI.Text);
-            Mensajes.Cliente.ValidarTipoPiso(txtDNI.Text);
+            Mensajes.Cliente.ValidarTipoNroCalle(txtNroCalle.Text);
+            if (!string.IsNullOrEmpty(txtNroPiso.Text))
+            {
+                Mensajes.Cliente.ValidarTipoPiso(txtNroPiso.Text);
+            }
         }
 
 
@@ -120,11 +133,17 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Mail = Convert.ToString(txtMail.Text);
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
             cliente.Nro_Calle = Convert.ToInt32(txtNroCalle.Text);
-            cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
             cliente.Dpto = Convert.ToString(txtDpto.Text);
             cliente.Cod_Postal = Convert.ToString(txtCodPostal.Text);
             cliente.Telefono = Convert.ToString(txtTelefono.Text);
             cliente.Localidad = Convert.ToString(txtLocalidad.Text);
+
+            //hace esto para que pueda existir gente que no vive en edificio
+            if (!string.IsNullOrEmpty(txtNroPiso.Text))
+            {
+                cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
+            }
+         
 
 
         }

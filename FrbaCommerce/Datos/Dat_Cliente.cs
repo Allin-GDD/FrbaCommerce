@@ -92,6 +92,23 @@ namespace FrbaCommerce.Datos
 
 
 
+
+
+
+        public static Entidades.Ent_Cliente obtenerDatosDelCliente(Entidades.Ent_Id pIdCliente)
+        {
+
+            Entidades.Ent_Cliente pCliente = new Entidades.Ent_Cliente();
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand Comando = new SqlCommand(string.Format("Select * from Clientes where Clientes.Id = {0}", pIdCliente), conexion);
+            SqlDataReader lectura = Comando.ExecuteReader();
+
+            pCliente.Nombre = lectura.GetString(0);
+
+            return pCliente;
+            ;
+
+        }
     }
 
 }
