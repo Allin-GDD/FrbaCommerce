@@ -14,15 +14,24 @@ namespace FrbaCommerce.Fronts_Utiles
         public ClienteOpciones()
         {
             InitializeComponent();
+
         }
+
 
         private void btnBaja_Click(object sender, EventArgs e)
         {
-            Datos.Dat_Cliente.obtenerDatosDelCliente();
+                      
             Abm_Cliente.Baja Baj1 = new Abm_Cliente.Baja();
+            Baj1.idCliente = this.idCliente;
             Baj1.Show();
+    
+
+            
         }
 
-    
-    }
+
+        public Int32 idCliente { get; set; }
+       
+       
+          }
 }

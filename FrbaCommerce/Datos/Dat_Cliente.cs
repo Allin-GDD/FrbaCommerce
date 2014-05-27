@@ -95,7 +95,7 @@ namespace FrbaCommerce.Datos
 
 
 
-        public static Entidades.Ent_Cliente obtenerDatosDelCliente(Entidades.Ent_Id pIdCliente)
+        public static Entidades.Ent_Cliente obtenerDatosDelCliente(Int32 pIdCliente)
         {
 
             Entidades.Ent_Cliente pCliente = new Entidades.Ent_Cliente();
@@ -103,12 +103,26 @@ namespace FrbaCommerce.Datos
             SqlCommand Comando = new SqlCommand(string.Format("Select * from Clientes where Clientes.Id = {0}", pIdCliente), conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
-            pCliente.Nombre = lectura.GetString(0);
+            pCliente.Dni = lectura.GetDecimal(1);
+            pCliente.Nombre = lectura.GetString(2);
+            pCliente.Apellido = lectura.GetString(3);
+            pCliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+            pCliente.Mail = lectura.GetString(5);
+            pCliente.Dom_Calle = lectura.GetString(6);
+            pCliente.Nro_Calle = lectura.GetDecimal(7);
+            pCliente.Piso= lectura.GetDecimal(8);
+            pCliente.Dpto = lectura.GetString(9);
+            pCliente.Cod_Postal = lectura.GetString(10);
+            pCliente.Localidad = lectura.GetString(11);
+            pCliente.Tipo_dni = lectura.GetInt16(12);
+            pCliente.Telefono = lectura.GetString(13);
 
             return pCliente;
             ;
 
         }
+
+       
     }
 
 }

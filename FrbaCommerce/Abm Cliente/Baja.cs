@@ -14,6 +14,8 @@ namespace FrbaCommerce.Abm_Cliente
         public Baja()
         {
             InitializeComponent();
+
+            dataGridView1.DataSource = Datos.Dat_Cliente.obtenerDatosDelCliente(this.idCliente);
         }
 
     
@@ -22,11 +24,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-   
+        public Int32 idCliente { get; set; }
+        
     }
 }

@@ -43,6 +43,7 @@
             this.btnAceptar.TabIndex = 13;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtBoxPass
             // 
@@ -76,17 +77,17 @@
             this.lblUser.TabIndex = 9;
             this.lblUser.Text = "Usuario";
             // 
-            // Login2
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 148);
+            this.ClientSize = new System.Drawing.Size(264, 148);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtBoxPass);
             this.Controls.Add(this.txtBoxUser);
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblUser);
-            this.Name = "Login2";
+            this.Name = "Login";
             this.Text = "Login2";
             this.ResumeLayout(false);
             this.PerformLayout();
