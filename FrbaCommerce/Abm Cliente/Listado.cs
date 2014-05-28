@@ -14,6 +14,32 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado()
         {
             InitializeComponent();
+            
+            cmbTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
+            cmbTipoDoc.DisplayMember = "tipo";
+            cmbTipoDoc.ValueMember = "codigo";
+            
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Entidades.Ent_Cliente pCliente = new Entidades.Ent_Cliente();
+
+            pCliente.Nombre = txtNombre.Text;
+            pCliente.Apellido = txtApellido.Text;
+            pCliente.Tipo_dni = Convert.ToInt16(cmbTipoDoc.SelectedValue);
+
+            if (!string.IsNullOrEmpty(txtDNI.Text))
+            {
+                pCliente.Dni = Convert.ToDecimal(txtDNI.Text);
+            }
+
+            dataGridView1.DataSource = Datos.Dat_Cliente.buscarLosClientes(pCliente);
+
+
+
+        }
+
+    
     }
 }

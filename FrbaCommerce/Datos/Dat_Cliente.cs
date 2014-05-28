@@ -67,6 +67,7 @@ namespace FrbaCommerce.Datos
                 Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
 
                 pDni.Dni = lectura.GetDecimal(0);
+               
 
                 listaDeDni.Add(pDni);
             }
@@ -122,7 +123,42 @@ namespace FrbaCommerce.Datos
 
         }
 
+
+
+        public static List<Entidades.Ent_Cliente> buscarLosClientes(Entidades.Ent_Cliente pCliente)
+        {
+          
+            List<Entidades.Ent_Cliente> listaDeClientes = new List<Entidades.Ent_Cliente>();
+            
+            SqlConnection conexion = DBConexion.obtenerConexion();
+
+            SqlCommand Comando = new SqlCommand(string.Format("Select * from Clientes where Nombre like '%{0}%' AND  Apellido like '%{1}%' AND Dni like '%{2}%' AND Tipo_dni like '%{3}%' AND Mail like '%{4}%'", pCliente.Nombre, pCliente.Apellido, pCliente.Dni, pCliente.Tipo_dni, pCliente.Mail), conexion);
+
+            SqlDataReader lectura = Comando.ExecuteReader();
        
+            while (lectura.Read()){
+         Entidades.Ent_Cliente clienteTentativo = new Entidades.Ent_Cliente();
+
+         clienteTentativo.Dni = lectura.GetDecimal(1);
+         clienteTentativo.Nombre = lectura.GetString(2);
+         clienteTentativo.Apellido = lectura.GetString(3);
+         clienteTentativo.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+         clienteTentativo.Mail = lectura.GetString(5);
+         clienteTentativo.Dom_Calle = lectura.GetString(6);
+         clienteTentativo.Nro_Calle = lectura.GetDecimal(7);
+         clienteTentativo.Piso = lectura.GetDecimal(8);
+         clienteTentativo.Dpto = lectura.GetString(9);
+         clienteTentativo.Cod_Postal = lectura.GetString(10);
+         clienteTentativo.Localidad = lectura.GetString(11);
+         clienteTentativo.Tipo_dni = lectura.GetInt16(12);
+         clienteTentativo.Telefono = lectura.GetString(13);
+
+                   listaDeClientes.Add(clienteTentativo);
+           
+        }
+
+            return listaDeClientes;
+        }
     }
 
 }

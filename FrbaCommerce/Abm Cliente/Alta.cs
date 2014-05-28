@@ -197,5 +197,13 @@ namespace FrbaCommerce.Abm_Cliente
             func(Controls);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            Abm_Cliente.Listado la = new Abm_Cliente.Listado();
+            la.Show();
+           
+        }
+
     }
 }
