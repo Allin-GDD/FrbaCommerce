@@ -14,14 +14,11 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado()
         {
             InitializeComponent();
-
-
-           
-            cmbTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
-            cmbTipoDoc.DisplayMember = "tipo";
-            cmbTipoDoc.ValueMember = "codigo";
+            Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
+      
             
         }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -33,13 +30,15 @@ namespace FrbaCommerce.Abm_Cliente
             pCliente.Mail = txtMail.Text;
             pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-            Datos.Dat_Cliente.buscar(pCliente, dataGridView1);
-
-
-
+            Datos.Dat_Cliente.buscarCliente(pCliente, dataGridView1);
 
         }
 
-    
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+        }
+
+        
     }
 }

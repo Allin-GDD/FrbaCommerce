@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FrbaCommerce.Utiles
 {
@@ -48,5 +49,25 @@ namespace FrbaCommerce.Utiles
 
             func(ofrm.Controls);
         }
-    }
+
+        public static void BlanquearControls(Form ofrm)
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        control.BackColor = Color.White;
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            };
+
+            func(ofrm.Controls);
+        }
+   }
 }

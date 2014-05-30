@@ -16,10 +16,8 @@ namespace FrbaCommerce.Abm_Cliente
         public Alta()
         {
             InitializeComponent();
-            cboTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
-            cboTipoDoc.DisplayMember = "tipo";
-            cboTipoDoc.ValueMember = "codigo";
-
+            Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
+          
         }
 
         private void btmGuardar_Click(object sender, EventArgs e)
@@ -69,6 +67,8 @@ namespace FrbaCommerce.Abm_Cliente
             Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
             ptelefono.Telefono = txtTelefono.Text;
             pDni.Dni = Convert.ToDecimal(txtDNI.Text);
+
+
             Datos.Dat_Telefonos.validarTelefono(ptelefono);
             Datos.Dat_Dni.validarDni(pDni);
         }
@@ -105,17 +105,15 @@ namespace FrbaCommerce.Abm_Cliente
                             control.BackColor = Color.Coral;
                             i++;
                         }
-                        if (i > 0)
-                        {
-                            throw new Excepciones.NulidadDeCamposACompletar("Faltan datos obligatorios remarcados");
-                        }
-                        
+
                     }
                     else
                     {
                         func(control.Controls);
                     }
 
+
+                Mensajes.Cliente.ValidarFecha(txtFechaNac.Text);
                
             };
 
@@ -166,7 +164,7 @@ namespace FrbaCommerce.Abm_Cliente
             
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarDateTime(this);
-            
+            Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
 
@@ -178,6 +176,12 @@ namespace FrbaCommerce.Abm_Cliente
             la.Show();
 
         }
+
+    private void button2_Click(object sender, EventArgs e)
+    {
+        Abm_Cliente.Listado_de_selección list = new Abm_Cliente.Listado_de_selección();
+        list.Show();
+    }
 
     }
 }

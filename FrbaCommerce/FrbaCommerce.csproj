@@ -379,6 +379,7 @@
     <Compile Include="Registro de Usuario\Registro.Designer.cs">
       <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Inicializar.cs" />
     <Compile Include="Utiles\LimpiarTexto.cs" />
     <Compile Include="Utiles\SQL.cs" />
   </ItemGroup>

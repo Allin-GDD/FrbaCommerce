@@ -11,7 +11,7 @@ namespace FrbaCommerce.Utiles
     class SQL
     {
 
-     public  static void llenarDataGrid(DataGridView dataGridView1, SqlConnection conexion,SqlCommand cmd)
+     public static void llenarDataGrid(DataGridView dataGridView1, SqlConnection conexion,SqlCommand cmd)
         {
             SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
             DataTable tabla = new DataTable();
@@ -41,9 +41,5 @@ namespace FrbaCommerce.Utiles
          sp.Parameters.Add(parametro);
      }
 
-     internal static SqlCommand darleAltaCliente(string p, SqlConnection conexion, SqlParameter sqlParameter, SqlParameter sqlParameter_4, SqlParameter sqlParameter_5, SqlParameter sqlParameter_6, SqlParameter sqlParameter_7, SqlParameter sqlParameter_8, SqlParameter sqlParameter_9, SqlParameter sqlParameter_10, SqlParameter sqlParameter_11, SqlParameter sqlParameter_12, SqlParameter sqlParameter_13, SqlParameter sqlParameter_14, SqlParameter sqlParameter_15)
-     {
-         throw new NotImplementedException();
-     }
-    }
+   }
 }

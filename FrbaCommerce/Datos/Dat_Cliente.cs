@@ -10,8 +10,9 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
-
-
+   
+        
+        //ESTO ES MAS FÁCIL QUE HACERLO CON UN PROCEDURE PQ ESTOY SELECCIONANDO TODOS LOS CAMPOS, SIN FILTROS
         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
         {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
@@ -30,6 +31,7 @@ namespace FrbaCommerce.Datos
                 listaDeTelefonos.Add(pTelefono);
             }
             return listaDeTelefonos;
+
 
 
 
@@ -109,7 +111,7 @@ namespace FrbaCommerce.Datos
             else { Mensajes.Errores.ErrorAlGuardarDatos(); }
         }
 
-        public static void buscar(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
+        public static void buscarCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
         {
 
 
@@ -125,6 +127,7 @@ namespace FrbaCommerce.Datos
 
 
             dataGridView1.Columns["Id"].Visible = false;
+    
         }
     }
 }
