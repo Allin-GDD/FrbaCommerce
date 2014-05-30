@@ -46,6 +46,7 @@ namespace FrbaCommerce.Abm_Cliente
             this.Close();           
                 
             
+
             }
             catch (Exception ex)
             {
@@ -87,6 +88,9 @@ namespace FrbaCommerce.Abm_Cliente
             Mensajes.Cliente.ValidarNulidadNroCalle(txtNroCalle.Text);
             Mensajes.Cliente.ValidarNulidadCodPostal(txtCodPostal.Text);
             Mensajes.Cliente.ValidarNulidadFechaNac(txtFechaNac.Text);
+
+
+
 
             /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS PERO NO DEVUELVE MENSAJES DIFERENTES
              * LO PODEMOS USAR PARA AHORRAR CODIGO, PERO ES LO MISMO
