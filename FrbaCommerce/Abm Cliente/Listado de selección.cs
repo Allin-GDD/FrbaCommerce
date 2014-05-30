@@ -38,7 +38,7 @@ namespace FrbaCommerce.Abm_Cliente
 
             Datos.Dat_Cliente.buscarCliente(pCliente, dataGridView1);
 
-
+            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
             if (!botonModificar)
             {
                 DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
