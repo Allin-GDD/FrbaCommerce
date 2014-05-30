@@ -14,7 +14,9 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado()
         {
             InitializeComponent();
-            
+
+
+           
             cmbTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
             cmbTipoDoc.DisplayMember = "tipo";
             cmbTipoDoc.ValueMember = "codigo";
@@ -23,18 +25,19 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_Cliente pCliente = new Entidades.Ent_Cliente();
+            Entidades.Ent_Listado pCliente = new Entidades.Ent_Listado();
 
             pCliente.Nombre = txtNombre.Text;
             pCliente.Apellido = txtApellido.Text;
-            pCliente.Tipo_dni = Convert.ToInt16(cmbTipoDoc.SelectedValue);
+            pCliente.Dni = txtDNI.Text;
+            pCliente.Mail = txtMail.Text;
+            pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-            if (!string.IsNullOrEmpty(txtDNI.Text))
-            {
-                pCliente.Dni = Convert.ToDecimal(txtDNI.Text);
-            }
+          //Datos.Dat_Cliente.buscar(txtNombre.Text, txtApellido.Text, Convert.ToString(txtDNI.Text),txtMail.Text,cmbTipoDoc.Text, dataGridView1);
 
-            dataGridView1.DataSource = Datos.Dat_Cliente.buscarLosClientes(pCliente);
+          Datos.Dat_Cliente.buscar(pCliente, dataGridView1);
+
+            //dataGridView1.DataSource = Datos.Dat_Cliente.buscarLosClientes(pCliente);
 
 
 

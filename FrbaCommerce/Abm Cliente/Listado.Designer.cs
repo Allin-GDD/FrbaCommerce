@@ -51,12 +51,12 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 193);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(424, 173);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 269);
             this.dataGridView1.TabIndex = 16;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(286, 151);
+            this.btnBuscar.Location = new System.Drawing.Point(380, 151);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 23);
             this.btnBuscar.TabIndex = 14;
@@ -87,7 +87,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(424, 124);
+            this.groupBox1.Size = new System.Drawing.Size(546, 124);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
@@ -177,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(449, 381);
+            this.ClientSize = new System.Drawing.Size(570, 492);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnLimpiar);
