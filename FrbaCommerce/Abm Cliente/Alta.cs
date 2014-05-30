@@ -41,19 +41,11 @@ namespace FrbaCommerce.Abm_Cliente
                 inicializarCliente(cliente);
                 
                 //Agrega el cliente a la DB
-                int resultado = Datos.Dat_Cliente.AgregarCliente(cliente);
+            Datos.Dat_Cliente.AgregarCliente(cliente);
 
-                if (resultado > 0)
-                {
-                    Mensajes.Exitos.ExitoAlGuardaLosDatos();
-                    this.Close();
-                }
-                else
-                {
-                    Mensajes.Errores.ErrorAlGuardarDatos();
-
-                }
-
+            this.Close();           
+                
+            
             }
             catch (Exception ex)
             {

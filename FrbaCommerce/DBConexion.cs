@@ -15,10 +15,5 @@ namespace FrbaCommerce
             return conn;
         }
 
-        //public static string Conexion()
-        //{
-        //    return "Data source = MATÍAS-PC\SQLSERVER2008; Initial catalog = GD1C2014 ; User Id = gd; Password = gd2014";
-        //}
-
-    }
+        }
 }
