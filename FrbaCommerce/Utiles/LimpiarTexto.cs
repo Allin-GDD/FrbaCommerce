@@ -9,15 +9,44 @@ namespace FrbaCommerce.Utiles
     class LimpiarTexto
     {
         public static void LimpiarTextBox(Form ofrm)
-        {
-            // hace un chequeo por todos los textbox del formulario
-            foreach (Control oControls in ofrm.Controls)
+         {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
             {
-                if (oControls is TextBox)
-                {
-                    oControls.Text = ""; // eliminar el texto
-                }
-            }
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                    {
+                        (control as TextBox).Clear();
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            };
+
+            func(ofrm.Controls);
+        }
+
+
+        public static void LimpiarDateTime(Form ofrm)
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is MaskedTextBox)
+                    {
+                        (control as MaskedTextBox).Clear();
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            };
+
+            func(ofrm.Controls);
         }
     }
 }

@@ -30,22 +30,23 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 //Verifica si los datos ingresados no son nulos
                 validarNulidadDeDatosIngresados();
+
                 //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
                 //Verifica si la fecha está dentro del limite
                 validarFecha();
                 //Verifica si el DNI y Telefono ya no existen
                 verificarDNIyTelefono();
-           
+
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
-                
-                //Agrega el cliente a la DB
-            Datos.Dat_Cliente.AgregarCliente(cliente);
 
-            this.Close();           
-                
-            
+                //Agrega el cliente a la DB
+                Datos.Dat_Cliente.AgregarCliente(cliente);
+
+                this.Close();
+
+
 
             }
             catch (Exception ex)
@@ -80,32 +81,47 @@ namespace FrbaCommerce.Abm_Cliente
         private void validarNulidadDeDatosIngresados()
         {
 
-            Mensajes.Cliente.ValidarNulidadNombre(txtNombre.Text);
-            Mensajes.Cliente.ValidarNulidadApellido(txtApellido.Text);
-            Mensajes.Cliente.ValidarNulidadDNI(txtDNI.Text);
-            Mensajes.Cliente.ValidarNulidadLocalidad(txtLocalidad.Text);
-            Mensajes.Cliente.ValidarNulidadDomicilio(txtCalle.Text);
-            Mensajes.Cliente.ValidarNulidadNroCalle(txtNroCalle.Text);
-            Mensajes.Cliente.ValidarNulidadCodPostal(txtCodPostal.Text);
-            Mensajes.Cliente.ValidarNulidadFechaNac(txtFechaNac.Text);
+            //Mensajes.Cliente.ValidarNulidadNombre(txtNombre.Text);
+            //Mensajes.Cliente.ValidarNulidadApellido(txtApellido.Text);
+            //Mensajes.Cliente.ValidarNulidadDNI(txtDNI.Text);
+            //Mensajes.Cliente.ValidarNulidadLocalidad(txtLocalidad.Text);
+            //Mensajes.Cliente.ValidarNulidadDomicilio(txtCalle.Text);
+            //Mensajes.Cliente.ValidarNulidadNroCalle(txtNroCalle.Text);
+            //Mensajes.Cliente.ValidarNulidadCodPostal(txtCodPostal.Text);
+            //Mensajes.Cliente.ValidarNulidadFechaNac(txtFechaNac.Text);
 
-
-
-
-            /*HACE LO MISMO QUE ARRIBA PERO CON TODOS LOS DATOS PERO NO DEVUELVE MENSAJES DIFERENTES
-             * LO PODEMOS USAR PARA AHORRAR CODIGO, PERO ES LO MISMO
-             * Action<Control.ControlCollection> func = null;
-
+            //ESTO ME MARCA EL TXTBOX QUE ESTA VACIO, MANDA UN SOLO MENSAJE DE ERROR.. HAY QUE TESTEARLO BIEN
+            //PQ HACE COSAS RARAS
+         
+            Action<Control.ControlCollection> func = null;
+            int i = 0;
             func = (controls) =>
             {
-                foreach (TextBox control in controls)
-                    if (String.IsNullOrEmpty(control.Text))
+                foreach (Control control in controls)
+                    if (control is TextBox)
                     {
-                        throw new Excepciones.NulidadDeCamposACompletar("Faltan datos obligatorios");
-                    };
-            };*/
-        }
+                        if(string.IsNullOrEmpty(control.Text)&& ( control != txtDpto ) && (control != txtNroPiso))
+                        {
+                            control.BackColor = Color.Coral;
+                            i++;
+                        }
+                        if (i > 0)
+                        {
+                            throw new Excepciones.NulidadDeCamposACompletar("Faltan datos obligatorios remarcados");
+                        }
+                        
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
 
+               
+            };
+
+            func(Controls);
+        }
+           
         private void validarTipoDeDatosIngresados()
         {
             Mensajes.Cliente.ValidarTipoDni(txtDNI.Text);
@@ -139,7 +155,7 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
             }
-         
+
 
 
         }
@@ -147,58 +163,20 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
-
-            LimpiaTextBoxes();
-            LimpiaMaskedTextBoxes();
+            
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.LimpiarDateTime(this);
+            
         }
 
 
-        public void LimpiaTextBoxes()
-        {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        (control as TextBox).Clear();
-                    }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-            };
-
-            func(Controls);
-        }
-
-        public void LimpiaMaskedTextBoxes()
-        {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is MaskedTextBox)
-                    {
-                        (control as MaskedTextBox).Clear();
-                    }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-            };
-
-            func(Controls);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+    private void button1_Click(object sender, EventArgs e)
         {
 
             Abm_Cliente.Listado la = new Abm_Cliente.Listado();
             la.Show();
-           
+
         }
 
     }
