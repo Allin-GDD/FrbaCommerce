@@ -165,6 +165,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(114, 20);
             this.txtNombre.TabIndex = 11;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // label2
             // 
@@ -186,6 +187,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "Listado_de_selección";
             this.Text = "Listado_de_selección";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

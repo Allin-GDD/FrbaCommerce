@@ -26,9 +26,12 @@ namespace FrbaCommerce.Registro_de_Usuario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Abm_Cliente.Alta nuevaAlt = new Abm_Cliente.Alta();
-            nuevaAlt.Show();
-            this.Close();
+            Entidades.Entidad_Rol rol = new Entidades.Entidad_Rol();
+
+
+                Abm_Empresa.Alta nuevaAlt = new Abm_Empresa.Alta();
+                nuevaAlt.Show();
+                this.Close();
             
         }
 

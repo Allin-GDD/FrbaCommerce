@@ -125,6 +125,7 @@
             this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
             this.txtFechaNac.TabIndex = 31;
             this.txtFechaNac.ValidatingType = typeof(System.DateTime);
+     
             // 
             // cboTipoDoc
             // 
@@ -319,6 +320,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(162, 20);
             this.txtNombre.TabIndex = 7;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // lblNombre
             // 

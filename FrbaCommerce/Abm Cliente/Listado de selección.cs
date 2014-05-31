@@ -95,6 +95,11 @@ namespace FrbaCommerce.Abm_Cliente
                 
             }
         }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
