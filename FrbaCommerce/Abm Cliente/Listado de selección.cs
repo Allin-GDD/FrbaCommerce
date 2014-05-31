@@ -19,12 +19,10 @@ namespace FrbaCommerce.Abm_Cliente
             botonModificar = false;
             botonDelete = false;
         }
+
         private bool botonModificar;
         private bool botonDelete;
-        private void Listado_de_selección_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -36,7 +34,7 @@ namespace FrbaCommerce.Abm_Cliente
             pCliente.Mail = txtMail.Text;
             pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-            Datos.Dat_Cliente.buscarCliente(pCliente, dataGridView1);
+            Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
 
             //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
             if (!botonModificar)
@@ -48,16 +46,20 @@ namespace FrbaCommerce.Abm_Cliente
                 btn.Name = "btn";
                 btn.UseColumnTextForButtonValue = true;
                 botonModificar = true;
+
+
+
+
             }
 
             if (!botonDelete)
             {
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btn);
-                btn.HeaderText = "Eliminar";
-                btn.Text = "";
-                btn.Name = "btn";
-                btn.UseColumnTextForButtonValue = true;
+                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btnD);
+                btnD.HeaderText = "Eliminar";
+                btnD.Text = "";
+                btnD.Name = "btn";
+                btnD.UseColumnTextForButtonValue = true;
                 botonDelete = true;
             }
 
@@ -67,5 +69,32 @@ namespace FrbaCommerce.Abm_Cliente
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
         }
+
+        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Entidades.Ent_Cliente clienteSeleccionado = new Entidades.Ent_Cliente();
+
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                Int32 id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                clienteSeleccionado = Datos.Dat_Cliente.buscarCliente(id);
+            }
+
+            if (e.ColumnIndex == 14)
+            {//14 es la pocision del boton modificar
+
+
+                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación();
+                mod.Show();
+
+            }
+            if (e.ColumnIndex == 15)
+            {
+                Abm_Cliente.Baja baj = new Abm_Cliente.Baja(clienteSeleccionado);
+                baj.Show();
+                
+            }
+        }
     }
 }
+

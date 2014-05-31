@@ -111,7 +111,7 @@ namespace FrbaCommerce.Datos
             else { Mensajes.Errores.ErrorAlGuardarDatos(); }
         }
 
-        public static void buscarCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
+        public static void buscarListaDeCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
         {
 
 
@@ -129,5 +129,35 @@ namespace FrbaCommerce.Datos
             dataGridView1.Columns["Id"].Visible = false;
     
         }
-    }
+     
+        public static Entidades.Ent_Cliente buscarCliente(Int32 id){
+            Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente",conn,
+            new SqlParameter("@Id",id));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            
+                pcliente.Dni = lectura.GetDecimal(1);
+                pcliente.Nombre = lectura.GetString(2);
+                pcliente.Apellido = lectura.GetString(3);
+                pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+                pcliente.Mail = lectura.GetString(5);
+                pcliente.Dom_Calle = lectura.GetString(6);
+                pcliente.Nro_Calle = lectura.GetDecimal(7);
+                pcliente.Piso = lectura.GetDecimal(8);
+                pcliente.Dpto = lectura.GetString(9);
+                pcliente.Cod_Postal = lectura.GetString(10);
+                pcliente.Localidad = lectura.GetString(11);
+                pcliente.Tipo_dni = lectura.GetInt16(12);
+                pcliente.Telefono = lectura.GetString(13);
+
+                conn.Close();
+            return pcliente;
+        }
 }
+    
+    
+    }
+
+       
