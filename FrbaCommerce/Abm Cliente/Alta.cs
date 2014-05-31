@@ -183,5 +183,10 @@ namespace FrbaCommerce.Abm_Cliente
         list.Show();
     }
 
+    private void txtDNI_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
     }
 }

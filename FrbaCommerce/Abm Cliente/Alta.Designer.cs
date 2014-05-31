@@ -286,6 +286,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(162, 20);
             this.txtDNI.TabIndex = 11;
+            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
             // 
             // lblDNI
             // 

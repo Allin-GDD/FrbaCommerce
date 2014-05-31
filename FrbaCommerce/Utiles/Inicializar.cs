@@ -15,5 +15,13 @@ namespace FrbaCommerce.Utiles
             cmbTipoDoc.ValueMember = "codigo";
           
         }
+
+        internal static void comboBoxRol(ComboBox cmbRol)
+        {
+            cmbRol.DataSource = Datos.Dat_Rol.ObtenerRol();
+            cmbRol.DisplayMember = "Nombre";
+            cmbRol.ValueMember = "Id";
+
+        }
     }
 }
