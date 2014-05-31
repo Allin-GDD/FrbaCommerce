@@ -30,7 +30,7 @@ namespace FrbaCommerce.Abm_Cliente
             pCliente.Mail = txtMail.Text;
             pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-            Datos.Dat_Cliente.buscarCliente(pCliente, dataGridView1);
+            Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
 
         }
 

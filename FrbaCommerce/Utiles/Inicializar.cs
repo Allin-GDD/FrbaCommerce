@@ -8,12 +8,12 @@ namespace FrbaCommerce.Utiles
 {
     class Inicializar
     {
-        internal static void comboBoxTipoDNI(ComboBox cmbTipoDoc)
+        public static void comboBoxTipoDNI(ComboBox cmbTipoDoc)
         {
             cmbTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
             cmbTipoDoc.DisplayMember = "tipo";
             cmbTipoDoc.ValueMember = "codigo";
           
         }
-    }
+   }
 }
