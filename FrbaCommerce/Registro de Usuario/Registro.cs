@@ -18,21 +18,25 @@ namespace FrbaCommerce.Registro_de_Usuario
             Utiles.Inicializar.comboBoxRol(cboRol);
         }
 
-        private void comboBoxRol_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-           
-        }
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Entidades.Entidad_Rol rol = new Entidades.Entidad_Rol();
 
-              
+            if(cboRol.Text == "Cliente"){
+            
                 Abm_Cliente.Alta nuevaAlt = new Abm_Cliente.Alta();
                 nuevaAlt.Show();
                 this.Close();
-            
+            }
+
+            if (cboRol.Text == "Empresa")
+            {
+
+                Abm_Empresa.Alta nuevaAlt = new Abm_Empresa.Alta();
+                nuevaAlt.Show();
+                this.Close();
+            }
         }
 
        

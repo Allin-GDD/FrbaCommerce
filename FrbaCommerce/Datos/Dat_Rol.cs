@@ -27,6 +27,8 @@ namespace FrbaCommerce.Datos
 
                 listaDeRoles.Add(pRol);
             }
+
+           
             return listaDeRoles;
         }
     }

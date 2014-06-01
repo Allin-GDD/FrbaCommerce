@@ -287,7 +287,7 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(162, 20);
             this.txtDNI.TabIndex = 11;
-            this.txtDNI.TextChanged += new System.EventHandler(this.txtDNI_TextChanged);
+    
             // 
             // lblDNI
             // 
@@ -320,7 +320,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(162, 20);
             this.txtNombre.TabIndex = 7;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
+
             // 
             // lblNombre
             // 

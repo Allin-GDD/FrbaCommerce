@@ -17,7 +17,8 @@ namespace FrbaCommerce.Login
             Utiles.Inicializar.comboBoxRol(cboRol);
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+     
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
 
         }

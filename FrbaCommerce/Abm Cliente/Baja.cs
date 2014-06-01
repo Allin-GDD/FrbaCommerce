@@ -68,6 +68,7 @@ namespace FrbaCommerce.Abm_Cliente
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAlCliente", conn,
                 new SqlParameter("@Id_Cliente", clienteADarDeBaja));
                 int retorno = cmd.ExecuteNonQuery();
+
                 Mensajes.Generales.validarBaja(retorno);
                 
             }

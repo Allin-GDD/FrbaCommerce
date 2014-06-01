@@ -53,5 +53,12 @@ namespace FrbaCommerce.Datos
 
 
         }
+
+        //public static void CrearNuevoUsuario(string usuario, string pw,string rolDeUsuario)
+        //{
+        //    int IdUsuario = buscarId(pw);
+
+                      
+        //}
     }
 }

@@ -41,7 +41,8 @@ namespace FrbaCommerce.Abm_Cliente
 
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
-
+            
+                //Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,cliente.Telefono);
                 this.Close();
 
 
@@ -183,17 +184,7 @@ namespace FrbaCommerce.Abm_Cliente
         list.Show();
     }
 
-    private void txtDNI_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void txtNombre_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    
+     
 
     }
 }

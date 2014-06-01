@@ -42,23 +42,23 @@
             this.lblUser.TabIndex = 1;
             this.lblUser.Text = "Seleccione un Rol";
             // 
-            // comboBox1
+            // cboRol
             // 
             this.cboRol.FormattingEnabled = true;
             this.cboRol.Location = new System.Drawing.Point(84, 69);
-            this.cboRol.Name = "comboBoxRol";
+            this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(121, 21);
             this.cboRol.TabIndex = 2;
-            this.cboRol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(98, 116);
+            this.btnAceptar.Location = new System.Drawing.Point(114, 116);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 3;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // Elección_Rol
             // 
@@ -79,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Button btnAceptar;
+        protected System.Windows.Forms.ComboBox cboRol;
     }
 }

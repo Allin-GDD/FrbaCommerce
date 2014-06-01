@@ -18,10 +18,7 @@ namespace FrbaCommerce.Login
             InitializeComponent();
         }
 
-        private void txtBoxUser_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
