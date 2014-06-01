@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblUser = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboRol = new System.Windows.Forms.ComboBox();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -44,11 +44,12 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(84, 69);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.cboRol.FormattingEnabled = true;
+            this.cboRol.Location = new System.Drawing.Point(84, 69);
+            this.cboRol.Name = "comboBoxRol";
+            this.cboRol.Size = new System.Drawing.Size(121, 21);
+            this.cboRol.TabIndex = 2;
+            this.cboRol.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // btnAceptar
             // 
@@ -65,7 +66,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 151);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboRol);
             this.Controls.Add(this.lblUser);
             this.Name = "Elección_Rol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -78,7 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblUser;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Button btnAceptar;
     }
 }

@@ -50,5 +50,21 @@ namespace FrbaCommerce.Excepciones
         {
             }
     }
+        public class InexistenciaUsuario : System.Exception
+        {
+            public InexistenciaUsuario()
+            {
+            }
+            public InexistenciaUsuario(string message)
+                : base(message)
+            {
+            }
+            public InexistenciaUsuario(string message, Exception inner)
+
+                : base(message, inner)
+            {
+            }
+        
+    }
     
 }

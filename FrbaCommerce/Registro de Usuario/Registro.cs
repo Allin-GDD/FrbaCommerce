@@ -28,8 +28,8 @@ namespace FrbaCommerce.Registro_de_Usuario
         {
             Entidades.Entidad_Rol rol = new Entidades.Entidad_Rol();
 
-
-                Abm_Empresa.Alta nuevaAlt = new Abm_Empresa.Alta();
+              
+                Abm_Cliente.Alta nuevaAlt = new Abm_Cliente.Alta();
                 nuevaAlt.Show();
                 this.Close();
             

@@ -60,12 +60,14 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Dat_Usuario.cs" />
     <Compile Include="Datos\Dat_Cuit.cs" />
     <Compile Include="Datos\Dat_Empresa.cs" />
     <Compile Include="Datos\Dat_Rol.cs" />
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Entidades\Ent_Usuario.cs" />
     <Compile Include="Entidades\Ent_Cuit.cs" />
     <Compile Include="Entidades\Ent_Empresa.cs" />
     <Compile Include="Entidades\Ent_Rol.cs" />

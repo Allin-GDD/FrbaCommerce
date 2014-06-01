@@ -14,6 +14,12 @@ namespace FrbaCommerce.Login
         public Elección_Rol()
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxRol(cboRol);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
