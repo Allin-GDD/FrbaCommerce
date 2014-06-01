@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrbaCommerce.Datos
 {
@@ -39,26 +40,57 @@ namespace FrbaCommerce.Datos
             foreach (Entidades.Ent_Usuario usuario in listaDeUsuarios)
             {
 
-                if ((pusuario.Usuario == usuario.Usuario )&& (pusuario.Contraseña == usuario.Contraseña))
+                if ((pusuario.Usuario == usuario.Usuario) && (pusuario.Contraseña == usuario.Contraseña))
                 {
                     devolucion = 1;
                 }
                 else
                 {
-                    
+
                 }
-                
+
             }
             return devolucion;
 
 
         }
 
-        //public static void CrearNuevoUsuario(string usuario, string pw,string rolDeUsuario)
-        //{
-        //    int IdUsuario = buscarId(pw);
+        public static void CrearNuevoUsuario(string usuario, string pw, Int32 rolDeUsuario)
+        {
+            Decimal IdUsuario = buscarId(pw, rolDeUsuario);
 
-                      
-        //}
+            //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conn,
+                new SqlParameter("@Usuario", usuario),
+                new SqlParameter("@Password", pw),
+                new SqlParameter("@IdUsuario", IdUsuario),
+                new SqlParameter("@IdRod", rolDeUsuario),
+                new SqlParameter("@Estado", 1));
+
+            }
+            catch (Exception) {
+                MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+
+        }
+
+        public static Decimal buscarId(string pw, int rolDeUsuario)
+        {
+            if (rolDeUsuario == 1)
+            {
+                return (Datos.Dat_Cliente.buscarIdCliente(pw));
+            }
+            if (rolDeUsuario == 2)
+            {
+                return (Datos.Dat_Empresa.buscarIdEmpresa(pw));
+            }
+            else {
+                throw new Excepciones.InexistenciaUsuario("Datos no validos");
+            }
+        }
     }
 }

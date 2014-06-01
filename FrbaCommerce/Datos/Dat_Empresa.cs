@@ -88,5 +88,32 @@ namespace FrbaCommerce.Datos
         }
 
 
+
+        public static Decimal buscarIdEmpresa(string pw)
+        {
+            Decimal idObtenido = 0;
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdEmpresa", conn,
+            new SqlParameter("@Cuit", pw));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                idObtenido = lectura.GetDecimal(0);
+            }
+            conn.Close();
+
+
+            if (idObtenido != 0)
+            {
+                return (idObtenido);
+            }
+            else
+            {
+                throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
+            }
+
+        }
     }
 }

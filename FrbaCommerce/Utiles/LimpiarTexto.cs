@@ -57,7 +57,7 @@ namespace FrbaCommerce.Utiles
             func = (controls) =>
             {
                 foreach (Control control in controls)
-                    if (control is TextBox)
+                    if (control is TextBox || control is MaskedTextBox)
                     {
                         control.BackColor = Color.White;
                     }

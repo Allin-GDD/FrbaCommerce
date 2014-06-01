@@ -156,7 +156,34 @@ namespace FrbaCommerce.Datos
                 conn.Close();
             return pcliente;
         }
-}
+
+        public static Decimal buscarIdCliente(string pw)
+        {
+            Decimal idObtenido = 0;
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdCliente", conn,
+            new SqlParameter("@Apellido", pw));
+
+             SqlDataReader lectura = cmd.ExecuteReader();
+             while (lectura.Read())
+             {
+                idObtenido = lectura.GetDecimal(0);
+             }
+             conn.Close();
+
+
+             if (idObtenido != 0)
+             {
+                 return (idObtenido);
+             }
+             else {
+                 throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
+             }
+
+            
+        }
+    }
     
     
     }

@@ -18,6 +18,7 @@ namespace FrbaCommerce.Abm_Empresa
             
         }
 
+        public Int32 rolDeUsuario = 2;
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
@@ -44,7 +45,8 @@ namespace FrbaCommerce.Abm_Empresa
 
                 //Agrega el cliente a la DB
                 Datos.Dat_Empresa.AgregarEmpresa(empresa);
-
+                Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario);
+                //el usuario va a ser el mail y la contraseña su cuit
                 this.Close();
 
 
@@ -89,11 +91,17 @@ namespace FrbaCommerce.Abm_Empresa
 
          private void validarNulidadDeDatosIngresados()
         {
-            //ESTO ME MARCA EL TXTBOX QUE ESTA VACIO, MANDA UN SOLO MENSAJE DE ERROR.. HAY QUE TESTEARLO BIEN
-            //PQ HACE COSAS RARAS
-         
             Action<Control.ControlCollection> func = null;
             int i = 0;
+
+            Utiles.LimpiarTexto.BlanquearControls(this);
+            //Se fija si la maskText es nula o no
+            if (!FecCre.MaskCompleted)
+            {
+                FecCre.BackColor = Color.Coral;
+                i++;
+            }
+         //Esto se fija si los datos cargados son nulos o no. Con la excepción de los campo depto y piso
             func = (controls) =>
             {
                 foreach (Control control in controls)
@@ -106,15 +114,16 @@ namespace FrbaCommerce.Abm_Empresa
                         }
 
                     }
-                    else
-                    {
-                        func(control.Controls);
-                    }
+                    else { func(control.Controls); }
+            };
+
+            func(Controls);
 
 
-                Mensajes.Cliente.ValidarFecha(FecCre.Text);
-
-            };        
+            if (i > 0)
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
+            }
          }
 
          private void validarTipoDeDatosIngresados()
@@ -148,35 +157,6 @@ namespace FrbaCommerce.Abm_Empresa
          }
 
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Localidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FechaDeCreacion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
        
     }

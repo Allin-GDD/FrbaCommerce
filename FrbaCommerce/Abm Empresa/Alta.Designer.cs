@@ -34,10 +34,13 @@
             this.labelCP = new System.Windows.Forms.Label();
             this.Dpto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelNCalle = new System.Windows.Forms.Label();
+            this.NCalle = new System.Windows.Forms.TextBox();
             this.labelFCreacion = new System.Windows.Forms.Label();
             this.Ciudad = new System.Windows.Forms.TextBox();
             this.labelCiudad = new System.Windows.Forms.Label();
             this.labelCUIT = new System.Windows.Forms.Label();
+            this.FecCre = new System.Windows.Forms.MaskedTextBox();
             this.labelDpto = new System.Windows.Forms.Label();
             this.Localidad = new System.Windows.Forms.TextBox();
             this.labelLocalidad = new System.Windows.Forms.Label();
@@ -57,9 +60,6 @@
             this.labelNroCalle = new System.Windows.Forms.Label();
             this.NroCalle = new System.Windows.Forms.TextBox();
             this.labelCreacion = new System.Windows.Forms.Label();
-            this.NCalle = new System.Windows.Forms.TextBox();
-            this.labelNCalle = new System.Windows.Forms.Label();
-            this.FecCre = new System.Windows.Forms.MaskedTextBox(); 
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,14 +72,7 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // txtFechaNac
             // 
-            this.FecCre.Location = new System.Drawing.Point(114, 320);
-            this.FecCre.Mask = "00/00/0000";
-            this.FecCre.Name = "FecCre";
-            this.FecCre.Size = new System.Drawing.Size(134, 20);
-            this.FecCre.TabIndex = 29;
-            this.FecCre.ValidatingType = typeof(System.DateTime);
             // CodPostal
             // 
             this.CodPostal.Location = new System.Drawing.Point(82, 265);
@@ -146,7 +139,22 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // labelNCalle
+            // 
+            this.labelNCalle.AutoSize = true;
+            this.labelNCalle.Location = new System.Drawing.Point(14, 190);
+            this.labelNCalle.Name = "labelNCalle";
+            this.labelNCalle.Size = new System.Drawing.Size(44, 13);
+            this.labelNCalle.TabIndex = 37;
+            this.labelNCalle.Text = "Numero";
+            // 
+            // NCalle
+            // 
+            this.NCalle.Location = new System.Drawing.Point(63, 190);
+            this.NCalle.Name = "NCalle";
+            this.NCalle.Size = new System.Drawing.Size(184, 20);
+            this.NCalle.TabIndex = 36;
             // 
             // labelFCreacion
             // 
@@ -184,6 +192,15 @@
             this.labelCUIT.TabIndex = 32;
             this.labelCUIT.Text = "CUIT";
             // 
+            // FecCre
+            // 
+            this.FecCre.Location = new System.Drawing.Point(114, 320);
+            this.FecCre.Mask = "00/00/0000";
+            this.FecCre.Name = "FecCre";
+            this.FecCre.Size = new System.Drawing.Size(134, 20);
+            this.FecCre.TabIndex = 29;
+            this.FecCre.ValidatingType = typeof(System.DateTime);
+            // 
             // labelDpto
             // 
             this.labelDpto.AutoSize = true;
@@ -199,7 +216,6 @@
             this.Localidad.Name = "Localidad";
             this.Localidad.Size = new System.Drawing.Size(167, 20);
             this.Localidad.TabIndex = 23;
-            this.Localidad.TextChanged += new System.EventHandler(this.Localidad_TextChanged);
             // 
             // labelLocalidad
             // 
@@ -232,7 +248,6 @@
             this.Calle.Name = "Calle";
             this.Calle.Size = new System.Drawing.Size(186, 20);
             this.Calle.TabIndex = 19;
-            this.Calle.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // labelCalle
             // 
@@ -288,7 +303,6 @@
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.Size = new System.Drawing.Size(162, 20);
             this.RazonSocial.TabIndex = 9;
-            this.RazonSocial.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // labelRZ
             // 
@@ -305,7 +319,6 @@
             this.NombreContacto.Name = "NombreContacto";
             this.NombreContacto.Size = new System.Drawing.Size(127, 20);
             this.NombreContacto.TabIndex = 7;
-            this.NombreContacto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // labelContacto
             // 
@@ -338,22 +351,6 @@
             this.labelCreacion.Size = new System.Drawing.Size(96, 13);
             this.labelCreacion.TabIndex = 28;
             this.labelCreacion.Text = "Fecha de creación";
-            // 
-            // textBox1
-            // 
-            this.NCalle.Location = new System.Drawing.Point(147, 190);
-            this.NCalle.Name = "NCalle";
-            this.NCalle.Size = new System.Drawing.Size(100, 20);
-            this.NCalle.TabIndex = 36;
-            // 
-            // label1
-            // 
-            this.labelNCalle.AutoSize = true;
-            this.labelNCalle.Location = new System.Drawing.Point(14, 190);
-            this.labelNCalle.Name = "labelNCalle";
-            this.labelNCalle.Size = new System.Drawing.Size(44, 13);
-            this.labelNCalle.TabIndex = 37;
-            this.labelNCalle.Text = "Numero";
             // 
             // Alta
             // 

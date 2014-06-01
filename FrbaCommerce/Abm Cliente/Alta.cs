@@ -17,9 +17,9 @@ namespace FrbaCommerce.Abm_Cliente
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
-          
-        }
 
+        }
+        public Int32 rolDeUsuario = 1;
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
@@ -41,8 +41,9 @@ namespace FrbaCommerce.Abm_Cliente
 
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
-            
-                //Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,cliente.Telefono);
+                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail, cliente.Apellido, rolDeUsuario);
+                //el usuario va a ser el mail y la contraseña su apellido
+
                 this.Close();
 
 
@@ -81,46 +82,42 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void validarNulidadDeDatosIngresados()
         {
-
-            //Mensajes.Cliente.ValidarNulidadNombre(txtNombre.Text);
-            //Mensajes.Cliente.ValidarNulidadApellido(txtApellido.Text);
-            //Mensajes.Cliente.ValidarNulidadDNI(txtDNI.Text);
-            //Mensajes.Cliente.ValidarNulidadLocalidad(txtLocalidad.Text);
-            //Mensajes.Cliente.ValidarNulidadDomicilio(txtCalle.Text);
-            //Mensajes.Cliente.ValidarNulidadNroCalle(txtNroCalle.Text);
-            //Mensajes.Cliente.ValidarNulidadCodPostal(txtCodPostal.Text);
-            //Mensajes.Cliente.ValidarNulidadFechaNac(txtFechaNac.Text);
-
-            //ESTO ME MARCA EL TXTBOX QUE ESTA VACIO, MANDA UN SOLO MENSAJE DE ERROR.. HAY QUE TESTEARLO BIEN
-            //PQ HACE COSAS RARAS
-         
             Action<Control.ControlCollection> func = null;
             int i = 0;
+
+            Utiles.LimpiarTexto.BlanquearControls(this);
+
+            //Se fija si la maskText es nula o no
+            if (!txtFechaNac.MaskCompleted)
+            {
+                txtFechaNac.BackColor = Color.Coral;
+                i++;
+            }
+            //Esto se fija si los datos cargados son nulos o no. Con la excepción de los campo depto y piso
             func = (controls) =>
             {
                 foreach (Control control in controls)
                     if (control is TextBox)
                     {
-                        if(string.IsNullOrEmpty(control.Text)&& ( control != txtDpto ) && (control != txtNroPiso))
+                        if (string.IsNullOrEmpty(control.Text) && (control != txtDpto) && (control != txtNroPiso))
                         {
                             control.BackColor = Color.Coral;
                             i++;
                         }
 
                     }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-
-
-                Mensajes.Cliente.ValidarFecha(txtFechaNac.Text);
-               
+                    else { func(control.Controls); }
             };
 
             func(Controls);
+
+
+            if (i > 0)
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
+            }
         }
-           
+
         private void validarTipoDeDatosIngresados()
         {
             Mensajes.Cliente.ValidarTipoDni(txtDNI.Text);
@@ -162,15 +159,15 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
-            
+
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarDateTime(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
 
-        
-    private void button1_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
             Abm_Cliente.Listado la = new Abm_Cliente.Listado();
@@ -178,13 +175,13 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-    private void button2_Click(object sender, EventArgs e)
-    {
-        Abm_Cliente.Listado_de_selección list = new Abm_Cliente.Listado_de_selección();
-        list.Show();
-    }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Abm_Cliente.Listado_de_selección list = new Abm_Cliente.Listado_de_selección();
+            list.Show();
+        }
 
-     
+
 
     }
 }
