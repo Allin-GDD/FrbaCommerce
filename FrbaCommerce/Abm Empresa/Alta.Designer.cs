@@ -60,7 +60,6 @@
             this.NCalle = new System.Windows.Forms.TextBox();
             this.labelNCalle = new System.Windows.Forms.Label();
             this.FecCre = new System.Windows.Forms.MaskedTextBox(); 
-            this.labelCreacion = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 

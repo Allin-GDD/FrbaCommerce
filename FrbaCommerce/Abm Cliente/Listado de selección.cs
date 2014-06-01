@@ -23,7 +23,7 @@ namespace FrbaCommerce.Abm_Cliente
         private bool botonModificar;
         private bool botonDelete;
         
-
+        public Int32 idSeleccionado;
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Listado pCliente = new Entidades.Ent_Listado();
@@ -76,8 +76,8 @@ namespace FrbaCommerce.Abm_Cliente
 
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                Int32 id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                clienteSeleccionado = Datos.Dat_Cliente.buscarCliente(id);
+                 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                
             }
 
             if (e.ColumnIndex == 14)
@@ -90,16 +90,12 @@ namespace FrbaCommerce.Abm_Cliente
             }
             if (e.ColumnIndex == 15)
             {
-                Abm_Cliente.Baja baj = new Abm_Cliente.Baja(clienteSeleccionado);
+                Abm_Cliente.Baja baj = new Abm_Cliente.Baja(idSeleccionado);
                 baj.Show();
                 
             }
         }
 
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+         }
 }
 
