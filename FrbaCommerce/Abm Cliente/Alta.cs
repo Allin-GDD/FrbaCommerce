@@ -122,6 +122,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
             Mensajes.Cliente.ValidarTipoDni(txtDNI.Text);
             Mensajes.Cliente.ValidarTipoNroCalle(txtNroCalle.Text);
+
             if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
                 Mensajes.Cliente.ValidarTipoPiso(txtNroPiso.Text);

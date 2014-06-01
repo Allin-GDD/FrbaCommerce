@@ -10,8 +10,8 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
-   
-        
+
+
         //ESTO ES MAS FÁCIL QUE HACERLO CON UN PROCEDURE PQ ESTOY SELECCIONANDO TODOS LOS CAMPOS, SIN FILTROS
         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
         {
@@ -103,10 +103,12 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Telefono", pCliente.Telefono));
 
                 retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
             }
+            
 
             Mensajes.Generales.validarAlta(retorno);
-            
+
         }
 
         public static void buscarListaDeCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
@@ -125,19 +127,20 @@ namespace FrbaCommerce.Datos
 
 
             dataGridView1.Columns["Id"].Visible = false;
-    
+
         }
-     
-        public static Entidades.Ent_Cliente buscarCliente(Int32 id){
+
+        public static Entidades.Ent_Cliente buscarCliente(Int32 id)
+        {
 
             Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
 
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente",conn,
-            new SqlParameter("@Id",id));
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente", conn,
+            new SqlParameter("@Id", id));
 
             SqlDataReader lectura = cmd.ExecuteReader();
-            while(lectura.Read())
+            while (lectura.Read())
             {
                 pcliente.Dni = lectura.GetDecimal(1);
                 pcliente.Nombre = lectura.GetString(2);
@@ -153,7 +156,7 @@ namespace FrbaCommerce.Datos
                 pcliente.Tipo_dni = lectura.GetInt16(12);
                 pcliente.Telefono = lectura.GetString(13);
             }
-                conn.Close();
+            conn.Close();
             return pcliente;
         }
 
@@ -165,27 +168,56 @@ namespace FrbaCommerce.Datos
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdCliente", conn,
             new SqlParameter("@Apellido", pw));
 
-             SqlDataReader lectura = cmd.ExecuteReader();
-             while (lectura.Read())
-             {
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
                 idObtenido = lectura.GetDecimal(0);
-             }
-             conn.Close();
+            }
+            conn.Close();
 
 
-             if (idObtenido != 0)
-             {
-                 return (idObtenido);
-             }
-             else {
-                 throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
-             }
+            if (idObtenido != 0)
+            {
+                return (idObtenido);
+            }
+            else
+            {
+                throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
+            }
 
-            
+
+        }
+
+        public static void ActualizarCamposACliente(Entidades.Ent_Cliente pCliente, int clienteAModificar)
+        {
+            int retorno;
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.ActualizarCliente", conn,
+                new SqlParameter("@Id", clienteAModificar),
+                new SqlParameter("@Dni", pCliente.Dni),
+                new SqlParameter("@Nombre", pCliente.Nombre),
+                new SqlParameter("@Apellido", pCliente.Apellido),
+                new SqlParameter("@Fecha_Nac", pCliente.Fecha_Nac),
+                new SqlParameter("@Mail", pCliente.Mail),
+                new SqlParameter("@Dom_Calle", pCliente.Dom_Calle),
+                new SqlParameter("@Nro_Calle", pCliente.Nro_Calle),
+                new SqlParameter("@Piso", pCliente.Piso),
+                new SqlParameter("@Depto", pCliente.Dpto),
+                new SqlParameter("@Cod_Postal", pCliente.Cod_Postal),
+                new SqlParameter("@Localidad", pCliente.Localidad),
+                new SqlParameter("@Tipo_dni", pCliente.Tipo_dni),
+                new SqlParameter("@Telefono", pCliente.Telefono));
+
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            Mensajes.Generales.validarAlta(retorno);
         }
     }
-    
-    
-    }
+}
 
-       
+
+

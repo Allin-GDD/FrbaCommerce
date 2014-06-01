@@ -11,9 +11,15 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Modificación : Form
     {
-        public Modificación()
+        public Modificación(Int32 idSeleccionado)
         {
             InitializeComponent();
+            this.clienteAModificar = idSeleccionado;
+        }
+        public Int32 clienteAModificar;
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

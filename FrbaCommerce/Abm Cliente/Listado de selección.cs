@@ -81,7 +81,7 @@ namespace FrbaCommerce.Abm_Cliente
             {//14 es la pocision del boton modificar
 
 
-                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación();
+                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(idSeleccionado);
                 mod.Show();
 
             }

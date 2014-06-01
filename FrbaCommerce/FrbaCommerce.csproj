@@ -151,10 +151,10 @@
     <Compile Include="ABM Rol\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar Vendedor\Abm Rubro\Alta.cs">
+    <Compile Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calificar Vendedor\Abm Rubro\Alta.Designer.cs">
+    <Compile Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.Designer.cs">
       <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Visibilidad\Alta.cs">
@@ -187,10 +187,10 @@
     <Compile Include="Abm Visibilidad\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.cs">
+    <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
+    <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConexion.cs" />
@@ -316,7 +316,7 @@
     <EmbeddedResource Include="ABM Rol\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calificar Vendedor\Abm Rubro\Alta.resx">
+    <EmbeddedResource Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Alta.resx">
@@ -382,7 +382,6 @@
     <Compile Include="Utiles\Inicializar.cs" />
     <Compile Include="Utiles\LimpiarTexto.cs" />
     <Compile Include="Utiles\SQL.cs" />
-    <Compile Include="Utiles\Validar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
