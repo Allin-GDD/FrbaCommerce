@@ -12,5 +12,11 @@ namespace FrbaCommerce.Mensajes
         {
             MessageBox.Show("Datos guardados exitosamente", "Guardar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        public static void ExitoAlBorrarLosDatos()
+        {
+            MessageBox.Show("El usuario se ha dado de baja", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        }
     }
-}
+

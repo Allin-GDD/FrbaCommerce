@@ -104,11 +104,9 @@ namespace FrbaCommerce.Datos
 
                 retorno = cmd.ExecuteNonQuery();
             }
-            if (retorno > 0)
-            {
-                Mensajes.Exitos.ExitoAlGuardaLosDatos();
-            }
-            else { Mensajes.Errores.ErrorAlGuardarDatos(); }
+
+            Mensajes.Generales.validarAlta(retorno);
+            
         }
 
         public static void buscarListaDeCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)

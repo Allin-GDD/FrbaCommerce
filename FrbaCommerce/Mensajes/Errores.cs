@@ -18,5 +18,10 @@ namespace FrbaCommerce.Mensajes
             MessageBox.Show("Los datos no se han podido guardar", "Guardar Cliente", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
          
         }
+
+        public static void ErrorAlBorrarDatos()
+        {
+            MessageBox.Show("Ha ocurrido un error al intentar borrar los datos", "Baja", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error); 
+        }
     }
 }
