@@ -26,13 +26,32 @@ namespace FrbaCommerce.Login
 
             try
             {
-                if (validarUsuario() == 1)
+                switch (this.validarUsuario() )
                 {
-                    Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
-                    Reg1.Show();
-                }
-                else {
+                    case 3 :
+
+                                // entramos a lo que puede hacer un admin
+
+                    break;
+                    
+                    
+                    case 2 :
+
+                               // entramos a lo que puede hacer un empresa
+
+                    break;
+                    
+                    
+                    case 1:
+
+                            // entramos a lo que puede hacer un cliente
+                    break;
+
+                    case 0:
+
                     throw new Excepciones.InexistenciaUsuario("Usuario o contraseña inválida");
+
+                    break;
                 }
             }
              catch (Exception ex)
@@ -46,12 +65,13 @@ namespace FrbaCommerce.Login
             private int validarUsuario()
             {
 
-                  List<Entidades.Ent_Usuario> listaUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
+                 // List<Entidades.Ent_Usuario> listaUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
 
                   Entidades.Ent_Usuario pusuario = new Entidades.Ent_Usuario();
 
                   pusuario.Usuario = txtBoxUser.Text;
                   pusuario.Contraseña = txtBoxPass.Text;
+                  
 
 
                  return( Datos.Dat_Usuario.validarUsuario(pusuario));

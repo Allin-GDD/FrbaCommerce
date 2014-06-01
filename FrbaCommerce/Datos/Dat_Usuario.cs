@@ -42,7 +42,9 @@ namespace FrbaCommerce.Datos
 
                 if ((pusuario.Usuario == usuario.Usuario) && (pusuario.Contraseña == usuario.Contraseña))
                 {
-                    devolucion = 1;
+
+                    devolucion = usuario.Rol;
+
                 }
                 else
                 {
