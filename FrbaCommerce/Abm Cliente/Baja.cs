@@ -16,20 +16,39 @@ namespace FrbaCommerce.Abm_Cliente
      
 
              
-        public Baja(Entidades.Ent_Cliente pCliente)
+        public Baja(Int32 idSeleccionado)
         {
             InitializeComponent();
-            this.clienteADarDeBaja = pCliente;
+            this.clienteADarDeBaja = idSeleccionado;
+            Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
             cargarDatosDelClienteSeleccionado();
 
         }
-        private Entidades.Ent_Cliente clienteADarDeBaja;
+        public Int32 clienteADarDeBaja;
 
         private void cargarDatosDelClienteSeleccionado()
         {
+            Ent_Cliente pcliente = new Ent_Cliente();
+            pcliente = Datos.Dat_Cliente.buscarCliente(clienteADarDeBaja);
             
-            txtApellido.Text = clienteADarDeBaja.Apellido;
-            textBox1.Text = clienteADarDeBaja.Nombre;
+            txtNombre2.Text = pcliente.Nombre;
+            txtApellido.Text = pcliente.Apellido;
+            txtDNI.Text = Convert.ToString(pcliente.Dni);
+            txtNroCalle.Text = Convert.ToString(pcliente.Nro_Calle);
+            txtCodPostal.Text = pcliente.Cod_Postal;
+            txtCalle.Text = pcliente.Dom_Calle;
+            txtDpto.Text = pcliente.Dpto;
+            txtFechaNac.Text = Convert.ToString(pcliente.Fecha_Nac);
+            txtNroPiso.Text = Convert.ToString(pcliente.Piso);
+            txtMail.Text = pcliente.Mail;            
+            
+            txtTelefono.Text = pcliente.Telefono;
+            txtLocalidad.Text = pcliente.Localidad;
+            
+
+
+
+           
         }
         
      
@@ -38,7 +57,7 @@ namespace FrbaCommerce.Abm_Cliente
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAlCliente", conn,
-                new SqlParameter("@Dni", clienteADarDeBaja.Dni));
+                new SqlParameter("@Id_Cliente", clienteADarDeBaja));
         }
      
         

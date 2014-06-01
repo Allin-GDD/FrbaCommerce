@@ -16,6 +16,8 @@ namespace FrbaCommerce.Abm_Cliente
             InitializeComponent();
             Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
 
+         
+
             botonModificar = false;
             botonDelete = false;
         }
@@ -23,7 +25,7 @@ namespace FrbaCommerce.Abm_Cliente
         private bool botonModificar;
         private bool botonDelete;
         
-        public Int32 idSeleccionado;
+       // public Int32 idSeleccionado;
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Listado pCliente = new Entidades.Ent_Listado();
@@ -72,13 +74,8 @@ namespace FrbaCommerce.Abm_Cliente
 
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Entidades.Ent_Cliente clienteSeleccionado = new Entidades.Ent_Cliente();
-
-            if (dataGridView1.SelectedRows.Count == 1)
-            {
-                 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-                
-            }
+            Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+                           
 
             if (e.ColumnIndex == 14)
             {//14 es la pocision del boton modificar
@@ -96,6 +93,7 @@ namespace FrbaCommerce.Abm_Cliente
             }
         }
 
+      
          }
 }
 

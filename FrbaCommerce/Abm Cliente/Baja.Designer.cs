@@ -57,7 +57,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombre2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -282,7 +282,7 @@
             // txtApellido
             // 
             this.txtApellido.Enabled = false;
-            this.txtApellido.Location = new System.Drawing.Point(106, 61);
+            this.txtApellido.Location = new System.Drawing.Point(105, 61);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(162, 20);
             this.txtApellido.TabIndex = 35;
@@ -312,13 +312,13 @@
             this.lblNombre.TabIndex = 32;
             this.lblNombre.Text = "Nombre";
             // 
-            // textBox1
+            // txtNombre2
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(105, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(162, 20);
-            this.textBox1.TabIndex = 59;
+            this.txtNombre2.Enabled = false;
+            this.txtNombre2.Location = new System.Drawing.Point(105, 35);
+            this.txtNombre2.Name = "txtNombre2";
+            this.txtNombre2.Size = new System.Drawing.Size(162, 20);
+            this.txtNombre2.TabIndex = 59;
             // 
             // label3
             // 
@@ -334,7 +334,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 395);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNombre2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFechaNac);
             this.Controls.Add(this.cboTipoDoc);
@@ -403,7 +403,7 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombre2;
         private System.Windows.Forms.Label label3;
     }
 }

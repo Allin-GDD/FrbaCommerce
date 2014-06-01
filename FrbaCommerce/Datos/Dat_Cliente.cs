@@ -131,13 +131,16 @@ namespace FrbaCommerce.Datos
         }
      
         public static Entidades.Ent_Cliente buscarCliente(Int32 id){
+
             Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente",conn,
             new SqlParameter("@Id",id));
+
             SqlDataReader lectura = cmd.ExecuteReader();
-            
+            while(lectura.Read())
+            {
                 pcliente.Dni = lectura.GetDecimal(1);
                 pcliente.Nombre = lectura.GetString(2);
                 pcliente.Apellido = lectura.GetString(3);
@@ -151,7 +154,7 @@ namespace FrbaCommerce.Datos
                 pcliente.Localidad = lectura.GetString(11);
                 pcliente.Tipo_dni = lectura.GetInt16(12);
                 pcliente.Telefono = lectura.GetString(13);
-
+            }
                 conn.Close();
             return pcliente;
         }
