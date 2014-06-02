@@ -46,7 +46,6 @@
             this.lblNroPiso = new System.Windows.Forms.Label();
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.lblCalle = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -219,14 +219,6 @@
             this.lblCalle.TabIndex = 44;
             this.lblCalle.Text = "Domicilio";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Enabled = false;
-            this.txtTelefono.Location = new System.Drawing.Point(105, 167);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
-            this.txtTelefono.TabIndex = 43;
-            // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
@@ -329,11 +321,21 @@
             this.label3.TabIndex = 58;
             this.label3.Text = "Nombre";
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Enabled = false;
+            this.txtTelefono.Location = new System.Drawing.Point(105, 167);
+            this.txtTelefono.Mask = "000-0000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
+            this.txtTelefono.TabIndex = 60;
+            // 
             // Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 395);
+            this.ClientSize = new System.Drawing.Size(287, 395);
+            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNombre2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFechaNac);
@@ -351,7 +353,6 @@
             this.Controls.Add(this.lblNroPiso);
             this.Controls.Add(this.txtCalle);
             this.Controls.Add(this.lblCalle);
-            this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.lblTel);
             this.Controls.Add(this.txtMail);
             this.Controls.Add(this.lblMail);
@@ -392,7 +393,6 @@
         private System.Windows.Forms.Label lblNroPiso;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label lblMail;
@@ -405,5 +405,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox txtTelefono;
     }
 }

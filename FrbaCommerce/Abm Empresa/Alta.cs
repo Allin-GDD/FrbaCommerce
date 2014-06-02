@@ -127,8 +127,8 @@ namespace FrbaCommerce.Abm_Empresa
 
          private void validarTipoDeDatosIngresados()
          {
-             
              Mensajes.Cliente.ValidarTipoNroCalle(NroCalle.Text);
+            // Mensajes.Cliente.ValidarTipoNroCalle(NroCalle.Text);
 
              if (!string.IsNullOrEmpty(NroPiso.Text))
              {

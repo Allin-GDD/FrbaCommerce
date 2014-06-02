@@ -31,6 +31,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNroCalle = new System.Windows.Forms.TextBox();
@@ -46,7 +47,6 @@
             this.lblNroPiso = new System.Windows.Forms.Label();
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.lblCalle = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
@@ -84,6 +84,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.txtFechaNac);
             this.groupBox1.Controls.Add(this.cboTipoDoc);
             this.groupBox1.Controls.Add(this.txtNroCalle);
@@ -99,7 +100,6 @@
             this.groupBox1.Controls.Add(this.lblNroPiso);
             this.groupBox1.Controls.Add(this.txtCalle);
             this.groupBox1.Controls.Add(this.lblCalle);
-            this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.lblTel);
             this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Controls.Add(this.lblMail);
@@ -117,6 +117,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(86, 164);
+            this.txtTelefono.Mask = "000-0000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
+            this.txtTelefono.TabIndex = 32;
+            // 
             // txtFechaNac
             // 
             this.txtFechaNac.Location = new System.Drawing.Point(124, 319);
@@ -125,7 +133,6 @@
             this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
             this.txtFechaNac.TabIndex = 31;
             this.txtFechaNac.ValidatingType = typeof(System.DateTime);
-     
             // 
             // cboTipoDoc
             // 
@@ -240,13 +247,6 @@
             this.lblCalle.TabIndex = 18;
             this.lblCalle.Text = "Domicilio";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(86, 164);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
-            this.txtTelefono.TabIndex = 17;
-            // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
@@ -287,7 +287,6 @@
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(162, 20);
             this.txtDNI.TabIndex = 11;
-    
             // 
             // lblDNI
             // 
@@ -320,7 +319,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(162, 20);
             this.txtNombre.TabIndex = 7;
-
             // 
             // lblNombre
             // 
@@ -386,7 +384,6 @@
         private System.Windows.Forms.Label lblNroPiso;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label lblMail;
@@ -400,9 +397,10 @@
         private System.Windows.Forms.TextBox txtNroCalle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboTipoDoc;
-        private System.Windows.Forms.MaskedTextBox txtFechaNac;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.MaskedTextBox txtFechaNac;
 
 
     }

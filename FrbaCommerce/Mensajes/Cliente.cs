@@ -71,7 +71,7 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        internal static void ValidarTipoNroCalle(string p)
+        public static void ValidarTipoNroCalle(string p)
         {
             Decimal expectedDecimal;
             if (!Decimal.TryParse(p, out expectedDecimal))
