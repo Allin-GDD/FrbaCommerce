@@ -34,7 +34,7 @@ namespace FrbaCommerce.Abm_Empresa
                 validarNulidadDeDatosIngresados();
 
                 //Verifica si lo que se estan ingresando es correcto
-               // validarTipoDeDatosIngresados();
+                validarTipoDeDatosIngresados();
                 //Verifica si la fecha está dentro del limite
                 validarFecha();
                 //Verifica si el DNI y Telefono ya no existen
@@ -48,8 +48,6 @@ namespace FrbaCommerce.Abm_Empresa
                 Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario);
                 //el usuario va a ser el mail y la contraseña su cuit
                 this.Close();
-
-
 
             }
             catch (Exception ex)
@@ -74,10 +72,11 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Cod_Postal = Convert.ToString(CodPostal.Text);
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
             empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
+            empresa.Tipo_Doc = 2;
             
 
             //hace esto para que pueda existir gente que no vive en edificio
-            if (!string.IsNullOrEmpty(NroPiso.Text))
+            if(!string.IsNullOrEmpty(NroPiso.Text))
             {
                 empresa.Piso = Convert.ToInt32(NroPiso.Text);
             }
@@ -128,8 +127,9 @@ namespace FrbaCommerce.Abm_Empresa
 
          private void validarTipoDeDatosIngresados()
          {
-
+             
              Mensajes.Cliente.ValidarTipoNroCalle(NroCalle.Text);
+
              if (!string.IsNullOrEmpty(NroPiso.Text))
              {
                  Mensajes.Cliente.ValidarTipoPiso(NroPiso.Text);
@@ -154,6 +154,14 @@ namespace FrbaCommerce.Abm_Empresa
 
              Datos.Dat_Telefonos.validarTelefono(ptelefono);
              Datos.Dat_Cuit.validarCuit(pCuit);
+         }
+
+         private void buttonLimpiar_Click(object sender, EventArgs e)
+         {
+             Utiles.LimpiarTexto.LimpiarTextBox(this);
+             Utiles.LimpiarTexto.LimpiarDateTime(this);
+             Utiles.LimpiarTexto.BlanquearControls(this);
+
          }
 
 

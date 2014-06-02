@@ -52,9 +52,8 @@ namespace FrbaCommerce.Login
                     case 0:
 
                     throw new Excepciones.InexistenciaUsuario("Usuario o contraseña inválida");
-
-                    break;
-                }
+                        //el throw ya hace el break, no hace falta ponerlo
+                    }
             }
              catch (Exception ex)
             {

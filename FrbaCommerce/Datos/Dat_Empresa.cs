@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrbaCommerce.Datos
 {
@@ -64,7 +65,7 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaEmpresa", conexion,
                    new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
                    new SqlParameter("@Cuit", pEmpresa.CUIT),
-                   new SqlParameter("@FechaDeCreacion",pEmpresa.Fecha_Creacion),
+                   new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
                    new SqlParameter("@Mail", pEmpresa.Mail),        
                    new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
                    new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
@@ -72,19 +73,14 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Depto", pEmpresa.Dpto),
                    new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
                    new SqlParameter("@Localidad", pEmpresa.Localidad),
-                   
                    new SqlParameter("@Telefono", pEmpresa.Telefono),
-                   new SqlParameter("@Ciud", pEmpresa.Ciudad),
+                   new SqlParameter("@Ciudad", pEmpresa.Ciudad),
                    new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-                   new SqlParameter("@Tipo", "CUIT"));
+                   new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
 
                 retorno = cmd.ExecuteNonQuery();
             }
-            if (retorno > 0)
-            {
-                Mensajes.Exitos.ExitoAlGuardaLosDatos();
-            }
-            else { Mensajes.Errores.ErrorAlGuardarDatos(); }
+            Mensajes.Generales.validarAlta(retorno);
         }
 
 
@@ -114,6 +110,21 @@ namespace FrbaCommerce.Datos
                 throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
             }
 
+        }
+
+        public static void buscarListaDeEmpresa(Entidades.Ent_ListadoEmpresa pEmpresa, DataGridView dataGridView1)
+        {
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
+            new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
+            new SqlParameter("@CUIT", pEmpresa.CUIT),
+            new SqlParameter("@Dni", pEmpresa.Mail));
+
+            Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+
+            //VER COMO MANEJAR EL CUIT PQ ESUN TEXTO LIBRE EXACTO
+            dataGridView1.Columns["Id"].Visible = false;
         }
     }
 }

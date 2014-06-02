@@ -111,7 +111,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void buscarListaDeCliente(Entidades.Ent_Listado pListado, DataGridView dataGridView1)
+        public static void buscarListaDeCliente(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
         {
 
 
