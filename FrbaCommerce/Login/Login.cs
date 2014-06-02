@@ -22,11 +22,13 @@ namespace FrbaCommerce.Login
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_Usuario usuario = new Entidades.Ent_Usuario();
+            Entidades.Ent_Usuario pusuario = new Entidades.Ent_Usuario();
+            pusuario.Usuario = txtBoxUser.Text;
+            pusuario.Contraseña = txtBoxPass.Text;
 
             try
             {
-                switch (this.validarUsuario() )
+                switch (Datos.Dat_Usuario.validarUsuario(pusuario) )
                 {
                     case 3 :
 
@@ -62,7 +64,7 @@ namespace FrbaCommerce.Login
             
             
         }
-            private int validarUsuario()
+           private int validarUsuario()
             {
 
                  // List<Entidades.Ent_Usuario> listaUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
@@ -77,6 +79,13 @@ namespace FrbaCommerce.Login
                  return( Datos.Dat_Usuario.validarUsuario(pusuario));
                   
             }
+
+           private void txtBoxUser_TextChanged(object sender, EventArgs e)
+           {
+
+           } 
+
+            
 
         }
 

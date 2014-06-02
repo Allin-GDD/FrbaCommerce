@@ -22,5 +22,10 @@ namespace FrbaCommerce.Login
         {
 
         }
+
+        private void cboRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
