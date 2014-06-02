@@ -14,7 +14,7 @@ namespace FrbaCommerce.Datos
             List<Entidades.Ent_Usuario> listaDeUsuarios = new List<Entidades.Ent_Usuario>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Usuario from Usuario", conexion);
+            SqlCommand Comando = new SqlCommand("Select usuario,password,id_rol from Usuario", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
 
@@ -23,6 +23,8 @@ namespace FrbaCommerce.Datos
                 Entidades.Ent_Usuario pUsuario = new Entidades.Ent_Usuario();
 
                 pUsuario.Usuario = lectura.GetString(0);
+                pUsuario.Contraseña = lectura.GetString(1);
+                pUsuario.Rol = lectura.GetDecimal(2);
 
                 listaDeUsuarios.Add(pUsuario);
             }
@@ -36,7 +38,7 @@ namespace FrbaCommerce.Datos
         public static int validarUsuario(Entidades.Ent_Usuario pusuario)
         {
             List<Entidades.Ent_Usuario> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
-            int devolucion = 0;
+            decimal devolucion = 0 ;
             foreach (Entidades.Ent_Usuario usuario in listaDeUsuarios)
             {
 
@@ -48,16 +50,15 @@ namespace FrbaCommerce.Datos
                 }
                 else
                 {
-
+                    
                 }
 
             }
-            return devolucion;
-
+            return Convert.ToInt16(devolucion);
 
         }
 
-        public static void CrearNuevoUsuario(string usuario, string pw, Int32 rolDeUsuario)
+        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario)
         {
             Decimal IdUsuario = buscarId(pw, rolDeUsuario);
 
@@ -80,7 +81,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static Decimal buscarId(string pw, int rolDeUsuario)
+        public static Decimal buscarId(string pw, decimal rolDeUsuario)
         {
             if (rolDeUsuario == 1)
             {

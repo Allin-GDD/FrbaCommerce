@@ -53,7 +53,7 @@ namespace FrbaCommerce.Login
 
                     throw new Excepciones.InexistenciaUsuario("Usuario o contraseña inválida");
 
-                    break;
+                    
                 }
             }
              catch (Exception ex)
