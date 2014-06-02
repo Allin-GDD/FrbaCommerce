@@ -28,7 +28,7 @@ namespace FrbaCommerce.Abm_Cliente
        // public Int32 idSeleccionado;
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_Listado pCliente = new Entidades.Ent_Listado();
+            Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
 
             pCliente.Nombre = txtNombre.Text;
             pCliente.Apellido = txtApellido.Text;

@@ -22,7 +22,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_Listado pCliente = new Entidades.Ent_Listado();
+            Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
 
             pCliente.Nombre = txtNombre.Text;
             pCliente.Apellido = txtApellido.Text;

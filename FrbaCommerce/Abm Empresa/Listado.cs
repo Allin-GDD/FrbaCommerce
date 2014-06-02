@@ -16,24 +16,17 @@ namespace FrbaCommerce.Abm_Empresa
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            Entidades.Ent_ListadoEmpresa pEmpresa = new Entidades.Ent_ListadoEmpresa();
 
+            pEmpresa.CUIT = txtCUIT.Text;
+            pEmpresa.Mail = txtMail.Text;
+            pEmpresa.Razon_Social = txtRazonSocial.Text;
+
+            Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
         }
+
+       
     }
 }
