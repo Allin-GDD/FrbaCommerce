@@ -72,14 +72,7 @@ BEGIN
 END
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-USE [GD1C2014]
-GO
-/****** Object:  StoredProcedure [dbo].[buscarUnSoloCliente]    Script Date: 06/01/2014 01:03:30 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER PROCEDURE [dbo].[buscarUnSoloCliente]
+CREATE PROCEDURE buscarUnSoloCliente
 @Id numeric(18,0)
 AS
 BEGIN
@@ -87,21 +80,7 @@ BEGIN
 		WHERE 
 		Id = @Id;
 END
-USE [GD1C2014]
-GO
-/****** Object:  StoredProcedure [dbo].[buscarUnSoloCliente]    Script Date: 06/01/2014 01:03:30 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER PROCEDURE [dbo].[buscarUnSoloCliente]
-@Id numeric(18,0)
-AS
-BEGIN
-	SELECT * FROM Clientes 
-		WHERE 
-		Id = @Id;
-END
+
 ///////////////////////////////////////////////////////////////////////////////////
 CREATE PROCEDURE darDeBajaAlCliente
 @Id numeric(18,0)
