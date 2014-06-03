@@ -39,31 +39,9 @@ namespace FrbaCommerce.Abm_Cliente
             Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
 
             //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-            if (!botonModificar)
-            {
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btn);
-                btn.HeaderText = "Modificar";
-                btn.Text = "";
-                btn.Name = "btn";
-                btn.UseColumnTextForButtonValue = true;
-                botonModificar = true;
-
-
-
-
-            }
-
-            if (!botonDelete)
-            {
-                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btnD);
-                btnD.HeaderText = "Eliminar";
-                btnD.Text = "";
-                btnD.Name = "btn";
-                btnD.UseColumnTextForButtonValue = true;
-                botonDelete = true;
-            }
+            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
+            
+           
 
         }
 
@@ -79,8 +57,6 @@ namespace FrbaCommerce.Abm_Cliente
 
             if (e.ColumnIndex == 14)
             {//14 es la pocision del boton modificar
-
-
                 Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(idSeleccionado);
                 mod.Show();
 

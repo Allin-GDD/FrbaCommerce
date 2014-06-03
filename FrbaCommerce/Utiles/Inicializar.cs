@@ -22,6 +22,31 @@ namespace FrbaCommerce.Utiles
             cmbRol.ValueMember = "Id";
 
         }
+
+        public static void AgregarColumnaEliminarYSeleccionar(bool botonDelete, bool botonModificar, DataGridView dataGridView1)
+        {
+            if (!botonModificar)
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btn);
+                btn.HeaderText = "Modificar";
+                btn.Text = "";
+                btn.Name = "btn";
+                btn.UseColumnTextForButtonValue = true;
+                botonModificar = true;
+            }
+
+            if (!botonDelete)
+            {
+                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btnD);
+                btnD.HeaderText = "Eliminar";
+                btnD.Text = "";
+                btnD.Name = "btn";
+                btnD.UseColumnTextForButtonValue = true;
+                botonDelete = true;
+            }
+        }
     }
 
 }

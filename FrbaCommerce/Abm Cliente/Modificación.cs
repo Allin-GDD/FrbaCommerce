@@ -60,7 +60,7 @@ namespace FrbaCommerce.Abm_Cliente
                 Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
 
                 //Verifica si el DNI y Telefono ya no existen
-                verificarDNIyTelefono();
+                verificarDNIyTelefono(); //se fija si no es igual al que ingreso antes y no lo cambia
 
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
