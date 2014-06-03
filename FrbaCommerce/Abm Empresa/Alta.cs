@@ -107,6 +107,12 @@ namespace FrbaCommerce.Abm_Empresa
 
          }
 
+      private void button1_Click(object sender, EventArgs e)
+      {
+          Abm_Empresa.Listado list = new Abm_Empresa.Listado();
+          list.Show();
+      }
+
        
     }
 }

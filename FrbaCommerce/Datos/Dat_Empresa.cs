@@ -119,7 +119,7 @@ namespace FrbaCommerce.Datos
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
             new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
             new SqlParameter("@CUIT", pEmpresa.CUIT),
-            new SqlParameter("@Dni", pEmpresa.Mail));
+            new SqlParameter("@Mail", pEmpresa.Mail));
 
             Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
 
