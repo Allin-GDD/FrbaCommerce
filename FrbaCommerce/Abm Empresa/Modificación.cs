@@ -19,9 +19,26 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
         public Entidades.Ent_Empresa empresaAnt;
+
         private void cargarDatosDelClienteSeleccionado()
         {
             empresaAnt = Datos.Dat_Empresa.buscarEmpresa(empresaAModificar);
+
+            Telefono.Text = empresaAnt.Telefono;
+            RazonSocial.Text = empresaAnt.RazonSocial;
+            NombreContacto.Text = empresaAnt.NombreContacto;
+            CUIT.Text = empresaAnt.CUIT;
+            Mail.Text = empresaAnt.Mail;
+            Calle.Text = empresaAnt.Dom_Calle;
+            NCalle.Text = Convert.ToString(empresaAnt.Nro_Calle);
+            NroPiso.Text = Convert.ToString(empresaAnt.Piso);
+            Dpto.Text = empresaAnt.Dpto;
+            Localidad.Text = empresaAnt.Localidad;
+            CodPostal.Text = empresaAnt.Cod_Postal;
+            Ciudad.Text = empresaAnt.Ciudad;
+            FecCre.Text = Convert.ToString(empresaAnt.Fecha_Creacion);
+
+
         }
         public Int32 empresaAModificar;
 

@@ -49,7 +49,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(580, 226);
             this.dataGridView1.TabIndex = 20;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button2
             // 
@@ -69,7 +68,6 @@
             this.button1.TabIndex = 24;
             this.button1.Text = "Limpiar";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label5
             // 
@@ -79,7 +77,6 @@
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 36;
             this.label5.Text = "Mail";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label1
             // 
@@ -89,7 +86,6 @@
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Razón Social";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // groupBox1
             // 
@@ -135,7 +131,6 @@
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 32;
             this.label3.Text = "CUIT";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Listado
             // 

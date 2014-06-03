@@ -125,6 +125,7 @@ namespace FrbaCommerce.Datos
 
             //VER COMO MANEJAR EL CUIT PQ ESUN TEXTO LIBRE EXACTO
             dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Tipo"].Visible = false;
         }
 
         public static Entidades.Ent_Empresa buscarEmpresa(int id)
@@ -162,22 +163,22 @@ namespace FrbaCommerce.Datos
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.ActualizarEmpresa", conn,
-new SqlParameter("@Id", empresaAModificar),
-new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
-new SqlParameter("@Cuit", pEmpresa.CUIT),
-new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
-new SqlParameter("@Mail", pEmpresa.Mail),
-new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
-new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
-new SqlParameter("@Piso", pEmpresa.Piso),
-new SqlParameter("@Depto", pEmpresa.Dpto),
-new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
-new SqlParameter("@Localidad", pEmpresa.Localidad),
-new SqlParameter("@Telefono", pEmpresa.Telefono),
-new SqlParameter("@Ciudad", pEmpresa.Ciudad),
-new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEmpresa", conn,
+                    new SqlParameter("@Id", empresaAModificar),
+                    new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
+                    new SqlParameter("@Cuit", pEmpresa.CUIT),
+                    new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
+                    new SqlParameter("@Mail", pEmpresa.Mail),
+                    new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
+                    new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
+                    new SqlParameter("@Piso", pEmpresa.Piso),
+                    new SqlParameter("@Depto", pEmpresa.Dpto),
+                    new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
+                    new SqlParameter("@Localidad", pEmpresa.Localidad),
+                    new SqlParameter("@Telefono", pEmpresa.Telefono),
+                    new SqlParameter("@Ciudad", pEmpresa.Ciudad),
+                    new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
+                    new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
 
 
                 retorno = cmd.ExecuteNonQuery();

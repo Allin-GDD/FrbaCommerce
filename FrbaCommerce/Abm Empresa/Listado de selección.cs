@@ -53,9 +53,9 @@ namespace FrbaCommerce.Abm_Empresa
             }
             if (e.ColumnIndex == 16)
             {
-                Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
-                baj.Show();
-
+                //Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
+                //baj.Show();
+                                
             }
         }
     }

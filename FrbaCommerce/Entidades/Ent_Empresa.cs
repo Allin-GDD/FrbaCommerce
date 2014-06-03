@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCommerce.Entidades
 {
-    class Ent_Empresa
+   public class Ent_Empresa
      {
         public String NombreContacto { get; set; }
         public String RazonSocial { get; set; }

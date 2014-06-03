@@ -113,6 +113,12 @@ namespace FrbaCommerce.Abm_Empresa
           list.Show();
       }
 
+      private void button2_Click(object sender, EventArgs e)
+      {
+          Abm_Empresa.Listado_de_selección list = new Abm_Empresa.Listado_de_selección();
+          list.Show();
+      }
+
        
     }
 }
