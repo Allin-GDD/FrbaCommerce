@@ -146,8 +146,7 @@ SELECT * FROM Empresa
 WHERE
 Razon_Social LIKE '%'+@Razon_Social+'%' AND
 Mail LIKE '%'+@Mail+'%' AND
-Cuit = @CUIT
---ver ACA cuuando el cuit es vacio que hacer
+(@CUIT = [Cuit] or @CUIT = '')
 END
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
