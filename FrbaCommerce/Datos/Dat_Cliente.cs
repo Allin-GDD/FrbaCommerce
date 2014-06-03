@@ -166,8 +166,7 @@ namespace FrbaCommerce.Datos
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdCliente", conn,
-            new SqlParameter("@Apellido", pw));
-
+            new SqlParameter("@Dni", pw));
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {

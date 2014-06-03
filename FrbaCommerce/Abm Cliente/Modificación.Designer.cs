@@ -46,7 +46,6 @@
             this.lblNroPiso = new System.Windows.Forms.Label();
             this.txtCalle = new System.Windows.Forms.TextBox();
             this.lblCalle = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblTel = new System.Windows.Forms.Label();
             this.txtMail = new System.Windows.Forms.TextBox();
             this.lblMail = new System.Windows.Forms.Label();
@@ -57,6 +56,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +81,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtTelefono);
             this.groupBox2.Controls.Add(this.txtFechaNac);
             this.groupBox2.Controls.Add(this.cboTipoDoc);
             this.groupBox2.Controls.Add(this.txtNroCalle);
@@ -96,7 +97,6 @@
             this.groupBox2.Controls.Add(this.lblNroPiso);
             this.groupBox2.Controls.Add(this.txtCalle);
             this.groupBox2.Controls.Add(this.lblCalle);
-            this.groupBox2.Controls.Add(this.txtTelefono);
             this.groupBox2.Controls.Add(this.lblTel);
             this.groupBox2.Controls.Add(this.txtMail);
             this.groupBox2.Controls.Add(this.lblMail);
@@ -236,13 +236,6 @@
             this.lblCalle.TabIndex = 44;
             this.lblCalle.Text = "Domicilio";
             // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(85, 148);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
-            this.txtTelefono.TabIndex = 43;
-            // 
             // lblTel
             // 
             this.lblTel.AutoSize = true;
@@ -325,6 +318,14 @@
             this.lblNombre.TabIndex = 32;
             this.lblNombre.Text = "Nombre";
             // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(85, 148);
+            this.txtTelefono.Mask = "000-0000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
+            this.txtTelefono.TabIndex = 58;
+            // 
             // Modificación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -362,7 +363,6 @@
         private System.Windows.Forms.Label lblNroPiso;
         private System.Windows.Forms.TextBox txtCalle;
         private System.Windows.Forms.Label lblCalle;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblTel;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label lblMail;
@@ -373,5 +373,6 @@
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.MaskedTextBox txtTelefono;
     }
 }

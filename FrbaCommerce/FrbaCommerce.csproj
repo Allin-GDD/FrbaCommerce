@@ -266,7 +266,6 @@
     <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mensajes\Cliente.cs" />
     <Compile Include="Mensajes\Errores.cs" />
     <Compile Include="Mensajes\Exitos.cs" />
     <Compile Include="Mensajes\Generales.cs" />
@@ -383,6 +382,7 @@
     <Compile Include="Utiles\Inicializar.cs" />
     <Compile Include="Utiles\LimpiarTexto.cs" />
     <Compile Include="Utiles\SQL.cs" />
+    <Compile Include="Utiles\Validaciones.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

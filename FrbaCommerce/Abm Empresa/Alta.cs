@@ -31,14 +31,19 @@ namespace FrbaCommerce.Abm_Empresa
             try
             {
                 //Verifica si los datos ingresados no son nulos
-                validarNulidadDeDatosIngresados();
+                //validarNulidadDeDatosIngresados();
+                Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso,FecCre,Telefono,CUIT,CodPostal);
 
                 //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
+
+                
                 //Verifica si la fecha está dentro del limite
-                validarFecha();
+                Utiles.Validaciones.ValidarFecha(FecCre.Text);
                 //Verifica si el DNI y Telefono ya no existen
-                verificarCuityTelefono();
+              
+                Datos.Dat_Telefonos.validarTelefono(Telefono.Text);
+                Datos.Dat_Cuit.validarCuit(CUIT.Text);
 
                 //Inicializa el cliente con datos correctos
                 inicializarEmpresa(empresa);
@@ -73,90 +78,28 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
             empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
             empresa.Tipo_Doc = 2;
-            
-
             //hace esto para que pueda existir gente que no vive en edificio
             if(!string.IsNullOrEmpty(NroPiso.Text))
             {
                 empresa.Piso = Convert.ToInt32(NroPiso.Text);
             }
-
-
-
         }
 
 
-
-
-         private void validarNulidadDeDatosIngresados()
-        {
-            Action<Control.ControlCollection> func = null;
-            int i = 0;
-
-            Utiles.LimpiarTexto.BlanquearControls(this);
-            //Se fija si la maskText es nula o no
-            if (!FecCre.MaskCompleted)
-            {
-                FecCre.BackColor = Color.Coral;
-                i++;
-            }
-         //Esto se fija si los datos cargados son nulos o no. Con la excepción de los campo depto y piso
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        if (string.IsNullOrEmpty(control.Text) && (control != Dpto) && (control != NroPiso))
-                        {
-                            control.BackColor = Color.Coral;
-                            i++;
-                        }
-
-                    }
-                    else { func(control.Controls); }
-            };
-
-            func(Controls);
-
-
-            if (i > 0)
-            {
-                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
-            }
-         }
-
          private void validarTipoDeDatosIngresados()
          {
-             Mensajes.Cliente.ValidarTipoNroCalle(NroCalle.Text);
-            // Mensajes.Cliente.ValidarTipoNroCalle(NroCalle.Text);
+             Utiles.Validaciones.ValidarTipoNroCalle(NCalle.Text);
+            
 
              if (!string.IsNullOrEmpty(NroPiso.Text))
              {
-                 Mensajes.Cliente.ValidarTipoPiso(NroPiso.Text);
+                 Utiles.Validaciones.ValidarTipoPiso(NroPiso.Text);
              }
          }
 
-         private void validarFecha()
-         {
-             Mensajes.Cliente.ValidarFecha(FecCre.Text);
-         }
+        
 
-         private void verificarCuityTelefono()
-         {
-             List<Entidades.Ent_Telefono> listaTelefonos = Datos.Dat_Empresa.obtenerTodosLosTelefonos();
-             List<Entidades.Ent_Cuit> listaCuit = Datos.Dat_Empresa.obtenerTodosLosCuit();
-
-             Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-             Entidades.Ent_Cuit pCuit = new Entidades.Ent_Cuit();
-             ptelefono.Telefono = Telefono.Text;
-             pCuit.CUIT = CUIT.Text;
-
-
-             Datos.Dat_Telefonos.validarTelefono(ptelefono);
-             Datos.Dat_Cuit.validarCuit(pCuit);
-         }
-
-         private void buttonLimpiar_Click(object sender, EventArgs e)
+      private void buttonLimpiar_Click(object sender, EventArgs e)
          {
              Utiles.LimpiarTexto.LimpiarTextBox(this);
              Utiles.LimpiarTexto.LimpiarDateTime(this);

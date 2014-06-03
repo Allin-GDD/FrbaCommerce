@@ -49,12 +49,16 @@ namespace FrbaCommerce.Abm_Cliente
             try
             {
                 //Verifica si los datos ingresados no son nulos
-                validarNulidadDeDatosIngresados();
+      
+                Utiles.Validaciones.NulidadDeDatosIngresados(this, txtDpto, txtNroPiso, txtFechaNac, txtTelefono);
 
                 //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
+                
                 //Verifica si la fecha está dentro del limite
-                validarFecha();
+
+                Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
+
                 //Verifica si el DNI y Telefono ya no existen
                 verificarDNIyTelefono();
 
@@ -78,75 +82,29 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void verificarDNIyTelefono()
         {
-            List<Entidades.Ent_Telefono> listaTelefonos = Datos.Dat_Cliente.obtenerTodosLosTelefonos();
-            List<Entidades.Ent_Dni> listaDNI = Datos.Dat_Cliente.obtenerTodosLosDni();
-
-            Entidades.Ent_Telefono ptelefono = new Entidades.Ent_Telefono();
-            Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
-            ptelefono.Telefono = txtTelefono.Text;
-            pDni.Dni = Convert.ToDecimal(txtDNI.Text);
-
-            if (clienteAnt.Telefono != ptelefono.Telefono)
+            
+            if (clienteAnt.Telefono != txtTelefono.Text)
             {
-                Datos.Dat_Telefonos.validarTelefono(ptelefono);
+                Datos.Dat_Telefonos.validarTelefono(txtTelefono.Text);
             }
-            if (clienteAnt.Dni != pDni.Dni)
+            if (clienteAnt.Dni != Convert.ToDecimal(txtDNI.Text))
             {
-                Datos.Dat_Dni.validarDni(pDni);
+                Datos.Dat_Dni.validarDni(Convert.ToDecimal(txtDNI.Text));
             }
         }
 
-        private void validarFecha()
-        {
-            Mensajes.Cliente.ValidarFecha(txtFechaNac.Text);
-        }
 
-        private void validarNulidadDeDatosIngresados()
-        {
-            Action<Control.ControlCollection> func = null;
-            int i = 0;
-
-            Utiles.LimpiarTexto.BlanquearControls(this);
-
-            //Se fija si la maskText es nula o no
-            if (!txtFechaNac.MaskCompleted)
-            {
-                txtFechaNac.BackColor = Color.Coral;
-                i++;
-            }
-            //Esto se fija si los datos cargados son nulos o no. Con la excepción de los campo depto y piso
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        if (string.IsNullOrEmpty(control.Text) && (control != txtDpto) && (control != txtNroPiso))
-                        {
-                            control.BackColor = Color.Coral;
-                            i++;
-                        }
-
-                    }
-                    else { func(control.Controls); }
-            };
-
-            func(Controls);
-
-
-            if (i > 0)
-            {
-                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
-            }
-        }
 
         private void validarTipoDeDatosIngresados()
         {
-            Mensajes.Cliente.ValidarTipoDni(txtDNI.Text);
-            Mensajes.Cliente.ValidarTipoNroCalle(txtNroCalle.Text);
+         
+            Utiles.Validaciones.ValidarTipoDni(txtDNI.Text);
+
+            Utiles.Validaciones.ValidarTipoNroCalle(txtNroCalle.Text);
 
             if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
-                Mensajes.Cliente.ValidarTipoPiso(txtNroPiso.Text);
+                Utiles.Validaciones.ValidarTipoPiso(txtNroPiso.Text);
             }
         }
 
