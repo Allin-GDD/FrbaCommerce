@@ -67,6 +67,7 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Entidades\Ent_Habilitado.cs" />
     <Compile Include="Entidades\Ent_ListadoEmpresa.cs" />
     <Compile Include="Entidades\Ent_Usuario.cs" />
     <Compile Include="Entidades\Ent_Cuit.cs" />

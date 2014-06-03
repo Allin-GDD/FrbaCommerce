@@ -17,7 +17,9 @@ namespace FrbaCommerce.Abm_Cliente
             InitializeComponent();
             this.clienteAModificar = idSeleccionado;
             Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
+            Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado);
             cargarDatosDelClienteSeleccionado();
+          
         }
         public Entidades.Ent_Cliente clienteAnt;
         private void cargarDatosDelClienteSeleccionado()
@@ -135,6 +137,8 @@ namespace FrbaCommerce.Abm_Cliente
 
 
         }
+
+     
 
     
     

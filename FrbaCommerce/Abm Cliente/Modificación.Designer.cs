@@ -31,6 +31,7 @@
             this.btmGuardar = new System.Windows.Forms.Button();
             this.btmLimpiar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNroCalle = new System.Windows.Forms.TextBox();
@@ -56,13 +57,14 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.lblHabil = new System.Windows.Forms.Label();
+            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btmGuardar
             // 
-            this.btmGuardar.Location = new System.Drawing.Point(172, 356);
+            this.btmGuardar.Location = new System.Drawing.Point(171, 388);
             this.btmGuardar.Name = "btmGuardar";
             this.btmGuardar.Size = new System.Drawing.Size(76, 23);
             this.btmGuardar.TabIndex = 13;
@@ -72,7 +74,7 @@
             // 
             // btmLimpiar
             // 
-            this.btmLimpiar.Location = new System.Drawing.Point(27, 356);
+            this.btmLimpiar.Location = new System.Drawing.Point(25, 388);
             this.btmLimpiar.Name = "btmLimpiar";
             this.btmLimpiar.Size = new System.Drawing.Size(76, 23);
             this.btmLimpiar.TabIndex = 12;
@@ -81,6 +83,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbHabilitado);
+            this.groupBox2.Controls.Add(this.lblHabil);
             this.groupBox2.Controls.Add(this.txtTelefono);
             this.groupBox2.Controls.Add(this.txtFechaNac);
             this.groupBox2.Controls.Add(this.cboTipoDoc);
@@ -109,10 +113,18 @@
             this.groupBox2.Controls.Add(this.lblNombre);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(259, 338);
+            this.groupBox2.Size = new System.Drawing.Size(259, 370);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Campos Actualizados";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(85, 148);
+            this.txtTelefono.Mask = "000-0000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
+            this.txtTelefono.TabIndex = 58;
             // 
             // txtFechaNac
             // 
@@ -318,19 +330,28 @@
             this.lblNombre.TabIndex = 32;
             this.lblNombre.Text = "Nombre";
             // 
-            // txtTelefono
+            // lblHabil
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(85, 148);
-            this.txtTelefono.Mask = "000-0000-0000";
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(162, 20);
-            this.txtTelefono.TabIndex = 58;
+            this.lblHabil.AutoSize = true;
+            this.lblHabil.Location = new System.Drawing.Point(11, 334);
+            this.lblHabil.Name = "lblHabil";
+            this.lblHabil.Size = new System.Drawing.Size(54, 13);
+            this.lblHabil.TabIndex = 59;
+            this.lblHabil.Text = "Habilitado";
+            // 
+            // cmbHabilitado
+            // 
+            this.cmbHabilitado.FormattingEnabled = true;
+            this.cmbHabilitado.Location = new System.Drawing.Point(85, 331);
+            this.cmbHabilitado.Name = "cmbHabilitado";
+            this.cmbHabilitado.Size = new System.Drawing.Size(161, 21);
+            this.cmbHabilitado.TabIndex = 60;
             // 
             // Modificación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 396);
+            this.ClientSize = new System.Drawing.Size(286, 423);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btmGuardar);
             this.Controls.Add(this.btmLimpiar);
@@ -374,5 +395,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.Label lblHabil;
+        private System.Windows.Forms.ComboBox cmbHabilitado;
     }
 }
