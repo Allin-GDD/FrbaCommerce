@@ -19,10 +19,7 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
         public Int32 rolDeUsuario = 2;
-        private void textBox4_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
@@ -31,20 +28,21 @@ namespace FrbaCommerce.Abm_Empresa
             try
             {
                 //Verifica si los datos ingresados no son nulos
-                //validarNulidadDeDatosIngresados();
-                Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso,FecCre,Telefono,CUIT,CodPostal);
+               Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso,FecCre,Telefono,CUIT,CodPostal);
 
+                
                 //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
 
                 
                 //Verifica si la fecha está dentro del limite
                 Utiles.Validaciones.ValidarFecha(FecCre.Text);
+
                 //Verifica si el DNI y Telefono ya no existen
-              
                 Datos.Dat_Telefonos.validarTelefono(Telefono.Text);
                 Datos.Dat_Cuit.validarCuit(CUIT.Text);
 
+               
                 //Inicializa el cliente con datos correctos
                 inicializarEmpresa(empresa);
 
@@ -52,6 +50,8 @@ namespace FrbaCommerce.Abm_Empresa
                 Datos.Dat_Empresa.AgregarEmpresa(empresa);
                 Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario);
                 //el usuario va a ser el mail y la contraseña su cuit
+
+
                 this.Close();
 
             }
@@ -106,8 +106,6 @@ namespace FrbaCommerce.Abm_Empresa
              Utiles.LimpiarTexto.BlanquearControls(this);
 
          }
-
-
 
        
     }

@@ -27,23 +27,28 @@ namespace FrbaCommerce.Abm_Cliente
             try
             {
                 //Verifica si los datos ingresados no son nulos
-          
-
                 Utiles.Validaciones.NulidadDeDatosIngresados(this, txtDpto, txtNroPiso, txtFechaNac, txtTelefono);
+          
+                
                 //Verifica si lo que se estan ingresando es correcto
-
                 validarTipoDeDatosIngresados();
+                
+                
                 //Verifica si la fecha está dentro del limite
-
                 Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
+                
+                
                 //Verifica si el DNI y Telefono ya no existen
-               
                 Datos.Dat_Telefonos.validarTelefono(txtTelefono.Text);
                 Datos.Dat_Dni.validarDni(Convert.ToDecimal(txtDNI.Text));
 
+               
+                
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
 
+                
+                
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
                 Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail, Convert.ToString(cliente.Dni), rolDeUsuario);
@@ -58,9 +63,6 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-
 
 
         }
