@@ -46,7 +46,9 @@ namespace FrbaCommerce.Login
                     
                     case 1:
 
-                            // entramos a lo que puede hacer un cliente
+                    rol_cliente.rol_cliente cliente = new rol_cliente.rol_cliente();
+                    cliente.Show();
+     
                     break;
 
                     case 0:
