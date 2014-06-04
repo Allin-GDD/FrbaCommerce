@@ -1,0 +1,10 @@
+No es necesario que el cliente/empresa viva en un departamento, por eso no validamos si no ingresa el Numero de piso y el dpto
+los numeros de telefono deben ser del campo 000-0000-0000, no se permiten otros numeros
+las fechas que se ingresaran (00/00/0000) (dia/mes/año)
+
+
+
+CAMBIAR BD
+la tabla de rol tiene que tener estado (smallint)
+el valor del nombre del rol tiene que ser nvarchar(max)
+el estado del usuario tiene que ser un smallint
