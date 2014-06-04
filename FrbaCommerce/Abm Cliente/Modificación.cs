@@ -14,10 +14,11 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public Modificación(Int32 idSeleccionado)
         {
+            Int16 rolCliente = 1;
             InitializeComponent();
             this.clienteAModificar = idSeleccionado;
             Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
-            Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado);
+            Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado,rolCliente);
             cargarDatosDelClienteSeleccionado();
           
         }

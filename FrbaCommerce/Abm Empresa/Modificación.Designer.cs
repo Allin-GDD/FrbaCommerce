@@ -57,12 +57,14 @@
             this.NombreContacto = new System.Windows.Forms.TextBox();
             this.labelContacto = new System.Windows.Forms.Label();
             this.buttonLimpiar = new System.Windows.Forms.Button();
+            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
+            this.lblHabil = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(164, 374);
+            this.buttonGuardar.Location = new System.Drawing.Point(164, 400);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 30;
@@ -72,6 +74,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbHabilitado);
+            this.groupBox1.Controls.Add(this.lblHabil);
             this.groupBox1.Controls.Add(this.CUIT);
             this.groupBox1.Controls.Add(this.CodPostal);
             this.groupBox1.Controls.Add(this.Telefono);
@@ -100,7 +104,7 @@
             this.groupBox1.Controls.Add(this.labelContacto);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(261, 354);
+            this.groupBox1.Size = new System.Drawing.Size(261, 381);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
@@ -320,18 +324,35 @@
             // 
             // buttonLimpiar
             // 
-            this.buttonLimpiar.Location = new System.Drawing.Point(22, 374);
+            this.buttonLimpiar.Location = new System.Drawing.Point(22, 400);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
             this.buttonLimpiar.TabIndex = 31;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
             // 
+            // cmbHabilitado
+            // 
+            this.cmbHabilitado.FormattingEnabled = true;
+            this.cmbHabilitado.Location = new System.Drawing.Point(73, 346);
+            this.cmbHabilitado.Name = "cmbHabilitado";
+            this.cmbHabilitado.Size = new System.Drawing.Size(170, 21);
+            this.cmbHabilitado.TabIndex = 62;
+            // 
+            // lblHabil
+            // 
+            this.lblHabil.AutoSize = true;
+            this.lblHabil.Location = new System.Drawing.Point(6, 349);
+            this.lblHabil.Name = "lblHabil";
+            this.lblHabil.Size = new System.Drawing.Size(54, 13);
+            this.lblHabil.TabIndex = 61;
+            this.lblHabil.Text = "Habilitado";
+            // 
             // Modificación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 409);
+            this.ClientSize = new System.Drawing.Size(286, 435);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonLimpiar);
@@ -374,6 +395,8 @@
         private System.Windows.Forms.TextBox NombreContacto;
         private System.Windows.Forms.Label labelContacto;
         private System.Windows.Forms.Button buttonLimpiar;
+        private System.Windows.Forms.ComboBox cmbHabilitado;
+        private System.Windows.Forms.Label lblHabil;
 
     }
 }

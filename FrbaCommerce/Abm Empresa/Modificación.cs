@@ -13,9 +13,11 @@ namespace FrbaCommerce.Abm_Empresa
     {
         public Modificación(Int32 idSeleccionado)
         {
+            Int16 rolEmpresa = 2;
             InitializeComponent();
             this.empresaAModificar = idSeleccionado;
             cargarDatosDelClienteSeleccionado();
+            Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado, rolEmpresa);
         }
 
         public Entidades.Ent_Empresa empresaAnt;
