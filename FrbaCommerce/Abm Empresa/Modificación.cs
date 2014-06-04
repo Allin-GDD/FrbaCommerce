@@ -13,7 +13,7 @@ namespace FrbaCommerce.Abm_Empresa
     {
         public Modificación(Int32 idSeleccionado)
         {
-            Int16 rolEmpresa = 2;
+           
             InitializeComponent();
             this.empresaAModificar = idSeleccionado;
             cargarDatosDelClienteSeleccionado();
@@ -43,6 +43,7 @@ namespace FrbaCommerce.Abm_Empresa
 
         }
         public Int32 empresaAModificar;
+        public Int16 rolEmpresa = 2;
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
@@ -70,6 +71,7 @@ namespace FrbaCommerce.Abm_Empresa
                  inicializarEmpresa(empresa);
 
                  Datos.Dat_Empresa.ActualizarEmpresa(empresa, empresaAModificar);
+                 Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue), empresaAModificar, rolEmpresa);
              }
              catch (Exception ex) {
                  MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -108,6 +110,13 @@ namespace FrbaCommerce.Abm_Empresa
             {
                 empresa.Piso = Convert.ToInt32(NroPiso.Text);
             }
+        }
+
+        private void buttonLimpiar_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
+            Utiles.LimpiarTexto.BlanquearControls(this);
         }
     }
 }

@@ -102,7 +102,7 @@ namespace FrbaCommerce.Abm_Empresa
       private void buttonLimpiar_Click(object sender, EventArgs e)
          {
              Utiles.LimpiarTexto.LimpiarTextBox(this);
-             Utiles.LimpiarTexto.LimpiarDateTime(this);
+             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
              Utiles.LimpiarTexto.BlanquearControls(this);
 
          }

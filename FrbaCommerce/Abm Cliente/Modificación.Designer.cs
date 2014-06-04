@@ -31,6 +31,8 @@
             this.btmGuardar = new System.Windows.Forms.Button();
             this.btmLimpiar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
+            this.lblHabil = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
@@ -57,8 +59,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.lblHabil = new System.Windows.Forms.Label();
-            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,6 +80,7 @@
             this.btmLimpiar.TabIndex = 12;
             this.btmLimpiar.Text = "Limpiar";
             this.btmLimpiar.UseVisualStyleBackColor = true;
+            this.btmLimpiar.Click += new System.EventHandler(this.btmLimpiar_Click);
             // 
             // groupBox2
             // 
@@ -117,6 +118,23 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Campos Actualizados";
+            // 
+            // cmbHabilitado
+            // 
+            this.cmbHabilitado.FormattingEnabled = true;
+            this.cmbHabilitado.Location = new System.Drawing.Point(85, 331);
+            this.cmbHabilitado.Name = "cmbHabilitado";
+            this.cmbHabilitado.Size = new System.Drawing.Size(161, 21);
+            this.cmbHabilitado.TabIndex = 60;
+            // 
+            // lblHabil
+            // 
+            this.lblHabil.AutoSize = true;
+            this.lblHabil.Location = new System.Drawing.Point(11, 334);
+            this.lblHabil.Name = "lblHabil";
+            this.lblHabil.Size = new System.Drawing.Size(54, 13);
+            this.lblHabil.TabIndex = 59;
+            this.lblHabil.Text = "Habilitado";
             // 
             // txtTelefono
             // 
@@ -329,23 +347,6 @@
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 32;
             this.lblNombre.Text = "Nombre";
-            // 
-            // lblHabil
-            // 
-            this.lblHabil.AutoSize = true;
-            this.lblHabil.Location = new System.Drawing.Point(11, 334);
-            this.lblHabil.Name = "lblHabil";
-            this.lblHabil.Size = new System.Drawing.Size(54, 13);
-            this.lblHabil.TabIndex = 59;
-            this.lblHabil.Text = "Habilitado";
-            // 
-            // cmbHabilitado
-            // 
-            this.cmbHabilitado.FormattingEnabled = true;
-            this.cmbHabilitado.Location = new System.Drawing.Point(85, 331);
-            this.cmbHabilitado.Name = "cmbHabilitado";
-            this.cmbHabilitado.Size = new System.Drawing.Size(161, 21);
-            this.cmbHabilitado.TabIndex = 60;
             // 
             // Modificación
             // 

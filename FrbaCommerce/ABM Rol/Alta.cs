@@ -14,21 +14,29 @@ namespace FrbaCommerce.ABM_Rol
         public Form1()
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxFuncionalidades();
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (String.IsNullOrEmpty(txtNombre.Text))
+                {   txtNombre.BackColor = Color.Coral;
+                    throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
+                }
 
+                Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
+
+                Datos.Dat_Rol.agregarRol(txtNombre.Text);
+
+            }
+            catch(Exception ex){
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        
+        
     }
 }

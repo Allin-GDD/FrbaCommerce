@@ -54,13 +54,13 @@ namespace FrbaCommerce.Utiles
             List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
 
             Entidades.Ent_Habilitado valorSi = new Entidades.Ent_Habilitado();
+            Entidades.Ent_Habilitado valorNo = new Entidades.Ent_Habilitado();
             valorSi.estado = 1;
             valorSi.valor = "Si";
-            Entidades.Ent_Habilitado valorNo = new Entidades.Ent_Habilitado();
             valorNo.estado = 0;
             valorNo.valor = "No";
-         
-            Int16 i = obtenerEstado(id,rol);
+
+            Int16 i = Datos.Dat_Usuario.obtenerEstado(id, rol);
             if (i == 0)
             {
                 lista.Add(valorNo);
@@ -76,21 +76,11 @@ namespace FrbaCommerce.Utiles
 
         }
 
-        private static short obtenerEstado(int id, int rol)
-        {
-            Int16 estado = -1;
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstadoDelId", conn,
-            new SqlParameter("@Id", id),
-            new SqlParameter("@Rol",rol));
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                estado = lectura.GetInt16(0);
-            }
-            conn.Close();
+       
 
-            return estado;
+        public static void comboBoxFuncionalidades()
+        {
+            List<String> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
         }
     }
 

@@ -116,7 +116,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
 
             Utiles.LimpiarTexto.LimpiarTextBox(this);
-            Utiles.LimpiarTexto.LimpiarDateTime(this);
+            Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 

@@ -31,5 +31,30 @@ namespace FrbaCommerce.Datos
            
             return listaDeRoles;
         }
+
+        public static void verificarSiElRolYaExiste(string nuevoRol)
+        {
+            List<Entidades.Entidad_Rol> listaDeRoles = ObtenerRol();
+
+            foreach(Entidades.Entidad_Rol rol in listaDeRoles){
+                if (rol.nombre == nuevoRol) {
+                    throw new Excepciones.DuplicacionDeDatos("El rol ingresado ya existe");
+                }
+            }
+        }
+
+        public static void agregarRol(string nuevoRol)
+        {   int retorno;
+           using (SqlConnection conn = DBConexion.obtenerConexion()){
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoRol", conn,
+                new SqlParameter("@Rol_Nombre",nuevoRol));
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            Mensajes.Generales.validarAlta(retorno);
+        }
     }
 }
+

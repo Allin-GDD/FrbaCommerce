@@ -15,9 +15,6 @@ namespace FrbaCommerce.Abm_Cliente
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
-
-         
-
             botonModificar = false;
             botonDelete = false;
         }
@@ -25,7 +22,7 @@ namespace FrbaCommerce.Abm_Cliente
         private bool botonModificar;
         private bool botonDelete;
         
-       // public Int32 idSeleccionado;
+       
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();

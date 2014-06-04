@@ -95,5 +95,40 @@ namespace FrbaCommerce.Datos
                 throw new Excepciones.InexistenciaUsuario("Datos no validos");
             }
         }
+
+      
+
+        public static void ActualizarEstadoUsuario(short estado, int clienteAModificar, short rolCliente)
+        {
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoDelUsuario", conn,
+                new SqlParameter("@Estado", estado),
+                new SqlParameter("@Id", clienteAModificar),
+                new SqlParameter("Rol", rolCliente));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al actualizar el estado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static short obtenerEstado(int id, short rol)
+        {
+            Int16 estado = -1;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstadoDelId", conn,
+            new SqlParameter("@Id", id),
+            new SqlParameter("@Rol", rol));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                estado = lectura.GetInt16(0);
+            }
+            conn.Close();
+
+            return estado;
+        }
     }
 }

@@ -30,6 +30,8 @@
         {
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
+            this.lblHabil = new System.Windows.Forms.Label();
             this.CUIT = new System.Windows.Forms.MaskedTextBox();
             this.CodPostal = new System.Windows.Forms.MaskedTextBox();
             this.Telefono = new System.Windows.Forms.MaskedTextBox();
@@ -57,8 +59,6 @@
             this.NombreContacto = new System.Windows.Forms.TextBox();
             this.labelContacto = new System.Windows.Forms.Label();
             this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.cmbHabilitado = new System.Windows.Forms.ComboBox();
-            this.lblHabil = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,6 +108,23 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
+            // 
+            // cmbHabilitado
+            // 
+            this.cmbHabilitado.FormattingEnabled = true;
+            this.cmbHabilitado.Location = new System.Drawing.Point(73, 346);
+            this.cmbHabilitado.Name = "cmbHabilitado";
+            this.cmbHabilitado.Size = new System.Drawing.Size(170, 21);
+            this.cmbHabilitado.TabIndex = 62;
+            // 
+            // lblHabil
+            // 
+            this.lblHabil.AutoSize = true;
+            this.lblHabil.Location = new System.Drawing.Point(6, 349);
+            this.lblHabil.Name = "lblHabil";
+            this.lblHabil.Size = new System.Drawing.Size(54, 13);
+            this.lblHabil.TabIndex = 61;
+            this.lblHabil.Text = "Habilitado";
             // 
             // CUIT
             // 
@@ -330,23 +347,7 @@
             this.buttonLimpiar.TabIndex = 31;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
-            // 
-            // cmbHabilitado
-            // 
-            this.cmbHabilitado.FormattingEnabled = true;
-            this.cmbHabilitado.Location = new System.Drawing.Point(73, 346);
-            this.cmbHabilitado.Name = "cmbHabilitado";
-            this.cmbHabilitado.Size = new System.Drawing.Size(170, 21);
-            this.cmbHabilitado.TabIndex = 62;
-            // 
-            // lblHabil
-            // 
-            this.lblHabil.AutoSize = true;
-            this.lblHabil.Location = new System.Drawing.Point(6, 349);
-            this.lblHabil.Name = "lblHabil";
-            this.lblHabil.Size = new System.Drawing.Size(54, 13);
-            this.lblHabil.TabIndex = 61;
-            this.lblHabil.Text = "Habilitado";
+            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
             // Modificación
             // 

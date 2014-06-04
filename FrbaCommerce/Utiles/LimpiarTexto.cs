@@ -30,7 +30,7 @@ namespace FrbaCommerce.Utiles
         }
 
 
-        public static void LimpiarDateTime(Form ofrm)
+        public static void LimpiarMaskedTextBox(Form ofrm)
         {
             Action<Control.ControlCollection> func = null;
 
