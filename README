@@ -8,3 +8,9 @@ CAMBIAR BD
 la tabla de rol tiene que tener estado (smallint)
 el valor del nombre del rol tiene que ser nvarchar(max)
 el estado del usuario tiene que ser un smallint
+
+CREAR TABLA
+Funcionabilidades
+campos = 
+Id_Rol numeric (18,0) NOT NULL
+Id_Funcionabilidad int NOT NULL
