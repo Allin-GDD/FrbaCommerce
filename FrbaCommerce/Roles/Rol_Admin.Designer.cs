@@ -54,6 +54,7 @@
             this.AbmEmpresa.TabIndex = 1;
             this.AbmEmpresa.Text = "Abm Empresa";
             this.AbmEmpresa.UseVisualStyleBackColor = true;
+            this.AbmEmpresa.Click += new System.EventHandler(this.AbmEmpresa_Click);
             // 
             // ListadoEstadistico
             // 
@@ -70,7 +71,7 @@
             this.AbmRubro.Name = "AbmRubro";
             this.AbmRubro.Size = new System.Drawing.Size(98, 34);
             this.AbmRubro.TabIndex = 3;
-            this.AbmRubro.Text = "Abm Rubro";
+            this.AbmRubro.Text = "Abm Rol";
             this.AbmRubro.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -104,7 +105,7 @@
             this.Controls.Add(this.AbmEmpresa);
             this.Controls.Add(this.AbmCliente);
             this.Name = "Rol_Admin";
-            this.Text = "Rol_Admin";
+            this.Text = "Usuario: Administrador";
             this.ResumeLayout(false);
 
         }

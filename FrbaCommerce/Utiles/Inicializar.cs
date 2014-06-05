@@ -80,9 +80,8 @@ namespace FrbaCommerce.Utiles
 
         public static void comboBoxFuncionalidades(ComboBox cmbFuncionalidad)
         {
-<<<<<<< HEAD
-           List<String> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
-=======
+
+
             List<Entidades.Ent_Funcionalidad> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
             cmbFuncionalidad.DataSource = lista;
             cmbFuncionalidad.DisplayMember = "funcionalidad";
@@ -111,7 +110,7 @@ namespace FrbaCommerce.Utiles
             cmbPropias.DisplayMember = "funcionalidad";
             cmbPropias.ValueMember = "id";
 
->>>>>>> 2f5e6e553d8df6d7c2c93cffff99e38390c3da09
+
         }
     }
 
