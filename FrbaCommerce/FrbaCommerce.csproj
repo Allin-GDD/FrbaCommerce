@@ -61,6 +61,7 @@
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
+    <Compile Include="Datos\Dat_Visibilidad.cs" />
     <Compile Include="Datos\Dat_Usuario.cs" />
     <Compile Include="Datos\Dat_Cuit.cs" />
     <Compile Include="Datos\Dat_Empresa.cs" />
@@ -220,6 +221,7 @@
     <Compile Include="Entidades\Ent_ListadoCliente.cs" />
     <Compile Include="Entidades\Ent_Telefono.cs" />
     <Compile Include="Entidades\Ent_TipoDeDoc.cs" />
+    <Compile Include="Entidades\Ent_Visibilidad.cs" />
     <Compile Include="Excepciones\Class1.cs" />
     <Compile Include="Facturar Publicaciones\Form1.cs">
       <SubType>Form</SubType>
@@ -375,6 +377,12 @@
     <EmbeddedResource Include="Roles\VentanaCliente.resx">
       <DependentUpon>VentanaCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Roles\VentanaEmpresa.resx">
+      <DependentUpon>VentanaEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Roles\VentanaVisibilidad.resx">
+      <DependentUpon>VentanaVisibilidad.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -417,6 +425,18 @@
     </Compile>
     <Compile Include="Roles\VentanaCliente.Designer.cs">
       <DependentUpon>VentanaCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\VentanaEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\VentanaEmpresa.Designer.cs">
+      <DependentUpon>VentanaEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\VentanaVisibilidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\VentanaVisibilidad.Designer.cs">
+      <DependentUpon>VentanaVisibilidad.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\Funcionalidades.cs" />
     <Compile Include="Utiles\Inicializar.cs" />

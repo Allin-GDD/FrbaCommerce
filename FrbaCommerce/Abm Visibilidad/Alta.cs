@@ -33,9 +33,10 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         }
 
-        private void btmLimpiar_Click(object sender, EventArgs e)
-        {
 
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
