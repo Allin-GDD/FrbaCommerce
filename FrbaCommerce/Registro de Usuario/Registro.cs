@@ -39,6 +39,24 @@ namespace FrbaCommerce.Registro_de_Usuario
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.Alta alt = new ABM_Rol.Alta();
+            alt.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.Listado lis = new ABM_Rol.Listado();
+            lis.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.Listado_de_selección listS = new ABM_Rol.Listado_de_selección();
+            listS.Show();
+        }
+
        
 
         }

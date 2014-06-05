@@ -14,11 +14,19 @@ namespace FrbaCommerce.ABM_Rol
         public Listado()
         {
             InitializeComponent();
+           
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+          private void button2_Click(object sender, EventArgs e)
         {
-
+  
+            Datos.Dat_Rol.filtarRol(txtNombre.Text,dataGridView1);
         }
+
+          private void button1_Click(object sender, EventArgs e)
+          {
+              Utiles.LimpiarTexto.LimpiarTextBox(this);
+              Utiles.LimpiarTexto.BlanquearControls(this);
+          }
     }
 }

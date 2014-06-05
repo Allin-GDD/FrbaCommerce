@@ -11,44 +11,18 @@ namespace FrbaCommerce.ABM_Rol
 {
     public partial class Modificación : Form
     {
-        public Modificación()
+        public Modificación(Decimal idSeleccionado)
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxFuncionalidades(cmbTodaFunc);
+            Utiles.Inicializar.comboBoxFuncionalidadesPropias(cmbPropias, idSeleccionado);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+            private void btnGuardar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }
