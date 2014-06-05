@@ -9,6 +9,10 @@ la tabla de rol tiene que tener estado (smallint)
 el valor del nombre del rol tiene que ser nvarchar(max)
 el estado del usuario tiene que ser un smallint
 
+
+CAMBIAR APP
+ver pq sigue agregandose la columna modificar y eliminar
+
 CREAR TABLA
 Funcionabilidades
 campos = 
