@@ -39,6 +39,12 @@ namespace FrbaCommerce.Registro_de_Usuario
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ABM_Rol.Alta alt = new ABM_Rol.Alta();
+            alt.Show();
+        }
+
        
 
         }

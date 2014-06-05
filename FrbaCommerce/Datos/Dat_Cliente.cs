@@ -13,6 +13,7 @@ namespace FrbaCommerce.Datos
 
 
         //ESTO ES MAS FÁCIL QUE HACERLO CON UN PROCEDURE PQ ESTOY SELECCIONANDO TODOS LOS CAMPOS, SIN FILTROS
+
         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
         {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();

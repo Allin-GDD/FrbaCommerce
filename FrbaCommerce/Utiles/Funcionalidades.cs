@@ -7,20 +7,27 @@ namespace FrbaCommerce.Utiles
 {
     class Funcionalidades
     {
-        public static List<String> listaDeFuncionalidades()
+        public static List<Entidades.Ent_Funcionalidad> listaDeFuncionalidades()
         {
-            List<String> listaFunc = new List<string>();
+            List<Entidades.Ent_Funcionalidad> listaFunc = new List<Entidades.Ent_Funcionalidad>();
 
-            listaFunc.Add("Dar de Alta a cliente");
-            listaFunc.Add("Dar de Alta a empresa");
-            //HAY QUE MANDAR TODAS LAS FUNCIONALIDADES
 
+            Entidades.Ent_Funcionalidad altaEmpresa = crearFuncionabilidad("Dar de Alta Empresa", 2);
+            listaFunc.Add(altaEmpresa);
+            Entidades.Ent_Funcionalidad altaCliente = crearFuncionabilidad("Dar de Alta Cliente", 1);
+            listaFunc.Add(altaCliente);
+           
 
             return listaFunc;
         }
-        public static void agregarAListaDeFuncionalidades(string funcionalidad) {
-            listaDeFuncionalidades().Add(funcionalidad);
 
+        private static Entidades.Ent_Funcionalidad crearFuncionabilidad(string campo, int id)
+        {
+            Entidades.Ent_Funcionalidad funcionabilidad = new Entidades.Ent_Funcionalidad();
+            funcionabilidad.id = id;
+            funcionabilidad.funcionalidad = campo;
+            return funcionabilidad;
         }
+      
     }
 }
