@@ -20,7 +20,7 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Codigo", pvisibilidad.Codigo),
                    new SqlParameter("@Descripcion", pvisibilidad.Descripcion),
                    new SqlParameter("@Precio", pvisibilidad.Precio),
-                   new SqlParameter("@Porcentaje",pvisibilidad.Porcentaje),
+                   new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje));
                
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -40,7 +40,7 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@Codigo", visibilidadAModificar),
                 new SqlParameter("@Descripcion", pvisibilidad.Descripcion),
                 new SqlParameter("@Precio", pvisibilidad.Precio),
-                new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje),
+                new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje));
                
 
                 retorno = cmd.ExecuteNonQuery();
@@ -58,7 +58,7 @@ namespace FrbaCommerce.Datos
                new SqlParameter("@Codigo", pListado.Codigo),
                new SqlParameter("@Descripcion", pListado.Descripcion),
                new SqlParameter("@Precio", pListado.Precio),
-               new SqlParameter("@Porcentaje", pListado.Porcentaje),
+               new SqlParameter("@Porcentaje", pListado.Porcentaje));
 
                Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
 
