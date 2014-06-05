@@ -114,7 +114,21 @@ namespace FrbaCommerce.Utiles
 
         }
 
-      
+
+
+        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
+        {
+           List<int> listaDeFunc = new List<int>();
+
+           listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
+
+             foreach (int funcional in listaDeFunc)
+                 if (func == funcional)
+                 {
+                     throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
+                 }
+            
+        }
     }
 
  

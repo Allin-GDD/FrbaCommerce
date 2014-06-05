@@ -49,11 +49,10 @@
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(121, 21);
             this.cboRol.TabIndex = 2;
-            this.cboRol.SelectedIndexChanged += new System.EventHandler(this.cboRol_SelectedIndexChanged);
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(114, 116);
+            this.btnAceptar.Location = new System.Drawing.Point(98, 122);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 3;
@@ -65,7 +64,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 151);
+            this.ClientSize = new System.Drawing.Size(256, 181);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cboRol);
             this.Controls.Add(this.lblUser);

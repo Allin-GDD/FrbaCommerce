@@ -11,44 +11,41 @@ namespace FrbaCommerce.ABM_Rol
 {
     public partial class Modificación : Form
     {
-        public Modificación()
+        public Modificación(Decimal idSeleccionado)
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxFuncionalidades(cmbTodaFunc);
+            Utiles.Inicializar.comboBoxFuncionalidadesPropias(cmbPropias, idSeleccionado);
+            txtNombre.Text = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
+            this.nombreRolAnt = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
+           
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private String nombreRolAnt;
+            private void btnGuardar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Decimal rol = verificarSiElRolYaExiste();
 
+                Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, rol);
+                Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, rol);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
+            private Decimal verificarSiElRolYaExiste()
+            {
+                if (nombreRolAnt != txtNombre.Text)
+                {
+                    Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
+                    Datos.Dat_Rol.agregarRol(txtNombre.Text);
+                }
+                Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
+                return rol;
+            }  
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+     
     }
 }

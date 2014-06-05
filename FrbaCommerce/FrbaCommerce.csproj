@@ -60,6 +60,7 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Dat_Funcionalidad.cs" />
     <Compile Include="Datos\Dat_Usuario.cs" />
     <Compile Include="Datos\Dat_Cuit.cs" />
     <Compile Include="Datos\Dat_Empresa.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Entidades\Ent_Funcionalidad.cs" />
     <Compile Include="Entidades\Ent_Habilitado.cs" />
     <Compile Include="Entidades\Ent_ListadoEmpresa.cs" />
     <Compile Include="Entidades\Ent_Usuario.cs" />
@@ -407,6 +409,7 @@
     <Compile Include="Roles\Rol_Empresa.Designer.cs">
       <DependentUpon>Rol_Empresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Funcionalidades.cs" />
     <Compile Include="Utiles\Inicializar.cs" />
     <Compile Include="Utiles\LimpiarTexto.cs" />
     <Compile Include="Utiles\SQL.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.ABM_Rol
 {
-    partial class Form1
+    partial class Alta
     {
         /// <summary>
         /// Required designer variable.
@@ -64,6 +64,7 @@
             this.btnLimpiar.TabIndex = 3;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // btnGuardar
             // 
@@ -103,7 +104,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
-            // Form1
+            // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,7 +112,7 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
-            this.Name = "Form1";
+            this.Name = "Alta";
             this.Text = "Alta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
