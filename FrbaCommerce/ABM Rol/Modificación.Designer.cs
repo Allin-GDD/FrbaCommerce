@@ -46,13 +46,10 @@
             this.cmbPropias = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chkAgregar = new System.Windows.Forms.CheckBox();
-            this.cmbPropias = new System.Windows.Forms.ComboBox();
+            
             this.chkAgregar = new System.Windows.Forms.CheckBox();
-            this.chkQuitar = new System.Windows.Forms.CheckBox();
+
             this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 

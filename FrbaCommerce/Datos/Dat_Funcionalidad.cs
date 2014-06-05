@@ -10,7 +10,8 @@ namespace FrbaCommerce.Datos
     {
         internal static void chequeoDeAddFuncionalidad(CheckBox chkAgregar, decimal rol)
         {
-            if (chkAgregar.Checked) { 
+            if (chkAgregar.Checked){
+                 //Datos.Dat_Rol.agregarFuncionabilidad(rol, Convert.ToInt32(cmbFuncionalidad.SelectedValue));
             }
         }
 

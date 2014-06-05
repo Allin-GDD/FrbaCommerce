@@ -65,6 +65,7 @@ namespace FrbaCommerce.Datos
             int retorno;
 
             Utiles.Validaciones.ValidarFuncionablidadRepetida(rol, func);
+
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarFuncionabilidadAlRol", conn,
