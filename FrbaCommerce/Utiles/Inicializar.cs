@@ -18,7 +18,7 @@ namespace FrbaCommerce.Utiles
         }
         public static void comboBoxRol(ComboBox cmbRol)
         {
-            cmbRol.DataSource = Datos.Dat_Rol.ObtenerRol();
+            cmbRol.DataSource = Datos.Dat_Rol.ObtenerTodosLosRoles();
             cmbRol.DisplayMember = "Nombre";
             cmbRol.ValueMember = "Id";
 
@@ -34,7 +34,7 @@ namespace FrbaCommerce.Utiles
                 btn.Text = "";
                 btn.Name = "btn";
                 btn.UseColumnTextForButtonValue = true;
-                botonModificar = true;
+                botonModificar = true;//no devuelve el boolean cambiar
             }
 
             if (!botonDelete)
@@ -86,7 +86,29 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.ValueMember = "id";
         }
 
-       
+
+
+        public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
+        {
+            List<int> funcionalidades =  Datos.Dat_Rol.buscarFuncDe(idSeleccionado);
+            List<Entidades.Ent_Funcionalidad> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
+            List<Entidades.Ent_Funcionalidad> listaAAgregar = new List<Entidades.Ent_Funcionalidad>();
+
+            foreach( Entidades.Ent_Funcionalidad listaVieja in lista){
+                foreach(int func in funcionalidades){
+                    if (func == listaVieja.id) {
+                        Entidades.Ent_Funcionalidad funcNueva = new Entidades.Ent_Funcionalidad();
+                        funcNueva.id = func;
+                        funcNueva.funcionalidad = listaVieja.funcionalidad;
+                        listaAAgregar.Add(funcNueva);
+                    }
+                }
+            }
+            cmbPropias.DataSource = listaAAgregar;
+            cmbPropias.DisplayMember = "funcionalidad";
+            cmbPropias.ValueMember = "id";
+
+        }
     }
 
 }

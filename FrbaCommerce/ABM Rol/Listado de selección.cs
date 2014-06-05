@@ -14,6 +14,40 @@ namespace FrbaCommerce.ABM_Rol
         public Listado_de_selección()
         {
             InitializeComponent();
+            botonModificar = false;
+            botonDelete = false;
+        }
+        private bool botonModificar;
+        private bool botonDelete;
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Datos.Dat_Rol.filtarRol(txtNombre.Text, dataGridView1);
+            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.BlanquearControls(this);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+
+            if (e.ColumnIndex == 2)
+            {//14 es la pocision del boton modificar
+                ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
+                mod.Show();
+
+            }
+            if (e.ColumnIndex == 3)
+            {
+                ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
+                baj.Show();
+
+            }
         }
     }
 }

@@ -11,9 +11,16 @@ namespace FrbaCommerce.ABM_Rol
 {
     public partial class Baja : Form
     {
-        public Baja()
+        public Baja(Decimal idSeleccionado)
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrbaCommerce.Datos
 {
     class Dat_Rol
     {
 
-        public static List<Entidades.Entidad_Rol> ObtenerRol()
+        public static List<Entidades.Entidad_Rol> ObtenerTodosLosRoles()
         {
-
 
             List<Entidades.Entidad_Rol> listaDeRoles = new List<Entidades.Entidad_Rol>();
 
@@ -34,7 +34,7 @@ namespace FrbaCommerce.Datos
 
         public static void verificarSiElRolYaExiste(string nuevoRol)
         {
-            List<Entidades.Entidad_Rol> listaDeRoles = ObtenerRol();
+            List<Entidades.Entidad_Rol> listaDeRoles = ObtenerTodosLosRoles();
 
             foreach (Entidades.Entidad_Rol rol in listaDeRoles)
             {
@@ -60,11 +60,11 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
         }
 
-
-
         public static void agregarFuncionabilidad(Decimal rol, int func)
         {
             int retorno;
+
+            Utiles.Validaciones.ValidarFuncionablidadRepetida(rol, func);
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarFuncionabilidadAlRol", conn,
@@ -94,6 +94,34 @@ namespace FrbaCommerce.Datos
             return id;
 
         }
+
+        public static List<int> buscarFuncDe(decimal rol)
+        {
+            List<int> listaDeFuncionabilidades = new List<int>();
+
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoDeFuncionabilidades", conexion,
+           new SqlParameter("@Rol", rol));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                   listaDeFuncionabilidades.Add(lectura.GetInt32(0));
+            }
+            return listaDeFuncionabilidades;
+            
+        }
+
+        public static void filtarRol(string rol, DataGridView dataGridView1)
+        {
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
+           new SqlParameter("@Rol", rol));
+            Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
+
+            dataGridView1.Columns["Id"].Visible = false;
+        }
+           
+        
     }
 
-}
+}   
