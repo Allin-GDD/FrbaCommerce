@@ -23,7 +23,8 @@ namespace FrbaCommerce.Roles
 
         private void AbmCliente_Click(object sender, EventArgs e)
         {
-            VentanaCliente cliente = new VentanaCliente();
+            Roles.VentanaCliente cliente = new VentanaCliente();
+            cliente.Show();
             
         }
 
@@ -35,6 +36,7 @@ namespace FrbaCommerce.Roles
         private void button1_Click(object sender, EventArgs e)
         {
             VentanaVisibilidad ventana = new VentanaVisibilidad();
+            ventana.Show();
         }
     }
 }
