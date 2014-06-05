@@ -23,6 +23,10 @@ namespace FrbaCommerce
         {
             Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
             Reg1.Show();
+<<<<<<< HEAD
+=======
+            
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
                   
         }
 
@@ -30,6 +34,11 @@ namespace FrbaCommerce
         {
             Login.Login Log1 = new Login.Login();
             Log1.Show();
+<<<<<<< HEAD
+=======
+           
+     
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
 
 
         }

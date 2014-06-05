@@ -120,6 +120,7 @@ namespace FrbaCommerce.Datos
 
             dataGridView1.Columns["Id"].Visible = false;
         }
+<<<<<<< HEAD
 
 
 
@@ -152,6 +153,10 @@ namespace FrbaCommerce.Datos
             }
             return nombre;
         }
+=======
+           
+        
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
     }
 
 }   

@@ -23,8 +23,13 @@ namespace FrbaCommerce.Roles
 
         private void AbmCliente_Click(object sender, EventArgs e)
         {
-           // crear abm cliente
+            VentanaCliente cliente = new VentanaCliente();
             
+        }
+
+        private void AbmEmpresa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

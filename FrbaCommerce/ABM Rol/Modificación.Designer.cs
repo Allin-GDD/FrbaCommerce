@@ -29,11 +29,16 @@
         private void InitializeComponent()
         {
             this.cmbTodaFunc = new System.Windows.Forms.ComboBox();
+<<<<<<< HEAD
             this.txtNombre = new System.Windows.Forms.TextBox();
+=======
+            this.textBox1 = new System.Windows.Forms.TextBox();
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+<<<<<<< HEAD
             this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             this.lblHabil = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,6 +47,14 @@
             this.cmbPropias = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.chkAgregar = new System.Windows.Forms.CheckBox();
+=======
+            this.cmbPropias = new System.Windows.Forms.ComboBox();
+            this.chkAgregar = new System.Windows.Forms.CheckBox();
+            this.chkQuitar = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -54,12 +67,21 @@
             this.cmbTodaFunc.Size = new System.Drawing.Size(449, 21);
             this.cmbTodaFunc.TabIndex = 13;
             // 
+<<<<<<< HEAD
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(151, 38);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(474, 20);
             this.txtNombre.TabIndex = 12;
+=======
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(151, 38);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(474, 20);
+            this.textBox1.TabIndex = 12;
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
             // 
             // btnGuardar
             // 
@@ -91,11 +113,17 @@
             // 
             // groupBox1
             // 
+<<<<<<< HEAD
             this.groupBox1.Controls.Add(this.cmbHabilitado);
             this.groupBox1.Controls.Add(this.lblHabil);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtNombre);
+=======
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox1);
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
@@ -104,6 +132,7 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
+<<<<<<< HEAD
             // cmbHabilitado
             // 
             this.cmbHabilitado.FormattingEnabled = true;
@@ -142,17 +171,7 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Funcionabilidad";
-            // 
-            // chkQuitar
-            // 
-            this.chkQuitar.AutoSize = true;
-            this.chkQuitar.Location = new System.Drawing.Point(43, 98);
-            this.chkQuitar.Name = "chkQuitar";
-            this.chkQuitar.Size = new System.Drawing.Size(54, 17);
-            this.chkQuitar.TabIndex = 18;
-            this.chkQuitar.Text = "Quitar";
-            this.chkQuitar.UseVisualStyleBackColor = true;
-            // 
+=======
             // cmbPropias
             // 
             this.cmbPropias.FormattingEnabled = true;
@@ -160,15 +179,6 @@
             this.cmbPropias.Name = "cmbPropias";
             this.cmbPropias.Size = new System.Drawing.Size(449, 21);
             this.cmbPropias.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(183, 13);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Marque la opción que desea ejecutar";
             // 
             // chkAgregar
             // 
@@ -180,6 +190,72 @@
             this.chkAgregar.TabIndex = 17;
             this.chkAgregar.Text = "Agregar";
             this.chkAgregar.UseVisualStyleBackColor = true;
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
+            // 
+            // chkQuitar
+            // 
+            this.chkQuitar.AutoSize = true;
+            this.chkQuitar.Location = new System.Drawing.Point(43, 98);
+            this.chkQuitar.Name = "chkQuitar";
+            this.chkQuitar.Size = new System.Drawing.Size(54, 17);
+            this.chkQuitar.TabIndex = 18;
+            this.chkQuitar.Text = "Quitar";
+            this.chkQuitar.UseVisualStyleBackColor = true;
+            // 
+<<<<<<< HEAD
+            // cmbPropias
+            // 
+            this.cmbPropias.FormattingEnabled = true;
+            this.cmbPropias.Location = new System.Drawing.Point(136, 96);
+            this.cmbPropias.Name = "cmbPropias";
+            this.cmbPropias.Size = new System.Drawing.Size(449, 21);
+            this.cmbPropias.TabIndex = 16;
+            // 
+=======
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(183, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Marque la opción que desea ejecutar";
+            // 
+<<<<<<< HEAD
+            // chkAgregar
+            // 
+            this.chkAgregar.AutoSize = true;
+            this.chkAgregar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.chkAgregar.Location = new System.Drawing.Point(43, 55);
+            this.chkAgregar.Name = "chkAgregar";
+            this.chkAgregar.Size = new System.Drawing.Size(69, 18);
+            this.chkAgregar.TabIndex = 17;
+            this.chkAgregar.Text = "Agregar";
+            this.chkAgregar.UseVisualStyleBackColor = true;
+=======
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(257, 117);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 18;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkQuitar);
+            this.groupBox2.Controls.Add(this.cmbTodaFunc);
+            this.groupBox2.Controls.Add(this.cmbPropias);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.chkAgregar);
+            this.groupBox2.Location = new System.Drawing.Point(15, 78);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(610, 162);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Funcionabilidad";
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
             // 
             // Modificación
             // 
@@ -202,7 +278,11 @@
         #endregion
 
         private System.Windows.Forms.ComboBox cmbTodaFunc;
+<<<<<<< HEAD
         private System.Windows.Forms.TextBox txtNombre;
+=======
+        private System.Windows.Forms.TextBox textBox1;
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Label label2;
@@ -213,7 +293,10 @@
         private System.Windows.Forms.CheckBox chkQuitar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
+<<<<<<< HEAD
         private System.Windows.Forms.ComboBox cmbHabilitado;
         private System.Windows.Forms.Label lblHabil;
+=======
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
     }
 }

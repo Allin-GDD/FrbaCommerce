@@ -372,6 +372,9 @@
     <EmbeddedResource Include="Roles\Rol_Empresa.resx">
       <DependentUpon>Rol_Empresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Roles\VentanaCliente.resx">
+      <DependentUpon>VentanaCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -408,6 +411,12 @@
     </Compile>
     <Compile Include="Roles\Rol_Empresa.Designer.cs">
       <DependentUpon>Rol_Empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Roles\VentanaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Roles\VentanaCliente.Designer.cs">
+      <DependentUpon>VentanaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\Funcionalidades.cs" />
     <Compile Include="Utiles\Inicializar.cs" />

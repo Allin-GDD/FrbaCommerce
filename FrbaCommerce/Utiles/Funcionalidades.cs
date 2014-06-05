@@ -16,6 +16,10 @@ namespace FrbaCommerce.Utiles
             listaFunc.Add(altaEmpresa);
             Entidades.Ent_Funcionalidad altaCliente = crearFuncionabilidad("Dar de Alta Cliente", 1);
             listaFunc.Add(altaCliente);
+<<<<<<< HEAD
+=======
+           
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
 
             return listaFunc;
         }

@@ -27,9 +27,12 @@ namespace FrbaCommerce.ABM_Rol
                 }
 
                 Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
-
                 Datos.Dat_Rol.agregarRol(txtNombre.Text);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
 
                 Datos.Dat_Rol.agregarFuncionabilidad(rol, Convert.ToInt32(cmbFuncionalidad.SelectedValue));

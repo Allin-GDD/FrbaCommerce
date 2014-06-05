@@ -79,6 +79,7 @@ namespace FrbaCommerce.Utiles
 
 
         public static void comboBoxFuncionalidades(ComboBox cmbFuncionalidad)
+<<<<<<< HEAD
         {
 
 
@@ -86,6 +87,40 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.DataSource = lista;
             cmbFuncionalidad.DisplayMember = "funcionalidad";
             cmbFuncionalidad.ValueMember = "id";
+=======
+        {
+
+
+            List<Entidades.Ent_Funcionalidad> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
+            cmbFuncionalidad.DataSource = lista;
+            cmbFuncionalidad.DisplayMember = "funcionalidad";
+            cmbFuncionalidad.ValueMember = "id";
+        }
+
+
+
+        public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
+        {
+            List<int> funcionalidades =  Datos.Dat_Rol.buscarFuncDe(idSeleccionado);
+            List<Entidades.Ent_Funcionalidad> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
+            List<Entidades.Ent_Funcionalidad> listaAAgregar = new List<Entidades.Ent_Funcionalidad>();
+
+            foreach( Entidades.Ent_Funcionalidad listaVieja in lista){
+                foreach(int func in funcionalidades){
+                    if (func == listaVieja.id) {
+                        Entidades.Ent_Funcionalidad funcNueva = new Entidades.Ent_Funcionalidad();
+                        funcNueva.id = func;
+                        funcNueva.funcionalidad = listaVieja.funcionalidad;
+                        listaAAgregar.Add(funcNueva);
+                    }
+                }
+            }
+            cmbPropias.DataSource = listaAAgregar;
+            cmbPropias.DisplayMember = "funcionalidad";
+            cmbPropias.ValueMember = "id";
+
+
+>>>>>>> b055948a8c900f7476f0ca06212c821b70489399
         }
 
 
