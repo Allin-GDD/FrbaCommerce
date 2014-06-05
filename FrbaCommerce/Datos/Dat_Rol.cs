@@ -105,10 +105,10 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                   listaDeFuncionabilidades.Add(lectura.GetInt32(0));
+                listaDeFuncionabilidades.Add(lectura.GetInt32(0));
             }
             return listaDeFuncionabilidades;
-            
+
         }
 
         public static void filtarRol(string rol, DataGridView dataGridView1)
@@ -120,7 +120,7 @@ namespace FrbaCommerce.Datos
 
             dataGridView1.Columns["Id"].Visible = false;
         }
-<<<<<<< HEAD
+
 
 
 
@@ -153,10 +153,7 @@ namespace FrbaCommerce.Datos
             }
             return nombre;
         }
-=======
-           
-        
->>>>>>> b055948a8c900f7476f0ca06212c821b70489399
-    }
 
-}   
+
+    }
+}
