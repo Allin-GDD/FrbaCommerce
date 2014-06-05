@@ -80,7 +80,7 @@ namespace FrbaCommerce.Utiles
 
         public static void comboBoxFuncionalidades()
         {
-            List<String> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
+           List<String> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
         }
     }
 

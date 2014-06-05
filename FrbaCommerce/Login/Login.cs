@@ -32,22 +32,28 @@ namespace FrbaCommerce.Login
                 {
                     case 3 :
 
-                                // entramos a lo que puede hacer un admin
+                        Roles.Rol_Admin admin = new Roles.Rol_Admin();
+                        admin.Show();
+                        this.Close();
 
                     break;
                     
                     
                     case 2 :
 
-                               // entramos a lo que puede hacer un empresa
+                    Roles.Rol_Empresa empresa = new Roles.Rol_Empresa();
+                    empresa.Show();
+                    this.Close();
 
                     break;
                     
                     
                     case 1:
 
-                    rol_cliente.rol_cliente cliente = new rol_cliente.rol_cliente();
+                    Roles.Rol_Cliente cliente = new Roles.Rol_Cliente();
                     cliente.Show();
+                    this.Close();
+
      
                     break;
 
