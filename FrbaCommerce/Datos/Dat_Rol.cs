@@ -112,7 +112,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void filtarRol(string rol, DataGridView dataGridView1)
+        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
@@ -121,9 +121,6 @@ namespace FrbaCommerce.Datos
 
             dataGridView1.Columns["Id"].Visible = false;
         }
-
-
-
 
         public static void darDeBajaRol(decimal rolADarDeBaja)
         {
@@ -155,6 +152,45 @@ namespace FrbaCommerce.Datos
             return nombre;
         }
 
+        public static void removerFuncionalidad(decimal rol, int func)
+        {
+            int retorno = 0;
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.quitarRol", conexion,
+                new SqlParameter("@Id_Rol", rol),
+                new SqlParameter("@funcionalidad", func));
+            retorno = cmd.ExecuteNonQuery();
+            Mensajes.Generales.validarBaja(retorno);//VER BIEN EL MENSAJE
+        }
 
+        public static void actualizarEstadoRol(int estado, decimal rol)
+        {   try
+        {
+            int retorno = 0;
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoRol", conexion,
+                new SqlParameter("@Id_Rol", rol),
+                new SqlParameter("@Estado", estado));
+            retorno = cmd.ExecuteNonQuery();
+               }
+            catch (Exception)
+            {
+                MessageBox.Show("Error al actualizar el estado del rol", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static int obtenerEstado(decimal idSeleccionado)
+        {
+            int estado = -1;
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstado", conexion,
+                new SqlParameter("@Id_Rol", idSeleccionado));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                estado = lectura.GetInt16(0);
+            }
+            return estado;
+        }
     }
 }

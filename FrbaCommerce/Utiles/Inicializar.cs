@@ -118,6 +118,34 @@ namespace FrbaCommerce.Utiles
         }
 
 
+
+        public static void comboBoxHabilitadoRol(ComboBox cmbHabilitado, decimal idSeleccionado)
+        {
+            List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
+
+            Entidades.Ent_Habilitado valorSi = new Entidades.Ent_Habilitado();
+            Entidades.Ent_Habilitado valorNo = new Entidades.Ent_Habilitado();
+            valorSi.estado = 1;
+            valorSi.valor = "Si";
+            valorNo.estado = 0;
+            valorNo.valor = "No";
+
+            int estado = Datos.Dat_Rol.obtenerEstado(idSeleccionado);
+
+            if (estado == 0)
+            {
+                lista.Add(valorNo);
+                lista.Add(valorSi);
+            }
+            else
+            {
+                lista.Add(valorSi);
+                lista.Add(valorNo);
+            }
+            cmbHabilitado.DataSource = lista;
+            cmbHabilitado.DisplayMember = "valor";
+            cmbHabilitado.ValueMember = "estado";
+        }
     }
 
 }

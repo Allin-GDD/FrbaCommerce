@@ -20,7 +20,7 @@ namespace FrbaCommerce.ABM_Rol
           private void button2_Click(object sender, EventArgs e)
         {
   
-            Datos.Dat_Rol.filtarRol(txtNombre.Text,dataGridView1);
+            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text,dataGridView1);
         }
 
           private void button1_Click(object sender, EventArgs e)

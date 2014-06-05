@@ -188,7 +188,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void ActualizarCamposACliente(Entidades.Ent_Cliente pCliente, int clienteAModificar)
+        public static void actualizarCamposACliente(Entidades.Ent_Cliente pCliente, int clienteAModificar)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())

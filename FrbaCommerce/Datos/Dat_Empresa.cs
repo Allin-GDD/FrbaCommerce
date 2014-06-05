@@ -158,7 +158,7 @@ namespace FrbaCommerce.Datos
             return pEmpresa;
         }
 
-        internal static void ActualizarEmpresa(Entidades.Ent_Empresa pEmpresa, int empresaAModificar)
+        internal static void actualizarEmpresa(Entidades.Ent_Empresa pEmpresa, int empresaAModificar)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())

@@ -70,7 +70,8 @@ namespace FrbaCommerce.Abm_Empresa
                  //Inicializa el cliente con datos correctos
                  inicializarEmpresa(empresa);
 
-                 Datos.Dat_Empresa.ActualizarEmpresa(empresa, empresaAModificar);
+                 Datos.Dat_Empresa.actualizarEmpresa(empresa, empresaAModificar);
+
                  Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue), empresaAModificar, rolEmpresa);
              }
              catch (Exception ex) {

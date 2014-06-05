@@ -17,8 +17,6 @@ namespace FrbaCommerce.ABM_Rol
             this.rolADarDeBaja = idSeleccionado;
             txtNombre.Text = Datos.Dat_Rol.obtenerNombreIdRol(rolADarDeBaja);
         }
-
-
         private Decimal rolADarDeBaja;
         private void button1_Click(object sender, EventArgs e)
         {

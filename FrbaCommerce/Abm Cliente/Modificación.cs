@@ -70,7 +70,7 @@ namespace FrbaCommerce.Abm_Cliente
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
 
-                Datos.Dat_Cliente.ActualizarCamposACliente(cliente, clienteAModificar);
+                Datos.Dat_Cliente.actualizarCamposACliente(cliente, clienteAModificar);
                 Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar,rolCliente);
                
 

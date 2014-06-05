@@ -16,6 +16,7 @@ namespace FrbaCommerce.ABM_Rol
             InitializeComponent();
             Utiles.Inicializar.comboBoxFuncionalidades(cmbTodaFunc);
             Utiles.Inicializar.comboBoxFuncionalidadesPropias(cmbPropias, idSeleccionado);
+            Utiles.Inicializar.comboBoxHabilitadoRol(cmbHabilitado,idSeleccionado);
 
             txtNombre.Text = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
             this.nombreRolAnt = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
@@ -27,9 +28,10 @@ namespace FrbaCommerce.ABM_Rol
             try
             {
                 Decimal rol = verificarSiElRolYaExiste();
+                Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, rol, Convert.ToInt32(cmbTodaFunc.SelectedValue));
+                Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, rol, Convert.ToInt32(cmbPropias.SelectedValue));
 
-                Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, rol);
-                Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, rol);
+                Datos.Dat_Rol.actualizarEstadoRol(Convert.ToInt32(cmbHabilitado.SelectedValue),rol);
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -45,7 +47,14 @@ namespace FrbaCommerce.ABM_Rol
                 }
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
                 return rol;
-            }  
+            }
+
+            private void btnLimpiar_Click(object sender, EventArgs e)
+            {
+                Utiles.LimpiarTexto.LimpiarTextBox(this);
+            }
+
+           
 
 
         }

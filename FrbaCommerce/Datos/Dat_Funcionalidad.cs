@@ -8,16 +8,23 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Funcionalidad
     {
-        internal static void chequeoDeAddFuncionalidad(CheckBox chkAgregar, decimal rol)
+         
+
+        public static void chequeoDeAddFuncionalidad(CheckBox chkAgregar, decimal rol, int func)
         {
-            if (chkAgregar.Checked){
-                 //Datos.Dat_Rol.agregarFuncionabilidad(rol, Convert.ToInt32(cmbFuncionalidad.SelectedValue));
+            if (chkAgregar.Checked)
+            {
+                Datos.Dat_Rol.agregarFuncionabilidad(rol, func);
             }
         }
 
-        internal static void chequeoRemoveFuncioalidad(CheckBox chkQuitar, decimal rol)
+        public static void chequeoRemoveFuncioalidad(CheckBox chkQuitar, decimal rol, int func)
         {
-            throw new NotImplementedException();
+            if (chkQuitar.Checked)
+            {
+                Datos.Dat_Rol.removerFuncionalidad(rol, func);
+               
+            }
         }
     }
 }

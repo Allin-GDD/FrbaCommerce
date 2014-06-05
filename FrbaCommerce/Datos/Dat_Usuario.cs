@@ -110,7 +110,7 @@ namespace FrbaCommerce.Datos
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al actualizar el estado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al actualizar el estado del usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

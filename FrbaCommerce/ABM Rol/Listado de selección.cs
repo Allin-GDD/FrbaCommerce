@@ -21,7 +21,7 @@ namespace FrbaCommerce.ABM_Rol
         private bool botonDelete;
         private void button2_Click(object sender, EventArgs e)
         {
-            Datos.Dat_Rol.filtarRol(txtNombre.Text, dataGridView1);
+            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
             Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
         }
 
