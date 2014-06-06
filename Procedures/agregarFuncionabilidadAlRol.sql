@@ -5,5 +5,5 @@ AS
 BEGIN
 INSERT INTO Funcionabilidades(Id_Rol,
 Id_Funcionabilidad)
-VALUES(@Id_Rol, @Id_Rol)
+VALUES(@Id_Rol, @Id_Funcionabilidad)
 END 
