@@ -21,10 +21,9 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
-                if (String.IsNullOrEmpty(txtNombre.Text))
-                {   txtNombre.BackColor = Color.Coral;
-                    throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
-                }
+
+               
+                Utiles.Validaciones.validarUnaSolaNulidad(txtNombre);
 
                 Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
                 Datos.Dat_Rol.agregarRol(txtNombre.Text);

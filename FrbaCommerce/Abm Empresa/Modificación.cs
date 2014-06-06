@@ -55,18 +55,14 @@ namespace FrbaCommerce.Abm_Empresa
                  Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso, FecCre, Telefono, CUIT, CodPostal);
 
 
-                 //Verifica si lo que se estan ingresando es correcto
-                 validarTipoDeDatosIngresados();
+                 //Verifica si los datos no estan duplicados
+                 validarDatosDuplicados();
 
 
                  //Verifica si la fecha está dentro del limite
                  Utiles.Validaciones.ValidarFecha(FecCre.Text);
 
-                 //Verifica si el DNI y Telefono ya no existen
-                 Datos.Dat_Telefonos.validarTelefono(Telefono.Text);
-                 Datos.Dat_Cuit.validarCuit(CUIT.Text);
-
-
+                 
                  //Inicializa el cliente con datos correctos
                  inicializarEmpresa(empresa);
 
@@ -79,7 +75,7 @@ namespace FrbaCommerce.Abm_Empresa
              }
         }
 
-        private void validarTipoDeDatosIngresados()
+        private void validarDatosDuplicados()
         {
             if (empresaAnt.Telefono != Telefono.Text)
             {
@@ -87,7 +83,8 @@ namespace FrbaCommerce.Abm_Empresa
             }
             if (empresaAnt.CUIT != CUIT.Text)
             {
-                Datos.Dat_Dni.validarDni(Convert.ToDecimal(CUIT.Text));
+                Datos.Dat_Cuit.validarCuit(CUIT.Text);
+                
             }
         }
 

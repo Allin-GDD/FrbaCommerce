@@ -24,31 +24,6 @@ namespace FrbaCommerce.Utiles
 
         }
 
-        public static void AgregarColumnaEliminarYSeleccionar(bool botonDelete, bool botonModificar, DataGridView dataGridView1)
-        {
-            if (!botonModificar)
-            {
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btn);
-                btn.HeaderText = "Modificar";
-                btn.Text = "";
-                btn.Name = "btn";
-                btn.UseColumnTextForButtonValue = true;
-                botonModificar = true;//no devuelve el boolean cambiar
-            }
-
-            if (!botonDelete)
-            {
-                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btnD);
-                btnD.HeaderText = "Eliminar";
-                btnD.Text = "";
-                btnD.Name = "btn";
-                btnD.UseColumnTextForButtonValue = true;
-                botonDelete = true;
-            }
-        }
-
         public static void comboBoxHabilitado(ComboBox cmbHabilitado, Int32 id, Int16 rol)
         {
             List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
@@ -77,8 +52,6 @@ namespace FrbaCommerce.Utiles
 
         }
 
-
-
         public static void comboBoxFuncionalidades(ComboBox cmbFuncionalidad)
         {
 
@@ -88,8 +61,6 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.DisplayMember = "funcionalidad";
             cmbFuncionalidad.ValueMember = "id";
         }
-
-
 
         public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
         {
@@ -117,8 +88,6 @@ namespace FrbaCommerce.Utiles
 
         }
 
-
-
         public static void comboBoxHabilitadoRol(ComboBox cmbHabilitado, decimal idSeleccionado)
         {
             List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
@@ -145,6 +114,37 @@ namespace FrbaCommerce.Utiles
             cmbHabilitado.DataSource = lista;
             cmbHabilitado.DisplayMember = "valor";
             cmbHabilitado.ValueMember = "estado";
+        }
+
+        public static bool AgregarColumnaEliminar(bool botonDelete, DataGridView dataGridView1)
+        {
+            if (!botonDelete)
+            {
+                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btnD);
+                btnD.HeaderText = "Eliminar";
+                btnD.Text = "";
+                btnD.Name = "btn";
+                btnD.UseColumnTextForButtonValue = true;
+                botonDelete = true;
+            }
+            return botonDelete;
+        }
+
+        public static bool agregarColumnaModificar(bool botonModificar, DataGridView dataGridView1)
+        {
+            if (!botonModificar)
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btn);
+                btn.HeaderText = "Modificar";
+                btn.Text = "";
+                btn.Name = "btn";
+                btn.UseColumnTextForButtonValue = true;
+                botonModificar = true;//no devuelve el boolean cambiar
+           
+            }
+            return botonModificar;
         }
     }
 

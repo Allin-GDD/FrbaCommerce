@@ -115,17 +115,21 @@ namespace FrbaCommerce.Datos
         public static void buscarListaDeCliente(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
         {
 
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeCliente", conn,
+                new SqlParameter("@Nombre", pListado.Nombre),
+                new SqlParameter("@Apellido", pListado.Apellido),
+                new SqlParameter("@Dni", pListado.Dni),
+                new SqlParameter("@Mail", pListado.Mail),
+                new SqlParameter("@Tipo_dni", pListado.Tipo_dni));
 
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeCliente", conn,
-            new SqlParameter("@Nombre", pListado.Nombre),
-            new SqlParameter("@Apellido", pListado.Apellido),
-            new SqlParameter("@Dni", pListado.Dni),
-            new SqlParameter("@Mail", pListado.Mail),
-            new SqlParameter("@Tipo_dni", pListado.Tipo_dni));
-
-            Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
-
+                Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+            }
+            catch (Exception) {
+                Mensajes.Errores.NoHayConexion();
+            }
 
             dataGridView1.Columns["Id"].Visible = false;
 
@@ -175,7 +179,7 @@ namespace FrbaCommerce.Datos
             }
             conn.Close();
 
-
+            //Ver bien esto después
             if (idObtenido != 0)
             {
                 return (idObtenido);

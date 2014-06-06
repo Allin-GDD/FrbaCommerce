@@ -114,16 +114,22 @@ namespace FrbaCommerce.Datos
 
         public static void buscarListaDeEmpresa(Entidades.Ent_ListadoEmpresa pEmpresa, DataGridView dataGridView1)
         {
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
+                new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
+                new SqlParameter("@CUIT", pEmpresa.CUIT),
+                new SqlParameter("@Mail", pEmpresa.Mail));
 
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
-            new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
-            new SqlParameter("@CUIT", pEmpresa.CUIT),
-            new SqlParameter("@Mail", pEmpresa.Mail));
+                Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+            }
 
-            Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+            catch (Exception) {
+                Mensajes.Errores.NoHayConexion(); 
+            }
 
-            //VER COMO MANEJAR EL CUIT PQ ESUN TEXTO LIBRE EXACTO
+
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Tipo"].Visible = false;
         }
@@ -131,7 +137,7 @@ namespace FrbaCommerce.Datos
         public static Entidades.Ent_Empresa buscarEmpresa(int id)
         {
             Entidades.Ent_Empresa pEmpresa = new Entidades.Ent_Empresa();
-
+            try {
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaSolaEmpresa", conn,
             new SqlParameter("@Id", id));
@@ -152,40 +158,46 @@ namespace FrbaCommerce.Datos
                 pEmpresa.Telefono = lectura.GetString(11);
                 pEmpresa.Ciudad = lectura.GetString(12);
                 pEmpresa.NombreContacto = lectura.GetString(13);
-
             }
             conn.Close();
+            }
+            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
             return pEmpresa;
         }
 
         internal static void actualizarEmpresa(Entidades.Ent_Empresa pEmpresa, int empresaAModificar)
-        {
+        {    
+
             int retorno;
-            using (SqlConnection conn = DBConexion.obtenerConexion())
+            try
             {
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEmpresa", conn,
-                    new SqlParameter("@Id", empresaAModificar),
-                    new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
-                    new SqlParameter("@Cuit", pEmpresa.CUIT),
-                    new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
-                    new SqlParameter("@Mail", pEmpresa.Mail),
-                    new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
-                    new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
-                    new SqlParameter("@Piso", pEmpresa.Piso),
-                    new SqlParameter("@Depto", pEmpresa.Dpto),
-                    new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
-                    new SqlParameter("@Localidad", pEmpresa.Localidad),
-                    new SqlParameter("@Telefono", pEmpresa.Telefono),
-                    new SqlParameter("@Ciudad", pEmpresa.Ciudad),
-                    new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-                    new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
+                using (SqlConnection conn = DBConexion.obtenerConexion())
+                {
+                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEmpresa", conn,
+                        new SqlParameter("@Id", empresaAModificar),
+                        new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
+                        new SqlParameter("@Cuit", pEmpresa.CUIT),
+                        new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
+                        new SqlParameter("@Mail", pEmpresa.Mail),
+                        new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
+                        new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
+                        new SqlParameter("@Piso", pEmpresa.Piso),
+                        new SqlParameter("@Depto", pEmpresa.Dpto),
+                        new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
+                        new SqlParameter("@Localidad", pEmpresa.Localidad),
+                        new SqlParameter("@Telefono", pEmpresa.Telefono),
+                        new SqlParameter("@Ciudad", pEmpresa.Ciudad),
+                        new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
+                        new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
 
 
-                retorno = cmd.ExecuteNonQuery();
-                conn.Close();
+                    retorno = cmd.ExecuteNonQuery();
+                    conn.Close();
+                    Mensajes.Generales.validarAlta(retorno);
+                }
             }
-
-            Mensajes.Generales.validarAlta(retorno);
-        }
+            catch (Exception) {
+                     Mensajes.Errores.NoHayConexion(); }
+                    }
     }
 }
