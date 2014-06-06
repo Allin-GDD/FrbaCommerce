@@ -19,6 +19,12 @@ namespace FrbaCommerce.Roles
         private void button1_Click(object sender, EventArgs e)
         {
             Abm_Visibilidad.Alta visibilidad = new FrbaCommerce.Abm_Visibilidad.Alta();
+            visibilidad.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

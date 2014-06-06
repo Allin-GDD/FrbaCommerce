@@ -24,7 +24,46 @@ namespace FrbaCommerce.Utiles
             }
         }
 
-        private static int validarDatosText(TextBox Dpto,TextBox NroPiso,Form ofrm)
+        public static void NulidadDeDatosIngresadosVisibilidad(Form ofrm, params MaskedTextBox[] parametrosDeMask)
+        {
+            int i = 0;
+
+            Utiles.LimpiarTexto.BlanquearControls(ofrm);
+
+            i = validarDatosVisibilidad(ofrm);
+
+            if (i > 0)
+            {
+                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
+            }
+        }
+
+        private static int validarDatosText(TextBox Dpto, TextBox NroPiso, Form ofrm)
+        {
+            {
+                int i = 0;
+                Action<Control.ControlCollection> func = null;
+                func = (controls) =>
+                {
+                    foreach (Control control in controls)
+                        if (control is TextBox)
+                        {
+                            if (string.IsNullOrEmpty(control.Text) && (control != Dpto) && (control != NroPiso))
+                            {
+                                control.BackColor = Color.Coral;
+                                i++;
+                            }
+
+                        }
+
+                        else { func(control.Controls); }
+                };
+
+                func(ofrm.Controls);
+                return i;
+            }
+        }
+             private static int validarDatosVisibilidad(Form ofrm)
 {
  	       {
             int i = 0;
@@ -34,7 +73,7 @@ namespace FrbaCommerce.Utiles
                 foreach (Control control in controls)
                     if (control is TextBox)
                     {
-                        if (string.IsNullOrEmpty(control.Text) && (control != Dpto) && (control != NroPiso))
+                        if (string.IsNullOrEmpty(control.Text))
                         {
                             control.BackColor = Color.Coral;
                             i++;

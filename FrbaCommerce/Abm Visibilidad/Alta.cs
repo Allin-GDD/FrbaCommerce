@@ -21,6 +21,36 @@ namespace FrbaCommerce.Abm_Visibilidad
 
             Entidades.Ent_Visibilidad visibilidad = new FrbaCommerce.Entidades.Ent_Visibilidad();
 
+            
+            try
+            {
+                //Verifica si los datos ingresados no son nulos
+                Utiles.Validaciones.NulidadDeDatosIngresadosVisibilidad(this);
+          
+                
+                //Verifica si lo que se estan ingresando es correcto
+
+                
+                //Inicializa la visibilidad con datos correctos
+                inicializarVisibilidad(visibilidad);
+
+                
+                
+                //Agrega la visibilidad a la DB
+                Datos.Dat_Visibilidad.AgregarVisibilidad(visibilidad);
+
+                this.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        
         }
         private void inicializarVisibilidad(Entidades.Ent_Visibilidad visibilidad)
         {
