@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtBoxPass = new System.Windows.Forms.TextBox();
             this.txtBoxUser = new System.Windows.Forms.TextBox();
             this.lblPass = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
+            this.txtBoxPass = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // btnAceptar
@@ -44,13 +44,6 @@
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
-            // 
-            // txtBoxPass
-            // 
-            this.txtBoxPass.Location = new System.Drawing.Point(132, 59);
-            this.txtBoxPass.Name = "txtBoxPass";
-            this.txtBoxPass.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxPass.TabIndex = 12;
             // 
             // txtBoxUser
             // 
@@ -78,13 +71,21 @@
             this.lblUser.TabIndex = 9;
             this.lblUser.Text = "Usuario";
             // 
+            // txtBoxPass
+            // 
+            this.txtBoxPass.Location = new System.Drawing.Point(132, 59);
+            this.txtBoxPass.Name = "txtBoxPass";
+            this.txtBoxPass.Size = new System.Drawing.Size(100, 20);
+            this.txtBoxPass.TabIndex = 14;
+            this.txtBoxPass.UseSystemPasswordChar = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(264, 148);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtBoxPass);
+            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtBoxUser);
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblUser);
@@ -98,9 +99,9 @@
         #endregion
 
         private System.Windows.Forms.Button btnAceptar;
-        private System.Windows.Forms.TextBox txtBoxPass;
         private System.Windows.Forms.TextBox txtBoxUser;
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Label lblUser;
+        private System.Windows.Forms.MaskedTextBox txtBoxPass;
     }
 }
