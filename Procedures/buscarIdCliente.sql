@@ -1,7 +1,7 @@
 CREATE PROCEDURE buscarIdCliente
-@Dni nvarchar(255)
+@Dni numeric(18,0)
 AS
 BEGIN
 SELECT id from Clientes
-WHERE Dni = '@Dni'
+WHERE Dni = @Dni
 END

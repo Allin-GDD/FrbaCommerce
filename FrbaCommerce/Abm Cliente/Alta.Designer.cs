@@ -123,7 +123,7 @@
             this.txtTelefono.Mask = "000-0000-0000";
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(162, 20);
-            this.txtTelefono.TabIndex = 32;
+            this.txtTelefono.TabIndex = 17;
             // 
             // txtFechaNac
             // 

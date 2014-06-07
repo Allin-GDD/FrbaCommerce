@@ -166,13 +166,13 @@ namespace FrbaCommerce.Datos
             return pcliente;
         }
 
-        public static Decimal buscarIdCliente(string pw)
+        public static Decimal buscarIdCliente(Decimal dni)
         {
             Decimal idObtenido = 0;
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdCliente", conn,
-            new SqlParameter("@Dni", pw));
+            new SqlParameter("@Dni", dni));
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {

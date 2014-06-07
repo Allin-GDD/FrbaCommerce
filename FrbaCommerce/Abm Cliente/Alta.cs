@@ -51,7 +51,8 @@ namespace FrbaCommerce.Abm_Cliente
                 
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
-                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,txtDNI.Text, rolDeUsuario);
+                Decimal IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
+                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
                 //Esto va a tirar un error pq todavía no esta implementado el crear usuario
                 //el usuario va a ser el mail y la contraseña su dni
 

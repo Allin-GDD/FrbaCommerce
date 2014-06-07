@@ -59,15 +59,15 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario)
+        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario,Decimal IdUsuario)
         {
-            Decimal IdUsuario = buscarId(pw, rolDeUsuario);
+            
             String pwHash = hashearSHA256(pw);
           
 
             //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
-            //try
-            //{
+            try
+            {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conn,
                 new SqlParameter("@Usuario", usuario),
@@ -75,35 +75,17 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@IdUsuario", IdUsuario),
                 new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Estado", 1));
-                int retorno = cmd.ExecuteNonQuery();
-                if (retorno == 0) {
-                    throw new Excepciones.ValoresConTiposDiferentes("ERROR ACA");
-                }
+              
 
-            //}
-            //catch (Exception) {
-            //    MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception) {
+                MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             
 
         }
 
-        public static Decimal buscarId(string pw, decimal rolDeUsuario)
-        {
-            if (rolDeUsuario == 1)
-            {
-                return (Datos.Dat_Cliente.buscarIdCliente(pw));
-            }
-            if (rolDeUsuario == 2)
-            {
-                return (Datos.Dat_Empresa.buscarIdEmpresa(pw));
-            }
-            else {
-                throw new Excepciones.InexistenciaUsuario("Datos no validos");
-            }
-        }
-
-      
+    
 
         public static void ActualizarEstadoUsuario(short estado, int clienteAModificar, short rolCliente)
         {
