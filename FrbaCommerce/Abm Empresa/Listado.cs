@@ -19,12 +19,17 @@ namespace FrbaCommerce.Abm_Empresa
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_ListadoEmpresa pEmpresa = new Entidades.Ent_ListadoEmpresa();
-
+            try{
             pEmpresa.CUIT = txtCUIT.Text;
             pEmpresa.Mail = txtMail.Text;
             pEmpresa.Razon_Social = txtRazonSocial.Text;
 
             Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
+             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         

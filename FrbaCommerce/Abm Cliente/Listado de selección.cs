@@ -21,26 +21,34 @@ namespace FrbaCommerce.Abm_Cliente
 
         private bool botonModificar;
         private bool botonDelete;
-        
-       
+
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
+            try
+            {
 
-            pCliente.Nombre = txtNombre.Text;
-            pCliente.Apellido = txtApellido.Text;
-            pCliente.Dni = txtDNI.Text;
-            pCliente.Mail = txtMail.Text;
-            pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
+                pCliente.Nombre = txtNombre.Text;
+                pCliente.Apellido = txtApellido.Text;
+                pCliente.Dni = txtDNI.Text;
+                pCliente.Mail = txtMail.Text;
+                pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-            Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
 
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
-            
-           
+                //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+                this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+                this.botonDelete = Utiles.Inicializar.AgregarColumnaEliminar(botonDelete, dataGridView1);
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+           
+         
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {

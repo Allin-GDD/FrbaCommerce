@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Datos
 {
@@ -58,9 +59,11 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario)
+        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario,Decimal IdUsuario)
         {
-            Decimal IdUsuario = buscarId(pw, rolDeUsuario);
+            
+            String pwHash = hashearSHA256(pw);
+          
 
             //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
             try
@@ -68,10 +71,11 @@ namespace FrbaCommerce.Datos
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conn,
                 new SqlParameter("@Usuario", usuario),
-                new SqlParameter("@Password", pw),
+                new SqlParameter("@Password", pwHash),
                 new SqlParameter("@IdUsuario", IdUsuario),
-                new SqlParameter("@IdRod", rolDeUsuario),
+                new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Estado", 1));
+              
 
             }
             catch (Exception) {
@@ -81,22 +85,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static Decimal buscarId(string pw, decimal rolDeUsuario)
-        {
-            if (rolDeUsuario == 1)
-            {
-                return (Datos.Dat_Cliente.buscarIdCliente(pw));
-            }
-            if (rolDeUsuario == 2)
-            {
-                return (Datos.Dat_Empresa.buscarIdEmpresa(pw));
-            }
-            else {
-                throw new Excepciones.InexistenciaUsuario("Datos no validos");
-            }
-        }
-
-      
+    
 
         public static void ActualizarEstadoUsuario(short estado, int clienteAModificar, short rolCliente)
         {
@@ -130,5 +119,16 @@ namespace FrbaCommerce.Datos
 
             return estado;
         }
+
+        public static String hashearSHA256(String input)
+        {
+            SHA256Managed encriptador = new SHA256Managed();
+            byte[] inputEnBytes = Encoding.UTF8.GetBytes(input);
+            byte[] inputHashBytes = encriptador.ComputeHash(inputEnBytes);
+            return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
+        }
+    
+    
+    
     }
 }

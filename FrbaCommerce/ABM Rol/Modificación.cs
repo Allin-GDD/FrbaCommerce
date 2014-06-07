@@ -28,10 +28,13 @@ namespace FrbaCommerce.ABM_Rol
             try
             {
                 Decimal rol = verificarSiElRolYaExiste();
+
                 Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, rol, Convert.ToInt32(cmbTodaFunc.SelectedValue));
                 Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, rol, Convert.ToInt32(cmbPropias.SelectedValue));
 
                 Datos.Dat_Rol.actualizarEstadoRol(Convert.ToInt32(cmbHabilitado.SelectedValue),rol);
+                this.Close();
+                
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

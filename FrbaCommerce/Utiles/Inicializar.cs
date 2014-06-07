@@ -38,31 +38,6 @@ namespace FrbaCommerce.Utiles
 
         }
 
-        public static void AgregarColumnaEliminarYSeleccionar(bool botonDelete, bool botonModificar, DataGridView dataGridView1)
-        {
-            if (!botonModificar)
-            {
-                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btn);
-                btn.HeaderText = "Modificar";
-                btn.Text = "";
-                btn.Name = "btn";
-                btn.UseColumnTextForButtonValue = true;
-                botonModificar = true;//no devuelve el boolean cambiar
-            }
-
-            if (!botonDelete)
-            {
-                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
-                dataGridView1.Columns.Add(btnD);
-                btnD.HeaderText = "Eliminar";
-                btnD.Text = "";
-                btnD.Name = "btn";
-                btnD.UseColumnTextForButtonValue = true;
-                botonDelete = true;
-            }
-        }
-
         public static void comboBoxHabilitado(ComboBox cmbHabilitado, Int32 id, Int16 rol)
         {
             List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
@@ -91,8 +66,6 @@ namespace FrbaCommerce.Utiles
 
         }
 
-
-
         public static void comboBoxFuncionalidades(ComboBox cmbFuncionalidad)
         {
 
@@ -103,6 +76,7 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.ValueMember = "id";
         }
 
+<<<<<<< HEAD
         public static void comboBoxTipo_Publicacion(ComboBox cmbTipo_Pub)
         {
 
@@ -115,6 +89,8 @@ namespace FrbaCommerce.Utiles
 
 
 
+=======
+>>>>>>> abe0364781f2488d7a00efda68fc7c6456c5b554
         public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
         {
             List<int> funcionalidades = Datos.Dat_Rol.buscarFuncDe(idSeleccionado);
@@ -140,8 +116,6 @@ namespace FrbaCommerce.Utiles
 
 
         }
-
-
 
         public static void comboBoxHabilitadoRol(ComboBox cmbHabilitado, decimal idSeleccionado)
         {
@@ -169,6 +143,37 @@ namespace FrbaCommerce.Utiles
             cmbHabilitado.DataSource = lista;
             cmbHabilitado.DisplayMember = "valor";
             cmbHabilitado.ValueMember = "estado";
+        }
+
+        public static bool AgregarColumnaEliminar(bool botonDelete, DataGridView dataGridView1)
+        {
+            if (!botonDelete)
+            {
+                DataGridViewButtonColumn btnD = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btnD);
+                btnD.HeaderText = "Eliminar";
+                btnD.Text = "";
+                btnD.Name = "btn";
+                btnD.UseColumnTextForButtonValue = true;
+                botonDelete = true;
+            }
+            return botonDelete;
+        }
+
+        public static bool agregarColumnaModificar(bool botonModificar, DataGridView dataGridView1)
+        {
+            if (!botonModificar)
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btn);
+                btn.HeaderText = "Modificar";
+                btn.Text = "";
+                btn.Name = "btn";
+                btn.UseColumnTextForButtonValue = true;
+                botonModificar = true;//no devuelve el boolean cambiar
+           
+            }
+            return botonModificar;
         }
     }
 

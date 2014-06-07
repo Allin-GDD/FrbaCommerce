@@ -23,16 +23,22 @@ namespace FrbaCommerce.Abm_Empresa
         {
 
             Entidades.Ent_ListadoEmpresa pEmpresa = new Entidades.Ent_ListadoEmpresa();
-
+            try{
             pEmpresa.CUIT = txtCUIT.Text;
             pEmpresa.Mail = txtMail.Text;
             pEmpresa.Razon_Social = txtRazonSocial.Text;
 
             Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
+           
+            this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+            this.botonDelete = Utiles.Inicializar.AgregarColumnaEliminar(botonDelete, dataGridView1);
+     
 
-            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
-            
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -58,5 +64,7 @@ namespace FrbaCommerce.Abm_Empresa
                                 
             }
         }
+
+      
     }
 }

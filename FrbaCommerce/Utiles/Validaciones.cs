@@ -15,12 +15,13 @@ namespace FrbaCommerce.Utiles
             int i = 0;
 
             Utiles.LimpiarTexto.BlanquearControls(ofrm);
-   
+
             i = validarDatosText(Dpto, NroPiso, ofrm) + validarDatosMask(parametrosDeMask);
 
             if (i > 0)
             {
-                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
+                Mensajes.Errores.FaltaDeCampos();
+
             }
         }
 
@@ -38,8 +39,8 @@ namespace FrbaCommerce.Utiles
             }
         }
 
-        private static int validarDatosText(TextBox Dpto, TextBox NroPiso, Form ofrm)
-        {
+        public static int validarDatosText(TextBox Dpto, TextBox NroPiso, Form ofrm)
+        {//VALIDA TODOS LOS TXT MENOS EL DEPTO Y EL PISO
             {
                 int i = 0;
                 Action<Control.ControlCollection> func = null;
@@ -63,33 +64,34 @@ namespace FrbaCommerce.Utiles
                 return i;
             }
         }
-             private static int validarDatosVisibilidad(Form ofrm)
-{
- 	       {
-            int i = 0;
-            Action<Control.ControlCollection> func = null;
-            func = (controls) =>
+
+        public static int validarDatosVisibilidad(Form ofrm)
+        {
             {
-                foreach (Control control in controls)
-                    if (control is TextBox)
-                    {
-                        if (string.IsNullOrEmpty(control.Text))
+                int i = 0;
+                Action<Control.ControlCollection> func = null;
+                func = (controls) =>
+                {
+                    foreach (Control control in controls)
+                        if (control is TextBox)
                         {
-                            control.BackColor = Color.Coral;
-                            i++;
+                            if (string.IsNullOrEmpty(control.Text))
+                            {
+                                control.BackColor = Color.Coral;
+                                i++;
+                            }
+
                         }
 
-                    }
+                        else { func(control.Controls); }
+                };
 
-                    else { func(control.Controls); }
-            };
-           
-            func(ofrm.Controls);
-            return i;
+                func(ofrm.Controls);
+                return i;
+            }
         }
-}
 
-        private static int validarDatosMask(MaskedTextBox[] parametrosDeMask)
+        public static int validarDatosMask(MaskedTextBox[] parametrosDeMask)
         {
             int i = 0;
             foreach (MaskedTextBox parametro in parametrosDeMask)
@@ -102,7 +104,6 @@ namespace FrbaCommerce.Utiles
             }
             return i;
         }
-
 
         public static void ValidarFecha(string p)
         {
@@ -123,8 +124,12 @@ namespace FrbaCommerce.Utiles
 
         }
 
+<<<<<<< HEAD
 
         public static void ValidarStringDeNumeros(TextBox textbox)
+=======
+        public static void ValidarTipoDni(string p)
+>>>>>>> abe0364781f2488d7a00efda68fc7c6456c5b554
         {
             Decimal expectedDecimal;
             if (!Decimal.TryParse(textbox.Text, out expectedDecimal))
@@ -155,26 +160,45 @@ namespace FrbaCommerce.Utiles
 
         }
 
-
-
         public static void ValidarFuncionablidadRepetida(decimal rol, int func)
         {
-           List<int> listaDeFunc = new List<int>();
+            List<int> listaDeFunc = new List<int>();
 
-           listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
+            listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
 
-             foreach (int funcional in listaDeFunc)
-                 if (func == funcional)
-                 {
-                     throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
-                 }
-            
+            foreach (int funcional in listaDeFunc)
+                if (func == funcional)
+                {
+                    throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
+                }
+
+        }
+
+        public static void validarDatosText(TextBox[] parametrosTB)
+        {//Todavia no lo use, lo dejo por las dudas
+            int i = 0;
+            foreach (TextBox param in parametrosTB)
+            {
+                if (String.IsNullOrEmpty(param.Text))
+                {
+                    param.BackColor = Color.Coral;
+                    i++;
+
+                }
+            }
+            if (i > 0)
+            {
+                Mensajes.Errores.FaltaDeCampos();
+            }
+        }
+
+        public static void validarUnaSolaNulidad(TextBox txt)
+        {
+            if (String.IsNullOrEmpty(txt.Text))
+            {
+                txt.BackColor = Color.Coral;
+                Mensajes.Errores.FaltaDeCampos();
+            }
         }
     }
-
- 
- 
-
-      
-    }
-
+}

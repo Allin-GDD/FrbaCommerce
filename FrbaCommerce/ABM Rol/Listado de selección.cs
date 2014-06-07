@@ -21,8 +21,16 @@ namespace FrbaCommerce.ABM_Rol
         private bool botonDelete;
         private void button2_Click(object sender, EventArgs e)
         {
-            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
-            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(botonDelete, botonModificar, dataGridView1);
+            try
+            {
+                Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
+                this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+                this.botonDelete = Utiles.Inicializar.AgregarColumnaEliminar(botonDelete, dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

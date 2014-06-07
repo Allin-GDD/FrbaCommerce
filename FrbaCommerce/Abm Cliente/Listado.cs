@@ -22,16 +22,23 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
-
-            pCliente.Nombre = txtNombre.Text;
-            pCliente.Apellido = txtApellido.Text;
-            pCliente.Dni = txtDNI.Text;
-            pCliente.Mail = txtMail.Text;
-            pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
-
-            Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
-
+            try
+            {
+                Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
+                
+                pCliente.Nombre = txtNombre.Text;
+                pCliente.Apellido = txtApellido.Text;
+                pCliente.Dni = txtDNI.Text;
+                pCliente.Mail = txtMail.Text;
+                pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
+              
+                Utiles.Validaciones.ValidarTipoDni(pCliente.Tipo_dni);
+                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)

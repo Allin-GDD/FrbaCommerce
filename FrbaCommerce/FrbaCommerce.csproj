@@ -76,6 +76,7 @@
     <Compile Include="Entidades\Ent_Habilitado.cs" />
     <Compile Include="Entidades\Ent_ListadoEmpresa.cs" />
     <Compile Include="Entidades\Ent_Publicacion.cs" />
+    <Compile Include="Entidades\Ent_ListadoVisibilidad.cs" />
     <Compile Include="Entidades\Ent_Usuario.cs" />
     <Compile Include="Entidades\Ent_Cuit.cs" />
     <Compile Include="Entidades\Ent_Empresa.cs" />
@@ -202,7 +203,7 @@
     <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBConexion.cs" />
+    <Compile Include="Utiles\DBConexion.cs" />
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
