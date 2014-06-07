@@ -72,6 +72,7 @@
     <Compile Include="Entidades\Ent_Funcionalidad.cs" />
     <Compile Include="Entidades\Ent_Habilitado.cs" />
     <Compile Include="Entidades\Ent_ListadoEmpresa.cs" />
+    <Compile Include="Entidades\Ent_ListadoVisibilidad.cs" />
     <Compile Include="Entidades\Ent_Usuario.cs" />
     <Compile Include="Entidades\Ent_Cuit.cs" />
     <Compile Include="Entidades\Ent_Empresa.cs" />
