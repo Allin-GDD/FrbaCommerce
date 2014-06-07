@@ -124,14 +124,16 @@ namespace FrbaCommerce.Utiles
         }
 
 
-        public static void ValidarTipoDni(string p)
+        public static void ValidarStringDeNumeros(TextBox textbox)
         {
             Decimal expectedDecimal;
-            if (!Decimal.TryParse(p, out expectedDecimal))
+            if (!Decimal.TryParse(textbox.Text, out expectedDecimal))
             {
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo DNI");
+                textbox.BackColor = Color.Coral;
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en los campos marcados");
             }
         }
+
 
         public static void ValidarTipoNroCalle(string p)
         {
