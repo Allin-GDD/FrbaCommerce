@@ -99,17 +99,9 @@ namespace FrbaCommerce.Datos
                 idObtenido = lectura.GetDecimal(0);
             }
             conn.Close();
-
-
-            if (idObtenido != 0)
-            {
-                return (idObtenido);
-            }
-            else
-            {
-                throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
-            }
-
+            return (idObtenido);
+         
+          
         }
 
         public static void buscarListaDeEmpresa(Entidades.Ent_ListadoEmpresa pEmpresa, DataGridView dataGridView1)

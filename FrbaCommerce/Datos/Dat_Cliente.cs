@@ -84,7 +84,8 @@ namespace FrbaCommerce.Datos
 
         public static void AgregarCliente(Entidades.Ent_Cliente pCliente)
         {
-            int retorno;
+            int retorno; 
+         
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
 

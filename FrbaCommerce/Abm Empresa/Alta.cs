@@ -48,6 +48,8 @@ namespace FrbaCommerce.Abm_Empresa
 
                 //Agrega el cliente a la DB
                 Datos.Dat_Empresa.AgregarEmpresa(empresa);
+
+
                 Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario);
                 //el usuario va a ser el mail y la contraseña su cuit
 

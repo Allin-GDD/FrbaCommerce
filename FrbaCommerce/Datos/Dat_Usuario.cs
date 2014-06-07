@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace FrbaCommerce.Datos
 {
@@ -61,22 +62,28 @@ namespace FrbaCommerce.Datos
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario)
         {
             Decimal IdUsuario = buscarId(pw, rolDeUsuario);
+            String pwHash = hashearSHA256(pw);
+          
 
             //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
-            try
-            {
+            //try
+            //{
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conn,
                 new SqlParameter("@Usuario", usuario),
-                new SqlParameter("@Password", pw),
+                new SqlParameter("@Password", pwHash),
                 new SqlParameter("@IdUsuario", IdUsuario),
-                new SqlParameter("@IdRod", rolDeUsuario),
+                new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Estado", 1));
+                int retorno = cmd.ExecuteNonQuery();
+                if (retorno == 0) {
+                    throw new Excepciones.ValoresConTiposDiferentes("ERROR ACA");
+                }
 
-            }
-            catch (Exception) {
-                MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception) {
+            //    MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
             
 
         }
@@ -130,5 +137,16 @@ namespace FrbaCommerce.Datos
 
             return estado;
         }
+
+        public static String hashearSHA256(String input)
+        {
+            SHA256Managed encriptador = new SHA256Managed();
+            byte[] inputEnBytes = Encoding.UTF8.GetBytes(input);
+            byte[] inputHashBytes = encriptador.ComputeHash(inputEnBytes);
+            return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
+        }
+    
+    
+    
     }
 }
