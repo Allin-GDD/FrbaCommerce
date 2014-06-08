@@ -32,7 +32,7 @@ namespace FrbaCommerce.Generar_Publicacion
         {
             try
             {
-                
+                Utiles.Validaciones.ValidarTipoDecimal(textBox2, textBox3);
         
             }
             catch (Exception ex)

@@ -60,7 +60,7 @@ namespace FrbaCommerce.Abm_Empresa
 
 
                  //Verifica si la fecha está dentro del limite
-                 Utiles.Validaciones.ValidarFecha(FecCre.Text);
+                 validarTipoDeDatosIngresados();
 
                  
                  //Inicializa el cliente con datos correctos
@@ -107,6 +107,16 @@ namespace FrbaCommerce.Abm_Empresa
             if (!string.IsNullOrEmpty(NroPiso.Text))
             {
                 empresa.Piso = Convert.ToInt32(NroPiso.Text);
+            }
+        }
+        private void validarTipoDeDatosIngresados()
+        {
+            Utiles.Validaciones.ValidarTipoDecimal(NCalle);
+
+
+            if (!string.IsNullOrEmpty(NroPiso.Text))
+            {
+                Utiles.Validaciones.ValidarTipoDecimal(NroPiso);
             }
         }
 

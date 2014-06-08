@@ -124,39 +124,7 @@ namespace FrbaCommerce.Utiles
 
         }
 
-
-        public static void ValidarStringDeNumeros(TextBox textbox)
-        {
-            Decimal expectedDecimal;
-            if (!Decimal.TryParse(textbox.Text, out expectedDecimal))
-            {
-                textbox.BackColor = Color.Coral;
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en los campos marcados");
-            }
-        }
-     
-
-
-        public static void ValidarTipoNroCalle(string p)
-        {
-            Decimal expectedDecimal;
-            if (!Decimal.TryParse(p, out expectedDecimal))
-            {
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo Número de Calle");
-
-            }
-        }
-
-        public static void ValidarTipoPiso(string p)
-        {
-            Decimal expectedDecimal;
-            if (!Decimal.TryParse(p, out expectedDecimal))
-            {
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo Piso");
-            }
-
-        }
-
+   
         public static void ValidarFuncionablidadRepetida(decimal rol, int func)
         {
             List<int> listaDeFunc = new List<int>();
@@ -204,5 +172,25 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.InexistenciaUsuario("Usuario no válido");
             }
         }
+        
+        
+        public static void ValidarTipoDecimal(params TextBox[] parametroTxtBox)
+        {
+            int i = 0;
+            Decimal expectedDecimal;
+            foreach (TextBox parametro in parametroTxtBox)
+            {
+                if (!Decimal.TryParse(parametro.Text, out expectedDecimal))
+                {
+                    parametro.BackColor = Color.Coral;
+                    i++;
+                }
+            }
+            if (i > 0)
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en el campo señalados");
+            }
+        }
+
     }
 }

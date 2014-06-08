@@ -103,14 +103,11 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void validarTipoDeDatosIngresados()
         {
-
-            Utiles.Validaciones.ValidarStringDeNumeros(txtDNI);
-
-            Utiles.Validaciones.ValidarTipoNroCalle(txtNroCalle.Text);
+            Utiles.Validaciones.ValidarTipoDecimal(txtDNI, txtNroCalle);
 
             if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
-                Utiles.Validaciones.ValidarTipoPiso(txtNroPiso.Text);
+                Utiles.Validaciones.ValidarTipoDecimal(txtNroPiso);
             }
         }
 

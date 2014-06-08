@@ -90,12 +90,12 @@ namespace FrbaCommerce.Abm_Empresa
 
          private void validarTipoDeDatosIngresados()
          {
-             Utiles.Validaciones.ValidarTipoNroCalle(NCalle.Text);
+             Utiles.Validaciones.ValidarTipoDecimal(NCalle);
             
 
              if (!string.IsNullOrEmpty(NroPiso.Text))
              {
-                 Utiles.Validaciones.ValidarTipoPiso(NroPiso.Text);
+                 Utiles.Validaciones.ValidarTipoDecimal(NroPiso);
              }
          }
 
