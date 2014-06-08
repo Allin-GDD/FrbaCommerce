@@ -85,5 +85,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
             this.Close();
         }
+
+        
     }
 }
