@@ -61,6 +61,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Precio = Convert.ToDouble(textBox4.Text);
 
 
+
+
         }
 
 
@@ -72,6 +74,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
+      
 
     }
 }

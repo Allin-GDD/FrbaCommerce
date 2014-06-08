@@ -369,7 +369,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Baja";
             this.Text = "Baja";
-            this.Load += new System.EventHandler(this.Baja_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

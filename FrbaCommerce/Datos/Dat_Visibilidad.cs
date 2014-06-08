@@ -10,7 +10,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Visibilidad
     {
-        public static void AgregarVisibilidad(Entidades.Ent_Visibilidad pvisibilidad)
+        public static void AgregarVisibilidad(Entidades.Ent_Visibilidad pvisibilidad, short vencimiento)
         {
             int retorno;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
@@ -20,7 +20,9 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Codigo", pvisibilidad.Codigo),
                    new SqlParameter("@Descripcion", pvisibilidad.Descripcion),
                    new SqlParameter("@Precio", pvisibilidad.Precio),
-                   new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje));
+                   new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje),
+                   new SqlParameter("@Estado", 1) ,
+                   new SqlParameter("@Vencimiento", vencimiento));
                
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -45,15 +47,20 @@ namespace FrbaCommerce.Datos
                     pVis.Descripcion = lectura.GetString(1);
                     pVis.Precio = lectura.GetDouble(2);
                     pVis.Porcentaje = lectura.GetDouble(3);
+
                }
                 conn.Close();
             }
-            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
             return pVis;
         }
 
     
-           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar)
+           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado, short vencimiento)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -62,7 +69,9 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@Codigo", visibilidadAModificar),
                 new SqlParameter("@Descripcion", pvisibilidad.Descripcion),
                 new SqlParameter("@Precio", pvisibilidad.Precio),
-                new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje));
+                new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje),
+                new SqlParameter("@Estado", estado),
+                new SqlParameter("@Vencimiento", vencimiento));
                
 
                 retorno = cmd.ExecuteNonQuery();

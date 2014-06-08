@@ -21,7 +21,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         }
         private Entidades.Ent_Visibilidad visibilidadAnt;
 
-        private void cargarDatosVisibilidadSeleccionada()
+    private void cargarDatosVisibilidadSeleccionada()
         {
             visibilidadAnt = Datos.Dat_Visibilidad.buscarVisibilidad(visibilidadAModificar);
 
@@ -29,6 +29,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             textBox2.Text = visibilidadAnt.Descripcion;
             textBox3.Text = Convert.ToString(visibilidadAnt.Precio);
             textBox4.Text = Convert.ToString(visibilidadAnt.Porcentaje);
+
             
  
         }
@@ -59,6 +60,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Descripcion = Convert.ToString(textBox2.Text);
             visibilidad.Precio = Convert.ToDouble(textBox3.Text);
             visibilidad.Porcentaje = Convert.ToDouble(textBox4.Text);
+ 
         }
 
            private void button1_Click(object sender, EventArgs e)
