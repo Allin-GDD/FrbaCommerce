@@ -48,6 +48,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             textBox2.Text = pvisibilidad.Descripcion;
             textBox3.Text = Convert.ToString(pvisibilidad.Precio);
             textBox4.Text = Convert.ToString(pvisibilidad.Porcentaje);
+            textBox5.Text = Convert.ToString(pvisibilidad.Vencimiento);
 
 
         }

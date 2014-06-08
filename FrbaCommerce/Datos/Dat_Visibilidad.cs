@@ -10,7 +10,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Visibilidad
     {
-        public static void AgregarVisibilidad(Entidades.Ent_Visibilidad pvisibilidad, short vencimiento)
+        public static void AgregarVisibilidad(Entidades.Ent_Visibilidad pvisibilidad)
         {
             int retorno;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
@@ -22,7 +22,7 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Precio", pvisibilidad.Precio),
                    new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje),
                    new SqlParameter("@Estado", 1) ,
-                   new SqlParameter("@Vencimiento", vencimiento));
+                   new SqlParameter("@Vencimiento", pvisibilidad.Vencimiento));
                
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -47,6 +47,7 @@ namespace FrbaCommerce.Datos
                     pVis.Descripcion = lectura.GetString(1);
                     pVis.Precio = lectura.GetDouble(2);
                     pVis.Porcentaje = lectura.GetDouble(3);
+                    pVis.Vencimiento = lectura.GetDecimal(4);
 
                }
                 conn.Close();
@@ -60,7 +61,7 @@ namespace FrbaCommerce.Datos
         }
 
     
-           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado, short vencimiento)
+           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -71,7 +72,7 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@Precio", pvisibilidad.Precio),
                 new SqlParameter("@Porcentaje", pvisibilidad.Porcentaje),
                 new SqlParameter("@Estado", estado),
-                new SqlParameter("@Vencimiento", vencimiento));
+                new SqlParameter("@Vencimiento", pvisibilidad.Vencimiento));
                
 
                 retorno = cmd.ExecuteNonQuery();

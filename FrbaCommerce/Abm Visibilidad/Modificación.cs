@@ -20,6 +20,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             cargarDatosVisibilidadSeleccionada();
         }
         private Entidades.Ent_Visibilidad visibilidadAnt;
+        private short estado = 7;
 
     private void cargarDatosVisibilidadSeleccionada()
         {
@@ -29,6 +30,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             textBox2.Text = visibilidadAnt.Descripcion;
             textBox3.Text = Convert.ToString(visibilidadAnt.Precio);
             textBox4.Text = Convert.ToString(visibilidadAnt.Porcentaje);
+            textBox5.Text = Convert.ToString(visibilidadAnt.Vencimiento);
 
             
  
@@ -45,7 +47,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                  //Inicializa el cliente con datos correctos
                  inicializarVisibilidad(visibilidad);
 
-                 Datos.Dat_Visibilidad.ActualizarCamposAVisibilidad(visibilidad, visibilidadAModificar);
+                 Datos.Dat_Visibilidad.ActualizarCamposAVisibilidad(visibilidad, visibilidadAModificar,estado);
 
              }
              catch (Exception ex) {
@@ -60,6 +62,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Descripcion = Convert.ToString(textBox2.Text);
             visibilidad.Precio = Convert.ToDouble(textBox3.Text);
             visibilidad.Porcentaje = Convert.ToDouble(textBox4.Text);
+            visibilidad.Vencimiento = Convert.ToDecimal(textBox5.Text);
  
         }
 
