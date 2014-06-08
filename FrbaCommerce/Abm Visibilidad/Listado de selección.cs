@@ -59,16 +59,16 @@ namespace FrbaCommerce.Abm_Visibilidad
             Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
 
-            if (e.ColumnIndex == 14)
+            if (e.ColumnIndex == 4)
             {//14 es la pocision del boton modificar
-                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
+                Abm_Visibilidad.Modificación mod = new Abm_Visibilidad.Modificación(codigoSeleccionado);
                 mod.Show();
 
             }
-            if (e.ColumnIndex == 15)
+            if (e.ColumnIndex == 5)
             {
-                Abm_Cliente.Baja baj = new Abm_Cliente.Baja(codigoSeleccionado);
-                baj.Show();
+            //    Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
+            //    baj.Show();
             }
         }
     }

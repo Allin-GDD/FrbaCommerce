@@ -30,6 +30,28 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
 
         }
+        public static Entidades.Ent_Visibilidad buscarVisibilidad(int codigo)
+        {
+            Entidades.Ent_Visibilidad pVis = new Entidades.Ent_Visibilidad();
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaVisibilidad", conn,
+                new SqlParameter("@Codigo", codigo));
+
+                SqlDataReader lectura = cmd.ExecuteReader();
+                while (lectura.Read())
+                {
+                    pVis.Descripcion = lectura.GetString(1);
+                    pVis.Precio = lectura.GetDouble(2);
+                    pVis.Porcentaje = lectura.GetDouble(3);
+               }
+                conn.Close();
+            }
+            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
+            return pVis;
+        }
+
     
            public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar)
         {

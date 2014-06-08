@@ -37,9 +37,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(31, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 13);
+            this.label1.Size = new System.Drawing.Size(225, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "¿Está seguro que desea eliminar la visualidad?";
+            this.label1.Text = "¿Está seguro que desea eliminar la visibilidad?";
             // 
             // button1
             // 
@@ -49,6 +49,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Baja
             // 
