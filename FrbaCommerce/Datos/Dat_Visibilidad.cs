@@ -64,9 +64,10 @@ namespace FrbaCommerce.Datos
                    Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
                }
 
-               catch (Exception)
+               catch (Exception ex)
                {
-                   Mensajes.Errores.NoHayConexion();
+                   MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         
                }
 
            }
