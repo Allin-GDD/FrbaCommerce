@@ -21,3 +21,7 @@ Id_Rol numeric (18,0) NOT NULL
 Id_Funcionabilidad int NOT NULL
 
 
+TABLA VISIBILIDAD
+agegar estado
+agregar tiempo venc:
+todos 7
