@@ -46,7 +46,7 @@ namespace FrbaCommerce
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Abm_Visibilidad.Baja l = new Abm_Visibilidad.Baja(1);
+            Abm_Visibilidad.Baja l = new Abm_Visibilidad.Baja(1000);
             l.Show();
         }
     }
