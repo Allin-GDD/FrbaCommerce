@@ -23,6 +23,20 @@ namespace FrbaCommerce.Utiles
             cmbRol.ValueMember = "Id";
 
         }
+        public static void comboBoxVisibilidad(ComboBox cmbVisib)
+        {
+            cmbVisib.DataSource = Datos.Dat_Publicacion.ObtenerVisibilidades();
+            cmbVisib.DisplayMember = "Descripcion";
+            cmbVisib.ValueMember = "Codigo";
+
+        }
+        public static void comboBoxRubro(ComboBox cmbRubro)
+        {
+            cmbRubro.DataSource = Datos.Dat_Publicacion.ObtenerRubros();
+            cmbRubro.DisplayMember = "rubro";
+            cmbRubro.ValueMember = "codigo";
+
+        }
 
         public static void comboBoxHabilitado(ComboBox cmbHabilitado, Int32 id, Int16 rol)
         {
@@ -61,6 +75,18 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.DisplayMember = "funcionalidad";
             cmbFuncionalidad.ValueMember = "id";
         }
+
+
+        public static void comboBoxTipo_Publicacion(ComboBox cmbTipo_Pub)
+        {
+
+            List<Entidades.Ent_TipoPub> lista = Utiles.Tipo_Publicaciones.listaPublicacion();
+            cmbTipo_Pub.DataSource = lista;
+            cmbTipo_Pub.DisplayMember = "tipo";
+            cmbTipo_Pub.ValueMember = "tipo";
+
+        }
+
 
         public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
         {

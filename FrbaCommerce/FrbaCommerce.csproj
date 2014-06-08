@@ -60,6 +60,7 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
     <Compile Include="Datos\Dat_Visibilidad.cs" />
     <Compile Include="Datos\Dat_Usuario.cs" />
@@ -69,9 +70,12 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Entidades\Ent_Rubros.cs" />
+    <Compile Include="Entidades\Ent_TipoPub.cs" />
     <Compile Include="Entidades\Ent_Funcionalidad.cs" />
     <Compile Include="Entidades\Ent_Habilitado.cs" />
     <Compile Include="Entidades\Ent_ListadoEmpresa.cs" />
+    <Compile Include="Entidades\Ent_Publicacion.cs" />
     <Compile Include="Entidades\Ent_ListadoVisibilidad.cs" />
     <Compile Include="Entidades\Ent_Usuario.cs" />
     <Compile Include="Entidades\Ent_Cuit.cs" />
@@ -443,6 +447,7 @@
     <Compile Include="Utiles\Inicializar.cs" />
     <Compile Include="Utiles\LimpiarTexto.cs" />
     <Compile Include="Utiles\SQL.cs" />
+    <Compile Include="Utiles\TipoPublicaciones.cs" />
     <Compile Include="Utiles\Validaciones.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

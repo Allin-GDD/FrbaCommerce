@@ -11,24 +11,40 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class Generar_Publi : Form
     {
-        public Generar_Publi()
+        private Int32 id_Cliente;
+        public Generar_Publi(Int32 idSeleccionado)
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxRubro(cmbRub);
+            Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
+            Utiles.Inicializar.comboBoxTipo_Publicacion(cmbTipoPub);
+            this.id_Cliente = idSeleccionado;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.BlanquearControls(this);
+            Utiles.LimpiarTexto.SacarCheckBox(this);
         }
 
-        private void label10_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                
+        
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
+       
 
-        }
+
+
+    
     }
 }

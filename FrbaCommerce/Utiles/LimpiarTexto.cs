@@ -69,5 +69,25 @@ namespace FrbaCommerce.Utiles
 
             func(ofrm.Controls);
         }
+
+        public static void SacarCheckBox(Form ofrm)
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is CheckBox)
+                    {
+                        (control as CheckBox).Checked = false;
+                    }
+                    else
+                    {
+                        func(control.Controls);
+                    }
+            };
+
+            func(ofrm.Controls);
+        }
    }
 }
