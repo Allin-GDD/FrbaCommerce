@@ -49,21 +49,30 @@ namespace FrbaCommerce.Datos
 
             Mensajes.Generales.validarAlta(retorno);
         }
-           public static void buscarListaDeVisibilidades(Entidades.Ent_Visibilidad pListado, DataGridView dataGridView1)
+           public static void buscarListaDeVisibilidades(Entidades.Ent_ListadoVisibilidad pListado, DataGridView dataGridView1)
            {
+               try
+               {
 
+                   SqlConnection conn = DBConexion.obtenerConexion();
+                   SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeVisibilidades", conn,
+                   new SqlParameter("@Codigo", pListado.Codigo),
+                   new SqlParameter("@Descripcion", pListado.Descripcion),
+                   new SqlParameter("@Precio", pListado.Precio),
+                   new SqlParameter("@Porcentaje", pListado.Porcentaje));
 
-               SqlConnection conn = DBConexion.obtenerConexion();
-               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeVisibilidades", conn,
-               new SqlParameter("@Codigo", pListado.Codigo),
-               new SqlParameter("@Descripcion", pListado.Descripcion),
-               new SqlParameter("@Precio", pListado.Precio),
-               new SqlParameter("@Porcentaje", pListado.Porcentaje));
+                   Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+               }
 
-               Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
-
+               catch (Exception)
+               {
+                   Mensajes.Errores.NoHayConexion();
+               }
 
            }
+
+          
+    
     }
 
 }

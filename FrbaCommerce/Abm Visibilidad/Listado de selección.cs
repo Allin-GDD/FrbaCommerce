@@ -28,27 +28,28 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
+            try
+            {
+
+                Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
 
 
-            pvisibilidad.Codigo = textBox1.Text;
-            pvisibilidad.Descripcion = textBox2.Text;
-            pvisibilidad.Precio = textBox3.Text;
-            pvisibilidad.Porcentaje = textBox4.Text;
+                pvisibilidad.Codigo = textBox1.Text;
+                pvisibilidad.Descripcion = textBox2.Text;
+                pvisibilidad.Precio = textBox3.Text;
+                pvisibilidad.Porcentaje = textBox4.Text;
 
-            //Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
+                Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad,dataGridView1);
 
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-            Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
-            Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
-
-
-        
-
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-       //     Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(eliminar, modificar, dataGridView1);
-            
-           
+                //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+                this.modificar = Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
+                this.eliminar = Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+  
 
         }
 

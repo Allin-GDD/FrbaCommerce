@@ -43,6 +43,12 @@ namespace FrbaCommerce
             this.Close();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Abm_Visibilidad.Listado l = new Abm_Visibilidad.Listado();
+            l.Show();
+        }
     }
 }
 

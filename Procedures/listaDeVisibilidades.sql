@@ -8,7 +8,7 @@ CREATE PROCEDURE listaDeVisibilidades
 	BEGIN
 		SELECT * FROM Visibilidad
 			WHERE
-				Codigo like '%'+@Codigo+'%'
+				(@Codigo = [codigo] or @Codigo = '')
 				AND Descripcion like '%'+@Descripcion+'%'
 				AND Precio like '%'+@Precio+'%'
 				AND Porcentaje like '%'+@Porcentaje+'%'
