@@ -162,7 +162,6 @@
             this.botonModificar.TabIndex = 22;
             this.botonModificar.Text = "Modificar";
             this.botonModificar.UseVisualStyleBackColor = true;
-            this.botonModificar.Click += new System.EventHandler(this.button4_Click);
             // 
             // botonEliminar
             // 
@@ -172,7 +171,6 @@
             this.botonEliminar.TabIndex = 21;
             this.botonEliminar.Text = "Eliminar";
             this.botonEliminar.UseVisualStyleBackColor = true;
-            this.botonEliminar.Click += new System.EventHandler(this.button3_Click);
             // 
             // Listado_de_selección
             // 

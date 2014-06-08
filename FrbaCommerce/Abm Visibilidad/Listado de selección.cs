@@ -18,20 +18,13 @@ namespace FrbaCommerce.Abm_Visibilidad
         public Listado_de_selección()
         {
             InitializeComponent();
-<<<<<<< HEAD
             eliminar = false;
             modificar = false;
-
-
-=======
-         //   eliminar = false;
-         //   modificar = false;
             
-          
->>>>>>> 2d24ccc7497ddcf7d891a209dd44f8a1a0994847
+
         }
-       // private bool eliminar;
-       // private bool modificar;
+       private bool eliminar;
+       private bool modificar;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -43,22 +36,20 @@ namespace FrbaCommerce.Abm_Visibilidad
             pvisibilidad.Precio = textBox3.Text;
             pvisibilidad.Porcentaje = textBox4.Text;
 
-<<<<<<< HEAD
-
             //Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
 
             //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
             Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
             Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
 
-=======
-        //    Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
+
+        
 
             //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
        //     Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(eliminar, modificar, dataGridView1);
             
            
->>>>>>> 2d24ccc7497ddcf7d891a209dd44f8a1a0994847
+
         }
 
 
@@ -78,16 +69,6 @@ namespace FrbaCommerce.Abm_Visibilidad
                 Abm_Cliente.Baja baj = new Abm_Cliente.Baja(codigoSeleccionado);
                 baj.Show();
             }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
