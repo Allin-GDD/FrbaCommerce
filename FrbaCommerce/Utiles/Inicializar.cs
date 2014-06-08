@@ -76,7 +76,7 @@ namespace FrbaCommerce.Utiles
             cmbFuncionalidad.ValueMember = "id";
         }
 
-<<<<<<< HEAD
+
         public static void comboBoxTipo_Publicacion(ComboBox cmbTipo_Pub)
         {
 
@@ -88,9 +88,6 @@ namespace FrbaCommerce.Utiles
         }
 
 
-
-=======
->>>>>>> abe0364781f2488d7a00efda68fc7c6456c5b554
         public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)
         {
             List<int> funcionalidades = Datos.Dat_Rol.buscarFuncDe(idSeleccionado);

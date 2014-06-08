@@ -124,12 +124,8 @@ namespace FrbaCommerce.Utiles
 
         }
 
-<<<<<<< HEAD
 
         public static void ValidarStringDeNumeros(TextBox textbox)
-=======
-        public static void ValidarTipoDni(string p)
->>>>>>> abe0364781f2488d7a00efda68fc7c6456c5b554
         {
             Decimal expectedDecimal;
             if (!Decimal.TryParse(textbox.Text, out expectedDecimal))

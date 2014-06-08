@@ -11,6 +11,7 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class Generar_Publi : Form
     {
+        private Int32 id_Cliente;
         public Generar_Publi(Int32 idSeleccionado)
         {
             InitializeComponent();
@@ -20,7 +21,6 @@ namespace FrbaCommerce.Generar_Publicacion
             this.id_Cliente = idSeleccionado;
         }
 
-        private Int32 id_Cliente;
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);

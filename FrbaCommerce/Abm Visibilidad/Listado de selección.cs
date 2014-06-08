@@ -18,13 +18,13 @@ namespace FrbaCommerce.Abm_Visibilidad
         public Listado_de_selección()
         {
             InitializeComponent();
-            eliminar = false;
-            modificar = false;
+         //   eliminar = false;
+         //   modificar = false;
             
           
         }
-        private bool eliminar;
-        private bool modificar;
+       // private bool eliminar;
+       // private bool modificar;
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -37,10 +37,10 @@ namespace FrbaCommerce.Abm_Visibilidad
             pvisibilidad.Porcentaje = textBox4.Text;
            
 
-            Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
+        //    Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
 
             //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-            Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(eliminar, modificar, dataGridView1);
+       //     Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(eliminar, modificar, dataGridView1);
             
            
         }
