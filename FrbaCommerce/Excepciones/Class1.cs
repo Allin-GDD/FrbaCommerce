@@ -66,5 +66,22 @@ namespace FrbaCommerce.Excepciones
             }
         
     }
+    public class ElUsuarioSeBloqueo : System.Exception
+        {
+            public ElUsuarioSeBloqueo()
+            {
+            }
+            public ElUsuarioSeBloqueo(string message)
+                : base(message)
+            {
+            }
+            public ElUsuarioSeBloqueo(string message, Exception inner)
+
+                : base(message, inner)
+            {
+            }
+        
+    }
+    
     
 }

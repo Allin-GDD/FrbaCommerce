@@ -132,6 +132,7 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no validos en el campo DNI");
             }
         }
+     
 
         public static void ValidarTipoNroCalle(string p)
         {
@@ -191,6 +192,13 @@ namespace FrbaCommerce.Utiles
             {
                 txt.BackColor = Color.Coral;
                 Mensajes.Errores.FaltaDeCampos();
+            }
+        }
+
+        public static void validarUsuario(int retorno)
+        {
+            if (retorno != 1) {
+                throw new Excepciones.InexistenciaUsuario("Usuario no válido");
             }
         }
     }

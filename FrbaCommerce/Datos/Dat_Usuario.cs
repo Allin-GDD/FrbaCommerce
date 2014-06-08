@@ -10,24 +10,22 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Usuario
     {
-        public static List<Entidades.Ent_Usuario> obtenerTodosLosUsuarios()
+        public static List<String> obtenerTodosLosUsuarios()
         {
-            List<Entidades.Ent_Usuario> listaDeUsuarios = new List<Entidades.Ent_Usuario>();
+            List<String> listaDeUsuarios = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select usuario,password,id_rol from Usuario", conexion);
+            SqlCommand Comando = new SqlCommand("Select usuario from Usuario", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
 
             while (lectura.Read())
             {
-                Entidades.Ent_Usuario pUsuario = new Entidades.Ent_Usuario();
+                String usuario;
 
-                pUsuario.Usuario = lectura.GetString(0);
-                pUsuario.Contraseña = lectura.GetString(1);
-                pUsuario.Rol = lectura.GetDecimal(2);
+                usuario = lectura.GetString(0);
+                listaDeUsuarios.Add(usuario);
 
-                listaDeUsuarios.Add(pUsuario);
             }
             return listaDeUsuarios;
 
@@ -36,34 +34,26 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static int validarUsuario(Entidades.Ent_Usuario pusuario)
+        public static void validarUserName(String userName)
         {
-            List<Entidades.Ent_Usuario> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
-            decimal devolucion = 0 ;
-            foreach (Entidades.Ent_Usuario usuario in listaDeUsuarios)
-            {
-
-                if ((pusuario.Usuario == usuario.Usuario) && (pusuario.Contraseña == usuario.Contraseña))
+            List<String> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
+            int retorno = 0;
+            foreach (String usuario in listaDeUsuarios)
+            {   
+               if (userName != usuario)
                 {
-
-                    devolucion = usuario.Rol;
-
+                    retorno++;
                 }
-                else
-                {
-                    
-                }
-
             }
-            return Convert.ToInt16(devolucion);
+            Utiles.Validaciones.validarUsuario(retorno);
 
         }
 
-        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario,Decimal IdUsuario)
+        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario)
         {
-            
+
             String pwHash = hashearSHA256(pw);
-          
+
 
             //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
             try
@@ -75,19 +65,18 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@IdUsuario", IdUsuario),
                 new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Estado", 1));
-              
+
 
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
 
         }
 
-    
-
-        public static void ActualizarEstadoUsuario(short estado, int clienteAModificar, short rolCliente)
+        public static void ActualizarEstadoUsuario(short estado, Decimal clienteAModificar, Decimal rolCliente)
         {
             try
             {
@@ -127,8 +116,55 @@ namespace FrbaCommerce.Datos
             byte[] inputHashBytes = encriptador.ComputeHash(inputEnBytes);
             return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
         }
-    
-    
-    
+
+        public static int validarContraseña(string contraseñaValida, string contraseñaIngresada, int posiblidadesDeLoggeo)
+        {
+            if (contraseñaIngresada != contraseñaValida)
+            {
+                posiblidadesDeLoggeo--;
+                
+            }
+            return posiblidadesDeLoggeo;
+
+        }
+
+        public static void bloquearUsuario(int posiblidadesDeLoggeo, Decimal rol, Decimal Idusuario)
+        {
+            if (posiblidadesDeLoggeo == 0)
+            {
+                Dat_Usuario.ActualizarEstadoUsuario(0, Idusuario, rol);
+                throw new Excepciones.ElUsuarioSeBloqueo("Se agotaron las posibilidades de logeo, el usuario ha sido bloquedo. Por favor comuniquese con el administrador");
+            }
+        }
+
+        public static Entidades.Ent_Usuario obtenerCamposDe(string nombre)
+        {
+            Entidades.Ent_Usuario pUsuario = new Entidades.Ent_Usuario();
+            pUsuario.Usuario = nombre;
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarCamposDeUsuario", conn,
+            new SqlParameter("@Usuario", nombre));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                pUsuario.Contraseña = lectura.GetString(0);
+                pUsuario.Rol = lectura.GetDecimal(1);
+                pUsuario.IdUsuario = lectura.GetDecimal(2);
+            }
+            conn.Close();
+
+            return pUsuario;
+        }
+
+        public static void dispararExcepcionLogin(int posiblidadesDeLoggeo, int posiblidadesDeLoggeoNuevo)
+        {
+
+            if (posiblidadesDeLoggeo != posiblidadesDeLoggeoNuevo && (posiblidadesDeLoggeo > -1))
+            {
+
+                throw new Excepciones.ElUsuarioSeBloqueo("La contraseña ingresada no es válida. Le quedan: " + posiblidadesDeLoggeoNuevo + " intentos");
+            }
+        }
     }
 }
