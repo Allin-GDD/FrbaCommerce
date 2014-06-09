@@ -32,30 +32,32 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
 
         }
-  public static Entidades.Ent_Visibilidad buscarVisibilidad(Int32 codigo)
-  {
-  Entidades.Ent_Visibilidad pVis = new Entidades.Ent_Visibilidad();
-  pVis.Codigo = codigo;
-
-  SqlConnection conn = DBConexion.obtenerConexion();
-  SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaVisibilidad", conn,
-  new SqlParameter("@Codigo", Convert.ToDecimal(codigo)));
-
-  SqlDataReader lectura = cmd.ExecuteReader();
-   
-  while (lectura.Read())
-  {
-  pVis.Descripcion = lectura.GetString(1);
-  pVis.Precio = Convert.ToDouble(lectura.GetDecimal(2));
-  pVis.Porcentaje = Convert.ToDouble(lectura.GetDecimal(3));
-  pVis.Vencimiento = lectura.GetInt16(5);
-
-  }
-  conn.Close();
-   
-  return pVis;
-  }
        
+
+        public static Entidades.Ent_Visibilidad buscarVisibilidad(Int32 codigo)
+        {
+            Entidades.Ent_Visibilidad pVis = new Entidades.Ent_Visibilidad();
+                pVis.Codigo = codigo;
+
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaVisibilidad", conn,
+                new SqlParameter("@Codigo", Convert.ToDecimal(codigo)));
+
+                SqlDataReader lectura = cmd.ExecuteReader();
+              
+                while (lectura.Read())
+                {
+                    pVis.Descripcion = lectura.GetString(1);
+                    pVis.Precio = Convert.ToDouble(lectura.GetDecimal(2));
+                    pVis.Porcentaje = Convert.ToDouble(lectura.GetDecimal(3));
+                    pVis.Vencimiento = lectura.GetInt16(5);
+
+               }
+                conn.Close();
+          
+            return pVis;
+        }
+
 
     
            public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado)
