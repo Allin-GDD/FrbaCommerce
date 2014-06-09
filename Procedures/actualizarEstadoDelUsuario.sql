@@ -1,5 +1,5 @@
 CREATE PROCEDURE actualizarEstadoDelUsuario
-@Estado nvarchar(max),
+@Estado smallint,
 @Rol numeric(18,0),
 @Id numeric(18,0)
 AS

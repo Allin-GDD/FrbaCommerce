@@ -75,7 +75,7 @@
             this.txtBoxPass.Location = new System.Drawing.Point(132, 59);
             this.txtBoxPass.Name = "txtBoxPass";
             this.txtBoxPass.Size = new System.Drawing.Size(100, 20);
-            this.txtBoxPass.TabIndex = 14;
+            this.txtBoxPass.TabIndex = 12;
             this.txtBoxPass.UseSystemPasswordChar = true;
             // 
             // Login

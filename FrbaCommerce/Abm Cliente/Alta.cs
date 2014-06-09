@@ -52,8 +52,9 @@ namespace FrbaCommerce.Abm_Cliente
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
                 Decimal IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
+
+                //throw new Excepciones.DuplicacionDeDatos("mail: " + cliente.Mail + "dni: " + Convert.ToString(txtDNI.Text) + "rol: " + rolDeUsuario + "id" + IdUsuario); 
                 Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
-                //Esto va a tirar un error pq todavía no esta implementado el crear usuario
                 //el usuario va a ser el mail y la contraseña su dni
 
                 this.Close();
@@ -138,9 +139,6 @@ namespace FrbaCommerce.Abm_Cliente
             list.Show();
         }
 
-    
-
-
-
+       
     }
 }

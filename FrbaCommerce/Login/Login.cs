@@ -16,32 +16,39 @@ namespace FrbaCommerce.Login
         public Login()
         {
             InitializeComponent();
-            this.posiblidadesDeLoggeo = 2;
+         
 
         }
 
-        private int posiblidadesDeLoggeo;
+     
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                int posiblidadesDeLoggeoAnt = this.posiblidadesDeLoggeo;
+               
                 Datos.Dat_Usuario.validarUserName(txtBoxUser.Text); //Valida si el e usuario existe
 
                 Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtBoxUser.Text);//busca los datos del usuario
 
                 String contraseñaIngresada = Datos.Dat_Usuario.hashearSHA256(txtBoxPass.Text);//Hashea la pw ingresada
 
-               
-                //Esto se fija si la contraseña es la misma. si no es la misma disminuye 1 la posibilidad de logearse
-                posiblidadesDeLoggeo = Datos.Dat_Usuario.validarContraseña(pusuario.Contraseña, contraseñaIngresada, posiblidadesDeLoggeo);
+                Datos.Dat_Usuario.validarIntentos(pusuario.Intentos); //Valida si los intentos son menores a 3
+
+                Datos.Dat_Usuario.validarEstado(pusuario.Estado); //valida si el estado del usuario es correcto
                 
-                Datos.Dat_Usuario.dispararExcepcionLogin(posiblidadesDeLoggeoAnt, posiblidadesDeLoggeo);
+                if (pusuario.Contraseña == contraseñaIngresada)
+                {
+                    Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario,0);
+                    abrirVentanas(pusuario.Rol);
+                }
+                else {
+                    int intentosFallidos = pusuario.Intentos + 1;
+                    Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, intentosFallidos);
+                    
+                    Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos),pusuario.IdUsuario, pusuario.Rol);
 
-                //verifica si las posibilidades son 0 y bloquea el usario
-                Datos.Dat_Usuario.bloquearUsuario(posiblidadesDeLoggeo, pusuario.Rol, pusuario.IdUsuario);
-
-                abrirVentanas(pusuario.Rol);
+                    Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
+                     }
 
             }
             catch (Exception ex)

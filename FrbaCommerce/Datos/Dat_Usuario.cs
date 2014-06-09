@@ -15,7 +15,7 @@ namespace FrbaCommerce.Datos
             List<String> listaDeUsuarios = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select usuario from Usuario", conexion);
+            SqlCommand Comando = new SqlCommand("Select Usuario from Usuario", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
 
@@ -38,9 +38,10 @@ namespace FrbaCommerce.Datos
         {
             List<String> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
             int retorno = 0;
+
             foreach (String usuario in listaDeUsuarios)
-            {   
-               if (userName != usuario)
+            {
+                if (userName == usuario)
                 {
                     retorno++;
                 }
@@ -51,61 +52,63 @@ namespace FrbaCommerce.Datos
 
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario)
         {
-
+            int retorno = 0;
             String pwHash = hashearSHA256(pw);
-
-
-            //ACA HAY QUE CONVERTIR LA PW EN UNA CONTRASEÑA BINARIA PARA PODER GUARDARALA
-            try
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
-                SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conn,
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conexion,
                 new SqlParameter("@Usuario", usuario),
                 new SqlParameter("@Password", pwHash),
                 new SqlParameter("@IdUsuario", IdUsuario),
                 new SqlParameter("@IdRol", rolDeUsuario),
-                new SqlParameter("@Estado", 1));
+                new SqlParameter("@Intentos", retorno),
+                new SqlParameter("@Estado", 1)
+                );
 
-
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Error al crear un nuevo usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
+
+            Mensajes.Generales.validarAlta(retorno);
 
         }
 
-        public static void ActualizarEstadoUsuario(short estado, Decimal clienteAModificar, Decimal rolCliente)
+        public static void ActualizarEstadoUsuario(Int16 estado, Decimal clienteAModificar, Decimal rolCliente)
         {
-            try
+            int retorno = 0;
+
+            using (SqlConnection conn = DBConexion.obtenerConexion())
             {
-                SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoDelUsuario", conn,
                 new SqlParameter("@Estado", estado),
                 new SqlParameter("@Id", clienteAModificar),
                 new SqlParameter("Rol", rolCliente));
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
             }
-            catch (Exception)
+            if (retorno == 0)
             {
-                MessageBox.Show("Error al actualizar el estado del usuario", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw new Excepciones.InexistenciaUsuario("Error al actualizar el estado de usuario");
             }
         }
 
         public static short obtenerEstado(int id, short rol)
         {
             Int16 estado = -1;
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstadoDelId", conn,
-            new SqlParameter("@Id", id),
-            new SqlParameter("@Rol", rol));
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
+            using (SqlConnection conn = DBConexion.obtenerConexion())
             {
-                estado = lectura.GetInt16(0);
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstadoDelId", conn,
+                new SqlParameter("@Id", id),
+                new SqlParameter("@Rol", rol));
+                SqlDataReader lectura = cmd.ExecuteReader();
+                while (lectura.Read())
+                {
+                    estado = lectura.GetInt16(0);
+                }
+                conn.Close();
             }
-            conn.Close();
-
             return estado;
         }
 
@@ -117,22 +120,24 @@ namespace FrbaCommerce.Datos
             return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
         }
 
-        public static int validarContraseña(string contraseñaValida, string contraseñaIngresada, int posiblidadesDeLoggeo)
+        public static bool validarContraseña(string contraseñaValida, string contraseñaIngresada)
         {
+            bool exito = true;
             if (contraseñaIngresada != contraseñaValida)
             {
-                posiblidadesDeLoggeo--;
-                
+                exito = false;
             }
-            return posiblidadesDeLoggeo;
+            return exito;
 
         }
 
-        public static void bloquearUsuario(int posiblidadesDeLoggeo, Decimal rol, Decimal Idusuario)
+        public static void bloquearUsuario(int intentosFallidos, Decimal rol, Decimal Idusuario)
         {
-            if (posiblidadesDeLoggeo == 0)
+            if (intentosFallidos == 3)
             {
-                Dat_Usuario.ActualizarEstadoUsuario(0, Idusuario, rol);
+
+                Dat_Usuario.ActualizarEstadoUsuario(0, Convert.ToInt32(Idusuario), Convert.ToInt16(rol));
+
                 throw new Excepciones.ElUsuarioSeBloqueo("Se agotaron las posibilidades de logeo, el usuario ha sido bloquedo. Por favor comuniquese con el administrador");
             }
         }
@@ -151,19 +156,47 @@ namespace FrbaCommerce.Datos
                 pUsuario.Contraseña = lectura.GetString(0);
                 pUsuario.Rol = lectura.GetDecimal(1);
                 pUsuario.IdUsuario = lectura.GetDecimal(2);
+                pUsuario.Intentos = lectura.GetInt16(3);
+                pUsuario.Estado = lectura.GetInt16(4);
+              
             }
             conn.Close();
 
             return pUsuario;
         }
 
-        public static void dispararExcepcionLogin(int posiblidadesDeLoggeo, int posiblidadesDeLoggeoNuevo)
+        public static void validarIntentos(short intentos)
         {
-
-            if (posiblidadesDeLoggeo != posiblidadesDeLoggeoNuevo && (posiblidadesDeLoggeo > -1))
+            if (intentos >= 3)
             {
+                throw new Excepciones.InexistenciaUsuario("El usuario se encuentra bloqueado, comuniquese con su administrador");
+            }
+        }
 
-                throw new Excepciones.ElUsuarioSeBloqueo("La contraseña ingresada no es válida. Le quedan: " + posiblidadesDeLoggeoNuevo + " intentos");
+        public static void actualizarIntentos(string usuario, int intentos)
+        {
+            int retorno = 0;
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarIntentos", conn,
+                new SqlParameter("@Usuario", usuario),
+                new SqlParameter("@Intentos", intentos));
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+
+            }
+            if (retorno == 0)
+            {
+                throw new Excepciones.ElUsuarioSeBloqueo("error al actualizar intentos");
+            }
+
+        }
+
+        public static void validarEstado(short estado)
+        {
+            if (estado != 1)
+            {
+                throw new Excepciones.ElUsuarioSeBloqueo("El usuario se encuentra bloqueado o ha sido dado de baja. Por favor comuniquese con el administrador");
             }
         }
     }

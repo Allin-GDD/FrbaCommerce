@@ -37,5 +37,14 @@ namespace FrbaCommerce.Mensajes
         {
             throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
         }
+
+        internal static void ErrorEnlaContraseña(int intentosFallidos)
+        {
+            if (intentosFallidos <= 3)
+            {
+                int intentosPosibles = 3 - intentosFallidos;
+                throw new Excepciones.InexistenciaUsuario("La contraseña ingresada no es válida. Le quedan: " + intentosPosibles + " intentos");
+            }
+        }
     }
 }
