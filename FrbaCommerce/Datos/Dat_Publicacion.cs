@@ -70,13 +70,53 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
                    new SqlParameter("@Descripcion", pPublicacion.Descripcion),
-                   new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas));
+                   new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas),
+                   new SqlParameter("@Fecha_Venc", pPublicacion.Fecha_Venc),
+                   new SqlParameter("@Publicador", pPublicacion.Publicador),
+                   new SqlParameter("@Id", pPublicacion.Id));
 
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
             }
 
         }
+
+        public static void buscarPublicador(String usuario, Decimal id, String rol)
+        {
+
+            Decimal rolId;
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPublicador", conn,
+            new SqlParameter("@Usuario", usuario));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                id = lectura.GetDecimal(2);
+                rolId = lectura.GetDecimal(3);
+
+            }
+            conn.Close();
+        }
+
+        public static void buscarDuracionVisibilidad(String usuario, DateTime fecha_venc)
+        {
+
+            Decimal duracion;
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDuracionVisibilidad", conn,
+            new SqlParameter("@Usuario", usuario));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                duracion = lectura.GetDecimal(4);
+            }
+            conn.Close();
+        }
+
     }
 }
  

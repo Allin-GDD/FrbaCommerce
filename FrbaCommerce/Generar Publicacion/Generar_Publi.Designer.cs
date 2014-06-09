@@ -136,10 +136,14 @@
             // cmbTipoPub
             // 
             this.cmbTipoPub.FormattingEnabled = true;
+            this.cmbTipoPub.Items.AddRange(new object[] {
+            "Subasta",
+            "Compra inmediata"});
             this.cmbTipoPub.Location = new System.Drawing.Point(117, 73);
             this.cmbTipoPub.Name = "cmbTipoPub";
             this.cmbTipoPub.Size = new System.Drawing.Size(139, 21);
             this.cmbTipoPub.TabIndex = 19;
+            this.cmbTipoPub.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPub_SelectedIndexChanged_1);
             // 
             // groupBox1
             // 

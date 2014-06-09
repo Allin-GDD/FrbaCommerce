@@ -173,7 +173,6 @@ namespace FrbaCommerce.Utiles
             }
         }
         
-        
         public static void ValidarTipoDecimal(params TextBox[] parametroTxtBox)
         {
             int i = 0;
@@ -185,10 +184,36 @@ namespace FrbaCommerce.Utiles
                     parametro.BackColor = Color.Coral;
                     i++;
                 }
+                else if(parametro.BackColor == Color.Coral)
+                {
+                    parametro.BackColor = Color.White;
+                }
             }
             if (i > 0)
             {
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en el campo señalados");
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en los campos señalados");
+            }
+        }
+
+        public static void ValidarTipoDecimalPublicacion(params TextBox[] parametroTxtBox)
+        {
+            int i = 0;
+            Decimal expectedDecimal;
+            foreach (TextBox parametro in parametroTxtBox)
+            {
+                if ((!Decimal.TryParse(parametro.Text, out expectedDecimal)) && (parametro.Enabled == true))
+                {
+                    parametro.BackColor = Color.Coral;
+                    i++;
+                }
+                else if (parametro.BackColor == Color.Coral)
+                {
+                    parametro.BackColor = Color.White;
+                }
+            }
+            if (i > 0)
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en los campos señalados");
             }
         }
 

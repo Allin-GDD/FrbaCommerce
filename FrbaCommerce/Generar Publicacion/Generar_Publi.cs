@@ -11,14 +11,13 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class Generar_Publi : Form
     {
-        private Int32 id_Cliente;
-        public Generar_Publi(Int32 idSeleccionado)
+        private string usuario;
+        public Generar_Publi(string usuarioPk)
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxRubro(cmbRub);
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
-            Utiles.Inicializar.comboBoxTipo_Publicacion(cmbTipoPub);
-            this.id_Cliente = idSeleccionado;
+            this.usuario = usuarioPk;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,7 +31,8 @@ namespace FrbaCommerce.Generar_Publicacion
         {
             try
             {
-                Utiles.Validaciones.ValidarTipoDecimal(textBox2, textBox3);
+
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox2, textBox3);
         
             }
             catch (Exception ex)
@@ -41,10 +41,38 @@ namespace FrbaCommerce.Generar_Publicacion
             }
         }
 
-       
 
+        private void cmbTipoPub_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cmbTipoPub.SelectedItem.ToString() == "Subasta")
+            {
+                textBox2.Text = "";
+                label7.Text = "Precio inicial";
+                textBox2.BackColor = Color.WhiteSmoke;
+                textBox2.Enabled = false;
+            }
+            else if(cmbTipoPub.SelectedItem.ToString() == "Compra inmediata")
+            {
+                label7.Text = "Precio unitario";
+                textBox2.BackColor = Color.White;
+                textBox2.Enabled = true;
+            }
+        }
 
+        private void inicializarCliente(Entidades.Ent_Publicacion publicacion)
+        {
 
-    
+            publicacion.Visibilidad = Convert.ToInt16(cmbVisib.SelectedValue);
+            publicacion.Tipo = Convert.ToString(cmbTipoPub.SelectedValue);
+            publicacion.Stock = Convert.ToInt32(textBox2.Text);
+            publicacion.Rubro = Convert.ToInt16(cmbRub.SelectedValue);
+            publicacion.Precio = Convert.ToInt32(textBox3.Text);
+            publicacion.Descripcion = Convert.ToString(textBox5.Text);
+            publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
+            Datos.Dat_Publicacion.buscarPublicador(usuario, publicacion.Id, publicacion.Publicador);
+            Datos.Dat_Publicacion.buscarDuracionVisibilidad(usuario, publicacion.Fecha_Venc);
+
+        }
+  
     }
 }
