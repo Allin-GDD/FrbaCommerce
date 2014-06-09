@@ -89,5 +89,10 @@ namespace FrbaCommerce.Utiles
 
             func(ofrm.Controls);
         }
-   }
+
+        public static void LimpiarDataGrid(DataGridView dataGridView1)
+        {
+            dataGridView1.DataSource = null;
+        }
+    }
 }

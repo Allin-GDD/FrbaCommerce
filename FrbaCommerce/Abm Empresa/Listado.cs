@@ -32,6 +32,12 @@ namespace FrbaCommerce.Abm_Empresa
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
+        }
+
         
 
        

@@ -70,5 +70,11 @@ namespace FrbaCommerce.Abm_Visibilidad
                 baj.Show();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
+        }
     }
 }

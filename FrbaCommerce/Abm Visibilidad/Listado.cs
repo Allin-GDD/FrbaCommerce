@@ -42,7 +42,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
-            Utiles.LimpiarTexto.BlanquearControls(this);
+            Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
         }
 
     }
