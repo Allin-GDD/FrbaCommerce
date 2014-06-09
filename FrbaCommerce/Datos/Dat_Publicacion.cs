@@ -95,6 +95,14 @@ namespace FrbaCommerce.Datos
             {
                 id = lectura.GetDecimal(2);
                 rolId = lectura.GetDecimal(3);
+                if (rolId == 1)
+                {
+                    rol = "C";
+                }
+                else if (rolId == 2)
+                {
+                    rol = "E";
+                }
 
             }
             conn.Close();
@@ -109,11 +117,15 @@ namespace FrbaCommerce.Datos
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDuracionVisibilidad", conn,
             new SqlParameter("@Usuario", usuario));
 
+
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
                 duracion = lectura.GetDecimal(4);
+                fecha_venc = DateTime.Now.AddDays(Convert.ToDouble(duracion));
             }
+
+
             conn.Close();
         }
 
