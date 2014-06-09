@@ -20,7 +20,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             cargarDatosVisibilidadSeleccionada();
         }
         private Entidades.Ent_Visibilidad visibilidadAnt;
-        private short estado ;
+        private Int16 estado ;
 
     private void cargarDatosVisibilidadSeleccionada()
         {
@@ -47,6 +47,7 @@ namespace FrbaCommerce.Abm_Visibilidad
 
                  //Inicializa el cliente con datos correctos
                  inicializarVisibilidad(visibilidad);
+                 estado = Convert.ToInt16(textBox6.Text);
 
                  Datos.Dat_Visibilidad.ActualizarCamposAVisibilidad(visibilidad, visibilidadAModificar,estado);
 

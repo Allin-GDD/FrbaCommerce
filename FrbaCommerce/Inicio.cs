@@ -46,7 +46,7 @@ namespace FrbaCommerce
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Abm_Visibilidad.Modificación l = new Abm_Visibilidad.Modificación(10002);
+            Abm_Visibilidad.Listado_de_selección l = new Abm_Visibilidad.Listado_de_selección();
             l.Show();
         }
     }

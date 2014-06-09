@@ -60,7 +60,7 @@ namespace FrbaCommerce.Datos
 
 
     
-           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado)
+           public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,Int16 estado)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
