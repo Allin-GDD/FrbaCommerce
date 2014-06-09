@@ -53,8 +53,7 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         }
 
-
-        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
@@ -67,8 +66,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             }
             if (e.ColumnIndex == 7)
             {
-            Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
-            baj.Show();
+                Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
+                baj.Show();
             }
         }
     }

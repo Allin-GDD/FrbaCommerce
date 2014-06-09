@@ -31,6 +31,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,7 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +68,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.textBox4);
@@ -82,6 +86,13 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de visibilidad";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(118, 165);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 15;
             // 
             // textBox5
             // 
@@ -154,12 +165,23 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Código";
             // 
-            // textBox6
+            // label5
             // 
-            this.textBox6.Location = new System.Drawing.Point(118, 165);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 15;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Vencimiento";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 165);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Estado";
             // 
             // Modificación
             // 
@@ -192,5 +214,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }

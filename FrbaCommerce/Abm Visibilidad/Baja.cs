@@ -53,6 +53,11 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }

@@ -15,7 +15,7 @@ namespace FrbaCommerce.Mensajes
 
         public static void ExitoAlBorrarLosDatos()
         {
-            MessageBox.Show("El usuario se ha dado de baja", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Se ha dado de baja correctamente", "Baja", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         }
     }
