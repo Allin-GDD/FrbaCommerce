@@ -32,33 +32,30 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
 
         }
-        public static Entidades.Ent_Visibilidad buscarVisibilidad(int codigo)
-        {
-            Entidades.Ent_Visibilidad pVis = new Entidades.Ent_Visibilidad();
-            try
-            {
-                SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaVisibilidad", conn,
-                new SqlParameter("@Codigo", codigo));
+  public static Entidades.Ent_Visibilidad buscarVisibilidad(Int32 codigo)
+  {
+  Entidades.Ent_Visibilidad pVis = new Entidades.Ent_Visibilidad();
+  pVis.Codigo = codigo;
 
-                SqlDataReader lectura = cmd.ExecuteReader();
-                while (lectura.Read())
-                {
-                    pVis.Descripcion = lectura.GetString(1);
-                    pVis.Precio = lectura.GetDouble(2);
-                    pVis.Porcentaje = lectura.GetDouble(3);
-                    pVis.Vencimiento = lectura.GetDecimal(4);
+  SqlConnection conn = DBConexion.obtenerConexion();
+  SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaVisibilidad", conn,
+  new SqlParameter("@Codigo", Convert.ToDecimal(codigo)));
 
-               }
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
-            }
-            return pVis;
-        }
+  SqlDataReader lectura = cmd.ExecuteReader();
+   
+  while (lectura.Read())
+  {
+  pVis.Descripcion = lectura.GetString(1);
+  pVis.Precio = Convert.ToDouble(lectura.GetDecimal(2));
+  pVis.Porcentaje = Convert.ToDouble(lectura.GetDecimal(3));
+  pVis.Vencimiento = lectura.GetInt16(5);
+
+  }
+  conn.Close();
+   
+  return pVis;
+  }
+       
 
     
            public static void ActualizarCamposAVisibilidad(Entidades.Ent_Visibilidad pvisibilidad,int visibilidadAModificar,short estado)

@@ -20,7 +20,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             cargarDatosVisibilidadSeleccionada();
         }
         private Entidades.Ent_Visibilidad visibilidadAnt;
-        private short estado = 7;
+        private short estado ;
 
     private void cargarDatosVisibilidadSeleccionada()
         {
@@ -31,6 +31,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             textBox3.Text = Convert.ToString(visibilidadAnt.Precio);
             textBox4.Text = Convert.ToString(visibilidadAnt.Porcentaje);
             textBox5.Text = Convert.ToString(visibilidadAnt.Vencimiento);
+            textBox6.Text = Convert.ToString(estado);
 
             
  
