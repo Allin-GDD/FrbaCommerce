@@ -154,8 +154,8 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 pUsuario.Contraseña = lectura.GetString(0);
-                pUsuario.Rol = lectura.GetDecimal(1);
-                pUsuario.IdUsuario = lectura.GetDecimal(2);
+                pUsuario.IdUsuario = lectura.GetDecimal(1);
+                pUsuario.Rol = lectura.GetDecimal(2);
                 pUsuario.Intentos = lectura.GetInt16(3);
                 pUsuario.Estado = lectura.GetInt16(4);
               
