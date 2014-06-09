@@ -73,6 +73,7 @@
             this.AbmRubro.TabIndex = 3;
             this.AbmRubro.Text = "Abm Rol";
             this.AbmRubro.UseVisualStyleBackColor = true;
+            this.AbmRubro.Click += new System.EventHandler(this.AbmRubro_Click);
             // 
             // button1
             // 

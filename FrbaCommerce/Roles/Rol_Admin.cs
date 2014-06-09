@@ -39,5 +39,11 @@ namespace FrbaCommerce.Roles
             VentanaVisibilidad ventana = new VentanaVisibilidad();
             ventana.Show();
         }
+
+        private void AbmRubro_Click(object sender, EventArgs e)
+        {
+            Roles.VentanaRol rol = new Roles.VentanaRol();
+            rol.Show();
+        }
     }
 }
