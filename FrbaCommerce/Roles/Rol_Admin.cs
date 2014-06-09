@@ -30,7 +30,8 @@ namespace FrbaCommerce.Roles
 
         private void AbmEmpresa_Click(object sender, EventArgs e)
         {
-
+            Roles.VentanaEmpresa empresa = new Roles.VentanaEmpresa();
+            empresa.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
