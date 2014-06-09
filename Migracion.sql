@@ -1,28 +1,23 @@
-USE [GD1C2014]
-GO
+use [gd1c2014]
+go
 
-/****** Object:  Table [dbo].[Visibilidad]    Script Date: 05/30/2014 19:16:40 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
 CREATE TABLE [dbo].[Visibilidad](
 	[Codigo] [numeric](18, 0) NOT NULL,
 	[Descripcion] [nvarchar](255) NULL,
 	[Precio] [numeric](18, 2) NULL,
 	[Porcentaje] [numeric](18, 2) NULL,
+	[Estado] [smallint] NOT NULL,
+	[Vencimiento] [smallint] NOT NULL,
  CONSTRAINT [PK_Visibilidad] PRIMARY KEY CLUSTERED 
 (
 	[Codigo] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 06/08/2014 18:48:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[Usuario](
 	[Usuario] [nvarchar](50) NOT NULL,
@@ -36,9 +31,7 @@ CREATE TABLE [dbo].[Usuario](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-SET ANSI_PADDING OFF
-GO
-/****** Object:  Table [dbo].[Tipo_Doc]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Tipo_Doc]    Script Date: 06/08/2014 18:48:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,7 +45,7 @@ CREATE TABLE [dbo].[Tipo_Doc](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rubro]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Rubro]    Script Date: 06/08/2014 18:48:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -66,7 +59,7 @@ CREATE TABLE [dbo].[Rubro](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Rol]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Rol]    Script Date: 06/08/2014 18:48:16 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -74,7 +67,7 @@ GO
 CREATE TABLE [dbo].[Rol](
 	[Id] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
 	[Nombre] [nvarchar](50) NOT NULL,
-	[Estado] [smallint],
+	[Estado] [smallint] NULL,
  CONSTRAINT [PK_Rol] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -82,8 +75,73 @@ CREATE TABLE [dbo].[Rol](
 ) ON [PRIMARY]
 GO
 
+/****** Object:  StoredProcedure [dbo].[listaDeVisibilidades]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[listaDeVisibilidades]
+		@Codigo nvarchar(255),
+		@Descripcion nvarchar(255),
+		@Precio nvarchar(255),
+		@Porcentaje nvarchar(255)
+		
+	AS
+	BEGIN
+		SELECT * FROM Visibilidad
+			WHERE
+				Codigo like '%'+@Codigo+'%'
+				AND Descripcion like '%'+@Descripcion+'%'
+				AND Precio like '%'+@Precio+'%'
+				AND Porcentaje like '%'+@Porcentaje+'%'
+				
+	END
+GO
+/****** Object:  StoredProcedure [dbo].[ActualizarVisibilidad]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ActualizarVisibilidad]
+@Codigo numeric(18,0),
+@Descripcion nvarchar(255),
+@Precio numeric(18,2),
+@Porcentaje numeric(18,2)
+AS 
+BEGIN
+UPDATE Visibilidad
+SET Descripcion = @Descripcion, Precio = @Precio , Porcentaje = @Porcentaje
+WHERE Codigo = @Codigo
+End
+GO
+/****** Object:  StoredProcedure [dbo].[agregarNuevaVisibilidad]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[agregarNuevaVisibilidad]
+		@Codigo numeric(18,0),
+		@Descripcion nvarchar(255),
+		@Precio numeric(18,2),
+		@Porcentaje numeric(18,2)
 
-/****** Object:  Table [dbo].[Clientes]    Script Date: 05/30/2014 19:16:40 ******/
+AS
+BEGIN
+	INSERT INTO Visibilidad(
+	Codigo,
+	Descripcion,
+	Precio,
+	Porcentaje)
+	VALUES(
+	@Codigo,
+	@Descripcion,
+	@Precio,
+	@Porcentaje 
+	)	
+
+END
+GO
+/****** Object:  Table [dbo].[Clientes]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,7 +167,7 @@ CREATE TABLE [dbo].[Clientes](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Empresa]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Empresa]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,7 +194,57 @@ CREATE TABLE [dbo].[Empresa](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Publicacion]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  StoredProcedure [dbo].[darDeBajaAlCliente]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[darDeBajaAlCliente]
+@Id numeric(18,0)
+AS
+BEGIN
+UPDATE Usuario
+SET Estado = 0
+WHERE Id_Usuario = @Id
+END
+GO
+/****** Object:  Table [dbo].[Funcionalidades]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Funcionalidades](
+	[Id_Rol] [numeric](18, 0) NOT NULL,
+	[Id_Funcionalidad] [smallint] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  StoredProcedure [dbo].[filtrarRol2]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[filtrarRol2]
+@Rol nvarchar(50)
+AS
+BEGIN
+SELECT Id, Nombre FROM Rol
+WHERE Nombre like '%'+@Rol+'%'
+END
+GO
+/****** Object:  StoredProcedure [dbo].[filtrarRol]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[filtrarRol]
+@Rol nvarchar(50)
+AS
+BEGIN
+SELECT Id, Nombre FROM Rol
+WHERE Nombre like '%'+@Rol+'%'
+END
+GO
+/****** Object:  Table [dbo].[Publicacion]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +269,7 @@ CREATE TABLE [dbo].[Publicacion](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Oferta]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Oferta]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,7 +281,7 @@ CREATE TABLE [dbo].[Oferta](
 	[Id] [numeric](18, 0) NOT NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Factura]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Factura]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -191,7 +299,7 @@ CREATE TABLE [dbo].[Factura](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Compra]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Table [dbo].[Compra]    Script Date: 06/08/2014 18:48:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +314,137 @@ CREATE TABLE [dbo].[Compra](
 	[Calificaciones_Descripcion] [nvarchar](255) NULL
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Item_Factura]    Script Date: 05/30/2014 19:16:43 ******/
+/****** Object:  StoredProcedure [dbo].[buscarIdEmpresa]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[buscarIdEmpresa]
+@Cuit nvarchar(255)
+AS
+BEGIN
+SELECT id from Empresa
+WHERE Cuit = @Cuit
+END
+GO
+/****** Object:  StoredProcedure [dbo].[buscarIdCliente]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[buscarIdCliente]
+@Apellido nvarchar(255)
+AS
+BEGIN
+SELECT id from Clientes
+WHERE Apellido = @Apellido
+END
+GO
+/****** Object:  StoredProcedure [dbo].[agregarNuevaEmpresa]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[agregarNuevaEmpresa]
+		@RazonSocial nvarchar(255),
+		@Cuit nvarchar(255),
+		@Fecha_Creacion Datetime,
+		@Mail nvarchar(255),
+		@Dom_Calle nvarchar(255),
+		@Nro_Calle numeric(18,0),
+		@Piso numeric(18,0),
+		@Depto nvarchar(50),
+		@Cod_Postal nvarchar(50),
+		@Localidad nvarchar(255),	
+		@Telefono nvarchar(255),
+		@Ciudad nvarchar(255),
+		@Nombre_Contacto nvarchar(255),
+		@Tipo_dni smallint
+
+AS
+BEGIN
+	INSERT INTO Empresa(
+	Razon_Social,
+	Cuit,
+	Fecha_Creacion,
+	Mail,
+	Dom_Calle,
+	Nro_Calle,
+	Piso,
+	Depto,
+	Cod_Postal,
+	Localidad,
+	Telefono,
+	Ciudad,
+	Nombre_Contacto,
+	Tipo)
+	VALUES(
+		@RazonSocial ,
+		@Cuit,
+		@Fecha_Creacion ,
+		@Mail ,
+		@Dom_Calle,
+		@Nro_Calle,
+		@Piso,
+		@Depto,
+		@Cod_Postal ,
+		@Localidad,	
+		@Telefono,
+		@Ciudad,
+		@Nombre_Contacto,
+		@Tipo_dni
+	)	
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[ActualizarCliente]    Script Date: 06/08/2014 18:48:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[ActualizarCliente]
+@Id numeric(18,0),
+@Dni numeric(18,0),
+		@Nombre nvarchar(255),
+		@Apellido nvarchar(255),
+		@Fecha_Nac Datetime,
+		@Mail nvarchar(255),
+		@Dom_Calle nvarchar(255),
+		@Nro_Calle numeric(18,0),
+		@Piso numeric(18,0),
+		@Depto nvarchar(50),
+		@Cod_Postal nvarchar(50),
+		@Localidad nvarchar(255),
+		@Tipo_dni smallint,
+		@Telefono nvarchar(255)
+		AS 
+		BEGIN
+UPDATE Clientes
+SET Apellido = @Apellido, Nombre = @Nombre , Dni = @Dni, Fecha_Nac = @Fecha_Nac, Mail = @Mail, Dom_Calle = @Dom_Calle,
+Nro_Calle = @Nro_Calle, Piso = @Piso, Depto = @Piso, Cod_Postal = @Cod_Postal, Localidad = @Localidad,
+Tipo_dni = @Tipo_dni, Telefono = @Telefono
+WHERE Id = @Id
+End
+GO
+/****** Object:  StoredProcedure [dbo].[listaDeEmpresas]    Script Date: 06/08/2014 18:48:32 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[listaDeEmpresas]
+@Razon_Social nvarchar(255),
+@CUIT nvarchar(50),
+@Mail nvarchar(50)
+AS
+BEGIN
+SELECT * FROM Empresa 
+WHERE
+Razon_Social LIKE '%'+@Razon_Social+'%' AND
+Mail LIKE '%'+@Mail+'%' AND
+(@CUIT = [Cuit] or @CUIT = '')
+END
+GO
+/****** Object:  Table [dbo].[Item_Factura]    Script Date: 06/08/2014 18:48:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -223,87 +461,94 @@ CREATE TABLE [dbo].[Item_Factura](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Default [DF__Clientes__Tipo_d__2B947552]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Clientes__Tipo_d__5CF6C6BC]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Clientes] ADD  DEFAULT ((1)) FOR [Tipo_dni]
 GO
-/****** Object:  Default [DF__Clientes__Telefo__2C88998B]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Clientes__Telefo__5DEAEAF5]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Clientes] ADD  DEFAULT ('') FOR [Telefono]
 GO
-/****** Object:  Default [DF__Empresa__Telefon__2D7CBDC4]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Empresa__Telefon__5EDF0F2E]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Empresa] ADD  DEFAULT ('') FOR [Telefono]
 GO
-/****** Object:  Default [DF__Empresa__Ciudad__2E70E1FD]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Empresa__Ciudad__5FD33367]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Empresa] ADD  DEFAULT ('') FOR [Ciudad]
 GO
-/****** Object:  Default [DF__Empresa__Nombre___2F650636]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Empresa__Nombre___60C757A0]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Empresa] ADD  DEFAULT ('') FOR [Nombre_Contacto]
 GO
-/****** Object:  Default [DF__Empresa__Tipo__30592A6F]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Empresa__Tipo__61BB7BD9]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Empresa] ADD  DEFAULT ((2)) FOR [Tipo]
 GO
-/****** Object:  Default [DF__Publicaci__Pregu__314D4EA8]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  Default [DF__Publicaci__Pregu__62AFA012]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Publicacion] ADD  DEFAULT ((0)) FOR [Preguntas_permitidas]
 GO
-/****** Object:  ForeignKey [FK_Clientes_Tipo_Doc]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Clientes_Tipo_Doc]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Clientes]  WITH CHECK ADD  CONSTRAINT [FK_Clientes_Tipo_Doc] FOREIGN KEY([Tipo_dni])
 REFERENCES [dbo].[Tipo_Doc] ([Codigo])
 GO
 ALTER TABLE [dbo].[Clientes] CHECK CONSTRAINT [FK_Clientes_Tipo_Doc]
 GO
-/****** Object:  ForeignKey [FK_Empresa_Tipo_Doc]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Empresa_Tipo_Doc]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Empresa]  WITH CHECK ADD  CONSTRAINT [FK_Empresa_Tipo_Doc] FOREIGN KEY([Tipo])
 REFERENCES [dbo].[Tipo_Doc] ([Codigo])
 GO
 ALTER TABLE [dbo].[Empresa] CHECK CONSTRAINT [FK_Empresa_Tipo_Doc]
 GO
-/****** Object:  ForeignKey [FK_Publicacion_Rubro]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Funcionalidades_Rol]    Script Date: 06/08/2014 18:48:31 ******/
+ALTER TABLE [dbo].[Funcionalidades]  WITH CHECK ADD  CONSTRAINT [FK_Funcionalidades_Rol] FOREIGN KEY([Id_Rol])
+REFERENCES [dbo].[Rol] ([Id])
+GO
+ALTER TABLE [dbo].[Funcionalidades] CHECK CONSTRAINT [FK_Funcionalidades_Rol]
+GO
+/****** Object:  ForeignKey [FK_Publicacion_Rubro]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Publicacion]  WITH CHECK ADD  CONSTRAINT [FK_Publicacion_Rubro] FOREIGN KEY([Rubro_Cod])
 REFERENCES [dbo].[Rubro] ([Codigo])
 GO
 ALTER TABLE [dbo].[Publicacion] CHECK CONSTRAINT [FK_Publicacion_Rubro]
 GO
-/****** Object:  ForeignKey [FK_Publicacion_Visibilidad]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Publicacion_Visibilidad]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Publicacion]  WITH CHECK ADD  CONSTRAINT [FK_Publicacion_Visibilidad] FOREIGN KEY([Visibilidad_Cod])
 REFERENCES [dbo].[Visibilidad] ([Codigo])
 GO
 ALTER TABLE [dbo].[Publicacion] CHECK CONSTRAINT [FK_Publicacion_Visibilidad]
 GO
-/****** Object:  ForeignKey [FK_Oferta_Clientes]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Oferta_Clientes]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Oferta]  WITH CHECK ADD  CONSTRAINT [FK_Oferta_Clientes] FOREIGN KEY([Id])
 REFERENCES [dbo].[Clientes] ([Id])
 GO
 ALTER TABLE [dbo].[Oferta] CHECK CONSTRAINT [FK_Oferta_Clientes]
 GO
-/****** Object:  ForeignKey [FK_Oferta_Publicacion]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Oferta_Publicacion]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Oferta]  WITH CHECK ADD  CONSTRAINT [FK_Oferta_Publicacion] FOREIGN KEY([Codigo_Pub])
 REFERENCES [dbo].[Publicacion] ([Codigo])
 GO
 ALTER TABLE [dbo].[Oferta] CHECK CONSTRAINT [FK_Oferta_Publicacion]
 GO
-/****** Object:  ForeignKey [FK_Factura_Publicacion]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Factura_Publicacion]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Factura]  WITH CHECK ADD  CONSTRAINT [FK_Factura_Publicacion] FOREIGN KEY([Pub_Cod])
 REFERENCES [dbo].[Publicacion] ([Codigo])
 GO
 ALTER TABLE [dbo].[Factura] CHECK CONSTRAINT [FK_Factura_Publicacion]
 GO
-/****** Object:  ForeignKey [FK_Compra_Clientes]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Compra_Clientes]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Compra]  WITH CHECK ADD  CONSTRAINT [FK_Compra_Clientes] FOREIGN KEY([Id_Cliente])
 REFERENCES [dbo].[Clientes] ([Id])
 GO
 ALTER TABLE [dbo].[Compra] CHECK CONSTRAINT [FK_Compra_Clientes]
 GO
-/****** Object:  ForeignKey [FK_Compra_Publicacion]    Script Date: 05/30/2014 19:16:40 ******/
+/****** Object:  ForeignKey [FK_Compra_Publicacion]    Script Date: 06/08/2014 18:48:31 ******/
 ALTER TABLE [dbo].[Compra]  WITH CHECK ADD  CONSTRAINT [FK_Compra_Publicacion] FOREIGN KEY([Codigo_Pub])
 REFERENCES [dbo].[Publicacion] ([Codigo])
 GO
 ALTER TABLE [dbo].[Compra] CHECK CONSTRAINT [FK_Compra_Publicacion]
 GO
-/****** Object:  ForeignKey [FK_Item_Factura_Factura]    Script Date: 05/30/2014 19:16:43 ******/
+/****** Object:  ForeignKey [FK_Item_Factura_Factura]    Script Date: 06/08/2014 18:48:32 ******/
 ALTER TABLE [dbo].[Item_Factura]  WITH CHECK ADD  CONSTRAINT [FK_Item_Factura_Factura] FOREIGN KEY([Nro_Fact], [Pub_Cod])
 REFERENCES [dbo].[Factura] ([Numero], [Pub_Cod])
 GO
 ALTER TABLE [dbo].[Item_Factura] CHECK CONSTRAINT [FK_Item_Factura_Factura]
 GO
+
 
 
 
@@ -358,7 +603,7 @@ where Publicacion_Rubro_Descripcion is not null
 
 insert into Visibilidad
 
-select distinct Publicacion_Visibilidad_Cod,Publicacion_Visibilidad_Desc,Publicacion_Visibilidad_Precio,Publicacion_Visibilidad_Porcentaje
+select distinct Publicacion_Visibilidad_Cod,Publicacion_Visibilidad_Desc,Publicacion_Visibilidad_Precio,Publicacion_Visibilidad_Porcentaje,1,7
 from gd_esquema.Maestra
 
 where Publicacion_Visibilidad_Cod is not null
@@ -452,20 +697,16 @@ and oferta_fecha is not null
 --migracion tabla usuario
 
 insert into Usuario
-
-select distinct clientes.Mail,Clientes.Dni,clientes.Id,rol.id,1
-
+select distinct clientes.Mail,convert(nvarchar,Clientes.Dni),clientes.Id,rol.id,1
  from Clientes,rol
- 
  where rol.nombre = 'Cliente'
  
- insert into usuario 
- 
- select distinct Empresa.Mail,Empresa.Cuit,Empresa.Id,rol.id,1
 
+union all
+ select distinct Empresa.Mail,Empresa.Cuit,Empresa.Id,rol.id,1
  from Empresa,rol
  where rol.nombre = 'Empresa'
- 
+
  --carga tabla rol
 INSERT INTO rol VALUES ('Cliente',1)
 INSERT INTO rol VALUES ('Empresa',1)
@@ -473,9 +714,9 @@ INSERT INTO rol VALUES ('Admin',1)
 
 
 --cargar tabla funcionabilidades
-INSERT INTO Funcionabilidades VALUES(1,1)
-INSERT INTO Funcionabilidades VALUES(1,2)
-INSERT INTO Funcionabilidades VALUES(2,1)
+INSERT INTO Funcionalidades VALUES(1,1)
+INSERT INTO Funcionalidades VALUES(1,2)
+INSERT INTO Funcionalidades VALUES(2,1)
 
 -- no va mas
 		

@@ -369,6 +369,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Baja";
             this.Text = "Baja";
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

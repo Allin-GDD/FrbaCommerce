@@ -28,45 +28,45 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
+            try
+            {
+
+                Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
 
 
-            pvisibilidad.Codigo = textBox1.Text;
-            pvisibilidad.Descripcion = textBox2.Text;
-            pvisibilidad.Precio = textBox3.Text;
-            pvisibilidad.Porcentaje = textBox4.Text;
+                pvisibilidad.Codigo = textBox1.Text;
+                pvisibilidad.Descripcion = textBox2.Text;
+                pvisibilidad.Precio = textBox3.Text;
+                pvisibilidad.Porcentaje = textBox4.Text;
 
-            //Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
+                Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad,dataGridView1);
 
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-            Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
-            Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
-
-
-        
-
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-       //     Utiles.Inicializar.AgregarColumnaEliminarYSeleccionar(eliminar, modificar, dataGridView1);
-            
-           
+                //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+                this.modificar = Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
+                this.eliminar = Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+  
 
         }
 
-
-        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
 
-            if (e.ColumnIndex == 14)
-            {//14 es la pocision del boton modificar
-                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
+            if (e.ColumnIndex == 6)
+            {//4 es la pocision del boton modificar
+                Abm_Visibilidad.Modificación mod = new Abm_Visibilidad.Modificación(codigoSeleccionado);
                 mod.Show();
 
             }
-            if (e.ColumnIndex == 15)
+            if (e.ColumnIndex == 7)
             {
-                Abm_Cliente.Baja baj = new Abm_Cliente.Baja(codigoSeleccionado);
+                Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
                 baj.Show();
             }
         }

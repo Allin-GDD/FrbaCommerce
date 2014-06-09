@@ -20,7 +20,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
 
             Entidades.Ent_Visibilidad visibilidad = new FrbaCommerce.Entidades.Ent_Visibilidad();
-
+           
             
             try
             {
@@ -59,6 +59,10 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Descripcion = Convert.ToString(textBox2.Text);
             visibilidad.Porcentaje = Convert.ToDouble(textBox3.Text);
             visibilidad.Precio = Convert.ToDouble(textBox4.Text);
+            visibilidad.Vencimiento = Convert.ToDecimal(textBox5.Text);
+
+
+
 
 
         }
@@ -72,6 +76,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
+      
 
     }
 }
