@@ -21,7 +21,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Usuario](
 	[Usuario] [nvarchar](50) NOT NULL,
-	[Password] [nvarchar](100) NOT NULL,
+	[Password] [nvarchar](64) NOT NULL,
 	[Id_Usuario] [numeric](18, 0) NOT NULL,
 	[Id_Rol] [numeric](18, 0) NOT NULL,
 	[Estado] [smallint] NOT NULL,
