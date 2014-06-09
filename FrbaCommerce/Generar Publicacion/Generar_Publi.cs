@@ -70,7 +70,7 @@ namespace FrbaCommerce.Generar_Publicacion
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
             Datos.Dat_Publicacion.buscarPublicador(usuario, publicacion.Id, publicacion.Publicador);
-            Datos.Dat_Publicacion.buscarDuracionVisibilidad(usuario, publicacion.Fecha_Venc);
+            Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad, publicacion.Fecha_Venc);
 
         }
   

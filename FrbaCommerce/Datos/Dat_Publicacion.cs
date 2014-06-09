@@ -108,20 +108,20 @@ namespace FrbaCommerce.Datos
             conn.Close();
         }
 
-        public static void buscarDuracionVisibilidad(String usuario, DateTime fecha_venc)
+        public static void buscarDuracionVisibilidad(Decimal visibilidad, DateTime fecha_venc)
         {
 
             Decimal duracion;
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDuracionVisibilidad", conn,
-            new SqlParameter("@Usuario", usuario));
+            new SqlParameter("@Visibilidad", visibilidad));
 
 
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                duracion = lectura.GetDecimal(4);
+                duracion = lectura.GetDecimal(5);
                 fecha_venc = DateTime.Now.AddDays(Convert.ToDouble(duracion));
             }
 
