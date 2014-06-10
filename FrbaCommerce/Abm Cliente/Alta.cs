@@ -139,12 +139,6 @@ namespace FrbaCommerce.Abm_Cliente
             list.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Generar_Publicacion.Generar_Publi list = new Generar_Publicacion.Generar_Publi("1");
-            list.Show();
-        }
-
        
     }
 }
