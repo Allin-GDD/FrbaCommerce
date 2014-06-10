@@ -15,7 +15,7 @@ namespace FrbaCommerce.Generar_Publicacion
         public Generar_Publi(string usuarioPk)
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxRubro(cmbRub);
+
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             this.usuario = usuarioPk;
         }
@@ -29,10 +29,12 @@ namespace FrbaCommerce.Generar_Publicacion
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
             try
             {
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
 
-                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox2, textBox3);
+                inicializarPublicacion(publicacion);
         
             }
             catch (Exception ex)
@@ -59,13 +61,13 @@ namespace FrbaCommerce.Generar_Publicacion
             }
         }
 
-        private void inicializarCliente(Entidades.Ent_Publicacion publicacion)
+        private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
         {
 
             publicacion.Visibilidad = Convert.ToInt16(cmbVisib.SelectedValue);
             publicacion.Tipo = Convert.ToString(cmbTipoPub.SelectedValue);
             publicacion.Stock = Convert.ToInt32(textBox2.Text);
-            publicacion.Rubro = Convert.ToInt16(cmbRub.SelectedValue);
+            publicacion.Rubro = Convert.ToInt16(textBox1.Text);
             publicacion.Precio = Convert.ToInt32(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
@@ -73,6 +75,14 @@ namespace FrbaCommerce.Generar_Publicacion
             Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad, publicacion.Fecha_Venc);
 
         }
-  
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(textBox1);
+            list.Show();
+        }
+
+
     }
 }

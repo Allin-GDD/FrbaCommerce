@@ -129,6 +129,15 @@ namespace FrbaCommerce.Datos
             conn.Close();
         }
 
+        public static void filtarListaDeRubros(string descripcionRubro, DataGridView dataGridView1)
+        {
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRubro", conexion,
+           new SqlParameter("@Descripcion", descripcionRubro));
+            Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
+
+            dataGridView1.Columns["Codigo"].Visible = false;
+        }
     }
 }
  

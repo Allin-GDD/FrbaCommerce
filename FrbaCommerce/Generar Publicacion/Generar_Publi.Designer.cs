@@ -38,12 +38,13 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.cmbTipoPub = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbVisib = new System.Windows.Forms.ComboBox();
-            this.cmbRub = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.cmbTipoPub = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,22 +134,11 @@
             this.textBox5.Size = new System.Drawing.Size(177, 85);
             this.textBox5.TabIndex = 18;
             // 
-            // cmbTipoPub
-            // 
-            this.cmbTipoPub.FormattingEnabled = true;
-            this.cmbTipoPub.Items.AddRange(new object[] {
-            "Subasta",
-            "Compra inmediata"});
-            this.cmbTipoPub.Location = new System.Drawing.Point(117, 73);
-            this.cmbTipoPub.Name = "cmbTipoPub";
-            this.cmbTipoPub.Size = new System.Drawing.Size(139, 21);
-            this.cmbTipoPub.TabIndex = 19;
-            this.cmbTipoPub.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPub_SelectedIndexChanged_1);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cmbVisib);
-            this.groupBox1.Controls.Add(this.cmbRub);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
@@ -172,14 +162,6 @@
             this.cmbVisib.Size = new System.Drawing.Size(177, 21);
             this.cmbVisib.TabIndex = 25;
             // 
-            // cmbRub
-            // 
-            this.cmbRub.FormattingEnabled = true;
-            this.cmbRub.Location = new System.Drawing.Point(79, 114);
-            this.cmbRub.Name = "cmbRub";
-            this.cmbRub.Size = new System.Drawing.Size(177, 21);
-            this.cmbRub.TabIndex = 24;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(25, 393);
@@ -199,6 +181,36 @@
             this.button2.Text = "Aceptar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // cmbTipoPub
+            // 
+            this.cmbTipoPub.FormattingEnabled = true;
+            this.cmbTipoPub.Items.AddRange(new object[] {
+            "Subasta",
+            "Compra inmediata"});
+            this.cmbTipoPub.Location = new System.Drawing.Point(117, 73);
+            this.cmbTipoPub.Name = "cmbTipoPub";
+            this.cmbTipoPub.Size = new System.Drawing.Size(139, 21);
+            this.cmbTipoPub.TabIndex = 19;
+            this.cmbTipoPub.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPub_SelectedIndexChanged_1);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(57, 114);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(118, 20);
+            this.textBox1.TabIndex = 26;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(180, 112);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Seleccionar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Generar_Publi
             // 
@@ -232,11 +244,12 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox cmbTipoPub;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cmbRub;
         private System.Windows.Forms.ComboBox cmbVisib;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbTipoPub;
     }
 }
