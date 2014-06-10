@@ -203,6 +203,12 @@
     <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Roles\VentanaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,12 +281,6 @@
     </Compile>
     <Compile Include="Login\Elección_Rol.Designer.cs">
       <DependentUpon>Elección_Rol.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Login\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Mensajes\Errores.cs" />
     <Compile Include="Mensajes\Exitos.cs" />
@@ -397,6 +397,9 @@
     <EmbeddedResource Include="Roles\VentanaVisibilidad.resx">
       <DependentUpon>VentanaVisibilidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utiles\Ventanas\First_Login.resx">
+      <DependentUpon>First_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -405,6 +408,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Utiles\Ventanas\Opciones.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -458,6 +462,13 @@
     <Compile Include="Utiles\SQL.cs" />
     <Compile Include="Utiles\TipoPublicaciones.cs" />
     <Compile Include="Utiles\Validaciones.cs" />
+    <Compile Include="Utiles\Ventanas\First_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\First_Login.Designer.cs">
+      <DependentUpon>First_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validaciones\cliente.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using FrbaCommerce.Registro_de_Usuario;
 
-
 namespace FrbaCommerce.Login
 {
     public partial class Login : Form
@@ -16,40 +15,36 @@ namespace FrbaCommerce.Login
         public Login()
         {
             InitializeComponent();
-         
-
+            this.primerLogin = true;
         }
-
-     
+        private bool primerLogin;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-               
-                Datos.Dat_Usuario.validarUserName(txtBoxUser.Text); //Valida si el e usuario existe
 
-                Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtBoxUser.Text);//busca los datos del usuario
+                //Valida si el e usuario existe
+                Datos.Dat_Usuario.validarUserName(txtBoxUser.Text);
+                //busca los datos del usuario
+                Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtBoxUser.Text);
 
-                String contraseñaIngresada = Datos.Dat_Usuario.hashearSHA256(txtBoxPass.Text);//Hashea la pw ingresada
+                //verifica si es la primera vez que ingresa al sistema
+                primerLogin = Datos.Dat_Usuario.validarPrimerIngreso(txtBoxPass.Text, pusuario.Contraseña, pusuario, this);
 
-                Datos.Dat_Usuario.validarIntentos(pusuario.Intentos); //Valida si los intentos son menores a 3
-
-                Datos.Dat_Usuario.validarEstado(pusuario.Estado); //valida si el estado del usuario es correcto
-                
-                if (pusuario.Contraseña == contraseñaIngresada)
+                if (primerLogin)
                 {
-                    Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario,0);
-                    abrirVentanas(pusuario.Rol);
+                    this.Close();
                 }
-                else {
-                    int intentosFallidos = pusuario.Intentos + 1;
-                    Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, intentosFallidos);
-                    
-                    Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos),pusuario.IdUsuario, pusuario.Rol);
+                else
+                {
+                    String contraseñaIngresada = Datos.Dat_Usuario.hashearSHA256(txtBoxPass.Text);//Hashea la pw ingresada
 
-                    Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
-                     }
+                    Datos.Dat_Usuario.validarIntentos(pusuario.Intentos); //Valida si los intentos son menores a 3
 
+                    Datos.Dat_Usuario.validarEstado(pusuario.Estado); //valida si el estado del usuario es correcto
+
+                    Datos.Dat_Usuario.controlDeLogeo(pusuario, contraseñaIngresada, this); //Controla si la pw es correcta y abre las opciones correspondientes al rol de usuario
+                }
             }
             catch (Exception ex)
             {
@@ -57,47 +52,7 @@ namespace FrbaCommerce.Login
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
         }
-
-        private void abrirVentanas(decimal rol)
-        {
-            switch (Convert.ToInt16(rol))
-            {
-                case 3:
-
-                    Roles.Rol_Admin admin = new Roles.Rol_Admin();
-                    admin.Show();
-                    this.Close();
-
-                    break;
-
-
-                case 2:
-
-                    Roles.Rol_Empresa empresa = new Roles.Rol_Empresa();
-                    empresa.Show();
-                    this.Close();
-
-                    break;
-
-
-                case 1:
-
-                    Roles.Rol_Cliente cliente = new Roles.Rol_Cliente();
-                    cliente.Show();
-                    this.Close();
-
-                    break;
-
-
-
-            }
         }
-
-
     }
-
-}
 

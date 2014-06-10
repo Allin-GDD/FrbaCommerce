@@ -53,16 +53,16 @@ namespace FrbaCommerce.Datos
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario)
         {
             int retorno = 0;
-            String pwHash = hashearSHA256(pw);
+           // String pwHash = hashearSHA256(pw);
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conexion,
                 new SqlParameter("@Usuario", usuario),
-                new SqlParameter("@Password", pwHash),
+                new SqlParameter("@Password", pw),
                 new SqlParameter("@IdUsuario", IdUsuario),
                 new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Intentos", retorno),
-                new SqlParameter("@Estado", 1)
+                new SqlParameter("@Estado", 10)
                 );
 
                 retorno = cmd.ExecuteNonQuery();
@@ -70,7 +70,7 @@ namespace FrbaCommerce.Datos
             }
 
 
-            Mensajes.Generales.validarAlta(retorno);
+            Mensajes.Generales.valirUsuarioCliente(retorno);
 
         }
 
@@ -120,17 +120,6 @@ namespace FrbaCommerce.Datos
             return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
         }
 
-        public static bool validarContraseña(string contraseñaValida, string contraseñaIngresada)
-        {
-            bool exito = true;
-            if (contraseñaIngresada != contraseñaValida)
-            {
-                exito = false;
-            }
-            return exito;
-
-        }
-
         public static void bloquearUsuario(int intentosFallidos, Decimal rol, Decimal Idusuario)
         {
             if (intentosFallidos == 3)
@@ -158,7 +147,7 @@ namespace FrbaCommerce.Datos
                 pUsuario.Rol = lectura.GetDecimal(2);
                 pUsuario.Intentos = lectura.GetInt16(3);
                 pUsuario.Estado = lectura.GetInt16(4);
-              
+
             }
             conn.Close();
 
@@ -197,6 +186,59 @@ namespace FrbaCommerce.Datos
             if (estado != 1)
             {
                 throw new Excepciones.ElUsuarioSeBloqueo("El usuario se encuentra bloqueado o ha sido dado de baja. Por favor comuniquese con el administrador");
+            }
+        }
+
+        public static bool validarPrimerIngreso(string passwordIngresa, string passwordOriginal, Entidades.Ent_Usuario pusuario, Form ofrm)
+        {
+        
+            if (passwordIngresa == passwordOriginal && pusuario.Estado == 10)
+                {
+                    Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.Usuario, pusuario.Rol , pusuario.IdUsuario);
+                    flogin.Show();
+                    return true;
+                }
+            return false;
+           
+
+        }
+
+        public static void actualizarContraseña(string usuario, string pw)
+        {
+            int retorno = 0;
+            String pwHash = hashearSHA256(pw);
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarContraseña", conn,
+                new SqlParameter("@Usuario", usuario),
+                new SqlParameter("@Contraseña", pwHash));
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+
+            }
+            if (retorno == 0)
+            {
+                throw new Excepciones.ElUsuarioSeBloqueo("error al actualizar la contraseña");
+            }
+        }
+
+        public static void controlDeLogeo(Entidades.Ent_Usuario pusuario, string contraseñaIngresada, Form login)
+        {
+
+            if (pusuario.Contraseña == contraseñaIngresada)
+            {
+                Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, 0);
+                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login);
+
+            }
+            else
+            {
+                int intentosFallidos = pusuario.Intentos + 1;
+                Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, intentosFallidos);
+
+                Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos), pusuario.IdUsuario, pusuario.Rol);
+
+                Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
             }
         }
     }

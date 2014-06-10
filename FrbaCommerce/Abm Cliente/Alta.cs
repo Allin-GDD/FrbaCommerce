@@ -25,25 +25,25 @@ namespace FrbaCommerce.Abm_Cliente
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
 
             try
-            {
+            {   
+
+             
                 //Verifica si los datos ingresados no son nulos
                 Utiles.Validaciones.NulidadDeDatosIngresados(this, txtDpto, txtNroPiso, txtFechaNac, txtTelefono);
           
-                
                 //Verifica si lo que se estan ingresando es correcto
                 validarTipoDeDatosIngresados();
-                
                 
                 //Verifica si la fecha está dentro del limite
                 Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
                 
-                
                 //Verifica si el DNI y Telefono ya no existen
                 Datos.Dat_Telefonos.validarTelefono(txtTelefono.Text);
                 Datos.Dat_Dni.validarDni(Convert.ToDecimal(txtDNI.Text));
+                               
 
-               
-                
+
+
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
 
@@ -53,8 +53,7 @@ namespace FrbaCommerce.Abm_Cliente
                 Datos.Dat_Cliente.AgregarCliente(cliente);
                 Decimal IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
 
-                //throw new Excepciones.DuplicacionDeDatos("mail: " + cliente.Mail + "dni: " + Convert.ToString(txtDNI.Text) + "rol: " + rolDeUsuario + "id" + IdUsuario); 
-                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
+                 Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
                 //el usuario va a ser el mail y la contraseña su dni
 
                 this.Close();
@@ -138,7 +137,6 @@ namespace FrbaCommerce.Abm_Cliente
             Abm_Cliente.Listado_de_selección list = new Abm_Cliente.Listado_de_selección();
             list.Show();
         }
-
-       
+        
     }
 }
