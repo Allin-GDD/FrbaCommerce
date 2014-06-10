@@ -208,6 +208,11 @@
     </Compile>
     <Compile Include="Roles\VentanaRol.Designer.cs">
       <DependentUpon>VentanaRol.cs</DependentUpon>
+    <Compile Include="Generar Publicacion\BuscarRubro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\BuscarRubro.Designer.cs">
+      <DependentUpon>BuscarRubro.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\DBConexion.cs" />
     <Compile Include="Comprar-Ofertar\Form1.cs">
@@ -355,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Publicada.resx">
       <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\BuscarRubro.resx">
+      <DependentUpon>BuscarRubro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Generar_Publi.resx">
       <DependentUpon>Generar_Publi.cs</DependentUpon>
