@@ -205,6 +205,9 @@ namespace FrbaCommerce.Comprar_Ofertar
             recNo = pageSize * (currentPage - 1);
             LoadPage();
         }
+
+     
+
 	
     }
 }

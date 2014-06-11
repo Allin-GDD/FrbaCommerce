@@ -42,82 +42,82 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 78);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 42);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(511, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(562, 206);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnFirstPage
             // 
-            this.btnFirstPage.Location = new System.Drawing.Point(314, 101);
+            this.btnFirstPage.Location = new System.Drawing.Point(422, 254);
             this.btnFirstPage.Name = "btnFirstPage";
-            this.btnFirstPage.Size = new System.Drawing.Size(75, 23);
+            this.btnFirstPage.Size = new System.Drawing.Size(35, 23);
             this.btnFirstPage.TabIndex = 1;
-            this.btnFirstPage.Text = "Primera Pagina";
+            this.btnFirstPage.Text = "<<";
             this.btnFirstPage.UseVisualStyleBackColor = true;
             this.btnFirstPage.Click += new System.EventHandler(this.btnFirstPage_Click);
             // 
             // btnNextPage
             // 
-            this.btnNextPage.Location = new System.Drawing.Point(444, 99);
+            this.btnNextPage.Location = new System.Drawing.Point(487, 254);
             this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(75, 23);
+            this.btnNextPage.Size = new System.Drawing.Size(18, 23);
             this.btnNextPage.TabIndex = 2;
-            this.btnNextPage.Text = "Pagina Siguiente";
+            this.btnNextPage.Text = ">";
             this.btnNextPage.UseVisualStyleBackColor = true;
             this.btnNextPage.Click += new System.EventHandler(this.btnNextPage_Click);
             // 
             // btnPreviousPage
             // 
-            this.btnPreviousPage.Location = new System.Drawing.Point(209, 147);
+            this.btnPreviousPage.Location = new System.Drawing.Point(463, 254);
             this.btnPreviousPage.Name = "btnPreviousPage";
-            this.btnPreviousPage.Size = new System.Drawing.Size(75, 23);
+            this.btnPreviousPage.Size = new System.Drawing.Size(18, 23);
             this.btnPreviousPage.TabIndex = 3;
-            this.btnPreviousPage.Text = "Pagina Anterior";
+            this.btnPreviousPage.Text = "<";
             this.btnPreviousPage.UseVisualStyleBackColor = true;
             this.btnPreviousPage.Click += new System.EventHandler(this.btnPreviousPage_Click);
             // 
             // btnLastPage
             // 
-            this.btnLastPage.Location = new System.Drawing.Point(311, 147);
+            this.btnLastPage.Location = new System.Drawing.Point(511, 254);
             this.btnLastPage.Name = "btnLastPage";
-            this.btnLastPage.Size = new System.Drawing.Size(75, 23);
+            this.btnLastPage.Size = new System.Drawing.Size(28, 23);
             this.btnLastPage.TabIndex = 4;
-            this.btnLastPage.Text = "UltimaPagina";
+            this.btnLastPage.Text = ">>";
             this.btnLastPage.UseVisualStyleBackColor = true;
             this.btnLastPage.Click += new System.EventHandler(this.btnLastPage_Click);
             // 
             // btnFillGrid
             // 
-            this.btnFillGrid.Location = new System.Drawing.Point(433, 147);
+            this.btnFillGrid.Location = new System.Drawing.Point(487, 13);
             this.btnFillGrid.Name = "btnFillGrid";
             this.btnFillGrid.Size = new System.Drawing.Size(75, 23);
             this.btnFillGrid.TabIndex = 5;
-            this.btnFillGrid.Text = "LlenarCuadricula";
+            this.btnFillGrid.Text = "Buscar";
             this.btnFillGrid.UseVisualStyleBackColor = true;
             this.btnFillGrid.Click += new System.EventHandler(this.btnFillGrid_Click);
             // 
             // txtDisplayPageNo
             // 
-            this.txtDisplayPageNo.Location = new System.Drawing.Point(287, 198);
+            this.txtDisplayPageNo.Location = new System.Drawing.Point(12, 254);
             this.txtDisplayPageNo.Name = "txtDisplayPageNo";
-            this.txtDisplayPageNo.Size = new System.Drawing.Size(100, 20);
+            this.txtDisplayPageNo.Size = new System.Drawing.Size(80, 20);
             this.txtDisplayPageNo.TabIndex = 6;
             // 
             // txtPageSize
             // 
-            this.txtPageSize.Location = new System.Drawing.Point(393, 198);
+            this.txtPageSize.Location = new System.Drawing.Point(543, 256);
             this.txtPageSize.Name = "txtPageSize";
-            this.txtPageSize.Size = new System.Drawing.Size(100, 20);
+            this.txtPageSize.Size = new System.Drawing.Size(20, 20);
             this.txtPageSize.TabIndex = 7;
-            this.txtPageSize.Text = "5";
+            this.txtPageSize.Text = "10";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 262);
+            this.ClientSize = new System.Drawing.Size(566, 289);
             this.Controls.Add(this.txtPageSize);
             this.Controls.Add(this.txtDisplayPageNo);
             this.Controls.Add(this.btnFillGrid);
