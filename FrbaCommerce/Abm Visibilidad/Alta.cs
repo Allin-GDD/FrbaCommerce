@@ -54,11 +54,11 @@ namespace FrbaCommerce.Abm_Visibilidad
         private void inicializarVisibilidad(Entidades.Ent_Visibilidad visibilidad)
         {
 
-            visibilidad.Codigo = Convert.ToDecimal(textBox1.Text);
-            visibilidad.Descripcion = Convert.ToString(textBox2.Text);
-            visibilidad.Porcentaje = Convert.ToDouble(textBox3.Text);
-            visibilidad.Precio = Convert.ToDouble(textBox4.Text);
-            visibilidad.Vencimiento = Convert.ToDecimal(textBox5.Text);
+            visibilidad.Codigo = Convert.ToDecimal(txtCodigo.Text);
+            visibilidad.Descripcion = Convert.ToString(txtDescripcion.Text);
+            visibilidad.Porcentaje = Convert.ToDouble(txtPrecio.Text);
+            visibilidad.Precio = Convert.ToDouble(txtPorcentaje.Text);
+            visibilidad.Vencimiento = Convert.ToDecimal(Estado.Text);
 
        }
 
@@ -71,7 +71,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
-      
+            
 
     }
 }

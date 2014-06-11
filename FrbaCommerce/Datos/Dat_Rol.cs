@@ -116,7 +116,7 @@ namespace FrbaCommerce.Datos
         public static void filtarListaDeRoles(string rol, DataGridView dataGridView1)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol2", conexion,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
            new SqlParameter("@Rol", rol));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 

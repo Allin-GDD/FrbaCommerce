@@ -26,6 +26,7 @@ CREATE TABLE [dbo].[Usuario](
 	[Id_Rol] [numeric](18, 0) NOT NULL,
 	[Estado] [smallint] NOT NULL,
 	[Intentos] [smallint] NOT NULL,
+	[Baja] [smallint] NOT NULL,
  CONSTRAINT [PK_Usuario] PRIMARY KEY CLUSTERED 
 (
 	[Usuario] ASC
@@ -698,13 +699,13 @@ and oferta_fecha is not null
 --migracion tabla usuario
 
 insert into Usuario
-select distinct clientes.Mail,convert(nvarchar,Clientes.Dni),clientes.Id,rol.id,1,0
+select distinct clientes.Mail,convert(nvarchar,Clientes.Dni),clientes.Id,rol.id,1,0,1
  from Clientes,rol
  where rol.nombre = 'Cliente'
  
 
 union all
- select distinct Empresa.Mail,Empresa.Cuit,Empresa.Id,rol.id,1,0
+ select distinct Empresa.Mail,Empresa.Cuit,Empresa.Id,rol.id,1,0,1
  from Empresa,rol
  where rol.nombre = 'Empresa'
 

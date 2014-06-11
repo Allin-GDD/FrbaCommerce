@@ -27,9 +27,13 @@ namespace FrbaCommerce.Datos
             {
                 Entidades.Ent_Telefono pTelefono = new Entidades.Ent_Telefono();
 
-                pTelefono.Telefono = lectura.GetString(0);
+                if (!lectura.IsDBNull(0))
+                {
+                    pTelefono.Telefono = lectura.GetString(0);
 
-                listaDeTelefonos.Add(pTelefono);
+                    listaDeTelefonos.Add(pTelefono);
+                }
+
             }
             return listaDeTelefonos;
 

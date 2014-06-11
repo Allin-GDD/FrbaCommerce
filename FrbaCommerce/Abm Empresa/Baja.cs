@@ -26,7 +26,8 @@ namespace FrbaCommerce.Abm_Empresa
 
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAEmpresa", conn,
-                new SqlParameter("@Id_Empresa", empresaADarDeBaja));
+                new SqlParameter("@Id_Empresa", empresaADarDeBaja),
+                new SqlParameter("@Rol",2));
                 int retorno = cmd.ExecuteNonQuery();
 
                 Mensajes.Generales.validarBaja(retorno);

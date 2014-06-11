@@ -76,7 +76,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(99, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Aceptar";
+            this.button1.Text = "Dar de Baja";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -369,7 +369,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Baja";
             this.Text = "Baja";
-
             this.ResumeLayout(false);
             this.PerformLayout();
 

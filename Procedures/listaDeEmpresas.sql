@@ -9,4 +9,7 @@ WHERE
 Razon_Social LIKE '%'+@Razon_Social+'%' AND
 Mail LIKE '%'+@Mail+'%' AND
 (@CUIT = [Cuit] or @CUIT = '')
+AND Cuit <> '0'
 END
+
+

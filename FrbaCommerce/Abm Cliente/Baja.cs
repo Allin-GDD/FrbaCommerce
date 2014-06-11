@@ -25,6 +25,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
         public Int32 clienteADarDeBaja;
+      
 
         private void cargarDatosDelClienteSeleccionado()
         {
@@ -63,10 +64,11 @@ namespace FrbaCommerce.Abm_Cliente
         {
             try
             {
-
+             
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAlCliente", conn,
-                new SqlParameter("@Id_Cliente", clienteADarDeBaja));
+                new SqlParameter("@Id", clienteADarDeBaja),
+                new SqlParameter("@Rol", 1));
                 int retorno = cmd.ExecuteNonQuery();
 
                 Mensajes.Generales.validarBaja(retorno);

@@ -11,6 +11,8 @@ CREATE PROCEDURE listaDeCliente
 				Nombre like '%'+@Nombre+'%'
 				AND Apellido like '%'+@Apellido+'%'
 				AND Dni like '%'+@Dni+'%'
+				AND Dni <> 0
 				AND Mail like '%'+@Mail+'%'
 				AND Tipo_dni like '%'+@Tipo_dni+'%'
+				
 	END

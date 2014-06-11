@@ -42,7 +42,6 @@ namespace FrbaCommerce.Abm_Empresa
                 Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario,IdUsuario);
                 //el usuario va a ser el mail y la contraseña su cuit
 
-
                 this.Close();
 
             }
@@ -59,7 +58,7 @@ namespace FrbaCommerce.Abm_Empresa
             validaciones.Piso = NroPiso;
             validaciones.Telefono = Telefono;
             validaciones.Fecha = FecCre;
-            validaciones.NroCalle = NroCalle;
+            validaciones.NroCalle = NCalle;
             validaciones.CUIT = CUIT;
             validaciones.TelefonoAnt = null;
             validaciones.DNIAnt = null;
