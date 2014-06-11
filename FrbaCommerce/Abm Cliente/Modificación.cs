@@ -12,6 +12,7 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Modificación : Form
     {
+  
         public Modificación(Int32 idSeleccionado)
         {
             
@@ -23,11 +24,15 @@ namespace FrbaCommerce.Abm_Cliente
           
         }
         public Entidades.Ent_Cliente clienteAnt;
+       
         public Int16 rolCliente = 1;
+        public TextBox DniAnt;
+        public MaskedTextBox TelefonoAnt;
+
         private void cargarDatosDelClienteSeleccionado()
         {
-
             clienteAnt = Datos.Dat_Cliente.buscarCliente(clienteAModificar);
+            
 
             txtNombre.Text = clienteAnt.Nombre;
             txtApellido.Text = clienteAnt.Apellido;
@@ -41,6 +46,10 @@ namespace FrbaCommerce.Abm_Cliente
             txtMail.Text = clienteAnt.Mail;
             txtTelefono.Text = clienteAnt.Telefono;
             txtLocalidad.Text = clienteAnt.Localidad;
+
+            this.DniAnt = txtDNI;
+            this.TelefonoAnt = txtTelefono;
+        
            
         }
 
@@ -53,19 +62,9 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                //Verifica si los datos ingresados no son nulos
-      
-                Utiles.Validaciones.NulidadDeDatosIngresados(this, txtDpto, txtNroPiso, txtFechaNac, txtTelefono);
-
-                //Verifica si lo que se estan ingresando es correcto
-                validarTipoDeDatosIngresados();
-                
-                //Verifica si la fecha está dentro del limite
-
-                Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
-
-                //Verifica si el DNI y Telefono ya no existen
-                verificarDNIyTelefono(); //se fija si no es igual al que ingreso antes y no lo cambia
+                Ent_ValidacionesUtil validaciones = new Ent_ValidacionesUtil();
+                iniciarCheckText(validaciones);
+                Utiles.Validaciones.evaluarUsuario(validaciones, this);
 
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
@@ -85,20 +84,22 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-
-        private void verificarDNIyTelefono()
+        private void iniciarCheckText(Ent_ValidacionesUtil validaciones)
         {
-            
-            if (clienteAnt.Telefono != txtTelefono.Text)
-            {
-                Datos.Dat_Telefonos.validarTelefono(txtTelefono.Text);
-            }
-            if (clienteAnt.Dni != Convert.ToDecimal(txtDNI.Text))
-            {
-                Datos.Dat_Dni.validarDni(Convert.ToDecimal(txtDNI.Text));
-            }
+            validaciones.Dpto = txtDpto;
+            validaciones.DNI = txtDNI;
+            validaciones.Piso = txtNroPiso;
+            validaciones.Telefono = txtTelefono;
+            validaciones.Fecha = txtFechaNac;
+            validaciones.NroCalle = txtNroCalle;
+            validaciones.CUIT = null;
+            validaciones.CUITAnt = null;
+            validaciones.DNIAnt = this.DniAnt;
+            validaciones.TelefonoAnt = this.TelefonoAnt;
         }
 
+
+    
 
 
         private void validarTipoDeDatosIngresados()

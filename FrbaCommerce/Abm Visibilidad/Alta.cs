@@ -34,13 +34,12 @@ namespace FrbaCommerce.Abm_Visibilidad
                 //Inicializa la visibilidad con datos correctos
                 inicializarVisibilidad(visibilidad);
 
-                
+
                 
                 //Agrega la visibilidad a la DB
                 Datos.Dat_Visibilidad.AgregarVisibilidad(visibilidad);
 
                 this.Close();
-
 
 
             }
@@ -61,11 +60,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Precio = Convert.ToDouble(textBox4.Text);
             visibilidad.Vencimiento = Convert.ToDecimal(textBox5.Text);
 
-
-
-
-
-        }
+       }
 
 
 

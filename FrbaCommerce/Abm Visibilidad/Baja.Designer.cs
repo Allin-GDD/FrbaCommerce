@@ -46,7 +46,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(141, 211);
+            this.button2.Location = new System.Drawing.Point(130, 210);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 23);
             this.button2.TabIndex = 15;
@@ -87,7 +87,7 @@
             this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(118, 141);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.Size = new System.Drawing.Size(130, 20);
             this.textBox5.TabIndex = 14;
             // 
             // textBox4

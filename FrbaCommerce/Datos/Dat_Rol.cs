@@ -32,7 +32,7 @@ namespace FrbaCommerce.Datos
             return listaDeRoles;
         }
 
-        public static void verificarSiElRolYaExiste(string nuevoRol)
+        public static bool verificarSiElRolYaExiste(string nuevoRol)
         {
             List<Entidades.Entidad_Rol> listaDeRoles = ObtenerTodosLosRoles();
 
@@ -40,9 +40,10 @@ namespace FrbaCommerce.Datos
             {
                 if (rol.nombre == nuevoRol)
                 {
-                    throw new Excepciones.DuplicacionDeDatos("El rol ingresado ya existe");
+                    return true;
                 }
             }
+            return false;
         }
 
         public static void agregarRol(string nuevoRol)

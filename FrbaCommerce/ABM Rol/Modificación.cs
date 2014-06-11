@@ -45,7 +45,7 @@ namespace FrbaCommerce.ABM_Rol
             {
                 if (nombreRolAnt != txtNombre.Text)
                 {
-                    Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
+                    Utiles.Validaciones.evaluarRol(txtNombre, this);
                     Datos.Dat_Rol.agregarRol(txtNombre.Text);
                 }
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);

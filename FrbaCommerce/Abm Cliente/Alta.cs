@@ -23,42 +23,24 @@ namespace FrbaCommerce.Abm_Cliente
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
+            Entidades.Ent_ValidacionesUtil pUtiles = new Entidades.Ent_ValidacionesUtil();
+            iniciarCheckText(pUtiles);
 
             try
-            {   
-
-             
-                //Verifica si los datos ingresados no son nulos
-                Utiles.Validaciones.NulidadDeDatosIngresados(this, txtDpto, txtNroPiso, txtFechaNac, txtTelefono);
-          
-                //Verifica si lo que se estan ingresando es correcto
-                validarTipoDeDatosIngresados();
+            {
+                //Prueba todas las validaciones
+                Utiles.Validaciones.evaluarUsuario(pUtiles, this);
                 
-                //Verifica si la fecha está dentro del limite
-                Utiles.Validaciones.ValidarFecha(txtFechaNac.Text);
-                
-                //Verifica si el DNI y Telefono ya no existen
-                Datos.Dat_Telefonos.validarTelefono(txtTelefono.Text);
-                Datos.Dat_Dni.validarDni(Convert.ToDecimal(txtDNI.Text));
-                               
-
-
-
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
-
-                
                 
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
                 Decimal IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
-
-                 Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
+                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
                 //el usuario va a ser el mail y la contraseña su dni
 
-                this.Close();
-
-
+                Close();
 
             }
             catch (Exception ex)
@@ -69,27 +51,22 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-    
-
-       
-
-        private void validarTipoDeDatosIngresados()
+        private void iniciarCheckText(Entidades.Ent_ValidacionesUtil pUtiles)
         {
-
-            
-            Utiles.Validaciones.ValidarTipoDecimal(txtDNI, txtNroCalle);
-
-            if (!string.IsNullOrEmpty(txtNroPiso.Text))
-            {
-                Utiles.Validaciones.ValidarTipoDecimal(txtNroPiso);
-            }
+            pUtiles.Dpto = txtDpto;
+            pUtiles.DNI = txtDNI;
+            pUtiles.Piso = txtNroPiso;
+            pUtiles.Telefono = txtTelefono;
+            pUtiles.Fecha = txtFechaNac;
+            pUtiles.NroCalle = txtNroCalle;
+            pUtiles.CUIT = null;
+            pUtiles.TelefonoAnt = null;
+            pUtiles.DNIAnt = null;
+            pUtiles.CUITAnt = null;
         }
-
 
         private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
-
-
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
             cliente.Dni = Convert.ToInt32(txtDNI.Text);
@@ -113,7 +90,6 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
 
@@ -121,8 +97,6 @@ namespace FrbaCommerce.Abm_Cliente
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
-
-
 
         private void button1_Click(object sender, EventArgs e)
         {

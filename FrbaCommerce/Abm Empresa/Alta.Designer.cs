@@ -34,7 +34,6 @@
             this.Dpto = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CUIT = new System.Windows.Forms.MaskedTextBox();
-            this.CodPostal = new System.Windows.Forms.MaskedTextBox();
             this.Telefono = new System.Windows.Forms.MaskedTextBox();
             this.labelNCalle = new System.Windows.Forms.Label();
             this.NCalle = new System.Windows.Forms.TextBox();
@@ -62,12 +61,13 @@
             this.labelCreacion = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.CodPostal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(170, 372);
+            this.buttonGuardar.Location = new System.Drawing.Point(179, 372);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 14;
@@ -103,8 +103,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.CUIT);
             this.groupBox1.Controls.Add(this.CodPostal);
+            this.groupBox1.Controls.Add(this.CUIT);
             this.groupBox1.Controls.Add(this.Telefono);
             this.groupBox1.Controls.Add(this.labelNCalle);
             this.groupBox1.Controls.Add(this.NCalle);
@@ -143,14 +143,6 @@
             this.CUIT.Name = "CUIT";
             this.CUIT.Size = new System.Drawing.Size(186, 20);
             this.CUIT.TabIndex = 3;
-            // 
-            // CodPostal
-            // 
-            this.CodPostal.Location = new System.Drawing.Point(73, 268);
-            this.CodPostal.Mask = "0000";
-            this.CodPostal.Name = "CodPostal";
-            this.CodPostal.Size = new System.Drawing.Size(170, 20);
-            this.CodPostal.TabIndex = 11;
             // 
             // Telefono
             // 
@@ -376,11 +368,18 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // CodPostal
+            // 
+            this.CodPostal.Location = new System.Drawing.Point(73, 268);
+            this.CodPostal.Name = "CodPostal";
+            this.CodPostal.Size = new System.Drawing.Size(170, 20);
+            this.CodPostal.TabIndex = 29;
+            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 435);
+            this.ClientSize = new System.Drawing.Size(278, 431);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonGuardar);
@@ -427,9 +426,9 @@
         private System.Windows.Forms.TextBox NCalle;
         private System.Windows.Forms.MaskedTextBox FecCre;
         private System.Windows.Forms.MaskedTextBox Telefono;
-        private System.Windows.Forms.MaskedTextBox CodPostal;
         private System.Windows.Forms.MaskedTextBox CUIT;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox CodPostal;
     }
 }

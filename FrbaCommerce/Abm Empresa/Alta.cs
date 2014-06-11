@@ -24,25 +24,14 @@ namespace FrbaCommerce.Abm_Empresa
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Empresa empresa = new Entidades.Ent_Empresa();
+            Entidades.Ent_ValidacionesUtil validaciones = new Entidades.Ent_ValidacionesUtil();
+            iniciarCheckText(validaciones);
 
             try
             {
                 //Verifica si los datos ingresados no son nulos
-               Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso,FecCre,Telefono,CUIT,CodPostal);
-
-                
-                //Verifica si lo que se estan ingresando es correcto
-                validarTipoDeDatosIngresados();
-
-                
-                //Verifica si la fecha está dentro del limite
-                Utiles.Validaciones.ValidarFecha(FecCre.Text);
-
-                //Verifica si el DNI y Telefono ya no existen
-                Datos.Dat_Telefonos.validarTelefono(Telefono.Text);
-                Datos.Dat_Cuit.validarCuit(CUIT.Text);
-
-               
+                Utiles.Validaciones.evaluarUsuario(validaciones, this);
+                               
                 //Inicializa el cliente con datos correctos
                 inicializarEmpresa(empresa);
 
@@ -63,10 +52,23 @@ namespace FrbaCommerce.Abm_Empresa
             }
         }
 
+        private void iniciarCheckText(Entidades.Ent_ValidacionesUtil validaciones)
+        {
+            validaciones.Dpto = Dpto;
+            validaciones.DNI = null;
+            validaciones.Piso = NroPiso;
+            validaciones.Telefono = Telefono;
+            validaciones.Fecha = FecCre;
+            validaciones.NroCalle = NroCalle;
+            validaciones.CUIT = CUIT;
+            validaciones.TelefonoAnt = null;
+            validaciones.DNIAnt = null;
+            validaciones.CUITAnt = null;
+        }
+
+     
         private void inicializarEmpresa(Entidades.Ent_Empresa empresa)
         {
-
-
             empresa.NombreContacto = Convert.ToString(NombreContacto.Text);
             empresa.RazonSocial = Convert.ToString(RazonSocial.Text);
             empresa.CUIT = Convert.ToString(CUIT.Text);
@@ -86,20 +88,6 @@ namespace FrbaCommerce.Abm_Empresa
                 empresa.Piso = Convert.ToInt32(NroPiso.Text);
             }
         }
-
-
-         private void validarTipoDeDatosIngresados()
-         {
-             Utiles.Validaciones.ValidarTipoDecimal(NCalle);
-            
-
-             if (!string.IsNullOrEmpty(NroPiso.Text))
-             {
-                 Utiles.Validaciones.ValidarTipoDecimal(NroPiso);
-             }
-         }
-
-        
 
       private void buttonLimpiar_Click(object sender, EventArgs e)
          {

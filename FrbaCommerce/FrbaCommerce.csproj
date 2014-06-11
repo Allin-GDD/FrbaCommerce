@@ -203,6 +203,7 @@
     <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Ent_ValidacionesUtil.cs" />
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +216,7 @@
     <Compile Include="Roles\VentanaRol.Designer.cs">
       <DependentUpon>VentanaRol.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\AyudaVarias.cs" />
     <Compile Include="Utiles\DBConexion.cs" />
     <Compile Include="Comprar-Ofertar\Form1.cs">
       <SubType>Form</SubType>

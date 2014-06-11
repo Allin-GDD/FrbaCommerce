@@ -21,6 +21,8 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
         public Entidades.Ent_Empresa empresaAnt;
+        public MaskedTextBox CUITAnt;
+        public MaskedTextBox TelefonoAnt;
 
         private void cargarDatosDelClienteSeleccionado()
         {
@@ -41,6 +43,9 @@ namespace FrbaCommerce.Abm_Empresa
             FecCre.Text = Convert.ToString(empresaAnt.Fecha_Creacion);
 
 
+            this.CUITAnt = CUIT;
+            this.TelefonoAnt = Telefono;
+    
         }
         public Int32 empresaAModificar;
         public Int16 rolEmpresa = 2;
@@ -48,21 +53,12 @@ namespace FrbaCommerce.Abm_Empresa
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
              Entidades.Ent_Empresa empresa = new Entidades.Ent_Empresa();
+             Entidades.Ent_ValidacionesUtil validaciones = new Entidades.Ent_ValidacionesUtil();
+             iniciarCheckText(validaciones);
 
              try
              {
-                 //Verifica si los datos ingresados no son nulos
-                 Utiles.Validaciones.NulidadDeDatosIngresados(this, Dpto, NroPiso, FecCre, Telefono, CUIT, CodPostal);
-
-
-                 //Verifica si los datos no estan duplicados
-                 validarDatosDuplicados();
-
-
-                 //Verifica si la fecha está dentro del limite
-                 validarTipoDeDatosIngresados();
-
-                 
+                 Utiles.Validaciones.evaluarUsuario(validaciones, this);
                  //Inicializa el cliente con datos correctos
                  inicializarEmpresa(empresa);
 
@@ -75,17 +71,18 @@ namespace FrbaCommerce.Abm_Empresa
              }
         }
 
-        private void validarDatosDuplicados()
+        private void iniciarCheckText(Entidades.Ent_ValidacionesUtil validaciones)
         {
-            if (empresaAnt.Telefono != Telefono.Text)
-            {
-                Datos.Dat_Telefonos.validarTelefono(Telefono.Text);
-            }
-            if (empresaAnt.CUIT != CUIT.Text)
-            {
-                Datos.Dat_Cuit.validarCuit(CUIT.Text);
-                
-            }
+            validaciones.Dpto = Dpto;
+            validaciones.DNI = null;
+            validaciones.Piso = NroPiso;
+            validaciones.Telefono = Telefono;
+            validaciones.Fecha = FecCre;
+            validaciones.NroCalle = NCalle;
+            validaciones.CUIT = CUIT;
+            validaciones.CUITAnt = this.CUITAnt;
+            validaciones.DNIAnt = null;
+            validaciones.TelefonoAnt = this.TelefonoAnt;
         }
 
         private void inicializarEmpresa(Entidades.Ent_Empresa empresa)

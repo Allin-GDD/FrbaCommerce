@@ -33,7 +33,6 @@
             this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             this.lblHabil = new System.Windows.Forms.Label();
             this.CUIT = new System.Windows.Forms.MaskedTextBox();
-            this.CodPostal = new System.Windows.Forms.MaskedTextBox();
             this.Telefono = new System.Windows.Forms.MaskedTextBox();
             this.labelNCalle = new System.Windows.Forms.Label();
             this.NCalle = new System.Windows.Forms.TextBox();
@@ -59,6 +58,7 @@
             this.NombreContacto = new System.Windows.Forms.TextBox();
             this.labelContacto = new System.Windows.Forms.Label();
             this.buttonLimpiar = new System.Windows.Forms.Button();
+            this.CodPostal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,10 +74,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.CodPostal);
             this.groupBox1.Controls.Add(this.cmbHabilitado);
             this.groupBox1.Controls.Add(this.lblHabil);
             this.groupBox1.Controls.Add(this.CUIT);
-            this.groupBox1.Controls.Add(this.CodPostal);
             this.groupBox1.Controls.Add(this.Telefono);
             this.groupBox1.Controls.Add(this.labelNCalle);
             this.groupBox1.Controls.Add(this.NCalle);
@@ -133,14 +133,6 @@
             this.CUIT.Name = "CUIT";
             this.CUIT.Size = new System.Drawing.Size(186, 20);
             this.CUIT.TabIndex = 3;
-            // 
-            // CodPostal
-            // 
-            this.CodPostal.Location = new System.Drawing.Point(73, 268);
-            this.CodPostal.Mask = "0000";
-            this.CodPostal.Name = "CodPostal";
-            this.CodPostal.Size = new System.Drawing.Size(170, 20);
-            this.CodPostal.TabIndex = 11;
             // 
             // Telefono
             // 
@@ -349,6 +341,13 @@
             this.buttonLimpiar.UseVisualStyleBackColor = true;
             this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
+            // CodPostal
+            // 
+            this.CodPostal.Location = new System.Drawing.Point(73, 269);
+            this.CodPostal.Name = "CodPostal";
+            this.CodPostal.Size = new System.Drawing.Size(170, 20);
+            this.CodPostal.TabIndex = 63;
+            // 
             // Modificación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,7 +369,6 @@
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.MaskedTextBox CUIT;
-        private System.Windows.Forms.MaskedTextBox CodPostal;
         private System.Windows.Forms.MaskedTextBox Telefono;
         private System.Windows.Forms.Label labelNCalle;
         private System.Windows.Forms.TextBox NCalle;
@@ -398,6 +396,7 @@
         private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.ComboBox cmbHabilitado;
         private System.Windows.Forms.Label lblHabil;
+        private System.Windows.Forms.TextBox CodPostal;
 
     }
 }

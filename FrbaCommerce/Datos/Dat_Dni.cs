@@ -2,23 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FrbaCommerce.Datos
 {
     class Dat_Dni
     {
-        public static void validarDni(decimal pdni)
+        public static bool validarDni(TextBox txtDni)
         {
+            Decimal pdni = Convert.ToDecimal(txtDni.Text);
+
+
            List<Entidades.Ent_Dni> listaDnies = Datos.Dat_Cliente.obtenerTodosLosDni();
 
             foreach (Entidades.Ent_Dni dni in listaDnies)
             {
                 if (pdni == dni.Dni)
                 {
-                    throw new Excepciones.DuplicacionDeDatos("El número de documento ingresado ya pertenece a otro cliente");
+                    return true;
                 }
             }
-
+            return false;
 
         }
     }

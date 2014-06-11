@@ -22,14 +22,11 @@ namespace FrbaCommerce.ABM_Rol
             try
             {
 
+                Utiles.Validaciones.evaluarRol(txtNombre,this);
                
-                Utiles.Validaciones.validarUnaSolaNulidad(txtNombre);
 
-                Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text);
                 Datos.Dat_Rol.agregarRol(txtNombre.Text);
-
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
-
                 Datos.Dat_Rol.agregarFuncionabilidad(rol, Convert.ToInt32(cmbFuncionalidad.SelectedValue));
 
 
