@@ -204,6 +204,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Ent_ValidacionesUtil.cs" />
+    <Compile Include="Generar Publicacion\BuscarRubro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\BuscarRubro.Designer.cs">
+      <DependentUpon>BuscarRubro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -360,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Publicada.resx">
       <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\BuscarRubro.resx">
+      <DependentUpon>BuscarRubro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Generar_Publi.resx">
       <DependentUpon>Generar_Publi.cs</DependentUpon>

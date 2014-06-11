@@ -53,6 +53,7 @@ namespace FrbaCommerce.Abm_Cliente
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
+            //SACAR LOS BOTONES QUE QUEDAN dataGridView1.Rows.Remove(14);
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
 
             }

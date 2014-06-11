@@ -41,9 +41,10 @@
             this.cmbTipoPub = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbVisib = new System.Windows.Forms.ComboBox();
-            this.cmbRub = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,8 +148,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cmbVisib);
-            this.groupBox1.Controls.Add(this.cmbRub);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label9);
@@ -172,14 +174,6 @@
             this.cmbVisib.Size = new System.Drawing.Size(177, 21);
             this.cmbVisib.TabIndex = 25;
             // 
-            // cmbRub
-            // 
-            this.cmbRub.FormattingEnabled = true;
-            this.cmbRub.Location = new System.Drawing.Point(79, 114);
-            this.cmbRub.Name = "cmbRub";
-            this.cmbRub.Size = new System.Drawing.Size(177, 21);
-            this.cmbRub.TabIndex = 24;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(25, 393);
@@ -199,6 +193,22 @@
             this.button2.Text = "Aceptar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(57, 114);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(118, 20);
+            this.textBox1.TabIndex = 26;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(181, 114);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Seleccionar";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Generar_Publi
             // 
@@ -236,7 +246,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cmbRub;
         private System.Windows.Forms.ComboBox cmbVisib;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
