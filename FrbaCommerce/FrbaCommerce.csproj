@@ -60,6 +60,7 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Dat_CompraOferta.cs" />
     <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
     <Compile Include="Datos\Dat_Visibilidad.cs" />
@@ -70,6 +71,8 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Entidades\Ent_CO.cs" />
+    <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />
     <Compile Include="Entidades\Ent_Rubros.cs" />
     <Compile Include="Entidades\Ent_TipoPub.cs" />
     <Compile Include="Entidades\Ent_Funcionalidad.cs" />
