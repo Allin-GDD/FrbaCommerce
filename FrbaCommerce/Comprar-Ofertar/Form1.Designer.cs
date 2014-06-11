@@ -36,6 +36,8 @@
             this.btnFillGrid = new System.Windows.Forms.Button();
             this.txtDisplayPageNo = new System.Windows.Forms.TextBox();
             this.txtPageSize = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cboRubro = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,11 +115,28 @@
             this.txtPageSize.TabIndex = 7;
             this.txtPageSize.Text = "10";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(89, 12);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 8;
+            // 
+            // cboRubro
+            // 
+            this.cboRubro.FormattingEnabled = true;
+            this.cboRubro.Location = new System.Drawing.Point(322, 11);
+            this.cboRubro.Name = "cboRubro";
+            this.cboRubro.Size = new System.Drawing.Size(121, 21);
+            this.cboRubro.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 289);
+            this.Controls.Add(this.cboRubro);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPageSize);
             this.Controls.Add(this.txtDisplayPageNo);
             this.Controls.Add(this.btnFillGrid);
@@ -145,5 +164,7 @@
         private System.Windows.Forms.Button btnFillGrid;
         private System.Windows.Forms.TextBox txtDisplayPageNo;
         private System.Windows.Forms.TextBox txtPageSize;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cboRubro;
     }
 }

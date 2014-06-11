@@ -25,8 +25,11 @@ namespace FrbaCommerce.Comprar_Ofertar
         public Form1()
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxRubro(cboRubro);
+            botonCompraOferta = false;
         }
 
+        private bool botonCompraOferta;
         private void LoadPage()
         {
             int i;
@@ -76,20 +79,6 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //Open Connection. 
-            SqlConnection conn = DBConexion.obtenerConexion();
-            //Set the DataAdapter's query.
-            da = new SqlDataAdapter("select * from publicacion", conn);
-            ds = new DataSet();
-
-            //Fill the DataSet.
-            da.Fill(ds, "publicacion");
-
-            //Set the source table.
-            dtSource = ds.Tables["publicacion"];
-        }
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
@@ -109,7 +98,22 @@ namespace FrbaCommerce.Comprar_Ofertar
             recNo = 0;
 
             // Display the content of the current page.
-            LoadPage();
+            Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
+    
+            try
+            {
+
+                pCO.Descripcion = textBox1.Text;
+                pCO.Rubro = Convert.ToString(cboRubro.SelectedValue);
+
+                Datos.Dat_CompraOferta.buscarListado(pCO, dataGridView1);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnFirstPage_Click(object sender, EventArgs e)
@@ -122,7 +126,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             //Check if you are already at the first page.
             if (currentPage == 1)
             {
-                MessageBox.Show("You are at the First Page!");
+                MessageBox.Show("Usted está en la primer página");
                 return;
             }
 
@@ -154,7 +158,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 //Check if you are already at the last page.
                 if (recNo == maxRec)
                 {
-                    MessageBox.Show("You are at the Last Page!");
+                    MessageBox.Show("Usted está en la última página");
                     return;
                 }
             }
@@ -177,7 +181,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             //Check if you are already at the first page.
             if (currentPage < 1)
             {
-                MessageBox.Show("You are at the First Page!");
+                MessageBox.Show("Usted está en la primer página");
                 currentPage = 1;
                 return;
             }
@@ -198,7 +202,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             //Check if you are already at the last page.
             if (recNo == maxRec)
             {
-                MessageBox.Show("You are at the Last Page!");
+                MessageBox.Show("Usted está en la última página");
                 return;
             }
             currentPage = PageCount;
