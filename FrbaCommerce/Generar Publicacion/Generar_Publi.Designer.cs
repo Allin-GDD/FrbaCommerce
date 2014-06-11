@@ -45,6 +45,8 @@
             this.cmbVisib = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 273);
+            this.label3.Location = new System.Drawing.Point(12, 246);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 13);
             this.label3.TabIndex = 2;
@@ -69,7 +71,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 155);
+            this.label4.Location = new System.Drawing.Point(10, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 3;
@@ -78,7 +80,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 190);
+            this.label7.Location = new System.Drawing.Point(10, 180);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 7;
@@ -89,9 +91,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(10, 117);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 8;
-            this.label8.Text = "Rubros";
+            this.label8.Text = "Rubro";
             // 
             // label9
             // 
@@ -114,21 +116,21 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(89, 152);
+            this.textBox2.Location = new System.Drawing.Point(89, 146);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(67, 20);
             this.textBox2.TabIndex = 15;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(89, 187);
+            this.textBox3.Location = new System.Drawing.Point(89, 177);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(67, 20);
             this.textBox3.TabIndex = 16;
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(81, 240);
+            this.textBox5.Location = new System.Drawing.Point(81, 213);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(177, 85);
@@ -148,6 +150,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbEstado);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cmbVisib);
@@ -213,6 +217,27 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 314);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(123, 13);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Estado de la publicación";
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "Borrador",
+            "Publicada",
+            "Pausada"});
+            this.cmbEstado.Location = new System.Drawing.Point(139, 311);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(116, 21);
+            this.cmbEstado.TabIndex = 28;
+            // 
             // Generar_Publi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,5 +277,7 @@
         private System.Windows.Forms.ComboBox cmbVisib;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Label label2;
     }
 }

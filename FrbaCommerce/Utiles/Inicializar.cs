@@ -71,15 +71,7 @@ namespace FrbaCommerce.Utiles
         }
 
 
-        public static void comboBoxTipo_Publicacion(ComboBox cmbTipo_Pub)
-        {
-
-            List<Entidades.Ent_TipoPub> lista = Utiles.Tipo_Publicaciones.listaPublicacion();
-            cmbTipo_Pub.DataSource = lista;
-            cmbTipo_Pub.DisplayMember = "tipo";
-            cmbTipo_Pub.ValueMember = "tipo";
-
-        }
+        
 
 
         public static void comboBoxFuncionalidadesPropias(ComboBox cmbPropias, Decimal idSeleccionado)

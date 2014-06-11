@@ -115,7 +115,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Generar_Publicacion.Generar_Publi list = new Generar_Publicacion.Generar_Publi("1");
+            Generar_Publicacion.Generar_Publi list = new Generar_Publicacion.Generar_Publi("crisólogo_Ortega@gmail.com");
             list.Show();
         }
     }

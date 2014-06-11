@@ -14,6 +14,7 @@ namespace FrbaCommerce.Generar_Publicacion
     {
   
         public string Result = string.Empty;
+        public Decimal ResultCodigo;
         public BuscarRubro()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace FrbaCommerce.Generar_Publicacion
         {
 
              Result = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+             ResultCodigo = Convert.ToDecimal(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
              Close();
              
         }

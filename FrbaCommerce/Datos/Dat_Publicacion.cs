@@ -70,8 +70,9 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
                    new SqlParameter("@Descripcion", pPublicacion.Descripcion),
+                   new SqlParameter("@Estado", pPublicacion.Estado),
                    new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas),
-                   new SqlParameter("@Fecha_Venc", pPublicacion.Fecha_Venc),
+                   new SqlParameter("@Fecha_Venc", Convert.ToDateTime(pPublicacion.Fecha_Venc)),
                    new SqlParameter("@Publicador", pPublicacion.Publicador),
                    new SqlParameter("@Id", pPublicacion.Id));
 
@@ -81,11 +82,11 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void buscarPublicador(String usuario, Decimal id, String rol)
+        public static Entidades.Ent_RolyId buscarPublicador(String usuario)
         {
 
             Decimal rolId;
-
+            Entidades.Ent_RolyId rolIdEnt = new Entidades.Ent_RolyId();
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPublicador", conn,
             new SqlParameter("@Usuario", usuario));
@@ -93,25 +94,29 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                id = lectura.GetDecimal(2);
+                rolIdEnt.id = lectura.GetDecimal(2);
                 rolId = lectura.GetDecimal(3);
                 if (rolId == 1)
                 {
-                    rol = "C";
+                    rolIdEnt.rol = "C";
                 }
                 else if (rolId == 2)
                 {
-                    rol = "E";
+                    rolIdEnt.rol = "E";
                 }
 
             }
+            
             conn.Close();
+            return rolIdEnt;
+        
         }
 
-        public static void buscarDuracionVisibilidad(Decimal visibilidad, DateTime fecha_venc)
+        public static Entidades.Ent_Fecha buscarDuracionVisibilidad(Decimal visibilidad)
         {
 
             Decimal duracion;
+            Entidades.Ent_Fecha entFecha = new Entidades.Ent_Fecha();
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDuracionVisibilidad", conn,
@@ -121,12 +126,11 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                duracion = lectura.GetDecimal(5);
-                fecha_venc = DateTime.Now.AddDays(Convert.ToDouble(duracion));
+                duracion = lectura.GetInt16(5);
+                entFecha.fecha = DateTime.Now.AddDays(Convert.ToDouble(duracion));
             }
-
-
             conn.Close();
+            return entFecha;
         }
 
 
