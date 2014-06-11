@@ -166,6 +166,15 @@ namespace FrbaCommerce.Utiles
             }
             return botonModificar;
         }
+
+        public static void comboBoxRubro(ComboBox cmbRubro)
+        {
+            cmbRubro.DataSource = Datos.Dat_Publicacion.ObtenerRubros();
+            cmbRubro.DisplayMember = "rubro";
+            cmbRubro.ValueMember = "codigo";
+
+        }
+
     }
 
 }
