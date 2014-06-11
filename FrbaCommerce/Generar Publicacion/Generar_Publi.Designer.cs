@@ -40,11 +40,11 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.cmbTipoPub = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.cmbVisib = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,6 +166,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Publicación";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(181, 112);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 24;
+            this.button3.Text = "Seleccionar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(57, 114);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(118, 20);
+            this.textBox1.TabIndex = 26;
+            // 
             // cmbVisib
             // 
             this.cmbVisib.FormattingEnabled = true;
@@ -193,22 +212,6 @@
             this.button2.Text = "Aceptar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(57, 114);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 20);
-            this.textBox1.TabIndex = 26;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(181, 114);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Seleccionar";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // Generar_Publi
             // 

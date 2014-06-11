@@ -30,13 +30,7 @@ namespace FrbaCommerce.Utiles
             cmbVisib.ValueMember = "Codigo";
 
         }
-        public static void comboBoxRubro(ComboBox cmbRubro)
-        {
-            cmbRubro.DataSource = Datos.Dat_Publicacion.ObtenerRubros();
-            cmbRubro.DisplayMember = "rubro";
-            cmbRubro.ValueMember = "codigo";
-
-        }
+        
 
         public static void comboBoxHabilitado(ComboBox cmbHabilitado, Int32 id, Int16 rol)
         {

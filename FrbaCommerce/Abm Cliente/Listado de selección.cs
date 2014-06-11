@@ -28,7 +28,6 @@ namespace FrbaCommerce.Abm_Cliente
             Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
             try
             {
-
                 pCliente.Nombre = txtNombre.Text;
                 pCliente.Apellido = txtApellido.Text;
                 pCliente.Dni = txtDNI.Text;
@@ -53,7 +52,8 @@ namespace FrbaCommerce.Abm_Cliente
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
-            //SACAR LOS BOTONES QUE QUEDAN dataGridView1.Rows.Remove(14);
+            //bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1,14);
+            //botonDelete = botonModificar = valor;
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
 
             }

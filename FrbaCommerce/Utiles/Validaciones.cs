@@ -132,7 +132,7 @@ namespace FrbaCommerce.Utiles
            Decimal expectedDecimal;
            foreach (TextBox parametro in parametroTxtBox)
            {
-               if ((!Decimal.TryParse(parametro.Text, out expectedDecimal)) && (parametro.Enabled == true))
+               if ((!Decimal.TryParse(parametro.Text, out expectedDecimal) && parametro.Enabled == true && parametro.Name != "textBox5" && parametro.Name != "textBox1") || string.IsNullOrEmpty(parametro.Text))
                {
                    parametro.BackColor = Color.Coral;
                    i++;
@@ -144,7 +144,7 @@ namespace FrbaCommerce.Utiles
            }
            if (i > 0)
            {
-               throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en los campos señalados");
+               throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
            }
        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////

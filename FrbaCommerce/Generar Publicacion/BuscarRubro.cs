@@ -12,9 +12,12 @@ namespace FrbaCommerce.Generar_Publicacion
 {
     public partial class BuscarRubro : Form
     {
+  
+        public string Result = string.Empty;
         public BuscarRubro()
         {
             InitializeComponent();
+         
         }
 
 
@@ -39,10 +42,12 @@ namespace FrbaCommerce.Generar_Publicacion
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //textboxDesc.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
 
+             Result = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+             Close();
+             
         }
 
-
+ 
     }
 }
