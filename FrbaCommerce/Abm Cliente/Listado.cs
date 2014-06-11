@@ -31,8 +31,7 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Dni = txtDNI.Text;
                 pCliente.Mail = txtMail.Text;
                 pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
-
-                Utiles.Validaciones.ValidarTipoDecimal(txtDNI);
+              
                 Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
             }
             catch (Exception ex)
