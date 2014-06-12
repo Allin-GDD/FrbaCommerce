@@ -35,8 +35,8 @@ namespace FrbaCommerce.Abm_Empresa
             Mail.Text = empresaAnt.Mail;
             Calle.Text = empresaAnt.Dom_Calle;
             NCalle.Text = Convert.ToString(empresaAnt.Nro_Calle);
-            NroPiso.Text = Convert.ToString(empresaAnt.Piso);
-            Dpto.Text = empresaAnt.Dpto;
+            txtNroPiso.Text = Convert.ToString(empresaAnt.Piso);
+            txtDpto.Text = empresaAnt.Dpto;
             Localidad.Text = empresaAnt.Localidad;
             CodPostal.Text = empresaAnt.Cod_Postal;
             Ciudad.Text = empresaAnt.Ciudad;
@@ -73,11 +73,11 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void iniciarCheckText(Entidades.Ent_ValidacionesUtil validaciones)
         {
-            validaciones.Dpto = Dpto;
+            
             validaciones.DNI = null;
-            validaciones.Piso = NroPiso;
             validaciones.Telefono = Telefono;
             validaciones.Fecha = FecCre;
+            validaciones.Piso = txtNroPiso;
             validaciones.NroCalle = NCalle;
             validaciones.CUIT = CUIT;
             validaciones.CUITAnt = this.CUITAnt;
@@ -94,16 +94,16 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Telefono = Convert.ToString(Telefono.Text);
             empresa.Dom_Calle = Convert.ToString(Calle.Text);
             empresa.Nro_Calle = Convert.ToDecimal(NCalle.Text);
-            empresa.Dpto = Convert.ToString(Dpto.Text);
+            empresa.Dpto = Convert.ToString(txtDpto.Text);
             empresa.Localidad = Convert.ToString(Localidad.Text);
             empresa.Cod_Postal = Convert.ToString(CodPostal.Text);
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
             empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
             empresa.Tipo_Doc = 2;
             //hace esto para que pueda existir gente que no vive en edificio
-            if (!string.IsNullOrEmpty(NroPiso.Text))
+            if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
-                empresa.Piso = Convert.ToInt32(NroPiso.Text);
+                empresa.Piso = Convert.ToInt32(txtNroPiso.Text);
             }
         }
         private void validarTipoDeDatosIngresados()
@@ -111,9 +111,9 @@ namespace FrbaCommerce.Abm_Empresa
             Utiles.Validaciones.ValidarTipoDecimal(NCalle);
 
 
-            if (!string.IsNullOrEmpty(NroPiso.Text))
+            if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
-                Utiles.Validaciones.ValidarTipoDecimal(NroPiso);
+                Utiles.Validaciones.ValidarTipoDecimal(txtNroPiso);
             }
         }
 

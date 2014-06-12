@@ -86,12 +86,11 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void iniciarCheckText(Ent_ValidacionesUtil validaciones)
         {
-            validaciones.Dpto = txtDpto;
+            validaciones.NroCalle = txtCalle;
             validaciones.DNI = txtDNI;
-            validaciones.Piso = txtNroPiso;
             validaciones.Telefono = txtTelefono;
             validaciones.Fecha = txtFechaNac;
-            validaciones.NroCalle = txtNroCalle;
+            validaciones.Piso = txtNroPiso;
             validaciones.CUIT = null;
             validaciones.CUITAnt = null;
             validaciones.DNIAnt = this.DniAnt;

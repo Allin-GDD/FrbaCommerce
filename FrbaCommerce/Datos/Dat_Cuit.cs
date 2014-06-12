@@ -17,7 +17,7 @@ namespace FrbaCommerce.Datos
 
             foreach (Entidades.Ent_Cuit cuit in listaCuit)
             {
-                if (txtCUIT.Text == cuit.CUIT)
+                if (txtCUIT != null && txtCUIT.Text == cuit.CUIT)
                 {
                     return true;
                 }

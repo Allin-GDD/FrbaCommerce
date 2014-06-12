@@ -18,7 +18,7 @@ namespace FrbaCommerce.Utiles
 
             Utiles.LimpiarTexto.BlanquearControls(ofrm);
 
-            i = validarDatosText(Dpto, NroPiso, ofrm) + validarDatosMask(parametrosDeMask);
+            i = validarDatosText(ofrm) + validarDatosMask(parametrosDeMask);
 
             if (i > 0)
             {
@@ -57,27 +57,24 @@ namespace FrbaCommerce.Utiles
             }
             return i;
         }
-       
-        public static void ValidarTipoDecimal(params TextBox[] parametroTxtBox)
-        {//SACARLO
+
+        public static int ValidarTipoDecimal(params TextBox[] parametroTxtBox)
+        {
             int i = 0;
             Decimal expectedDecimal;
             foreach (TextBox parametro in parametroTxtBox)
             {
-                if (!Decimal.TryParse(parametro.Text, out expectedDecimal))
+
+               if((parametro != null && parametro.Name == "txtNroPiso" && !string.IsNullOrEmpty(parametro.Text)
+                   && !Decimal.TryParse(parametro.Text, out expectedDecimal)))
                 {
-                    parametro.BackColor = Color.Coral;
-                    i++;
-                }
-                else if (parametro.BackColor == Color.Coral)
-                {
-                    parametro.BackColor = Color.White;
+                        parametro.Font = new Font(parametro.Font, FontStyle.Bold);
+                        parametro.BackColor = Color.Coral;
+                        i++;
+                    
                 }
             }
-            if (i > 0)
-            {
-                throw new Excepciones.ValoresConTiposDiferentes("Se están ingresando datos no válidos en los campos señalados");
-            }
+            return i;
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////
        //NOSE
@@ -149,7 +146,7 @@ namespace FrbaCommerce.Utiles
        }
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         //USADOS EN evaluarUsuario()
-        public static int validarDatosText(TextBox Dpto, TextBox NroPiso, Form ofrm)
+        public static int validarDatosText(Form ofrm)
         {//VALIDA TODOS LOS TXT MENOS EL DEPTO Y EL PISO
             {
                 int i = 0;
@@ -159,7 +156,7 @@ namespace FrbaCommerce.Utiles
                     foreach (Control control in controls)
                         if (control is TextBox)
                         {
-                            if (string.IsNullOrEmpty(control.Text) && (control != Dpto) && (control != NroPiso))
+                            if (string.IsNullOrEmpty(control.Text) && (control.Name != "txtNroPiso") && (control.Name != "txtDpto"))
                             {
                                 control.BackColor = Color.Coral;
                                 i++;
@@ -174,6 +171,7 @@ namespace FrbaCommerce.Utiles
                 return i;
             }
         }
+        
         public static int validarDatosMask2(Form ofrm) {
             int i = 0;
             Action<Control.ControlCollection> func = null;
@@ -232,41 +230,45 @@ namespace FrbaCommerce.Utiles
             List<String> errores = new List<string>();
             Utiles.LimpiarTexto.BlanquearControls(ofrm);
 
-    if (validarDatosText(txtUtil.Dpto, txtUtil.Piso, ofrm) + validarDatosMask2(ofrm) > 0)
+    if (validarDatosText(ofrm) + validarDatosMask2(ofrm) > 0)
             {errores.Add("Los datos marcados son obligatorios");}
+
+    //if (Utiles.Validaciones.ValidarTipoDecimal(txtUtil.Piso, txtUtil.NroCalle,txtUtil.DNI) > 0)
+    //{
+    //    { errores.Add("Los datos en 'negrita' no son correctos para ese tipo de campo"); }
+
+    if(!string.IsNullOrEmpty(txtUtil.Piso.Text) && Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.Piso))
+            {errores.Add("El tipo del número del piso no es válido");}
+    
+            if(!string.IsNullOrEmpty(txtUtil.NroCalle.Text) && Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.NroCalle))
+            {errores.Add("El tipo del número del calle no es válido");}
+        
+    if((txtUtil.DNI != null) && !string.IsNullOrEmpty(txtUtil.DNI.Text) && Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.DNI))
+            {errores.Add("El tipo del número del DNI no es válido");}
+
 
     if (txtUtil.Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(txtUtil.Fecha))
             {errores.Add("La Fecha ingresada no es válida. Está fuera del rango disponible");}
 
+
     if((txtUtil.TelefonoAnt == null) && Datos.Dat_Telefonos.validarTelefono(txtUtil.Telefono.Text))
             {errores.Add("El teléfono ingresado pertenece a otro usuario");}
+   
 
-    if(!string.IsNullOrEmpty(txtUtil.Piso.Text) && Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.Piso))
-            {errores.Add("El tipo del número del piso no es válido");}
+    if ((txtUtil.DNI != null) && (!string.IsNullOrEmpty(txtUtil.DNI.Text) && (txtUtil.DNIAnt == null)) || ((txtUtil.DNIAnt != null) && (txtUtil.DNI.Text != txtUtil.DNIAnt.Text)))
+   {
+            if(Datos.Dat_Dni.validarDni(txtUtil.DNI)){
+                errores.Add("El número de documento ingresado ya pertenece a otro cliente"); }
+        }
 
-    if(Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.NroCalle))
-            {errores.Add("El tipo del número del calle no es válido");}
-        
-    if((txtUtil.DNI != null) && Utiles.Validaciones.ValidarTipoDecimal2(txtUtil.DNI))
-            {errores.Add("El tipo del número del DNI no es válido");}
-
-            //ESTO DESPUES LO PONGO MEJOR
-
-    if ((txtUtil.DNI != null) && !string.IsNullOrEmpty(txtUtil.DNI.Text) && (txtUtil.DNIAnt == null) && Datos.Dat_Dni.validarDni(txtUtil.DNI))
-            {errores.Add("El número de documento ingresado ya pertenece a otro cliente"); }
-
-    if ((txtUtil.CUIT != null) && !string.IsNullOrEmpty(txtUtil.CUIT.Text) && (txtUtil.CUITAnt == null) && Datos.Dat_Cuit.validarCuit(txtUtil.CUIT))
-             {errores.Add("El número de CUIT ingresado ya pertenece a otra empresa");}
-
-    if ((txtUtil.DNIAnt != null) && (txtUtil.DNI.Text != txtUtil.DNIAnt.Text) && Datos.Dat_Dni.validarDni(txtUtil.DNI))
-            { errores.Add("El número de documento ingresado ya pertenece a otro cliente"); }
-
-    if ((txtUtil.CUITAnt != null) && (txtUtil.CUIT.Text != txtUtil.CUITAnt.Text) && Datos.Dat_Cuit.validarCuit(txtUtil.CUIT))
-             { errores.Add("El número de CUIT ingresado ya pertenece a otra empresa"); }
+    if ((txtUtil.CUIT != null) && (!string.IsNullOrEmpty(txtUtil.CUIT.Text) && (txtUtil.CUITAnt == null)) || ((txtUtil.CUITAnt != null) && (txtUtil.CUIT.Text != txtUtil.CUITAnt.Text)))
+   {
+            if(Datos.Dat_Cuit.validarCuit(txtUtil.CUIT))
+    { errores.Add("El número de CUIT ingresado ya pertenece a otra empresa"); }
+  }
 
 
-
-
+           
             String mensajesDeError =  Utiles.AyudaVarias.mensaje(errores);
 
               if (errores.Count > 0) {

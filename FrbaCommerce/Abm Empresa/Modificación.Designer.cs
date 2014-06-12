@@ -30,6 +30,7 @@
         {
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CodPostal = new System.Windows.Forms.TextBox();
             this.cmbHabilitado = new System.Windows.Forms.ComboBox();
             this.lblHabil = new System.Windows.Forms.Label();
             this.CUIT = new System.Windows.Forms.MaskedTextBox();
@@ -42,11 +43,11 @@
             this.labelCUIT = new System.Windows.Forms.Label();
             this.FecCre = new System.Windows.Forms.MaskedTextBox();
             this.labelCP = new System.Windows.Forms.Label();
-            this.Dpto = new System.Windows.Forms.TextBox();
+            this.txtDpto = new System.Windows.Forms.TextBox();
             this.labelDpto = new System.Windows.Forms.Label();
             this.Localidad = new System.Windows.Forms.TextBox();
             this.labelLocalidad = new System.Windows.Forms.Label();
-            this.NroPiso = new System.Windows.Forms.TextBox();
+            this.txtNroPiso = new System.Windows.Forms.TextBox();
             this.labelNPiso = new System.Windows.Forms.Label();
             this.Calle = new System.Windows.Forms.TextBox();
             this.labelCalle = new System.Windows.Forms.Label();
@@ -58,13 +59,12 @@
             this.NombreContacto = new System.Windows.Forms.TextBox();
             this.labelContacto = new System.Windows.Forms.Label();
             this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.CodPostal = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(164, 400);
+            this.buttonGuardar.Location = new System.Drawing.Point(168, 400);
             this.buttonGuardar.Name = "buttonGuardar";
             this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
             this.buttonGuardar.TabIndex = 30;
@@ -87,11 +87,11 @@
             this.groupBox1.Controls.Add(this.labelCUIT);
             this.groupBox1.Controls.Add(this.FecCre);
             this.groupBox1.Controls.Add(this.labelCP);
-            this.groupBox1.Controls.Add(this.Dpto);
+            this.groupBox1.Controls.Add(this.txtDpto);
             this.groupBox1.Controls.Add(this.labelDpto);
             this.groupBox1.Controls.Add(this.Localidad);
             this.groupBox1.Controls.Add(this.labelLocalidad);
-            this.groupBox1.Controls.Add(this.NroPiso);
+            this.groupBox1.Controls.Add(this.txtNroPiso);
             this.groupBox1.Controls.Add(this.labelNPiso);
             this.groupBox1.Controls.Add(this.Calle);
             this.groupBox1.Controls.Add(this.labelCalle);
@@ -108,6 +108,13 @@
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
+            // 
+            // CodPostal
+            // 
+            this.CodPostal.Location = new System.Drawing.Point(73, 269);
+            this.CodPostal.Name = "CodPostal";
+            this.CodPostal.Size = new System.Drawing.Size(170, 20);
+            this.CodPostal.TabIndex = 63;
             // 
             // cmbHabilitado
             // 
@@ -210,12 +217,12 @@
             this.labelCP.TabIndex = 26;
             this.labelCP.Text = "Cód. Postal";
             // 
-            // Dpto
+            // txtDpto
             // 
-            this.Dpto.Location = new System.Drawing.Point(169, 216);
-            this.Dpto.Name = "Dpto";
-            this.Dpto.Size = new System.Drawing.Size(74, 20);
-            this.Dpto.TabIndex = 9;
+            this.txtDpto.Location = new System.Drawing.Point(169, 216);
+            this.txtDpto.Name = "txtDpto";
+            this.txtDpto.Size = new System.Drawing.Size(74, 20);
+            this.txtDpto.TabIndex = 9;
             // 
             // labelDpto
             // 
@@ -242,12 +249,12 @@
             this.labelLocalidad.TabIndex = 25;
             this.labelLocalidad.Text = "Localidad";
             // 
-            // NroPiso
+            // txtNroPiso
             // 
-            this.NroPiso.Location = new System.Drawing.Point(61, 217);
-            this.NroPiso.Name = "NroPiso";
-            this.NroPiso.Size = new System.Drawing.Size(57, 20);
-            this.NroPiso.TabIndex = 8;
+            this.txtNroPiso.Location = new System.Drawing.Point(61, 217);
+            this.txtNroPiso.Name = "txtNroPiso";
+            this.txtNroPiso.Size = new System.Drawing.Size(57, 20);
+            this.txtNroPiso.TabIndex = 8;
             // 
             // labelNPiso
             // 
@@ -341,13 +348,6 @@
             this.buttonLimpiar.UseVisualStyleBackColor = true;
             this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
-            // CodPostal
-            // 
-            this.CodPostal.Location = new System.Drawing.Point(73, 269);
-            this.CodPostal.Name = "CodPostal";
-            this.CodPostal.Size = new System.Drawing.Size(170, 20);
-            this.CodPostal.TabIndex = 63;
-            // 
             // Modificación
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -378,11 +378,11 @@
         private System.Windows.Forms.Label labelCUIT;
         private System.Windows.Forms.MaskedTextBox FecCre;
         private System.Windows.Forms.Label labelCP;
-        private System.Windows.Forms.TextBox Dpto;
+        private System.Windows.Forms.TextBox txtDpto;
         private System.Windows.Forms.Label labelDpto;
         private System.Windows.Forms.TextBox Localidad;
         private System.Windows.Forms.Label labelLocalidad;
-        private System.Windows.Forms.TextBox NroPiso;
+        private System.Windows.Forms.TextBox txtNroPiso;
         private System.Windows.Forms.Label labelNPiso;
         private System.Windows.Forms.TextBox Calle;
         private System.Windows.Forms.Label labelCalle;

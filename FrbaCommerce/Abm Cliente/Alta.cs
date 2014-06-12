@@ -53,12 +53,12 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void iniciarCheckText(Entidades.Ent_ValidacionesUtil pUtiles)
         {
-            pUtiles.Dpto = txtDpto;
+           
             pUtiles.DNI = txtDNI;
             pUtiles.Piso = txtNroPiso;
+            pUtiles.NroCalle = txtNroCalle;
             pUtiles.Telefono = txtTelefono;
             pUtiles.Fecha = txtFechaNac;
-            pUtiles.NroCalle = txtNroCalle;
             pUtiles.CUIT = null;
             pUtiles.TelefonoAnt = null;
             pUtiles.DNIAnt = null;
