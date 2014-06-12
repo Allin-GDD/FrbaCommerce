@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-				
+
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
@@ -34,7 +34,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             int startRec;
             int endRec;
             DataTable dtTemp;
-           
+
 
             //Clone the source table to create a temporary table.
             dtTemp = dtSource.Clone();
@@ -78,19 +78,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
         }
 
-        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
-
-            if (e.ColumnIndex == 13)
-            {//11 es la pocision del boton 
-               Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
-                mod.Show();
-
-            }
-          
-        }
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
@@ -136,7 +124,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 currentPage = 1;
                 recNo = 0;
 
-               LoadPage();
+                LoadPage();
 
                 this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
 
@@ -166,7 +154,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             currentPage = 1;
             recNo = 0;
             LoadPage();
-			
+
         }
 
         private void btnNextPage_Click(object sender, EventArgs e)
@@ -252,5 +240,17 @@ namespace FrbaCommerce.Comprar_Ofertar
             codRubro = list.ResultCodigo;
         }
 
-           }
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+
+            if (e.ColumnIndex == 13)
+            {//11 es la pocision del boton 
+                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
+                mod.Show();
+            }
+
+        }
+    }
 }
