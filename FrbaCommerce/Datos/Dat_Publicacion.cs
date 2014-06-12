@@ -81,6 +81,29 @@ namespace FrbaCommerce.Datos
             }
 
         }
+        public static void EditarPublicacionBorrador(Entidades.Ent_Publicacion pPublicacion)
+        {
+            int retorno;
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.editarPublicacionBorrador", conexion,
+                   new SqlParameter("@Visibilidad", pPublicacion.Visibilidad),
+                   new SqlParameter("@Tipo", pPublicacion.Tipo),
+                   new SqlParameter("@Rubro", pPublicacion.Rubro),
+                   new SqlParameter("@Stock", pPublicacion.Stock),
+                   new SqlParameter("@Precio", pPublicacion.Precio),
+                   new SqlParameter("@Descripcion", pPublicacion.Descripcion),
+                   new SqlParameter("@Estado", pPublicacion.Estado),
+                   new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas),
+                   new SqlParameter("@Fecha_Venc", Convert.ToDateTime(pPublicacion.Fecha_Venc)),
+                   new SqlParameter("@Codigo", pPublicacion.Codigo));
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+
+        }
 
         public static Entidades.Ent_RolyId buscarPublicador(String usuario)
         {

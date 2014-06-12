@@ -35,17 +35,17 @@ namespace FrbaCommerce.Generar_Publicacion
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
-            //try
-            //{
+            try
+            {
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
         
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 

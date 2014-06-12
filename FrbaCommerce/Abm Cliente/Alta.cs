@@ -118,5 +118,11 @@ namespace FrbaCommerce.Abm_Cliente
             Generar_Publicacion.Generar_Publi list = new Generar_Publicacion.Generar_Publi("crisólogo_Ortega@gmail.com");
             list.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Editar_Publicacion.Editar_Publicacion_Borrada list = new Editar_Publicacion.Editar_Publicacion_Borrada(68385);
+            list.Show();
+        }
     }
 }
