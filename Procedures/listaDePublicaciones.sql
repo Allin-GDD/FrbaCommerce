@@ -1,12 +1,12 @@
 CREATE PROCEDURE listaDePublicaciones
-		@Descipcion nvarchar(255),
-		@Rubro nvarchar(255)
+		@Descripcion nvarchar(255),
+		@Rubro nvarchar(30)
 	AS
 	BEGIN
 		SELECT * FROM Publicacion
 			WHERE
-				Descripcion like '%'+@Descipcion+'%'
-				AND Rubro_Cod like '%'+@Rubro+'%'
+				Descripcion like '%'+@Descripcion+'%'
+				AND  (@Rubro = [Rubro_Cod] or @Rubro = '')
 				and stock > 0
 				and Estado = 'publicada'
 				

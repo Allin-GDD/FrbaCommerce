@@ -37,22 +37,25 @@
             this.txtDisplayPageNo = new System.Windows.Forms.TextBox();
             this.txtPageSize = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cboRubro = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtRubro = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 42);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 102);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(562, 206);
+            this.dataGridView1.Size = new System.Drawing.Size(677, 206);
             this.dataGridView1.TabIndex = 0;
             // 
             // btnFirstPage
             // 
-            this.btnFirstPage.Location = new System.Drawing.Point(422, 254);
+            this.btnFirstPage.Location = new System.Drawing.Point(544, 314);
             this.btnFirstPage.Name = "btnFirstPage";
             this.btnFirstPage.Size = new System.Drawing.Size(35, 23);
             this.btnFirstPage.TabIndex = 1;
@@ -62,7 +65,7 @@
             // 
             // btnNextPage
             // 
-            this.btnNextPage.Location = new System.Drawing.Point(487, 254);
+            this.btnNextPage.Location = new System.Drawing.Point(609, 314);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(18, 23);
             this.btnNextPage.TabIndex = 2;
@@ -72,7 +75,7 @@
             // 
             // btnPreviousPage
             // 
-            this.btnPreviousPage.Location = new System.Drawing.Point(463, 254);
+            this.btnPreviousPage.Location = new System.Drawing.Point(585, 314);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(18, 23);
             this.btnPreviousPage.TabIndex = 3;
@@ -82,7 +85,7 @@
             // 
             // btnLastPage
             // 
-            this.btnLastPage.Location = new System.Drawing.Point(511, 254);
+            this.btnLastPage.Location = new System.Drawing.Point(633, 314);
             this.btnLastPage.Name = "btnLastPage";
             this.btnLastPage.Size = new System.Drawing.Size(28, 23);
             this.btnLastPage.TabIndex = 4;
@@ -92,9 +95,9 @@
             // 
             // btnFillGrid
             // 
-            this.btnFillGrid.Location = new System.Drawing.Point(487, 13);
+            this.btnFillGrid.Location = new System.Drawing.Point(544, 23);
             this.btnFillGrid.Name = "btnFillGrid";
-            this.btnFillGrid.Size = new System.Drawing.Size(75, 23);
+            this.btnFillGrid.Size = new System.Drawing.Size(113, 49);
             this.btnFillGrid.TabIndex = 5;
             this.btnFillGrid.Text = "Buscar";
             this.btnFillGrid.UseVisualStyleBackColor = true;
@@ -102,14 +105,14 @@
             // 
             // txtDisplayPageNo
             // 
-            this.txtDisplayPageNo.Location = new System.Drawing.Point(12, 254);
+            this.txtDisplayPageNo.Location = new System.Drawing.Point(12, 316);
             this.txtDisplayPageNo.Name = "txtDisplayPageNo";
             this.txtDisplayPageNo.Size = new System.Drawing.Size(80, 20);
             this.txtDisplayPageNo.TabIndex = 6;
             // 
             // txtPageSize
             // 
-            this.txtPageSize.Location = new System.Drawing.Point(543, 256);
+            this.txtPageSize.Location = new System.Drawing.Point(665, 316);
             this.txtPageSize.Name = "txtPageSize";
             this.txtPageSize.Size = new System.Drawing.Size(20, 20);
             this.txtPageSize.TabIndex = 7;
@@ -117,25 +120,56 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 12);
+            this.textBox1.Location = new System.Drawing.Point(170, 22);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.Size = new System.Drawing.Size(206, 20);
             this.textBox1.TabIndex = 8;
             // 
-            // cboRubro
+            // button1
             // 
-            this.cboRubro.FormattingEnabled = true;
-            this.cboRubro.Location = new System.Drawing.Point(322, 11);
-            this.cboRubro.Name = "cboRubro";
-            this.cboRubro.Size = new System.Drawing.Size(121, 21);
-            this.cboRubro.TabIndex = 9;
+            this.button1.Location = new System.Drawing.Point(393, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtRubro
+            // 
+            this.txtRubro.Enabled = false;
+            this.txtRubro.Location = new System.Drawing.Point(95, 56);
+            this.txtRubro.Name = "txtRubro";
+            this.txtRubro.Size = new System.Drawing.Size(281, 20);
+            this.txtRubro.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Descripción de Publicación";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Rubro";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 289);
-            this.Controls.Add(this.cboRubro);
+            this.ClientSize = new System.Drawing.Size(696, 339);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtRubro);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPageSize);
             this.Controls.Add(this.txtDisplayPageNo);
@@ -164,6 +198,9 @@
         private System.Windows.Forms.TextBox txtDisplayPageNo;
         private System.Windows.Forms.TextBox txtPageSize;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox cboRubro;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtRubro;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -13,8 +13,6 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     public partial class Form1 : Form
     {
-        SqlDataAdapter da;
-        DataSet ds;
         DataTable dtSource;
         int PageCount;
         int maxRec;
@@ -25,17 +23,18 @@ namespace FrbaCommerce.Comprar_Ofertar
         public Form1()
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxRubro(cboRubro);
             botonCompraOferta = false;
         }
 
         private bool botonCompraOferta;
+        private Decimal codRubro;
         private void LoadPage()
         {
             int i;
             int startRec;
             int endRec;
             DataTable dtTemp;
+           
 
             //Clone the source table to create a temporary table.
             dtTemp = dtSource.Clone();
@@ -82,38 +81,54 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
-            // Set the start and max records. 
-            pageSize = Convert.ToInt32(txtPageSize.Text);
-            maxRec = dtSource.Rows.Count;
-            PageCount = maxRec / pageSize;
-
-            //Adjust the page number if the last page contains a partial page.
-            if ((maxRec % pageSize) > 0)
-            {
-                PageCount += 1;
-            }
-
-            // Initial seeings
-            currentPage = 1;
-            recNo = 0;
-
             // Display the content of the current page.
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
-    
+
+
             try
             {
 
                 pCO.Descripcion = textBox1.Text;
-                pCO.Rubro = Convert.ToString(cboRubro.SelectedValue);
+                pCO.Rubro = Convert.ToString(this.codRubro);
 
-                Datos.Dat_CompraOferta.buscarListado(pCO, dataGridView1);
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
+                new SqlParameter("@Descripcion", pCO.Descripcion),
+                new SqlParameter("@Rubro", pCO.Rubro));
 
 
+                SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
+
+                DataTable tabla = new DataTable();
+                da.Fill(tabla);
+                conn.Close();
+                dataGridView1.DataSource = tabla;
+                dataGridView1.Refresh();
+                dataGridView1.ClearSelection();
+
+                this.dtSource = tabla;
+
+                // Set the start and max records. 
+                pageSize = Convert.ToInt32(txtPageSize.Text);
+                maxRec = dtSource.Rows.Count;
+                PageCount = maxRec / pageSize;
+
+                //Adjust the page number if the last page contains a partial page.
+                if ((maxRec % pageSize) > 0)
+                {
+                    PageCount += 1;
+                }
+
+                // Initial seeings
+                currentPage = 1;
+                recNo = 0;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+
         }
 
         private void btnFirstPage_Click(object sender, EventArgs e)
@@ -210,8 +225,14 @@ namespace FrbaCommerce.Comprar_Ofertar
             LoadPage();
         }
 
-     
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
+            list.ShowDialog();
+            txtRubro.Enabled = false;
+            txtRubro.Text = list.Result;
+            codRubro = list.ResultCodigo;
+        }
 
-	
-    }
+           }
 }
