@@ -41,6 +41,7 @@
             this.txtBoxPass.Name = "txtBoxPass";
             this.txtBoxPass.Size = new System.Drawing.Size(100, 20);
             this.txtBoxPass.TabIndex = 25;
+            this.txtBoxPass.UseSystemPasswordChar = true;
             // 
             // txtBoxUser
             // 
@@ -82,7 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 148);
+            this.ClientSize = new System.Drawing.Size(268, 148);
             this.Controls.Add(this.txtBoxPass);
             this.Controls.Add(this.txtBoxUser);
             this.Controls.Add(this.btnAceptar);
