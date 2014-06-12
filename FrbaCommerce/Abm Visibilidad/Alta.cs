@@ -26,8 +26,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             {
                 //Verifica si los datos ingresados no son nulos
                 Utiles.Validaciones.NulidadDeDatosIngresadosVisibilidad(this);
-          
-                
+
+                Utiles.Validaciones.validarVisibilidad(this);
                 //Verifica si lo que se estan ingresando es correcto
 
                 
@@ -58,7 +58,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             visibilidad.Descripcion = Convert.ToString(txtDescripcion.Text);
             visibilidad.Porcentaje = Convert.ToDouble(txtPrecio.Text);
             visibilidad.Precio = Convert.ToDouble(txtPorcentaje.Text);
-            visibilidad.Vencimiento = Convert.ToDecimal(Estado.Text);
+            visibilidad.Vencimiento = Convert.ToDecimal(txtTiempVenc.Text);
 
        }
 

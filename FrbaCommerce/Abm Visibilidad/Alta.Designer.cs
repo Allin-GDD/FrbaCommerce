@@ -31,8 +31,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Estado = new System.Windows.Forms.TextBox();
             this.txtTiempVenc = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtPorcentaje = new System.Windows.Forms.TextBox();
@@ -48,7 +46,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(170, 212);
+            this.button2.Location = new System.Drawing.Point(170, 190);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 12;
@@ -58,7 +56,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 212);
+            this.button1.Location = new System.Drawing.Point(27, 190);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -67,8 +65,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.Estado);
             this.groupBox1.Controls.Add(this.txtTiempVenc);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtPorcentaje);
@@ -81,30 +77,14 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 194);
+            this.groupBox1.Size = new System.Drawing.Size(259, 165);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos del visiblidad";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 132);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Estado";
-            // 
-            // Estado
-            // 
-            this.Estado.Location = new System.Drawing.Point(87, 129);
-            this.Estado.Name = "Estado";
-            this.Estado.Size = new System.Drawing.Size(161, 20);
-            this.Estado.TabIndex = 18;
-            // 
             // txtTiempVenc
             // 
-            this.txtTiempVenc.Location = new System.Drawing.Point(136, 155);
+            this.txtTiempVenc.Location = new System.Drawing.Point(136, 129);
             this.txtTiempVenc.Name = "txtTiempVenc";
             this.txtTiempVenc.Size = new System.Drawing.Size(112, 20);
             this.txtTiempVenc.TabIndex = 17;
@@ -112,7 +92,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 158);
+            this.label6.Location = new System.Drawing.Point(12, 132);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 13);
             this.label6.TabIndex = 15;
@@ -186,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 248);
+            this.ClientSize = new System.Drawing.Size(282, 225);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -213,7 +193,5 @@
         private System.Windows.Forms.TextBox txtPorcentaje;
         private System.Windows.Forms.TextBox txtTiempVenc;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox Estado;
     }
 }

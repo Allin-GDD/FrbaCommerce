@@ -312,8 +312,13 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
             }
         }
-    
-    
+
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        
+        public static void validarVisibilidad(Form ofrm)
+        {
+            int i = validarDatosVisibilidad(ofrm);
+         }
     }
 }
         
