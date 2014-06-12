@@ -50,6 +50,21 @@ namespace FrbaCommerce.Excepciones
         {
         }
     }
+    public class ValorMenor : System.Exception
+    {
+        public ValorMenor()
+        {
+        }
+        public ValorMenor(string message)
+            : base(message)
+        {
+        }
+        public ValorMenor(string message, Exception inner)
+
+            : base(message, inner)
+        {
+        }
+    }
     public class InexistenciaUsuario : System.Exception
     {
         public InexistenciaUsuario()

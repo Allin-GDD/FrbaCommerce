@@ -243,12 +243,15 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-
+            string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
 
             if (e.ColumnIndex == 13)
             {//11 es la pocision del boton 
-                Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
-                mod.Show();
+               if (tipo == "Subasta"){
+
+                   Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado);
+                   oferta.Show();
+               }
             }
 
         }

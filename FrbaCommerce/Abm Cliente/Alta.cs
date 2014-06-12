@@ -121,8 +121,17 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //en realidad hayq  hacer un if para ver el estado si es borrador o publicada o pausada y ahi entra a la forma correspondiente
             Editar_Publicacion.Editar_Publicacion_Borrada list = new Editar_Publicacion.Editar_Publicacion_Borrada(68385);
             list.Show();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //en realidad hayq  hacer un if para ver el estado si es borrador o publicada o pausada y ahi entra a la forma correspondiente
+            Editar_Publicacion.Editar_Publicacion_Publicada list = new Editar_Publicacion.Editar_Publicacion_Publicada(68385);
+            list.Show();
+        }
+        
     }
 }

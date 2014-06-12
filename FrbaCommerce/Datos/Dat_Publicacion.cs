@@ -105,6 +105,27 @@ namespace FrbaCommerce.Datos
 
         }
 
+        public static void EditarPublicacionPublicada(Entidades.Ent_Publicacion pPublicacion)
+        {
+            int retorno;
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.editarPublicacionPublicada", conexion,
+                   
+                   new SqlParameter("@Stock", pPublicacion.Stock),
+                   
+                   new SqlParameter("@Descripcion", pPublicacion.Descripcion),
+                   new SqlParameter("@Estado", pPublicacion.Estado),
+                   
+                   new SqlParameter("@Codigo", pPublicacion.Codigo));
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+
+        }
+
         public static Entidades.Ent_RolyId buscarPublicador(String usuario)
         {
 
@@ -133,6 +154,28 @@ namespace FrbaCommerce.Datos
             conn.Close();
             return rolIdEnt;
         
+        }
+        
+        public static Entidades.Ent_Publicacion buscarDatosPublicacion(Decimal codigoPk)
+        {
+            Entidades.Ent_Publicacion pPublicacion = new Entidades.Ent_Publicacion();
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDatosPublicacion", conn,
+
+            new SqlParameter("@Codigo", codigoPk));
+            
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                pPublicacion.Tipo = lectura.GetString(0);
+                pPublicacion.Stock = lectura.GetDecimal(1);
+                pPublicacion.Descripcion = lectura.GetString(2);
+            }
+            conn.Close();
+
+            return pPublicacion;
         }
 
         public static Entidades.Ent_Fecha buscarDuracionVisibilidad(Decimal visibilidad)

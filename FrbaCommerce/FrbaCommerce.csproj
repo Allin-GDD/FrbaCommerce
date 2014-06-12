@@ -60,6 +60,12 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaOferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaOferta.Designer.cs">
+      <DependentUpon>VentanaOferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Datos\Dat_CompraOferta.cs" />
     <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
@@ -209,6 +215,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Ent_ValidacionesUtil.cs" />
+    <Compile Include="Entidades\Ent_Oferta.cs" />
     <Compile Include="Generar Publicacion\BuscarRubro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -365,6 +372,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VentanaOferta.resx">
+      <DependentUpon>VentanaOferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Borrada.resx">
       <DependentUpon>Editar_Publicacion_Borrada.cs</DependentUpon>
