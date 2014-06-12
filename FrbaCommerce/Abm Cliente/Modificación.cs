@@ -98,20 +98,6 @@ namespace FrbaCommerce.Abm_Cliente
         }
 
 
-    
-
-
-        private void validarTipoDeDatosIngresados()
-        {
-            Utiles.Validaciones.ValidarTipoDecimal(txtDNI, txtNroCalle);
-
-            if (!string.IsNullOrEmpty(txtNroPiso.Text))
-            {
-                Utiles.Validaciones.ValidarTipoDecimal(txtNroPiso);
-            }
-        }
-
-
         private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
 
