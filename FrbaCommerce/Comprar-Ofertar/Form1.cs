@@ -122,6 +122,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                 // Initial seeings
                 currentPage = 1;
                 recNo = 0;
+
+                LoadPage();
             }
             catch (Exception ex)
             {
