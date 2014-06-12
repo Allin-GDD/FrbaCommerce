@@ -78,6 +78,19 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
         }
 
+        public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+
+
+            if (e.ColumnIndex == 13)
+            {//11 es la pocision del boton 
+               Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(codigoSeleccionado);
+                mod.Show();
+
+            }
+          
+        }
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
@@ -122,6 +135,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                 // Initial seeings
                 currentPage = 1;
                 recNo = 0;
+
+                this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+          
             }
             catch (Exception ex)
             {
