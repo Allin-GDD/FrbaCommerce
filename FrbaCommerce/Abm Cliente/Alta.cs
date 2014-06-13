@@ -23,13 +23,13 @@ namespace FrbaCommerce.Abm_Cliente
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
-            Entidades.Ent_ValidacionesUtil pUtiles = new Entidades.Ent_ValidacionesUtil();
+            Entidades.Ent_TxtPersona pUtiles = new Entidades.Ent_TxtPersona();
             iniciarCheckText(pUtiles);
 
             try
             {
                 //Prueba todas las validaciones
-                Utiles.Validaciones.evaluarUsuario(pUtiles, this);
+                Utiles.Validaciones.evaluarPersona(pUtiles, this);
                 
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
@@ -47,11 +47,11 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+    
 
         }
 
-        private void iniciarCheckText(Entidades.Ent_ValidacionesUtil pUtiles)
+        private void iniciarCheckText(Entidades.Ent_TxtPersona pUtiles)
         {
            
             pUtiles.DNI = txtDNI;
@@ -122,7 +122,7 @@ namespace FrbaCommerce.Abm_Cliente
         private void button4_Click(object sender, EventArgs e)
         {
             //en realidad hayq  hacer un if para ver el estado si es borrador o publicada o pausada y ahi entra a la forma correspondiente
-            Editar_Publicacion.Editar_Publicacion_Borrada list = new Editar_Publicacion.Editar_Publicacion_Borrada(68385);
+            Editar_Publicacion.Editar_Publicacion_Borrada list = new Editar_Publicacion.Editar_Publicacion_Borrada(68380);
             list.Show();
         }
 

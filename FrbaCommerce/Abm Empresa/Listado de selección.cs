@@ -51,6 +51,7 @@ namespace FrbaCommerce.Abm_Empresa
         {
             Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
+            
 
             if (e.ColumnIndex == 15)
             {//14 es la pocision del boton modificar
@@ -60,8 +61,8 @@ namespace FrbaCommerce.Abm_Empresa
             }
             if (e.ColumnIndex == 16)
             {
-                //Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
-                //baj.Show();
+                Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
+                baj.Show();
                                 
             }
         }

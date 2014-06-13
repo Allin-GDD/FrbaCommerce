@@ -27,18 +27,26 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_Oferta oferta = new FrbaCommerce.Entidades.Ent_Oferta();
            
            try
+
             {
                // Utiles.Validaciones.ValidarTipoDouble(textBox1);
+
+                Utiles.Validaciones.ValidarTipoDouble(textBox1);
+
                 oferta.Monto = Convert.ToDouble(textBox1.Text);
                 oferta.Codigo_Pub = codigoPublicacion;
                 oferta.Id_Cli = idusuario;
-                Datos.Dat_CompraOferta.validarValorOferta(codigoPublicacion,oferta.Monto);
-                
-                Datos.Dat_CompraOferta.AgregarOferta(oferta);
-          }
+               
+                Utiles.Validaciones.validarValorMayorAPrecio(codigoPublicacion,oferta.Monto);
+                Utiles.Validaciones.validarValorMayorAUltOferta(codigoPublicacion, oferta.Monto);
+
+               Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
+
+               Datos.Dat_CompraOferta.AgregarOferta(oferta);
+         }
 
             catch (Exception ex)
-            {
+           {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
         }

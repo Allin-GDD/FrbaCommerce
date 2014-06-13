@@ -14,28 +14,24 @@ namespace FrbaCommerce.Abm_Visibilidad
         public Alta()
         {
             InitializeComponent();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Entidades.Ent_TxtVisibilidad txtVisi = new Entidades.Ent_TxtVisibilidad();
             Entidades.Ent_Visibilidad visibilidad = new FrbaCommerce.Entidades.Ent_Visibilidad();
-           
+            IniciarCheckText(txtVisi);
             
             try
             {
-                //Verifica si los datos ingresados no son nulos
-                Utiles.Validaciones.NulidadDeDatosIngresadosVisibilidad(this);
-
-                Utiles.Validaciones.validarVisibilidad(this);
+                 Utiles.Validaciones.evaluarVisibilidad(this,txtVisi,null,null);
                 //Verifica si lo que se estan ingresando es correcto
 
-                
                 //Inicializa la visibilidad con datos correctos
                 inicializarVisibilidad(visibilidad);
 
-
-                
+              
                 //Agrega la visibilidad a la DB
                 Datos.Dat_Visibilidad.AgregarVisibilidad(visibilidad);
 
@@ -47,10 +43,17 @@ namespace FrbaCommerce.Abm_Visibilidad
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         
         }
+
+        private void IniciarCheckText(Entidades.Ent_TxtVisibilidad txtVisi)
+        {
+            txtVisi.Codigo = txtCodigo;
+            txtVisi.Descripcion = txtDescripcion;
+            txtVisi.Porcentaje = txtPorcentaje;
+            txtVisi.Precio = txtPrecio;
+            txtVisi.Vencimiento = txtTiempVenc;
+}
         private void inicializarVisibilidad(Entidades.Ent_Visibilidad visibilidad)
         {
 
@@ -63,15 +66,33 @@ namespace FrbaCommerce.Abm_Visibilidad
        }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
+            private void button1_Click_1(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
-            
+            private void button3_Click(object sender, EventArgs e)
+            {
+                Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(10006);
+                baj.Show();
+            }
+
+            private void button4_Click(object sender, EventArgs e)
+            {
+                Abm_Visibilidad.Listado_de_selección list = new Listado_de_selección();
+                list.Show();
+            }
+
+            private void button5_Click(object sender, EventArgs e)
+            {
+                Abm_Visibilidad.Listado list2 = new Listado();
+                list2.Show();
+            }
+        
+
+                              
 
     }
 }

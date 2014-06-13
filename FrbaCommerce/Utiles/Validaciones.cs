@@ -4,21 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Data.SqlClient;
 
 
 namespace FrbaCommerce.Utiles
 {
     class Validaciones
-    {   
+    {
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-       //NOSE
-        public static void validarUsuario(int retorno)
-        {
-            if (retorno != 1)
-            {
-                throw new Excepciones.InexistenciaUsuario("Usuario no válido");
-            }
-        }
+
+        //Publicacion
+
+
         public static int validarDatosVisibilidad(Form ofrm)
        {
            {
@@ -87,11 +84,11 @@ namespace FrbaCommerce.Utiles
            
         }
 
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         //USADOS EN evaluarUsuario()
-      
-        public static int validarDatosText(Form ofrm)
 
+        public static int validarDatosText(Form ofrm)
         {//VALIDA TODOS LOS TXT MENOS EL DEPTO Y EL PISO
             {
                 int i = 0;
@@ -116,7 +113,9 @@ namespace FrbaCommerce.Utiles
                 return i;
             }
         }
-        public static int validarDatosMask2(Form ofrm) {
+
+        public static int validarDatosMask(Form ofrm)
+        {
             int i = 0;
             Action<Control.ControlCollection> func = null;
             func = (controls) =>
@@ -150,120 +149,222 @@ namespace FrbaCommerce.Utiles
 
             if ((i <= 0) || (j >= 0))
             {
+
+                fecha.BackColor = Color.Coral;
                 return true;
-                //throw new Excepciones.ValoresConTiposDiferentes("La Fecha ingresada no es valida. Estas fuera del rango disponible"); 
 
             }
             return false;
 
 
         }
-        public static bool ValidarTipoDecimal(TextBox txt) {
+        public static bool ValidarTipoDecimal(TextBox txt)
+        {
             Decimal expectedDecimal;
-            if (!Decimal.TryParse(txt.Text, out expectedDecimal)) {
+            if (!Decimal.TryParse(txt.Text, out expectedDecimal))
+            {
+
+                txt.BackColor = Color.Coral;
+
                 return true;
-                }
+            }
             return false;
+        }
+        public static List<String> datosObligatorios(Form ofrm)
+        {
+            List<String> errores = new List<string>();
+            Utiles.LimpiarTexto.BlanquearControls(ofrm);
+            if (validarDatosMask(ofrm) + validarDatosText(ofrm) > 0)
+            {
+                errores.Add("Los datos marcados son obligatorios");
+            }
+            return errores;
         }
 
 
         //////////////////////////////////////////////////////////////////////////////////////////////
-        //EL CAPO
-        public static void evaluarUsuario(Entidades.Ent_ValidacionesUtil txtUtil, Form ofrm)
+        //Evalua todas validaciones de los clientes y empresa
+        public static void evaluarPersona(Entidades.Ent_TxtPersona txtUtil, Form ofrm)
         {
-            List<String> errores = new List<string>();
-            Utiles.LimpiarTexto.BlanquearControls(ofrm);
+            List<String> errores = datosObligatorios(ofrm);
+            //se fija si el tipo es correcto
+            if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
 
-    if (validarDatosText(ofrm) + validarDatosMask2(ofrm) > 0)
-            {errores.Add("Los datos marcados son obligatorios");}
+            if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.NroCalle));
 
-  { errores.Add("Los datos en 'negrita' no son correctos para ese tipo de campo"); }
+            //Se fija si la fecha esta dentro del rango     
+            if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha));
 
-    if(!string.IsNullOrEmpty(txtUtil.Piso.Text) && Utiles.Validaciones.ValidarTipoDecimal(txtUtil.Piso))
-            {errores.Add("El tipo del número del piso no es válido");}
-    
-            if(!string.IsNullOrEmpty(txtUtil.NroCalle.Text) && Utiles.Validaciones.ValidarTipoDecimal(txtUtil.NroCalle))
-            {errores.Add("El tipo del número del calle no es válido");}
-        
-    if((txtUtil.DNI != null) && !string.IsNullOrEmpty(txtUtil.DNI.Text) && Utiles.Validaciones.ValidarTipoDecimal(txtUtil.DNI))
-            {errores.Add("El tipo del número del DNI no es válido");}
+            //se fija si no esta repetido
+            if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));
 
+            if ((Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt) != null)) errores.Add(Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt));
 
-    if (txtUtil.Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(txtUtil.Fecha))
-            {errores.Add("La Fecha ingresada no es válida. Está fuera del rango disponible");}
+            //se fija si no esta repetido y si el DNI es de tipo decimal
+            if ((Mensajes.Generales.evaluarDNI(txtUtil.DNI, txtUtil.DNIAnt).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarDNI(txtUtil.DNI, txtUtil.DNIAnt));
 
 
-    if((txtUtil.TelefonoAnt == null) && Datos.Dat_Telefonos.validarTelefono(txtUtil.Telefono.Text))
-            {errores.Add("El teléfono ingresado pertenece a otro usuario");}
-   
 
-    if ((txtUtil.DNI != null) && (!string.IsNullOrEmpty(txtUtil.DNI.Text) && (txtUtil.DNIAnt == null)) || ((txtUtil.DNIAnt != null) && (txtUtil.DNI.Text != txtUtil.DNIAnt.Text)))
-   {
-            if(Datos.Dat_Dni.validarDni(txtUtil.DNI)){
-                errores.Add("El número de documento ingresado ya pertenece a otro cliente"); }
-        }
 
-    if ((txtUtil.CUIT != null) && (!string.IsNullOrEmpty(txtUtil.CUIT.Text) && (txtUtil.CUITAnt == null)) || ((txtUtil.CUITAnt != null) && (txtUtil.CUIT.Text != txtUtil.CUITAnt.Text)))
-   {
-            if(Datos.Dat_Cuit.validarCuit(txtUtil.CUIT))
-    { errores.Add("El número de CUIT ingresado ya pertenece a otra empresa"); }
-  }
+            Mensajes.Generales.evaluarErrores(errores);
 
 
            
-            String mensajesDeError =  Utiles.AyudaVarias.mensaje(errores);
 
-              if (errores.Count > 0) {
-                  errores.Clear();
-                  throw new Excepciones.ValoresConTiposDiferentes(mensajesDeError);
-              }
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
+        //Cuando crear un usuario
+        public static void validarUsuario(int retorno)
+        {
+            if (retorno != 1)
+            {
+                throw new Excepciones.InexistenciaUsuario("Usuario no válido");
+            }
+        }
 
         public static void evaluarRol(TextBox txtNombre, Form ofrm)
         {
-            List<String> errores = new List<string>();
-            Utiles.LimpiarTexto.BlanquearControls(ofrm);
+            List<String> errores = datosObligatorios(ofrm);
 
-            if (String.IsNullOrEmpty(txtNombre.Text)){
+
+            if (String.IsNullOrEmpty(txtNombre.Text))
+            {
                 errores.Add("Los datos marcados son obligatorios");
 
-                if (Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text))
+            if (Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text))
+            {
+                errores.Add("El nombre del rol ya pertenece a otro rol existente");
+            }
+
+
+            Mensajes.Generales.evaluarErrores(errores);
+
+        }
+        }
+
+        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
+        {
+            List<int> listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
+
+            foreach (int funcional in listaDeFunc)
+                if (func == funcional)
                 {
-                    errores.Add("El nombre del rol ya pertenece a otro rol existente");
+                    throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
                 }
-            }
-            String mensajesDeError = Utiles.AyudaVarias.mensaje(errores);
 
-            if (errores.Count > 0)
-            {
-                errores.Clear();
-                throw new Excepciones.ValoresConTiposDiferentes(mensajesDeError);
-            }
-               
         }
-
-        public static void NulidadDeDatosIngresadosVisibilidad(Form ofrm, params MaskedTextBox[] parametrosDeMask)
-        {
-            int i = 0;
-
-            Utiles.LimpiarTexto.BlanquearControls(ofrm);
-
-            i = validarDatosVisibilidad(ofrm);
-
-            if (i > 0)
-            {
-                throw new Excepciones.NulidadDeCamposACompletar("Faltan completar los siguientes campos");
-            }
-        }
-
         //////////////////////////////////////////////////////////////////////////////////////////////
-        
-        public static void validarVisibilidad(Form ofrm)
+
+        public static void evaluarVisibilidad(Form ofrm, Entidades.Ent_TxtVisibilidad util, TextBox codigoAnt, TextBox descripcionAnt)
         {
-            int i = validarDatosVisibilidad(ofrm);
-         }
-             
+            List<String> errores = datosObligatorios(ofrm);
+
+            if ((Mensajes.Generales.evaluarCodVisibilidad(util.Codigo,codigoAnt).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarCodVisibilidad(util.Codigo,codigoAnt));
+
+            if ((Mensajes.Generales.evaluarPorcentajeVisib(util.Porcentaje).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarPorcentajeVisib(util.Porcentaje));
+
+            if ((Mensajes.Generales.evaluarVencimientoVisib(util.Vencimiento) != null)) errores.Add(Mensajes.Generales.evaluarVencimientoVisib(util.Vencimiento));
+
+            if ((Mensajes.Generales.evaluarDescripVisib(util.Descripcion, descripcionAnt) != null)) errores.Add(Mensajes.Generales.evaluarDescripVisib(util.Descripcion, descripcionAnt));
+            
+            if((Mensajes.Generales.evaluarPrecioVisib(util.Precio) != null)) errores.Add(Mensajes.Generales.evaluarPrecioVisib(util.Precio));
+
+            Mensajes.Generales.evaluarErrores(errores);
+            }
+    
+        public static bool ValidarTipoDouble(TextBox txt)
+        {
+            Double expectedDouble;
+            if (!Double.TryParse(txt.Text, out expectedDouble))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static void validarValorMayorAPrecio(decimal codigoPub, double precioOfertado)
+        {
+
+            double precioBase = 0;
+
+
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPrecio", conn,
+                    new SqlParameter("@Cod_Pub", codigoPub));
+                SqlDataReader lectura = cmd.ExecuteReader();
+                while (lectura.Read())
+                {
+
+                    precioBase = Convert.ToDouble(lectura.GetDecimal(0));
+                }
+
+
+                if (precioOfertado <= precioBase)
+                {
+                    throw new Excepciones.ValorMenor("El valor ingresado es menor al precio base");
+
+                }
+                conn.Close();
+            }
+        }
+
+        public static void validarValorMayorAUltOferta(decimal codigoPub, double precioOfertado)
+        {
+            double precioMayorOferta = 0;
+            using (SqlConnection conn2 = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarMaximaOferta", conn2,
+                      new SqlParameter("@Cod_Pub", codigoPub));
+                SqlDataReader lectura2 = cmd2.ExecuteReader();
+
+                if (lectura2!= null)
+                {
+                     while (lectura2.Read())
+                  {
+                 precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
+
+
+                 }
+                }
+                if (precioOfertado <= precioMayorOferta)
+                {
+                    throw new Excepciones.ValorMenor("El valor ingresado es menor a la última oferta realizada");
+
+                }
+                conn2.Close();
+            }
+
+        }
+
+        public static void verificarMismoUsuario(decimal codigo, decimal id)
+        {
+            decimal idusuario = 0;
+            
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdUsuario", conexion,
+                   new SqlParameter("@Cod_Pub", codigo));
+                SqlDataReader lectura = cmd.ExecuteReader();
+                string publicador ;
+                publicador = "E";
+                while (lectura.Read())
+                {
+
+                    idusuario = lectura.GetDecimal(0);
+                    publicador = lectura.GetString(1);
+                }
+
+
+                if (id == idusuario && publicador == "C")
+                {
+                     throw new Excepciones.DuplicacionDeDatos("No se puede realizar una oferta a una publicacion propia");
+
+                }
+                conexion.Close();
+            }
+
+        }
     }
 }
-        

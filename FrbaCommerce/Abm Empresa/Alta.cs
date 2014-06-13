@@ -24,13 +24,13 @@ namespace FrbaCommerce.Abm_Empresa
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Empresa empresa = new Entidades.Ent_Empresa();
-            Entidades.Ent_ValidacionesUtil validaciones = new Entidades.Ent_ValidacionesUtil();
+            Entidades.Ent_TxtPersona validaciones = new Entidades.Ent_TxtPersona();
             iniciarCheckText(validaciones);
 
-            //try
-            //{
+            try
+            {
                 //Verifica si los datos ingresados no son nulos
-                Utiles.Validaciones.evaluarUsuario(validaciones, this);
+                Utiles.Validaciones.evaluarPersona(validaciones, this);
                                
                 //Inicializa el cliente con datos correctos
                 inicializarEmpresa(empresa);
@@ -44,14 +44,14 @@ namespace FrbaCommerce.Abm_Empresa
 
                 this.Close();
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void iniciarCheckText(Entidades.Ent_ValidacionesUtil validaciones)
+        private void iniciarCheckText(Entidades.Ent_TxtPersona validaciones)
         {   
             validaciones.DNI = null;
             validaciones.Telefono = Telefono;

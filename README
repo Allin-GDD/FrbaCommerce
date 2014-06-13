@@ -11,14 +11,12 @@ el estado del usuario tiene que ser un smallint---- hecho
 error al migrar los datos a la tabla usuario(use union all)
 
 
-CAMBIAR APP
-ver pq sigue agregandose la columna modificar y eliminar
 
-CREAR TABLA
-Funcionabilidades(Falta hacer)
-campos = 
-Id_Rol numeric (18,0) NOT NULL
-Id_Funcionabilidad int NOT NULL
+
+CAMBIAR APP
+ver pq sigue agregandose la columna modificar y eliminar listo
+
+Ahora cuando se limpie la pantalla hay que sacarle los botones. es un toque rebuscado
 
 
 TABLA VISIBILIDAD

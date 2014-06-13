@@ -62,9 +62,9 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                Ent_ValidacionesUtil validaciones = new Ent_ValidacionesUtil();
+                Ent_TxtPersona validaciones = new Ent_TxtPersona();
                 iniciarCheckText(validaciones);
-                Utiles.Validaciones.evaluarUsuario(validaciones, this);
+                Utiles.Validaciones.evaluarPersona(validaciones, this);
 
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
@@ -84,7 +84,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
 
-        private void iniciarCheckText(Ent_ValidacionesUtil validaciones)
+        private void iniciarCheckText(Ent_TxtPersona validaciones)
         {
             validaciones.NroCalle = txtCalle;
             validaciones.DNI = txtDNI;
