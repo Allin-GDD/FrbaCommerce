@@ -241,7 +241,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             codRubro = list.ResultCodigo;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
             decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12].Value);
