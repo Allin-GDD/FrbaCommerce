@@ -80,6 +80,7 @@
             // 
             // CUIT
             // 
+            this.CUIT.Enabled = false;
             this.CUIT.Location = new System.Drawing.Point(72, 84);
             this.CUIT.Mask = "00-00000000-00";
             this.CUIT.Name = "CUIT";
@@ -88,6 +89,7 @@
             // 
             // CodPostal
             // 
+            this.CodPostal.Enabled = false;
             this.CodPostal.Location = new System.Drawing.Point(88, 273);
             this.CodPostal.Mask = "0000";
             this.CodPostal.Name = "CodPostal";
@@ -96,6 +98,7 @@
             // 
             // Telefono
             // 
+            this.Telefono.Enabled = false;
             this.Telefono.Location = new System.Drawing.Point(72, 142);
             this.Telefono.Mask = "000-0000-0000";
             this.Telefono.Name = "Telefono";
@@ -113,6 +116,7 @@
             // 
             // NCalle
             // 
+            this.NCalle.Enabled = false;
             this.NCalle.Location = new System.Drawing.Point(77, 196);
             this.NCalle.Name = "NCalle";
             this.NCalle.Size = new System.Drawing.Size(182, 20);
@@ -129,6 +133,7 @@
             // 
             // Ciudad
             // 
+            this.Ciudad.Enabled = false;
             this.Ciudad.Location = new System.Drawing.Point(76, 301);
             this.Ciudad.Name = "Ciudad";
             this.Ciudad.Size = new System.Drawing.Size(182, 20);
@@ -154,6 +159,7 @@
             // 
             // FecCre
             // 
+            this.FecCre.Enabled = false;
             this.FecCre.Location = new System.Drawing.Point(129, 325);
             this.FecCre.Mask = "00/00/0000";
             this.FecCre.Name = "FecCre";
@@ -172,6 +178,7 @@
             // 
             // Dpto
             // 
+            this.Dpto.Enabled = false;
             this.Dpto.Location = new System.Drawing.Point(184, 221);
             this.Dpto.Name = "Dpto";
             this.Dpto.Size = new System.Drawing.Size(74, 20);
@@ -188,6 +195,7 @@
             // 
             // Localidad
             // 
+            this.Localidad.Enabled = false;
             this.Localidad.Location = new System.Drawing.Point(76, 247);
             this.Localidad.Name = "Localidad";
             this.Localidad.Size = new System.Drawing.Size(182, 20);
@@ -204,6 +212,7 @@
             // 
             // NroPiso
             // 
+            this.NroPiso.Enabled = false;
             this.NroPiso.Location = new System.Drawing.Point(76, 222);
             this.NroPiso.Name = "NroPiso";
             this.NroPiso.Size = new System.Drawing.Size(57, 20);
@@ -220,6 +229,7 @@
             // 
             // Calle
             // 
+            this.Calle.Enabled = false;
             this.Calle.Location = new System.Drawing.Point(76, 170);
             this.Calle.Name = "Calle";
             this.Calle.Size = new System.Drawing.Size(182, 20);
@@ -245,6 +255,7 @@
             // 
             // Mail
             // 
+            this.Mail.Enabled = false;
             this.Mail.Location = new System.Drawing.Point(72, 113);
             this.Mail.Name = "Mail";
             this.Mail.Size = new System.Drawing.Size(186, 20);
@@ -261,6 +272,7 @@
             // 
             // RazonSocial
             // 
+            this.RazonSocial.Enabled = false;
             this.RazonSocial.Location = new System.Drawing.Point(96, 56);
             this.RazonSocial.Name = "RazonSocial";
             this.RazonSocial.Size = new System.Drawing.Size(162, 20);
@@ -277,6 +289,7 @@
             // 
             // NombreContacto
             // 
+            this.NombreContacto.Enabled = false;
             this.NombreContacto.Location = new System.Drawing.Point(131, 30);
             this.NombreContacto.Name = "NombreContacto";
             this.NombreContacto.Size = new System.Drawing.Size(127, 20);

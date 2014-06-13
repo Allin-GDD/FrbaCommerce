@@ -21,8 +21,8 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
 
                 pvisibilidad.Codigo = textBox1.Text;
@@ -32,11 +32,11 @@ namespace FrbaCommerce.Abm_Visibilidad
 
          
                 Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
