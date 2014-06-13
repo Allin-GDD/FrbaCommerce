@@ -228,7 +228,7 @@ namespace FrbaCommerce.Datos
             if (pusuario.Contraseña == contraseñaIngresada)
             {
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, 0);
-                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login);
+                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login,pusuario.IdUsuario);
 
             }
             else

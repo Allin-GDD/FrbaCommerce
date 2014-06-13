@@ -20,12 +20,13 @@ namespace FrbaCommerce.Comprar_Ofertar
         int currentPage;
         int recNo;
 
-        public Form1()
+        public Form1(decimal id)
         {
             InitializeComponent();
             botonCompraOferta = false;
+            idusuario = id;
         }
-
+        private decimal idusuario;
         private bool botonCompraOferta;
         private Decimal codRubro;
         private void LoadPage()
@@ -240,18 +241,24 @@ namespace FrbaCommerce.Comprar_Ofertar
             codRubro = list.ResultCodigo;
         }
 
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
+            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12].Value);
+            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells[10].Value);
             string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
 
             if (e.ColumnIndex == 13)
             {//11 es la pocision del boton 
+                if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
+                {
                if (tipo == "Subasta"){
 
-                   Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado);
+                   Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado,idusuario);
                    oferta.Show();
                }
+                }
+               
             }
 
         }

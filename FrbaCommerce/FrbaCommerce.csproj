@@ -66,7 +66,9 @@
     <Compile Include="Comprar-Ofertar\VentanaOferta.Designer.cs">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Datos\Dat_CompraOferta.cs" />
+    <Compile Include="Datos\Dat_CompraOferta.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
     <Compile Include="Datos\Dat_Visibilidad.cs" />

@@ -9,7 +9,7 @@ namespace FrbaCommerce.Utiles.Ventanas
     class Opciones
     {
 
-        internal static void AbrirVentanas(decimal rol, Form login)
+        internal static void AbrirVentanas(decimal rol, Form login,decimal id)
         {
             switch (Convert.ToInt16(rol))
             {
@@ -33,7 +33,7 @@ namespace FrbaCommerce.Utiles.Ventanas
 
                 case 1:
 
-                    Roles.Rol_Cliente cliente = new Roles.Rol_Cliente();
+                    Roles.Rol_Cliente cliente = new Roles.Rol_Cliente(id);
                     cliente.Show();
                     login.Close();
 
