@@ -5,100 +5,83 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
     partial class VentanaCompra : Form
     {
-        public VentanaCompra()
+        public VentanaCompra(decimal codigo,decimal clienteABuscar)
         {
             InitializeComponent();
-            this.Text = String.Format("About {0} {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0} {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            cargarDatosDelVendedor();
+            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
+            cargarUsuario(clienteABuscar);
+    
         }
 
-        #region Assembly Attribute Accessors
+        private Int32 clienteABuscar;
 
-        public string AssemblyTitle
+        private void cargarUsuario(decimal id)
         {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-                if (attributes.Length > 0)
-                {
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
-                    {
-                        return titleAttribute.Title;
-                    }
-                }
-                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
-            }
+        
         }
 
-        public string AssemblyVersion
+        private void cargarDatosDelVendedor()
         {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
+            Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
+            pcliente = buscarCliente(clienteABuscar);
+
+            txtnombre.Text = pcliente.Nombre;
+            txtapellido.Text = pcliente.Apellido;
+            txtdoc.Text = Convert.ToString(pcliente.Dni);
+            txtcalle.Text = pcliente.Dom_Calle;
+            txtcp.Text = pcliente.Cod_Postal;
+            txtdpto.Text = pcliente.Dpto;
+            txtmail.Text = pcliente.Mail;
+            txtnum.Text = Convert.ToString(pcliente.Nro_Calle);
+            txtpiso.Text = Convert.ToString(pcliente.Piso);
+            
+            txtlocalidad.Text = pcliente.Localidad;
+            
+
         }
 
-        public string AssemblyDescription
+        public static Entidades.Ent_Cliente buscarCliente(Int32 id)
         {
-            get
+
+            Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente", conn,
+            new SqlParameter("@Id", id));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+                pcliente.Dni = lectura.GetDecimal(1);
+                pcliente.Nombre = lectura.GetString(2);
+                pcliente.Apellido = lectura.GetString(3);
+                pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+                pcliente.Mail = lectura.GetString(5);
+                pcliente.Dom_Calle = lectura.GetString(6);
+                pcliente.Nro_Calle = lectura.GetDecimal(7);
+                pcliente.Piso = lectura.GetDecimal(8);
+                pcliente.Dpto = lectura.GetString(9);
+                pcliente.Cod_Postal = lectura.GetString(10);
+                pcliente.Localidad = lectura.GetString(11);
+                pcliente.Tipo_dni = lectura.GetInt16(12);
+                pcliente.Telefono = lectura.GetString(13);
             }
+            conn.Close();
+            return pcliente;
         }
 
-        public string AssemblyProduct
+        private void button1_Click(object sender, EventArgs e)
         {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyProductAttribute)attributes[0]).Product;
-            }
+
         }
 
-        public string AssemblyCopyright
-        {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
-            }
-        }
-
-        public string AssemblyCompany
-        {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
-            }
-        }
-        #endregion
+        
     }
 }

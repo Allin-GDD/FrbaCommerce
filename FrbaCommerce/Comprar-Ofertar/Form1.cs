@@ -256,6 +256,17 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                    Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado,idusuario);
                    oferta.Show();
+                   if (tipo == "CompraInmediata")
+                   {
+                       if (publicador == 'E') { 
+                       }
+
+                       if (publicador == 'C')
+                       {
+                           VentanaCompra ventana = new VentanaCompra(codigoSeleccionado,idusuario);
+                           ventana.Show();
+                       }
+                   }
                }
                 }
                
