@@ -226,7 +226,18 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
         }
 
-    
+
+
+        public static bool ValidarTipoDouble(TextBox txt)
+        {
+            Double expectedDouble;
+            if (!Double.TryParse(txt.Text, out expectedDouble))
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
 

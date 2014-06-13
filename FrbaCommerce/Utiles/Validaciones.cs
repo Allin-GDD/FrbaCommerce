@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
-using System.Data.SqlClient;
 
 
 namespace FrbaCommerce.Utiles
@@ -255,17 +254,6 @@ namespace FrbaCommerce.Utiles
         {
             int i = validarDatosVisibilidad(ofrm);
          }
-
-        public static bool ValidarTipoDouble(TextBox txt)
-        {
-            Double expectedDouble;
-            if (!Double.TryParse(txt.Text, out expectedDouble))
-            {
-                return true;
-            }
-            return false;
-        }
-
              
     }
 }
