@@ -164,7 +164,7 @@ namespace FrbaCommerce.Datos
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarDatosPublicacion", conn,
 
             new SqlParameter("@Codigo", codigoPk));
-            
+
 
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
@@ -174,8 +174,7 @@ namespace FrbaCommerce.Datos
                 pPublicacion.Descripcion = lectura.GetString(2);
             }
             conn.Close();
-
-            return pPublicacion;
+           return pPublicacion;
         }
 
         public static Entidades.Ent_Fecha buscarDuracionVisibilidad(Decimal visibilidad)

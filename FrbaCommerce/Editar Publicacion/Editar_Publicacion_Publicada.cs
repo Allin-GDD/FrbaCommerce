@@ -25,19 +25,27 @@ namespace FrbaCommerce.Editar_Publicacion
 
         private void inicializarValores()
         {
-            Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
-            publicacion = Datos.Dat_Publicacion.buscarDatosPublicacion(codigoPk);
-
-            if (publicacion.Tipo == "Compra inmediata")
+            try
             {
-                textBox2.Text = publicacion.Tipo;
-            }
-            else
-            {
-                textBox2.Enabled = false;
-            }
+                Entidades.Ent_Publicacion publ = new Entidades.Ent_Publicacion();
+                publ = Datos.Dat_Publicacion.buscarDatosPublicacion(codigoPk);
+                textBox5.Text = publ.Descripcion;
 
-            textBox5.Text = publicacion.Descripcion;
+
+                if (publ.Tipo == "Compra inmediata")
+                {
+                    textBox2.Text = publ.Tipo;
+                }
+                else
+                {
+                    textBox2.Enabled = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
