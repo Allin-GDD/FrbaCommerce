@@ -16,13 +16,47 @@ namespace FrbaCommerce.Editar_Publicacion
         public Editar_Publicacion_Borrada(Decimal codigo)
         {
             InitializeComponent();
-            cmbTipoPub.Text = "Subasta";
-            cmbEstado.Text = "Borrador";
-            Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             this.codigoPk = codigo;
+            Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
+            inicializarValores();
+            cmbEstado.Text = "Borrador";
+            
+            
         }
 
 
+        private void inicializarValores()
+        {
+            Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
+            publicacion = Datos.Dat_Publicacion.buscarDatosPublicacion(codigoPk);
+            List<Entidades.Ent_Visibilidad> listaDeVisibilidades = new List<Entidades.Ent_Visibilidad>();
+            Entidades.Ent_Visibilidad elementoQuiero;
+
+            listaDeVisibilidades = Datos.Dat_Publicacion.ObtenerVisibilidades();
+            elementoQuiero = listaDeVisibilidades.Find(item => item.Descripcion == Datos.Dat_Publicacion.obtenerVisibilidad(publicacion.Visibilidad));
+            listaDeVisibilidades.Remove(elementoQuiero);
+            listaDeVisibilidades.Insert(0, elementoQuiero);
+            cmbVisib.DataSource = listaDeVisibilidades;
+            cmbVisib.DisplayMember = "Descripcion";
+            cmbVisib.ValueMember = "Codigo";
+            
+            cmbTipoPub.Text = publicacion.Tipo;
+
+            textBox3.Text = publicacion.Precio.ToString();
+            textBox1.Text = Datos.Dat_Publicacion.obtenerDescripcionRubro(publicacion.Rubro);
+
+            if (publicacion.Tipo == "Compra inmediata")
+            {
+                textBox2.Text = publicacion.Stock.ToString();
+            }
+            else
+            {
+                textBox2.Enabled = false;
+            }
+
+            textBox5.Text = publicacion.Descripcion;
+
+        }
         private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
         {
 
