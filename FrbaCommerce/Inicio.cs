@@ -56,6 +56,12 @@ namespace FrbaCommerce
             c.Show();
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Abm_Visibilidad.Alta al = new FrbaCommerce.Abm_Visibilidad.Alta();
+            al.Show();
+        }
     }
 }
 

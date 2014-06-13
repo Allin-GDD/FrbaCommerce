@@ -12,5 +12,6 @@ CREATE PROCEDURE listaDeVisibilidades
 				AND Descripcion like '%'+@Descripcion+'%'
 				AND Precio like '%'+@Precio+'%'
 				AND Porcentaje like '%'+@Porcentaje+'%'
+				AND Estado = 1
 				
 	END

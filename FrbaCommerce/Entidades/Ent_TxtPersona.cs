@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Entidades
 {
-    class Ent_ValidacionesUtil
+    class Ent_TxtPersona
     {
         public TextBox Dpto { get; set; }
         public TextBox Piso { get; set; }
