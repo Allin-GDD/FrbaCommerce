@@ -308,14 +308,15 @@ namespace FrbaCommerce.Utiles
                 SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarMaximaOferta", conn2,
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
-                while (lectura2.Read())
-                {
-                    if (lectura2.GetDecimal(0) != null)
-                    {
-                        precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
-                    }
-                    else { }
 
+                if (lectura2!= null)
+                {
+                     while (lectura2.Read())
+                  {
+                 precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
+
+
+                 }
                 }
                 if (precioOfertado <= precioMayorOferta)
                 {
@@ -330,22 +331,26 @@ namespace FrbaCommerce.Utiles
         public static void verificarMismoUsuario(decimal codigo, decimal id)
         {
             decimal idusuario = 0;
+            
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
 
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdUsuario", conexion,
                    new SqlParameter("@Cod_Pub", codigo));
                 SqlDataReader lectura = cmd.ExecuteReader();
+                string publicador ;
+                publicador = "E";
                 while (lectura.Read())
                 {
 
                     idusuario = lectura.GetDecimal(0);
+                    publicador = lectura.GetString(1);
                 }
 
 
-                if (id == idusuario)
+                if (id == idusuario && publicador == "C")
                 {
-                    // throw new Excepciones.("El valor ingresado es menor al precio base");
+                     throw new Excepciones.DuplicacionDeDatos("No se puede realizar una oferta a una publicacion propia");
 
                 }
                 conexion.Close();

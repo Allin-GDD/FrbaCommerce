@@ -27,7 +27,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_Oferta oferta = new FrbaCommerce.Entidades.Ent_Oferta();
            
            try
-            {
+           {
                 Utiles.Validaciones.ValidarTipoDouble(textBox1);
                 oferta.Monto = Convert.ToDouble(textBox1.Text);
                 oferta.Codigo_Pub = codigoPublicacion;
@@ -39,10 +39,10 @@ namespace FrbaCommerce.Comprar_Ofertar
                Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
 
                Datos.Dat_CompraOferta.AgregarOferta(oferta);
-          }
+         }
 
             catch (Exception ex)
-            {
+           {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
         }
