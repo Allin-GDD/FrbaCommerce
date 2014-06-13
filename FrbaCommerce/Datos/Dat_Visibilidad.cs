@@ -83,9 +83,7 @@ namespace FrbaCommerce.Datos
 
         public static void buscarListaDeVisibilidades(Entidades.Ent_ListadoVisibilidad pListado, DataGridView dataGridView1)
         {
-            try
-            {
-
+            
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeVisibilidades", conn,
                 new SqlParameter("@Codigo", pListado.Codigo),
@@ -95,14 +93,6 @@ namespace FrbaCommerce.Datos
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }
-
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-
-        }
 
 
         public static List<String> obtenerTodasLasDescripciones()

@@ -1,16 +1,16 @@
 CREATE PROCEDURE listaDeVisibilidades
-		@Codigo numeric(18,0),
+		@Codigo nvarchar(18),
 		@Descripcion nvarchar(255),
-		@Precio numeric(18,2),
-		@Porcentaje numeric(18,2)
+		@Precio nvarchar(18),
+		@Porcentaje nvarchar(18)
 		
 	AS
 	BEGIN
-		SELECT * FROM Visibilidad
+		SELECT Codigo, Descripcion,Precio, Porcentaje,Vencimiento FROM Visibilidad
 			WHERE
-				(@Codigo = [codigo] or @Codigo = '')
+				Codigo like '%'+@Codigo+'%'
 				AND Descripcion like '%'+@Descripcion+'%'
-				AND Precio like '%'+@Precio+'%'
+				AND	Precio like '%'+@Precio+'%'
 				AND Porcentaje like '%'+@Porcentaje+'%'
 				AND Estado = 1
 				
