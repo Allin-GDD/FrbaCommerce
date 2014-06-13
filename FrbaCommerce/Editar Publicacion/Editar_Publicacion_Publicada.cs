@@ -16,10 +16,10 @@ namespace FrbaCommerce.Editar_Publicacion
         public Editar_Publicacion_Publicada(Decimal codigo)
         {
             InitializeComponent();
+            this.codigoPk = codigo;
             inicializarValores();
 
             cmbEstado.Text = "Publicada";
-            this.codigoPk = codigo;
         }
 
 
@@ -27,6 +27,7 @@ namespace FrbaCommerce.Editar_Publicacion
         {
             try
             {
+
                 Entidades.Ent_Publicacion publ = new Entidades.Ent_Publicacion();
                 publ = Datos.Dat_Publicacion.buscarDatosPublicacion(codigoPk);
                 textBox5.Text = publ.Descripcion;
@@ -40,6 +41,8 @@ namespace FrbaCommerce.Editar_Publicacion
                 {
                     textBox2.Enabled = false;
                 }
+
+                textBox2.Text = publ.Stock.ToString();
 
             }
             catch (Exception ex)
@@ -78,7 +81,7 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 publicacion.Stock = Convert.ToDecimal(textBox2.Text);
             }
-            
+            publicacion.Codigo = codigoPk;
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Estado = Convert.ToString(cmbEstado.Text);
 

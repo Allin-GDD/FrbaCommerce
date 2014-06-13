@@ -30,7 +30,6 @@ namespace FrbaCommerce.Utiles
             cmbVisib.ValueMember = "Codigo";
 
         }
-        
 
         public static void comboBoxHabilitado(ComboBox cmbHabilitado, Int32 id, Int16 rol)
         {

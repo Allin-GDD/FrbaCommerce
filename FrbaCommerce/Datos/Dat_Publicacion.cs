@@ -155,6 +155,51 @@ namespace FrbaCommerce.Datos
             return rolIdEnt;
         
         }
+
+        public static string obtenerDescripcionRubro(Decimal rubro)
+        {
+
+            string rubroDevuelvo;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerDescripcionRubro", conn,
+
+            new SqlParameter("@IdRubro", rubro));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            
+            lectura.Read();
+            
+            rubroDevuelvo = lectura.GetString(0);
+                
+            
+            conn.Close();
+
+            return rubroDevuelvo;
+
+        }
+        public static string obtenerVisibilidad(Decimal visib)
+        {
+
+            string visibilidadDevuelvo;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerVisibilidad", conn,
+
+            new SqlParameter("@Cod_visib", visib));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            visibilidadDevuelvo = lectura.GetString(0);
+
+
+            conn.Close();
+
+            return visibilidadDevuelvo;
+            
+        }
         
         public static Entidades.Ent_Publicacion buscarDatosPublicacion(Decimal codigoPk)
         {
@@ -169,9 +214,14 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pPublicacion.Tipo = lectura.GetString(0);
-                pPublicacion.Stock = lectura.GetDecimal(1);
-                pPublicacion.Descripcion = lectura.GetString(2);
+                pPublicacion.Visibilidad = lectura.GetDecimal(7);
+                pPublicacion.Tipo = lectura.GetString(6);
+                pPublicacion.Stock = lectura.GetDecimal(2);
+                pPublicacion.Descripcion = lectura.GetString(1);
+                pPublicacion.Precio = lectura.GetDecimal(5);
+                pPublicacion.Rubro = lectura.GetDecimal(9);
+                pPublicacion.Publicador = lectura.GetString(10);
+                pPublicacion.Id = lectura.GetDecimal(12);
             }
             conn.Close();
            return pPublicacion;
