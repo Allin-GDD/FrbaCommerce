@@ -12,41 +12,39 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     public partial class VentanaOferta : Form
     {
-        public VentanaOferta(Int32 codigoPub)
+        public VentanaOferta(decimal codigoPub,decimal id)
         {
             InitializeComponent();
-            codiigoPublicacion = codigoPub;
+            codigoPublicacion = codigoPub;
+            idusuario = id;
+            
         }
-        private Int32 codiigoPublicacion;
-        private double precioBase;
+        private decimal codigoPublicacion;
+        private decimal idusuario;
+      
         private void button1_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Oferta oferta = new FrbaCommerce.Entidades.Ent_Oferta();
+           
+           try
+           {
+                Utiles.Validaciones.ValidarTipoDouble(textBox1);
+                oferta.Monto = Convert.ToDouble(textBox1.Text);
+                oferta.Codigo_Pub = codigoPublicacion;
+                oferta.Id_Cli = idusuario;
+               
+                Utiles.Validaciones.validarValorMayorAPrecio(codigoPublicacion,oferta.Monto);
+                Utiles.Validaciones.validarValorMayorAUltOferta(codigoPublicacion, oferta.Monto);
 
-            try
-            {
-                validarValor(codiigoPublicacion,Convert.ToDouble(textBox1));
-            }
+               Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
+
+               Datos.Dat_CompraOferta.AgregarOferta(oferta);
+         }
 
             catch (Exception ex)
-            {
+           {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           }
         }
-
-       public void validarValor(Int32 codigoPub,double precioOfertado)
-       {
-           SqlConnection conn = DBConexion.obtenerConexion();
-           //Set the DataAdapter's query.
-           precioBase = Convert.ToDouble(new SqlDataAdapter("select precio from publicacion where id = codigoPub", conn));
-           if (precioOfertado > precioBase)
-           {
-               // agregarOferta
-           }
-           else
-           {
-              throw new  Excepciones.ValorMenor("El valor ingresado es menor a la última oferta realizada");
-           }
-       }
     }
 }

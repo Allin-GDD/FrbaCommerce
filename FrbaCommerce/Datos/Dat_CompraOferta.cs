@@ -48,8 +48,28 @@ namespace FrbaCommerce.Datos
 
         }
 
+     
+        public static void AgregarOferta(Entidades.Ent_Oferta pOferta)
+        {
+            int retorno;
 
-        
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
 
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaOferta", conexion,
+                   new SqlParameter("@Cod_Pub", pOferta.Codigo_Pub),
+                   new SqlParameter("@Monto", pOferta.Monto),
+                   new SqlParameter("@Id_Cli", pOferta.Id_Cli));
+              
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+
+
+            Mensajes.Generales.validarAlta(retorno);
+
+        }
+
+        }
     }
-}
+

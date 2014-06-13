@@ -63,6 +63,7 @@
             this.Buscar.TabIndex = 2;
             this.Buscar.Text = "Buscar";
             this.Buscar.UseVisualStyleBackColor = true;
+            this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
             // 
             // PublicarCompraInmediata
             // 
