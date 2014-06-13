@@ -38,6 +38,11 @@ namespace FrbaCommerce.Generar_Publicacion
             try
             {
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
+                if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006)
+                {
+
+                    Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarPublicador(usuario).id,Datos.Dat_Publicacion.buscarPublicador(usuario).rol);
+                }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
         

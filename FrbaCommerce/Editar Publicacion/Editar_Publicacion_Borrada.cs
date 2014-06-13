@@ -11,14 +11,21 @@ namespace FrbaCommerce.Editar_Publicacion
 {
     public partial class Editar_Publicacion_Borrada : Form
     {
+        private Boolean esGratuita;
         private Decimal codRubro;
         private Decimal codigoPk;
+        private Boolean estaActiva = false;
         public Editar_Publicacion_Borrada(Decimal codigo)
         {
             InitializeComponent();
             this.codigoPk = codigo;
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             inicializarValores();
+            codRubro = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
+            if (cmbEstado.Text == "Publicada")
+            {
+                estaActiva = true;
+            }
             cmbEstado.Text = "Borrador";
             
             
@@ -33,6 +40,10 @@ namespace FrbaCommerce.Editar_Publicacion
             Entidades.Ent_Visibilidad elementoQuiero;
 
             listaDeVisibilidades = Datos.Dat_Publicacion.ObtenerVisibilidades();
+            if (Datos.Dat_Publicacion.obtenerVisibilidad(publicacion.Visibilidad) == "Gratis")
+            {
+                esGratuita = true;
+            }
             elementoQuiero = listaDeVisibilidades.Find(item => item.Descripcion == Datos.Dat_Publicacion.obtenerVisibilidad(publicacion.Visibilidad));
             listaDeVisibilidades.Remove(elementoQuiero);
             listaDeVisibilidades.Insert(0, elementoQuiero);
@@ -55,6 +66,7 @@ namespace FrbaCommerce.Editar_Publicacion
             }
 
             textBox5.Text = publicacion.Descripcion;
+            checkBox1.Checked = publicacion.Permitir_Preguntas;
 
         }
         private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
@@ -94,6 +106,13 @@ namespace FrbaCommerce.Editar_Publicacion
             try
             {
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
+
+
+                if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006 && (esGratuita == false || estaActiva == false))
+                {
+
+                    Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarPublicadorCod(codigoPk).id, Datos.Dat_Publicacion.buscarPublicadorCod(codigoPk).rol);
+                }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
 

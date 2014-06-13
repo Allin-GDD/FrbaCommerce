@@ -28,7 +28,7 @@ namespace FrbaCommerce.Comprar_Ofertar
            
            try
             {
-                Utiles.Validaciones.ValidarTipoDouble(textBox1);
+               // Utiles.Validaciones.ValidarTipoDouble(textBox1);
                 oferta.Monto = Convert.ToDouble(textBox1.Text);
                 oferta.Codigo_Pub = codigoPublicacion;
                 oferta.Id_Cli = idusuario;

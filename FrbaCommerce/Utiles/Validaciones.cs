@@ -78,6 +78,15 @@ namespace FrbaCommerce.Utiles
                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
            }
        }
+        public static void ValidarVisibilidadGratuita(Decimal id,string publicador)
+        {
+            if (Datos.Dat_Publicacion.verificarTresGratuitas(id,publicador))
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("No puede tener más de tres publicaciones gratuitas activas a la vez.");
+            }
+           
+        }
+
         ///////////////////////////////////////////////////////////////////////////////////////////////////
         //USADOS EN evaluarUsuario()
       

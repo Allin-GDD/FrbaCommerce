@@ -125,7 +125,37 @@ namespace FrbaCommerce.Datos
             }
 
         }
+  
+        public static Boolean verificarTresGratuitas(Decimal id, string publicador)
+        {
 
+            Boolean seVerifica;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarTresGratuitas", conn,
+
+            new SqlParameter("@Id", id),
+            new SqlParameter("@Publicador",publicador));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            if (lectura.GetInt32(0) >= 3)
+            {
+                seVerifica = true;
+            }
+            else
+            {
+                seVerifica = false;
+            }
+
+
+            conn.Close();
+
+            return seVerifica;
+        
+        }
         public static Entidades.Ent_RolyId buscarPublicador(String usuario)
         {
 
@@ -155,6 +185,27 @@ namespace FrbaCommerce.Datos
             return rolIdEnt;
         
         }
+        public static Entidades.Ent_RolyId buscarPublicadorCod(Decimal codigo)
+        {
+
+
+            Entidades.Ent_RolyId rolIdEnt = new Entidades.Ent_RolyId();
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPublicadorCod", conn,
+            new SqlParameter("@Codigo", codigo));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                rolIdEnt.id = lectura.GetDecimal(0);
+                rolIdEnt.rol = lectura.GetString(1);
+
+            }
+
+            conn.Close();
+            return rolIdEnt;
+
+        }
 
         public static string obtenerDescripcionRubro(Decimal rubro)
         {
@@ -173,6 +224,28 @@ namespace FrbaCommerce.Datos
             rubroDevuelvo = lectura.GetString(0);
                 
             
+            conn.Close();
+
+            return rubroDevuelvo;
+
+        }
+        public static Decimal obtenerCodRubro(string descripcion)
+        {
+
+            Decimal rubroDevuelvo;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerCodRubro", conn,
+
+            new SqlParameter("@Descripcion", descripcion));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            rubroDevuelvo = lectura.GetDecimal(0);
+
+
             conn.Close();
 
             return rubroDevuelvo;
@@ -221,6 +294,7 @@ namespace FrbaCommerce.Datos
                 pPublicacion.Precio = lectura.GetDecimal(5);
                 pPublicacion.Rubro = lectura.GetDecimal(9);
                 pPublicacion.Publicador = lectura.GetString(10);
+                pPublicacion.Permitir_Preguntas = lectura.GetBoolean(11);
                 pPublicacion.Id = lectura.GetDecimal(12);
             }
             conn.Close();
