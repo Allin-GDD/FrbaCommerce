@@ -25,7 +25,10 @@ namespace FrbaCommerce.Datos
                 pRol.id = lectura.GetDecimal(0);
                 pRol.nombre = lectura.GetString(1);
 
-                listaDeRoles.Add(pRol);
+                if (pRol.id != 3)
+                {
+                    listaDeRoles.Add(pRol);
+                }
             }
 
 

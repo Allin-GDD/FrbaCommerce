@@ -231,6 +231,12 @@
     <Compile Include="Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\Registro_De_Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\Registro_De_Usuario.Designer.cs">
+      <DependentUpon>Registro_De_Usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Roles\VentanaRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro de Usuario\Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario\Registro_De_Usuario.resx">
+      <DependentUpon>Registro_De_Usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Roles\Rol_Admin.resx">
       <DependentUpon>Rol_Admin.cs</DependentUpon>

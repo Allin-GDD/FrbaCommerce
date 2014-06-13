@@ -49,6 +49,7 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de usuario";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cboRol
             // 
@@ -66,6 +67,7 @@
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Rol";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
