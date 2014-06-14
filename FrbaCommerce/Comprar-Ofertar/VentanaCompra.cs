@@ -25,17 +25,18 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private string cargarUsuario(decimal id)
         {
-           string usuario;
+           string usuario = "a";
         SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conn,
             new SqlParameter("@Id", id));
 
             SqlDataReader lectura = cmd.ExecuteReader();
-            lectura.Read();
-            
+            while (lectura.Read())
+            {
+
                 usuario = lectura.GetString(0);
-            
-            
+
+            }
             return usuario;
             }
         
@@ -65,15 +66,16 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         public decimal buscaridVendedor(decimal codigo)
         {
-            decimal id;
+            decimal id=0;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
             new SqlParameter("@Codigo", codigo));
             SqlDataReader lectura = cmd.ExecuteReader();
-            lectura.Read();
 
-            id = lectura.GetDecimal(0);
-
+            while (lectura.Read())
+            {
+                id = lectura.GetDecimal(0);
+            }
 
             return id;
         }
