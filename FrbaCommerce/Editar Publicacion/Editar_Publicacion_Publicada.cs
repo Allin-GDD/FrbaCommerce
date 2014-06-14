@@ -11,7 +11,7 @@ namespace FrbaCommerce.Editar_Publicacion
 {
     public partial class Editar_Publicacion_Publicada : Form
     {
-
+        private Decimal stockInicial;
         private Decimal codigoPk;
         public Editar_Publicacion_Publicada(Decimal codigo)
         {
@@ -43,6 +43,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 }
 
                 textBox2.Text = publ.Stock.ToString();
+                stockInicial = Convert.ToDecimal(textBox2.Text);
 
             }
             catch (Exception ex)
@@ -63,7 +64,7 @@ namespace FrbaCommerce.Editar_Publicacion
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
             try
             {
-                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox2, textBox5);
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox2, textBox5);
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionPublicada(publicacion);
 

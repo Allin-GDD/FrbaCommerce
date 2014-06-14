@@ -14,6 +14,7 @@ namespace FrbaCommerce.Editar_Publicacion
         private Boolean esGratuita;
         private Decimal codRubro;
         private Decimal codigoPk;
+        private Decimal stockInicial = 0;
         private Boolean estaActiva = false;
         public Editar_Publicacion_Borrada(Decimal codigo)
         {
@@ -105,7 +106,7 @@ namespace FrbaCommerce.Editar_Publicacion
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
             try
             {
-                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
 
 
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006 && (esGratuita == false || estaActiva == false))
