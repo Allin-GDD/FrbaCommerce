@@ -18,10 +18,11 @@ namespace FrbaCommerce.Comprar_Ofertar
         public VentanaCompra(decimal codigoPub,decimal idUsuario)
         {
             InitializeComponent();
-            cargarDatosDelVendedor();
-            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
             idusuario = idUsuario;
             this.codigo = codigoPub;
+            cargarDatosDelVendedor();
+            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
+            
     
         }
         
@@ -77,21 +78,21 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         public decimal buscaridVendedor(decimal codigo)
         {
+
+
+            SqlConnection conn = DBConexion.obtenerConexion();
             
-            using (
-            SqlConnection conn = DBConexion.obtenerConexion())
-            {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
                 new SqlParameter("@Codigo", codigo));
                 SqlDataReader lectura = cmd.ExecuteReader();
 
                 lectura.Read();
                 
-                  decimal  id = lectura.GetDecimal(0);
+                decimal  id = lectura.GetDecimal(0);
                 
                 conn.Close();
                 return id;
-            }
+            
             
             
         }
