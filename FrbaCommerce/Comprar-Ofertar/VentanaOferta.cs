@@ -40,7 +40,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 Utiles.Validaciones.validarValorMayorAPrecio(codigoPublicacion,oferta.Monto);
                 Utiles.Validaciones.validarValorMayorAUltOferta(codigoPublicacion, oferta.Monto);
 
-               Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
+               //Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
 
                Datos.Dat_CompraOferta.AgregarOferta(oferta);
          }

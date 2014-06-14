@@ -53,24 +53,44 @@ namespace FrbaCommerce.Utiles
        //            throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
        //        }
 
+<<<<<<< HEAD
        //}
         public static void ValidarTipoDecimalPublicacion(params TextBox[] parametroTxtBox)
+=======
+       }
+        public static void ValidarTipoDecimalPublicacion(Decimal stockInicial,params TextBox[] parametroTxtBox)
+>>>>>>> 43a00d60e5389267dd87f11d92bc39cb08e6031c
        {
            int i = 0;
+           int j = 0;
            Decimal expectedDecimal;
+           Decimal num = 0;
            foreach (TextBox parametro in parametroTxtBox)
            {
+               if (parametro.Name == "textBox2")
+               {
+                   num = Convert.ToDecimal(parametro.Text);
+               }
+               if (num < stockInicial && parametro.Name == "textBox2" && parametro.Enabled == true)
+               {
+                   parametro.BackColor = Color.Coral;
+                   j++;
+               }
                if ((!Decimal.TryParse(parametro.Text, out expectedDecimal) && parametro.Enabled == true && parametro.Name != "textBox5" && parametro.Name != "textBox1") || (string.IsNullOrEmpty(parametro.Text) && parametro.Name != "textBox1" && parametro.Enabled == true) || (string.IsNullOrEmpty(parametro.Text) && parametro.Name == "textBox1"))
                {
                    parametro.BackColor = Color.Coral;
                    i++;
                }
-               else if (parametro.BackColor == Color.Coral)
+               else if (parametro.BackColor == Color.Coral && j == 0)
                {
                    parametro.BackColor = Color.White;
                }
            }
-           if (i > 0)
+           if (j> 0)
+           {
+               throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos, el stock no puede ser menor al publicado anteriormente");
+           }
+           else if(i>0 && j == 0)
            {
                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
            }
@@ -246,17 +266,6 @@ namespace FrbaCommerce.Utiles
         }
         }
 
-        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
-        {
-            List<int> listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
-
-            foreach (int funcional in listaDeFunc)
-                if (func == funcional)
-                {
-                    throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
-                }
-
-        }
         //////////////////////////////////////////////////////////////////////////////////////////////
 
         public static void evaluarVisibilidad(Form ofrm, Entidades.Ent_TxtVisibilidad util, TextBox codigoAnt, TextBox descripcionAnt)

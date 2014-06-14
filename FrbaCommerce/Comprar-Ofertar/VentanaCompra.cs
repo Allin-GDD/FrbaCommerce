@@ -5,100 +5,151 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
     partial class VentanaCompra : Form
     {
-        public VentanaCompra()
+        public VentanaCompra(decimal codigo,decimal idUsuario)
         {
             InitializeComponent();
-            this.Text = String.Format("About {0} {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0} {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            cargarDatosDelVendedor();
+            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
+            idusuario = idUsuario;
+    
+        }
+        private decimal codigo;
+        private decimal clienteABuscar;
+        private decimal idusuario;
+
+        private string cargarUsuario(decimal id)
+        {
+           string usuario = "a";
+        SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conn,
+            new SqlParameter("@Id", id));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+
+                usuario = lectura.GetString(0);
+
+            }
+            return usuario;
+            }
+        
+
+        private void cargarDatosDelVendedor()
+        {
+            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
+            clienteABuscar = buscaridVendedor(codigo);
+            pcliente = buscarCliente(clienteABuscar);
+            pcliente.Usuario = cargarUsuario(clienteABuscar);
+            
+
+            txtnombre.Text = pcliente.Nombre;
+            txtapellido.Text = pcliente.Apellido;
+            txtdoc.Text = Convert.ToString(pcliente.Dni);
+            txtcalle.Text = pcliente.Dom_Calle;
+            txtcp.Text = pcliente.Cod_Postal;
+            txtdpto.Text = pcliente.Dpto;
+            txtmail.Text = pcliente.Mail;
+            txtnum.Text = Convert.ToString(pcliente.Nro_Calle);
+            txtpiso.Text = Convert.ToString(pcliente.Piso);  
+            txtlocalidad.Text = pcliente.Localidad;
+            txtusuario.Text = pcliente.Usuario;
+            txttel.Text = Convert.ToString(pcliente.Telefono);
+        
+
+        }
+        public decimal buscaridVendedor(decimal codigo)
+        {
+            decimal id=0;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
+            new SqlParameter("@Codigo", codigo));
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            while (lectura.Read())
+            {
+                id = lectura.GetDecimal(0);
+            }
+
+            return id;
         }
 
-        #region Assembly Attribute Accessors
-
-        public string AssemblyTitle
+        public static Entidades.Ent_Vendedor buscarCliente(decimal id)
         {
-            get
+
+            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente", conn,
+            new SqlParameter("@Id", id));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-                if (attributes.Length > 0)
-                {
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
-                    {
-                        return titleAttribute.Title;
-                    }
-                }
-                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+                pcliente.Dni = lectura.GetDecimal(1);
+                pcliente.Nombre = lectura.GetString(2);
+                pcliente.Apellido = lectura.GetString(3);
+                pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+                pcliente.Mail = lectura.GetString(5);
+                pcliente.Dom_Calle = lectura.GetString(6);
+                pcliente.Nro_Calle = lectura.GetDecimal(7);
+                pcliente.Piso = lectura.GetDecimal(8);
+                pcliente.Dpto = lectura.GetString(9);
+                pcliente.Cod_Postal = lectura.GetString(10);
+                pcliente.Localidad = lectura.GetString(11);
+                pcliente.Tipo_dni = lectura.GetInt16(12);
+                pcliente.Telefono = lectura.GetString(13);
+            }
+            conn.Close();
+            return pcliente;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {   decimal stock = Convert.ToDecimal(txtvalor.Text);
+                Utiles.Validaciones.ValidarTipoDecimal(txtvalor);
+                validarStock(stock, codigo);
+
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
+                new SqlParameter("@Codigo", codigo),
+                new SqlParameter("@Id",idusuario ),
+                new SqlParameter("@Stock",stock));
+                int retorno = cmd.ExecuteNonQuery();
+
+                Mensajes.Generales.validarBaja(retorno);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
 
-        public string AssemblyVersion
+        private static void validarStock(decimal valor, decimal codigo)
         {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-        }
+            decimal stock;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.averiguarStock", conn,
+            new SqlParameter("@Codigo", codigo));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            lectura.Read();
 
-        public string AssemblyDescription
-        {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
-            }
-        }
+            stock = lectura.GetDecimal(0);
 
-        public string AssemblyProduct
-        {
-            get
+            if (valor > stock)
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyProductAttribute)attributes[0]).Product;
+                throw new Excepciones.ValorMenor("No hay suficiente stock disponible");
             }
+            
         }
-
-        public string AssemblyCopyright
-        {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
-            }
-        }
-
-        public string AssemblyCompany
-        {
-            get
-            {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    return "";
-                }
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
-            }
-        }
-        #endregion
     }
 }

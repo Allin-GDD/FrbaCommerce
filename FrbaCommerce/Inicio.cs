@@ -52,7 +52,7 @@ namespace FrbaCommerce
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(68380, 3);
+            Comprar_Ofertar.VentanaCompra oferta = new Comprar_Ofertar.VentanaCompra(62141, 11);
             oferta.Show();
         }
 

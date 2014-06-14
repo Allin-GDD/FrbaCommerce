@@ -12,6 +12,7 @@ namespace FrbaCommerce.Generar_Publicacion
     public partial class Generar_Publi : Form
     {
         private Decimal codRubro;
+        private Decimal stockInicial = 0;
         private string usuario;
         public Generar_Publi(string usuarioPk)
         {
@@ -37,7 +38,7 @@ namespace FrbaCommerce.Generar_Publicacion
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
             try
             {
-                Utiles.Validaciones.ValidarTipoDecimalPublicacion(textBox1, textBox2, textBox3, textBox5);
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006)
                 {
 
