@@ -41,25 +41,25 @@ namespace FrbaCommerce.Utiles
                return i;
            }
        }
-       // public static void ValidarFuncionablidadRepetida(decimal rol, int func)
-       //{
-       //    List<int> listaDeFunc = new List<int>();
+        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
+       {
+           List<int> listaDeFunc = new List<int>();
 
-       //    listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
+           listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
 
-       //    foreach (int funcional in listaDeFunc)
-       //        if (func == funcional)
-       //        {
-       //            throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
-       //        }
+           foreach (int funcional in listaDeFunc)
+               if (func == funcional)
+               {
+                  throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
+               }
 
-<<<<<<< HEAD
-       //}
-        public static void ValidarTipoDecimalPublicacion(params TextBox[] parametroTxtBox)
-=======
+
        }
+
+
+       
         public static void ValidarTipoDecimalPublicacion(Decimal stockInicial,params TextBox[] parametroTxtBox)
->>>>>>> 43a00d60e5389267dd87f11d92bc39cb08e6031c
+
        {
            int i = 0;
            int j = 0;
