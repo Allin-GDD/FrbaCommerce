@@ -11,40 +11,51 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     partial class VentanaCompra : Form
     {
-        public VentanaCompra(decimal codigo,decimal idUsuario)
+        private decimal codigo;
+        private decimal idusuario;
+        
+
+        public VentanaCompra(decimal codigoPub,decimal idUsuario)
         {
             InitializeComponent();
             cargarDatosDelVendedor();
             Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
             idusuario = idUsuario;
+            this.codigo = codigoPub;
     
         }
-        private decimal codigo;
-        private decimal clienteABuscar;
-        private decimal idusuario;
+        
+        
+        
 
         private string cargarUsuario(decimal id)
         {
-           string usuario = "a";
-        SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conn,
-            new SqlParameter("@Id", id));
+           string usuario = "";
+           using (SqlConnection conexion = DBConexion.obtenerConexion())
+           {
+               
+               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conexion,
+               new SqlParameter("@Id", id));
 
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
+               SqlDataReader lectura = cmd.ExecuteReader();
+               while (lectura.Read())
+               {
 
-                usuario = lectura.GetString(0);
+                   usuario = lectura.GetString(0);
 
-            }
+               }
+               conexion.Close();
+           }
             return usuario;
             }
         
 
         private void cargarDatosDelVendedor()
         {
+            
+
             Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
-            clienteABuscar = buscaridVendedor(codigo);
+            decimal clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarCliente(clienteABuscar);
             pcliente.Usuario = cargarUsuario(clienteABuscar);
             
@@ -66,18 +77,23 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         public decimal buscaridVendedor(decimal codigo)
         {
-            decimal id=0;
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
-            new SqlParameter("@Codigo", codigo));
-            SqlDataReader lectura = cmd.ExecuteReader();
-
-            while (lectura.Read())
+            
+            using (
+            SqlConnection conn = DBConexion.obtenerConexion())
             {
-                id = lectura.GetDecimal(0);
-            }
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
+                new SqlParameter("@Codigo", codigo));
+                SqlDataReader lectura = cmd.ExecuteReader();
 
-            return id;
+                lectura.Read();
+                
+                  decimal  id = lectura.GetDecimal(0);
+                
+                conn.Close();
+                return id;
+            }
+            
+            
         }
 
         public static Entidades.Ent_Vendedor buscarCliente(decimal id)
