@@ -22,8 +22,10 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 textBox2.Enabled = false;
                 textBox5.Enabled = false;
-
+                
+                cmbEstado.Items.Remove("Finalizada");
             }
+            
             cmbEstado.Text = "Publicada";
         }
 
@@ -38,16 +40,15 @@ namespace FrbaCommerce.Editar_Publicacion
                 textBox5.Text = publ.Descripcion;
 
 
-                if (publ.Tipo == "Compra inmediata")
+                if (publ.Tipo == "Compra Inmediata")
                 {
-                    textBox2.Text = publ.Tipo;
+                    textBox2.Text = Convert.ToString(publ.Stock);
                 }
-                else
+                else if(publ.Tipo == "Subasta")
                 {
                     textBox2.Enabled = false;
                 }
 
-                textBox2.Text = publ.Stock.ToString();
                 stockInicial = Convert.ToDecimal(textBox2.Text);
 
             }
