@@ -58,8 +58,8 @@ namespace FrbaCommerce
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Abm_Visibilidad.Alta al = new FrbaCommerce.Abm_Visibilidad.Alta();
-            al.Show();
+            Registro_de_Usuario.Registro_De_Usuario rg = new Registro_De_Usuario();
+            rg.Show();
         }
     }
 }

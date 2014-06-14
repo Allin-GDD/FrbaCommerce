@@ -24,7 +24,7 @@ namespace FrbaCommerce.Login
             {
 
                 //Valida si el e usuario existe
-                Datos.Dat_Usuario.validarUserName(txtBoxUser.Text);
+                Utiles.Validaciones.validarUsuario(Datos.Dat_Usuario.validarUserName(txtBoxUser.Text));
                 //busca los datos del usuario
                 Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtBoxUser.Text);
 

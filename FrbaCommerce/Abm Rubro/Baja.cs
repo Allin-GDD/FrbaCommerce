@@ -9,16 +9,12 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Abm_Rubro
 {
-    public partial class Alta : Form
+    public partial class Baja : Form
     {
-        public Alta()
+        public Baja()
         {
             InitializeComponent();
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
+           }
 }

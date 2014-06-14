@@ -118,6 +118,7 @@
             // 
             // cmbHabilitado
             // 
+            this.cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHabilitado.FormattingEnabled = true;
             this.cmbHabilitado.Location = new System.Drawing.Point(73, 346);
             this.cmbHabilitado.Name = "cmbHabilitado";

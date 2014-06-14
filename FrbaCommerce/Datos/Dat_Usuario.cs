@@ -34,7 +34,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void validarUserName(String userName)
+        public static int validarUserName(String userName)
         {
             List<String> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
             int retorno = 0;
@@ -45,12 +45,13 @@ namespace FrbaCommerce.Datos
                 {
                     retorno++;
                 }
+                
             }
-            Utiles.Validaciones.validarUsuario(retorno);
+            return retorno;
 
         }
 
-        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario)
+        public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario, int estado)
         {
             int retorno = 0;
            // String pwHash = hashearSHA256(pw);
@@ -62,7 +63,7 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@IdUsuario", IdUsuario),
                 new SqlParameter("@IdRol", rolDeUsuario),
                 new SqlParameter("@Intentos", retorno),
-                new SqlParameter("@Estado", 10)
+                new SqlParameter("@Estado", estado)
                 );
 
                 retorno = cmd.ExecuteNonQuery();
@@ -241,5 +242,6 @@ namespace FrbaCommerce.Datos
                 Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
             }
         }
-    }
+
+            }
 }

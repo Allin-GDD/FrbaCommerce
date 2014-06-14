@@ -41,19 +41,19 @@ namespace FrbaCommerce.Utiles
                return i;
            }
        }
-        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
-       {
-           List<int> listaDeFunc = new List<int>();
+       // public static void ValidarFuncionablidadRepetida(decimal rol, int func)
+       //{
+       //    List<int> listaDeFunc = new List<int>();
 
-           listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
+       //    listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
 
-           foreach (int funcional in listaDeFunc)
-               if (func == funcional)
-               {
-                   throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
-               }
+       //    foreach (int funcional in listaDeFunc)
+       //        if (func == funcional)
+       //        {
+       //            throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
+       //        }
 
-       }
+       //}
         public static void ValidarTipoDecimalPublicacion(params TextBox[] parametroTxtBox)
        {
            int i = 0;
@@ -221,7 +221,11 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.InexistenciaUsuario("Usuario no válido");
             }
         }
-
+        public static void controlDeUsuario(int retorno) {
+            if (retorno != 0) {
+                throw new Excepciones.InexistenciaUsuario("El usuario que está ingresando pertenece a otro usuario");
+            }
+        }
         public static void evaluarRol(TextBox txtNombre, Form ofrm)
         {
             List<String> errores = datosObligatorios(ofrm);

@@ -25,7 +25,7 @@ namespace FrbaCommerce.Registro_de_Usuario
 
             if(cboRol.Text == "Cliente"){
             
-                Abm_Cliente.Alta nuevaAlt = new Abm_Cliente.Alta();
+                Abm_Cliente.Alta nuevaAlt = new Abm_Cliente.Alta(false);
                 nuevaAlt.Show();
                 this.Close();
             }
@@ -33,7 +33,7 @@ namespace FrbaCommerce.Registro_de_Usuario
             if (cboRol.Text == "Empresa")
             {
 
-                Abm_Empresa.Alta nuevaAlt = new Abm_Empresa.Alta();
+                Abm_Empresa.Alta nuevaAlt = new Abm_Empresa.Alta(false);
                 nuevaAlt.Show();
                 this.Close();
             }

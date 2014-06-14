@@ -138,7 +138,7 @@ namespace FrbaCommerce.Datos
 
         public static string obtenerNombreIdRol(decimal rolADarDeBaja)
         {
-            string nombre = "a";
+            string nombre = null;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerNombreIdRol", conexion,

@@ -18,7 +18,7 @@ namespace FrbaCommerce.Roles
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Abm_Cliente.Alta cliente = new Abm_Cliente.Alta();
+            Abm_Cliente.Alta cliente = new Abm_Cliente.Alta(false);
             cliente.Show();
         }
 

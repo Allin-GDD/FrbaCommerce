@@ -55,6 +55,7 @@ namespace FrbaCommerce.ABM_Rol
             private void btnLimpiar_Click(object sender, EventArgs e)
             {
                 Utiles.LimpiarTexto.LimpiarTextBox(this);
+                Utiles.LimpiarTexto.SacarCheckBox(this);
             }
 
            

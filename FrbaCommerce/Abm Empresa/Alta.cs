@@ -12,12 +12,13 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Alta : Form
     {
-        public Alta()
+        public Decimal IdUsuario;
+        public Alta(bool isUsuario)
         {
             InitializeComponent();
-            
+            this.isEmprensa = isUsuario;
         }
-
+        public bool isEmprensa;
         public Int32 rolDeUsuario = 2;
     
 
@@ -37,11 +38,18 @@ namespace FrbaCommerce.Abm_Empresa
 
                 //Agrega el cliente a la DB
                 Datos.Dat_Empresa.AgregarEmpresa(empresa);
-                Decimal IdUsuario = Datos.Dat_Empresa.buscarIdEmpresa(empresa.CUIT);
+                IdUsuario = Datos.Dat_Empresa.buscarIdEmpresa(empresa.CUIT);
 
-                Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario,IdUsuario);
-                //el usuario va a ser el mail y la contraseña su cuit
+                if (!isEmprensa)
+                {
+                    int estado = 10;
+                    Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario, IdUsuario, estado);
+                    //el usuario va a ser el mail y la contraseña su cuit
 
+
+                    Mensajes.Exitos.usuarioCreadoPorAdminOk();
+                 
+                }
                 this.Close();
 
             }

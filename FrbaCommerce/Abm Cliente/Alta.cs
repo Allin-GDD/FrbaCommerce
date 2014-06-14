@@ -13,12 +13,15 @@ namespace FrbaCommerce.Abm_Cliente
 {
     public partial class Alta : Form
     {
-        public Alta()
+        public Decimal IdUsuario;
+        public Alta(bool isUser)
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
+            this.isCliente = isUser;
 
         }
+        public bool isCliente;
         public Int32 rolDeUsuario = 1;
         private void btmGuardar_Click(object sender, EventArgs e)
         {
@@ -28,7 +31,7 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                //Prueba todas las validaciones
+                                //Prueba todas las validaciones
                 Utiles.Validaciones.evaluarPersona(pUtiles, this);
                 
                 //Inicializa el cliente con datos correctos
@@ -36,10 +39,18 @@ namespace FrbaCommerce.Abm_Cliente
                 
                 //Agrega el cliente a la DB
                 Datos.Dat_Cliente.AgregarCliente(cliente);
-                Decimal IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
-                Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail,Convert.ToString(txtDNI.Text), rolDeUsuario,IdUsuario);
-                //el usuario va a ser el mail y la contraseña su dni
+                IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
 
+
+                if (!isCliente)
+                {
+                    int estado = 10;
+                    Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail, Convert.ToString(txtDNI.Text), rolDeUsuario, IdUsuario, estado); //el usuario va a ser el mail y la contraseña su dni
+
+                    Mensajes.Exitos.usuarioCreadoPorAdminOk();
+                 
+                }
+                   
                 Close();
 
             }

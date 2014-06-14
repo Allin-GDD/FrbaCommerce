@@ -32,11 +32,7 @@ namespace FrbaCommerce.Mensajes
 
         public static void valirUsuarioCliente(int retorno)
         {
-            if (retorno > 0)
-            {
-                MessageBox.Show("El usuario por default es su mail y la contraseña el número de documento ingresado", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
+            if (retorno == 0)
             {
                 Mensajes.Errores.ErrorAlGuardarDatos();
             }

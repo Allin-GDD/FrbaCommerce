@@ -62,7 +62,7 @@
             this.txtPass.Location = new System.Drawing.Point(98, 59);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(121, 20);
-            this.txtPass.TabIndex = 3;
+            this.txtPass.TabIndex = 2;
             // 
             // label2
             // 
@@ -91,15 +91,17 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(42, 131);
+            this.button3.Location = new System.Drawing.Point(43, 134);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(146, 23);
-            this.button3.TabIndex = 7;
+            this.button3.TabIndex = 5;
             this.button3.Text = "Cambiar Contraseña";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // cboRol
             // 
+            this.cboRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRol.FormattingEnabled = true;
             this.cboRol.Location = new System.Drawing.Point(98, 95);
             this.cboRol.Name = "cboRol";
@@ -120,7 +122,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(172, 204);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 5;
+            this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -133,6 +135,7 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Registro_De_Usuario
             // 
@@ -143,6 +146,7 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Registro_De_Usuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

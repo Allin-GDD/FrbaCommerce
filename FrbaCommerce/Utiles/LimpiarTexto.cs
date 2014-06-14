@@ -97,7 +97,7 @@ namespace FrbaCommerce.Utiles
 
         }
 
-        internal static bool LimpiarDataGridBoton(DataGridView dataGridView1, int pos)
+        public static bool LimpiarDataGridBoton(DataGridView dataGridView1, int pos)
         {
             if (dataGridView1.DataSource != null) {
                 dataGridView1.Columns.RemoveAt(pos);

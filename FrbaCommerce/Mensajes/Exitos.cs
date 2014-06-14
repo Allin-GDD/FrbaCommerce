@@ -23,6 +23,18 @@ namespace FrbaCommerce.Mensajes
         {
             MessageBox.Show("Se ha dado de baja correctamente", "Baja de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+              public static void usuarioCreadoPorAdminOk()
+        {
+            MessageBox.Show("El usuario por default es su mail y la contraseña el número de documento ingresado", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+              public static void UsuarioRegistrado()
+              {
+                  MessageBox.Show("El usuario fue creado con exito", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              }
+    }
+
+
     }
 

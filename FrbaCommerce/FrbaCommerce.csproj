@@ -60,6 +60,30 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Rubro\Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rubro\Baja.Designer.cs">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Rubro\Listado de selección.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rubro\Listado de selección.Designer.cs">
+      <DependentUpon>Listado de selección.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Rubro\Listado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rubro\Listado.Designer.cs">
+      <DependentUpon>Listado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompra.Designer.cs">
+      <DependentUpon>VentanaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,10 +199,10 @@
     <Compile Include="ABM Rol\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.cs">
+    <Compile Include="Abm Rubro\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.Designer.cs">
+    <Compile Include="Abm Rubro\Alta.Designer.cs">
       <DependentUpon>Alta.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Visibilidad\Alta.cs">
@@ -211,10 +235,10 @@
     <Compile Include="Abm Visibilidad\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.cs">
+    <Compile Include="Calificar Vendedor\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Visibilidad\Calificar Vendedor\Form1.Designer.cs">
+    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Ent_TxtPersona.cs" />
@@ -361,8 +385,17 @@
     <EmbeddedResource Include="ABM Rol\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Visibilidad\Calificar Vendedor\Abm Rubro\Alta.resx">
+    <EmbeddedResource Include="Abm Rubro\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rubro\Baja.resx">
+      <DependentUpon>Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rubro\Listado de selección.resx">
+      <DependentUpon>Listado de selección.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Rubro\Listado.resx">
+      <DependentUpon>Listado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Visibilidad\Alta.resx">
       <DependentUpon>Alta.cs</DependentUpon>
@@ -381,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
+      <DependentUpon>VentanaCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaOferta.resx">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
@@ -438,6 +474,9 @@
     <EmbeddedResource Include="Roles\VentanaVisibilidad.resx">
       <DependentUpon>VentanaVisibilidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utiles\Ventanas\CambiarPw.resx">
+      <DependentUpon>CambiarPw.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utiles\Ventanas\First_Login.resx">
       <DependentUpon>First_Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -449,6 +488,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Utiles\Ventanas\CambiarPw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\CambiarPw.Designer.cs">
+      <DependentUpon>CambiarPw.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utiles\Ventanas\Opciones.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
