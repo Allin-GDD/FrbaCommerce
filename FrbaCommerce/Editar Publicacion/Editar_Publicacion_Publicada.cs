@@ -18,7 +18,12 @@ namespace FrbaCommerce.Editar_Publicacion
             InitializeComponent();
             this.codigoPk = codigo;
             inicializarValores();
+            if (Datos.Dat_Publicacion.estaPausado(codigo))
+            {
+                textBox2.Enabled = false;
+                textBox5.Enabled = false;
 
+            }
             cmbEstado.Text = "Publicada";
         }
 

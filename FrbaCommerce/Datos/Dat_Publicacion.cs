@@ -273,7 +273,32 @@ namespace FrbaCommerce.Datos
             return visibilidadDevuelvo;
             
         }
-        
+
+        public static Boolean estaPausado(Decimal codigo)
+        {
+
+            Boolean verificado = false;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarEstado", conn,
+
+            new SqlParameter("@Codigo", codigo));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            if (lectura.GetString(0) == "Pausada")
+            {
+                verificado = true;
+            }
+
+
+            conn.Close();
+
+            return verificado;
+
+        }
         public static Entidades.Ent_Publicacion buscarDatosPublicacion(Decimal codigoPk)
         {
             Entidades.Ent_Publicacion pPublicacion = new Entidades.Ent_Publicacion();
