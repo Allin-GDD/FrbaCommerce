@@ -60,6 +60,12 @@
     <Compile Include="Abm Cliente\Baja.Designer.cs">
       <DependentUpon>Baja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Rubro\Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Rubro\Alta.Designer.cs">
+      <DependentUpon>Alta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Rubro\Baja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Abm Rubro\Listado.Designer.cs">
       <DependentUpon>Listado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calificar Vendedor\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Comprar-Ofertar\VentanaCompra.cs">
       <SubType>Form</SubType>
@@ -206,12 +218,6 @@
     <Compile Include="ABM Rol\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Rubro\Alta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Rubro\Alta.Designer.cs">
-      <DependentUpon>Alta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Visibilidad\Alta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,12 +247,6 @@
     </Compile>
     <Compile Include="Abm Visibilidad\Modificación.Designer.cs">
       <DependentUpon>Modificación.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Calificar Vendedor\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Entidades\Ent_Oferta.cs" />
     <Compile Include="Entidades\Ent_Vendedor.cs" />

@@ -33,8 +33,8 @@ namespace FrbaCommerce.Roles
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Editar_Publicacion.Buscar_Publicacion list = new Editar_Publicacion.Buscar_Publicacion(usuario);
-            list.Show();
+           // Editar_Publicacion.Buscar_Publicacion list = new Editar_Publicacion.Buscar_Publicacion(usuario);
+           // list.Show();
         }
     }
 }
