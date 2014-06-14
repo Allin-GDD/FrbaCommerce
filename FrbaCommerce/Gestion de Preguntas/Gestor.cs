@@ -9,11 +9,17 @@ using System.Windows.Forms;
 
 namespace FrbaCommerce.Gestion_de_Preguntas
 {
-    public partial class Form1 : Form
+    public partial class Gestor : Form
     {
-        public Form1()
+        public Gestor(String usuario)
         {
             InitializeComponent();
+            this.usuario = usuario;
+        }
+        private String usuario;
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
