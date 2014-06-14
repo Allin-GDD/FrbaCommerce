@@ -11,26 +11,42 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     partial class VentanaCompra : Form
     {
-        public VentanaCompra(decimal codigo,decimal clienteABuscar)
+        public VentanaCompra(decimal codigo,decimal idUsuario)
         {
             InitializeComponent();
             cargarDatosDelVendedor();
             Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
-            cargarUsuario(clienteABuscar);
+            idusuario = idUsuario;
     
         }
+        private decimal codigo;
+        private decimal clienteABuscar;
+        private decimal idusuario;
 
-        private Int32 clienteABuscar;
-
-        private void cargarUsuario(decimal id)
+        private string cargarUsuario(decimal id)
         {
+           string usuario;
+        SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conn,
+            new SqlParameter("@Id", id));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            lectura.Read();
+            
+                usuario = lectura.GetString(0);
+            
+            
+            return usuario;
+            }
         
-        }
 
         private void cargarDatosDelVendedor()
         {
-            Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
+            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
+            clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarCliente(clienteABuscar);
+            pcliente.Usuario = cargarUsuario(clienteABuscar);
+            
 
             txtnombre.Text = pcliente.Nombre;
             txtapellido.Text = pcliente.Apellido;
@@ -40,17 +56,32 @@ namespace FrbaCommerce.Comprar_Ofertar
             txtdpto.Text = pcliente.Dpto;
             txtmail.Text = pcliente.Mail;
             txtnum.Text = Convert.ToString(pcliente.Nro_Calle);
-            txtpiso.Text = Convert.ToString(pcliente.Piso);
-            
+            txtpiso.Text = Convert.ToString(pcliente.Piso);  
             txtlocalidad.Text = pcliente.Localidad;
-            
+            txtusuario.Text = pcliente.Usuario;
+            txttel.Text = Convert.ToString(pcliente.Telefono);
+        
 
         }
+        public decimal buscaridVendedor(decimal codigo)
+        {
+            decimal id;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdPorPublicacion", conn,
+            new SqlParameter("@Codigo", codigo));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            lectura.Read();
 
-        public static Entidades.Ent_Cliente buscarCliente(Int32 id)
+            id = lectura.GetDecimal(0);
+
+
+            return id;
+        }
+
+        public static Entidades.Ent_Vendedor buscarCliente(decimal id)
         {
 
-            Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
+            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
 
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente", conn,
@@ -79,9 +110,44 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {   decimal stock = Convert.ToDecimal(txtvalor.Text);
+                Utiles.Validaciones.ValidarTipoDecimal(txtvalor);
+                validarStock(stock, codigo);
 
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
+                new SqlParameter("@Codigo", codigo),
+                new SqlParameter("@Id",idusuario ),
+                new SqlParameter("@Stock",stock));
+                int retorno = cmd.ExecuteNonQuery();
+
+                Mensajes.Generales.validarBaja(retorno);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
-        
+        private static void validarStock(decimal valor, decimal codigo)
+        {
+            decimal stock;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.averiguarStock", conn,
+            new SqlParameter("@Codigo", codigo));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            lectura.Read();
+
+            stock = lectura.GetDecimal(0);
+
+            if (valor > stock)
+            {
+                throw new Excepciones.ValorMenor("No hay suficiente stock disponible");
+            }
+            
+        }
     }
 }

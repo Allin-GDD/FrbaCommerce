@@ -224,6 +224,7 @@
     </Compile>
     <Compile Include="Entidades\Ent_ValidacionesUtil.cs" />
     <Compile Include="Entidades\Ent_Oferta.cs" />
+    <Compile Include="Entidades\Ent_Vendedor.cs" />
     <Compile Include="Generar Publicacion\BuscarRubro.cs">
       <SubType>Form</SubType>
     </Compile>
