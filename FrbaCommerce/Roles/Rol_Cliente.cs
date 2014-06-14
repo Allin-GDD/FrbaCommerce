@@ -30,5 +30,11 @@ namespace FrbaCommerce.Roles
             Comprar_Ofertar.Form1 co = new FrbaCommerce.Comprar_Ofertar.Form1(idcliente);
             co.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Editar_Publicacion.Buscar_Publicacion list = new Editar_Publicacion.Buscar_Publicacion(usuario);
+            list.Show();
+        }
     }
 }

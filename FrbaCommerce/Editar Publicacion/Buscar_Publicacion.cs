@@ -11,7 +11,7 @@ namespace FrbaCommerce.Editar_Publicacion
 {
     public partial class Buscar_Publicacion : Form
     {
-        public Buscar_Publicacion()
+        public Buscar_Publicacion(string usuario)
         {
             InitializeComponent();
         }
