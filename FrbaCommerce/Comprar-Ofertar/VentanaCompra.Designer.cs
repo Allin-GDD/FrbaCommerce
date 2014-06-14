@@ -33,9 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtdoc = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.txttel = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -121,13 +119,6 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "Piso";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(113, 163);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 8;
-            // 
             // txtdoc
             // 
             this.txtdoc.Enabled = false;
@@ -135,13 +126,6 @@
             this.txtdoc.Name = "txtdoc";
             this.txtdoc.Size = new System.Drawing.Size(100, 20);
             this.txtdoc.TabIndex = 9;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(82, 283);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(50, 20);
-            this.textBox5.TabIndex = 11;
             // 
             // txttel
             // 
@@ -446,9 +430,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txttel);
-            this.Controls.Add(this.textBox5);
             this.Controls.Add(this.txtdoc);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -477,9 +459,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtdoc;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txttel;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;

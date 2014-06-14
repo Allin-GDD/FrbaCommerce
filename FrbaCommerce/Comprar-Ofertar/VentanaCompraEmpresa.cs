@@ -1,33 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
+using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
-    partial class VentanaCompra : Form
+    public partial class VentanaCompraEmpresa : Form
     {
         private decimal codigo;
         private decimal idusuario;
         
 
-        public VentanaCompra(decimal codigoPub,decimal idUsuario)
+        public VentanaCompraEmpresa(decimal codigoPub,decimal idUsuario)
         {
             InitializeComponent();
             idusuario = idUsuario;
             this.codigo = codigoPub;
             cargarDatosDelVendedor();
-            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
-            
-    
+
         }
-        
-        
-        
 
         private string cargarUsuario(decimal id)
         {
@@ -35,7 +31,7 @@ namespace FrbaCommerce.Comprar_Ofertar
            using (SqlConnection conexion = DBConexion.obtenerConexion())
            {
                
-               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conexion,
+               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioEmpresa", conexion,
                new SqlParameter("@Id", id));
 
                SqlDataReader lectura = cmd.ExecuteReader();
@@ -55,24 +51,26 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             
 
-            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
+            Entidades.Ent_VendedorEmpresa pcliente = new Entidades.Ent_VendedorEmpresa();
             decimal clienteABuscar = buscaridVendedor(codigo);
-            pcliente = buscarCliente(clienteABuscar);
+            pcliente = buscarEmpresa(clienteABuscar);
             pcliente.Usuario = cargarUsuario(clienteABuscar);
             
 
-            txtnombre.Text = pcliente.Nombre;
-            txtapellido.Text = pcliente.Apellido;
-            txtdoc.Text = Convert.ToString(pcliente.Dni);
+            
+            txtrazon.Text = pcliente.RazonSocial;
+            txtcuil.Text = pcliente.CUIT;
             txtcalle.Text = pcliente.Dom_Calle;
             txtcp.Text = pcliente.Cod_Postal;
             txtdpto.Text = pcliente.Dpto;
             txtmail.Text = pcliente.Mail;
             txtnum.Text = Convert.ToString(pcliente.Nro_Calle);
-            txtpiso.Text = Convert.ToString(pcliente.Piso);  
+            textpiso.Text = Convert.ToString(pcliente.Piso);  
             txtlocalidad.Text = pcliente.Localidad;
             txtusuario.Text = pcliente.Usuario;
             txttel.Text = Convert.ToString(pcliente.Telefono);
+            textciudad.Text = pcliente.Ciudad;
+            txtcontacto.Text = pcliente.NombreContacto;
         
 
         }
@@ -97,34 +95,37 @@ namespace FrbaCommerce.Comprar_Ofertar
             
         }
 
-        public static Entidades.Ent_Vendedor buscarCliente(decimal id)
+        public static Entidades.Ent_VendedorEmpresa buscarEmpresa(decimal id)
         {
 
-            Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
+            Entidades.Ent_VendedorEmpresa pEmpresa = new Entidades.Ent_VendedorEmpresa();
 
+            try {
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnSoloCliente", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaSolaEmpresa", conn,
             new SqlParameter("@Id", id));
 
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pcliente.Dni = lectura.GetDecimal(1);
-                pcliente.Nombre = lectura.GetString(2);
-                pcliente.Apellido = lectura.GetString(3);
-                pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
-                pcliente.Mail = lectura.GetString(5);
-                pcliente.Dom_Calle = lectura.GetString(6);
-                pcliente.Nro_Calle = lectura.GetDecimal(7);
-                pcliente.Piso = lectura.GetDecimal(8);
-                pcliente.Dpto = lectura.GetString(9);
-                pcliente.Cod_Postal = lectura.GetString(10);
-                pcliente.Localidad = lectura.GetString(11);
-                pcliente.Tipo_dni = lectura.GetInt16(12);
-                pcliente.Telefono = lectura.GetString(13);
+                pEmpresa.RazonSocial = lectura.GetString(1);
+                pEmpresa.CUIT = lectura.GetString(2);
+                pEmpresa.Fecha_Creacion = Convert.ToString(lectura.GetDateTime(3));
+                pEmpresa.Mail = lectura.GetString(4);
+                pEmpresa.Dom_Calle = lectura.GetString(5);
+                pEmpresa.Nro_Calle = lectura.GetDecimal(6);
+                pEmpresa.Piso = lectura.GetDecimal(7);
+                pEmpresa.Dpto = lectura.GetString(8);
+                pEmpresa.Cod_Postal = lectura.GetString(9);
+                pEmpresa.Localidad = lectura.GetString(10);
+                pEmpresa.Telefono = lectura.GetString(11);
+                pEmpresa.Ciudad = lectura.GetString(12);
+                pEmpresa.NombreContacto = lectura.GetString(13);
             }
             conn.Close();
-            return pcliente;
+            }
+            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
+            return pEmpresa;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -141,7 +142,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 new SqlParameter("@Stock",stock));
                 int retorno = cmd.ExecuteNonQuery();
 
-               
+                
 
             }
             catch (Exception ex)
