@@ -15,11 +15,23 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         {
             InitializeComponent();
             this.usuario = usuario;
+
         }
         private String usuario;
+
         private void button1_Click(object sender, EventArgs e)
         {
+            Gestion_de_Preguntas.ResponderPregunta resp = new ResponderPregunta(usuario);
+            resp.Show();
+            this.Hide();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Gestion_de_Preguntas.VerRespuestas verRes = new VerRespuestas(usuario);
+            verRes.Show();
+            this.Hide();
         }
     }
 }
+

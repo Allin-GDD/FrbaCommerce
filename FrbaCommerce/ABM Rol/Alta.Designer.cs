@@ -33,8 +33,10 @@
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.cmbFuncionalidad = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtFunc = new System.Windows.Forms.TextBox();
+            this.cmbFuncionalidad = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,18 +85,11 @@
             this.txtNombre.Size = new System.Drawing.Size(423, 20);
             this.txtNombre.TabIndex = 5;
             // 
-            // cmbFuncionalidad
-            // 
-            this.cmbFuncionalidad.FormattingEnabled = true;
-            this.cmbFuncionalidad.Location = new System.Drawing.Point(128, 78);
-            this.cmbFuncionalidad.Name = "cmbFuncionalidad";
-            this.cmbFuncionalidad.Size = new System.Drawing.Size(423, 21);
-            this.cmbFuncionalidad.TabIndex = 6;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.txtFunc);
             this.groupBox1.Controls.Add(this.txtNombre);
-            this.groupBox1.Controls.Add(this.cmbFuncionalidad);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
@@ -104,6 +99,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(443, 76);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(108, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtFunc
+            // 
+            this.txtFunc.Location = new System.Drawing.Point(128, 78);
+            this.txtFunc.Name = "txtFunc";
+            this.txtFunc.ReadOnly = true;
+            this.txtFunc.Size = new System.Drawing.Size(290, 20);
+            this.txtFunc.TabIndex = 7;
+            // 
+            // cmbFuncionalidad
+            // 
+            this.cmbFuncionalidad.FormattingEnabled = true;
+            this.cmbFuncionalidad.Location = new System.Drawing.Point(109, 150);
+            this.cmbFuncionalidad.Name = "cmbFuncionalidad";
+            this.cmbFuncionalidad.Size = new System.Drawing.Size(423, 21);
+            this.cmbFuncionalidad.TabIndex = 6;
+            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,7 +133,9 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cmbFuncionalidad);
             this.Name = "Alta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -127,7 +150,9 @@
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.ComboBox cmbFuncionalidad;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtFunc;
+        private System.Windows.Forms.ComboBox cmbFuncionalidad;
     }
 }

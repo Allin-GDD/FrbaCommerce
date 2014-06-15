@@ -117,6 +117,7 @@
     <Compile Include="Datos\Dat_CompraOferta.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Datos\Dat_Preguntas.cs" />
     <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
     <Compile Include="Datos\Dat_Visibilidad.cs" />
@@ -268,6 +269,18 @@
     </Compile>
     <Compile Include="Gestion de Preguntas\Gestor.Designer.cs">
       <DependentUpon>Gestor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\ResponderPregunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\ResponderPregunta.Designer.cs">
+      <DependentUpon>ResponderPregunta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\VerRespuestas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\VerRespuestas.Designer.cs">
+      <DependentUpon>VerRespuestas.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
@@ -450,6 +463,9 @@
     <EmbeddedResource Include="Gestion de Preguntas\Gestor.resx">
       <DependentUpon>Gestor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
+      <DependentUpon>VerRespuestas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -511,6 +527,12 @@
     <Compile Include="Utiles\Ventanas\CambiarPw.Designer.cs">
       <DependentUpon>CambiarPw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Ventanas\ListaFuncionabilidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\ListaFuncionabilidades.Designer.cs">
+      <DependentUpon>ListaFuncionabilidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utiles\Ventanas\Opciones.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -570,6 +592,12 @@
     </Compile>
     <Compile Include="Utiles\Ventanas\First_Login.Designer.cs">
       <DependentUpon>First_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\TipearRespuesta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\TipearRespuesta.Designer.cs">
+      <DependentUpon>TipearRespuesta.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

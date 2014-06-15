@@ -38,7 +38,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(71, 52);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 49);
+            this.button1.Size = new System.Drawing.Size(234, 31);
             this.button1.TabIndex = 0;
             this.button1.Text = "Responder Preguntas";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,16 +46,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(71, 124);
+            this.button2.Location = new System.Drawing.Point(71, 106);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 51);
+            this.button2.Size = new System.Drawing.Size(234, 31);
             this.button2.TabIndex = 1;
             this.button2.Text = "Ver Respuestas";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(83, 214);
+            this.button3.Location = new System.Drawing.Point(124, 169);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 23);
             this.button3.TabIndex = 2;
@@ -65,22 +66,23 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 26);
+            this.label1.Location = new System.Drawing.Point(38, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Seleccione la opción a realizar:";
             // 
-            // Form1
+            // Gestor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 259);
+            this.ClientSize = new System.Drawing.Size(345, 227);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "Gestor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestor de Preguntas";
             this.ResumeLayout(false);
             this.PerformLayout();

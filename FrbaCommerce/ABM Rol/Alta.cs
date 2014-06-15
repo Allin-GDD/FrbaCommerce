@@ -14,7 +14,6 @@ namespace FrbaCommerce.ABM_Rol
         public Alta()
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxFuncionalidades(cmbFuncionalidad);
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -22,8 +21,8 @@ namespace FrbaCommerce.ABM_Rol
             try
             {
 
-                Utiles.Validaciones.evaluarRol(txtNombre,this);
-               
+                Utiles.Validaciones.evaluarRol(txtNombre, this);
+
 
                 Datos.Dat_Rol.agregarRol(txtNombre.Text);
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
@@ -31,7 +30,8 @@ namespace FrbaCommerce.ABM_Rol
 
 
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -43,7 +43,15 @@ namespace FrbaCommerce.ABM_Rol
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
-        
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades();
+            list.ShowDialog();
+            txtFunc.Text = list.ResultShow;
+
+        }
+
+
+
     }
 }
