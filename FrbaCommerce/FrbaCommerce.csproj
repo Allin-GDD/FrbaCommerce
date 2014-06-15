@@ -90,6 +90,12 @@
     <Compile Include="Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\Buscar_Publicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\Buscar_Publicacion.Designer.cs">
+      <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,12 +127,6 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
-    <Compile Include="Editar Publicacion\Buscar_Publicacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Editar Publicacion\Buscar_Publicacion.Designer.cs">
-      <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Entidades\Ent_CO.cs" />
     <Compile Include="Entidades\Ent_Fecha.cs" />
     <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />
@@ -289,12 +289,6 @@
     </Compile>
     <Compile Include="Utiles\AyudaVarias.cs" />
     <Compile Include="Utiles\DBConexion.cs" />
-    <Compile Include="Comprar-Ofertar\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Comprar-Ofertar\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Editar Publicacion\Editar_Publicacion_Borrada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -431,6 +425,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Comprar-Ofertar\Buscar_Publicacion.resx">
+      <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
@@ -440,9 +436,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaOferta.resx">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Editar Publicacion\Buscar_Publicacion.resx">
-      <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Borrada.resx">
       <DependentUpon>Editar_Publicacion_Borrada.cs</DependentUpon>

@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace FrbaCommerce.Comprar_Ofertar
 {
-    public partial class Form1 : Form
+    public partial class Buscar_Publicacion : Form
     {
         DataTable dtSource;
         int PageCount;
@@ -19,16 +19,31 @@ namespace FrbaCommerce.Comprar_Ofertar
         int pageSize;
         int currentPage;
         int recNo;
+        Boolean primeraVez;
 
-        public Form1(decimal id)
+
+        public Buscar_Publicacion(decimal id, Boolean esCliente)
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
+            cmbEstado.Text = "Publicada";
+            cmbTipoPub.Text = "Subasta";
             botonCompraOferta = false;
+            editarPublicacion = false;
+            if (!esCliente)
+            {
+                checkBox1.Checked = true;
+                checkBox1.Enabled = false;
+                checkBox1.Visible = false;
+            }
             idusuario = id;
+            primeraVez = true;
+
         }
         private decimal idusuario;
         private bool botonCompraOferta;
-        private Decimal codRubro;
+        private bool editarPublicacion;
+        private string codRubro;
         private void LoadPage()
         {
             int i;
@@ -87,23 +102,50 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            try
-            {
+            //try
+            //{
 
                 pCO.Descripcion = textBox1.Text;
-                pCO.Rubro = Convert.ToString(this.codRubro);
+                pCO.Rubro = "";
+                if (txtRubro.Enabled)
+                {
+                    pCO.Rubro = Convert.ToString(Datos.Dat_Publicacion.obtenerCodRubro(txtRubro.Text));
+                }
+                pCO.Visibilidad = Convert.ToString(cmbVisib.SelectedValue);
+                pCO.Estado = cmbEstado.Text;
+                pCO.Tipo = cmbTipoPub.Text;
+                pCO.MisPublicaciones = checkBox1.Checked;
+                DataTable tabla = new DataTable();
 
                 SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
-                new SqlParameter("@Descripcion", pCO.Descripcion),
-                new SqlParameter("@Rubro", pCO.Rubro));
+                if (pCO.MisPublicaciones == false)
+                {
+                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
+                    new SqlParameter("@Descripcion", pCO.Descripcion),
+                    new SqlParameter("@Estado", pCO.Estado),
+                    new SqlParameter("@Tipo", pCO.Tipo),
+                    new SqlParameter("@Visibilidad", pCO.Visibilidad),
+                    new SqlParameter("@Id", Convert.ToString(idusuario)),
+                    new SqlParameter("@Rubro", pCO.Rubro));
+                    SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
+                    da.Fill(tabla);
+                    conn.Close();
+                }
+                else
+                {
+                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeMisPublicaciones", conn,
+                    new SqlParameter("@Descripcion", pCO.Descripcion),
+                    new SqlParameter("@Estado", pCO.Estado),
+                    new SqlParameter("@Tipo", pCO.Tipo),
+                    new SqlParameter("@Visibilidad", pCO.Visibilidad),
+                    new SqlParameter("@Id", Convert.ToString(idusuario)),
+                    new SqlParameter("@Rubro", pCO.Rubro));
+                    SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
+                    da.Fill(tabla);
+                    conn.Close();
+                }
 
 
-                SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
-
-                DataTable tabla = new DataTable();
-                da.Fill(tabla);
-                conn.Close();
                 dataGridView1.DataSource = tabla;
                 dataGridView1.Refresh();
                 dataGridView1.ClearSelection();
@@ -126,14 +168,37 @@ namespace FrbaCommerce.Comprar_Ofertar
                 recNo = 0;
 
                 LoadPage();
+                
+                
+                if (checkBox1.Checked == false)
+                {
+                    if (editarPublicacion == true && primeraVez == false)
+                    {
+                        dataGridView1.Columns.Remove("btnEditar");
+  
+                    }
+                    primeraVez = false;
 
-                this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+                    editarPublicacion = false;
+                    this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+                }
+                else
+                {
+                    if (botonCompraOferta == true && primeraVez == false)
+                    {
+                        dataGridView1.Columns.Remove("btn");
+    
+                    }
+                    primeraVez = false;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                    botonCompraOferta = false;
+                    this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
+                }
+           // }
+            //catch (Exception ex)
+           // {
+           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           // }
 
 
         }
@@ -236,9 +301,9 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
             list.ShowDialog();
-            txtRubro.Enabled = false;
+            txtRubro.Enabled = true;
             txtRubro.Text = list.Result;
-            codRubro = list.ResultCodigo;
+            codRubro = Convert.ToString(list.ResultCodigo);
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -252,25 +317,60 @@ namespace FrbaCommerce.Comprar_Ofertar
             {//11 es la pocision del boton 
                 if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
                 {
-               if (tipo == "Subasta"){
+                    if (tipo == "Subasta")
+                    {
 
-                   Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado,idusuario);
-                   oferta.Show();
-                   if (tipo == "CompraInmediata")
-                   {
-                       if (publicador == 'E') { 
-                       }
+                        Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
+                        oferta.Show();
+                        if (tipo == "CompraInmediata")
+                        {
+                            if (publicador == 'E')
+                            {
+                               
+                            }
 
-                       if (publicador == 'C')
-                       {
-                           VentanaCompra ventana = new VentanaCompra(codigoSeleccionado,idusuario);
-                           ventana.Show();
-                       }
-                   }
-               }
+                            if (publicador == 'C')
+                            {
+                                VentanaCompra ventana = new VentanaCompra(codigoSeleccionado, idusuario);
+                                ventana.Show();
+                            }
+                        }
+                    }
                 }
-               
+
             }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                cmbEstado.Items.Add("Borrador");
+                cmbEstado.Items.Add("Pausada");
+                cmbEstado.Items.Add("Finalizada");
+
+            }
+            else
+            {
+                cmbEstado.Items.Remove("Borrador");
+                cmbEstado.Items.Remove("Pausada");
+                cmbEstado.Items.Remove("Finalizada");
+                cmbEstado.Text = "Publicada";
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Utiles.LimpiarTexto.LimpiarTextBox2(this);
+            Utiles.LimpiarTexto.BlanquearControls(this);
+            Utiles.LimpiarTexto.SacarCheckBox(this);
+            txtRubro.Enabled = false;
+            txtRubro.BackColor = Color.WhiteSmoke;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
 
         }
     }
