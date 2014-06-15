@@ -11,12 +11,14 @@ namespace FrbaCommerce.Roles
 {
     public partial class Rol_Cliente : Form
     {
+        Boolean esCliente = true;
+        Decimal idcliente;
         public Rol_Cliente(decimal id)
         {
             InitializeComponent();
             decimal idcliente = id;
         }
-        private decimal idcliente;
+
 
         private void Salir_Click(object sender, EventArgs e)
         {
@@ -27,14 +29,9 @@ namespace FrbaCommerce.Roles
 
         private void Buscar_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.Form1 co = new FrbaCommerce.Comprar_Ofertar.Form1(idcliente);
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,esCliente);
             co.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-           // Editar_Publicacion.Buscar_Publicacion list = new Editar_Publicacion.Buscar_Publicacion(usuario);
-           // list.Show();
-        }
     }
 }

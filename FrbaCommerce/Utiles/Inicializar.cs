@@ -169,9 +169,25 @@ namespace FrbaCommerce.Utiles
                 btn.Name = "btn";
                 btn.UseColumnTextForButtonValue = true;
                 botonCompraOferta = true;//no devuelve el boolean cambiar
+                
+            }   
+            return botonCompraOferta;
+        }
+
+        public static bool agregarColumnaEditarPublicacion(bool botonEditarPublicacion, DataGridView dataGridView1)
+        {
+            if (!botonEditarPublicacion)
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btn);
+                btn.HeaderText = "Editar";
+                btn.Text = "";
+                btn.Name = "btnEditar";
+                btn.UseColumnTextForButtonValue = true;
+                botonEditarPublicacion = true;//no devuelve el boolean cambiar
 
             }
-            return botonCompraOferta;
+            return botonEditarPublicacion;
         }
 
         public static void comboBoxRubro(ComboBox cmbRubro)

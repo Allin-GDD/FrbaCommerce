@@ -1,4 +1,4 @@
-CREATE PROCEDURE listaDePublicaciones
+CREATE PROCEDURE listaDeMisPublicaciones
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
@@ -15,7 +15,7 @@ CREATE PROCEDURE listaDePublicaciones
 				AND Visibilidad_Cod like '%'+@Visibilidad+'%'
 				and stock > 0
 				and Estado like '%'+@Estado+'%'
-				and Id <> @Id
+				and Id = @Id
 				
 			order by Visibilidad_Cod
 	END
