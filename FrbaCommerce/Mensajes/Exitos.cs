@@ -14,6 +14,11 @@ namespace FrbaCommerce.Mensajes
             MessageBox.Show("Los datos han sido modificados satisfactoriamente. El sistema se reiniciará", "Datos Actualizados", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+        public static void ExitosAlRealizarCalificacion()
+        {
+            MessageBox.Show("Calificacion realizada exitosamente", "Datos Guardados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
         public static void ExitoEnCompra()
         {
             MessageBox.Show("La compra se ha realizado satisfactoriamente", "Compra realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);

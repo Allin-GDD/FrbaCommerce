@@ -426,6 +426,9 @@
     <EmbeddedResource Include="Abm Visibilidad\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Calificar Vendedor\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
