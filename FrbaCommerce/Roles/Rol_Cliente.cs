@@ -33,5 +33,11 @@ namespace FrbaCommerce.Roles
             co.Show();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Calificar_Vendedor.listadoDePublicaciones cal = new FrbaCommerce.Calificar_Vendedor.listadoDePublicaciones(idcliente);
+            cal.Show();
+        }
+
     }
 }

@@ -159,6 +159,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
    
             Mensajes.Exitos.ExitoEnCompra();
+            this.Close();
         }
 
         private static void validarStock(decimal valor, decimal codigo)

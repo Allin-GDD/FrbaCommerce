@@ -44,6 +44,7 @@ namespace FrbaCommerce.Calificar_Vendedor
             }
 
             Mensajes.Exitos.ExitosAlRealizarCalificacion();
+            this.Close();
         }
 
         private void validarPuntaje(decimal puntaje)

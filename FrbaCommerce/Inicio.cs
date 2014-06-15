@@ -52,7 +52,7 @@ namespace FrbaCommerce
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Calificar_Vendedor.listadoDePublicaciones oferta = new Calificar_Vendedor.listadoDePublicaciones(3);
+            Calificar_Vendedor.listadoDePublicaciones oferta = new Calificar_Vendedor.listadoDePublicaciones(1);
             oferta.Show();
         }
 

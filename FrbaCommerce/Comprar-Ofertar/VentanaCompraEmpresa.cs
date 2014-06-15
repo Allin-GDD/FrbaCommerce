@@ -181,6 +181,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             }
             Mensajes.Exitos.ExitoEnCompra();
+            this.Close();
         }
+        
     }
 }
