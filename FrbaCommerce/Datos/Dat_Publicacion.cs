@@ -43,7 +43,8 @@ namespace FrbaCommerce.Datos
             List<Entidades.Ent_Visibilidad> listaDeVisibilidades = new List<Entidades.Ent_Visibilidad>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Codigo, Descripcion from Visibilidad", conexion);
+            SqlCommand Comando = Utiles.SQL.crearProcedure("GD1C2014.dbo.seleccionVisibilidadNotNull", conexion);
+            //SqlCommand Comando = new SqlCommand("Select Codigo, Descripcion from Visibilidad", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
             while (lectura.Read())
