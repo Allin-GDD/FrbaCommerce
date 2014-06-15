@@ -61,13 +61,6 @@ namespace FrbaCommerce
             Registro_de_Usuario.Registro_De_Usuario rg = new Registro_De_Usuario();
             rg.Show();
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-        Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(1, false);
-        co.Show();
-        }
-
     }
 }
 

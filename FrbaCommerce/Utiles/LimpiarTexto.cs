@@ -27,25 +27,6 @@ namespace FrbaCommerce.Utiles
             };
 
             func(ofrm.Controls);
-         }
-        public static void LimpiarTextBox2(Form ofrm)
-        {
-            Action<Control.ControlCollection> func = null;
-
-            func = (controls) =>
-            {
-                foreach (Control control in controls)
-                    if (control is TextBox && control.Name != "txtPageSize" && control.Name != "txtDisplayPageNo")
-                    {
-                        (control as TextBox).Clear();
-                    }
-                    else
-                    {
-                        func(control.Controls);
-                    }
-            };
-
-            func(ofrm.Controls);
         }
 
 

@@ -9,9 +9,5 @@ namespace FrbaCommerce.Entidades
     {
         public String Descripcion { get; set; }
         public String Rubro { get; set; }
-        public Boolean MisPublicaciones { get; set; }
-        public String Visibilidad { get; set; }
-        public String Estado { get; set; }
-        public String Tipo { get; set; }
     }
 }

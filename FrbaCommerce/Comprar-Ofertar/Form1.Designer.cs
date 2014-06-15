@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.Comprar_Ofertar
 {
-    partial class Buscar_Publicacion
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -41,32 +41,22 @@
             this.txtRubro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cmbTipoPub = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmbVisib = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 161);
+            this.dataGridView1.Location = new System.Drawing.Point(7, 102);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(677, 239);
+            this.dataGridView1.Size = new System.Drawing.Size(677, 206);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // btnFirstPage
             // 
-            this.btnFirstPage.Location = new System.Drawing.Point(543, 406);
+            this.btnFirstPage.Location = new System.Drawing.Point(544, 314);
             this.btnFirstPage.Name = "btnFirstPage";
             this.btnFirstPage.Size = new System.Drawing.Size(35, 23);
             this.btnFirstPage.TabIndex = 1;
@@ -76,7 +66,7 @@
             // 
             // btnNextPage
             // 
-            this.btnNextPage.Location = new System.Drawing.Point(608, 406);
+            this.btnNextPage.Location = new System.Drawing.Point(609, 314);
             this.btnNextPage.Name = "btnNextPage";
             this.btnNextPage.Size = new System.Drawing.Size(18, 23);
             this.btnNextPage.TabIndex = 2;
@@ -86,7 +76,7 @@
             // 
             // btnPreviousPage
             // 
-            this.btnPreviousPage.Location = new System.Drawing.Point(584, 406);
+            this.btnPreviousPage.Location = new System.Drawing.Point(585, 314);
             this.btnPreviousPage.Name = "btnPreviousPage";
             this.btnPreviousPage.Size = new System.Drawing.Size(18, 23);
             this.btnPreviousPage.TabIndex = 3;
@@ -96,7 +86,7 @@
             // 
             // btnLastPage
             // 
-            this.btnLastPage.Location = new System.Drawing.Point(632, 406);
+            this.btnLastPage.Location = new System.Drawing.Point(633, 314);
             this.btnLastPage.Name = "btnLastPage";
             this.btnLastPage.Size = new System.Drawing.Size(28, 23);
             this.btnLastPage.TabIndex = 4;
@@ -106,9 +96,9 @@
             // 
             // btnFillGrid
             // 
-            this.btnFillGrid.Location = new System.Drawing.Point(430, 122);
+            this.btnFillGrid.Location = new System.Drawing.Point(544, 23);
             this.btnFillGrid.Name = "btnFillGrid";
-            this.btnFillGrid.Size = new System.Drawing.Size(113, 33);
+            this.btnFillGrid.Size = new System.Drawing.Size(113, 49);
             this.btnFillGrid.TabIndex = 5;
             this.btnFillGrid.Text = "Buscar";
             this.btnFillGrid.UseVisualStyleBackColor = true;
@@ -116,14 +106,14 @@
             // 
             // txtDisplayPageNo
             // 
-            this.txtDisplayPageNo.Location = new System.Drawing.Point(12, 406);
+            this.txtDisplayPageNo.Location = new System.Drawing.Point(12, 316);
             this.txtDisplayPageNo.Name = "txtDisplayPageNo";
             this.txtDisplayPageNo.Size = new System.Drawing.Size(80, 20);
             this.txtDisplayPageNo.TabIndex = 6;
             // 
             // txtPageSize
             // 
-            this.txtPageSize.Location = new System.Drawing.Point(664, 408);
+            this.txtPageSize.Location = new System.Drawing.Point(665, 316);
             this.txtPageSize.Name = "txtPageSize";
             this.txtPageSize.Size = new System.Drawing.Size(20, 20);
             this.txtPageSize.TabIndex = 7;
@@ -131,14 +121,14 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(75, 27);
+            this.textBox1.Location = new System.Drawing.Point(170, 22);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
+            this.textBox1.Size = new System.Drawing.Size(206, 20);
             this.textBox1.TabIndex = 8;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(241, 65);
+            this.button1.Location = new System.Drawing.Point(393, 54);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 9;
@@ -148,138 +138,40 @@
             // 
             // txtRubro
             // 
-            this.txtRubro.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtRubro.Enabled = false;
-            this.txtRubro.Location = new System.Drawing.Point(57, 68);
+            this.txtRubro.Location = new System.Drawing.Point(95, 56);
             this.txtRubro.Name = "txtRubro";
-            this.txtRubro.ReadOnly = true;
-            this.txtRubro.Size = new System.Drawing.Size(174, 20);
+            this.txtRubro.Size = new System.Drawing.Size(281, 20);
             this.txtRubro.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 30);
+            this.label1.Location = new System.Drawing.Point(28, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(136, 13);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Descripción";
+            this.label1.Text = "Descripción de Publicación";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 70);
+            this.label2.Location = new System.Drawing.Point(28, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Rubro";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.cmbEstado);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.cmbTipoPub);
-            this.groupBox1.Controls.Add(this.txtRubro);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cmbVisib);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(672, 104);
-            this.groupBox1.TabIndex = 17;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros de búsqueda";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "Publicada"});
-            this.cmbEstado.Location = new System.Drawing.Point(537, 68);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(122, 21);
-            this.cmbEstado.TabIndex = 29;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(491, 71);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
-            this.label8.TabIndex = 36;
-            this.label8.Text = "Estado";
-            // 
-            // cmbTipoPub
-            // 
-            this.cmbTipoPub.FormattingEnabled = true;
-            this.cmbTipoPub.Items.AddRange(new object[] {
-            "Subasta",
-            "Compra inmediata"});
-            this.cmbTipoPub.Location = new System.Drawing.Point(370, 68);
-            this.cmbTipoPub.Name = "cmbTipoPub";
-            this.cmbTipoPub.Size = new System.Drawing.Size(115, 21);
-            this.cmbTipoPub.TabIndex = 34;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(336, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(28, 13);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Tipo";
-            // 
-            // cmbVisib
-            // 
-            this.cmbVisib.FormattingEnabled = true;
-            this.cmbVisib.Location = new System.Drawing.Point(527, 27);
-            this.cmbVisib.Name = "cmbVisib";
-            this.cmbVisib.Size = new System.Drawing.Size(132, 21);
-            this.cmbVisib.TabIndex = 14;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(468, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Visibilidad";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(144, 122);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 33);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(302, 29);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(147, 17);
-            this.checkBox1.TabIndex = 37;
-            this.checkBox1.Text = "Mostrar mis publicaciones";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
-            // Buscar_Publicacion
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(696, 438);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(696, 339);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtRubro);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtPageSize);
             this.Controls.Add(this.txtDisplayPageNo);
             this.Controls.Add(this.btnFillGrid);
@@ -288,11 +180,9 @@
             this.Controls.Add(this.btnNextPage);
             this.Controls.Add(this.btnFirstPage);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Buscar_Publicacion";
-            this.Text = "Buscar publicación";
+            this.Name = "Form1";
+            this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,14 +203,5 @@
         private System.Windows.Forms.TextBox txtRubro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbEstado;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cmbTipoPub;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cmbVisib;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

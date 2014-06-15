@@ -11,8 +11,6 @@ namespace FrbaCommerce.Roles
 {
     public partial class Rol_Empresa : Form
     {
-        Boolean esCliente = false;
-        Decimal idEmpresa = 1;
         public Rol_Empresa()
         {
             InitializeComponent();
@@ -28,10 +26,14 @@ namespace FrbaCommerce.Roles
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Publicar_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, esCliente);
-            co.Show();
+
+        }
+
+        private void PublicarCompraInmediata_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
