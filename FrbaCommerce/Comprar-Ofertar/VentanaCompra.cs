@@ -129,26 +129,36 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void button1_Click(object sender, EventArgs e)
         {
+            decimal stock = Convert.ToDecimal(txtvalor.Text);
             try
-            {   decimal stock = Convert.ToDecimal(txtvalor.Text);
+            {   
                 Utiles.Validaciones.ValidarTipoDecimal(txtvalor);
                 validarStock(stock, codigo);
+                
 
                 SqlConnection conn = DBConexion.obtenerConexion();
+
+         
+                SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarStock", conn,
+                new SqlParameter("@Codigo", codigo),
+                new SqlParameter("@Stock", stock));
+                int retorno2 = cmd2.ExecuteNonQuery();
+
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                 new SqlParameter("@Codigo", codigo),
                 new SqlParameter("@Id",idusuario ),
                 new SqlParameter("@Stock",stock));
                 int retorno = cmd.ExecuteNonQuery();
-
-               
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+
+
+   
+            Mensajes.Exitos.ExitoEnCompra();
         }
 
         private static void validarStock(decimal valor, decimal codigo)

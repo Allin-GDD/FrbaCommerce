@@ -96,6 +96,12 @@
     <Compile Include="Comprar-Ofertar\VentanaCompra.Designer.cs">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompraEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompraEmpresa.Designer.cs">
+      <DependentUpon>VentanaCompraEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaOferta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -250,11 +256,18 @@
     </Compile>
     <Compile Include="Entidades\Ent_Oferta.cs" />
     <Compile Include="Entidades\Ent_Vendedor.cs" />
+    <Compile Include="Entidades\Ent_VendedorEmpresa.cs" />
     <Compile Include="Generar Publicacion\BuscarRubro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Generar Publicacion\BuscarRubro.Designer.cs">
       <DependentUpon>BuscarRubro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Gestor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gestion de Preguntas\Gestor.Designer.cs">
+      <DependentUpon>Gestor.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
@@ -317,12 +330,6 @@
     </Compile>
     <Compile Include="Generar Publicacion\Generar_Publi.Designer.cs">
       <DependentUpon>Generar_Publi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Gestion de Preguntas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Historial Cliente\Form1.cs">
       <SubType>Form</SubType>
@@ -425,6 +432,9 @@
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VentanaCompraEmpresa.resx">
+      <DependentUpon>VentanaCompraEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaOferta.resx">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
     </EmbeddedResource>
@@ -442,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\Generar_Publi.resx">
       <DependentUpon>Generar_Publi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\Gestor.resx">
+      <DependentUpon>Gestor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
