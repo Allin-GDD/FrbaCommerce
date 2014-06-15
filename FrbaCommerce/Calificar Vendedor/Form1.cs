@@ -13,12 +13,12 @@ namespace FrbaCommerce.Calificar_Vendedor
 {
     public partial class Form1 : Form
     {
-        public Form1(decimal cod)
+        public Form1(decimal id)
         {
             InitializeComponent();
-            codigo = cod;
+            idCompra = id;
         }
-        decimal codigo;
+        decimal idCompra;
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -26,11 +26,11 @@ namespace FrbaCommerce.Calificar_Vendedor
                 decimal puntaje = Convert.ToDecimal(textBox1.Text);
                 Utiles.Validaciones.ValidarTipoDecimal(textBox1);
                 validarPuntaje(puntaje);
-                decimal cod_calificacion = obternerCodCalificacionMax();
+                decimal cod_calificacion = obternerCodCalificacionMax()+1;
 
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCalificacion", conn,
-                new SqlParameter("@Codigo", codigo),
+                new SqlParameter("@Id", idCompra),
                 new SqlParameter("@Cal_Cod", cod_calificacion),
                 new SqlParameter("@Cant_Est", puntaje),
                 new SqlParameter("@Desc", textBox2.Text));
