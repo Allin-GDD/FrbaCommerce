@@ -90,6 +90,12 @@
     <Compile Include="Calificar Vendedor\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calificar Vendedor\listadoDePublicaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calificar Vendedor\listadoDePublicaciones.Designer.cs">
+      <DependentUpon>listadoDePublicaciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\Buscar_Publicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -435,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calificar Vendedor\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calificar Vendedor\listadoDePublicaciones.resx">
+      <DependentUpon>listadoDePublicaciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Buscar_Publicacion.resx">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
