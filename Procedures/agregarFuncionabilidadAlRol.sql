@@ -3,7 +3,7 @@ CREATE PROCEDURE agregarFuncionabilidadAlRol
 @Id_Funcionabilidad int
 AS
 BEGIN
-INSERT INTO Funcionabilidades(Id_Rol,
-Id_Funcionabilidad)
+INSERT INTO Funcionalidades(Id_Rol,
+Id_Funcionalidad)
 VALUES(@Id_Rol, @Id_Funcionabilidad)
 END 

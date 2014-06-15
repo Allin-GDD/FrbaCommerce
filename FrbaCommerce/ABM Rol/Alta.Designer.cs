@@ -36,7 +36,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtFunc = new System.Windows.Forms.TextBox();
-            this.cmbFuncionalidad = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,14 +116,6 @@
             this.txtFunc.Size = new System.Drawing.Size(290, 20);
             this.txtFunc.TabIndex = 7;
             // 
-            // cmbFuncionalidad
-            // 
-            this.cmbFuncionalidad.FormattingEnabled = true;
-            this.cmbFuncionalidad.Location = new System.Drawing.Point(109, 150);
-            this.cmbFuncionalidad.Name = "cmbFuncionalidad";
-            this.cmbFuncionalidad.Size = new System.Drawing.Size(423, 21);
-            this.cmbFuncionalidad.TabIndex = 6;
-            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,7 +124,6 @@
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cmbFuncionalidad);
             this.Name = "Alta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta";
@@ -153,6 +143,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtFunc;
-        private System.Windows.Forms.ComboBox cmbFuncionalidad;
     }
 }

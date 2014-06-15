@@ -110,7 +110,7 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                listaDeFuncionabilidades.Add(lectura.GetInt32(0));
+                listaDeFuncionabilidades.Add(lectura.GetInt16(0));
             }
             return listaDeFuncionabilidades;
 
