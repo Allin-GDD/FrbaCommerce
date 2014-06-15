@@ -11,7 +11,7 @@ namespace FrbaCommerce.Roles
 {
     public partial class Rol_Empresa : Form
     {
-        Boolean esCliente = false;
+        string rol = "E";
         Decimal idEmpresa = 1;
         public Rol_Empresa()
         {
@@ -30,7 +30,7 @@ namespace FrbaCommerce.Roles
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, esCliente);
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, rol);
             co.Show();
         }
     }

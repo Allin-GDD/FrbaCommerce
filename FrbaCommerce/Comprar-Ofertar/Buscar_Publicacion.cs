@@ -20,17 +20,18 @@ namespace FrbaCommerce.Comprar_Ofertar
         int currentPage;
         int recNo;
         Boolean primeraVez;
+        string rolDeEste;
 
-
-        public Buscar_Publicacion(decimal id, Boolean esCliente)
+        public Buscar_Publicacion(decimal id, string rol)
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             cmbEstado.Text = "Publicada";
             cmbTipoPub.Text = "Subasta";
+            rolDeEste = rol;
             botonCompraOferta = false;
             editarPublicacion = false;
-            if (!esCliente)
+            if (rol == "E")
             {
                 checkBox1.Checked = true;
                 checkBox1.Enabled = false;
@@ -125,6 +126,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
+                    new SqlParameter("@Visibilidad", rolDeEste),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro));
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
