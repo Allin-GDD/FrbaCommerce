@@ -423,8 +423,6 @@
     <EmbeddedResource Include="Calificar Vendedor\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Comprar-Ofertar\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     <EmbeddedResource Include="Comprar-Ofertar\Buscar_Publicacion.resx">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>
