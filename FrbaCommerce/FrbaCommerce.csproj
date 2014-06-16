@@ -472,6 +472,9 @@
     <EmbeddedResource Include="Gestion de Preguntas\Gestor.resx">
       <DependentUpon>Gestor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
+      <DependentUpon>VerRespuestas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial Cliente\Historial_Cliente.resx">
       <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -524,9 +527,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utiles\Ventanas\ListaFuncionabilidades.resx">
       <DependentUpon>ListaFuncionabilidades.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Utiles\Ventanas\Pregunta.resx">
-      <DependentUpon>Pregunta.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -607,12 +607,6 @@
     </Compile>
     <Compile Include="Utiles\Ventanas\First_Login.Designer.cs">
       <DependentUpon>First_Login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utiles\Ventanas\Pregunta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Utiles\Ventanas\Pregunta.Designer.cs">
-      <DependentUpon>Pregunta.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\Ventanas\TipearRespuesta.cs">
       <SubType>Form</SubType>
