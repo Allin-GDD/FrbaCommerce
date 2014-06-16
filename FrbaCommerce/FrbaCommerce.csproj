@@ -344,11 +344,11 @@
     <Compile Include="Generar Publicacion\Generar_Publi.Designer.cs">
       <DependentUpon>Generar_Publi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs">
+    <Compile Include="Historial Cliente\Historial_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Historial Cliente\Historial_Cliente.Designer.cs">
+      <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -472,8 +472,8 @@
     <EmbeddedResource Include="Gestion de Preguntas\Gestor.resx">
       <DependentUpon>Gestor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
-      <DependentUpon>VerRespuestas.cs</DependentUpon>
+    <EmbeddedResource Include="Historial Cliente\Historial_Cliente.resx">
+      <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
@@ -524,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utiles\Ventanas\ListaFuncionabilidades.resx">
       <DependentUpon>ListaFuncionabilidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utiles\Ventanas\Pregunta.resx">
+      <DependentUpon>Pregunta.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -604,6 +607,12 @@
     </Compile>
     <Compile Include="Utiles\Ventanas\First_Login.Designer.cs">
       <DependentUpon>First_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\Pregunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\Pregunta.Designer.cs">
+      <DependentUpon>Pregunta.cs</DependentUpon>
     </Compile>
     <Compile Include="Utiles\Ventanas\TipearRespuesta.cs">
       <SubType>Form</SubType>

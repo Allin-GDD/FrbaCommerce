@@ -45,7 +45,7 @@ namespace FrbaCommerce.Datos
                 {
                     retorno++;
                 }
-                
+
             }
             return retorno;
 
@@ -54,7 +54,7 @@ namespace FrbaCommerce.Datos
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario, Decimal IdUsuario, int estado)
         {
             int retorno = 0;
-           // String pwHash = hashearSHA256(pw);
+            // String pwHash = hashearSHA256(pw);
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conexion,
@@ -192,15 +192,15 @@ namespace FrbaCommerce.Datos
 
         public static bool validarPrimerIngreso(string passwordIngresa, string passwordOriginal, Entidades.Ent_Usuario pusuario, Form ofrm)
         {
-        
+
             if (passwordIngresa == passwordOriginal && pusuario.Estado == 10)
-                {
-                    Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.Usuario, pusuario.Rol , pusuario.IdUsuario);
-                    flogin.Show();
-                    return true;
-                }
+            {
+                Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.Usuario, pusuario.Rol, pusuario.IdUsuario);
+                flogin.Show();
+                return true;
+            }
             return false;
-           
+
 
         }
 
@@ -229,7 +229,7 @@ namespace FrbaCommerce.Datos
             if (pusuario.Contraseña == contraseñaIngresada)
             {
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, 0);
-                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login,pusuario.IdUsuario);
+                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
 
             }
             else
@@ -243,5 +243,20 @@ namespace FrbaCommerce.Datos
             }
         }
 
+
+        public static String getNameUser(decimal idUsuario, decimal rolAsignado)
+        {
+            String user = null;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarNombreUsuario", conn,
+            new SqlParameter("@IdUsuario", idUsuario),
+            new SqlParameter("@IdRol", rolAsignado));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                user = lectura.GetString(0);
             }
+            return user;
+        }
+    }
 }

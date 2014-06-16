@@ -43,6 +43,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         private decimal idusuario;
         private bool botonCompraOferta;
+        private bool botonPregunta;
         private bool editarPublicacion;
         private string codRubro;
         private void LoadPage()
@@ -103,8 +104,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            //try
-            //{
+            try
+            {
 
                 pCO.Descripcion = textBox1.Text;
                 pCO.Rubro = "";
@@ -123,10 +124,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
+                    new SqlParameter("@Rol", rolDeEste),
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
-                    new SqlParameter("@Visibilidad", rolDeEste),
+                    //new SqlParameter("@Visibilidad", rolDeEste),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro));
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
@@ -137,6 +139,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeMisPublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
+                    new SqlParameter("@Rol", rolDeEste),
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
@@ -183,6 +186,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                     editarPublicacion = false;
                     this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+                    this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
                 }
                 else
                 {
@@ -196,11 +200,13 @@ namespace FrbaCommerce.Comprar_Ofertar
                     botonCompraOferta = false;
                     this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
                 }
-           // }
-            //catch (Exception ex)
-           // {
-           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           // }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
@@ -328,7 +334,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                         {
                             if (publicador == 'E')
                             {
-                               
+                                VentanaCompraEmpresa ventana = new VentanaCompraEmpresa(codigoSeleccionado, idusuario);
+                                ventana.Show();
                             }
 
                             if (publicador == 'C')
@@ -340,6 +347,23 @@ namespace FrbaCommerce.Comprar_Ofertar
                     }
                 }
 
+            }
+            if (e.ColumnIndex == 14) //NOSE QUE NUMERO VA BIEN
+            {
+                decimal rolAsignado;
+                if (publicador == 'E')
+                {
+                    rolAsignado = 2;
+                }
+                else
+                {
+                    rolAsignado = 1;
+                }
+
+                String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
+                Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
+                preg.ShowDialog();
+            
             }
 
         }
@@ -371,9 +395,5 @@ namespace FrbaCommerce.Comprar_Ofertar
             txtRubro.BackColor = Color.WhiteSmoke;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-    }
+   }
 }

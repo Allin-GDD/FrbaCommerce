@@ -65,7 +65,7 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
         }
 
-        internal static void listaDePreguntaRespuesta(DataGridView dataGridView1, string usuario)
+        public static void listaDePreguntaRespuesta(DataGridView dataGridView1, string usuario)
         {
             try
             {
@@ -80,5 +80,19 @@ namespace FrbaCommerce.Datos
             }
 
         }
-    }
+
+        public static void AgregarPregunta(string usuario, decimal codigoPub, string pregunta, string Publicador)
+        {
+           SqlConnection conn = DBConexion.obtenerConexion();
+           SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarUnaPregunta", conn,
+               new SqlParameter("@UsuarioPreg", usuario),
+               new SqlParameter("@Id_Publicacion", codigoPub),
+               new SqlParameter("@Pregunta", pregunta),
+               new SqlParameter("@Publicador", Publicador));
+
+           int retorno = cmd.ExecuteNonQuery();
+
+           Mensajes.Generales.validarAlta(retorno);
+        }
+   }
 }

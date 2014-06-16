@@ -16,7 +16,8 @@ namespace FrbaCommerce
     {
         public Inicio()
         {
-            InitializeComponent();      
+
+            InitializeComponent();
         }
 
         private void btnNuevoUser_Click(object sender, EventArgs e)
@@ -24,7 +25,7 @@ namespace FrbaCommerce
             Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
             Reg1.Show();
 
-                  
+
         }
 
         private void btnLoginUser_Click(object sender, EventArgs e)
@@ -32,7 +33,7 @@ namespace FrbaCommerce
             Login.Login Log1 = new Login.Login();
             Log1.Show();
 
-           
+
 
 
         }
@@ -64,13 +65,19 @@ namespace FrbaCommerce
 
         private void button4_Click(object sender, EventArgs e)
         {
-        Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(1, "C");
-        co.Show();
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(1, "C");
+            co.Show();
         }
 
-       
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Historial_Cliente.Historial_Cliente his = new FrbaCommerce.Historial_Cliente.Historial_Cliente(1);
+            his.Show();
+        }
 
     }
 }
+
+
 
 
