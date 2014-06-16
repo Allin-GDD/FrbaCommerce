@@ -19,7 +19,6 @@ namespace FrbaCommerce.Comprar_Ofertar
         int pageSize;
         int currentPage;
         int recNo;
-        int aumento;
         Boolean primeraVez;
         Boolean primeraVezBoton;
         Boolean primerCompra;
@@ -111,8 +110,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            //try
-            //{
+            try
+            {
   
                 pCO.Descripcion = textBox1.Text;
                 pCO.Rubro = "";
@@ -185,11 +184,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 agregarColumnas();
 
 
-           // }
-           // catch (Exception ex)
-           // {
-           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           // }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
@@ -368,22 +367,33 @@ namespace FrbaCommerce.Comprar_Ofertar
                         }
                     }
                 }
-                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnPregunta"].ColumnIndex) //NOSE QUE NUMERO VA BIEN
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnPregunta"].ColumnIndex)
                 {
-                    decimal rolAsignado;
-                    if (publicador == 'E')
+                    try
                     {
-                        rolAsignado = 2;
-                    }
-                    else
-                    {
-                        rolAsignado = 1;
-                    }
+                        if ((!Convert.ToBoolean(dataGridView1.CurrentRow.Cells["Preguntas_permitidas"].Value)))
+                        {
+                            throw new Excepciones.InexistenciaUsuario("La publicación no permite preguntas");
+                        }
+                        decimal rolAsignado;
+                        if (publicador == 'E')
+                        {
+                            rolAsignado = 2;
+                        }
+                        else
+                        {
+                            rolAsignado = 1;
+                        }
 
-                    String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
-                    Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
-                    preg.ShowDialog();
+                        String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
+                        Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
+                        preg.ShowDialog();
 
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                
                 }
             }
             else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked)
