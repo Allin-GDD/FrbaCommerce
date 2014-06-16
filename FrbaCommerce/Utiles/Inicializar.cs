@@ -198,6 +198,22 @@ namespace FrbaCommerce.Utiles
 
         }
 
+
+        public static bool agregarColumnaPregunta(bool botonPregunta, DataGridView dataGridView1)
+        {
+            if (!botonPregunta)
+            {
+                DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
+                dataGridView1.Columns.Add(btn);
+                btn.HeaderText = "Pregunta";
+                btn.Text = "";
+                btn.Name = "btnPregunta";
+                btn.UseColumnTextForButtonValue = true;
+                botonPregunta = true;//no devuelve el boolean cambiar
+
+            }
+            return botonPregunta;
+        }
     }
 
 }

@@ -43,6 +43,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         private decimal idusuario;
         private bool botonCompraOferta;
+        private bool botonPregunta;
         private bool editarPublicacion;
         private string codRubro;
         private void LoadPage()
@@ -126,7 +127,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
-                    new SqlParameter("@Visibilidad", rolDeEste),
+                    //new SqlParameter("@Visibilidad", rolDeEste),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro));
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
@@ -183,6 +184,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                     editarPublicacion = false;
                     this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+                    this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
                 }
                 else
                 {
@@ -196,11 +198,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                     botonCompraOferta = false;
                     this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
                 }
-           // }
+            //}
             //catch (Exception ex)
-           // {
-           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           // }
+            //{
+            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
 
         }
@@ -341,6 +343,23 @@ namespace FrbaCommerce.Comprar_Ofertar
                 }
 
             }
+            if (e.ColumnIndex == 14) //NOSE QUE NUMERO VA BIEN
+            {
+                decimal rolAsignado;
+                if (publicador == 'E')
+                {
+                    rolAsignado = 2;
+                }
+                else
+                {
+                    rolAsignado = 1;
+                }
+
+                String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
+                Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
+                preg.ShowDialog();
+            
+            }
 
         }
 
@@ -371,9 +390,5 @@ namespace FrbaCommerce.Comprar_Ofertar
             txtRubro.BackColor = Color.WhiteSmoke;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-    }
+   }
 }
