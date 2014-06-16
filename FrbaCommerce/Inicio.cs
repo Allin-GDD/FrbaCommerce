@@ -16,7 +16,7 @@ namespace FrbaCommerce
     {
         public Inicio()
         {
-            InitializeComponent();
+            InitializeComponent();      
         }
 
         private void btnNuevoUser_Click(object sender, EventArgs e)
@@ -67,6 +67,8 @@ namespace FrbaCommerce
         Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(1, "C");
         co.Show();
         }
+
+       
 
     }
 }

@@ -55,6 +55,7 @@
             this.label2.Size = new System.Drawing.Size(172, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Elija una de la siguientes opciones:";
+            
             // 
             // btnNuevoUser
             // 
