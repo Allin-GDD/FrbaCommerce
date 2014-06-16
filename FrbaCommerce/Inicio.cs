@@ -68,6 +68,12 @@ namespace FrbaCommerce
         co.Show();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Historial_Cliente.Historial_Cliente his = new FrbaCommerce.Historial_Cliente.Historial_Cliente(1);
+            his.Show();
+        }
+
     }
 }
 

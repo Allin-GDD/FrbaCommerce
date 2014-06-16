@@ -344,11 +344,11 @@
     <Compile Include="Generar Publicacion\Generar_Publi.Designer.cs">
       <DependentUpon>Generar_Publi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs">
+    <Compile Include="Historial Cliente\Historial_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Historial Cliente\Historial_Cliente.Designer.cs">
+      <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -474,6 +474,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
       <DependentUpon>VerRespuestas.cs</DependentUpon>
+    <EmbeddedResource Include="Historial Cliente\Historial_Cliente.resx">
+      <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
