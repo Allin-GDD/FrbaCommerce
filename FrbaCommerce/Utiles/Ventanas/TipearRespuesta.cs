@@ -24,11 +24,12 @@ namespace FrbaCommerce.Utiles.Ventanas
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtRespuesta.Text)) throw new Excepciones.NulidadDeCamposACompletar("El campo pregunta es obligatorio");
+                if (string.IsNullOrEmpty(txtRespuesta.Text)) throw new Excepciones.NulidadDeCamposACompletar("El campo pregunta es obligatorio");
 
                 Datos.Dat_Preguntas.agregarRespuestaA(IdPreyRes, txtRespuesta.Text);
 
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
+                Close();
             }
             catch (Exception ex)
             {

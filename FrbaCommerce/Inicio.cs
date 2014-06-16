@@ -59,8 +59,9 @@ namespace FrbaCommerce
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Registro_de_Usuario.Registro_De_Usuario rg = new Registro_De_Usuario();
-            rg.Show();
+            Gestion_de_Preguntas.Gestor ges = new FrbaCommerce.Gestion_de_Preguntas.Gestor("dalmiro_Herrera@gmail.com");
+            ges.Show();
+
         }
 
         private void button4_Click(object sender, EventArgs e)

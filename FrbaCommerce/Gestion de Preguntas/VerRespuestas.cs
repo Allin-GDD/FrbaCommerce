@@ -23,5 +23,5 @@ namespace FrbaCommerce.Gestion_de_Preguntas
             Close();
         }
 
-    }
+        }
 }

@@ -13,5 +13,6 @@ R.Codigo = P.Rubro_Cod
 	JOIN PreguntasYRespuestas PyR ON
 P.Codigo = PyR.Id_Publicacion
   WHERE PyR.UsuarioPregunta = @Id AND
-  PyR.Respuesta <> null
+  PyR.Respuesta IS NOT NULL
+  
   END
