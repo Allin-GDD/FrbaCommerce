@@ -64,14 +64,15 @@ namespace FrbaCommerce.Abm_Cliente
         {
             try
             {
-             
+             //Esto da de baja el el cliente, usuario, y todas sus publicaciones pasan al estado de finalizadas
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAlCliente", conn,
                 new SqlParameter("@Id", clienteADarDeBaja),
                 new SqlParameter("@Rol", 1));
                 int retorno = cmd.ExecuteNonQuery();
+                conn.Close();
 
-                Mensajes.Generales.validarBaja(retorno);
+              Mensajes.Generales.validarBaja(retorno);
                 
             }
             catch(Exception ex)

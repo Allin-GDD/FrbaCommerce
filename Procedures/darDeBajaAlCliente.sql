@@ -11,4 +11,9 @@ AND Id_Rol = @Rol
 UPDATE Clientes 
 SET  Dni = 0, Telefono = null
 where Id = @Id
+
+UPDATE Publicacion
+SET Estado = 'Finalizada'
+WHERE Id = @Id
+AND Publicador = 'C'
 END
