@@ -173,33 +173,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                 recNo = 0;
 
                 LoadPage();
-                
-                
-                if (checkBox1.Checked == false)
-                {
-                    if (editarPublicacion == true && primeraVez == false)
-                    {
-                        dataGridView1.Columns.Remove("btnEditar");
-  
-                    }
-                    primeraVez = false;
 
-                    editarPublicacion = false;
-                    this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
-                    this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
-                }
-                else
-                {
-                    if (botonCompraOferta == true && primeraVez == false)
-                    {
-                        dataGridView1.Columns.Remove("btn");
-    
-                    }
-                    primeraVez = false;
 
-                    botonCompraOferta = false;
-                    this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
-                }
+                agregarColumnas();
 
 
             }
@@ -209,6 +185,37 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
 
 
+        }
+
+        private void agregarColumnas()
+        {
+            if (checkBox1.Checked == false)
+            {
+                if (editarPublicacion == true && primeraVez == false)
+                {
+                    dataGridView1.Columns.Remove("btnEditar");
+
+                }
+                primeraVez = false;
+                editarPublicacion = false;
+                this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
+                this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
+            }
+            else
+            {
+                if (botonCompraOferta == true && primeraVez == false)
+                {
+                    dataGridView1.Columns.Remove("btnPregunta");
+                    dataGridView1.Columns.Remove("btn");
+                    
+                    botonPregunta = false;
+
+                }
+                primeraVez = false;
+
+                botonCompraOferta = false;
+                this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
+            }
         }
 
         private void btnFirstPage_Click(object sender, EventArgs e)
@@ -228,6 +235,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             currentPage = 1;
             recNo = 0;
             LoadPage();
+            agregarColumnas();
 
         }
 
@@ -258,6 +266,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 }
             }
             LoadPage();
+            agregarColumnas();
         }
 
         private void btnPreviousPage_Click(object sender, EventArgs e)
@@ -285,6 +294,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 recNo = pageSize * (currentPage - 1);
             }
             LoadPage();
+            agregarColumnas();
         }
 
         private void btnLastPage_Click(object sender, EventArgs e)
@@ -303,6 +313,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             currentPage = PageCount;
             recNo = pageSize * (currentPage - 1);
             LoadPage();
+            agregarColumnas();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -316,12 +327,13 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+
             decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
             decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12].Value);
             char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells[10].Value);
             string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
 
-            if (e.ColumnIndex == 13)
+            if (e.ColumnIndex == 13 && checkBox1.Checked == false)
             {//11 es la pocision del boton 
                 if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
                 {
@@ -345,6 +357,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                             }
                         }
                     }
+                }
+                else if (e.ColumnIndex == 13 && checkBox1.Checked)
+                {
+                    Editar_Publicacion.Editar_Publicacion_Publicada ventana = new Editar_Publicacion.Editar_Publicacion_Publicada(codigoSeleccionado);
+                    ventana.Show();
                 }
 
             }
