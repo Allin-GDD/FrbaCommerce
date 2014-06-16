@@ -80,6 +80,10 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 publicacion.Stock = Convert.ToDecimal(textBox2.Text);
             }
+            else
+            {
+                publicacion.Stock = 1;
+            }
             publicacion.Rubro = codRubro;
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);

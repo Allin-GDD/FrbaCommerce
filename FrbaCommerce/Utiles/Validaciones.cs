@@ -67,7 +67,7 @@ namespace FrbaCommerce.Utiles
            Decimal num = 0;
            foreach (TextBox parametro in parametroTxtBox)
            {
-               if (parametro.Name == "textBox2")
+               if (parametro.Name == "textBox2" && parametro.Enabled)
                {
                    num = Convert.ToDecimal(parametro.Text);
                }

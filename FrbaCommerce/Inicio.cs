@@ -66,7 +66,7 @@ namespace FrbaCommerce
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(1, "C");
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(11, "E");
             co.Show();
         }
 

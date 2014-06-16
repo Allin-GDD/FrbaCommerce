@@ -94,6 +94,10 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 publicacion.Stock = Convert.ToDecimal(textBox2.Text);
             }
+            else
+            {
+                publicacion.Stock = 1;
+            }
             publicacion.Codigo = codigoPk;
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Estado = Convert.ToString(cmbEstado.Text);

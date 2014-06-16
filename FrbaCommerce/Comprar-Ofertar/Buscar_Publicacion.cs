@@ -20,9 +20,6 @@ namespace FrbaCommerce.Comprar_Ofertar
         int currentPage;
         int recNo;
         Boolean primeraVez;
-        Boolean primeraVezBoton;
-        Boolean primerCompra;
-        Boolean primerEditar;
         string rolDeEste;
 
         public Buscar_Publicacion(decimal id, string rol)
@@ -32,11 +29,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             cmbEstado.Text = "Publicada";
             cmbTipoPub.Text = "Subasta";
             rolDeEste = rol;
-            primeraVezBoton = true;
             botonCompraOferta = false;
             editarPublicacion = false;
-            primerCompra = true;
-            primerEditar = true;
             if (rol == "E")
             {
                 checkBox1.Checked = true;
@@ -134,7 +128,6 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
-                    //new SqlParameter("@Visibilidad", rolDeEste),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro));
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
@@ -203,7 +196,6 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 }
                 primeraVez = false;
-                primerCompra = false;
                 editarPublicacion = false;
                 this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
                 this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
@@ -219,7 +211,6 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 }
                 primeraVez = false;
-                primerEditar = false;
 
                 botonCompraOferta = false;
                 this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
@@ -396,15 +387,43 @@ namespace FrbaCommerce.Comprar_Ofertar
                 
                 }
             }
-            else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked)
+            else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked && obtenerEstadoPub(codigoSeleccionado) != "Finalizada")
             {
+                if (obtenerEstadoPub(codigoSeleccionado) == "Publicada" || obtenerEstadoPub(codigoSeleccionado) == "Pausada")
+                {
                     Editar_Publicacion.Editar_Publicacion_Publicada ventana = new Editar_Publicacion.Editar_Publicacion_Publicada(codigoSeleccionado);
                     ventana.Show();
+                }
+                else if (obtenerEstadoPub(codigoSeleccionado) == "Borrador")
+                {
+                    Editar_Publicacion.Editar_Publicacion_Borrada ventana = new Editar_Publicacion.Editar_Publicacion_Borrada(codigoSeleccionado);
+                    ventana.Show();
+                }
             }
         
             
         }
 
+        private string obtenerEstadoPub(Decimal codigo)
+        {
+            string estado;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarEstado", conn,
+
+            new SqlParameter("@Codigo", codigo));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            estado = lectura.GetString(0);
+
+
+            conn.Close();
+
+            return estado;
+        }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
