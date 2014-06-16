@@ -16,3 +16,4 @@ CREATE PROCEDURE historialCalificacionesRecibidas
     order by C.Fecha
   
     END
+    
