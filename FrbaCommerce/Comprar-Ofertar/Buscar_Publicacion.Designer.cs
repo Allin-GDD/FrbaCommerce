@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cmbTipoPub = new System.Windows.Forms.ComboBox();
@@ -49,7 +50,6 @@
             this.cmbVisib = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -195,8 +195,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(302, 29);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(147, 17);
+            this.checkBox1.TabIndex = 37;
+            this.checkBox1.Text = "Mostrar mis publicaciones";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // cmbEstado
             // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Publicada"});
@@ -216,6 +228,7 @@
             // 
             // cmbTipoPub
             // 
+            this.cmbTipoPub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPub.FormattingEnabled = true;
             this.cmbTipoPub.Items.AddRange(new object[] {
             "Subasta",
@@ -236,6 +249,7 @@
             // 
             // cmbVisib
             // 
+            this.cmbVisib.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVisib.FormattingEnabled = true;
             this.cmbVisib.Location = new System.Drawing.Point(527, 27);
             this.cmbVisib.Name = "cmbVisib";
@@ -260,17 +274,6 @@
             this.button2.Text = "Limpiar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(302, 29);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(147, 17);
-            this.checkBox1.TabIndex = 37;
-            this.checkBox1.Text = "Mostrar mis publicaciones";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Buscar_Publicacion
             // 
