@@ -102,6 +102,12 @@
     <Compile Include="Comprar-Ofertar\Buscar_Publicacion.Designer.cs">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\ListadoSubastasPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\ListadoSubastasPendientes.Designer.cs">
+      <DependentUpon>ListadoSubastasPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -465,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\Buscar_Publicacion.resx">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\ListadoSubastasPendientes.resx">
+      <DependentUpon>ListadoSubastasPendientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
