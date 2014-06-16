@@ -421,7 +421,7 @@ where Factura_Nro is not null
 insert into Compra
 
 select distinct Publicacion_Cod,Clientes.id,Compra_Fecha,Compra_Cantidad,Calificacion_Codigo,
- Calificacion_Cant_Estrellas,Calificacion_Descripcion
+ Calificacion_Cant_Estrellas/2,Calificacion_Descripcion
 
 from gd_esquema.Maestra, Clientes
 
@@ -455,6 +455,10 @@ and oferta_fecha is not null
 --where cli_dni= clientes.dni
 --and Calificacion_Codigo is not null
 --and publicacion_cod is not null
+ --carga tabla rol
+INSERT INTO rol VALUES ('Cliente',1)
+INSERT INTO rol VALUES ('Empresa',1)
+INSERT INTO rol VALUES ('Admin',1)
 
 --migracion tabla usuario
 
@@ -462,17 +466,12 @@ insert into Usuario
 select distinct clientes.Mail,convert(nvarchar,Clientes.Dni),clientes.Id,rol.id,1,0,1
  from Clientes,rol
  where rol.nombre = 'Cliente'
- 
-
 union all
  select distinct Empresa.Mail,Empresa.Cuit,Empresa.Id,rol.id,1,0,1
  from Empresa,rol
  where rol.nombre = 'Empresa'
 
- --carga tabla rol
-INSERT INTO rol VALUES ('Cliente',1)
-INSERT INTO rol VALUES ('Empresa',1)
-INSERT INTO rol VALUES ('Admin',1)
+
 
 
 --cargar tabla funcionabilidades
