@@ -39,17 +39,18 @@ namespace FrbaCommerce.Editar_Publicacion
                 publ = Datos.Dat_Publicacion.buscarDatosPublicacion(codigoPk);
                 textBox5.Text = publ.Descripcion;
 
-
+                
                 if (publ.Tipo == "Compra Inmediata")
                 {
                     textBox2.Text = Convert.ToString(publ.Stock);
+                    stockInicial = Convert.ToDecimal(textBox2.Text);
                 }
                 else if(publ.Tipo == "Subasta")
                 {
                     textBox2.Enabled = false;
                 }
-
-                stockInicial = Convert.ToDecimal(textBox2.Text);
+            
+                
 
             }
             catch (Exception ex)

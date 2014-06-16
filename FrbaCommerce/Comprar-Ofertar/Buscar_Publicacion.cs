@@ -22,6 +22,8 @@ namespace FrbaCommerce.Comprar_Ofertar
         int aumento;
         Boolean primeraVez;
         Boolean primeraVezBoton;
+        Boolean primerCompra;
+        Boolean primerEditar;
         string rolDeEste;
 
         public Buscar_Publicacion(decimal id, string rol)
@@ -34,6 +36,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             primeraVezBoton = true;
             botonCompraOferta = false;
             editarPublicacion = false;
+            primerCompra = true;
+            primerEditar = true;
             if (rol == "E")
             {
                 checkBox1.Checked = true;
@@ -107,18 +111,9 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            try
-            {
-                aumento = 0;
-                if (checkBox1.Checked && !primeraVezBoton)
-                {
-                    aumento = 1;
-                }
-                else if(!checkBox1.Checked && !primeraVezBoton)
-                { aumento = 2; }
-                primeraVezBoton = false;
-
-                
+            //try
+            //{
+  
                 pCO.Descripcion = textBox1.Text;
                 pCO.Rubro = "";
                 if (txtRubro.Enabled)
@@ -190,11 +185,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 agregarColumnas();
 
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           // }
+           // catch (Exception ex)
+           // {
+           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           // }
 
 
         }
@@ -209,6 +204,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 }
                 primeraVez = false;
+                primerCompra = false;
                 editarPublicacion = false;
                 this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
                 this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
@@ -224,6 +220,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 }
                 primeraVez = false;
+                primerEditar = false;
 
                 botonCompraOferta = false;
                 this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
@@ -339,62 +336,63 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-          
-            decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0+aumento].Value);
-            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12+aumento].Value);
-            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells[10 + aumento].Value);
-            string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6 + aumento].Value);
-
-            if (e.ColumnIndex == 13 && checkBox1.Checked == false)
-            {//11 es la pocision del boton 
-                if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
-                {
-                    if (tipo == "Subasta")
+            decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo"].Value);
+            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
+            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells["Publicador"].Value);
+            string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells["Tipo"].Value);
+            if(botonCompraOferta)
+            {
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btn"].ColumnIndex && checkBox1.Checked == false)
+                {//11 es la pocision del boton 
+                    if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
                     {
-
-                        Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
-                        oferta.Show();
-                        if (tipo == "CompraInmediata")
+                        if (tipo == "Subasta")
                         {
-                            if (publicador == 'E')
-                            {
-                                VentanaCompraEmpresa ventana = new VentanaCompraEmpresa(codigoSeleccionado, idusuario);
-                                ventana.Show();
-                            }
 
-                            if (publicador == 'C')
+                            Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
+                            oferta.Show();
+                            if (tipo == "CompraInmediata")
                             {
-                                VentanaCompra ventana = new VentanaCompra(codigoSeleccionado, idusuario);
-                                ventana.Show();
+                                if (publicador == 'E')
+                                {
+                                    VentanaCompraEmpresa ventana = new VentanaCompraEmpresa(codigoSeleccionado, idusuario);
+                                    ventana.Show();
+                                }
+
+                                if (publicador == 'C')
+                                {
+                                    VentanaCompra ventana = new VentanaCompra(codigoSeleccionado, idusuario);
+                                    ventana.Show();
+                                }
                             }
                         }
                     }
                 }
-                else if (e.ColumnIndex == 13 && checkBox1.Checked)
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnPregunta"].ColumnIndex) //NOSE QUE NUMERO VA BIEN
                 {
+                    decimal rolAsignado;
+                    if (publicador == 'E')
+                    {
+                        rolAsignado = 2;
+                    }
+                    else
+                    {
+                        rolAsignado = 1;
+                    }
+
+                    String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
+                    Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
+                    preg.ShowDialog();
+
+                }
+            }
+            else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked)
+            {
                     Editar_Publicacion.Editar_Publicacion_Publicada ventana = new Editar_Publicacion.Editar_Publicacion_Publicada(codigoSeleccionado);
                     ventana.Show();
-                }
-
             }
-            if (e.ColumnIndex == 14) //NOSE QUE NUMERO VA BIEN
-            {
-                decimal rolAsignado;
-                if (publicador == 'E')
-                {
-                    rolAsignado = 2;
-                }
-                else
-                {
-                    rolAsignado = 1;
-                }
-
-                String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
-                Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
-                preg.ShowDialog();
+        
             
-            }
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
