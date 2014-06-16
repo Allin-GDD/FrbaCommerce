@@ -44,6 +44,7 @@ namespace FrbaCommerce.Utiles.Ventanas
          
             listBox1.DisplayMember = "funcionalidad";
             listBox1.ValueMember = "id";
+            listBox1.SetSelected(0, true);
 
         }
 

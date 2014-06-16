@@ -48,6 +48,11 @@ namespace FrbaCommerce.Editar_Publicacion
                 else if(publ.Tipo == "Subasta")
                 {
                     textBox2.Enabled = false;
+                    cmbEstado.Items.Remove("Pausada");
+                    if (DateTime.Now <= publ.Fecha_Venc)
+                    {
+                        cmbEstado.Enabled = false;
+                    }
                 }
             
                 
