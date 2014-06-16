@@ -19,7 +19,9 @@ namespace FrbaCommerce.Comprar_Ofertar
         int pageSize;
         int currentPage;
         int recNo;
+        int aumento;
         Boolean primeraVez;
+        Boolean primeraVezBoton;
         string rolDeEste;
 
         public Buscar_Publicacion(decimal id, string rol)
@@ -29,6 +31,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             cmbEstado.Text = "Publicada";
             cmbTipoPub.Text = "Subasta";
             rolDeEste = rol;
+            primeraVezBoton = true;
             botonCompraOferta = false;
             editarPublicacion = false;
             if (rol == "E")
@@ -106,7 +109,16 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             try
             {
+                aumento = 0;
+                if (checkBox1.Checked && !primeraVezBoton)
+                {
+                    aumento = 1;
+                }
+                else if(!checkBox1.Checked && !primeraVezBoton)
+                { aumento = 2; }
+                primeraVezBoton = false;
 
+                
                 pCO.Descripcion = textBox1.Text;
                 pCO.Rubro = "";
                 if (txtRubro.Enabled)
@@ -327,11 +339,11 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-
-            decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
-            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12].Value);
-            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells[10].Value);
-            string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6].Value);
+          
+            decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0+aumento].Value);
+            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[12+aumento].Value);
+            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells[10 + aumento].Value);
+            string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells[6 + aumento].Value);
 
             if (e.ColumnIndex == 13 && checkBox1.Checked == false)
             {//11 es la pocision del boton 
