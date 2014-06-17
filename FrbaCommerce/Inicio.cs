@@ -75,6 +75,12 @@ namespace FrbaCommerce
             his.Show();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.ListadoSubastasPendientes n = new FrbaCommerce.Comprar_Ofertar.ListadoSubastasPendientes(1);
+            n.Show();
+        }
+
     }
 }
 

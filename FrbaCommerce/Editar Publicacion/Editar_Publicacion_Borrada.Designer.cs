@@ -52,6 +52,7 @@
             // 
             // cmbEstado
             // 
+            this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
             "Borrador",
@@ -165,6 +166,7 @@
             // 
             // cmbVisib
             // 
+            this.cmbVisib.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVisib.FormattingEnabled = true;
             this.cmbVisib.Location = new System.Drawing.Point(79, 32);
             this.cmbVisib.Name = "cmbVisib";
@@ -207,6 +209,7 @@
             // 
             // cmbTipoPub
             // 
+            this.cmbTipoPub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPub.FormattingEnabled = true;
             this.cmbTipoPub.Items.AddRange(new object[] {
             "Subasta",

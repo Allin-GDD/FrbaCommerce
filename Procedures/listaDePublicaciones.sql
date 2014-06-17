@@ -1,4 +1,4 @@
-CREATE PROCEDURE listaDePublicaciones
+CREATE PROCEDURE listaDeMisPublicaciones
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
@@ -8,15 +8,18 @@ CREATE PROCEDURE listaDePublicaciones
 		@Id nvarchar(30)
 	AS
 	BEGIN
-		SELECT * FROM Publicacion
+		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, p.Tipo, p.Visibilidad_Cod, p.Estado, r.Descripcion as 'Rubro', p.Publicador, p.Preguntas_permitidas,p.Id FROM Publicacion as P
+	JOIN Rubro r ON r.Codigo = p.Rubro_Cod
 			WHERE
-				Descripcion like '%'+@Descripcion+'%'
-				AND Rubro_Cod like '%'+@Rubro+'%'
-				AND Tipo like '%'+@Tipo+'%'
-				AND Visibilidad_Cod like '%'+@Visibilidad+'%'
-				and stock > 0
-				and Estado like '%'+@Estado+'%'
-				and (Id <> @Id and Publicador <> @Rol)
+				p.Descripcion like '%'+@Descripcion+'%'
+				AND p.Rubro_Cod like '%'+@Rubro+'%'
+				AND p.Tipo like '%'+@Tipo+'%'
+				AND p.Visibilidad_Cod like '%'+@Visibilidad+'%'
+				and p.stock > 0
+ 				and p.Estado like '%'+@Estado+'%'
+ 				and (p.Id <> @Id and p.Publicador <> @Rol)
 				
 			order by Visibilidad_Cod
-END
+
+	END
+

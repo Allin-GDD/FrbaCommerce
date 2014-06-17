@@ -102,6 +102,12 @@
     <Compile Include="Comprar-Ofertar\Buscar_Publicacion.Designer.cs">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\ListadoSubastasPendientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\ListadoSubastasPendientes.Designer.cs">
+      <DependentUpon>ListadoSubastasPendientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,24 @@
     <Compile Include="Gestion de Preguntas\VerRespuestas.Designer.cs">
       <DependentUpon>VerRespuestas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Historial Cliente\Historial_Calificaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial Cliente\Historial_Calificaciones.Designer.cs">
+      <DependentUpon>Historial_Calificaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial Cliente\Historial_Compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial Cliente\Historial_Compras.Designer.cs">
+      <DependentUpon>Historial_Compras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Historial Cliente\Historial_Ofertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial Cliente\Historial_Ofertas.Designer.cs">
+      <DependentUpon>Historial_Ofertas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -449,6 +473,9 @@
     <EmbeddedResource Include="Comprar-Ofertar\Buscar_Publicacion.resx">
       <DependentUpon>Buscar_Publicacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\ListadoSubastasPendientes.resx">
+      <DependentUpon>ListadoSubastasPendientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
     </EmbeddedResource>
@@ -476,8 +503,17 @@
     <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
       <DependentUpon>VerRespuestas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\Historial_Calificaciones.resx">
+      <DependentUpon>Historial_Calificaciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Historial Cliente\Historial_Cliente.resx">
       <DependentUpon>Historial_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\Historial_Compras.resx">
+      <DependentUpon>Historial_Compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\Historial_Ofertas.resx">
+      <DependentUpon>Historial_Ofertas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>

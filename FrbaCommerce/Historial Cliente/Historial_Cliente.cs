@@ -12,7 +12,6 @@ namespace FrbaCommerce.Historial_Cliente
 {
     public partial class Historial_Cliente : Form
     {
-        DataTable dtSource;
         Decimal idCliente;
         public Historial_Cliente(Decimal id)
         {
@@ -22,93 +21,21 @@ namespace FrbaCommerce.Historial_Cliente
 
         private void HistorialCompras_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-                
-                DataTable tabla = new DataTable();
-
-                SqlConnection conn = DBConexion.obtenerConexion();
-                
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.historialCompras", conn,
-                new SqlParameter("@Id", idCliente.ToString()));
-                SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
-                da.Fill(tabla);
-                conn.Close();
-
-
-                dataGridView1.DataSource = tabla;
-                dataGridView1.Refresh();
-                dataGridView1.ClearSelection();
-
-                this.dtSource = tabla;
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Historial_Compras hisCo = new Historial_Compras(idCliente);
+            hisCo.Show();
 
         }
 
         private void HistorialOfertas_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-
-                DataTable tabla = new DataTable();
-
-                SqlConnection conn = DBConexion.obtenerConexion();
-
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.historialOfertas", conn,
-                new SqlParameter("@Id", idCliente.ToString()));
-                SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
-                da.Fill(tabla);
-                conn.Close();
-
-
-                dataGridView1.DataSource = tabla;
-                dataGridView1.Refresh();
-                dataGridView1.ClearSelection();
-
-                this.dtSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Historial_Ofertas hisO = new Historial_Ofertas(idCliente);
+            hisO.Show();
         }
 
         private void HistorialCalificaciones_Click(object sender, EventArgs e)
         {
-            try
-            {
-
-
-                DataTable tabla = new DataTable();
-
-                SqlConnection conn = DBConexion.obtenerConexion();
-
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.historialCalificaciones", conn,
-                new SqlParameter("@Id", idCliente.ToString()));
-                SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
-                da.Fill(tabla);
-                conn.Close();
-
-
-                dataGridView1.DataSource = tabla;
-                dataGridView1.Refresh();
-                dataGridView1.ClearSelection();
-
-                this.dtSource = tabla;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            Historial_Calificaciones hisCa = new Historial_Calificaciones(idCliente);
+            hisCa.Show();
         }
 
        
