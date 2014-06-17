@@ -67,8 +67,16 @@ namespace FrbaCommerce.Roles
             Abm_Cliente.Modificación modif = new FrbaCommerce.Abm_Cliente.Modificación(idcliente, isUsuario);
             Hide();
             modif.ShowDialog();
-            Close();
+            Show();
 
+        }
+
+        private void FacturarPublicaciones_Click(object sender, EventArgs e)
+        {
+            Facturar_Publicaciones.Facturar fac = new FrbaCommerce.Facturar_Publicaciones.Facturar(idcliente);
+            Hide();
+            fac.ShowDialog();
+            Show();
         }
 
 

@@ -44,9 +44,24 @@ namespace FrbaCommerce.Roles
             Show();
         }
 
-        private void Historial_Click(object sender, EventArgs e)
+       
+
+        private void button2_Click(object sender, EventArgs e)
         {
-            
+             bool isEmpresa = true;
+            Abm_Empresa.Modificación modif = new FrbaCommerce.Abm_Empresa.Modificación(idEmpresa,isEmpresa);
+            Hide();
+            modif.ShowDialog();
+            Show();
+
+        }
+
+        private void FacturarPublicaciones_Click(object sender, EventArgs e)
+        {
+            Facturar_Publicaciones.Facturar fac = new FrbaCommerce.Facturar_Publicaciones.Facturar(idEmpresa);
+            Hide();
+            fac.ShowDialog();
+            Show();
         }
 
              

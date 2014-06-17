@@ -77,7 +77,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarFactura", conexion,
                    new SqlParameter("@Codigo", codigo),
                    new SqlParameter("@Precio", precioFinal),
-                   new SqlParameter("@Tipo_Pago",Convert.ToInt16(tipopago)),
+                   new SqlParameter("@Tipo_Pago",Convert.ToDecimal(tipopago)),
                    new SqlParameter("@Nro_Fac", nfact));
                    
 

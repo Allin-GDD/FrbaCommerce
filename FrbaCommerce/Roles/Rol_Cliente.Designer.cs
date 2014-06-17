@@ -39,7 +39,7 @@
             // 
             // GenerarPubl
             // 
-            this.GenerarPubl.Location = new System.Drawing.Point(13, 23);
+            this.GenerarPubl.Location = new System.Drawing.Point(12, 12);
             this.GenerarPubl.Name = "GenerarPubl";
             this.GenerarPubl.Size = new System.Drawing.Size(211, 52);
             this.GenerarPubl.TabIndex = 0;
@@ -49,9 +49,9 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(136, 235);
+            this.Salir.Location = new System.Drawing.Point(56, 199);
             this.Salir.Name = "Salir";
-            this.Salir.Size = new System.Drawing.Size(88, 33);
+            this.Salir.Size = new System.Drawing.Size(132, 22);
             this.Salir.TabIndex = 1;
             this.Salir.Text = "Salir";
             this.Salir.UseVisualStyleBackColor = true;
@@ -59,28 +59,29 @@
             // 
             // Buscar
             // 
-            this.Buscar.Location = new System.Drawing.Point(13, 177);
+            this.Buscar.Location = new System.Drawing.Point(12, 70);
             this.Buscar.Name = "Buscar";
-            this.Buscar.Size = new System.Drawing.Size(88, 41);
+            this.Buscar.Size = new System.Drawing.Size(211, 41);
             this.Buscar.TabIndex = 2;
-            this.Buscar.Text = "Buscar";
+            this.Buscar.Text = "Buscar Publicaciones";
             this.Buscar.UseVisualStyleBackColor = true;
             this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
             // 
             // FacturarPublicaciones
             // 
-            this.FacturarPublicaciones.Location = new System.Drawing.Point(14, 109);
+            this.FacturarPublicaciones.Location = new System.Drawing.Point(12, 117);
             this.FacturarPublicaciones.Name = "FacturarPublicaciones";
-            this.FacturarPublicaciones.Size = new System.Drawing.Size(87, 36);
+            this.FacturarPublicaciones.Size = new System.Drawing.Size(88, 41);
             this.FacturarPublicaciones.TabIndex = 4;
             this.FacturarPublicaciones.Text = "Facturar Publicaciones";
             this.FacturarPublicaciones.UseVisualStyleBackColor = true;
+            this.FacturarPublicaciones.Click += new System.EventHandler(this.FacturarPublicaciones_Click);
             // 
             // Historial
             // 
-            this.Historial.Location = new System.Drawing.Point(136, 109);
+            this.Historial.Location = new System.Drawing.Point(12, 164);
             this.Historial.Name = "Historial";
-            this.Historial.Size = new System.Drawing.Size(88, 36);
+            this.Historial.Size = new System.Drawing.Size(88, 29);
             this.Historial.TabIndex = 5;
             this.Historial.Text = "Historial";
             this.Historial.UseVisualStyleBackColor = true;
@@ -88,7 +89,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(136, 177);
+            this.button1.Location = new System.Drawing.Point(135, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 41);
             this.button1.TabIndex = 6;
@@ -98,11 +99,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(14, 231);
+            this.button2.Location = new System.Drawing.Point(135, 164);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 41);
+            this.button2.Size = new System.Drawing.Size(88, 29);
             this.button2.TabIndex = 7;
-            this.button2.Text = "Editar campos";
+            this.button2.Text = "Editar Usuario";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -110,7 +111,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 280);
+            this.ClientSize = new System.Drawing.Size(238, 232);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Historial);

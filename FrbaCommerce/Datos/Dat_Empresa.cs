@@ -126,7 +126,7 @@ namespace FrbaCommerce.Datos
             dataGridView1.Columns["Tipo"].Visible = false;
         }
 
-        public static Entidades.Ent_Empresa buscarEmpresa(int id)
+        public static Entidades.Ent_Empresa buscarEmpresa(Decimal id)
         {
             Entidades.Ent_Empresa pEmpresa = new Entidades.Ent_Empresa();
             try {
@@ -157,7 +157,7 @@ namespace FrbaCommerce.Datos
             return pEmpresa;
         }
 
-        internal static void actualizarEmpresa(Entidades.Ent_Empresa pEmpresa, int empresaAModificar)
+        internal static void actualizarEmpresa(Entidades.Ent_Empresa pEmpresa, Decimal empresaAModificar)
         {    
 
             int retorno;

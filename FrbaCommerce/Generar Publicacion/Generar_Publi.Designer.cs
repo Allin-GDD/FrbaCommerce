@@ -252,6 +252,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Name = "Generar_Publi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generador de Publicaciones";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

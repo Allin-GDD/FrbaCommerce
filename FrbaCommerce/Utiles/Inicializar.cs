@@ -35,8 +35,9 @@ namespace FrbaCommerce.Utiles
         }
         
         public static void comboBoxVisibilidad(ComboBox cmbVisib)
-        {
+        {   
             cmbVisib.DataSource = Datos.Dat_Publicacion.ObtenerVisibilidades();
+            //cmbVisib.Items.Add("");
             cmbVisib.DisplayMember = "Descripcion";
             cmbVisib.ValueMember = "Codigo";
 

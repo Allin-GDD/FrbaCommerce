@@ -11,13 +11,21 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Modificación : Form
     {
-        public Modificación(Int32 idSeleccionado)
+        public Modificación(Decimal idSeleccionado, Boolean isEmpresa)
         {
            
             InitializeComponent();
             this.empresaAModificar = idSeleccionado;
             cargarDatosDelClienteSeleccionado();
+            if (isEmpresa)
+            {
+                lblHabil.Visible = false;
+                cmbHabilitado.Visible = false;
+
+            }
+            else { 
             Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado, rolEmpresa);
+            }
         }
 
         public Entidades.Ent_Empresa empresaAnt;
@@ -47,7 +55,7 @@ namespace FrbaCommerce.Abm_Empresa
             this.TelefonoAnt = Telefono;
     
         }
-        public Int32 empresaAModificar;
+        public Decimal empresaAModificar;
         public Int16 rolEmpresa = 2;
 
         private void buttonGuardar_Click(object sender, EventArgs e)
