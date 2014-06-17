@@ -5,4 +5,4 @@ BEGIN
 SELECT Id, Nombre FROM Rol
 WHERE Nombre like '%'+@Rol+'%'
 AND Estado <> 0
- 
+end
