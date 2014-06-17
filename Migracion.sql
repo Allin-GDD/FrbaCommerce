@@ -197,7 +197,8 @@ CREATE TABLE [dbo].[Oferta](
 	[Codigo_Pub] [numeric](18, 0) NOT NULL,
 	[Fecha] [datetime] NOT NULL,
 	[Monto] [numeric](18, 2) NOT NULL,
-	[Id] [numeric](18, 0) NOT NULL
+	[Id] [numeric](18, 0) NOT NULL,
+	[Con_Ganador] [numeric] (18,0) NOT NULL
 ) ON [PRIMARY]
 GO
 /****** Object:  Table [dbo].[Factura]    Script Date: 06/15/2014 17:15:47 ******/
@@ -435,7 +436,7 @@ and Compra_Cantidad is not null
 
 insert into Oferta
 
-select distinct Publicacion_Cod,Oferta_Fecha,Oferta_Monto,Clientes.id
+select distinct Publicacion_Cod,Oferta_Fecha,Oferta_Monto,Clientes.id,1
 
 from gd_esquema.Maestra, Clientes
 
