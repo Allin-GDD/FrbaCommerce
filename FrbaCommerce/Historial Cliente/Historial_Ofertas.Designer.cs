@@ -38,14 +38,14 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(666, 241);
+            this.dataGridView1.Size = new System.Drawing.Size(560, 241);
             this.dataGridView1.TabIndex = 28;
             // 
             // Historial_Ofertas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 265);
+            this.ClientSize = new System.Drawing.Size(585, 265);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Historial_Ofertas";
             this.Text = "Historial_Ofertas";

@@ -49,10 +49,9 @@ namespace FrbaCommerce.Editar_Publicacion
                 {
                     textBox2.Enabled = false;
                     cmbEstado.Items.Remove("Pausada");
-                    if (DateTime.Now <= publ.Fecha_Venc)
-                    {
-                        cmbEstado.Enabled = false;
-                    }
+                    
+                    cmbEstado.Enabled = false;
+                    
                 }
             
                 
@@ -103,6 +102,7 @@ namespace FrbaCommerce.Editar_Publicacion
             publicacion.Estado = Convert.ToString(cmbEstado.Text);
 
         }
+
 
     }
 }
