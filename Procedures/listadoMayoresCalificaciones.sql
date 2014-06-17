@@ -4,18 +4,22 @@ CREATE PROCEDURE listadoMayoresCalificaciones
    	AS
 	BEGIN
 		
-		SELECT TOP 5 U.Usuario AS 'Usuario', AVG(Calificacion_Cant_Estrellas) as 'Promedio calificacion'
+		SELECT TOP 5 U.Usuario AS 'Usuario', AVG(C.Calificacion_Cant_Estrellas) as 'Promedio calificacion'
 		
-    FROM Publicacion P 
-	JOIN Compra C ON
+    FROM (Publicacion P 
+	INNER JOIN Compra C ON
     P.Codigo = C.Codigo_Pub
-    JOIN Usuario U ON
-    (P.Id = U.Id_Usuario AND U.Id_Rol = P.Publicador)
-	
-    WHERE YEAR(C.Fecha) = @Año AND (MONTH(C.Fecha) = 1 + 3*(@Trimestre-1) OR MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) OR MONTH(C.Fecha) = 3 + 3*(@Trimestre-1)) AND Calificacion_Cant_Estrellas <> NULL
+   INNER JOIN Usuario U ON ((p.Id = u.Id_Usuario) AND (P.Publicador = (CASE WHEN U.Id_Rol = 1 THEN 
+        'C'
+    WHEN U.Id_Rol = 2 THEN
+        'E'
+    END))))
+ WHERE YEAR(C.Fecha) = @Año 
+ AND(MONTH(C.Fecha) = 1 + 3*(@Trimestre-1) 
+ OR MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) 
+ OR MONTH(C.Fecha) = 3 + 3*(@Trimestre-1))
+ AND C.Calificacion_Cant_Estrellas IS NOT NULL
 
-    GROUP BY U.Usuario
-  
+GROUP BY u.Usuario  
+ORDER BY [Promedio calificacion] DESC
     END
-    
- 

@@ -27,7 +27,7 @@ namespace FrbaCommerce.Datos
         internal static void vendedoresMayorFacturacion(short año, int filtroTrimestre, DataGridView dataGridView1)
         {
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoVendedoresMayorFacturacion", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoMayoresFacturacion", conn,
               new SqlParameter("@Año", año),
             new SqlParameter("@Trimestre", filtroTrimestre));
 
@@ -38,7 +38,7 @@ namespace FrbaCommerce.Datos
         internal static void vendedoresConMayoresCalificaciones(short año, int filtroTrimestre, DataGridView dataGridView1)
         {
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoVendedoresConMayorCalificacion", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoMayoresCalificaciones", conn,
             new SqlParameter("@Año", año),
             new SqlParameter("@Trimestre", filtroTrimestre));
 
@@ -48,7 +48,7 @@ namespace FrbaCommerce.Datos
         internal static void clientesMayoresPublicacionesSinCalif(short año, int filtroTrimestre, DataGridView dataGridView1)
         {
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoClientesMayoresPubliSinCalif", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoMayoresSinCalificaciones", conn,
               new SqlParameter("@Año", año),
             new SqlParameter("@Trimestre", filtroTrimestre));
 

@@ -52,7 +52,7 @@
             "Segundo Trimestre",
             "Tercer Trimestre",
             "Cuarto Trimestre"});
-            this.cmbTrimestre.Location = new System.Drawing.Point(286, 18);
+            this.cmbTrimestre.Location = new System.Drawing.Point(289, 24);
             this.cmbTrimestre.Name = "cmbTrimestre";
             this.cmbTrimestre.Size = new System.Drawing.Size(170, 21);
             this.cmbTrimestre.TabIndex = 0;
@@ -61,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(58, 21);
+            this.label1.Location = new System.Drawing.Point(61, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 2;
@@ -70,7 +70,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 21);
+            this.label2.Location = new System.Drawing.Point(221, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 3;
@@ -85,7 +85,7 @@
             "Vendedores con mayor facturación",
             "Vendedores con mayores calificaciones",
             "Clientes con mayor cantidad de publicaciones en calificar"});
-            this.cmbTipolist.Location = new System.Drawing.Point(108, 55);
+            this.cmbTipolist.Location = new System.Drawing.Point(109, 61);
             this.cmbTipolist.Name = "cmbTipolist";
             this.cmbTipolist.Size = new System.Drawing.Size(348, 21);
             this.cmbTipolist.TabIndex = 4;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 58);
+            this.label3.Location = new System.Drawing.Point(27, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 5;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 100);
+            this.label4.Location = new System.Drawing.Point(34, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 7;
@@ -113,7 +113,7 @@
             // 
             this.cmbVisibilidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVisibilidad.FormattingEnabled = true;
-            this.cmbVisibilidad.Location = new System.Drawing.Point(90, 97);
+            this.cmbVisibilidad.Location = new System.Drawing.Point(93, 104);
             this.cmbVisibilidad.Name = "cmbVisibilidad";
             this.cmbVisibilidad.Size = new System.Drawing.Size(151, 21);
             this.cmbVisibilidad.TabIndex = 6;
@@ -121,7 +121,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(271, 100);
+            this.label5.Location = new System.Drawing.Point(274, 107);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(27, 13);
             this.label5.TabIndex = 9;
@@ -129,7 +129,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(106, 17);
+            this.dateTimePicker2.Location = new System.Drawing.Point(109, 23);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(95, 20);
             this.dateTimePicker2.TabIndex = 12;
@@ -137,25 +137,25 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 138);
+            this.dataGridView1.Location = new System.Drawing.Point(504, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(580, 189);
+            this.dataGridView1.Size = new System.Drawing.Size(243, 157);
             this.dataGridView1.TabIndex = 13;
             // 
             // cmbMes
             // 
             this.cmbMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMes.FormattingEnabled = true;
-            this.cmbMes.Location = new System.Drawing.Point(304, 97);
+            this.cmbMes.Location = new System.Drawing.Point(307, 104);
             this.cmbMes.Name = "cmbMes";
             this.cmbMes.Size = new System.Drawing.Size(152, 21);
             this.cmbMes.TabIndex = 14;
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(501, 48);
+            this.btnBuscar.Location = new System.Drawing.Point(155, 146);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(211, 23);
             this.btnBuscar.TabIndex = 15;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 339);
+            this.ClientSize = new System.Drawing.Size(776, 192);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cmbMes);
             this.Controls.Add(this.dataGridView1);
