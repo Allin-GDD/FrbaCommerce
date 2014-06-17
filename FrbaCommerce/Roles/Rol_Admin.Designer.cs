@@ -107,6 +107,7 @@
             this.Controls.Add(this.AbmEmpresa);
             this.Controls.Add(this.AbmCliente);
             this.Name = "Rol_Admin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario: Administrador";
             this.ResumeLayout(false);
 

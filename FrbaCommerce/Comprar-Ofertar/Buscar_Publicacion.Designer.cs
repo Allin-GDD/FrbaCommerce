@@ -291,6 +291,7 @@
             this.Controls.Add(this.btnFirstPage);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Buscar_Publicacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Buscar publicación";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

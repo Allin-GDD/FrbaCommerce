@@ -139,6 +139,7 @@
             this.ClientSize = new System.Drawing.Size(295, 249);
             this.Controls.Add(this.groupBox1);
             this.Name = "Editar_Publicacion_Publicada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Publicación";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

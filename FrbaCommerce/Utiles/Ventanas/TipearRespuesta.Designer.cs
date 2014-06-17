@@ -101,7 +101,8 @@
             this.Controls.Add(this.txtPregunta);
             this.Controls.Add(this.txtRespuesta);
             this.Name = "TipearRespuesta";
-            this.Text = "TipearRespuesta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Pregunta a responder";
             this.ResumeLayout(false);
             this.PerformLayout();
 

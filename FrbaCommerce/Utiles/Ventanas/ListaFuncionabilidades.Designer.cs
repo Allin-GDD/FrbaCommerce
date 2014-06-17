@@ -43,7 +43,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 296);
+            this.button1.Location = new System.Drawing.Point(77, 296);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(126, 26);
             this.button1.TabIndex = 1;
@@ -55,10 +55,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 332);
+            this.ClientSize = new System.Drawing.Size(279, 325);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Name = "ListaFuncionabilidades";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ListaFuncionabilidades";
             this.ResumeLayout(false);
 

@@ -578,6 +578,9 @@
     <EmbeddedResource Include="Utiles\Ventanas\Pregunta.resx">
       <DependentUpon>Pregunta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utiles\Ventanas\TipearRespuesta.resx">
+      <DependentUpon>TipearRespuesta.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>

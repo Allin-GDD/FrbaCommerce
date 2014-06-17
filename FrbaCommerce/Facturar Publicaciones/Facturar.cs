@@ -43,7 +43,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
         }
 
-        private static Facturar2(decimal codigo)
+        private static Facturar(decimal codigo)
         {
             Entidades.Ent_ListFactura items = traerFuturasItemFacutar(codigo);
            

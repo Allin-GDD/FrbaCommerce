@@ -116,6 +116,7 @@
             this.Controls.Add(this.Salir);
             this.Controls.Add(this.PublicarSubasta);
             this.Name = "Rol_Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccione una opción";
             this.ResumeLayout(false);
 

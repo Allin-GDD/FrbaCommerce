@@ -44,7 +44,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(207, 211);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(102, 23);
             this.button1.TabIndex = 5;
             this.button1.Text = "Aceptar";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,7 +54,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(45, 211);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(100, 23);
             this.button2.TabIndex = 6;
             this.button2.Text = "Limpiar";
             this.button2.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.Controls.Add(this.button1);
             this.Name = "CambiarPw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CambiarPw";
+            this.Text = "Cambio de contraseña";
             this.ResumeLayout(false);
             this.PerformLayout();
 

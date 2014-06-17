@@ -183,6 +183,11 @@ namespace FrbaCommerce.Comprar_Ofertar
             Mensajes.Exitos.ExitoEnCompra();
             this.Close();
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+           
     }
 }

@@ -252,6 +252,7 @@
             this.ClientSize = new System.Drawing.Size(297, 447);
             this.Controls.Add(this.groupBox1);
             this.Name = "Editar_Publicacion_Borrada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Publicación";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
