@@ -28,7 +28,7 @@ namespace FrbaCommerce.Listado_Estadistico
             cmbVisibilidad.Enabled = false;
 
             cmbMes.Text = "";
-           cmbTipolist.Text = "";
+            cmbTipolist.Text = "";
             dateTimePicker2.Format = DateTimePickerFormat.Custom;
             dateTimePicker2.CustomFormat = "yyyy";
             dateTimePicker2.ShowUpDown = true;
@@ -91,7 +91,7 @@ namespace FrbaCommerce.Listado_Estadistico
 
             dataGridView1.DataSource = null;
 
-            if (tipo1) { Datos.Dat_Listados.vendedoresQueMEnosVenden(año, Convert.ToString(cmbVisibilidad.SelectedValue), Convert.ToInt32(cmbMes.SelectedValue), dataGridView1); }
+            if (tipo1) { Datos.Dat_Listados.vendedoresQueMEnosVenden(año, Convert.ToDecimal(cmbVisibilidad.SelectedValue), Convert.ToInt32(cmbMes.SelectedValue), dataGridView1); }
             if (tipo2) { Datos.Dat_Listados.vendedoresMayorFacturacion(año, filtroTrimestre,dataGridView1); }
             if (tipo3) { Datos.Dat_Listados.vendedoresConMayoresCalificaciones(año, filtroTrimestre,dataGridView1); }
             if (tipo4) { Datos.Dat_Listados.clientesMayoresPublicacionesSinCalif(año, filtroTrimestre,dataGridView1); }
