@@ -43,6 +43,78 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
         }
 
-      
+        private static Facturar(decimal codigo)
+        {
+            Entidades.Ent_ListFactura items = traerFuturasItemFacutar(codigo);
+           
+
+         //   foreach (int item in items)
+          //  {
+            //agregarItemFactura
+           // }
+
+            double precioFinal = traerFuturasFacturas(codigo);
+            //agregarFactura
+        }
+
+
+        private static double traerFuturasFacturas(decimal codigo)
+        {
+
+                Entidades.Ent_ListFactura pfact = new Entidades.Ent_ListFactura();
+ 
+              double aFacturar=0;
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.publicacionAFacturar", conn,
+                new SqlParameter("@Codigo", codigo));
+                SqlDataReader lectura = cmd.ExecuteReader();
+
+                while (lectura.Read())
+                {
+                    pfact.Codigo = lectura.GetDecimal(0);
+                    pfact.Cantidad = lectura.GetDecimal(1);
+                    pfact.Porcentaje = lectura.GetDouble(2);
+                    pfact.Precio = lectura.GetDouble(3);
+                    pfact.PrecioVis = lectura.GetDouble(4);
+                    aFacturar = aFacturar + Convert.ToDouble(pfact.Cantidad) * pfact.Precio*pfact.Porcentaje;
+
+                }
+                conn.Close();
+                
+                
+                return aFacturar;
+          
+        }
+
+
+
+
+        private static Entidades.Ent_ListFactura traerFuturasItemFacutar(decimal codigo)
+        {
+
+            Entidades.Ent_ListFactura pfact = new Entidades.Ent_ListFactura();
+
+            
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.publicacionAFacturar", conn,
+            new SqlParameter("@Codigo", codigo));
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            while (lectura.Read())
+            {
+                pfact.Codigo = lectura.GetDecimal(0);
+                pfact.Cantidad = lectura.GetDecimal(1);
+                pfact.Porcentaje = lectura.GetDouble(2);
+                pfact.Precio = lectura.GetDouble(3);
+                pfact.PrecioVis = lectura.GetDouble(4);
+            
+            }
+            conn.Close();
+
+            return pfact;
+            
+
+        }
+
     }
 }
