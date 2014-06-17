@@ -382,12 +382,6 @@
     <Compile Include="Listado Estadistico\ListadoEstadistico.Designer.cs">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\Elección_Rol.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login\Elección_Rol.Designer.cs">
-      <DependentUpon>Elección_Rol.cs</DependentUpon>
-    </Compile>
     <Compile Include="Mensajes\Errores.cs" />
     <Compile Include="Mensajes\Exitos.cs" />
     <Compile Include="Mensajes\Generales.cs" />
@@ -527,9 +521,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Listado Estadistico\ListadoEstadistico.resx">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login\Elección_Rol.resx">
-      <DependentUpon>Elección_Rol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

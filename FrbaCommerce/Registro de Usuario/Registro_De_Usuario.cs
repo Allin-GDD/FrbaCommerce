@@ -21,7 +21,10 @@ namespace FrbaCommerce.Registro_de_Usuario
         {
             try
             {
+
+                Utiles.Validaciones.validarDatosObligatorios(this);
                 Utiles.Validaciones.controlDeUsuario(Datos.Dat_Usuario.validarUserName(txtUser.Text));
+                
                 String pwHash = Datos.Dat_Usuario.hashearSHA256(txtPass.Text);
                 Decimal idUsuario = 0;
                 int estado = 1;
@@ -31,17 +34,20 @@ namespace FrbaCommerce.Registro_de_Usuario
                     case 1:
                         Abm_Cliente.Alta altCli = new Abm_Cliente.Alta(true);
                         altCli.ShowDialog();
+                        this.Hide();
                         idUsuario = altCli.IdUsuario;
                         break;
                     case 2:
                         Abm_Empresa.Alta altEmp = new FrbaCommerce.Abm_Empresa.Alta(true);
                         altEmp.ShowDialog();
+                        this.Hide();
                         idUsuario = altEmp.IdUsuario;
                         break;
                 }
-                Datos.Dat_Usuario.CrearNuevoUsuario(txtUser.Text, pwHash, rol, idUsuario,estado);
-
+                if(idUsuario != 0){
+                Datos.Dat_Usuario.CrearNuevoUsuario(txtUser.Text, pwHash, rol, idUsuario, estado);
                 Mensajes.Exitos.UsuarioRegistrado();
+                };
                 Close();
             }
             catch (Exception ex)
@@ -58,11 +64,9 @@ namespace FrbaCommerce.Registro_de_Usuario
         private void button3_Click(object sender, EventArgs e)
         {
             Utiles.Ventanas.CambiarPw newPw = new FrbaCommerce.Utiles.Ventanas.CambiarPw();
-            newPw.Show();
-                Close();
+            newPw.ShowDialog();
+            Close();
         }
 
-
-           
-    }
+          }
 }

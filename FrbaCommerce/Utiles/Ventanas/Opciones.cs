@@ -16,7 +16,7 @@ namespace FrbaCommerce.Utiles.Ventanas
                 case 3:
 
                     Roles.Rol_Admin admin = new Roles.Rol_Admin();
-                    admin.Show();
+                    admin.ShowDialog();
                     login.Close();
 
                     break;
@@ -24,8 +24,8 @@ namespace FrbaCommerce.Utiles.Ventanas
 
                 case 2:
 
-                    Roles.Rol_Empresa empresa = new Roles.Rol_Empresa();
-                    empresa.Show();
+                    Roles.Rol_Empresa empresa = new Roles.Rol_Empresa(id);
+                    empresa.ShowDialog();
                     login.Close();
 
                     break;
@@ -34,7 +34,7 @@ namespace FrbaCommerce.Utiles.Ventanas
                 case 1:
 
                     Roles.Rol_Cliente cliente = new Roles.Rol_Cliente(id);
-                    cliente.Show();
+                    cliente.ShowDialog();
                     login.Close();
 
                     break;

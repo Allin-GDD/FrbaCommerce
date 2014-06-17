@@ -43,7 +43,7 @@ namespace FrbaCommerce.Abm_Visibilidad
 
                 //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
                 this.modificar = Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
-                this.eliminar = Utiles.Inicializar.AgregarColumnaEliminar(eliminar, dataGridView1);
+                this.eliminar = Utiles.Inicializar.agregarColumnaEliminar(eliminar, dataGridView1);
             }
             catch (Exception ex)
             {

@@ -13,15 +13,23 @@ namespace FrbaCommerce.Abm_Cliente
     public partial class Modificación : Form
     {
   
-        public Modificación(Int32 idSeleccionado)
+        public Modificación(Decimal idSeleccionado, bool isUsuario)
         {
             
             InitializeComponent();
             this.clienteAModificar = idSeleccionado;
             Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
-            Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado,rolCliente);
             cargarDatosDelClienteSeleccionado();
-          
+
+
+            if (isUsuario)
+            {
+                lblHabil.Visible = false;
+                cmbHabilitado.Visible = false;
+            }
+            else { Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado, rolCliente); }
+
+
         }
         public Entidades.Ent_Cliente clienteAnt;
        
@@ -53,7 +61,7 @@ namespace FrbaCommerce.Abm_Cliente
            
         }
 
-        public Int32 clienteAModificar;
+        public Decimal clienteAModificar;
 
 
         private void btmGuardar_Click(object sender, EventArgs e)

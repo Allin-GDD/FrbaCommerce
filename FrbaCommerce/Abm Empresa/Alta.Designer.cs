@@ -139,7 +139,7 @@
             this.CodPostal.Location = new System.Drawing.Point(73, 268);
             this.CodPostal.Name = "CodPostal";
             this.CodPostal.Size = new System.Drawing.Size(170, 20);
-            this.CodPostal.TabIndex = 29;
+            this.CodPostal.TabIndex = 11;
             // 
             // CUIT
             // 

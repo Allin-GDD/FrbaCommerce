@@ -159,8 +159,9 @@ namespace FrbaCommerce.Utiles
         }
         public static bool ValidarFecha(MaskedTextBox fecha)
         {
+
             DateTime fechaLimiteInferior = new DateTime(1800, 1, 1, 0, 0, 0);
-            DateTime fechaLimiteSuperior = new DateTime(3000, 1, 1, 0, 0, 0);
+            DateTime fechaLimiteSuperior = new DateTime(4000, 1, 1, 0, 0, 0);
             DateTime time = DateTime.Parse(fecha.Text);
 
 
@@ -201,6 +202,11 @@ namespace FrbaCommerce.Utiles
             return errores;
         }
 
+        public static void validarDatosObligatorios(Form ofrm) {
+            if (datosObligatorios(ofrm).Count > 0) {
+                throw new Excepciones.NulidadDeCamposACompletar("Los datos marcados son obligatorios");
+            };
+        }
 
         //////////////////////////////////////////////////////////////////////////////////////////////
         //Evalua todas validaciones de los clientes y empresa

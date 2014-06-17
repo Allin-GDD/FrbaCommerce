@@ -14,8 +14,10 @@ namespace FrbaCommerce.Roles
         public Rol_Admin()
         {
             InitializeComponent();
+         
         }
 
+      
         private void Salir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -23,27 +25,45 @@ namespace FrbaCommerce.Roles
 
         private void AbmCliente_Click(object sender, EventArgs e)
         {
+
             Roles.VentanaCliente cliente = new VentanaCliente();
-            cliente.Show();
-            
+            this.Hide();
+            cliente.ShowDialog();
+            this.Show();
+          
         }
 
         private void AbmEmpresa_Click(object sender, EventArgs e)
         {
             Roles.VentanaEmpresa empresa = new Roles.VentanaEmpresa();
-            empresa.Show();
+            this.Hide();
+            empresa.ShowDialog();
+            this.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             VentanaVisibilidad ventana = new VentanaVisibilidad();
-            ventana.Show();
+            this.Hide();
+            ventana.ShowDialog();
+            this.Show();
+            
         }
 
         private void AbmRubro_Click(object sender, EventArgs e)
         {
             Roles.VentanaRol rol = new Roles.VentanaRol();
-            rol.Show();
+            this.Hide();
+            rol.ShowDialog();
+            this.Show();
+        }
+
+        private void ListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            Listado_Estadistico.ListadoEstadistico list = new Listado_Estadistico.ListadoEstadistico();
+            this.Hide();
+            list.ShowDialog();
+            this.Show();
         }
     }
 }

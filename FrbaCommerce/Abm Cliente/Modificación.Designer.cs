@@ -121,6 +121,7 @@
             // 
             // cmbHabilitado
             // 
+            this.cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHabilitado.FormattingEnabled = true;
             this.cmbHabilitado.Location = new System.Drawing.Point(85, 331);
             this.cmbHabilitado.Name = "cmbHabilitado";
@@ -155,6 +156,7 @@
             // 
             // cboTipoDoc
             // 
+            this.cboTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDoc.FormattingEnabled = true;
             this.cboTipoDoc.Location = new System.Drawing.Point(117, 95);
             this.cboTipoDoc.Name = "cboTipoDoc";

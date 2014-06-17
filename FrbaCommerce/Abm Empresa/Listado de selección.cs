@@ -31,7 +31,7 @@ namespace FrbaCommerce.Abm_Empresa
             Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
            
             this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
-            this.botonDelete = Utiles.Inicializar.AgregarColumnaEliminar(botonDelete, dataGridView1);
+            this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
      
 
             }
@@ -44,6 +44,12 @@ namespace FrbaCommerce.Abm_Empresa
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
+            bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1);
+            if (!valor)
+            {
+                botonDelete = false;
+                botonModificar = false;
+            }
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
         }
 
@@ -51,15 +57,15 @@ namespace FrbaCommerce.Abm_Empresa
         {
             Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
 
-            
 
-            if (e.ColumnIndex == 15)
+
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {//14 es la pocision del boton modificar
                 Abm_Empresa.Modificación mod = new Abm_Empresa.Modificación(idSeleccionado);
                 mod.Show();
 
             }
-            if (e.ColumnIndex == 16)
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
                 Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
                 baj.Show();

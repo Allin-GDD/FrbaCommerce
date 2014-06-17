@@ -64,6 +64,7 @@
             this.ListadoEstadistico.TabIndex = 2;
             this.ListadoEstadistico.Text = "Listado Estadístico";
             this.ListadoEstadistico.UseVisualStyleBackColor = true;
+            this.ListadoEstadistico.Click += new System.EventHandler(this.ListadoEstadistico_Click);
             // 
             // AbmRubro
             // 

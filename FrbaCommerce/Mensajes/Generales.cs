@@ -91,10 +91,17 @@ namespace FrbaCommerce.Mensajes
         public static String evaluarFecha(MaskedTextBox Fecha)
         {
             String ii = null;
-            if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(Fecha))
-            { ii = ("La Fecha ingresada no es válida. Está fuera del rango disponible"); }
-            return ii;
-        }
+            try
+            {
+                if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(Fecha))
+                { ii = ("La fecha está fuera del rango disponible"); }
+                return ii;
+            }catch(Exception)
+            {
+                ii = ("La fecha ingresada no es válida");
+                Fecha.BackColor = Color.Coral;
+                return ii;
+            }}
 
         public static String evaluarTel(MaskedTextBox Telefono, MaskedTextBox TelefonoAnt)
         {

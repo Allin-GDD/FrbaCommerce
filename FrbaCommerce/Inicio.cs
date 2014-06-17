@@ -22,29 +22,27 @@ namespace FrbaCommerce
 
         private void btnNuevoUser_Click(object sender, EventArgs e)
         {
-            Registro_de_Usuario.Registro Reg1 = new Registro_de_Usuario.Registro();
-            Reg1.Show();
-
-
+            Registro_de_Usuario.Registro_De_Usuario Reg1 = new Registro_de_Usuario.Registro_De_Usuario();
+            this.Hide();
+            Reg1.ShowDialog();
+            this.Show();
         }
 
         private void btnLoginUser_Click(object sender, EventArgs e)
         {
             Login.Login Log1 = new Login.Login();
-            Log1.Show();
-
-
-
+            this.Hide();
+            Log1.ShowDialog();
+            this.Show();
 
         }
-
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             this.Close();
 
         }
-
+        // SACARLOS 
         private void button2_Click(object sender, EventArgs e)
         {
             Abm_Visibilidad.Listado_de_selección l = new Abm_Visibilidad.Listado_de_selección();
@@ -59,8 +57,8 @@ namespace FrbaCommerce
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Listado_Estadistico.ListadoEstadistico lsitas = new FrbaCommerce.Listado_Estadistico.ListadoEstadistico();
-            lsitas.Show();
+            Abm_Cliente.Listado_de_selección lsi = new FrbaCommerce.Abm_Cliente.Listado_de_selección();
+            lsi.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

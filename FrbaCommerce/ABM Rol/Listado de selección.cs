@@ -25,7 +25,7 @@ namespace FrbaCommerce.ABM_Rol
             {
                 Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
                 this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
-                this.botonDelete = Utiles.Inicializar.AgregarColumnaEliminar(botonDelete, dataGridView1);
+                this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
             }
             catch (Exception ex)
             {

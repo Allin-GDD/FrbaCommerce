@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PublicarSubasta = new System.Windows.Forms.Button();
+            this.GenerarPubl = new System.Windows.Forms.Button();
             this.Salir = new System.Windows.Forms.Button();
             this.Buscar = new System.Windows.Forms.Button();
-            this.PublicarCompraInmediata = new System.Windows.Forms.Button();
             this.FacturarPublicaciones = new System.Windows.Forms.Button();
             this.Historial = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // PublicarSubasta
+            // GenerarPubl
             // 
-            this.PublicarSubasta.Location = new System.Drawing.Point(13, 23);
-            this.PublicarSubasta.Name = "PublicarSubasta";
-            this.PublicarSubasta.Size = new System.Drawing.Size(88, 52);
-            this.PublicarSubasta.TabIndex = 0;
-            this.PublicarSubasta.Text = "Publicar Subasta";
-            this.PublicarSubasta.UseVisualStyleBackColor = true;
+            this.GenerarPubl.Location = new System.Drawing.Point(13, 23);
+            this.GenerarPubl.Name = "GenerarPubl";
+            this.GenerarPubl.Size = new System.Drawing.Size(211, 52);
+            this.GenerarPubl.TabIndex = 0;
+            this.GenerarPubl.Text = "Generar Publicación";
+            this.GenerarPubl.UseVisualStyleBackColor = true;
+            this.GenerarPubl.Click += new System.EventHandler(this.GenerarPubl_Click);
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(78, 235);
+            this.Salir.Location = new System.Drawing.Point(136, 235);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(88, 33);
             this.Salir.TabIndex = 1;
@@ -65,15 +66,6 @@
             this.Buscar.Text = "Buscar";
             this.Buscar.UseVisualStyleBackColor = true;
             this.Buscar.Click += new System.EventHandler(this.Buscar_Click);
-            // 
-            // PublicarCompraInmediata
-            // 
-            this.PublicarCompraInmediata.Location = new System.Drawing.Point(136, 23);
-            this.PublicarCompraInmediata.Name = "PublicarCompraInmediata";
-            this.PublicarCompraInmediata.Size = new System.Drawing.Size(94, 52);
-            this.PublicarCompraInmediata.TabIndex = 3;
-            this.PublicarCompraInmediata.Text = "Publicar Compra Inmediata";
-            this.PublicarCompraInmediata.UseVisualStyleBackColor = true;
             // 
             // FacturarPublicaciones
             // 
@@ -92,6 +84,7 @@
             this.Historial.TabIndex = 5;
             this.Historial.Text = "Historial";
             this.Historial.UseVisualStyleBackColor = true;
+            this.Historial.Click += new System.EventHandler(this.Historial_Click);
             // 
             // button1
             // 
@@ -103,18 +96,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(14, 231);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 41);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Editar campos";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Rol_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(242, 280);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Historial);
             this.Controls.Add(this.FacturarPublicaciones);
-            this.Controls.Add(this.PublicarCompraInmediata);
             this.Controls.Add(this.Buscar);
             this.Controls.Add(this.Salir);
-            this.Controls.Add(this.PublicarSubasta);
+            this.Controls.Add(this.GenerarPubl);
             this.Name = "Rol_Cliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccione una opción";
@@ -124,12 +127,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button PublicarSubasta;
+        private System.Windows.Forms.Button GenerarPubl;
         private System.Windows.Forms.Button Salir;
         private System.Windows.Forms.Button Buscar;
-        private System.Windows.Forms.Button PublicarCompraInmediata;
         private System.Windows.Forms.Button FacturarPublicaciones;
         private System.Windows.Forms.Button Historial;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -12,16 +12,15 @@ namespace FrbaCommerce.Roles
     public partial class Rol_Empresa : Form
     {
         string rol = "E";
-        Decimal idEmpresa = 1;
-        public Rol_Empresa()
+       
+        public Rol_Empresa(Decimal id)
         {
             InitializeComponent();
+            this.idEmpresa = id;
         }
-
-        private void Rol_Empresa_Load(object sender, EventArgs e)
-        {
-
-        }
+        
+        private Decimal idEmpresa;
+     
 
         private void Salir_Click(object sender, EventArgs e)
         {
@@ -31,7 +30,25 @@ namespace FrbaCommerce.Roles
         private void button1_Click(object sender, EventArgs e)
         {
             Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, rol);
-            co.Show();
+            Hide();
+            co.ShowDialog();
+            Show();
         }
+
+        private void GnerarPubl_Click(object sender, EventArgs e)
+        {
+            String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 2);
+            Generar_Publicacion.Generar_Publi grPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(user);
+            Hide();
+            grPub.ShowDialog();
+            Show();
+        }
+
+        private void Historial_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+             
     }
 }

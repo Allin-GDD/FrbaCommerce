@@ -47,7 +47,7 @@
             this.label1.Location = new System.Drawing.Point(23, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Usuario";
             // 
             // txtUser
@@ -55,14 +55,15 @@
             this.txtUser.Location = new System.Drawing.Point(98, 26);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(121, 20);
-            this.txtUser.TabIndex = 1;
+            this.txtUser.TabIndex = 2;
             // 
             // txtPass
             // 
             this.txtPass.Location = new System.Drawing.Point(98, 59);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(121, 20);
-            this.txtPass.TabIndex = 2;
+            this.txtPass.TabIndex = 4;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -70,7 +71,7 @@
             this.label2.Location = new System.Drawing.Point(23, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Contraseña";
             // 
             // groupBox1
@@ -85,7 +86,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(248, 172);
-            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de usuario";
             // 
@@ -94,7 +95,7 @@
             this.button3.Location = new System.Drawing.Point(50, 134);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(146, 23);
-            this.button3.TabIndex = 5;
+            this.button3.TabIndex = 10;
             this.button3.Text = "Cambiar Contraseña";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -106,7 +107,7 @@
             this.cboRol.Location = new System.Drawing.Point(98, 95);
             this.cboRol.Name = "cboRol";
             this.cboRol.Size = new System.Drawing.Size(121, 21);
-            this.cboRol.TabIndex = 3;
+            this.cboRol.TabIndex = 6;
             // 
             // label3
             // 
@@ -114,7 +115,7 @@
             this.label3.Location = new System.Drawing.Point(23, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Rol";
             // 
             // btnAceptar
@@ -122,7 +123,7 @@
             this.btnAceptar.Location = new System.Drawing.Point(172, 204);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 4;
+            this.btnAceptar.TabIndex = 7;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -132,7 +133,7 @@
             this.button2.Location = new System.Drawing.Point(21, 204);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 11;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);

@@ -95,7 +95,7 @@ namespace FrbaCommerce.Datos
             }
         }
 
-        public static short obtenerEstado(int id, short rol)
+        public static short obtenerEstado(Decimal id, short rol)
         {
             Int16 estado = -1;
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -229,6 +229,7 @@ namespace FrbaCommerce.Datos
             if (pusuario.Contraseña == contraseñaIngresada)
             {
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, 0);
+                login.Hide();
                 Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
 
             }

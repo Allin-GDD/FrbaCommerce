@@ -102,18 +102,5 @@ namespace FrbaCommerce.Abm_Empresa
              Utiles.LimpiarTexto.BlanquearControls(this);
 
          }
-
-      private void button1_Click(object sender, EventArgs e)
-      {
-          Abm_Empresa.Listado list = new Abm_Empresa.Listado();
-          list.Show();
-      }
-
-      private void button2_Click(object sender, EventArgs e)
-      {
-          Abm_Empresa.Listado_de_selección list = new Abm_Empresa.Listado_de_selección();
-          list.Show();
-      }
-  
     }
 }

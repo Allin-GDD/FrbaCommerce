@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PublicarSubasta = new System.Windows.Forms.Button();
+            this.GnerarPubl = new System.Windows.Forms.Button();
             this.Salir = new System.Windows.Forms.Button();
-            this.PublicarCompraInmediata = new System.Windows.Forms.Button();
             this.FacturarPublicaciones = new System.Windows.Forms.Button();
             this.Historial = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // PublicarSubasta
+            // GnerarPubl
             // 
-            this.PublicarSubasta.Location = new System.Drawing.Point(12, 21);
-            this.PublicarSubasta.Name = "PublicarSubasta";
-            this.PublicarSubasta.Size = new System.Drawing.Size(97, 42);
-            this.PublicarSubasta.TabIndex = 0;
-            this.PublicarSubasta.Text = "Publicar Subasta";
-            this.PublicarSubasta.UseVisualStyleBackColor = true;
+            this.GnerarPubl.Location = new System.Drawing.Point(12, 21);
+            this.GnerarPubl.Name = "GnerarPubl";
+            this.GnerarPubl.Size = new System.Drawing.Size(215, 42);
+            this.GnerarPubl.TabIndex = 0;
+            this.GnerarPubl.Text = "Generar Publicación";
+            this.GnerarPubl.UseVisualStyleBackColor = true;
+            this.GnerarPubl.Click += new System.EventHandler(this.GnerarPubl_Click);
             // 
             // Salir
             // 
@@ -54,15 +54,6 @@
             this.Salir.Text = "Salir";
             this.Salir.UseVisualStyleBackColor = true;
             this.Salir.Click += new System.EventHandler(this.Salir_Click);
-            // 
-            // PublicarCompraInmediata
-            // 
-            this.PublicarCompraInmediata.Location = new System.Drawing.Point(130, 21);
-            this.PublicarCompraInmediata.Name = "PublicarCompraInmediata";
-            this.PublicarCompraInmediata.Size = new System.Drawing.Size(97, 43);
-            this.PublicarCompraInmediata.TabIndex = 2;
-            this.PublicarCompraInmediata.Text = "Publicar Compra Inmediata";
-            this.PublicarCompraInmediata.UseVisualStyleBackColor = true;
             // 
             // FacturarPublicaciones
             // 
@@ -81,6 +72,7 @@
             this.Historial.TabIndex = 4;
             this.Historial.Text = "Historial";
             this.Historial.UseVisualStyleBackColor = true;
+            this.Historial.Click += new System.EventHandler(this.Historial_Click);
             // 
             // button1
             // 
@@ -100,22 +92,19 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Historial);
             this.Controls.Add(this.FacturarPublicaciones);
-            this.Controls.Add(this.PublicarCompraInmediata);
             this.Controls.Add(this.Salir);
-            this.Controls.Add(this.PublicarSubasta);
+            this.Controls.Add(this.GnerarPubl);
             this.Name = "Rol_Empresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccione una opción";
-            this.Load += new System.EventHandler(this.Rol_Empresa_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button PublicarSubasta;
+        private System.Windows.Forms.Button GnerarPubl;
         private System.Windows.Forms.Button Salir;
-        private System.Windows.Forms.Button PublicarCompraInmediata;
         private System.Windows.Forms.Button FacturarPublicaciones;
         private System.Windows.Forms.Button Historial;
         private System.Windows.Forms.Button button1;

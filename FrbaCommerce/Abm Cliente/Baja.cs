@@ -16,7 +16,7 @@ namespace FrbaCommerce.Abm_Cliente
 
 
 
-        public Baja(Int32 idSeleccionado)
+        public Baja(Decimal idSeleccionado)
         {
             InitializeComponent();
             this.clienteADarDeBaja = idSeleccionado;
@@ -24,7 +24,7 @@ namespace FrbaCommerce.Abm_Cliente
             cargarDatosDelClienteSeleccionado();
 
         }
-        public Int32 clienteADarDeBaja;
+        public Decimal clienteADarDeBaja;
       
 
         private void cargarDatosDelClienteSeleccionado()
@@ -44,19 +44,6 @@ namespace FrbaCommerce.Abm_Cliente
             txtMail.Text = pcliente.Mail;
             txtTelefono.Text = pcliente.Telefono;
             txtLocalidad.Text = pcliente.Localidad;
-
-            //if (string.IsNullOrEmpty(pcliente.Telefono))
-            //{
-            //    txtTelefono.Text = "-";
-            //}
-            //else
-            //{
-            //    txtTelefono.Text = pcliente.Telefono;
-            //}
-
-
-
-
         }
 
 

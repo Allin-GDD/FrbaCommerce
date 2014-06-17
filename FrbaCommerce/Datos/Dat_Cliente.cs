@@ -140,7 +140,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static Entidades.Ent_Cliente buscarCliente(Int32 id)
+        public static Entidades.Ent_Cliente buscarCliente(Decimal id)
         {
 
             Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
@@ -197,7 +197,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void actualizarCamposACliente(Entidades.Ent_Cliente pCliente, int clienteAModificar)
+        public static void actualizarCamposACliente(Entidades.Ent_Cliente pCliente, Decimal clienteAModificar)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
