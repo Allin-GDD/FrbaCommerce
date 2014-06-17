@@ -24,8 +24,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
-            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value);
+            Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
+            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
             
 
             if (e.ColumnIndex == 3)
@@ -48,18 +48,18 @@ namespace FrbaCommerce.Comprar_Ofertar
        private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
         {
 
-            try
-            {
+            //try
+            //{
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaSubastasSinConfirmarGanador", conn,
                 new SqlParameter("@id_Cliente", idUsuario));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
-            }
-            catch (Exception)
-            {
-                Mensajes.Errores.NoHayConexion();
-            }
+            //}
+           // catch (Exception)
+            //{
+            //    Mensajes.Errores.NoHayConexion();
+            //}
 
         }
 

@@ -6,7 +6,7 @@ CREATE PROCEDURE historialCompras
 		
 		SELECT C.Fecha, P.Descripcion, C.Cantidad, U.Usuario AS 'Vendedor'
 		
-    FROM Publicacion P 
+    FROM Publicacion P
 	JOIN Compra C ON
     P.Codigo = C.Codigo_Pub
     JOIN Usuario U ON
@@ -20,4 +20,3 @@ CREATE PROCEDURE historialCompras
     order by C.Fecha
   
     END
-    
