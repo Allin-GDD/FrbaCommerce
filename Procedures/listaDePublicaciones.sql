@@ -19,4 +19,4 @@ CREATE PROCEDURE listaDePublicaciones
 				and (Id <> @Id and Publicador <> @Rol)
 				
 			order by Visibilidad_Cod
-	END
+END
