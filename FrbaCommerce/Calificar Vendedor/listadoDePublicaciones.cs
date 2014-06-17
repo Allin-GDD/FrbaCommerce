@@ -51,7 +51,7 @@ namespace FrbaCommerce.Calificar_Vendedor
 
             if (e.ColumnIndex == 8)
             {//14 es la pocision del boton modificar
-                Form1 mod = new Form1(idSeleccionado);
+                Calificador mod = new Calificador(idSeleccionado);
                 mod.Show();
 
             }

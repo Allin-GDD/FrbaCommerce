@@ -1,6 +1,6 @@
 ﻿namespace FrbaCommerce.Calificar_Vendedor
 {
-    partial class Form1
+    partial class Calificador
     {
         /// <summary>
         /// Required designer variable.
@@ -68,7 +68,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Descripcion (opcional)";
+            this.label2.Text = "Descripción (opcional)";
             // 
             // textBox2
             // 
@@ -77,7 +77,7 @@
             this.textBox2.Size = new System.Drawing.Size(386, 20);
             this.textBox2.TabIndex = 4;
             // 
-            // Form1
+            // Calificador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,7 +87,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "Calificador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calificacion";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -84,11 +84,11 @@
     <Compile Include="Abm Rubro\Listado.Designer.cs">
       <DependentUpon>Listado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.cs">
+    <Compile Include="Calificar Vendedor\Calificador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calificar Vendedor\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Calificar Vendedor\Calificador.Designer.cs">
+      <DependentUpon>Calificador.cs</DependentUpon>
     </Compile>
     <Compile Include="Calificar Vendedor\listadoDePublicaciones.cs">
       <SubType>Form</SubType>
@@ -465,8 +465,8 @@
     <EmbeddedResource Include="Abm Visibilidad\Modificación.resx">
       <DependentUpon>Modificación.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calificar Vendedor\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Calificar Vendedor\Calificador.resx">
+      <DependentUpon>Calificador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calificar Vendedor\listadoDePublicaciones.resx">
       <DependentUpon>listadoDePublicaciones.cs</DependentUpon>

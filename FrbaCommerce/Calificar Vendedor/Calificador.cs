@@ -11,9 +11,9 @@ using System.Data.SqlClient;
 
 namespace FrbaCommerce.Calificar_Vendedor
 {
-    public partial class Form1 : Form
+    public partial class Calificador : Form
     {
-        public Form1(decimal id)
+        public Calificador(decimal id)
         {
             InitializeComponent();
             idCompra = id;

@@ -43,19 +43,19 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
         }
 
-        //private static Facturar2(decimal codigo)
-        //{
-        //    Entidades.Ent_ListFactura items = traerFuturasItemFacutar(codigo);
+        private static Facturar2(decimal codigo)
+        {
+            Entidades.Ent_ListFactura items = traerFuturasItemFacutar(codigo);
            
 
-        // //   foreach (int item in items)
-        //  //  {
-        //    //agregarItemFactura
-        //   // }
+         //   foreach (int item in items)
+          //  {
+            //agregarItemFactura
+           // }
 
-        //    double precioFinal = traerFuturasFacturas(codigo);
-        //    //agregarFactura(codigo, precioFinal,tipopago);
-        //}
+            double precioFinal = traerFuturasFacturas(codigo);
+            //agregarFactura(codigo, precioFinal,tipopago);
+        }
 
         private static void agregarFactura(decimal codigo,double  precioFinal,string tipopago)
         {
@@ -147,5 +147,5 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         }
 
-    }
+         }
 }
