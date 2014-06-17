@@ -46,6 +46,7 @@ namespace FrbaCommerce.Generar_Publicacion
                 }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
+                Mensajes.Exitos.ExitoAlGenerarPublicacion();
         
             }
             catch (Exception ex)

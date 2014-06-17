@@ -24,7 +24,14 @@ namespace FrbaCommerce.Mensajes
             MessageBox.Show("La compra se ha realizado satisfactoriamente", "Compra realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-
+        public static void ExitoAlGenerarPublicacion()
+        {
+            MessageBox.Show("Publicación generada exitosamente", "Publicacion generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void PublicacionEditada()
+        {
+            MessageBox.Show("Publicación editada exitosamente", "Publicacion editada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public static void ExitoAlGuardaLosDatos()
         {
             MessageBox.Show("Datos guardados exitosamente", "Guardado de datos", MessageBoxButtons.OK, MessageBoxIcon.Information);

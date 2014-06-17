@@ -120,6 +120,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
+                Mensajes.Exitos.PublicacionEditada();
 
             }
             catch (Exception ex)

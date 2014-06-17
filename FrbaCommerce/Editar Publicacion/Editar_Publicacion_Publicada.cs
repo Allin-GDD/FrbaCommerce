@@ -78,7 +78,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox2, textBox5);
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionPublicada(publicacion);
-
+                Mensajes.Exitos.PublicacionEditada();
             }
             catch (Exception ex)
             {
