@@ -54,7 +54,31 @@ namespace FrbaCommerce.Facturar_Publicaciones
            // }
 
             double precioFinal = traerFuturasFacturas(codigo);
-            //agregarFactura
+            //agregarFactura(codigo, precioFinal,tipopago);
+        }
+
+        private static void agregarFactura(decimal codigo,double  precioFinal,string tipopago)
+        {
+
+            int retorno;
+             using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarFactura", conexion,
+                   new SqlParameter("@Codigo", codigo),
+                   new SqlParameter("@Precio", precioFinal),
+                   new SqlParameter("@Tipo_Pago", tipopago));
+                   
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+            
+
+            Mensajes.Generales.validarAlta(retorno);
+
+        
         }
 
 
@@ -113,6 +137,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
             return pfact;
             
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
+            string Tipo_pago = Convert.ToString(comboBox1.SelectedValue);
 
         }
 
