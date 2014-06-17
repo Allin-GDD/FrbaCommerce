@@ -16,6 +16,15 @@ namespace FrbaCommerce.Utiles
             cmbTipoDoc.ValueMember = "codigo";
 
         }
+
+        public static void comboBoxTipoFormaDePago(ComboBox cmbTipoDoc)
+        {
+            cmbTipoDoc.DataSource = Datos.Dat_Factura.ObtenerTipoPago(); ;
+            cmbTipoDoc.DisplayMember = "tipo";
+            cmbTipoDoc.ValueMember = "codigo";
+
+        }
+
         public static void comboBoxRol(ComboBox cmbRol)
         {
             cmbRol.DataSource = Datos.Dat_Rol.ObtenerTodosLosRoles();

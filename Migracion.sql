@@ -210,7 +210,7 @@ CREATE TABLE [dbo].[Factura](
 	[Numero] [numeric](18, 0) NOT NULL,
 	[Fecha] [datetime] NULL,
 	[Total] [numeric](18, 2) NULL,
-	[Forma_Pago_Desc] [nvarchar](255) NULL,
+	[Forma_Pago_Desc] [numeric](18, 0)NOT NULL,
 	[Pub_Cod] [numeric](18, 0) NOT NULL,
  CONSTRAINT [PK_Factura] PRIMARY KEY CLUSTERED 
 (
@@ -318,6 +318,16 @@ GO
 --Carga Tabla Tipos de Documentos
 INSERT INTO Tipo_DOC VALUES (1,'DNI')
 INSERT INTO Tipo_Doc VALUES (2,'CUIT')
+INSERT INTO Tipo_Doc VALUES (3,'LE')
+INSERT INTO Tipo_Doc VALUES (4,'LC')
+INSERT INTO Tipo_Doc VALUES (5,'PAS')
+
+--Carga Tabla Tipos de Pago
+INSERT INTO Tipo_Pago VALUES (1,'Efectivo')
+INSERT INTO Tipo_Pago VALUES (2,'Tarjeta de crédito')
+INSERT INTO Tipo_Pago VALUES (3,'Tarjeta de débito')
+INSERT INTO Tipo_Pago VALUES (4,'Transferencia')
+INSERT INTO Tipo_Pago VALUES (5,'Depósito bancario')
 
 -- Migracion tabla cliente
 
@@ -397,7 +407,7 @@ and Publicacion_Rubro_Descripcion = Rubro.Descripcion
 
 insert into Factura
 
-select distinct Factura_Nro,factura_Fecha,Factura_Total,Forma_Pago_Desc,publicacion_cod from gd_esquema.Maestra
+select distinct Factura_Nro,factura_Fecha,Factura_Total,1,publicacion_cod from gd_esquema.Maestra
 
 where Factura_Nro is not null
 -- and publicacion_cod is not null

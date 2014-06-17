@@ -77,7 +77,7 @@ namespace FrbaCommerce
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.ListadoSubastasPendientes n = new FrbaCommerce.Comprar_Ofertar.ListadoSubastasPendientes(1);
+            Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1);
             n.Show();
         }
 

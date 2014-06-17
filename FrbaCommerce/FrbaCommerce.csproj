@@ -126,6 +126,7 @@
     <Compile Include="Comprar-Ofertar\VentanaOferta.Designer.cs">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Datos\Class1.cs" />
     <Compile Include="Datos\Dat_CompraOferta.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -141,7 +142,6 @@
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Login.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
-    <Compile Include="Entidades\Ent_CO.cs" />
     <Compile Include="Entidades\Ent_Fecha.cs" />
     <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />
     <Compile Include="Entidades\Ent_RolyId.cs" />
@@ -490,6 +490,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Publicada.resx">
       <DependentUpon>Editar_Publicacion_Publicada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Facturar Publicaciones\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\BuscarRubro.resx">
       <DependentUpon>BuscarRubro.cs</DependentUpon>
