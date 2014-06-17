@@ -102,7 +102,7 @@
             this.groupBox1.Size = new System.Drawing.Size(600, 68);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Campos de rol";
+            this.groupBox1.Text = "Búsqueda de Rubro";
             // 
             // dataGridView1
             // 

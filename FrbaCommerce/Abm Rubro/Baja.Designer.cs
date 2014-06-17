@@ -98,7 +98,7 @@
             this.groupBox1.Size = new System.Drawing.Size(259, 125);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Campos de rol";
+            this.groupBox1.Text = "Campos de Rubro";
             // 
             // label1
             // 

@@ -46,7 +46,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(130, 210);
+            this.button2.Location = new System.Drawing.Point(131, 210);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 23);
             this.button2.TabIndex = 15;
@@ -68,7 +68,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(13, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(259, 193);
+            this.groupBox1.Size = new System.Drawing.Size(259, 179);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de visibilidad";
@@ -87,6 +87,7 @@
             this.textBox5.Enabled = false;
             this.textBox5.Location = new System.Drawing.Point(118, 141);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(130, 20);
             this.textBox5.TabIndex = 14;
             // 
@@ -95,6 +96,7 @@
             this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(118, 112);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(131, 20);
             this.textBox4.TabIndex = 13;
             // 
@@ -112,6 +114,7 @@
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(117, 86);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(131, 20);
             this.textBox3.TabIndex = 11;
             // 
@@ -129,6 +132,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(87, 58);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(162, 20);
             this.textBox2.TabIndex = 9;
             // 
@@ -146,6 +150,7 @@
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(87, 32);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(162, 20);
             this.textBox1.TabIndex = 7;
             // 
@@ -164,7 +169,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 17;
-            this.button1.Text = "Cerrar";
+            this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -177,6 +182,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Baja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

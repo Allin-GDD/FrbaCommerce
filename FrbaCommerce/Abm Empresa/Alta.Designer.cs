@@ -60,16 +60,14 @@
             this.labelNroCalle = new System.Windows.Forms.Label();
             this.NroCalle = new System.Windows.Forms.TextBox();
             this.labelCreacion = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonGuardar
             // 
-            this.buttonGuardar.Location = new System.Drawing.Point(179, 372);
+            this.buttonGuardar.Location = new System.Drawing.Point(156, 372);
             this.buttonGuardar.Name = "buttonGuardar";
-            this.buttonGuardar.Size = new System.Drawing.Size(75, 23);
+            this.buttonGuardar.Size = new System.Drawing.Size(88, 23);
             this.buttonGuardar.TabIndex = 14;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
@@ -79,7 +77,7 @@
             // 
             this.buttonLimpiar.Location = new System.Drawing.Point(11, 372);
             this.buttonLimpiar.Name = "buttonLimpiar";
-            this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.buttonLimpiar.Size = new System.Drawing.Size(88, 23);
             this.buttonLimpiar.TabIndex = 15;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
@@ -355,33 +353,11 @@
             this.labelCreacion.TabIndex = 28;
             this.labelCreacion.Text = "Fecha de creación";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(92, 372);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "listado";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(92, 401);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "SeleList";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(278, 431);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(278, 403);
             this.Controls.Add(this.buttonGuardar);
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
@@ -427,8 +403,6 @@
         private System.Windows.Forms.MaskedTextBox FecCre;
         private System.Windows.Forms.MaskedTextBox Telefono;
         private System.Windows.Forms.MaskedTextBox CUIT;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox CodPostal;
     }
 }

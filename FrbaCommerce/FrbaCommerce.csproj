@@ -504,6 +504,9 @@
     <EmbeddedResource Include="Gestion de Preguntas\Gestor.resx">
       <DependentUpon>Gestor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gestion de Preguntas\ResponderPregunta.resx">
+      <DependentUpon>ResponderPregunta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gestion de Preguntas\VerRespuestas.resx">
       <DependentUpon>VerRespuestas.cs</DependentUpon>
     </EmbeddedResource>

@@ -107,41 +107,5 @@ namespace FrbaCommerce.Abm_Cliente
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            Abm_Cliente.Listado la = new Abm_Cliente.Listado();
-            la.Show();
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Abm_Cliente.Listado_de_selección list = new Abm_Cliente.Listado_de_selección();
-            list.Show();
-        }
-        
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            Generar_Publicacion.Generar_Publi list = new Generar_Publicacion.Generar_Publi("crisólogo_Ortega@gmail.com");
-            list.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //en realidad hayq  hacer un if para ver el estado si es borrador o publicada o pausada y ahi entra a la forma correspondiente
-            Editar_Publicacion.Editar_Publicacion_Borrada list = new Editar_Publicacion.Editar_Publicacion_Borrada(68391);
-            list.Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            //en realidad hayq  hacer un if para ver el estado si es borrador o publicada o pausada y ahi entra a la forma correspondiente
-            Editar_Publicacion.Editar_Publicacion_Publicada list = new Editar_Publicacion.Editar_Publicacion_Publicada(63609);
-            list.Show();
-        }
-        
-    }
+  }
 }

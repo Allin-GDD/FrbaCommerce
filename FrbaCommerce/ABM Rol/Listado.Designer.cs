@@ -40,7 +40,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(200, 109);
+            this.button2.Location = new System.Drawing.Point(113, 108);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(83, 23);
             this.button2.TabIndex = 6;
@@ -50,7 +50,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(34, 109);
+            this.button1.Location = new System.Drawing.Point(12, 108);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 5;
@@ -64,16 +64,16 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(322, 77);
+            this.groupBox1.Size = new System.Drawing.Size(184, 61);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros de búsqueda";
+            this.groupBox1.Text = "Filtros de búsqueda de Roles";
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(56, 27);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(247, 20);
+            this.txtNombre.Size = new System.Drawing.Size(109, 20);
             this.txtNombre.TabIndex = 9;
             // 
             // label2
@@ -88,17 +88,17 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 148);
+            this.dataGridView1.Location = new System.Drawing.Point(227, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(322, 158);
+            this.dataGridView1.Size = new System.Drawing.Size(143, 134);
             this.dataGridView1.TabIndex = 12;
             // 
             // Listado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(353, 324);
+            this.ClientSize = new System.Drawing.Size(394, 162);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);

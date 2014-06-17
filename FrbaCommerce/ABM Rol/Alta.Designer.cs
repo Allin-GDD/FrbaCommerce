@@ -96,7 +96,7 @@
             this.groupBox1.Size = new System.Drawing.Size(583, 132);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Campos de rol";
+            this.groupBox1.Text = "Campos de Roles";
             // 
             // button1
             // 

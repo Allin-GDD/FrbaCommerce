@@ -96,6 +96,7 @@
             this.txtFechaNac.Location = new System.Drawing.Point(143, 322);
             this.txtFechaNac.Mask = "00/00/0000";
             this.txtFechaNac.Name = "txtFechaNac";
+            this.txtFechaNac.ReadOnly = true;
             this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
             this.txtFechaNac.TabIndex = 57;
             this.txtFechaNac.ValidatingType = typeof(System.DateTime);
@@ -114,6 +115,7 @@
             this.txtNroCalle.Enabled = false;
             this.txtNroCalle.Location = new System.Drawing.Point(105, 217);
             this.txtNroCalle.Name = "txtNroCalle";
+            this.txtNroCalle.ReadOnly = true;
             this.txtNroCalle.Size = new System.Drawing.Size(162, 20);
             this.txtNroCalle.TabIndex = 47;
             // 
@@ -140,6 +142,7 @@
             this.txtCodPostal.Enabled = false;
             this.txtCodPostal.Location = new System.Drawing.Point(105, 295);
             this.txtCodPostal.Name = "txtCodPostal";
+            this.txtCodPostal.ReadOnly = true;
             this.txtCodPostal.Size = new System.Drawing.Size(162, 20);
             this.txtCodPostal.TabIndex = 55;
             // 
@@ -157,6 +160,7 @@
             this.txtDpto.Enabled = false;
             this.txtDpto.Location = new System.Drawing.Point(212, 243);
             this.txtDpto.Name = "txtDpto";
+            this.txtDpto.ReadOnly = true;
             this.txtDpto.Size = new System.Drawing.Size(55, 20);
             this.txtDpto.TabIndex = 51;
             // 
@@ -174,6 +178,7 @@
             this.txtLocalidad.Enabled = false;
             this.txtLocalidad.Location = new System.Drawing.Point(105, 269);
             this.txtLocalidad.Name = "txtLocalidad";
+            this.txtLocalidad.ReadOnly = true;
             this.txtLocalidad.Size = new System.Drawing.Size(162, 20);
             this.txtLocalidad.TabIndex = 53;
             // 
@@ -191,6 +196,7 @@
             this.txtNroPiso.Enabled = false;
             this.txtNroPiso.Location = new System.Drawing.Point(106, 243);
             this.txtNroPiso.Name = "txtNroPiso";
+            this.txtNroPiso.ReadOnly = true;
             this.txtNroPiso.Size = new System.Drawing.Size(55, 20);
             this.txtNroPiso.TabIndex = 49;
             // 
@@ -208,6 +214,7 @@
             this.txtCalle.Enabled = false;
             this.txtCalle.Location = new System.Drawing.Point(105, 193);
             this.txtCalle.Name = "txtCalle";
+            this.txtCalle.ReadOnly = true;
             this.txtCalle.Size = new System.Drawing.Size(162, 20);
             this.txtCalle.TabIndex = 45;
             // 
@@ -234,6 +241,7 @@
             this.txtMail.Enabled = false;
             this.txtMail.Location = new System.Drawing.Point(105, 141);
             this.txtMail.Name = "txtMail";
+            this.txtMail.ReadOnly = true;
             this.txtMail.Size = new System.Drawing.Size(162, 20);
             this.txtMail.TabIndex = 41;
             // 
@@ -260,6 +268,7 @@
             this.txtDNI.Enabled = false;
             this.txtDNI.Location = new System.Drawing.Point(105, 89);
             this.txtDNI.Name = "txtDNI";
+            this.txtDNI.ReadOnly = true;
             this.txtDNI.Size = new System.Drawing.Size(162, 20);
             this.txtDNI.TabIndex = 37;
             // 
@@ -277,6 +286,7 @@
             this.txtApellido.Enabled = false;
             this.txtApellido.Location = new System.Drawing.Point(105, 61);
             this.txtApellido.Name = "txtApellido";
+            this.txtApellido.ReadOnly = true;
             this.txtApellido.Size = new System.Drawing.Size(162, 20);
             this.txtApellido.TabIndex = 35;
             // 
@@ -310,6 +320,7 @@
             this.txtNombre2.Enabled = false;
             this.txtNombre2.Location = new System.Drawing.Point(105, 35);
             this.txtNombre2.Name = "txtNombre2";
+            this.txtNombre2.ReadOnly = true;
             this.txtNombre2.Size = new System.Drawing.Size(162, 20);
             this.txtNombre2.TabIndex = 59;
             // 
@@ -328,6 +339,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(105, 167);
             this.txtTelefono.Mask = "000-0000-0000";
             this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
             this.txtTelefono.Size = new System.Drawing.Size(162, 20);
             this.txtTelefono.TabIndex = 60;
             // 
@@ -368,6 +380,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Baja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja";
             this.ResumeLayout(false);
             this.PerformLayout();

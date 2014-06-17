@@ -55,20 +55,20 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(337, 126);
+            this.button2.Location = new System.Drawing.Point(312, 114);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
+            this.button2.Size = new System.Drawing.Size(99, 23);
+            this.button2.TabIndex = 22;
             this.button2.Text = "Buscar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(91, 126);
+            this.button1.Location = new System.Drawing.Point(83, 114);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
+            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.TabIndex = 23;
             this.button1.Text = "Limpiar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -88,7 +88,7 @@
             this.groupBox1.Size = new System.Drawing.Size(488, 96);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filtros de búsqueda";
+            this.groupBox1.Text = "Filtros de búsqueda de visibilidad";
             // 
             // textBox4
             // 

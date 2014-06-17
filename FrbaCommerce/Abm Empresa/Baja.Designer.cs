@@ -80,10 +80,10 @@
             // 
             // CUIT
             // 
-            this.CUIT.Enabled = false;
             this.CUIT.Location = new System.Drawing.Point(72, 84);
             this.CUIT.Mask = "00-00000000-00";
             this.CUIT.Name = "CUIT";
+            this.CUIT.ReadOnly = true;
             this.CUIT.Size = new System.Drawing.Size(186, 20);
             this.CUIT.TabIndex = 31;
             // 
@@ -93,15 +93,16 @@
             this.CodPostal.Location = new System.Drawing.Point(88, 273);
             this.CodPostal.Mask = "0000";
             this.CodPostal.Name = "CodPostal";
+            this.CodPostal.ReadOnly = true;
             this.CodPostal.Size = new System.Drawing.Size(170, 20);
             this.CodPostal.TabIndex = 39;
             // 
             // Telefono
             // 
-            this.Telefono.Enabled = false;
             this.Telefono.Location = new System.Drawing.Point(72, 142);
             this.Telefono.Mask = "000-0000-0000";
             this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
             this.Telefono.Size = new System.Drawing.Size(186, 20);
             this.Telefono.TabIndex = 33;
             // 
@@ -119,6 +120,7 @@
             this.NCalle.Enabled = false;
             this.NCalle.Location = new System.Drawing.Point(77, 196);
             this.NCalle.Name = "NCalle";
+            this.NCalle.ReadOnly = true;
             this.NCalle.Size = new System.Drawing.Size(182, 20);
             this.NCalle.TabIndex = 35;
             // 
@@ -136,6 +138,7 @@
             this.Ciudad.Enabled = false;
             this.Ciudad.Location = new System.Drawing.Point(76, 301);
             this.Ciudad.Name = "Ciudad";
+            this.Ciudad.ReadOnly = true;
             this.Ciudad.Size = new System.Drawing.Size(182, 20);
             this.Ciudad.TabIndex = 40;
             // 
@@ -163,6 +166,7 @@
             this.FecCre.Location = new System.Drawing.Point(129, 325);
             this.FecCre.Mask = "00/00/0000";
             this.FecCre.Name = "FecCre";
+            this.FecCre.ReadOnly = true;
             this.FecCre.Size = new System.Drawing.Size(129, 20);
             this.FecCre.TabIndex = 41;
             this.FecCre.ValidatingType = typeof(System.DateTime);
@@ -181,6 +185,7 @@
             this.Dpto.Enabled = false;
             this.Dpto.Location = new System.Drawing.Point(184, 221);
             this.Dpto.Name = "Dpto";
+            this.Dpto.ReadOnly = true;
             this.Dpto.Size = new System.Drawing.Size(74, 20);
             this.Dpto.TabIndex = 37;
             // 
@@ -198,6 +203,7 @@
             this.Localidad.Enabled = false;
             this.Localidad.Location = new System.Drawing.Point(76, 247);
             this.Localidad.Name = "Localidad";
+            this.Localidad.ReadOnly = true;
             this.Localidad.Size = new System.Drawing.Size(182, 20);
             this.Localidad.TabIndex = 38;
             // 
@@ -215,6 +221,7 @@
             this.NroPiso.Enabled = false;
             this.NroPiso.Location = new System.Drawing.Point(76, 222);
             this.NroPiso.Name = "NroPiso";
+            this.NroPiso.ReadOnly = true;
             this.NroPiso.Size = new System.Drawing.Size(57, 20);
             this.NroPiso.TabIndex = 36;
             // 
@@ -232,6 +239,7 @@
             this.Calle.Enabled = false;
             this.Calle.Location = new System.Drawing.Point(76, 170);
             this.Calle.Name = "Calle";
+            this.Calle.ReadOnly = true;
             this.Calle.Size = new System.Drawing.Size(182, 20);
             this.Calle.TabIndex = 34;
             // 
@@ -258,6 +266,7 @@
             this.Mail.Enabled = false;
             this.Mail.Location = new System.Drawing.Point(72, 113);
             this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
             this.Mail.Size = new System.Drawing.Size(186, 20);
             this.Mail.TabIndex = 32;
             // 
@@ -275,6 +284,7 @@
             this.RazonSocial.Enabled = false;
             this.RazonSocial.Location = new System.Drawing.Point(96, 56);
             this.RazonSocial.Name = "RazonSocial";
+            this.RazonSocial.ReadOnly = true;
             this.RazonSocial.Size = new System.Drawing.Size(162, 20);
             this.RazonSocial.TabIndex = 30;
             // 
@@ -292,6 +302,7 @@
             this.NombreContacto.Enabled = false;
             this.NombreContacto.Location = new System.Drawing.Point(131, 30);
             this.NombreContacto.Name = "NombreContacto";
+            this.NombreContacto.ReadOnly = true;
             this.NombreContacto.Size = new System.Drawing.Size(127, 20);
             this.NombreContacto.TabIndex = 29;
             // 
@@ -348,6 +359,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Baja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja";
             this.ResumeLayout(false);
             this.PerformLayout();

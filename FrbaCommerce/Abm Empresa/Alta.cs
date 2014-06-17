@@ -114,7 +114,6 @@ namespace FrbaCommerce.Abm_Empresa
           Abm_Empresa.Listado_de_selección list = new Abm_Empresa.Listado_de_selección();
           list.Show();
       }
-
-       
+  
     }
 }

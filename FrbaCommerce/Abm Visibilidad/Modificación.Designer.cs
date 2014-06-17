@@ -172,6 +172,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "Modificación";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificación";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
