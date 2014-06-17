@@ -39,6 +39,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Stock", 1));
 
                     Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+
+                    SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn,
+                    new SqlParameter("@Codigo", codigo));
                 }
 
                 catch (Exception)
