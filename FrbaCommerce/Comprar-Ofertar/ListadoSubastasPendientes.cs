@@ -30,8 +30,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             if (e.ColumnIndex == 3)
             {
-                try
-                {
+                
                     cambiarcan_ganador(codigo);
                     SqlConnection conn = DBConexion.obtenerConexion();
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
@@ -39,17 +38,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1));
 
-                   
-                   
-
-                    conn.Close();
-                }
-
-                catch (Exception)
-                {
-                    Mensajes.Errores.NoHayConexion();
-                }
-
+               conn.Close();
+              
               
             }
             Mensajes.Exitos.ExitoAlGuardaLosDatos();
@@ -81,7 +71,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         private static void cambiarcan_ganador(decimal codigo)
         {
-
+        
 
         //    try
         //    {
@@ -89,6 +79,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 SqlConnection conn2 = DBConexion.obtenerConexion();
                 SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn2,
                     new SqlParameter("@Codigo", codigo));
+                int retorno = cmd2.ExecuteNonQuery();
                 conn2.Close();
          //   }
          //   catch (Exception)
