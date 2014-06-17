@@ -214,6 +214,77 @@ namespace FrbaCommerce.Utiles
             }
             return botonPregunta;
         }
+
+        public static void comboBoxTrimestre(ComboBox cmbTrimestre)
+        {
+            List<Entidades.Ent_Funcionalidad> lista = new List<FrbaCommerce.Entidades.Ent_Funcionalidad>();
+            lista.Add(agregaCampoNombreYId("Primer Trimestre (Enero a Marzo)", 1));
+            lista.Add(agregaCampoNombreYId("Segundo Trimestre (Abril a Junio)", 2));
+            lista.Add(agregaCampoNombreYId("Tercer Trimestre (Julio a Septiembre)", 3));
+            lista.Add(agregaCampoNombreYId("Cuarto Trimestre (Octubre a Diciembre)", 4));
+
+            cmbTrimestre.DataSource = lista;
+            cmbTrimestre.DisplayMember = "funcionalidad";
+            cmbTrimestre.ValueMember = "id";
+         
+
+            
+        }
+
+        private static Entidades.Ent_Funcionalidad agregaCampoNombreYId(string p, int num)
+        {
+            Entidades.Ent_Funcionalidad trimestre = new FrbaCommerce.Entidades.Ent_Funcionalidad();
+            trimestre.funcionalidad = p;
+            trimestre.id = num;
+            return trimestre;
+        }
+
+        internal static void comboBoxTipoListado(ComboBox cmbTipolist)
+        {            List<Entidades.Ent_Funcionalidad> lista = new List<FrbaCommerce.Entidades.Ent_Funcionalidad>();
+            lista.Add(agregaCampoNombreYId("Vendedores con mayor cantidad de productos no vendidos", 1));
+            lista.Add(agregaCampoNombreYId("Vendedores con mayor facturación", 2));
+            lista.Add(agregaCampoNombreYId("Vendedores con mayores calificaciones", 3));
+            lista.Add(agregaCampoNombreYId("Clientes con mayor cantidad de publicaciones en calificar", 4));
+
+            cmbTipolist.DataSource = lista;
+            cmbTipolist.DisplayMember = "funcionalidad";
+            cmbTipolist.ValueMember = "id";
+         
+        }
+
+
+        internal static void comboBoxMes(ComboBox cmbMes, int p)
+        {
+            List<Entidades.Ent_Funcionalidad> lista = new List<FrbaCommerce.Entidades.Ent_Funcionalidad>();
+
+            if (p == 1) {
+                lista.Add(agregaCampoNombreYId("Enero", 1));
+                lista.Add(agregaCampoNombreYId("Febrero", 2));
+                lista.Add(agregaCampoNombreYId("Marzo", 3));
+
+            }
+            if (p == 2) {
+                lista.Add(agregaCampoNombreYId("Abril", 4));
+                lista.Add(agregaCampoNombreYId("Mayo", 5));
+                lista.Add(agregaCampoNombreYId("Junio", 6));
+            
+            }
+            if (p == 3) {
+                lista.Add(agregaCampoNombreYId("Julio", 7));
+                lista.Add(agregaCampoNombreYId("Agosto", 8));
+                lista.Add(agregaCampoNombreYId("Septiembre", 9));
+            }
+            if (p == 4) {
+                lista.Add(agregaCampoNombreYId("Octubre", 10));
+                lista.Add(agregaCampoNombreYId("Noviembre", 11));
+                lista.Add(agregaCampoNombreYId("Diciembre", 12));
+
+            }
+
+            cmbMes.DataSource = lista;
+            cmbMes.DisplayMember = "funcionalidad";
+            cmbMes.ValueMember = "id";
+        }
     }
 
 }

@@ -123,6 +123,7 @@
     <Compile Include="Datos\Dat_CompraOferta.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Datos\Dat_Listados.cs" />
     <Compile Include="Datos\Dat_Preguntas.cs" />
     <Compile Include="Datos\Dat_Publicacion.cs" />
     <Compile Include="Datos\Dat_Funcionalidad.cs" />
@@ -350,11 +351,11 @@
     <Compile Include="Historial Cliente\Historial_Cliente.Designer.cs">
       <DependentUpon>Historial_Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs">
+    <Compile Include="Listado Estadistico\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Listado Estadistico\ListadoEstadistico.Designer.cs">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Elección_Rol.cs">
       <SubType>Form</SubType>
@@ -480,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listado Estadistico\ListadoEstadistico.resx">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Elección_Rol.resx">
       <DependentUpon>Elección_Rol.cs</DependentUpon>

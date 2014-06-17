@@ -33,7 +33,6 @@ namespace FrbaCommerce.Abm_Cliente
             {
                                 //Prueba todas las validaciones
                 Utiles.Validaciones.evaluarPersona(pUtiles, this);
-                
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
                 

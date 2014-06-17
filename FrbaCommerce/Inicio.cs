@@ -59,9 +59,8 @@ namespace FrbaCommerce
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Gestion_de_Preguntas.Gestor ges = new FrbaCommerce.Gestion_de_Preguntas.Gestor("dalmiro_Herrera@gmail.com");
-            ges.Show();
-
+            Listado_Estadistico.ListadoEstadistico lsitas = new FrbaCommerce.Listado_Estadistico.ListadoEstadistico();
+            lsitas.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
