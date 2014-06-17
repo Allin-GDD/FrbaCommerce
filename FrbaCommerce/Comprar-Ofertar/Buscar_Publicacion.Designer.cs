@@ -211,6 +211,7 @@
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstado.FormattingEnabled = true;
             this.cmbEstado.Items.AddRange(new object[] {
+            "",
             "Publicada"});
             this.cmbEstado.Location = new System.Drawing.Point(537, 68);
             this.cmbEstado.Name = "cmbEstado";
@@ -231,6 +232,7 @@
             this.cmbTipoPub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPub.FormattingEnabled = true;
             this.cmbTipoPub.Items.AddRange(new object[] {
+            "",
             "Subasta",
             "Compra inmediata"});
             this.cmbTipoPub.Location = new System.Drawing.Point(370, 68);

@@ -63,7 +63,7 @@ namespace FrbaCommerce
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(11, "E");
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(11, "C");
             co.Show();
         }
 
@@ -77,6 +77,12 @@ namespace FrbaCommerce
         {
             Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1);
             n.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Generar_Publicacion.Generar_Publi co = new FrbaCommerce.Generar_Publicacion.Generar_Publi("ananquel_Sepúlveda@gmail.com");
+            co.Show();
         }
 
     }

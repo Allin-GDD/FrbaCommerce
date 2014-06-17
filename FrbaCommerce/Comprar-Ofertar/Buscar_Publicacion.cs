@@ -25,10 +25,22 @@ namespace FrbaCommerce.Comprar_Ofertar
         public Buscar_Publicacion(decimal id, string rol)
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
-            cmbEstado.Text = "Publicada";
-            cmbTipoPub.Text = "Subasta";
+
+            List<Entidades.Ent_Visibilidad> listaDeVisibilidades = new List<Entidades.Ent_Visibilidad>();
+            listaDeVisibilidades = Datos.Dat_Publicacion.ObtenerVisibilidades();
+
+            Entidades.Ent_Visibilidad entVisibilidad = new Entidades.Ent_Visibilidad();
+            entVisibilidad.Codigo = 0;
+            entVisibilidad.Descripcion = "";
+
+            listaDeVisibilidades.Insert(0, entVisibilidad);
+
+            cmbVisib.DataSource = listaDeVisibilidades;
+            cmbVisib.DisplayMember = "Descripcion";
+            cmbVisib.ValueMember = "Codigo";
+
             rolDeEste = rol;
+
             botonCompraOferta = false;
             editarPublicacion = false;
             if (rol == "E")
@@ -443,7 +455,6 @@ namespace FrbaCommerce.Comprar_Ofertar
                 cmbEstado.Items.Remove("Borrador");
                 cmbEstado.Items.Remove("Pausada");
                 cmbEstado.Items.Remove("Finalizada");
-                cmbEstado.Text = "Publicada";
             }
         }
 
