@@ -456,16 +456,7 @@ and Publicacion_Cod is not null
 and Clientes.Id is not null
 and oferta_fecha is not null
 
--- no va mas
-		
--- migracion tabla calificacion
 
---insert into Calificacion
---select Calificacion_Codigo,clientes.id,Calificacion_Cant_Estrellas,Calificacion_Descripcion,Publicacion_Cod
---from gd_esquema.Maestra, clientes
---where cli_dni= clientes.dni
---and Calificacion_Codigo is not null
---and publicacion_cod is not null
  --carga tabla rol
 INSERT INTO rol VALUES ('Cliente',1)
 INSERT INTO rol VALUES ('Empresa',1)
@@ -490,15 +481,6 @@ INSERT INTO Funcionalidades VALUES(1,1)
 INSERT INTO Funcionalidades VALUES(1,2)
 INSERT INTO Funcionalidades VALUES(2,1)
 
--- no va mas
-		
--- migracion tabla calificacion
 
---insert into Calificacion
---select Calificacion_Codigo,clientes.id,Calificacion_Cant_Estrellas,Calificacion_Descripcion,Publicacion_Cod
---from gd_esquema.Maestra, clientes
---where cli_dni= clientes.dni
---and Calificacion_Codigo is not null
---and publicacion_cod is not null
 
 
