@@ -32,16 +32,17 @@ namespace FrbaCommerce.Comprar_Ofertar
             {
                 try
                 {
+                    cambiarcan_ganador(codigo);
                     SqlConnection conn = DBConexion.obtenerConexion();
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1));
 
-                    Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+                   
+                   
 
-                    SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn,
-                    new SqlParameter("@Codigo", codigo));
+                    conn.Close();
                 }
 
                 catch (Exception)
@@ -49,9 +50,10 @@ namespace FrbaCommerce.Comprar_Ofertar
                     Mensajes.Errores.NoHayConexion();
                 }
 
-
+              
             }
             Mensajes.Exitos.ExitoAlGuardaLosDatos();
+            
         }
        private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
         {
@@ -74,8 +76,26 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void button1_Click(object sender, EventArgs e)
         {
             buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
-            this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
+               this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
               
+        }
+        private static void cambiarcan_ganador(decimal codigo)
+        {
+
+
+        //    try
+        //    {
+
+                SqlConnection conn2 = DBConexion.obtenerConexion();
+                SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn2,
+                    new SqlParameter("@Codigo", codigo));
+                conn2.Close();
+         //   }
+         //   catch (Exception)
+         //   {
+           //     Mensajes.Errores.NoHayConexion();
+           // }
+
         }
     }
 }
