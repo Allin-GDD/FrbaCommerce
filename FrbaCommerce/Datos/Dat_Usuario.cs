@@ -196,11 +196,12 @@ namespace FrbaCommerce.Datos
             if (passwordIngresa == passwordOriginal && pusuario.Estado == 10)
             {
                 Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.Usuario, pusuario.Rol, pusuario.IdUsuario);
-                flogin.Show();
+                ofrm.Hide();
+                flogin.ShowDialog();
+                ofrm.Show();
                 return true;
             }
             return false;
-
 
         }
 
