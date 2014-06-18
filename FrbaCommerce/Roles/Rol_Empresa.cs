@@ -64,6 +64,15 @@ namespace FrbaCommerce.Roles
             Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 2);
+            Gestion_de_Preguntas.ResponderPregunta resp = new FrbaCommerce.Gestion_de_Preguntas.ResponderPregunta(user);
+            Hide();
+            resp.ShowDialog();
+            Show();
+        }
+
              
     }
 }

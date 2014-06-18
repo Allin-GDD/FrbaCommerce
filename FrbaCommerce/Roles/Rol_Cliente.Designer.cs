@@ -35,6 +35,7 @@
             this.Historial = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // GenerarPubl
@@ -49,7 +50,7 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(56, 199);
+            this.Salir.Location = new System.Drawing.Point(54, 256);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(132, 22);
             this.Salir.TabIndex = 1;
@@ -79,7 +80,7 @@
             // 
             // Historial
             // 
-            this.Historial.Location = new System.Drawing.Point(12, 164);
+            this.Historial.Location = new System.Drawing.Point(12, 210);
             this.Historial.Name = "Historial";
             this.Historial.Size = new System.Drawing.Size(88, 29);
             this.Historial.TabIndex = 5;
@@ -99,7 +100,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(135, 164);
+            this.button2.Location = new System.Drawing.Point(135, 210);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(88, 29);
             this.button2.TabIndex = 7;
@@ -107,11 +108,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(75, 164);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(88, 40);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Gestor de Preguntas";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Rol_Cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(238, 232);
+            this.ClientSize = new System.Drawing.Size(238, 290);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Historial);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Button Historial;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

@@ -84,6 +84,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+           try{ 
             Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
 
 
@@ -99,6 +100,11 @@ namespace FrbaCommerce.Abm_Cliente
                 baj.Show();
                 
             }
+        }
+              catch {
+                Mensajes.Errores.NoHayDatosAmodificar();
+            }
+
         }
 
       

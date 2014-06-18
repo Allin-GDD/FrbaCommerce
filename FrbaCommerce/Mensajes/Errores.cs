@@ -46,5 +46,10 @@ namespace FrbaCommerce.Mensajes
                 throw new Excepciones.InexistenciaUsuario("La contraseña ingresada no es válida. Le quedan: " + intentosPosibles + " intentos");
             }
         }
+
+        internal static void NoHayDatosAmodificar()
+        {
+            MessageBox.Show("Los datos a modificar no son válidos", "Modificación", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+        }
     }
 }

@@ -46,16 +46,23 @@ namespace FrbaCommerce.Calificar_Vendedor
         }
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-
-
-            if (e.ColumnIndex == 8)
-            {//14 es la pocision del boton modificar
+            try
+            {
+                Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+                  if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex){
+            
                 Calificador mod = new Calificador(idSeleccionado);
-                mod.Show();
+
+                mod.ShowDialog();}
+            }
+            catch {
+                Mensajes.Errores.NoHayDatosAmodificar();
+            }
+            
+       
 
             }
-        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {

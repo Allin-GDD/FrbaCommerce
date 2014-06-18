@@ -22,15 +22,17 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         private void button1_Click(object sender, EventArgs e)
         {
             Gestion_de_Preguntas.ResponderPregunta resp = new ResponderPregunta(usuario);
-            resp.Show();
-            this.Hide();
+            Hide();
+            resp.ShowDialog();
+            Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Gestion_de_Preguntas.VerRespuestas verRes = new VerRespuestas(usuario);
-            verRes.Show();
-            this.Hide();
+            Hide();
+            verRes.ShowDialog();
+            Show();
         }
     }
 }

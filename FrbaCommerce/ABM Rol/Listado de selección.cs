@@ -41,9 +41,9 @@ namespace FrbaCommerce.ABM_Rol
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try{
             Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-
-
+            
             if (e.ColumnIndex == 2)
             {//14 es la pocision del boton modificar
                 ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
@@ -55,6 +55,10 @@ namespace FrbaCommerce.ABM_Rol
                 ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
                 baj.Show();
 
+            }
+               }
+            catch {
+                Mensajes.Errores.NoHayDatosAmodificar();
             }
         }
     }

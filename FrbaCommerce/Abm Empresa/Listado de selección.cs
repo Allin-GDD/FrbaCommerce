@@ -55,10 +55,9 @@ namespace FrbaCommerce.Abm_Empresa
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try{
             Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-
-
-
+                        
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {//14 es la pocision del boton modificar
                 Abm_Empresa.Modificación mod = new Abm_Empresa.Modificación(idSeleccionado,false);
@@ -70,6 +69,11 @@ namespace FrbaCommerce.Abm_Empresa
                 Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
                 baj.Show();
                                 
+            }
+
+               }
+            catch {
+                Mensajes.Errores.NoHayDatosAmodificar();
             }
         }
 

@@ -11,12 +11,6 @@ namespace FrbaCommerce.Datos
     {
         public static void listadoDePreguntas(string usuario, DataGridView dataGridView1)
         {
-            //char rol;
-            //Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(usuario);
-            //if(pusuario.Rol == 1)
-            //{rol = 'C';}
-            //else { rol = 'E'; }
-
             try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
@@ -31,7 +25,7 @@ namespace FrbaCommerce.Datos
                 dataGridView1.Columns.Add(btn);
                 btn.HeaderText = "¿Responder?";
                 btn.Text = "Responder";
-                btn.Name = "btn";
+                btn.Name = "btnResponder";
                 btn.UseColumnTextForButtonValue = true;
             }
             catch (Exception)
