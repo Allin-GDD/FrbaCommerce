@@ -182,8 +182,27 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
          private static void unaFactura(decimal codigo, string tipo)
         {
-            decimal nfactura= 0; 
-            double precioFinal = buscarPrecioFinalFactura(codigo);
+            decimal nfactura= 0;
+            double precioFinal;
+            if (esBonificada(codigo))
+            {
+                precioFinal = 0;
+            }
+            else
+            {
+                precioFinal = buscarPrecioFinalFactura(codigo);
+                List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
+           
+
+                foreach (Entidades.Ent_ListFactura item in items)
+                {
+                
+                    agregarItemFactura(item.Codigo,nfactura,item.Cantidad,item.Precio*Convert.ToDouble(item.Cantidad)*item.Porcentaje);
+              
+                }
+            }
+
+            
             if (!string.IsNullOrEmpty(tipo))
             {
                 
@@ -191,16 +210,35 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
 
 
-            List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
-           
-
-          foreach (Entidades.Ent_ListFactura item in items)
-            {
-            agregarItemFactura(item.Codigo,nfactura,item.Cantidad,item.Precio);
-              
-            }
        
         }
+
+         private static bool esBonificada(decimal codigo)
+         {
+             int retorno;
+             Boolean esBonif = false;
+             using (SqlConnection conexion = DBConexion.obtenerConexion())
+             {
+
+                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
+                 new SqlParameter("@Codigo", codigo));
+
+                 SqlDataReader lectura = cmd.ExecuteReader();
+
+                 while (lectura.Read())
+                 {
+                     if (lectura.GetDecimal(0) == codigo)
+                     {
+                         esBonif = true;
+                     }
+                 }
+                 retorno = cmd.ExecuteNonQuery();
+                 conexion.Close();
+             }
+
+             return esBonif;
+
+         }
          private static void agregarItemFactura(decimal codigo, decimal nfactura, decimal cantidad, double precio)
          {
              int retorno;
