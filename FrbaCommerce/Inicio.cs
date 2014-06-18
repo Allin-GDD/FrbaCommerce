@@ -75,7 +75,7 @@ namespace FrbaCommerce
 
         private void button6_Click(object sender, EventArgs e)
         {
-            Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1);
+            Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1,"Cliente");
             n.Show();
         }
 
