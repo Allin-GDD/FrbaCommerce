@@ -102,6 +102,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
 
         }
+        //lista todas las que no fueron facturadas.
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
@@ -120,7 +121,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
         }
 
-
+        //Agrega la factura correspondiente.
         private static decimal agregarFactura(decimal codigo,double  precioFinal,string tipopago)
 
         {
@@ -147,7 +148,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
       
         }
 
-
+        //Devuelve el precio final de la factura teniendo en cuenta porcentaje y precio base
         private static double buscarPrecioFinalFactura(decimal codigo)
         {
 
@@ -177,7 +178,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 return aFacturar+precioBase;
           
         }
-
+        //Devuelve el número de la factura
         private static decimal generarNroFactura()
         {
             using (SqlConnection conexion = DBConexion.obtenerConexion())
@@ -191,7 +192,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
 
 
-
+        //Busca los items que son una tabla distinta de la de factura.
         private static List<Entidades.Ent_ListFactura> buscarItemsFactura(decimal codigo)
         {
             List<Entidades.Ent_ListFactura> lista = new List<FrbaCommerce.Entidades.Ent_ListFactura>();
@@ -221,7 +222,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
             
 
         }
-
+         
+        //Se fija si la factura en cuestión es bonificada (osea cada diez del mismo tipo de visibilidad te regalan una)
          private static bool esBonificada(decimal codigo,Decimal visibilidad,Decimal Id, string Rol)
          {
              int retorno;
@@ -250,6 +252,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
              return esBonif;
 
          }
+        //agrega el item factura
          private static void agregarItemFactura(decimal codigo, decimal nfactura, decimal cantidad, double precio)
          {
              int retorno;
