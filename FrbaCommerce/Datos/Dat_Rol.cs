@@ -78,7 +78,7 @@ namespace FrbaCommerce.Datos
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            Mensajes.Generales.validarAlta(retorno);
+            //Mensajes.Generales.validarAlta(retorno);
         }
 
         public static Decimal obtenerIdRol(string nombre)

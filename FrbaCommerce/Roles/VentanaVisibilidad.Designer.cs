@@ -36,7 +36,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(78, 35);
+            this.button1.Location = new System.Drawing.Point(51, 24);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 32);
             this.button1.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(78, 99);
+            this.button2.Location = new System.Drawing.Point(51, 88);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(116, 32);
             this.button2.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(78, 164);
+            this.button3.Location = new System.Drawing.Point(51, 153);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 33);
             this.button3.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(187, 227);
+            this.button4.Location = new System.Drawing.Point(74, 216);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 3;
@@ -78,14 +78,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(229, 262);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "VentanaVisibilidad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VentanaVisibilidad";
+            this.Text = "Visibilidad";
             this.ResumeLayout(false);
 
         }

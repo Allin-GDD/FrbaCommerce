@@ -22,20 +22,26 @@ namespace FrbaCommerce.Historial_Cliente
         private void HistorialCompras_Click(object sender, EventArgs e)
         {
             Historial_Compras hisCo = new Historial_Compras(idCliente);
-            hisCo.Show();
+            Hide();
+            hisCo.ShowDialog();
+            Show();
 
         }
 
         private void HistorialOfertas_Click(object sender, EventArgs e)
         {
             Historial_Ofertas hisO = new Historial_Ofertas(idCliente);
-            hisO.Show();
+            Hide();
+            hisO.ShowDialog();
+            Show();
         }
 
         private void HistorialCalificaciones_Click(object sender, EventArgs e)
         {
             Historial_Calificaciones hisCa = new Historial_Calificaciones(idCliente);
-            hisCa.Show();
+            Hide();
+            hisCa.ShowDialog();
+            Show(); ;
         }
 
        

@@ -72,6 +72,7 @@
             this.Controls.Add(this.HistorialOfertas);
             this.Controls.Add(this.HistorialCompras);
             this.Name = "Historial_Cliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial";
             this.ResumeLayout(false);
 

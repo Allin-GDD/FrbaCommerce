@@ -19,7 +19,9 @@ namespace FrbaCommerce.Roles
         private void button1_Click(object sender, EventArgs e)
         {
             Abm_Visibilidad.Alta visibilidad = new FrbaCommerce.Abm_Visibilidad.Alta();
-            visibilidad.Show();
+            Hide();
+            visibilidad.ShowDialog();
+            Show(); 
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -30,13 +32,17 @@ namespace FrbaCommerce.Roles
         private void button2_Click(object sender, EventArgs e)
         {
             Abm_Visibilidad.Listado v = new FrbaCommerce.Abm_Visibilidad.Listado();
-            v.Show();
+            Hide();
+            v.ShowDialog();
+            Show(); 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Abm_Visibilidad.Listado_de_selección visibilidad = new FrbaCommerce.Abm_Visibilidad.Listado_de_selección();
-            visibilidad.Show();
+            Hide();
+            visibilidad.ShowDialog();
+            Show(); 
         }
     }
 }

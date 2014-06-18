@@ -62,7 +62,7 @@
             // 
             // btnNuevoUser
             // 
-            this.btnNuevoUser.Location = new System.Drawing.Point(81, 87);
+            this.btnNuevoUser.Location = new System.Drawing.Point(81, 116);
             this.btnNuevoUser.Name = "btnNuevoUser";
             this.btnNuevoUser.Size = new System.Drawing.Size(158, 23);
             this.btnNuevoUser.TabIndex = 2;
@@ -72,7 +72,7 @@
             // 
             // btnLoginUser
             // 
-            this.btnLoginUser.Location = new System.Drawing.Point(81, 116);
+            this.btnLoginUser.Location = new System.Drawing.Point(81, 87);
             this.btnLoginUser.Name = "btnLoginUser";
             this.btnLoginUser.Size = new System.Drawing.Size(158, 23);
             this.btnLoginUser.TabIndex = 3;

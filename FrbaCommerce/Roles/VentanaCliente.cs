@@ -19,19 +19,25 @@ namespace FrbaCommerce.Roles
         private void button1_Click(object sender, EventArgs e)
         {
             Abm_Cliente.Alta cliente = new Abm_Cliente.Alta(false);
-            cliente.Show();
+            Hide();
+            cliente.ShowDialog();
+            Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Abm_Cliente.Listado_de_selección cliente = new FrbaCommerce.Abm_Cliente.Listado_de_selección();
-            cliente.Show();
+            Hide();
+            cliente.ShowDialog();
+            Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Abm_Cliente.Listado cliente = new FrbaCommerce.Abm_Cliente.Listado();
-            cliente.Show();
+            Hide();
+            cliente.ShowDialog();
+            Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

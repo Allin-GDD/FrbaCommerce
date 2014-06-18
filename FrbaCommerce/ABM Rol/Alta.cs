@@ -25,7 +25,7 @@ namespace FrbaCommerce.ABM_Rol
                 Datos.Dat_Rol.agregarRol(txtNombre.Text);
                 Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
                 Datos.Dat_Rol.agregarFuncionabilidad(rol, idFuncionabilidad);
-
+                Close();
             }
             catch (Exception ex)
             {

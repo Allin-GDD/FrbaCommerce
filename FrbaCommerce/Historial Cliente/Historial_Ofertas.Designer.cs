@@ -48,6 +48,7 @@
             this.ClientSize = new System.Drawing.Size(585, 265);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Historial_Ofertas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial_Ofertas";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
