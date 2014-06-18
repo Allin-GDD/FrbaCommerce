@@ -12,6 +12,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     public partial class VentanaCompraEmpresa : Form
     {
+
+        // esta ventana es para cuando la publicacion es de una empresa
         private decimal codigo;
         private decimal idusuario;
         

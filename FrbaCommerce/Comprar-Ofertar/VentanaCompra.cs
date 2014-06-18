@@ -11,6 +11,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 {
     partial class VentanaCompra : Form
     {
+
+        // esta ventana es para cuando la publicacion pertenece a un cliente
         private decimal codigo;
         private decimal idusuario;
         
@@ -134,7 +136,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             {   
                 Utiles.Validaciones.ValidarTipoDecimal(txtvalor);
                 validarStock(stock, codigo);
-                
+                // agarra la cantidad de stock que quiere el cliente se fija si es suficiente y lo compra
 
                 SqlConnection conn = DBConexion.obtenerConexion();
 

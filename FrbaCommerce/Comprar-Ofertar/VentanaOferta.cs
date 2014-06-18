@@ -29,8 +29,6 @@ namespace FrbaCommerce.Comprar_Ofertar
            try
 
             {
-               // Utiles.Validaciones.ValidarTipoDouble(textBox1);
-
                 Utiles.Validaciones.ValidarTipoDouble(textBox1);
 
                 oferta.Monto = Convert.ToDouble(textBox1.Text);
@@ -39,8 +37,6 @@ namespace FrbaCommerce.Comprar_Ofertar
                
                 Utiles.Validaciones.validarValorMayorAPrecio(codigoPublicacion,oferta.Monto);
                 Utiles.Validaciones.validarValorMayorAUltOferta(codigoPublicacion, oferta.Monto);
-
-               //Utiles.Validaciones.verificarMismoUsuario(codigoPublicacion, idusuario);
 
                Datos.Dat_CompraOferta.AgregarOferta(oferta);
          }
