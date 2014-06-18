@@ -73,16 +73,29 @@ namespace FrbaCommerce
             his.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1);
-            n.Show();
-        }
+        //private void button6_Click(object sender, EventArgs e)
+        //{
+        //    Facturar_Publicaciones.Facturar n = new Facturar_Publicaciones.Facturar(1);
+        //    n.Show();
+        //}
 
         private void button7_Click(object sender, EventArgs e)
         {
             Generar_Publicacion.Generar_Publi co = new FrbaCommerce.Generar_Publicacion.Generar_Publi("ananquel_Sepúlveda@gmail.com");
             co.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.ListadoSubastasPendientes lsi = new FrbaCommerce.Comprar_Ofertar.ListadoSubastasPendientes(1);
+            lsi.Show();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            Utiles.Ventanas.CambiarPw newPw = new FrbaCommerce.Utiles.Ventanas.CambiarPw(false);
+            newPw.ShowDialog();
+            Close();
         }
 
     }

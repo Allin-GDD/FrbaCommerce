@@ -73,6 +73,15 @@ namespace FrbaCommerce.Roles
             Show();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.ListadoSubastasPendientes listSub = new FrbaCommerce.Comprar_Ofertar.ListadoSubastasPendientes(idEmpresa);
+            Hide();
+            listSub.ShowDialog();
+            Show();
+
+        }
+
              
     }
 }

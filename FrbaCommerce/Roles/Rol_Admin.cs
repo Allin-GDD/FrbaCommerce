@@ -68,7 +68,7 @@ namespace FrbaCommerce.Roles
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Utiles.Ventanas.CambiarPw changpw = new FrbaCommerce.Utiles.Ventanas.CambiarPw();
+            Utiles.Ventanas.CambiarPw changpw = new FrbaCommerce.Utiles.Ventanas.CambiarPw(true);
             Hide();
             changpw.ShowDialog();
             Show();

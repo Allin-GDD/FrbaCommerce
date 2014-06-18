@@ -61,12 +61,6 @@ namespace FrbaCommerce.Registro_de_Usuario
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Utiles.Ventanas.CambiarPw newPw = new FrbaCommerce.Utiles.Ventanas.CambiarPw();
-            newPw.ShowDialog();
-            Close();
-        }
-
+     
           }
 }

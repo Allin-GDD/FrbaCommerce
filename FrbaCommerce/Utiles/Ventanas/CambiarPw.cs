@@ -11,11 +11,17 @@ namespace FrbaCommerce.Utiles.Ventanas
 {
     public partial class CambiarPw : Form
     {
-        public CambiarPw()
+        public CambiarPw(bool isAdm)
         {
             InitializeComponent();
+            this.isAdm = isAdm;
+            if (isAdm) {
+                txtPwOriginal.Visible = false;
+                label2.Visible = false;
+            }
         }
 
+        private bool isAdm;
         private void button2_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
@@ -34,14 +40,17 @@ namespace FrbaCommerce.Utiles.Ventanas
                 txtNewPw1.BackColor = Color.Coral;
                 throw new Excepciones.InexistenciaUsuario("Las contraseñas no cohinciden");
             }
-
             Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtUser.Text);
-
-            String pwOriginal = Datos.Dat_Usuario.hashearSHA256(txtPwOriginal.Text);
-
-            if (pwOriginal != pusuario.Contraseña) {
-                txtPwOriginal.BackColor = Color.Coral;
-                throw new Excepciones.InexistenciaUsuario("La contraseña ingresada no es válida");
+            if (!isAdm)
+            {
+                       String pwOriginal = Datos.Dat_Usuario.hashearSHA256(txtPwOriginal.Text);
+            
+          
+                if (pwOriginal != pusuario.Contraseña)
+                {
+                    txtPwOriginal.BackColor = Color.Coral;
+                    throw new Excepciones.InexistenciaUsuario("La contraseña ingresada no es válida");
+                }
             }
             
             Datos.Dat_Usuario.actualizarContraseña(pusuario.Usuario, txtNewPw1.Text);

@@ -39,10 +39,6 @@ namespace FrbaCommerce.Calificar_Vendedor
             }
 
             dataGridView1.Columns["Id"].Visible = false;
-            //dataGridView1.Columns["Calificacion_Cod"].Visible = false;
-            //dataGridView1.Columns["Calificacion_Cant_Estrellas"].Visible = false;
-            //dataGridView1.Columns["Calificaciones_Descripcion"].Visible = false;
-
         }
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

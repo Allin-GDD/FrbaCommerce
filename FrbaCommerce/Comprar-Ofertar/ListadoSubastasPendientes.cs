@@ -24,26 +24,31 @@ namespace FrbaCommerce.Comprar_Ofertar
         //Actualiza los datos de la compra
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
-            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
-            
-
-            if (e.ColumnIndex == 3)
+            try
             {
-                
-                    cambiarcan_ganador(codigo);
+                Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
+                Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
+
+
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
+                {
+
+                    cambiar_ganador(codigo);
                     SqlConnection conn = DBConexion.obtenerConexion();
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1));
 
-               conn.Close();
-              
-              
+                    conn.Close();
+
+                }
+                Mensajes.Exitos.ExitoAlGuardaLosDatos();
             }
-            Mensajes.Exitos.ExitoAlGuardaLosDatos();
-            
+            catch (Exception){
+
+                Mensajes.Errores.NoHayDatosAmodificar();
+            }
         }
        private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
         {
@@ -66,15 +71,12 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void button1_Click(object sender, EventArgs e)
         {
             buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
-               this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
+            this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
               
         }
         //modifica el con ganador osea el valor que indica si termino o no la subasta.
-        private static void cambiarcan_ganador(decimal codigo)
+        private static void cambiar_ganador(decimal codigo)
         {
-        
-
-
                 SqlConnection conn2 = DBConexion.obtenerConexion();
                 SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn2,
                     new SqlParameter("@Codigo", codigo));
