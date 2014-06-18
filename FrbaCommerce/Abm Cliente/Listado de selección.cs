@@ -28,9 +28,6 @@ namespace FrbaCommerce.Abm_Cliente
             cmbTipoDoc.DisplayMember = "tipo";
             cmbTipoDoc.ValueMember = "codigo";
 
-            cmbTipoDoc.Text = "";
-            Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
-
             botonModificar = false;
             botonDelete = false;
         }
@@ -50,7 +47,14 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Mail = txtMail.Text;
                 pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
 
-                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                if (Convert.ToString(cmbTipoDoc.SelectedValue) == "0")
+                {
+                    Datos.Dat_Cliente.buscarListaDeCliente2(pCliente, dataGridView1);
+                }
+                else
+                {
+                    Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                }
 
                 //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
                 this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
@@ -80,7 +84,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[0].Value);
+            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
 
 
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)

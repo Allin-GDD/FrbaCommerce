@@ -21,14 +21,9 @@ namespace FrbaCommerce.Facturar_Publicaciones
             idUsuario = id;
             Tipo = null;
             Utiles.Inicializar.comboBoxTipoFormaDePago(comboBox1);
-        }
-       
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
         }
-
+       
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
@@ -48,23 +43,6 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
 
 
-        //private static Facturar(decimal codigo)
-        //{
-        //    Entidades.Ent_ListFactura items = traerFuturasItemFacutar(codigo);
-           
-
-        // //   foreach (int item in items)
-        //  //  {
-        //    //agregarItemFactura
-        //   // }
-
-        //    double precioFinal = traerFuturasFacturas(codigo);
-        //    //agregarFactura(codigo, precioFinal,tipopago);
-        //}
-
-
-        
-       
         private static decimal agregarFactura(decimal codigo,double  precioFinal,string tipopago)
 
         {
@@ -88,10 +66,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
        
             }
             
-
-            Mensajes.Generales.validarAlta(retorno);
-
-        
+      
         }
 
 
@@ -186,12 +161,22 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private void button2_Click(object sender, EventArgs e)
         {
-            decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
-            
-             Tipo = Convert.ToString(comboBox1.SelectedValue);
+            try
+            {
+                Utiles.Validaciones.validarDatosObligatorios(this);
+                if (Utiles.Validaciones.ValidarTipoDecimal(textBox1)) throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
 
-            buscarFacturasTop(idUsuario,cantidadmax,Tipo);
+                decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
 
+                Tipo = Convert.ToString(comboBox1.SelectedValue);
+                buscarFacturasTop(idUsuario, cantidadmax, Tipo);
+                Mensajes.Exitos.ComisionesCanceladas();
+                Close();
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
@@ -232,10 +217,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
                  retorno = cmd.ExecuteNonQuery();
                  conexion.Close();
               }
-
-
         
          }
 
+         private void button1_Click(object sender, EventArgs e)
+         {
+             Close();
          }
+
+        }
 }

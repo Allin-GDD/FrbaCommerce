@@ -8,11 +8,11 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Factura
     {
-        public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoPago()
+        public static List<Entidades.Ent_TipoDePago> ObtenerTipoPago()
         {
 
 
-            List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
+            List<Entidades.Ent_TipoDePago> listaDeTipos = new List<Entidades.Ent_TipoDePago>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand Comando = new SqlCommand("Select Codigo, Nombre from Tipo_Pago", conexion);
@@ -20,8 +20,8 @@ namespace FrbaCommerce.Datos
 
             while (lectura.Read())
             {
-                Entidades.Ent_TipoDeDoc pTipoPago = new Entidades.Ent_TipoDeDoc();
-                pTipoPago.codigo = lectura.GetInt16(0);
+                Entidades.Ent_TipoDePago pTipoPago = new Entidades.Ent_TipoDePago();
+                pTipoPago.codigo = lectura.GetDecimal(0);
                 pTipoPago.tipo = lectura.GetString(1);
 
                 listaDeTipos.Add(pTipoPago);

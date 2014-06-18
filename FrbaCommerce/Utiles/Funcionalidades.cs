@@ -27,6 +27,10 @@ namespace FrbaCommerce.Utiles
             listaFunc.Add(crearFuncionabilidad("Mostrar historial", 13));
             listaFunc.Add(crearFuncionabilidad("calificar Vendedor", 14));
             listaFunc.Add(crearFuncionabilidad("Ejecutar gestor de preguntas", 15));
+            listaFunc.Add(crearFuncionabilidad("Cambiar contraseña", 16));
+            listaFunc.Add(crearFuncionabilidad("Comprar", 17));
+            listaFunc.Add(crearFuncionabilidad("Subasta", 18));
+
             
            
 

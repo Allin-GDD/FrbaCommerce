@@ -147,6 +147,7 @@
     <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />
     <Compile Include="Entidades\Ent_RolyId.cs" />
     <Compile Include="Entidades\Ent_Rubros.cs" />
+    <Compile Include="Entidades\Ent_TipoDePago.cs" />
     <Compile Include="Entidades\Ent_TipoPub.cs" />
     <Compile Include="Entidades\Ent_Funcionalidad.cs" />
     <Compile Include="Entidades\Ent_Habilitado.cs" />

@@ -51,6 +51,10 @@ namespace FrbaCommerce.Mensajes
               {
                   MessageBox.Show("El usuario fue creado con exito", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
               }
+              public static void ComisionesCanceladas()
+              {
+                  MessageBox.Show("Las comisiones han sido canceladas", "Facturar Publicación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              }
     }
 
 

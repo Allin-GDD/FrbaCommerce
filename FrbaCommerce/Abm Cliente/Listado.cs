@@ -42,7 +42,7 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Dni = txtDNI.Text;
                 pCliente.Mail = txtMail.Text;
                 pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
-                if (cmbTipoDoc.SelectedValue == "0")
+                if (Convert.ToString(cmbTipoDoc.SelectedValue) == "0")
                 {
                     Datos.Dat_Cliente.buscarListaDeCliente2(pCliente, dataGridView1);
                 }
