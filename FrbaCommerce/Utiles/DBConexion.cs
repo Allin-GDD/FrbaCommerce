@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
@@ -10,7 +11,9 @@ namespace FrbaCommerce
     {
         public static SqlConnection obtenerConexion() 
         {
-            SqlConnection conn = new SqlConnection(@"Data source = localhost\SQLSERVER2008; Initial catalog = GD1C2014 ; User Id = gd; Password = gd2014 ");
+            string ConnectionString = System.IO.File.ReadAllText(@"Config.txt");
+
+            SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
             return conn;
         }
