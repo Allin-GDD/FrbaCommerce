@@ -531,9 +531,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro de Usuario\Registro.resx">
-      <DependentUpon>Registro.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Registro de Usuario\Registro_De_Usuario.resx">
       <DependentUpon>Registro_De_Usuario.cs</DependentUpon>
     </EmbeddedResource>
@@ -598,12 +595,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Registro de Usuario\Registro.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registro de Usuario\Registro.Designer.cs">
-      <DependentUpon>Registro.cs</DependentUpon>
     </Compile>
     <Compile Include="Roles\Rol_Admin.cs">
       <SubType>Form</SubType>

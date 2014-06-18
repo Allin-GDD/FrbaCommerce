@@ -33,7 +33,6 @@
             this.txtPass = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.cboRol = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
@@ -76,7 +75,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.cboRol);
             this.groupBox1.Controls.Add(this.txtPass);
             this.groupBox1.Controls.Add(this.label3);
@@ -85,19 +83,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(248, 172);
+            this.groupBox1.Size = new System.Drawing.Size(248, 141);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de usuario";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(50, 134);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(146, 23);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Cambiar Contraseña";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // cboRol
             // 
@@ -119,7 +108,7 @@
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(172, 204);
+            this.btnAceptar.Location = new System.Drawing.Point(165, 176);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
             this.btnAceptar.TabIndex = 7;
@@ -129,7 +118,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 204);
+            this.button2.Location = new System.Drawing.Point(38, 176);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 11;
@@ -141,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(273, 240);
+            this.ClientSize = new System.Drawing.Size(273, 223);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
@@ -163,7 +152,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboRol;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button button2;
     }
