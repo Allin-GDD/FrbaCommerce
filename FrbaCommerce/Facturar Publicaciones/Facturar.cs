@@ -14,11 +14,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
     {
         public string Tipo;
         decimal idUsuario;
+        string rolEste;
 
-        public Facturar( decimal id)
+        public Facturar( decimal id,string rol)
         {
             InitializeComponent();
             idUsuario = id;
+            rolEste = rol;
             Tipo = null;
             Utiles.Inicializar.comboBoxTipoFormaDePago(comboBox1);
             buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
@@ -34,7 +36,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 if (Utiles.Validaciones.ValidarTipoDecimal(textBox1)) throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
 
                 decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
-
+                
                 Tipo = Convert.ToString(comboBox1.SelectedValue);
                 buscarFacturasTop(idUsuario, cantidadmax, Tipo);
                 Mensajes.Exitos.ComisionesCanceladas();
@@ -60,17 +62,17 @@ namespace FrbaCommerce.Facturar_Publicaciones
             while (lectura.Read())
             {
 
-                unaFactura(lectura.GetDecimal(0), tipo);
+                unaFactura(lectura.GetDecimal(0), tipo,lectura.GetDecimal(1),id,lectura.GetString(2));
             }
         }
 
 
-        private static void unaFactura(decimal codigo, string tipo)
+        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id, string rol)
         {
             decimal nfactura = 0;
             double precioFinal;
             //se fija si es bonificada la publicacion para ver si es gratis o no
-            if (esBonificada(codigo))
+            if (esBonificada(codigo,visibilidad, id,rol))
             {
                 precioFinal = 0;
             }
@@ -103,7 +105,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
-                 try
+            try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicacionesSinFacturar", conn,
@@ -220,15 +222,17 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         }
 
-         private static bool esBonificada(decimal codigo)
+         private static bool esBonificada(decimal codigo,Decimal visibilidad,Decimal Id, string Rol)
          {
              int retorno;
              Boolean esBonif = false;
              using (SqlConnection conexion = DBConexion.obtenerConexion())
              {
-
+                 
                  SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
-                 new SqlParameter("@Codigo", codigo));
+                 new SqlParameter("@Id", Id),
+                 new SqlParameter("@Rol", Rol),
+                 new SqlParameter("@Visibilidad", codigo));
 
                  SqlDataReader lectura = cmd.ExecuteReader();
 
