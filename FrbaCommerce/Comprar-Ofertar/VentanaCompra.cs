@@ -30,7 +30,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         
         
         
-        //I
+
         private string cargarUsuario(decimal id)
         {
            string usuario = "";
