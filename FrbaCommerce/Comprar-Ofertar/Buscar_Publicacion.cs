@@ -165,7 +165,6 @@ namespace FrbaCommerce.Comprar_Ofertar
                 dataGridView1.DataSource = tabla;
                 dataGridView1.Columns["Codigo"].Visible = false;
                 dataGridView1.Columns["Id"].Visible = false;
-                dataGridView1.Columns["Visibilidad_Cod"].Visible = false;
                 dataGridView1.Columns["Preguntas_permitidas"].Visible = false;
                 dataGridView1.Columns["Publicador"].Visible = false;
                 dataGridView1.Refresh();
@@ -468,6 +467,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             txtRubro.Enabled = false;
             txtRubro.BackColor = Color.WhiteSmoke;
         }
+
+
 
    }
 }
