@@ -11,7 +11,7 @@ namespace FrbaCommerce
     {
         public static SqlConnection obtenerConexion() 
         {
-            string ConnectionString = System.IO.File.ReadAllText(@"Config.txt");
+            string ConnectionString = System.IO.File.ReadAllText(@"config.txt");
 
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
