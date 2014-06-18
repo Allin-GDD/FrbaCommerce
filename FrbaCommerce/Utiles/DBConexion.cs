@@ -11,11 +11,16 @@ namespace FrbaCommerce
     {
         public static SqlConnection obtenerConexion() 
         {
-            string ConnectionString = System.IO.File.ReadAllText(@"config.txt");
+            string[] lines = File.ReadAllLines(@"config.txt");
+
+            string ConnectionString = lines[0];
+            string fecha = lines[1];
 
             SqlConnection conn = new SqlConnection(ConnectionString);
             conn.Open();
             return conn;
+
+            
         }
 
     }
