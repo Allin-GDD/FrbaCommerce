@@ -14,7 +14,19 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado_de_selección()
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
+            InitializeComponent();
+            List<Entidades.Ent_TipoDeDoc> listaDeDoc = new List<Entidades.Ent_TipoDeDoc>();
+            listaDeDoc = Datos.Dat_Cliente.ObtenerTipoDoc();
+
+            Entidades.Ent_TipoDeDoc entDoc = new Entidades.Ent_TipoDeDoc();
+            entDoc.codigo = 0;
+            entDoc.tipo = "";
+
+            listaDeDoc.Insert(0, entDoc);
+
+            cmbTipoDoc.DataSource = listaDeDoc;
+            cmbTipoDoc.DisplayMember = "tipo";
+            cmbTipoDoc.ValueMember = "codigo";
             botonModificar = false;
             botonDelete = false;
         }

@@ -48,8 +48,19 @@ namespace FrbaCommerce.Listado_Estadistico
                 tipo2 = false;
                 tipo3 = false;
                 tipo4 = false;
-                              
-                Utiles.Inicializar.comboBoxVisibilidad(cmbVisibilidad);
+
+                List<Entidades.Ent_Visibilidad> listaDeVisibilidades = new List<Entidades.Ent_Visibilidad>();
+                listaDeVisibilidades = Datos.Dat_Publicacion.ObtenerVisibilidades();
+
+                Entidades.Ent_Visibilidad entVisibilidad = new Entidades.Ent_Visibilidad();
+                entVisibilidad.Codigo = 0;
+                entVisibilidad.Descripcion = "";
+
+                listaDeVisibilidades.Insert(0, entVisibilidad);
+
+                cmbVisibilidad.DataSource = listaDeVisibilidades;
+                cmbVisibilidad.DisplayMember = "Descripcion";
+                cmbVisibilidad.ValueMember = "Codigo";
                            }
             else
             {

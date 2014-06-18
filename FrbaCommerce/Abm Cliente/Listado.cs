@@ -14,7 +14,18 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado()
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
+            List<Entidades.Ent_TipoDeDoc> listaDeDoc = new List<Entidades.Ent_TipoDeDoc>();
+            listaDeDoc = Datos.Dat_Cliente.ObtenerTipoDoc();
+
+            Entidades.Ent_TipoDeDoc entDoc = new Entidades.Ent_TipoDeDoc();
+            entDoc.codigo = 0;
+            entDoc.tipo = "";
+
+            listaDeDoc.Insert(0, entDoc);
+
+            cmbTipoDoc.DataSource = listaDeDoc;
+            cmbTipoDoc.DisplayMember = "tipo";
+            cmbTipoDoc.ValueMember = "codigo";
       
             
         }
@@ -31,8 +42,14 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Dni = txtDNI.Text;
                 pCliente.Mail = txtMail.Text;
                 pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
-              
-                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                if (cmbTipoDoc.SelectedValue == "0")
+                {
+                    Datos.Dat_Cliente.buscarListaDeCliente2(pCliente, dataGridView1);
+                }
+                else
+                {
+                    Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                }
             }
             catch (Exception ex)
             {

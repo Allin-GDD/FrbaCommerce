@@ -139,6 +139,28 @@ namespace FrbaCommerce.Datos
             dataGridView1.Columns["Id"].Visible = false;
 
         }
+        public static void buscarListaDeCliente2(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
+        {
+
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeCliente2", conn,
+                new SqlParameter("@Nombre", pListado.Nombre),
+                new SqlParameter("@Apellido", pListado.Apellido),
+                new SqlParameter("@Dni", pListado.Dni),
+                new SqlParameter("@Mail", pListado.Mail));
+
+                Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
+            }
+            catch (Exception)
+            {
+                Mensajes.Errores.NoHayConexion();
+            }
+
+            dataGridView1.Columns["Id"].Visible = false;
+
+        }
 
         public static Entidades.Ent_Cliente buscarCliente(Decimal id)
         {
