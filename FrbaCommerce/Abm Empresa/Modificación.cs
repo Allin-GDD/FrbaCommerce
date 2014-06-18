@@ -73,6 +73,7 @@ namespace FrbaCommerce.Abm_Empresa
                  Datos.Dat_Empresa.actualizarEmpresa(empresa, empresaAModificar);
 
                  Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue), empresaAModificar, rolEmpresa);
+                 Close();
              }
              catch (Exception ex) {
                  MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

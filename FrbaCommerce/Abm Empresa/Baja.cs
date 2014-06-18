@@ -31,6 +31,7 @@ namespace FrbaCommerce.Abm_Empresa
                 int retorno = cmd.ExecuteNonQuery();
 
                 Mensajes.Generales.validarBaja(retorno);
+                Close();
 
             }
             catch (Exception ex)

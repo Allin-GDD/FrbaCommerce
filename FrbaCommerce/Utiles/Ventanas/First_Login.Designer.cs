@@ -40,11 +40,12 @@
             this.contraseña.Name = "contraseña";
             this.contraseña.Size = new System.Drawing.Size(169, 20);
             this.contraseña.TabIndex = 2;
+            this.contraseña.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 31);
+            this.label1.Location = new System.Drawing.Point(26, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 3;

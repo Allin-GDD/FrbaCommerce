@@ -25,13 +25,17 @@ namespace FrbaCommerce.Gestion_de_Preguntas
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {   try{
             Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnResponder"].ColumnIndex && dataGridView1.DataSource != null)
             {
                 Utiles.Ventanas.TipearRespuesta vent = new Utiles.Ventanas.TipearRespuesta(idSeleccionado);
                 vent.ShowDialog();
                 this.Refresh();
+            }
+              }
+              catch {
+                Mensajes.Errores.NoHayDatosAmodificar();
             }
 
         }

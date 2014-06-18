@@ -30,6 +30,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                 int retorno = cmd.ExecuteNonQuery();
 
                 Mensajes.Generales.validarBaja(retorno);
+                Close();
             }
 
             catch (Exception ex)

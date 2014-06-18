@@ -53,10 +53,8 @@ namespace FrbaCommerce.Abm_Visibilidad
                 //Inicializa el cliente con datos correctos
                 inicializarVisibilidad(visibilidad);
  
-                //Tiene que cargar el estado de otra forma
-                //estado = Convert.ToInt16(textBox6.Text);
-
                 Datos.Dat_Visibilidad.ActualizarCamposAVisibilidad(visibilidad, visibilidadAModificar);
+                Close();
 
             }
             catch (Exception ex)

@@ -47,6 +47,7 @@ namespace FrbaCommerce.Utiles.Ventanas
             Datos.Dat_Usuario.actualizarContraseña(pusuario.Usuario, txtNewPw1.Text);
 
             Mensajes.Exitos.ExitoAlGuardaLosDatos();
+            Close();
                
         }
     }

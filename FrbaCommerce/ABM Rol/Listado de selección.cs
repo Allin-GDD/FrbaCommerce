@@ -35,25 +35,38 @@ namespace FrbaCommerce.ABM_Rol
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.LimpiarTexto.LimpiarTextBox(this); 
+            bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1);
+            if (!valor)
+            {
+                botonDelete = false;
+                botonModificar = false;
+            }
+
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try{
-            Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
-            
-            if (e.ColumnIndex == 2)
-            {//14 es la pocision del boton modificar
+                Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
+
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
+            {
                 ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
-                mod.Show();
+                this.Hide();
+                mod.ShowDialog();
+                this.Refresh();
+                Show();
 
             }
-            if (e.ColumnIndex == 3)
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
                 ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
-                baj.Show();
+                this.Hide();
+                baj.ShowDialog();
+                this.Refresh();
+                Show();
 
             }
                }

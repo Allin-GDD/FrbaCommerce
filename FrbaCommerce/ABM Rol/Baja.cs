@@ -21,6 +21,7 @@ namespace FrbaCommerce.ABM_Rol
         private void button1_Click(object sender, EventArgs e)
         {
             Datos.Dat_Rol.darDeBajaRol(rolADarDeBaja);
+            Close();
         }
       
 

@@ -60,6 +60,7 @@ namespace FrbaCommerce.Abm_Cliente
                 conn.Close();
 
               Mensajes.Generales.validarBaja(retorno);
+              Close();
                 
             }
             catch(Exception ex)

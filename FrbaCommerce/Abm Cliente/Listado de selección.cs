@@ -55,7 +55,6 @@ namespace FrbaCommerce.Abm_Cliente
                 {
                     Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
                 }
-
                 //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
                 this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
                 this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
@@ -91,13 +90,22 @@ namespace FrbaCommerce.Abm_Cliente
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {
                 Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(idSeleccionado, false);
-                mod.Show();
+                this.Hide();
+                mod.ShowDialog();
+                this.Refresh();
+
+                Show();
+              
+                
 
             }
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
                 Abm_Cliente.Baja baj = new Abm_Cliente.Baja(idSeleccionado);
-                baj.Show();
+                this.Hide();
+                baj.ShowDialog();
+                this.Refresh();
+                Show();
                 
             }
         }

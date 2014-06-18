@@ -55,25 +55,39 @@ namespace FrbaCommerce.Abm_Visibilidad
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            Int32 codigoSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Codigo"].Value);
 
 
-            if (e.ColumnIndex == 5)
-            {//4 es la pocision del boton modificar
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
+            {
                 Abm_Visibilidad.Modificación mod = new Abm_Visibilidad.Modificación(codigoSeleccionado);
-                mod.Show();
+                this.Hide();
+                mod.ShowDialog();
+                Show();
+                
 
             }
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
                 Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
-                baj.Show();
+                this.Hide();
+                baj.ShowDialog();
+                this.Refresh();
+                Show();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
+            
+            bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1);
+            if (!valor)
+            {
+                eliminar = false;
+                modificar = false;
+            }
+
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
         }
     }

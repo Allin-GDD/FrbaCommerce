@@ -61,13 +61,19 @@ namespace FrbaCommerce.Abm_Empresa
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {//14 es la pocision del boton modificar
                 Abm_Empresa.Modificación mod = new Abm_Empresa.Modificación(idSeleccionado,false);
-                mod.Show();
+                this.Hide();
+                mod.ShowDialog();
+                this.Refresh();
+                Show();
 
             }
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
                 Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
-                baj.Show();
+                this.Hide();
+                baj.ShowDialog();
+                this.Refresh();
+                Show();
                                 
             }
 

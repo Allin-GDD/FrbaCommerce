@@ -58,7 +58,7 @@ namespace FrbaCommerce.Roles
 
         private void FacturarPublicaciones_Click(object sender, EventArgs e)
         {
-            Facturar_Publicaciones.Facturar fac = new FrbaCommerce.Facturar_Publicaciones.Facturar(idEmpresa);
+            Facturar_Publicaciones.Facturar fac = new FrbaCommerce.Facturar_Publicaciones.Facturar(idEmpresa,rol);
             Hide();
             fac.ShowDialog();
             Show();
