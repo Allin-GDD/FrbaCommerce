@@ -14,6 +14,7 @@ namespace FrbaCommerce.Abm_Cliente
         public Listado_de_selección()
         {
             InitializeComponent();
+            cmbTipoDoc.Text = "";
             Utiles.Inicializar.comboBoxTipoDNI(cmbTipoDoc);
             botonModificar = false;
             botonDelete = false;
