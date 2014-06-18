@@ -74,7 +74,7 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.valirUsuarioCliente(retorno);
 
         }
-
+        // cuando erra 3 veces al login
         public static void ActualizarEstadoUsuario(Int16 estado, Decimal clienteAModificar, Decimal rolCliente)
         {
             int retorno = 0;
@@ -113,6 +113,7 @@ namespace FrbaCommerce.Datos
             return estado;
         }
 
+        // encriptacion password
         public static String hashearSHA256(String input)
         {
             SHA256Managed encriptador = new SHA256Managed();
@@ -132,6 +133,8 @@ namespace FrbaCommerce.Datos
             }
         }
 
+
+        // obtiene un usuario
         public static Entidades.Ent_Usuario obtenerCamposDe(string nombre)
         {
             Entidades.Ent_Usuario pUsuario = new Entidades.Ent_Usuario();
@@ -245,7 +248,7 @@ namespace FrbaCommerce.Datos
             }
         }
 
-
+        // busca al usuario en la bd
         public static String getNameUser(decimal idUsuario, decimal rolAsignado)
         {
             String user = null;

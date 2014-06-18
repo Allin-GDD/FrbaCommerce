@@ -9,6 +9,8 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Listados
     {
+        // dat de listados estadisticos
+
         internal static void vendedoresQueMEnosVenden(Int16 año, Decimal visibilidad, int mes, DataGridView dataGridView1)
         {
             using (SqlConnection conn = DBConexion.obtenerConexion())

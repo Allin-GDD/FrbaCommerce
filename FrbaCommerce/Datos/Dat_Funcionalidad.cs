@@ -8,7 +8,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Funcionalidad
     {
-         
+         //agrega una funcionalidad con su rol
 
         public static void chequeoDeAddFuncionalidad(CheckBox chkAgregar, decimal rol, int func)
         {
@@ -18,6 +18,7 @@ namespace FrbaCommerce.Datos
             }
         }
 
+        // remueve una funcionalidad con su rol
         public static void chequeoRemoveFuncioalidad(CheckBox chkQuitar, decimal rol, int func)
         {
             if (chkQuitar.Checked)

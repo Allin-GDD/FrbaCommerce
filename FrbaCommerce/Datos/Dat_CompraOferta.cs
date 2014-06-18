@@ -31,7 +31,7 @@ namespace FrbaCommerce.Datos
 
         public static void buscarListado(Entidades.Ent_ListadoPublicacion pListado, DataGridView dataGridView1)
         {
-
+            // busca el listado de publicaciones del tipo ent_listadopublicacion
             try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
