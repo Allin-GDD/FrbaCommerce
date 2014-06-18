@@ -241,7 +241,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 return;
             }
 
-            //Check if you are already at the first page.
+            //Se fija si estas en la primer pagina
             if (currentPage == 1)
             {
                 MessageBox.Show("Usted está en la primer página");
@@ -257,7 +257,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void btnNextPage_Click(object sender, EventArgs e)
         {
-            //If the user did not click the "Fill Grid" button, then return.
+            //si el usuario no toca para llenar la datagrid
             if (CheckFillButton() == false)
             {
                 return;
@@ -274,7 +274,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             if (currentPage > PageCount)
             {
                 currentPage = PageCount;
-                //Check if you are already at the last page.
+                //se fija si estas en la ultima pagina
                 if (recNo == maxRec)
                 {
                     MessageBox.Show("Usted está en la última página");
@@ -298,7 +298,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
 
             currentPage -= 1;
-            //Check if you are already at the first page.
+            //se fija si estas en la primer pag
             if (currentPage < 1)
             {
                 MessageBox.Show("Usted está en la primer página");

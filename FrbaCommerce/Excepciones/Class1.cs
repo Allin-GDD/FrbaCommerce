@@ -5,6 +5,8 @@ using System.Text;
 
 namespace FrbaCommerce.Excepciones
 {
+    // todas hacen los mismo pero se crearon diferentes para poder darse cuenta cual usar
+
     public class NulidadDeCamposACompletar : System.Exception
     {
         public NulidadDeCamposACompletar()

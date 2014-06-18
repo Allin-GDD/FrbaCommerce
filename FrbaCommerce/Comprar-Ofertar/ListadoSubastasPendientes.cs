@@ -73,19 +73,12 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
         
 
-        //    try
-        //    {
 
                 SqlConnection conn2 = DBConexion.obtenerConexion();
                 SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarConGanador", conn2,
                     new SqlParameter("@Codigo", codigo));
                 int retorno = cmd2.ExecuteNonQuery();
                 conn2.Close();
-         //   }
-         //   catch (Exception)
-         //   {
-           //     Mensajes.Errores.NoHayConexion();
-           // }
 
         }
     }
