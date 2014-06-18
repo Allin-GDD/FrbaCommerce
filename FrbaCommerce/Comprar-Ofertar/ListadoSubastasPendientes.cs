@@ -21,7 +21,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         decimal idUsuario;
         private bool botonAceptar;
-
+        //Actualiza los datos de la compra
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
@@ -62,13 +62,14 @@ namespace FrbaCommerce.Comprar_Ofertar
             //}
 
         }
-
+        //busca las subastas que están pendientes
         private void button1_Click(object sender, EventArgs e)
         {
             buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
                this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
               
         }
+        //modifica el con ganador osea el valor que indica si termino o no la subasta.
         private static void cambiarcan_ganador(decimal codigo)
         {
         
