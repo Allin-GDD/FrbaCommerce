@@ -23,7 +23,83 @@ namespace FrbaCommerce.Facturar_Publicaciones
             Utiles.Inicializar.comboBoxTipoFormaDePago(comboBox1);
             buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
         }
-       
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // segun la cantidad de facturas seleccionadas busca el top y las cancela
+            try
+            {
+                Utiles.Validaciones.validarDatosObligatorios(this);
+                if (Utiles.Validaciones.ValidarTipoDecimal(textBox1)) throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
+
+                decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
+
+                Tipo = Convert.ToString(comboBox1.SelectedValue);
+                buscarFacturasTop(idUsuario, cantidadmax, Tipo);
+                Mensajes.Exitos.ComisionesCanceladas();
+                Close();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void buscarFacturasTop(decimal id, decimal cantidad, string tipo)
+        {
+
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.facturasTop", conn,
+            new SqlParameter("@Id", id),
+            new SqlParameter("@Cant", cantidad));
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            while (lectura.Read())
+            {
+
+                unaFactura(lectura.GetDecimal(0), tipo);
+            }
+        }
+
+
+        private static void unaFactura(decimal codigo, string tipo)
+        {
+            decimal nfactura = 0;
+            double precioFinal;
+            //se fija si es bonificada la publicacion para ver si es gratis o no
+            if (esBonificada(codigo))
+            {
+                precioFinal = 0;
+            }
+            else
+            {
+                precioFinal = buscarPrecioFinalFactura(codigo);
+                List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
+                double preciovisibilidad = 0;
+                //agrega todos los items
+                foreach (Entidades.Ent_ListFactura item in items)
+                {
+
+                    agregarItemFactura(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
+                    preciovisibilidad = item.PrecioVis;
+                }
+                // agrega el item del precio base de la visibilidad
+                agregarItemFactura(codigo, nfactura, 1, preciovisibilidad);
+            }
+
+
+            if (!string.IsNullOrEmpty(tipo))
+            {
+                //agrega la factura
+                nfactura = agregarFactura(codigo, precioFinal, tipo);
+            }
+
+
+
+        }
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
@@ -142,75 +218,6 @@ namespace FrbaCommerce.Facturar_Publicaciones
             return lista;
             
 
-        }
-        private void buscarFacturasTop(decimal id,decimal cantidad,string tipo)
-        {
-
-             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.facturasTop", conn,
-            new SqlParameter("@Id", id),
-            new SqlParameter("@Cant", cantidad));
-            SqlDataReader lectura = cmd.ExecuteReader();
-
-            while(lectura.Read()){
-            
-                unaFactura(lectura.GetDecimal(0),tipo);
-            }
-        }
-
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Utiles.Validaciones.validarDatosObligatorios(this);
-                if (Utiles.Validaciones.ValidarTipoDecimal(textBox1)) throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
-
-                decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
-
-                Tipo = Convert.ToString(comboBox1.SelectedValue);
-                buscarFacturasTop(idUsuario, cantidadmax, Tipo);
-                Mensajes.Exitos.ComisionesCanceladas();
-                Close();
-            }
-            catch (Exception ex) {
-
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-         private static void unaFactura(decimal codigo, string tipo)
-        {
-            decimal nfactura= 0;
-            double precioFinal;
-            if (esBonificada(codigo))
-            {
-                precioFinal = 0;
-            }
-            else
-            {
-                precioFinal = buscarPrecioFinalFactura(codigo);
-                List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
-           
-
-                foreach (Entidades.Ent_ListFactura item in items)
-                {
-                
-                    agregarItemFactura(item.Codigo,nfactura,item.Cantidad,item.Precio*Convert.ToDouble(item.Cantidad)*item.Porcentaje);
-              
-                }
-            }
-
-            
-            if (!string.IsNullOrEmpty(tipo))
-            {
-                
-                nfactura = agregarFactura(codigo, precioFinal, tipo);
-            }
-
-
-       
         }
 
          private static bool esBonificada(decimal codigo)
