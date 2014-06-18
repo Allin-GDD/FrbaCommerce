@@ -11,7 +11,7 @@ namespace FrbaCommerce
     {
         public static SqlConnection obtenerConexion() 
         {
-            string[] lines = File.ReadAllLines(@"config.txt");
+            string[] lines = File.ReadAllLines(@"..\..\..\config.txt");
 
             string ConnectionString = lines[0];
             string fecha = lines[1];
