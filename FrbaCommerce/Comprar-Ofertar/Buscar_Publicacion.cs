@@ -25,7 +25,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         public Buscar_Publicacion(decimal id, string rol)
         {
             InitializeComponent();
-
+            //Inicializa el comboBox de visibilidades y le agrega la opción vacía para buscar sin el filtro
             List<Entidades.Ent_Visibilidad> listaDeVisibilidades = new List<Entidades.Ent_Visibilidad>();
             listaDeVisibilidades = Datos.Dat_Publicacion.ObtenerVisibilidades();
 
@@ -38,11 +38,12 @@ namespace FrbaCommerce.Comprar_Ofertar
             cmbVisib.DataSource = listaDeVisibilidades;
             cmbVisib.DisplayMember = "Descripcion";
             cmbVisib.ValueMember = "Codigo";
-
+            
             rolDeEste = rol;
 
             botonCompraOferta = false;
             editarPublicacion = false;
+            //Se fija si es empresa y le quita la posibilidad de buscar publicaciones de otros para comprar/ofertar, ya que solo puede editar sus publicaciones
             if (rol == "E")
             {
                 checkBox1.Checked = true;
@@ -66,7 +67,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             DataTable dtTemp;
 
 
-            //Clone the source table to create a temporary table.
+            //Clonar la tabla fuente para crear una tabla temporal.
             dtTemp = dtSource.Clone();
 
             if (currentPage == PageCount)
@@ -79,7 +80,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
             startRec = recNo;
 
-            //Copy rows from the source table to fill the temporary table.
+            //Copia las filas de la tabla fuente para llenar la tabla temporal.
             for (i = startRec; i < endRec; i++)
             {
                 dtTemp.ImportRow(dtSource.Rows[i]);
@@ -88,7 +89,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             dataGridView1.DataSource = dtTemp;
             DisplayPageInfo();
         }
-
+        //Muestra información de la página actual y el total de páginas.
         private void DisplayPageInfo()
         {
             txtDisplayPageNo.Text = "Page " + currentPage.ToString() + "/ " + PageCount.ToString();
@@ -96,10 +97,10 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private bool CheckFillButton()
         {
-            // Check if the user clicks the "Fill Grid" button.
+            // Chequea si el usuario cliqueó el boton aceptar.
             if (pageSize == 0)
             {
-                MessageBox.Show("Set the Page Size, and then click the Fill Grid button!");
+                MessageBox.Show("Setee el tamaño de página y luego cliquee el boton");
                 return false;
             }
             else
