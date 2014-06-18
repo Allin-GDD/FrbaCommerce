@@ -23,7 +23,7 @@ namespace FrbaCommerce.Generar_Publicacion
             this.usuario = usuarioPk;
         }
         
-
+        //Limpia textbox y las blanquea, limpia checkbox.
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
@@ -33,6 +33,7 @@ namespace FrbaCommerce.Generar_Publicacion
             textBox1.BackColor = Color.WhiteSmoke;
         }
 
+        //Hace las validaciones correspondientes y luego agrega la publicación a la base de datos.
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
@@ -55,7 +56,7 @@ namespace FrbaCommerce.Generar_Publicacion
             }
         }
 
-
+        //Cambia labels según input en combox tipo de publicación.
         private void cmbTipoPub_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (cmbTipoPub.SelectedItem.ToString() == "Subasta")
@@ -74,6 +75,7 @@ namespace FrbaCommerce.Generar_Publicacion
             }
         }
 
+        //Inicializa los valores en la entidad publicación para su posterior inserción en tabla.
         private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
         {
 
@@ -101,7 +103,7 @@ namespace FrbaCommerce.Generar_Publicacion
         }
 
       
-
+        //Lleva a la ventana para buscar rubros y devuelve el valor seleccionado en el textbox correspondiente.
         private void button3_Click_1(object sender, EventArgs e)
         {
             Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();

@@ -13,6 +13,7 @@ namespace FrbaCommerce.Editar_Publicacion
     {
         private Decimal stockInicial;
         private Decimal codigoPk;
+        //En esta ventana se edita descripción, stock y estado de las publicadas o pausadas.
         public Editar_Publicacion_Publicada(Decimal codigo)
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace FrbaCommerce.Editar_Publicacion
             cmbEstado.Text = "Publicada";
         }
 
-
+        //Inicializa los valores actuales de la entidad publicación.
         private void inicializarValores()
         {
             try
@@ -64,12 +65,14 @@ namespace FrbaCommerce.Editar_Publicacion
 
         }
 
+        //Limpia los textbox y los blanquea.
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
+        //Hace las validaciones correspondientes y luego edita la publicación en la base de datos.
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
@@ -86,6 +89,7 @@ namespace FrbaCommerce.Editar_Publicacion
             }
         }
 
+        //Inicializa la entidad publicación con los valores ingresados para su posterior actualización en tabla.
         private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
         {
 

@@ -21,7 +21,7 @@ namespace FrbaCommerce.Generar_Publicacion
          
         }
 
-
+        //Busca los rubros existentes en la base de datos segun la descripción ingresada como filtro.
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -35,12 +35,14 @@ namespace FrbaCommerce.Generar_Publicacion
             }
         }
 
+        //Limpia y blanquea el textbox.
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
 
+        //Termina la ventana y devuelve el valor correspondiente al cliquear la fila que se desea devolver.
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 

@@ -16,6 +16,7 @@ namespace FrbaCommerce.Editar_Publicacion
         private Decimal codigoPk;
         private Decimal stockInicial = 0;
         private Boolean estaActiva = false;
+        //Si la publicación está en estado Borrador (no borrada aunque se llame así), debe dejar editar todos los campos, por eso te trae a esta ventana.
         public Editar_Publicacion_Borrada(Decimal codigo)
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace FrbaCommerce.Editar_Publicacion
             
         }
 
-
+        //Trae los valores actuales de la publicación que se desea editar.
         private void inicializarValores()
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
@@ -70,6 +71,8 @@ namespace FrbaCommerce.Editar_Publicacion
             checkBox1.Checked = publicacion.Permitir_Preguntas;
 
         }
+
+        //Inicializa los valores de la entidad publicación para poder actualizar la tabla.
         private void inicializarPublicacion(Entidades.Ent_Publicacion publicacion)
         {
 
@@ -95,7 +98,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
         }
 
-
+        //Limpia los textbox, checkbox y blanquea las validaciones
         private void button1_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
@@ -105,6 +108,7 @@ namespace FrbaCommerce.Editar_Publicacion
             textBox1.BackColor = Color.WhiteSmoke;
         }
 
+        //Al aceptar hace las validaciones correspondientes, luego inicializa y finalmente edita la publicación en la base de datos.
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
@@ -129,6 +133,7 @@ namespace FrbaCommerce.Editar_Publicacion
             }
         }
 
+        //LLeva a la selección de rubro
         private void button3_Click(object sender, EventArgs e)
         {
             Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
@@ -138,6 +143,7 @@ namespace FrbaCommerce.Editar_Publicacion
             codRubro = list.ResultCodigo;
         }
 
+        //Cambia algunos labels si se modifica el tipo de publicación correspondientemente
         private void cmbTipoPub_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbTipoPub.SelectedItem.ToString() == "Subasta")
