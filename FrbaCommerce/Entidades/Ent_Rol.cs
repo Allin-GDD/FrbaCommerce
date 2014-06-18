@@ -8,8 +8,8 @@ namespace FrbaCommerce.Entidades
     class Entidad_Rol
     {
         public String nombre { get; set; }
-
         public Decimal id { get; set; }
+        public Int16 Estado { get; set; }
 
     }
 }

@@ -16,7 +16,7 @@ namespace FrbaCommerce.Datos
             List<Entidades.Entidad_Rol> listaDeRoles = new List<Entidades.Entidad_Rol>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Id, Nombre from Rol", conexion);
+            SqlCommand Comando = new SqlCommand("Select Id, Nombre, Estado from Rol", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
             while (lectura.Read())
@@ -24,8 +24,8 @@ namespace FrbaCommerce.Datos
                 Entidades.Entidad_Rol pRol = new Entidades.Entidad_Rol();
                 pRol.id = lectura.GetDecimal(0);
                 pRol.nombre = lectura.GetString(1);
-
-                if (pRol.id != 3)
+                pRol.Estado = lectura.GetInt16(2);
+                if (pRol.id != 3 && pRol.Estado == 1)
                 {
                     listaDeRoles.Add(pRol);
                 }
