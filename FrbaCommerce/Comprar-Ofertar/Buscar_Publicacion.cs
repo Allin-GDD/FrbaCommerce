@@ -113,7 +113,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         private void btnFillGrid_Click(object sender, EventArgs e)
         {
-            // Display the content of the current page.
+            // Muestra los contenidos de la página actual.
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
@@ -132,6 +132,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 pCO.MisPublicaciones = checkBox1.Checked;
                 DataTable tabla = new DataTable();
 
+                //Chequea el checkbox "Mis publicaciones" y trae las mías o las otras.
                 SqlConnection conn = DBConexion.obtenerConexion();
                 if (pCO.MisPublicaciones == false)
                 {
@@ -162,7 +163,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                     conn.Close();
                 }
 
-
+                //llena el datagrid y deja invisibles algunas columnas.
                 dataGridView1.DataSource = tabla;
                 dataGridView1.Columns["Codigo"].Visible = false;
                 dataGridView1.Columns["Id"].Visible = false;
@@ -173,24 +174,23 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 this.dtSource = tabla;
 
-                // Set the start and max records. 
+                // Setea el comienzo y registros máximos.
                 pageSize = Convert.ToInt32(txtPageSize.Text);
                 maxRec = dtSource.Rows.Count;
                 PageCount = maxRec / pageSize;
 
-                //Adjust the page number if the last page contains a partial page.
+                //Ajusta el número de página si la última contiene una página parcial.
                 if ((maxRec % pageSize) > 0)
                 {
                     PageCount += 1;
                 }
 
-                // Initial seeings
                 currentPage = 1;
                 recNo = 0;
 
                 LoadPage();
 
-
+                
                 agregarColumnas();
 
 
@@ -203,6 +203,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         }
 
+        //Agrega las columnas de editar o compra/oferta y preguntas.
         private void agregarColumnas()
         {
             if (checkBox1.Checked == false)
@@ -263,7 +264,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 return;
             }
 
-            //Check if the user clicks the "Fill Grid" button.
+            //Chequea si el usuario apreta.
             if (pageSize == 0)
             {
                 MessageBox.Show("Set the Page Size, and then click the Fill Grid button!");
@@ -320,7 +321,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 return;
             }
 
-            //Check if you are already at the last page.
+            //Se fija si ya estás en la última página.
             if (recNo == maxRec)
             {
                 MessageBox.Show("Usted está en la última página");
@@ -332,6 +333,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             agregarColumnas();
         }
 
+        //Te lleva a la selección del filtro rubro.
         private void button1_Click(object sender, EventArgs e)
         {
             Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
@@ -341,6 +343,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             codRubro = Convert.ToString(list.ResultCodigo);
         }
 
+        //Cuando apretas uno de los botones del datagrid (compra/oferta, pregunta o editar) se fija cual es y muestra la ventana correspondiente.
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo"].Value);
@@ -350,7 +353,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             if(botonCompraOferta)
             {
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btn"].ColumnIndex && checkBox1.Checked == false)
-                {//11 es la pocision del boton 
+                {// es la pocision del boton 
                     if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
                     {
                         if (tipo == "Subasta")
@@ -421,6 +424,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             
         }
 
+        //Devuelve el estado a partir del código con un stored procedure.
         private string obtenerEstadoPub(Decimal codigo)
         {
             string estado;
@@ -441,6 +445,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             return estado;
         }
+
+        //Si está chequeado "Mis publicaciones" podés filtrar por otros estados ademas de publicada.
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
@@ -458,6 +464,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
         }
 
+        //Limpia los filtros
         private void button2_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox2(this);
