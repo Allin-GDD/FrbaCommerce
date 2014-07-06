@@ -12,21 +12,21 @@ namespace FrbaCommerce.Abm_Empresa
 {
     public partial class Baja : Form
     {
-        public Baja(Int32 idSeleccionado)
+        public Baja(Decimal idSeleccionado)
         {
             InitializeComponent();
             this.empresaADarDeBaja = idSeleccionado;
             cargarDatosDelClienteSeleccionado();
         }
-        public Int32 empresaADarDeBaja;
+        public Decimal empresaADarDeBaja;
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
 
                 SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAEmpresa", conn,
-                new SqlParameter("@Id_Empresa", empresaADarDeBaja),
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAUsuario", conn,
+                new SqlParameter("@Id_Usuario", empresaADarDeBaja),
                 new SqlParameter("@Rol",2));
                 int retorno = cmd.ExecuteNonQuery();
 
@@ -61,9 +61,11 @@ namespace FrbaCommerce.Abm_Empresa
             CodPostal.Text = pEmpresa.Cod_Postal;
             Ciudad.Text = pEmpresa.Ciudad;
             FecCre.Text = Convert.ToString(pEmpresa.Fecha_Creacion);
+            txtTipoDoc.Text = pEmpresa.Tipo_DocNombre;
+            
 
 
         }
 
-       }
+      }
 }

@@ -18,7 +18,8 @@ namespace FrbaCommerce.Abm_Cliente
             
             InitializeComponent();
             this.clienteAModificar = idSeleccionado;
-            Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
+            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
+            txtDNI.Enabled = false;
             cargarDatosDelClienteSeleccionado();
 
 
@@ -27,15 +28,14 @@ namespace FrbaCommerce.Abm_Cliente
                 lblHabil.Visible = false;
                 cmbHabilitado.Visible = false;
             }
-            else { Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado, rolCliente); }
+            else { Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado); }
 
 
         }
         public Entidades.Ent_Cliente clienteAnt;
-       
-        public Int16 rolCliente = 1;
-        public TextBox DniAnt;
+        public MaskedTextBox DniAnt;
         public MaskedTextBox TelefonoAnt;
+        public Decimal clienteAModificar;
 
         private void cargarDatosDelClienteSeleccionado()
         {
@@ -54,6 +54,7 @@ namespace FrbaCommerce.Abm_Cliente
             txtMail.Text = clienteAnt.Mail;
             txtTelefono.Text = clienteAnt.Telefono;
             txtLocalidad.Text = clienteAnt.Localidad;
+            cboTipoDoc.Text = clienteAnt.Tipo_DocNom;
 
             this.DniAnt = txtDNI;
             this.TelefonoAnt = txtTelefono;
@@ -61,7 +62,7 @@ namespace FrbaCommerce.Abm_Cliente
            
         }
 
-        public Decimal clienteAModificar;
+     
 
 
         private void btmGuardar_Click(object sender, EventArgs e)
@@ -78,7 +79,7 @@ namespace FrbaCommerce.Abm_Cliente
                 inicializarCliente(cliente);
 
                 Datos.Dat_Cliente.actualizarCamposACliente(cliente, clienteAModificar);
-                Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar,rolCliente);
+                Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar);
                 Close();
 
                 
@@ -112,7 +113,7 @@ namespace FrbaCommerce.Abm_Cliente
 
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
-            cliente.Dni = Convert.ToInt32(txtDNI.Text);
+            cliente.Dni = Convert.ToString(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
             cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
             cliente.Mail = Convert.ToString(txtMail.Text);
@@ -129,8 +130,6 @@ namespace FrbaCommerce.Abm_Cliente
                 cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
             }
 
-
-
         }
 
         private void btmLimpiar_Click(object sender, EventArgs e)
@@ -138,6 +137,12 @@ namespace FrbaCommerce.Abm_Cliente
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
+        }
+
+            private void cboTipoDoc_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Utiles.Inicializar.alteraComboboxTipoDoc(cboTipoDoc, txtDNI);
+
         }
 
      

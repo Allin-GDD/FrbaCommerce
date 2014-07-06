@@ -12,13 +12,14 @@ CREATE PROCEDURE agregarNuevaEmpresa
 		@Telefono nvarchar(255),
 		@Ciudad nvarchar(255),
 		@Nombre_Contacto nvarchar(255),
-		@Tipo_doc smallint
+		@Tipo_doc smallint,
+		@IdUsuario numeric(18,0)
 
 AS
 BEGIN
 	INSERT INTO Empresa(
 	Razon_Social,
-	Cuit,
+	Nro_Documento,
 	Fecha_Creacion,
 	Mail,
 	Dom_Calle,
@@ -30,7 +31,8 @@ BEGIN
 	Telefono,
 	Ciudad,
 	Nombre_Contacto,
-	Tipo)
+	Tipo_Doc,
+	Id_Usuario)
 	VALUES(
 		@RazonSocial ,
 		@Cuit,
@@ -45,7 +47,8 @@ BEGIN
 		@Telefono,
 		@Ciudad,
 		@Nombre_Contacto,
-		@Tipo_doc
+		@Tipo_doc,
+		@IdUsuario
 	)	
 
 END

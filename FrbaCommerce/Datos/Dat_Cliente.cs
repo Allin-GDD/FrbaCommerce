@@ -10,10 +10,6 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cliente
     {
-
-
-        //ESTO ES MAS FÁCIL QUE HACERLO CON UN PROCEDURE PQ ESTOY SELECCIONANDO TODOS LOS CAMPOS, SIN FILTROS
-
         public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
         {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
@@ -63,20 +59,21 @@ namespace FrbaCommerce.Datos
             return listaDeTipos;
         }
 
-        public static List<Entidades.Ent_Dni> obtenerTodosLosDni()
+        public static List<Entidades.Ent_Doc> obtenerTodosLosDocCliente()
         {
 
-            List<Entidades.Ent_Dni> listaDeDni = new List<Entidades.Ent_Dni>();
+            List<Entidades.Ent_Doc> listaDeDni = new List<Entidades.Ent_Doc>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Dni from Clientes", conexion);
+            SqlCommand Comando = new SqlCommand("Select Nro_Documento, Tipo_Doc from Clientes", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
             while (lectura.Read())
             {
-                Entidades.Ent_Dni pDni = new Entidades.Ent_Dni();
+                Entidades.Ent_Doc pDni = new Entidades.Ent_Doc();
 
-                pDni.Dni = lectura.GetDecimal(0);
+                pDni.Dni = lectura.GetString(0);
+                pDni.tipoDni = lectura.GetInt16(1);
 
 
                 listaDeDni.Add(pDni);
@@ -128,7 +125,7 @@ namespace FrbaCommerce.Datos
                 new SqlParameter("@Apellido", pListado.Apellido),
                 new SqlParameter("@Dni", pListado.Dni),
                 new SqlParameter("@Mail", pListado.Mail),
-                new SqlParameter("@Tipo_dni", pListado.Tipo_dni));
+                new SqlParameter("@Tipo_dni", pListado.Tipo_doc));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }
@@ -136,32 +133,10 @@ namespace FrbaCommerce.Datos
                 Mensajes.Errores.NoHayConexion();
             }
 
-            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Id_Usuario"].Visible = false;
 
         }
-        public static void buscarListaDeCliente2(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
-        {
-
-            try
-            {
-                SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeCliente2", conn,
-                new SqlParameter("@Nombre", pListado.Nombre),
-                new SqlParameter("@Apellido", pListado.Apellido),
-                new SqlParameter("@Dni", pListado.Dni),
-                new SqlParameter("@Mail", pListado.Mail));
-
-                Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
-            }
-            catch (Exception)
-            {
-                Mensajes.Errores.NoHayConexion();
-            }
-
-            dataGridView1.Columns["Id"].Visible = false;
-
-        }
-
+       
         public static Entidades.Ent_Cliente buscarCliente(Decimal id)
         {
 
@@ -174,7 +149,8 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pcliente.Dni = lectura.GetDecimal(1);
+                pcliente.Tipo_DocNom = lectura.GetString(0);
+                pcliente.Dni = lectura.GetString(1);
                 pcliente.Nombre = lectura.GetString(2);
                 pcliente.Apellido = lectura.GetString(3);
                 pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
@@ -185,46 +161,19 @@ namespace FrbaCommerce.Datos
                 pcliente.Dpto = lectura.GetString(9);
                 pcliente.Cod_Postal = lectura.GetString(10);
                 pcliente.Localidad = lectura.GetString(11);
-                pcliente.Tipo_dni = lectura.GetInt16(12);
-                pcliente.Telefono = lectura.GetString(13);
+                pcliente.Telefono = lectura.GetString(12);
+              
             }
             conn.Close();
             return pcliente;
         }
-
-        public static Decimal buscarIdCliente(Decimal dni)
-        {
-            Decimal idObtenido = 0;
-
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdCliente", conn,
-            new SqlParameter("@Dni", dni));
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                idObtenido = lectura.GetDecimal(0);
-            }
-            conn.Close();
-
-            //Ver bien esto después
-            if (idObtenido != 0)
-            {
-                return (idObtenido);
-            }
-            else
-            {
-                throw new Excepciones.InexistenciaUsuario("Error al obtener Id");
-            }
-
-
-        }
-
+               
         public static void actualizarCamposACliente(Entidades.Ent_Cliente pCliente, Decimal clienteAModificar)
         {
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.ActualizarCliente", conn,
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarCliente", conn,
                 new SqlParameter("@Id", clienteAModificar),
                 new SqlParameter("@Dni", pCliente.Dni),
                 new SqlParameter("@Nombre", pCliente.Nombre),
@@ -248,9 +197,37 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
         }
 
+        public static void crearClienteUsuario(Entidades.Ent_Cliente pCliente, Decimal usuario)
+        {
+            int retorno;
+
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoClienteUsuario", conexion,
+                   new SqlParameter("@Dni", pCliente.Dni),
+                   new SqlParameter("@Nombre", pCliente.Nombre),
+                   new SqlParameter("@Apellido", pCliente.Apellido),
+                   new SqlParameter("@Fecha_Nac", pCliente.Fecha_Nac),
+                   new SqlParameter("@Mail", pCliente.Mail),
+                   new SqlParameter("@Dom_Calle", pCliente.Dom_Calle),
+                   new SqlParameter("@Nro_Calle", pCliente.Nro_Calle),
+                   new SqlParameter("@Piso", pCliente.Piso),
+                   new SqlParameter("@Depto", pCliente.Dpto),
+                   new SqlParameter("@Cod_Postal", pCliente.Cod_Postal),
+                   new SqlParameter("@Localidad", pCliente.Localidad),
+                   new SqlParameter("@Tipo_dni", pCliente.Tipo_dni),
+                   new SqlParameter("@Telefono", pCliente.Telefono),
+                   new SqlParameter("@IdUsuario", usuario));
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
 
 
+            Mensajes.Generales.validarAlta(retorno);
 
+        }
     }
 }
 

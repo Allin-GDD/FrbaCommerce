@@ -14,15 +14,14 @@ namespace FrbaCommerce.Abm_Cliente
     public partial class Alta : Form
     {
         public Decimal IdUsuario;
-        public Alta(bool isUser)
+        public Alta(Decimal IdUsuario)
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
-            this.isCliente = isUser;
+            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
+            this.IdUsuario = IdUsuario;
+            txtDNI.Enabled = false;
 
         }
-        public bool isCliente;
-        public Int32 rolDeUsuario = 1;
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
@@ -31,24 +30,19 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
-                                //Prueba todas las validaciones
+                //Prueba todas las validaciones
                 Utiles.Validaciones.evaluarPersona(pUtiles, this);
+                
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
                 
                 //Agrega el cliente a la DB
-                Datos.Dat_Cliente.AgregarCliente(cliente);
-                IdUsuario = Datos.Dat_Cliente.buscarIdCliente(cliente.Dni);
+                Datos.Dat_Cliente.crearClienteUsuario(cliente, IdUsuario);
 
-
-                if (!isCliente)
-                {
-                    int estado = 10;
-                    Datos.Dat_Usuario.CrearNuevoUsuario(cliente.Mail, Convert.ToString(txtDNI.Text), rolDeUsuario, IdUsuario, estado); //el usuario va a ser el mail y la contraseña su dni
-
+                if (IdUsuario == 0)
+                {//armo el if para que tire un mensaje de que el admin creo al cliente
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
-                 
-                }
+                    }
                    
                 Close();
 
@@ -65,6 +59,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
            
             pUtiles.DNI = txtDNI;
+            pUtiles.TipoDoc = Convert.ToInt16(cboTipoDoc.SelectedValue);
             pUtiles.Piso = txtNroPiso;
             pUtiles.NroCalle = txtNroCalle;
             pUtiles.Telefono = txtTelefono;
@@ -73,13 +68,14 @@ namespace FrbaCommerce.Abm_Cliente
             pUtiles.TelefonoAnt = null;
             pUtiles.DNIAnt = null;
             pUtiles.CUITAnt = null;
+            pUtiles.TipoDocAnt = 0;
         }
 
         private void inicializarCliente(Entidades.Ent_Cliente cliente)
         {
             cliente.Nombre = Convert.ToString(txtNombre.Text);
             cliente.Apellido = Convert.ToString(txtApellido.Text);
-            cliente.Dni = Convert.ToInt32(txtDNI.Text);
+            cliente.Dni = Convert.ToString(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
             cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
             cliente.Mail = Convert.ToString(txtMail.Text);
@@ -96,16 +92,22 @@ namespace FrbaCommerce.Abm_Cliente
                 cliente.Piso = Convert.ToInt32(txtNroPiso.Text);
             }
 
-
-
         }
 
         private void btmLimpiar_Click(object sender, EventArgs e)
         {
 
             Utiles.LimpiarTexto.LimpiarTextBox(this);
+            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
         }
+
+        private void cboTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Utiles.Inicializar.alteraComboboxTipoDoc(cboTipoDoc,txtDNI);
+
+               }
   }
 }
+

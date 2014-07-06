@@ -40,8 +40,9 @@ namespace FrbaCommerce.Mensajes
 
         public static void evaluarErrores(List<string> errores)
         {
+            errores.RemoveAll(string.IsNullOrEmpty);
             String mensajesDeError = Utiles.AyudaVarias.mensaje(errores);
-
+            
             if (errores.Count > 0)
             {
                 errores.Clear();
@@ -67,25 +68,6 @@ namespace FrbaCommerce.Mensajes
                 ii = ("El tipo del número del calle no es válido");
             }
             return ii;
-        }
-
-        public static List<String> evaluarDNI(TextBox DNI, TextBox DNIant)
-        {
-            List<String> errores = new List<string>();
-
-            if ((DNI != null) && !string.IsNullOrEmpty(DNI.Text) && Utiles.Validaciones.ValidarTipoDecimal(DNI))
-            {
-                errores.Add("El tipo del número del DNI no es válido");
-            }
-            if ((DNI != null) && (!string.IsNullOrEmpty(DNI.Text) && (DNIant == null)) || ((DNIant != null) && (DNI.Text != DNIant.Text)))
-            {
-                if (!Utiles.Validaciones.ValidarTipoDecimal(DNI) && Datos.Dat_Dni.validarDni(DNI))
-                {
-                    errores.Add("El número de documento ingresado ya pertenece a otro cliente");
-                }
-            }
-
-            return errores;
         }
 
         public static String evaluarFecha(MaskedTextBox Fecha)
@@ -114,17 +96,7 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
-        public static String evaluarCUIT(MaskedTextBox CUIT, MaskedTextBox CUITAnt)
-        {
-            String ii = null;
-
-            if ((CUIT != null) && (!string.IsNullOrEmpty(CUIT.Text) && (CUITAnt == null)) || ((CUITAnt != null) && (CUIT.Text != CUITAnt.Text)))
-            {
-                if (Datos.Dat_Cuit.validarCuit(CUIT))
-                { ii = ("El número de CUIT ingresado ya pertenece a otra empresa"); }
-            }
-            return ii;
-        }
+ 
 
         public static List<String> evaluarCodVisibilidad(TextBox codigo,TextBox codigoAnt)
         {
@@ -195,6 +167,31 @@ namespace FrbaCommerce.Mensajes
                 ii = ("El tipo de precio no es válido");
         }
             return ii;
+        }
+
+        internal static String evaluarDocumento(short tipo, MaskedTextBox Doc, MaskedTextBox DocAnt, bool isCliente)
+        {
+            String ii = null;
+            
+             {
+                if (isCliente)
+                {
+                    if (Doc == null && Datos.Dat_Dni.validarDni(Doc, tipo))
+                    {
+                        ii = ("El número de documento ingresado ya pertenece a otra Cliente");
+                    }
+                }
+                else
+                {
+                    if (Doc == null && Datos.Dat_Cuit.validarCuit(Doc, tipo))
+                    {
+                        ii = ("El número de documento ingresado ya pertenece a otra Empresa");
+                    }
+                }
+            }
+
+            return ii;
+          
         }
     }
 }

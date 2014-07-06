@@ -9,18 +9,15 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Dni
     {
-        public static bool validarDni(TextBox txtDni)
+        public static bool validarDni(MaskedTextBox txtDoc, short tipoDoc)
         {
-            Decimal pdni = Convert.ToDecimal(txtDni.Text);
+            List<Entidades.Ent_Doc> listaDnies = Datos.Dat_Cliente.obtenerTodosLosDocCliente();
 
-
-           List<Entidades.Ent_Dni> listaDnies = Datos.Dat_Cliente.obtenerTodosLosDni();
-
-            foreach (Entidades.Ent_Dni dni in listaDnies)
+            foreach (Entidades.Ent_Doc dni in listaDnies)
             {
-                if (pdni == dni.Dni)
+                if (txtDoc != null && txtDoc.Text == dni.Dni && tipoDoc == dni.tipoDni)
                 {
-                    txtDni.BackColor = Color.Coral;
+                    txtDoc.BackColor = Color.Coral;
                     return true;
                 }
             }

@@ -23,9 +23,8 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
-                Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
-                this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
-                this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
+                agregarDataGrid();
+                
             }
             catch (Exception ex)
             {
@@ -33,9 +32,22 @@ namespace FrbaCommerce.ABM_Rol
             }
         }
 
+        private void agregarDataGrid()
+        {
+            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
+            this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+            this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            Utiles.LimpiarTexto.LimpiarTextBox(this); 
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            limpiarDataGrid();
+            
+        }
+
+        private void limpiarDataGrid()
+        {
             bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1);
             if (!valor)
             {
@@ -48,30 +60,34 @@ namespace FrbaCommerce.ABM_Rol
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try{
+            try
+                {
                 Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
 
-            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
-            {
-                ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
-                this.Hide();
-                mod.ShowDialog();
-                this.Refresh();
-                Show();
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
+                {
+                    ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
+                    this.Hide();
+                    //Ver eso, pq me tira un error
+                    limpiarDataGrid();
+                    mod.ShowDialog();
+                    agregarDataGrid();
+                    Show();
+                }
+                if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
+                {
+                    ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
+                    this.Hide();
+                    limpiarDataGrid();
+                    baj.ShowDialog();
+                    agregarDataGrid();
+                    Show();
 
-            }
-            if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
+                }
+           }
+            catch
             {
-                ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
-                this.Hide();
-                baj.ShowDialog();
-                this.Refresh();
-                Show();
-
-            }
-               }
-            catch {
-                Mensajes.Errores.NoHayDatosAmodificar();
+               Mensajes.Errores.NoHayDatosAmodificar();
             }
         }
     }

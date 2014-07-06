@@ -1,6 +1,6 @@
-CREATE PROCEDURE ActualizarCliente
-@Id numeric(18,0),
-@Dni numeric(18,0),
+CREATE PROCEDURE actualizarCliente
+		@Id numeric(18,0),
+		@Dni numeric(18,0),
 		@Nombre nvarchar(255),
 		@Apellido nvarchar(255),
 		@Fecha_Nac Datetime,
@@ -16,8 +16,8 @@ CREATE PROCEDURE ActualizarCliente
 		AS 
 		BEGIN
 UPDATE Clientes
-SET Apellido = @Apellido, Nombre = @Nombre , Dni = @Dni, Fecha_Nac = @Fecha_Nac, Mail = @Mail, Dom_Calle = @Dom_Calle,
+SET Apellido = @Apellido, Nombre = @Nombre , Nro_Documento = @Dni, Fecha_Nac = @Fecha_Nac, Mail = @Mail, Dom_Calle = @Dom_Calle,
 Nro_Calle = @Nro_Calle, Piso = @Piso, Depto = @Piso, Cod_Postal = @Cod_Postal, Localidad = @Localidad,
-Tipo_dni = @Tipo_dni, Telefono = @Telefono
-WHERE Id = @Id
+Tipo_Doc = @Tipo_dni, Telefono = @Telefono
+WHERE Id_Usuario = @Id
 End

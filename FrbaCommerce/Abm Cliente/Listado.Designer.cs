@@ -38,10 +38,10 @@
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtDNI = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 195);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 161);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(669, 285);
@@ -57,7 +57,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(408, 151);
+            this.btnBuscar.Location = new System.Drawing.Point(411, 120);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(159, 23);
             this.btnBuscar.TabIndex = 14;
@@ -67,7 +67,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(117, 151);
+            this.btnLimpiar.Location = new System.Drawing.Point(107, 120);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(159, 23);
             this.btnLimpiar.TabIndex = 13;
@@ -77,26 +77,26 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cmbTipoDoc);
             this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(669, 124);
+            this.groupBox1.Size = new System.Drawing.Size(669, 102);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(490, 24);
+            this.txtMail.Location = new System.Drawing.Point(471, 24);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(156, 20);
             this.txtMail.TabIndex = 37;
@@ -104,7 +104,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(436, 27);
+            this.label5.Location = new System.Drawing.Point(426, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 36;
@@ -114,10 +114,11 @@
             // 
             this.cmbTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoDoc.FormattingEnabled = true;
-            this.cmbTipoDoc.Location = new System.Drawing.Point(478, 59);
+            this.cmbTipoDoc.Location = new System.Drawing.Point(471, 61);
             this.cmbTipoDoc.Name = "cmbTipoDoc";
             this.cmbTipoDoc.Size = new System.Drawing.Size(68, 21);
             this.cmbTipoDoc.TabIndex = 35;
+            this.cmbTipoDoc.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDoc_SelectedIndexChanged);
             // 
             // txtApellido
             // 
@@ -129,7 +130,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(353, 63);
+            this.label4.Location = new System.Drawing.Point(353, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 34;
@@ -144,21 +145,14 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Apellido";
             // 
-            // txtDNI
-            // 
-            this.txtDNI.Location = new System.Drawing.Point(143, 60);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(132, 20);
-            this.txtDNI.TabIndex = 33;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(83, 63);
+            this.label3.Location = new System.Drawing.Point(55, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(117, 13);
             this.label3.TabIndex = 32;
-            this.label3.Text = "DNI";
+            this.label3.Text = "Número de Documento";
             // 
             // txtNombre
             // 
@@ -176,11 +170,18 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Nombre";
             // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(178, 61);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(162, 20);
+            this.txtDNI.TabIndex = 38;
+            // 
             // Listado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 492);
+            this.ClientSize = new System.Drawing.Size(693, 458);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnLimpiar);
@@ -207,10 +208,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbTipoDoc;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDNI;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox txtDNI;
 
     }
 }

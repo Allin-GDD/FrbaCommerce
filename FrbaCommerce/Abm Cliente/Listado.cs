@@ -13,22 +13,10 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public Listado()
         {
-            InitializeComponent();
-            List<Entidades.Ent_TipoDeDoc> listaDeDoc = new List<Entidades.Ent_TipoDeDoc>();
-            listaDeDoc = Datos.Dat_Cliente.ObtenerTipoDoc();
-
-            Entidades.Ent_TipoDeDoc entDoc = new Entidades.Ent_TipoDeDoc();
-            entDoc.codigo = 0;
-            entDoc.tipo = "";
-
-            listaDeDoc.Insert(0, entDoc);
-
-            cmbTipoDoc.DataSource = listaDeDoc;
-            cmbTipoDoc.DisplayMember = "tipo";
-            cmbTipoDoc.ValueMember = "codigo";
-      
-            
-        }
+            InitializeComponent(); 
+            Utiles.Inicializar.comboBoxTipoDoc(cmbTipoDoc);
+            txtDNI.Enabled = false;
+         }
        
 
         private void button2_Click(object sender, EventArgs e)
@@ -41,15 +29,10 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Apellido = txtApellido.Text;
                 pCliente.Dni = txtDNI.Text;
                 pCliente.Mail = txtMail.Text;
-                pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
-                if (Convert.ToString(cmbTipoDoc.SelectedValue) == "0")
-                {
-                    Datos.Dat_Cliente.buscarListaDeCliente2(pCliente, dataGridView1);
-                }
-                else
-                {
-                    Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
-                }
+                pCliente.Tipo_doc = Convert.ToInt16(cmbTipoDoc.SelectedValue);
+
+                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+               
             }
             catch (Exception ex)
             {
@@ -61,6 +44,11 @@ namespace FrbaCommerce.Abm_Cliente
         {
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
+        }
+
+        private void cmbTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipoDoc, txtDNI);
         }
 
         

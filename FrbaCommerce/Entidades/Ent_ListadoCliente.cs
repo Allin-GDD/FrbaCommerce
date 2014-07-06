@@ -12,7 +12,7 @@ namespace FrbaCommerce.Entidades
         public String Apellido { get; set; }
         public String Mail { get; set; }
         public String Dni { get; set; }
-        public String Tipo_dni { get; set; }
+        public Int16 Tipo_doc{ get; set; }
        
     
     }

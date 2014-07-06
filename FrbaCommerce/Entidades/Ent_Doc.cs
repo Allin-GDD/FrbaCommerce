@@ -5,11 +5,12 @@ using System.Text;
 
 namespace FrbaCommerce.Entidades
 {
-    class Ent_Dni
+    class Ent_Doc
     {
        
         
-            public Decimal Dni { get; set; }
+            public String Dni { get; set; }
+            public Int16 tipoDni { get; set; }
         }
     
 }

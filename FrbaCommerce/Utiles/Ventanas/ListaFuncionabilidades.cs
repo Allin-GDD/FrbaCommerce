@@ -11,54 +11,33 @@ namespace FrbaCommerce.Utiles.Ventanas
 {
     public partial class ListaFuncionabilidades : Form
     {
-        //public Entidades.Ent_Funcionalidad ResultCodigo;
-        public String ResultShow;
-        public String Result;
+        public string Result = string.Empty;
+        public Int32 ResultCodigo;
         public ListaFuncionabilidades(Decimal IdRol)
         {
             InitializeComponent();
-            if (IdRol == 0)
-            {
-                listBox1.DataSource = Utiles.Funcionalidades.listaDeFuncionalidades();
-            }
-            else {
-                   List<Entidades.Ent_Funcionalidad> lista = Utiles.Funcionalidades.listaDeFuncionalidades();
-                   List<int> funcionalidades = Datos.Dat_Rol.buscarFuncDe(IdRol);
-                   List<Entidades.Ent_Funcionalidad> listaAAgregar = new List<Entidades.Ent_Funcionalidad>();
 
-                   foreach (Entidades.Ent_Funcionalidad listaVieja in lista)
-                   {
-                       foreach (int func in funcionalidades)
-                       {
-                           if (func == listaVieja.id)
-                          {
-                               Entidades.Ent_Funcionalidad funcNueva = new Entidades.Ent_Funcionalidad();
-                               funcNueva.id = func;
-                               funcNueva.funcionalidad = listaVieja.funcionalidad;
-                               listaAAgregar.Add(funcNueva);
-                           }
-                       }
-                   }
-                        listBox1.DataSource = listaAAgregar;
-            }
-         
-            listBox1.DisplayMember = "funcionalidad";
-            listBox1.ValueMember = "id";
-            listBox1.SetSelected(0, true);
 
-        }
+            dataGridView1.DataSource = Datos.Dat_Funcionalidad.listadoDeFuncionalidades(IdRol);
+            dataGridView1.Columns["ID"].Visible = false;
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ResultShow = listBox1.GetItemText(listBox1.SelectedItem);
-            Result = listBox1.GetItemText(listBox1.SelectedValue);
-}
+         }
 
+       
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            Result = dataGridView1.Rows[e.RowIndex].Cells["funcionalidad"].Value.ToString();
+                ResultCodigo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
+                Close();
+            }
+
+                   }
+
 
     }
-}

@@ -3,10 +3,7 @@ CREATE PROCEDURE quitarRol
 @funcionalidad int
 AS
 BEGIN
-DELETE Funcionabilidades
+DELETE Func_Rol
 WHERE Id_Rol = @Id_Rol AND
-Id_Funcionabilidad = @funcionalidad
+Id_Func = @funcionalidad
 END
-
-exec quitarRol 1,1
-Select *from Funcionabilidades

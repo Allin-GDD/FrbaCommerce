@@ -17,91 +17,88 @@ namespace FrbaCommerce.Utiles
 
 
         public static int validarDatosVisibilidad(Form ofrm)
-       {
-           {
-               int i = 0;
-               Action<Control.ControlCollection> func = null;
-               func = (controls) =>
-               {
-                   foreach (Control control in controls)
-                       if (control is TextBox)
-                       {
-                           if (string.IsNullOrEmpty(control.Text))
-                           {
-                               control.BackColor = Color.Coral;
-                               i++;
-                           }
-
-                       }
-
-                       else { func(control.Controls); }
-               };
-
-               func(ofrm.Controls);
-               return i;
-           }
-       }
-
-        public static void ValidarFuncionablidadRepetida(decimal rol, int func)
-       {
-           List<int> listaDeFunc = new List<int>();
-
-           listaDeFunc = Datos.Dat_Rol.buscarFuncDe(rol);
-
-           foreach (int funcional in listaDeFunc)
-               if (func == funcional)
-               {
-                  throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
-               }
-
-
-       }
-
-
-        public static void ValidarTipoDecimalPublicacion(Decimal stockInicial,params TextBox[] parametroTxtBox)
-
-       {
-           int i = 0;
-           int j = 0;
-           Decimal expectedDecimal;
-           Decimal num = 0;
-           foreach (TextBox parametro in parametroTxtBox)
-           {
-               if (parametro.Name == "textBox2" && parametro.Enabled)
-               {
-                   num = Convert.ToDecimal(parametro.Text);
-               }
-               if (num < stockInicial && parametro.Name == "textBox2" && parametro.Enabled == true)
-               {
-                   parametro.BackColor = Color.Coral;
-                   j++;
-               }
-               if ((!Decimal.TryParse(parametro.Text, out expectedDecimal) && parametro.Enabled == true && parametro.Name != "textBox5" && parametro.Name != "textBox1") || (string.IsNullOrEmpty(parametro.Text) && parametro.Name != "textBox1" && parametro.Enabled == true) || (string.IsNullOrEmpty(parametro.Text) && parametro.Name == "textBox1"))
-               {
-                   parametro.BackColor = Color.Coral;
-                   i++;
-               }
-               else if (parametro.BackColor == Color.Coral && j == 0)
-               {
-                   parametro.BackColor = Color.White;
-               }
-           }
-           if (j> 0)
-           {
-               throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos, el stock no puede ser menor al publicado anteriormente");
-           }
-           else if(i>0 && j == 0)
-           {
-               throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
-           }
-       }
-        public static void ValidarVisibilidadGratuita(Decimal id,string publicador)
         {
-            if (Datos.Dat_Publicacion.verificarTresGratuitas(id,publicador))
+            {
+                int i = 0;
+                Action<Control.ControlCollection> func = null;
+                func = (controls) =>
+                {
+                    foreach (Control control in controls)
+                        if (control is TextBox)
+                        {
+                            if (string.IsNullOrEmpty(control.Text))
+                            {
+                                control.BackColor = Color.Coral;
+                                i++;
+                            }
+
+                        }
+
+                        else { func(control.Controls); }
+                };
+
+                func(ofrm.Controls);
+                return i;
+            }
+        }
+
+        public static void ValidarFuncionalidadRepetida(decimal rol, int func)
+        {
+            List<Entidades.Ent_Funcionalidad> listaDeFunc = Datos.Dat_Funcionalidad.listadoDeFuncionalidades(rol) ;
+
+            foreach (Entidades.Ent_Funcionalidad funcional in listaDeFunc)
+                if (func == funcional.id)
+                {
+                    throw new Excepciones.DuplicacionDeDatos("La funcionalidad que intenta agregar ya la posee el rol");
+                }
+
+
+        }
+
+
+        public static void ValidarTipoDecimalPublicacion(Decimal stockInicial, params TextBox[] parametroTxtBox)
+        {
+            int i = 0;
+            int j = 0;
+            Decimal expectedDecimal;
+            Decimal num = 0;
+            foreach (TextBox parametro in parametroTxtBox)
+            {
+                if (parametro.Name == "textBox2" && parametro.Enabled)
+                {
+                    num = Convert.ToDecimal(parametro.Text);
+                }
+                if (num < stockInicial && parametro.Name == "textBox2" && parametro.Enabled == true)
+                {
+                    parametro.BackColor = Color.Coral;
+                    j++;
+                }
+                if ((!Decimal.TryParse(parametro.Text, out expectedDecimal) && parametro.Enabled == true && parametro.Name != "textBox5" && parametro.Name != "textBox1") || (string.IsNullOrEmpty(parametro.Text) && parametro.Name != "textBox1" && parametro.Enabled == true) || (string.IsNullOrEmpty(parametro.Text) && parametro.Name == "textBox1"))
+                {
+                    parametro.BackColor = Color.Coral;
+                    i++;
+                }
+                else if (parametro.BackColor == Color.Coral && j == 0)
+                {
+                    parametro.BackColor = Color.White;
+                }
+            }
+            if (j > 0)
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos, el stock no puede ser menor al publicado anteriormente");
+            }
+            else if (i > 0 && j == 0)
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
+            }
+        }
+        public static void ValidarVisibilidadGratuita(Decimal id, string publicador)
+        {
+            if (Datos.Dat_Publicacion.verificarTresGratuitas(id, publicador))
             {
                 throw new Excepciones.ValoresConTiposDiferentes("No puede tener más de tres publicaciones gratuitas activas a la vez.");
             }
-           
+
         }
 
 
@@ -179,7 +176,7 @@ namespace FrbaCommerce.Utiles
 
 
         }
-        public static bool ValidarTipoDecimal(TextBox txt)
+        public static bool ValidarTipoDecimal(Control txt)
         {
             Decimal expectedDecimal;
             if (!Decimal.TryParse(txt.Text, out expectedDecimal))
@@ -195,15 +192,41 @@ namespace FrbaCommerce.Utiles
         {
             List<String> errores = new List<string>();
             Utiles.LimpiarTexto.BlanquearControls(ofrm);
-            if (validarDatosMask(ofrm) + validarDatosText(ofrm) > 0)
+            if ((validarDatosMask(ofrm) + validarDatosText(ofrm) + validarDatosCombo(ofrm)) > 0)
             {
                 errores.Add("Los datos marcados son obligatorios");
             }
             return errores;
         }
 
-        public static void validarDatosObligatorios(Form ofrm) {
-            if (datosObligatorios(ofrm).Count > 0) {
+        private static int validarDatosCombo(Form ofrm)
+        {
+            int i = 0;
+            Action<Control.ControlCollection> func = null;
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is ComboBox)
+                    {
+                        if ((control as ComboBox).Text == "")
+                        {
+                            control.BackColor = Color.Coral;
+                            i++;
+                        }
+
+                    }
+
+                    else { func(control.Controls); }
+            };
+
+            func(ofrm.Controls);
+            return i;
+        }
+
+        public static void validarDatosObligatorios(Form ofrm)
+        {
+            if (datosObligatorios(ofrm).Count > 0)
+            {
                 throw new Excepciones.NulidadDeCamposACompletar("Los datos marcados son obligatorios");
             };
         }
@@ -215,7 +238,6 @@ namespace FrbaCommerce.Utiles
             List<String> errores = datosObligatorios(ofrm);
             //se fija si el tipo es correcto
             if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
-
             if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.NroCalle));
 
             //Se fija si la fecha esta dentro del rango     
@@ -223,19 +245,15 @@ namespace FrbaCommerce.Utiles
 
             //se fija si no esta repetido
             if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));
-
-            if ((Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt) != null)) errores.Add(Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt));
-
-            //se fija si no esta repetido y si el DNI es de tipo decimal
-            if ((Mensajes.Generales.evaluarDNI(txtUtil.DNI, txtUtil.DNIAnt).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarDNI(txtUtil.DNI, txtUtil.DNIAnt));
-
-
+            if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt, true) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt, true));
+            if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.CUIT, txtUtil.CUITAnt,false) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.CUITAnt, txtUtil.CUITAnt,false));
+            
 
 
             Mensajes.Generales.evaluarErrores(errores);
 
 
-           
+
 
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,19 +265,30 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.InexistenciaUsuario("Usuario no válido");
             }
         }
-        public static void controlDeUsuario(int retorno) {
-            if (retorno != 0) {
+        public static void controlDeUsuario(int retorno)
+        {
+            if (retorno != 0)
+            {
                 throw new Excepciones.InexistenciaUsuario("El usuario que está ingresando pertenece a otro usuario");
             }
+        }
+
+        public static String validarUnSoloTxt(TextBox txt) {
+
+            String ii = null;
+
+            if (string.IsNullOrEmpty(txt.Text))
+            {
+                txt.BackColor = Color.Coral;
+                ii = "Los datos seleccionados son obligatorios";
+                
+            }
+            return ii;
         }
         public static void evaluarRol(TextBox txtNombre, Form ofrm)
         {
             List<String> errores = datosObligatorios(ofrm);
 
-
-            if (String.IsNullOrEmpty(txtNombre.Text))
-            {
-                errores.Add("Los datos marcados son obligatorios");
 
             if (Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text))
             {
@@ -269,7 +298,7 @@ namespace FrbaCommerce.Utiles
 
             Mensajes.Generales.evaluarErrores(errores);
 
-        }
+
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -278,19 +307,19 @@ namespace FrbaCommerce.Utiles
         {
             List<String> errores = datosObligatorios(ofrm);
 
-            if ((Mensajes.Generales.evaluarCodVisibilidad(util.Codigo,codigoAnt).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarCodVisibilidad(util.Codigo,codigoAnt));
+            if ((Mensajes.Generales.evaluarCodVisibilidad(util.Codigo, codigoAnt).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarCodVisibilidad(util.Codigo, codigoAnt));
 
             if ((Mensajes.Generales.evaluarPorcentajeVisib(util.Porcentaje).Count > 0)) errores.AddRange(Mensajes.Generales.evaluarPorcentajeVisib(util.Porcentaje));
 
             if ((Mensajes.Generales.evaluarVencimientoVisib(util.Vencimiento) != null)) errores.Add(Mensajes.Generales.evaluarVencimientoVisib(util.Vencimiento));
 
             if ((Mensajes.Generales.evaluarDescripVisib(util.Descripcion, descripcionAnt) != null)) errores.Add(Mensajes.Generales.evaluarDescripVisib(util.Descripcion, descripcionAnt));
-            
-            if((Mensajes.Generales.evaluarPrecioVisib(util.Precio) != null)) errores.Add(Mensajes.Generales.evaluarPrecioVisib(util.Precio));
+
+            if ((Mensajes.Generales.evaluarPrecioVisib(util.Precio) != null)) errores.Add(Mensajes.Generales.evaluarPrecioVisib(util.Precio));
 
             Mensajes.Generales.evaluarErrores(errores);
-            }
-    
+        }
+
         public static bool ValidarTipoDouble(TextBox txt)
         {
             Double expectedDouble;
@@ -337,14 +366,14 @@ namespace FrbaCommerce.Utiles
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
 
-                if (lectura2!= null)
+                if (lectura2 != null)
                 {
-                     while (lectura2.Read())
-                  {
-                 precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
+                    while (lectura2.Read())
+                    {
+                        precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
 
 
-                 }
+                    }
                 }
                 if (precioOfertado <= precioMayorOferta)
                 {
@@ -359,14 +388,14 @@ namespace FrbaCommerce.Utiles
         public static void verificarMismoUsuario(decimal codigo, decimal id)
         {
             decimal idusuario = 0;
-            
+
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
 
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdUsuario", conexion,
                    new SqlParameter("@Cod_Pub", codigo));
                 SqlDataReader lectura = cmd.ExecuteReader();
-                string publicador ;
+                string publicador;
                 publicador = "E";
                 while (lectura.Read())
                 {
@@ -378,12 +407,23 @@ namespace FrbaCommerce.Utiles
 
                 if (id == idusuario && publicador == "C")
                 {
-                     throw new Excepciones.DuplicacionDeDatos("No se puede realizar una oferta a una publicacion propia");
+                    throw new Excepciones.DuplicacionDeDatos("No se puede realizar una oferta a una publicacion propia");
 
                 }
                 conexion.Close();
             }
 
+        }
+
+
+
+        internal static string evaluarCheck(CheckBox chk, TextBox txt)
+        {
+            String ii = null;
+            if (chk.Checked) {
+                ii =  Utiles.Validaciones.validarUnSoloTxt(txt);
+            }
+            return ii;
         }
     }
 }

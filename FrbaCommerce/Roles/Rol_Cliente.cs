@@ -30,7 +30,7 @@ namespace FrbaCommerce.Roles
         private void Buscar_Click(object sender, EventArgs e)
         {
 
-            short estado = Datos.Dat_Usuario.obtenerEstado(idcliente, 1);
+            short estado = Datos.Dat_Usuario.obtenerEstado(idcliente);
             Datos.Dat_Usuario.validarEstado(estado);
 
             Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,rol);

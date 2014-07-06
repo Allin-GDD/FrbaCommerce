@@ -9,7 +9,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Empresa
     {
-        public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
+      /*  public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
         {
             List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
 
@@ -31,77 +31,30 @@ namespace FrbaCommerce.Datos
 
 
 
-        }
+        }*/
 
-        public static List<Entidades.Ent_Cuit> obtenerTodosLosCuit()
+        public static List<Entidades.Ent_Doc> obtenerTodosLosCuit()
         {
 
-            List<Entidades.Ent_Cuit> listaDeCuit = new List<Entidades.Ent_Cuit>();
+            List<Entidades.Ent_Doc> listaDeCuit = new List<Entidades.Ent_Doc>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Cuit from Empresa", conexion);
+            SqlCommand Comando = new SqlCommand("Select Nro_Documento, Tipo_Doc from Empresa", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
             while (lectura.Read())
             {
-                Entidades.Ent_Cuit pCUIT = new Entidades.Ent_Cuit();
+                Entidades.Ent_Doc doc = new Entidades.Ent_Doc();
 
-                pCUIT.CUIT = lectura.GetString(0);
+                doc.Dni = lectura.GetString(0);
+                doc.tipoDni = lectura.GetInt16(1);
 
 
-                listaDeCuit.Add(pCUIT);
+                listaDeCuit.Add(doc);
             }
 
 
             return listaDeCuit;
-        }
-
-        public static void AgregarEmpresa(Entidades.Ent_Empresa pEmpresa)
-        {
-            int retorno;
-            using (SqlConnection conexion = DBConexion.obtenerConexion())
-            {
-
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaEmpresa", conexion,
-                   new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
-                   new SqlParameter("@Cuit", pEmpresa.CUIT),
-                   new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
-                   new SqlParameter("@Mail", pEmpresa.Mail),        
-                   new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
-                   new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
-                   new SqlParameter("@Piso", pEmpresa.Piso),
-                   new SqlParameter("@Depto", pEmpresa.Dpto),
-                   new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
-                   new SqlParameter("@Localidad", pEmpresa.Localidad),
-                   new SqlParameter("@Telefono", pEmpresa.Telefono),
-                   new SqlParameter("@Ciudad", pEmpresa.Ciudad),
-                   new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-                   new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
-
-                retorno = cmd.ExecuteNonQuery();
-            }
-            Mensajes.Generales.validarAlta(retorno);
-        }
-
-
-
-        public static Decimal buscarIdEmpresa(string pw)
-        {
-            Decimal idObtenido = 0;
-
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdEmpresa", conn,
-            new SqlParameter("@Cuit", pw));
-
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                idObtenido = lectura.GetDecimal(0);
-            }
-            conn.Close();
-            return (idObtenido);
-         
-          
         }
 
         public static void buscarListaDeEmpresa(Entidades.Ent_ListadoEmpresa pEmpresa, DataGridView dataGridView1)
@@ -112,7 +65,8 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
                 new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
                 new SqlParameter("@CUIT", pEmpresa.CUIT),
-                new SqlParameter("@Mail", pEmpresa.Mail));
+                new SqlParameter("@Mail", pEmpresa.Mail),
+                new SqlParameter("@TipoDoc", pEmpresa.TipoDoc));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }
@@ -122,9 +76,8 @@ namespace FrbaCommerce.Datos
             }
 
 
-            dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Tipo"].Visible = false;
-        }
+            dataGridView1.Columns["Id_Usuario"].Visible = false;
+            }
 
         public static Entidades.Ent_Empresa buscarEmpresa(Decimal id)
         {
@@ -137,19 +90,20 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pEmpresa.RazonSocial = lectura.GetString(1);
-                pEmpresa.CUIT = lectura.GetString(2);
-                pEmpresa.Fecha_Creacion = Convert.ToString(lectura.GetDateTime(3));
-                pEmpresa.Mail = lectura.GetString(4);
-                pEmpresa.Dom_Calle = lectura.GetString(5);
-                pEmpresa.Nro_Calle = lectura.GetDecimal(6);
-                pEmpresa.Piso = lectura.GetDecimal(7);
-                pEmpresa.Dpto = lectura.GetString(8);
-                pEmpresa.Cod_Postal = lectura.GetString(9);
-                pEmpresa.Localidad = lectura.GetString(10);
-                pEmpresa.Telefono = lectura.GetString(11);
-                pEmpresa.Ciudad = lectura.GetString(12);
-                pEmpresa.NombreContacto = lectura.GetString(13);
+                pEmpresa.RazonSocial = lectura.GetString(0);
+                pEmpresa.CUIT = lectura.GetString(1);
+                pEmpresa.Fecha_Creacion = Convert.ToString(lectura.GetDateTime(2));
+                pEmpresa.Mail = lectura.GetString(3);
+                pEmpresa.Dom_Calle = lectura.GetString(4);
+                pEmpresa.Nro_Calle = lectura.GetDecimal(5);
+                pEmpresa.Piso = lectura.GetDecimal(6);
+                pEmpresa.Dpto = lectura.GetString(7);
+                pEmpresa.Cod_Postal = lectura.GetString(8);
+                pEmpresa.Localidad = lectura.GetString(9);
+                pEmpresa.Telefono = lectura.GetString(10);
+                pEmpresa.Ciudad = lectura.GetString(11);
+                pEmpresa.NombreContacto = lectura.GetString(12);
+                pEmpresa.Tipo_DocNombre = lectura.GetString(13);
             }
             conn.Close();
             }
@@ -191,5 +145,34 @@ namespace FrbaCommerce.Datos
             catch (Exception) {
                      Mensajes.Errores.NoHayConexion(); }
                     }
+
+        internal static void crearEmpresaUsuario(FrbaCommerce.Entidades.Ent_Empresa pEmpresa, decimal IdUsuario)
+        {
+             int retorno;
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaEmpresaUsuario", conexion,
+                   new SqlParameter("@RazonSocial", pEmpresa.RazonSocial),
+                   new SqlParameter("@Cuit", pEmpresa.CUIT),
+                   new SqlParameter("@Fecha_Creacion", pEmpresa.Fecha_Creacion),
+                   new SqlParameter("@Mail", pEmpresa.Mail),        
+                   new SqlParameter("@Dom_Calle", pEmpresa.Dom_Calle),
+                   new SqlParameter("@Nro_Calle", pEmpresa.Nro_Calle),
+                   new SqlParameter("@Piso", pEmpresa.Piso),
+                   new SqlParameter("@Depto", pEmpresa.Dpto),
+                   new SqlParameter("@Cod_Postal", pEmpresa.Cod_Postal),
+                   new SqlParameter("@Localidad", pEmpresa.Localidad),
+                   new SqlParameter("@Telefono", pEmpresa.Telefono),
+                   new SqlParameter("@Ciudad", pEmpresa.Ciudad),
+                   new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
+                   new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc),
+                   new SqlParameter("@IdUsuario", IdUsuario));
+
+                retorno = cmd.ExecuteNonQuery();
+            }
+            Mensajes.Generales.validarAlta(retorno);
+        }
+        }
     }
-}
+

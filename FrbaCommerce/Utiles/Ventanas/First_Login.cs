@@ -26,7 +26,7 @@ namespace FrbaCommerce.Utiles.Ventanas
         private void button1_Click(object sender, EventArgs e)
         {
             Datos.Dat_Usuario.actualizarContraseña(usuario2.Usuario, contraseña.Text);
-            Datos.Dat_Usuario.ActualizarEstadoUsuario(1, usuario2.IdUsuario, usuario2.Rol);
+            Datos.Dat_Usuario.ActualizarEstadoUsuario(1, usuario2.IdUsuario);
 
             Mensajes.Exitos.ExitosAlActualizarLosDatos();
            

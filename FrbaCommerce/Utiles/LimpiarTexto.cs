@@ -76,7 +76,7 @@ namespace FrbaCommerce.Utiles
             func = (controls) =>
             {
                 foreach (Control control in controls)
-                    if ((control is TextBox || control is MaskedTextBox) && control.BackColor == Color.Coral)
+                    if ((control is TextBox || control is MaskedTextBox || control is ComboBox) && control.BackColor == Color.Coral)
                     {
                         control.BackColor = Color.White;
                         control.Font = new Font(control.Font, FontStyle.Regular);

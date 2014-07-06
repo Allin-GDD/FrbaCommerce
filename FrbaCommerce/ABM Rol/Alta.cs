@@ -21,10 +21,9 @@ namespace FrbaCommerce.ABM_Rol
             try
             {
 
-                Utiles.Validaciones.evaluarRol(txtNombre, this);
-                Datos.Dat_Rol.agregarRol(txtNombre.Text);
-                Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
-                Datos.Dat_Rol.agregarFuncionabilidad(rol, idFuncionabilidad);
+                Utiles.Validaciones.evaluarRol(txtNombre, this); //Verifica si lo puso bien y si ya no existe el rol
+                Datos.Dat_Rol.agregarRolConFunc(txtNombre.Text, idFuncionabilidad); //agregar el rol y la func que elija
+              
                 Close();
             }
             catch (Exception ex)
@@ -44,8 +43,8 @@ namespace FrbaCommerce.ABM_Rol
         {
             Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades(0);
             list.ShowDialog();
-            txtFunc.Text = list.ResultShow;
-            idFuncionabilidad = Convert.ToInt32(list.Result);
+            txtFunc.Text = list.Result;
+            idFuncionabilidad = list.ResultCodigo;
            
         }
 

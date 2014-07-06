@@ -17,8 +17,8 @@ CREATE PROCEDURE actualizarEmpresa
 AS
 BEGIN
 UPDATE Empresa 
-SET Razon_Social = @RazonSocial, Tipo = @Tipo_doc, Nombre_Contacto = @Nombre_Contacto, Ciudad = @Ciudad, Piso = @Piso, 
+SET Razon_Social = @RazonSocial, Tipo_Doc = @Tipo_doc, Nombre_Contacto = @Nombre_Contacto, Ciudad = @Ciudad, Piso = @Piso, 
 Localidad = @Localidad, Cod_Postal = @Cod_Postal, Depto = @Depto, Nro_Calle = @Nro_Calle, Dom_Calle = @Dom_Calle, 
-Mail = @Mail, Fecha_Creacion = @Fecha_Creacion, Cuit = @Cuit
-WHERE Id = @Id
+Mail = @Mail, Fecha_Creacion = @Fecha_Creacion, Nro_Documento = @Cuit , Telefono = @Telefono
+WHERE Id_Usuario = @Id
 END

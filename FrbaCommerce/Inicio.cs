@@ -50,6 +50,18 @@ namespace FrbaCommerce
             Close();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Abm_Cliente.Alta al = new FrbaCommerce.Abm_Cliente.Alta(0);
+            al.Show();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Abm_Cliente.Listado_de_selección emp = new FrbaCommerce.Abm_Cliente.Listado_de_selección();
+            emp.Show();
+        }
+
     }
 }
 

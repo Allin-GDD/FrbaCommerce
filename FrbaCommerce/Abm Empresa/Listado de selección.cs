@@ -14,6 +14,8 @@ namespace FrbaCommerce.Abm_Empresa
         public Listado_de_selección()
         {
             InitializeComponent();
+            Utiles.Inicializar.comboBoxTipoDoc(cmbTipo_Doc);
+            txtNroDoc.Enabled = false;
             botonModificar = false;
             botonDelete = false;
         }
@@ -24,9 +26,11 @@ namespace FrbaCommerce.Abm_Empresa
 
             Entidades.Ent_ListadoEmpresa pEmpresa = new Entidades.Ent_ListadoEmpresa();
             try{
-            pEmpresa.CUIT = txtCUIT.Text;
+            pEmpresa.CUIT = txtNroDoc.Text;
             pEmpresa.Mail = txtMail.Text;
             pEmpresa.Razon_Social = txtRazonSocial.Text;
+            pEmpresa.TipoDoc = Convert.ToInt16(cmbTipo_Doc.SelectedValue);
+            
 
             Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
            
@@ -56,11 +60,11 @@ namespace FrbaCommerce.Abm_Empresa
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try{
-            Int32 idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value);
+            Decimal idUsuario = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id_Usuario"].Value); //tiene que ser el de usuario
                         
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {//14 es la pocision del boton modificar
-                Abm_Empresa.Modificación mod = new Abm_Empresa.Modificación(idSeleccionado,false);
+                Abm_Empresa.Modificación mod = new Abm_Empresa.Modificación(idUsuario, false);
                 this.Hide();
                 mod.ShowDialog();
                 this.Refresh();
@@ -69,7 +73,7 @@ namespace FrbaCommerce.Abm_Empresa
             }
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
-                Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idSeleccionado);
+                Abm_Empresa.Baja baj = new Abm_Empresa.Baja(idUsuario);
                 this.Hide();
                 baj.ShowDialog();
                 this.Refresh();
@@ -83,6 +87,9 @@ namespace FrbaCommerce.Abm_Empresa
             }
         }
 
-      
+        private void cmbTipo_Doc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipo_Doc, txtNroDoc);
+        } 
     }
 }

@@ -49,26 +49,12 @@ namespace FrbaCommerce.Datos
             return false;
         }
 
-        public static void agregarRol(string nuevoRol)
-        {
-            int retorno;
-            using (SqlConnection conn = DBConexion.obtenerConexion())
-            {
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoRol", conn,
-                new SqlParameter("@Rol_Nombre", nuevoRol));
-
-                retorno = cmd.ExecuteNonQuery();
-                conn.Close();
-            }
-
-            Mensajes.Generales.validarAlta(retorno);
-        }
-
-        public static void agregarFuncionabilidad(Decimal rol, int func)
+  
+        public static void agregarFuncionalidad(Decimal rol, int func)
         {
             int retorno;
 
-            Utiles.Validaciones.ValidarFuncionablidadRepetida(rol, func);
+            Utiles.Validaciones.ValidarFuncionalidadRepetida(rol, func);
 
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
@@ -78,8 +64,8 @@ namespace FrbaCommerce.Datos
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            //Mensajes.Generales.validarAlta(retorno);
-        }
+            Mensajes.Generales.validarAlta(retorno);
+           }
 
         public static Decimal obtenerIdRol(string nombre)
         {
@@ -100,21 +86,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static List<int> buscarFuncDe(decimal rol)
-        {
-            List<int> listaDeFuncionabilidades = new List<int>();
-
-            SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadoDeFuncionabilidades", conexion,
-           new SqlParameter("@Rol", rol));
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                listaDeFuncionabilidades.Add(lectura.GetInt16(0));
-            }
-            return listaDeFuncionabilidades;
-
-        }
+ 
 
         public static void filtarListaDeRoles(string rol, DataGridView dataGridView1)
         {
@@ -195,6 +167,37 @@ namespace FrbaCommerce.Datos
                 estado = lectura.GetInt16(0);
             }
             return estado;
+        }
+
+        internal static void agregarRolConFunc(string nuevoRol, int idFuncionabilidad)
+        {
+            int retorno;
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoRol", conn,
+                new SqlParameter("@Rol_Nombre", nuevoRol),
+                new SqlParameter("@Id_Func", idFuncionabilidad));
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+
+            Mensajes.Generales.validarAlta(retorno);
+        }
+
+        internal static void reemplazarNombre(Decimal idRol, string nombreRolNuevo)
+        {
+            int retorno;
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarNombreRol", conn,
+                new SqlParameter("@Id_Rol", idRol),
+                new SqlParameter("@Nombre_New", nombreRolNuevo));
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            Mensajes.Generales.validarAlta(retorno);
         }
     }
 }

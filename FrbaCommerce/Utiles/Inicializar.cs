@@ -10,9 +10,19 @@ namespace FrbaCommerce.Utiles
     class Inicializar
     {
         //Inicializa los combobox con los valores necesarios
-        public static void comboBoxTipoDNI(ComboBox cmbTipoDoc)
+        public static void comboBoxTipoDoc(ComboBox cmbTipoDoc)
         {
-            cmbTipoDoc.DataSource = Datos.Dat_Cliente.ObtenerTipoDoc();
+
+            List<Entidades.Ent_TipoDeDoc> listaDeDoc = new List<Entidades.Ent_TipoDeDoc>();
+            listaDeDoc = Datos.Dat_Cliente.ObtenerTipoDoc();
+
+            Entidades.Ent_TipoDeDoc entDoc = new Entidades.Ent_TipoDeDoc();
+            entDoc.codigo = 0;
+            entDoc.tipo = "";
+
+            listaDeDoc.Insert(0, entDoc);
+
+            cmbTipoDoc.DataSource = listaDeDoc;
             cmbTipoDoc.DisplayMember = "tipo";
             cmbTipoDoc.ValueMember = "codigo";
 
@@ -70,7 +80,7 @@ namespace FrbaCommerce.Utiles
             cmbHabilitado.ValueMember = "estado";
         }
         
-        public static void comboBoxHabilitado(ComboBox cmbHabilitado, Decimal id, Int16 rol)
+        public static void comboBoxHabilitado(ComboBox cmbHabilitado, Decimal id)
         {
             List<Entidades.Ent_Habilitado> lista = new List<Entidades.Ent_Habilitado>();
 
@@ -81,7 +91,7 @@ namespace FrbaCommerce.Utiles
             valorNo.estado = 0;
             valorNo.valor = "No";
 
-            Int16 i = Datos.Dat_Usuario.obtenerEstado(id, rol);
+            Int16 i = Datos.Dat_Usuario.obtenerEstado(id);
             if (i == 0)
             {
                 lista.Add(valorNo);
@@ -226,7 +236,32 @@ namespace FrbaCommerce.Utiles
             return trimestre;
         }
 
-        
+
+
+        internal static void alteraComboboxTipoDoc(ComboBox cboTipoDoc, MaskedTextBox txtDNI)
+        {
+            if (cboTipoDoc.Text == "DNI" || cboTipoDoc.Text == "LC" || cboTipoDoc.Text == "LE")
+            {
+                txtDNI.Enabled = true;
+                txtDNI.Mask = "########";
+            }
+            if (cboTipoDoc.Text == "CUIT" || cboTipoDoc.Text == "CUIL")
+            {
+                txtDNI.Enabled = true;
+                txtDNI.Mask = "##-########-##";
+            }
+
+            if (cboTipoDoc.Text == "PAS")
+            {
+                txtDNI.Enabled = true;
+                txtDNI.Mask = "LLL-######";
+            }
+            if (cboTipoDoc.Text == "")
+            {
+                txtDNI.Enabled = false;
+                txtDNI.Mask = "";
+            }
+        }
     }
 
 }

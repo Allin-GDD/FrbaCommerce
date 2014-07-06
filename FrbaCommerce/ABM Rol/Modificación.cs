@@ -15,44 +15,47 @@ namespace FrbaCommerce.ABM_Rol
         {
             InitializeComponent();
             Utiles.Inicializar.comboBoxHabilitadoRol(cmbHabilitado,idSeleccionado);
-            txtNombre.Text = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
             this.nombreRolAnt = Datos.Dat_Rol.obtenerNombreIdRol(idSeleccionado);
+            txtNombre.Text = this.nombreRolAnt;
             this.IdRol = idSeleccionado;
            
         }
         private String nombreRolAnt;
         private Decimal IdRol;
-        private Int32 idAAgregar;
-        private Int32 idASacar;
+        private Int32 func_A_Agregar;
+        private Int32 func_A_ASacar;
 
             private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                Decimal rol = verificarSiElRolYaExiste();
+                //CAMBIA EL NOMBRE Y DEVUEVE EL ROL QUE TIENE
+                Utiles.LimpiarTexto.BlanquearControls(this);
+                List<String> errores = new List<string>();
+                  if (nombreRolAnt != txtNombre.Text)
+                {
+                   errores.Add(Utiles.Validaciones.validarUnSoloTxt(txtNombre));
+                    Datos.Dat_Rol.reemplazarNombre(IdRol, txtNombre.Text);
+                }
 
-                Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, rol, idAAgregar);
-                Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, rol, idASacar);
+                  errores.Add(Utiles.Validaciones.evaluarCheck(chkAgregar, txtAgregar));
+                  errores.Add(Utiles.Validaciones.evaluarCheck(chkQuitar, txtQuitar));
+                  Mensajes.Generales.evaluarErrores(errores);
 
-                Datos.Dat_Rol.actualizarEstadoRol(Convert.ToInt32(cmbHabilitado.SelectedValue),rol);
+                //CHEQUEA SI TIENE QUE AGREGAR O SACAR FUNCIONALIDAD
+                Datos.Dat_Funcionalidad.chequeoDeAddFuncionalidad(chkAgregar, IdRol,func_A_Agregar);
+                Datos.Dat_Funcionalidad.chequeoRemoveFuncioalidad(chkQuitar, IdRol, func_A_ASacar);
+
+
+                //CAMBIA EL ESTADO DE ROL (HABILITADO O DESHABILITADO)
+                Datos.Dat_Rol.actualizarEstadoRol(Convert.ToInt32(cmbHabilitado.SelectedValue), IdRol);
                 this.Close();
                 
-            }
+           }
             catch (Exception ex) {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-            private Decimal verificarSiElRolYaExiste()
-            {
-                if (nombreRolAnt != txtNombre.Text)
-                {
-                    Utiles.Validaciones.evaluarRol(txtNombre, this);
-                    Datos.Dat_Rol.agregarRol(txtNombre.Text);
-                }
-                Decimal rol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
-                return rol;
-            }
 
             private void btnLimpiar_Click(object sender, EventArgs e)
             {
@@ -64,16 +67,16 @@ namespace FrbaCommerce.ABM_Rol
             {
                 Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades(0);
                 list.ShowDialog();
-                txtAgregar.Text = list.ResultShow;
-                if (!string.IsNullOrEmpty(list.Result))  idAAgregar = Convert.ToInt32(list.Result);
+                txtAgregar.Text = list.Result;
+                func_A_Agregar = list.ResultCodigo;
             }
 
             private void btnQuitar_Click(object sender, EventArgs e)
             {
                 Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades(IdRol);
                 list.ShowDialog();
-                txtQuitar.Text = list.ResultShow;
-                if(!string.IsNullOrEmpty(list.Result)) idASacar = Convert.ToInt32(list.Result);
+                txtQuitar.Text = list.Result;
+                func_A_ASacar = list.ResultCodigo;
             }
 
            

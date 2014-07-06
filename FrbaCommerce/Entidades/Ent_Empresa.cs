@@ -21,6 +21,7 @@ namespace FrbaCommerce.Entidades
         public String Ciudad { get; set; }
         public String Fecha_Creacion { get; set; }
         public Int16 Tipo_Doc { get; set; }
+        public String Tipo_DocNombre { get; set; }
        
        
     
@@ -28,7 +29,7 @@ namespace FrbaCommerce.Entidades
     public Ent_Empresa(String pNombreContacto, String pRazonSocial, String pCUIT, 
         String pMail, String pTelefono, String pDom_Calle, Decimal pNro_Calle,
         Decimal pPiso, String pDpto,
-        String pLocalidad, String pCod_Postal, String pCiudad, String pFecha_Creacion, Int16 pTipo_Doc)
+        String pLocalidad, String pCod_Postal, String pCiudad, String pFecha_Creacion, Int16 pTipo_Doc, String pTipo_DocNombre)
     {
 
 
@@ -45,7 +46,7 @@ namespace FrbaCommerce.Entidades
             this.Ciudad = pCiudad;
             this.Fecha_Creacion = pFecha_Creacion;
             this.Tipo_Doc = pTipo_Doc;
-
+            this.Tipo_DocNombre = pTipo_DocNombre;
     }
 }
 }

@@ -29,7 +29,7 @@ namespace FrbaCommerce.Mensajes
 
         public static void NoHayConexion()
         {
-            MessageBox.Show("No se puedo obtener conexión con el servidor", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("No se pudo obtener conexión con el servidor", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
 

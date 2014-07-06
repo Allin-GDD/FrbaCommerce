@@ -13,13 +13,14 @@ namespace FrbaCommerce.Abm_Empresa
     public partial class Alta : Form
     {
         public Decimal IdUsuario;
-        public Alta(bool isUsuario)
+        public Alta(decimal IdUsuario)
         {
             InitializeComponent();
-            this.isEmprensa = isUsuario;
+            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
+            CUIT.Enabled = false;
+            this.IdUsuario = IdUsuario;
         }
-        public bool isEmprensa;
-        public Int32 rolDeUsuario = 2;
+         public Int32 rolDeUsuario = 2;
     
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -37,18 +38,12 @@ namespace FrbaCommerce.Abm_Empresa
                 inicializarEmpresa(empresa);
 
                 //Agrega el cliente a la DB
-                Datos.Dat_Empresa.AgregarEmpresa(empresa);
-                IdUsuario = Datos.Dat_Empresa.buscarIdEmpresa(empresa.CUIT);
-
-                if (!isEmprensa)
-                {
-                    int estado = 10;
-                    Datos.Dat_Usuario.CrearNuevoUsuario(empresa.Mail, empresa.CUIT, rolDeUsuario, IdUsuario, estado);
-                    //el usuario va a ser el mail y la contraseña su cuit
+                Datos.Dat_Empresa.crearEmpresaUsuario(empresa, IdUsuario);
 
 
+                if (IdUsuario == 0)
+                {//armo el if para que tire un mensaje de que el admin creo al cliente
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
-                 
                 }
                 this.Close();
 
@@ -100,7 +95,14 @@ namespace FrbaCommerce.Abm_Empresa
              Utiles.LimpiarTexto.LimpiarTextBox(this);
              Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
              Utiles.LimpiarTexto.BlanquearControls(this);
+             Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
 
          }
-    }
+
+       private void cboTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+      {
+          Utiles.Inicializar.alteraComboboxTipoDoc(cboTipoDoc, CUIT);
+      }
+
+         }
 }

@@ -13,20 +13,9 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public Listado_de_selección()
         {
-            InitializeComponent();
-
-            List<Entidades.Ent_TipoDeDoc> listaDeDoc = new List<Entidades.Ent_TipoDeDoc>();
-            listaDeDoc = Datos.Dat_Cliente.ObtenerTipoDoc();
-
-            Entidades.Ent_TipoDeDoc entDoc = new Entidades.Ent_TipoDeDoc();
-            entDoc.codigo = 0;
-            entDoc.tipo = "";
-
-            listaDeDoc.Insert(0, entDoc);
-
-            cmbTipoDoc.DataSource = listaDeDoc;
-            cmbTipoDoc.DisplayMember = "tipo";
-            cmbTipoDoc.ValueMember = "codigo";
+            InitializeComponent(); 
+            Utiles.Inicializar.comboBoxTipoDoc(cmbTipoDoc);
+            txtDNI.Enabled = false;
 
             botonModificar = false;
             botonDelete = false;
@@ -45,16 +34,10 @@ namespace FrbaCommerce.Abm_Cliente
                 pCliente.Apellido = txtApellido.Text;
                 pCliente.Dni = txtDNI.Text;
                 pCliente.Mail = txtMail.Text;
-                pCliente.Tipo_dni = Convert.ToString(cmbTipoDoc.SelectedValue);
+                pCliente.Tipo_doc = Convert.ToInt16(cmbTipoDoc.SelectedValue);
 
-                if (Convert.ToString(cmbTipoDoc.SelectedValue) == "0")
-                {
-                    Datos.Dat_Cliente.buscarListaDeCliente2(pCliente, dataGridView1);
-                }
-                else
-                {
-                    Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
-                }
+                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+                
                 //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
                 this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
                 this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
@@ -84,7 +67,7 @@ namespace FrbaCommerce.Abm_Cliente
         public void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            try{ 
-            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
+            Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id_Usuario"].Value);
 
 
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
@@ -109,10 +92,16 @@ namespace FrbaCommerce.Abm_Cliente
                 
             }
         }
-              catch {
+              catch(Exception)
+           {
                 Mensajes.Errores.NoHayDatosAmodificar();
             }
 
+        }
+
+        private void cmbTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipoDoc, txtDNI);
         }
 
       

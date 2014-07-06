@@ -32,7 +32,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
-            this.cboTipoDoc = new System.Windows.Forms.ComboBox();
             this.txtNroCalle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblFechaNac = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.txtNombre2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.txtTipoDoc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -100,15 +100,6 @@
             this.txtFechaNac.Size = new System.Drawing.Size(124, 20);
             this.txtFechaNac.TabIndex = 57;
             this.txtFechaNac.ValidatingType = typeof(System.DateTime);
-            // 
-            // cboTipoDoc
-            // 
-            this.cboTipoDoc.Enabled = false;
-            this.cboTipoDoc.FormattingEnabled = true;
-            this.cboTipoDoc.Location = new System.Drawing.Point(137, 114);
-            this.cboTipoDoc.Name = "cboTipoDoc";
-            this.cboTipoDoc.Size = new System.Drawing.Size(130, 21);
-            this.cboTipoDoc.TabIndex = 39;
             // 
             // txtNroCalle
             // 
@@ -343,16 +334,25 @@
             this.txtTelefono.Size = new System.Drawing.Size(162, 20);
             this.txtTelefono.TabIndex = 60;
             // 
+            // txtTipoDoc
+            // 
+            this.txtTipoDoc.Enabled = false;
+            this.txtTipoDoc.Location = new System.Drawing.Point(136, 115);
+            this.txtTipoDoc.Name = "txtTipoDoc";
+            this.txtTipoDoc.ReadOnly = true;
+            this.txtTipoDoc.Size = new System.Drawing.Size(131, 20);
+            this.txtTipoDoc.TabIndex = 61;
+            // 
             // Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 395);
+            this.Controls.Add(this.txtTipoDoc);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNombre2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFechaNac);
-            this.Controls.Add(this.cboTipoDoc);
             this.Controls.Add(this.txtNroCalle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblFechaNac);
@@ -393,7 +393,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MaskedTextBox txtFechaNac;
-        private System.Windows.Forms.ComboBox cboTipoDoc;
         private System.Windows.Forms.TextBox txtNroCalle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblFechaNac;
@@ -420,5 +419,6 @@
         private System.Windows.Forms.TextBox txtNombre2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtTipoDoc;
     }
 }

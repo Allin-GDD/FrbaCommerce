@@ -23,7 +23,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             idusuario = idUsuario;
             this.codigo = codigoPub;
             cargarDatosDelVendedor();
-            Utiles.Inicializar.comboBoxTipoDNI(comboBox1);
+            Utiles.Inicializar.comboBoxTipoDoc(comboBox1);
             
     
         }

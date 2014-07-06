@@ -26,28 +26,28 @@ namespace FrbaCommerce.Registro_de_Usuario
                 Utiles.Validaciones.controlDeUsuario(Datos.Dat_Usuario.validarUserName(txtUser.Text));
                 
                 String pwHash = Datos.Dat_Usuario.hashearSHA256(txtPass.Text);
-                Decimal idUsuario = 0;
+                
                 int estado = 1;
                 Int16 rol = Convert.ToInt16(cboRol.SelectedValue);
+
+                Datos.Dat_Usuario.CrearNuevoUsuario(txtUser.Text, pwHash, rol, estado);
+                Decimal idUsuario = Datos.Dat_Usuario.getIdUsuario(txtUser.Text);
                 switch (rol)
                 {
                     case 1:
-                        Abm_Cliente.Alta altCli = new Abm_Cliente.Alta(true);
+                        Abm_Cliente.Alta altCli = new Abm_Cliente.Alta(idUsuario);
                         altCli.ShowDialog();
                         this.Hide();
-                        idUsuario = altCli.IdUsuario;
                         break;
                     case 2:
-                        Abm_Empresa.Alta altEmp = new FrbaCommerce.Abm_Empresa.Alta(true);
+                        Abm_Empresa.Alta altEmp = new Abm_Empresa.Alta(idUsuario);
                         altEmp.ShowDialog();
                         this.Hide();
-                        idUsuario = altEmp.IdUsuario;
                         break;
                 }
-                if(idUsuario != 0){
-                Datos.Dat_Usuario.CrearNuevoUsuario(txtUser.Text, pwHash, rol, idUsuario, estado);
+             
                 Mensajes.Exitos.UsuarioRegistrado();
-                };
+             
                 Close();
             }
             catch (Exception ex)

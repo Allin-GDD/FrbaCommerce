@@ -20,7 +20,6 @@ namespace FrbaCommerce.Abm_Cliente
         {
             InitializeComponent();
             this.clienteADarDeBaja = idSeleccionado;
-            Utiles.Inicializar.comboBoxTipoDNI(cboTipoDoc);
             cargarDatosDelClienteSeleccionado();
 
         }
@@ -44,6 +43,7 @@ namespace FrbaCommerce.Abm_Cliente
             txtMail.Text = pcliente.Mail;
             txtTelefono.Text = pcliente.Telefono;
             txtLocalidad.Text = pcliente.Localidad;
+            txtTipoDoc.Text = pcliente.Tipo_DocNom;
         }
 
 
@@ -53,7 +53,7 @@ namespace FrbaCommerce.Abm_Cliente
             {
              //Esto da de baja el el cliente, usuario, y todas sus publicaciones pasan al estado de finalizadas
                 SqlConnection conn = DBConexion.obtenerConexion();
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAlCliente", conn,
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAUsuario", conn,
                 new SqlParameter("@Id", clienteADarDeBaja),
                 new SqlParameter("@Rol", 1));
                 int retorno = cmd.ExecuteNonQuery();
