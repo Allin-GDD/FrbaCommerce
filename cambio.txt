@@ -1,0 +1,12 @@
+
+
+tipodoc de empresa lo saque
+agrego tabla publicacionrubro para hacer relacion muchos a muchos
+borrado usuarioPublicador de tabla pregy respuestas
+agregadas todas las fk
+campos idcliente en oferta (antes id)
+borrado de publicacion borrado rubro y armado de tabla Publicacion_rubro
+en tabla funcionalidad_rol cambie datos a not null e hice pk a ambos
+usuarioPreguntador en preguntasyrespuestas ahora es numeric y tiene fk con usuario
+agregado tablas Calificacion,Tipo_Pub y Estado y sus fk
+

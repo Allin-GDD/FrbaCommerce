@@ -44,7 +44,7 @@ WHERE Cli_Dni IS NOT NULL
 
 insert into Empresa
 
-select distinct u.Id_Usuario,'',Publ_Empresa_Razon_Social,Publ_Empresa_Cuit,2,Publ_Empresa_Fecha_Creacion,
+select distinct u.Id_Usuario,'',Publ_Empresa_Razon_Social,Publ_Empresa_Cuit,Publ_Empresa_Fecha_Creacion,
 		Publ_Empresa_Mail,Publ_Empresa_Dom_Calle,Publ_Empresa_Nro_Calle,
 		Publ_Empresa_Piso,Publ_Empresa_Depto,Publ_Empresa_Cod_Postal,'','',''
 		
