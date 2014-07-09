@@ -36,8 +36,8 @@ namespace FrbaCommerce.Registro_de_Usuario
                 {
                     case 1:
                         Abm_Cliente.Alta altCli = new Abm_Cliente.Alta(idUsuario);
-                        altCli.ShowDialog();
                         this.Hide();
+                        altCli.ShowDialog();
                         break;
                     case 2:
                         Abm_Empresa.Alta altEmp = new Abm_Empresa.Alta(idUsuario);
