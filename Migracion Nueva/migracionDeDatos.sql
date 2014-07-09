@@ -18,19 +18,16 @@ INSERT INTO Tipo_Pago VALUES (4,'Transferencia')
 INSERT INTO Tipo_Pago VALUES (5,'Depósito bancario')
 
 --migracion tabla usuario
-
 insert into Usuario
-select distinct m.Cli_Mail,rol.id,Convert(nvarchar,m.Cli_Dni),10,0,1
- from gd_esquema.Maestra M ,rol
- where rol.nombre = 'Cliente' AND
- m.Cli_Dni IS NOT NULL
- 
-union all
- select distinct m.Publ_Empresa_Mail,rol.id,m.Publ_Empresa_Cuit,10,0,1
- from gd_esquema.Maestra m,rol
- where rol.nombre = 'Empresa' AND
+select distinct m.Cli_Mail,r.Id,Convert(nvarchar,m.Cli_Dni),10,0,1
+from gd_esquema.Maestra M, Rol r
+where m.Cli_Dni IS NOT NULL
+AND r.Nombre = 'Cliente'
+ union all
+select distinct m.Publ_Empresa_Mail,rol.id,m.Publ_Empresa_Cuit,10,0,1
+from gd_esquema.Maestra m,rol
+where rol.nombre = 'Empresa' AND
 Publ_Empresa_Cuit is not null
-
  
 -- Migracion tabla cliente
 
