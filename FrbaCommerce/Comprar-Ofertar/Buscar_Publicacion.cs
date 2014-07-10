@@ -348,13 +348,13 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo"].Value);
             decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
-            char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells["Publicador"].Value);
+           // char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells["Publicador"].Value);
             string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells["Tipo"].Value);
             if(botonCompraOferta)
             {
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btn"].ColumnIndex && checkBox1.Checked == false)
                 {// es la pocision del boton 
-                    if (idusuario != idvendedor || (idusuario == idvendedor && publicador == 'E'))
+                    if (idusuario != idvendedor)
                     {
                         if (tipo == "Subasta")
                         {

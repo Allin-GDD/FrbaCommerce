@@ -8,20 +8,22 @@ CREATE PROCEDURE listaDePublicaciones
 		@Id nvarchar(30)
 	AS
 	BEGIN
-		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, p.Tipo, v.Descripcion AS 'Visibilidad', p.Estado, r.Descripcion as 'Rubro', p.Publicador, p.Preguntas_permitidas,p.Id FROM Publicacion as P
-	JOIN Rubro r ON r.Codigo = p.Rubro_Cod
+		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, tp.Cod_Tipo as 'Tipo', v.Descripcion AS 'Visibilidad', e.Nombre as 'Estado', r.Descripcion as 'Rubro', p.Preguntas_permitidas,p.Usuario FROM Publicacion as P
+	join Publicacion_Rubro pr on pr.id_Publicacion = p.Codigo
+	JOIN Rubro r ON r.Codigo = pr.id_Rubro
 	JOIN Visibilidad V ON p.Visibilidad_Cod = v.Codigo
+	join Estado e on e.Cod_Estado=p.Estado
+	join Tipo_Publicacion tp on tp.Cod_Tipo = p.Tipo
 			WHERE
 				p.Descripcion like '%'+@Descripcion+'%'
-				AND p.Rubro_Cod like '%'+@Rubro+'%'
+				AND r.Codigo like '%'+@Rubro+'%'
 				AND p.Tipo like '%'+@Tipo+'%'
 				AND p.Visibilidad_Cod like '%'+@Visibilidad+'%'
 				and p.stock > 0
  				and p.Estado like '%'+@Estado+'%'
- 				and (p.Id <> @Id and p.Publicador <> @Rol)
+ 				and (p.Usuario <> @Id )
 				
 			order by Visibilidad_Cod
 
 	END
 
-select * from Visibilidad
