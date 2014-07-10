@@ -24,6 +24,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             Tipo = null;
             Utiles.Inicializar.comboBoxTipoFormaDePago(comboBox1);
             buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
+            
         }
 
 
@@ -33,7 +34,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
             try
             {
                 Utiles.Validaciones.validarDatosObligatorios(this);
-                if (Utiles.Validaciones.ValidarTipoDecimal(textBox1)) throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
+                if (Utiles.Validaciones.ValidarTipoDecimal(textBox1))
+                    throw new Excepciones.ValoresConTiposDiferentes("El campo marcado se debe completar con números");
 
                 decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
                 
@@ -106,16 +108,16 @@ namespace FrbaCommerce.Facturar_Publicaciones
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
-            try
+           // try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicacionesSinFacturar", conn,
                 new SqlParameter("@id", idUsuario));
-
+                
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
                 conn.Close();
             }
-            catch (Exception)
+           // catch (Exception)
             {
                 Mensajes.Errores.NoHayConexion();
             }
