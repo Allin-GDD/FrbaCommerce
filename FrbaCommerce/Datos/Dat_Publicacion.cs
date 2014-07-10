@@ -67,15 +67,12 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaPublicacion", conexion,
                    new SqlParameter("@Visibilidad", pPublicacion.Visibilidad),
                    new SqlParameter("@Tipo", pPublicacion.Tipo),
-                   new SqlParameter("@Rubro", pPublicacion.Rubro),
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
                    new SqlParameter("@Descripcion", pPublicacion.Descripcion),
-                   new SqlParameter("@Estado", pPublicacion.Estado),
                    new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas),
                    new SqlParameter("@Fecha_Venc", Convert.ToDateTime(pPublicacion.Fecha_Venc)),
-                   new SqlParameter("@Publicador", pPublicacion.Publicador),
-                   new SqlParameter("@Id", pPublicacion.Id));
+                   new SqlParameter("@Usuario", pPublicacion.Usuario));
 
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
@@ -127,15 +124,14 @@ namespace FrbaCommerce.Datos
 
         }
   
-        public static Boolean verificarTresGratuitas(Decimal id, string publicador)
+        public static Boolean verificarTresGratuitas(Decimal usuario)
         {
 
             Boolean seVerifica;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarTresGratuitas", conn,
 
-            new SqlParameter("@Id", id),
-            new SqlParameter("@Publicador",publicador));
+            new SqlParameter("@Usuario",usuario));
 
 
             SqlDataReader lectura = cmd.ExecuteReader();
@@ -157,35 +153,7 @@ namespace FrbaCommerce.Datos
             return seVerifica;
         
         }
-        public static Entidades.Ent_RolyId buscarPublicador(String usuario)
-        {
-
-            Decimal rolId;
-            Entidades.Ent_RolyId rolIdEnt = new Entidades.Ent_RolyId();
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPublicador", conn,
-            new SqlParameter("@Usuario", usuario));
-
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                rolIdEnt.id = lectura.GetDecimal(2);
-                rolId = lectura.GetDecimal(3);
-                if (rolId == 1)
-                {
-                    rolIdEnt.rol = "C";
-                }
-                else if (rolId == 2)
-                {
-                    rolIdEnt.rol = "E";
-                }
-
-            }
-            
-            conn.Close();
-            return rolIdEnt;
         
-        }
         public static Entidades.Ent_RolyId buscarPublicadorCod(Decimal codigo)
         {
 
@@ -318,10 +286,9 @@ namespace FrbaCommerce.Datos
                 pPublicacion.Stock = lectura.GetDecimal(2);
                 pPublicacion.Descripcion = lectura.GetString(1);
                 pPublicacion.Precio = lectura.GetDecimal(5);
-                pPublicacion.Rubro = lectura.GetDecimal(9);
-                pPublicacion.Publicador = lectura.GetString(10);
-                pPublicacion.Permitir_Preguntas = lectura.GetBoolean(11);
-                pPublicacion.Id = lectura.GetDecimal(12);
+                pPublicacion.Rubro = lectura.GetDecimal(12);
+                pPublicacion.Permitir_Preguntas = lectura.GetBoolean(9);
+                pPublicacion.Usuario = lectura.GetDecimal(10);
             }
             conn.Close();
            return pPublicacion;

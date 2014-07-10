@@ -13,8 +13,8 @@ namespace FrbaCommerce.Generar_Publicacion
     {
         private Decimal codRubro;
         private Decimal stockInicial = 0;
-        private string usuario;
-        public Generar_Publi(string usuarioPk)
+        private Decimal usuario;
+        public Generar_Publi(Decimal usuarioPk)
         {
             InitializeComponent();
             cmbTipoPub.Text = "Subasta";
@@ -43,7 +43,7 @@ namespace FrbaCommerce.Generar_Publicacion
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006)
                 {
 
-                    Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarPublicador(usuario).id,Datos.Dat_Publicacion.buscarPublicador(usuario).rol);
+                    Utiles.Validaciones.ValidarVisibilidadGratuita(usuario);
                 }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
@@ -95,8 +95,7 @@ namespace FrbaCommerce.Generar_Publicacion
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
             publicacion.Estado = Convert.ToString(cmbEstado.Text);
-            publicacion.Id = Datos.Dat_Publicacion.buscarPublicador(usuario).id;
-            publicacion.Publicador = Datos.Dat_Publicacion.buscarPublicador(usuario).rol;
+            publicacion.Usuario = usuario;
             publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
             
 
