@@ -276,5 +276,20 @@ namespace FrbaCommerce.Datos
             }
             return user;
         }
+
+              internal static List<int> validarFuncionalidades(string p)
+        {
+            List<Int32> func = new List<int>();
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarFuncionalidades", conn,
+            new SqlParameter("@rol", p));
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                func.Add(lectura.GetInt32(0));
+            }
+            return func;
+        }
     }
 }

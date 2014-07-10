@@ -12,7 +12,6 @@ CREATE PROCEDURE agregarNuevaEmpresa
 		@Telefono nvarchar(255),
 		@Ciudad nvarchar(255),
 		@Nombre_Contacto nvarchar(255),
-		@Tipo_doc smallint,
 		@IdUsuario numeric(18,0)
 
 AS
@@ -31,7 +30,6 @@ BEGIN
 	Telefono,
 	Ciudad,
 	Nombre_Contacto,
-	Tipo_Doc,
 	Id_Usuario)
 	VALUES(
 		@RazonSocial ,
@@ -47,7 +45,6 @@ BEGIN
 		@Telefono,
 		@Ciudad,
 		@Nombre_Contacto,
-		@Tipo_doc,
 		@IdUsuario
 	)	
 

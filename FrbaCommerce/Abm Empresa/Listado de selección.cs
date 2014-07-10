@@ -14,7 +14,6 @@ namespace FrbaCommerce.Abm_Empresa
         public Listado_de_selección()
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxTipoDoc(cmbTipo_Doc);
             txtNroDoc.Enabled = false;
             botonModificar = false;
             botonDelete = false;
@@ -29,7 +28,6 @@ namespace FrbaCommerce.Abm_Empresa
             pEmpresa.CUIT = txtNroDoc.Text;
             pEmpresa.Mail = txtMail.Text;
             pEmpresa.Razon_Social = txtRazonSocial.Text;
-            pEmpresa.TipoDoc = Convert.ToInt16(cmbTipo_Doc.SelectedValue);
             
 
             Datos.Dat_Empresa.buscarListaDeEmpresa(pEmpresa, dataGridView1);
@@ -87,9 +85,6 @@ namespace FrbaCommerce.Abm_Empresa
             }
         }
 
-        private void cmbTipo_Doc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipo_Doc, txtNroDoc);
-        } 
+            
     }
 }

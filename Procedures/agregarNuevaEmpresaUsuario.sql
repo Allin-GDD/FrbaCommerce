@@ -12,7 +12,6 @@ CREATE PROCEDURE agregarNuevaEmpresaUsuario
 		@Telefono nvarchar(255),
 		@Ciudad nvarchar(255),
 		@Nombre_Contacto nvarchar(255),
-		@Tipo_doc smallint,
 		@IdUsuario numeric(18,0)
 AS
 BEGIN
@@ -20,15 +19,10 @@ BEGIN
 IF(@IdUsuario = 0)
 BEGIN
 EXEC darDeAltaUsuario @Mail, @Cuit, 1 , 10, 0, 0
-
-SELECT Id_Usuario = @IdUsuario FROM Usuario WHERE 
-Usuario = @Mail AND Password = @Cuit
-
-EXEC agregarNuevaEmpresa @RazonSocial ,@Cuit,@Fecha_Creacion ,@Mail ,@Dom_Calle,@Nro_Calle,@Piso,@Depto,@Cod_Postal ,@Localidad,	
-		@Telefono,@Ciudad,@Nombre_Contacto,	@Tipo_doc,@IdUsuario
-		
+SET @IdUsuario = (SELECT Id_Usuario FROM Usuario WHERE 
+Usuario = @Mail AND Password = @Cuit)
 END
-else
+
 EXEC agregarNuevaEmpresa @RazonSocial ,@Cuit,@Fecha_Creacion ,@Mail ,@Dom_Calle,@Nro_Calle,@Piso,@Depto,@Cod_Postal ,@Localidad,	
-		@Telefono,@Ciudad,@Nombre_Contacto,	@Tipo_doc,@IdUsuario
+		@Telefono,@Ciudad,@Nombre_Contacto,@IdUsuario
 END

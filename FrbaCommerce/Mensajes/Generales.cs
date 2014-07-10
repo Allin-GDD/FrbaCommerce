@@ -42,7 +42,7 @@ namespace FrbaCommerce.Mensajes
         {
             errores.RemoveAll(string.IsNullOrEmpty);
             String mensajesDeError = Utiles.AyudaVarias.mensaje(errores);
-            
+
             if (errores.Count > 0)
             {
                 errores.Clear();
@@ -78,12 +78,14 @@ namespace FrbaCommerce.Mensajes
                 if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(Fecha))
                 { ii = ("La fecha está fuera del rango disponible"); }
                 return ii;
-            }catch(Exception)
+            }
+            catch (Exception)
             {
                 ii = ("La fecha ingresada no es válida");
                 Fecha.BackColor = Color.Coral;
                 return ii;
-            }}
+            }
+        }
 
         public static String evaluarTel(MaskedTextBox Telefono, MaskedTextBox TelefonoAnt)
         {
@@ -96,9 +98,9 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
- 
 
-        public static List<String> evaluarCodVisibilidad(TextBox codigo,TextBox codigoAnt)
+
+        public static List<String> evaluarCodVisibilidad(TextBox codigo, TextBox codigoAnt)
         {
             List<String> errores = new List<string>();
             if (!string.IsNullOrEmpty(codigo.Text) && Utiles.Validaciones.ValidarTipoDecimal(codigo))
@@ -107,11 +109,12 @@ namespace FrbaCommerce.Mensajes
             }
             if (!string.IsNullOrEmpty(codigo.Text) && !Utiles.Validaciones.ValidarTipoDecimal(codigo) && (codigoAnt == null || (codigoAnt != null && codigoAnt.Text != codigo.Text)))
             {
-                if(Datos.Dat_Visibilidad.buscarVisibilidad(Convert.ToInt32(codigo.Text)) != null){
-                errores.Add("El código ya es utilizado por otro rol");
+                if (Datos.Dat_Visibilidad.buscarVisibilidad(Convert.ToInt32(codigo.Text)) != null)
+                {
+                    errores.Add("El código ya es utilizado por otro rol");
+                }
             }
-            }
-             
+
             return errores;
         }
 
@@ -121,11 +124,11 @@ namespace FrbaCommerce.Mensajes
             Decimal expectedDecimal;
             Double valor = 1.00;
 
-            if (!string.IsNullOrEmpty(promedio.Text)&& !Decimal.TryParse(promedio.Text, out expectedDecimal))
+            if (!string.IsNullOrEmpty(promedio.Text) && !Decimal.TryParse(promedio.Text, out expectedDecimal))
             {
                 promedio.BackColor = Color.Coral;
                 errores.Add("El tipo de promedio no es válido");
-                }
+            }
             if (!string.IsNullOrEmpty(promedio.Text) && Decimal.TryParse(promedio.Text, out expectedDecimal) && Convert.ToDouble(promedio.Text) > valor)
             {
                 promedio.BackColor = Color.Coral;
@@ -136,20 +139,20 @@ namespace FrbaCommerce.Mensajes
 
         public static String evaluarVencimientoVisib(TextBox Venc)
         {
-                 int expectedInt;
+            int expectedInt;
             String ii = null;
-             if (!string.IsNullOrEmpty(Venc.Text) && !int.TryParse(Venc.Text, out expectedInt))
+            if (!string.IsNullOrEmpty(Venc.Text) && !int.TryParse(Venc.Text, out expectedInt))
             {
-                 ii = "El valor ingresado en vencimiento no es válido";
-                 Venc.BackColor = Color.Coral;
-        }
-             return ii;
+                ii = "El valor ingresado en vencimiento no es válido";
+                Venc.BackColor = Color.Coral;
+            }
+            return ii;
         }
 
         public static String evaluarDescripVisib(TextBox descp, TextBox descpAnt)
         {
             String ii = null;
-            if (!string.IsNullOrEmpty(descp.Text)&& (descpAnt == null ||( descpAnt != null && descpAnt.Text != descp.Text)))
+            if (!string.IsNullOrEmpty(descp.Text) && (descpAnt == null || (descpAnt != null && descpAnt.Text != descp.Text)))
             {
                 if (Datos.Dat_Visibilidad.validarDescripcion(descp))
                 {
@@ -165,33 +168,34 @@ namespace FrbaCommerce.Mensajes
             if (!string.IsNullOrEmpty(Precio.Text) && Utiles.Validaciones.ValidarTipoDecimal(Precio))
             {
                 ii = ("El tipo de precio no es válido");
-        }
+            }
             return ii;
         }
 
-        internal static String evaluarDocumento(short tipo, MaskedTextBox Doc, MaskedTextBox DocAnt, bool isCliente)
+        internal static String evaluarDocumento(short tipo, MaskedTextBox Doc, MaskedTextBox DocAnt)
         {
             String ii = null;
-            
-             {
-                if (isCliente)
-                {
-                    if (Doc == null && Datos.Dat_Dni.validarDni(Doc, tipo))
-                    {
-                        ii = ("El número de documento ingresado ya pertenece a otra Cliente");
-                    }
-                }
-                else
-                {
-                    if (Doc == null && Datos.Dat_Cuit.validarCuit(Doc, tipo))
-                    {
-                        ii = ("El número de documento ingresado ya pertenece a otra Empresa");
-                    }
-                }
-            }
 
+            {
+
+                if (Doc == null && Datos.Dat_Dni.validarDni(Doc, tipo))
+                {
+                    ii = ("El número de documento ingresado ya pertenece a otra Cliente");
+                }
+
+                return ii;
+
+            }
+        }
+
+        internal static string evaluarCUIT(MaskedTextBox cuit, MaskedTextBox cuitAnt)
+        {
+            String ii = null;
+            if (cuitAnt == null && Datos.Dat_Cuit.validarCuit(cuit))
+            {
+                ii = ("El número de documento ingresado ya pertenece a otra Empresa");
+            }
             return ii;
-          
         }
     }
 }

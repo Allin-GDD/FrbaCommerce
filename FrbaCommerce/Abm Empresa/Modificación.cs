@@ -17,8 +17,6 @@ namespace FrbaCommerce.Abm_Empresa
             InitializeComponent();
 
             this.empresaAModificar = idSeleccionado;
-
-            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
             CUIT.Enabled = false;
 
             cargarDatosDelClienteSeleccionado();
@@ -55,7 +53,6 @@ namespace FrbaCommerce.Abm_Empresa
             CodPostal.Text = empresaAnt.Cod_Postal;
             Ciudad.Text = empresaAnt.Ciudad;
             FecCre.Text = Convert.ToString(empresaAnt.Fecha_Creacion);
-            cboTipoDoc.Text = empresaAnt.Tipo_DocNombre;
 
 
             this.CUITAnt = CUIT;
@@ -115,7 +112,6 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Cod_Postal = Convert.ToString(CodPostal.Text);
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
             empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
-            empresa.Tipo_Doc = Convert.ToInt16(cboTipoDoc.SelectedValue);
             //hace esto para que pueda existir gente que no vive en edificio
             if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
@@ -138,11 +134,6 @@ namespace FrbaCommerce.Abm_Empresa
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
-        }
-
-        private void cboTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Utiles.Inicializar.alteraComboboxTipoDoc(cboTipoDoc, CUIT);
         }
     }
 }

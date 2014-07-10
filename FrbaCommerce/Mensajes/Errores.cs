@@ -51,5 +51,10 @@ namespace FrbaCommerce.Mensajes
         {
             MessageBox.Show("Los datos a modificar no son válidos", "Modificación", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
         }
+
+        internal static void UsuarioNoTienePermisos()
+        {
+            MessageBox.Show("El usuario no tiene permisos para ejecutar esta acción", "Permisos bloqueados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }

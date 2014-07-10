@@ -33,25 +33,19 @@ namespace FrbaCommerce.Datos
 
         }*/
 
-        public static List<Entidades.Ent_Doc> obtenerTodosLosCuit()
+        public static List<string> obtenerTodosLosCuit()
         {
 
-            List<Entidades.Ent_Doc> listaDeCuit = new List<Entidades.Ent_Doc>();
+            List<String> listaDeCuit = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Nro_Documento, Tipo_Doc from Empresa", conexion);
+            SqlCommand Comando = new SqlCommand("Select Nro_Documento from Empresa", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
             while (lectura.Read())
-            {
-                Entidades.Ent_Doc doc = new Entidades.Ent_Doc();
-
-                doc.Dni = lectura.GetString(0);
-                doc.tipoDni = lectura.GetInt16(1);
-
-
-                listaDeCuit.Add(doc);
-            }
+            {                
+                listaDeCuit.Add(lectura.GetString(0));
+               }
 
 
             return listaDeCuit;
@@ -65,8 +59,7 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeEmpresas", conn,
                 new SqlParameter("@Razon_Social", pEmpresa.Razon_Social),
                 new SqlParameter("@CUIT", pEmpresa.CUIT),
-                new SqlParameter("@Mail", pEmpresa.Mail),
-                new SqlParameter("@TipoDoc", pEmpresa.TipoDoc));
+                new SqlParameter("@Mail", pEmpresa.Mail));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }
@@ -133,8 +126,7 @@ namespace FrbaCommerce.Datos
                         new SqlParameter("@Localidad", pEmpresa.Localidad),
                         new SqlParameter("@Telefono", pEmpresa.Telefono),
                         new SqlParameter("@Ciudad", pEmpresa.Ciudad),
-                        new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-                        new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc));
+                        new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto));
 
 
                     retorno = cmd.ExecuteNonQuery();
@@ -166,7 +158,6 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Telefono", pEmpresa.Telefono),
                    new SqlParameter("@Ciudad", pEmpresa.Ciudad),
                    new SqlParameter("@Nombre_Contacto", pEmpresa.NombreContacto),
-                   new SqlParameter("@Tipo_doc", pEmpresa.Tipo_Doc),
                    new SqlParameter("@IdUsuario", IdUsuario));
 
                 retorno = cmd.ExecuteNonQuery();

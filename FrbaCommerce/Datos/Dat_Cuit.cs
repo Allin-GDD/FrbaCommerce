@@ -11,14 +11,14 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Cuit
     {
-        public static bool validarCuit(MaskedTextBox txtCUIT, short tipoDoc)
+        public static bool validarCuit(MaskedTextBox txtCUIT)
         {
 
-            List<Entidades.Ent_Doc> listaCuit = Datos.Dat_Empresa.obtenerTodosLosCuit();
+            List<String> listaCuit = Datos.Dat_Empresa.obtenerTodosLosCuit();
 
-            foreach (Entidades.Ent_Doc cuit in listaCuit)
+            foreach (String cuit in listaCuit)
             {
-                if (txtCUIT != null && txtCUIT.Text == cuit.Dni && cuit.tipoDni == tipoDoc)
+                if (txtCUIT != null && txtCUIT.Text == cuit)
                 {
                     txtCUIT.BackColor = Color.Coral;
                     return true;

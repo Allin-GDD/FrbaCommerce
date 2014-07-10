@@ -61,7 +61,6 @@ namespace FrbaCommerce.Abm_Empresa
             CodPostal.Text = pEmpresa.Cod_Postal;
             Ciudad.Text = pEmpresa.Ciudad;
             FecCre.Text = Convert.ToString(pEmpresa.Fecha_Creacion);
-            txtTipoDoc.Text = pEmpresa.Tipo_DocNombre;
             
 
 

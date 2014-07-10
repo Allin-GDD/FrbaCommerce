@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lblTipoDoc = new System.Windows.Forms.Label();
             this.CodPostal = new System.Windows.Forms.TextBox();
             this.CUIT = new System.Windows.Forms.MaskedTextBox();
             this.labelNCalle = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.labelRZ = new System.Windows.Forms.Label();
             this.NombreContacto = new System.Windows.Forms.TextBox();
             this.labelContacto = new System.Windows.Forms.Label();
-            this.txtTipoDoc = new System.Windows.Forms.TextBox();
             this.labelDpto = new System.Windows.Forms.Label();
             this.Telefono = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -72,7 +70,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(158, 370);
+            this.button1.Location = new System.Drawing.Point(158, 352);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -82,26 +80,17 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(27, 370);
+            this.button2.Location = new System.Drawing.Point(27, 352);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 55;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // lblTipoDoc
-            // 
-            this.lblTipoDoc.AutoSize = true;
-            this.lblTipoDoc.Location = new System.Drawing.Point(24, 86);
-            this.lblTipoDoc.Name = "lblTipoDoc";
-            this.lblTipoDoc.Size = new System.Drawing.Size(99, 13);
-            this.lblTipoDoc.TabIndex = 81;
-            this.lblTipoDoc.Text = "Tipo de documento";
-            // 
             // CodPostal
             // 
             this.CodPostal.Enabled = false;
-            this.CodPostal.Location = new System.Drawing.Point(112, 292);
+            this.CodPostal.Location = new System.Drawing.Point(112, 265);
             this.CodPostal.Name = "CodPostal";
             this.CodPostal.ReadOnly = true;
             this.CodPostal.Size = new System.Drawing.Size(139, 20);
@@ -110,7 +99,7 @@
             // CUIT
             // 
             this.CUIT.Enabled = false;
-            this.CUIT.Location = new System.Drawing.Point(92, 110);
+            this.CUIT.Location = new System.Drawing.Point(92, 83);
             this.CUIT.Name = "CUIT";
             this.CUIT.ReadOnly = true;
             this.CUIT.Size = new System.Drawing.Size(159, 20);
@@ -119,7 +108,7 @@
             // labelNCalle
             // 
             this.labelNCalle.AutoSize = true;
-            this.labelNCalle.Location = new System.Drawing.Point(24, 217);
+            this.labelNCalle.Location = new System.Drawing.Point(24, 190);
             this.labelNCalle.Name = "labelNCalle";
             this.labelNCalle.Size = new System.Drawing.Size(102, 13);
             this.labelNCalle.TabIndex = 75;
@@ -128,7 +117,7 @@
             // NCalle
             // 
             this.NCalle.Enabled = false;
-            this.NCalle.Location = new System.Drawing.Point(134, 214);
+            this.NCalle.Location = new System.Drawing.Point(134, 187);
             this.NCalle.Name = "NCalle";
             this.NCalle.ReadOnly = true;
             this.NCalle.Size = new System.Drawing.Size(117, 20);
@@ -137,7 +126,7 @@
             // labelFCreacion
             // 
             this.labelFCreacion.AutoSize = true;
-            this.labelFCreacion.Location = new System.Drawing.Point(24, 347);
+            this.labelFCreacion.Location = new System.Drawing.Point(24, 320);
             this.labelFCreacion.Name = "labelFCreacion";
             this.labelFCreacion.Size = new System.Drawing.Size(96, 13);
             this.labelFCreacion.TabIndex = 80;
@@ -146,7 +135,7 @@
             // Ciudad
             // 
             this.Ciudad.Enabled = false;
-            this.Ciudad.Location = new System.Drawing.Point(92, 318);
+            this.Ciudad.Location = new System.Drawing.Point(92, 291);
             this.Ciudad.Name = "Ciudad";
             this.Ciudad.ReadOnly = true;
             this.Ciudad.Size = new System.Drawing.Size(159, 20);
@@ -155,7 +144,7 @@
             // labelCiudad
             // 
             this.labelCiudad.AutoSize = true;
-            this.labelCiudad.Location = new System.Drawing.Point(24, 321);
+            this.labelCiudad.Location = new System.Drawing.Point(24, 294);
             this.labelCiudad.Name = "labelCiudad";
             this.labelCiudad.Size = new System.Drawing.Size(40, 13);
             this.labelCiudad.TabIndex = 79;
@@ -164,7 +153,7 @@
             // labelCUIT
             // 
             this.labelCUIT.AutoSize = true;
-            this.labelCUIT.Location = new System.Drawing.Point(24, 113);
+            this.labelCUIT.Location = new System.Drawing.Point(24, 86);
             this.labelCUIT.Name = "labelCUIT";
             this.labelCUIT.Size = new System.Drawing.Size(62, 13);
             this.labelCUIT.TabIndex = 71;
@@ -173,7 +162,7 @@
             // FecCre
             // 
             this.FecCre.Enabled = false;
-            this.FecCre.Location = new System.Drawing.Point(134, 344);
+            this.FecCre.Location = new System.Drawing.Point(134, 317);
             this.FecCre.Mask = "00/00/0000";
             this.FecCre.Name = "FecCre";
             this.FecCre.ReadOnly = true;
@@ -184,7 +173,7 @@
             // labelCP
             // 
             this.labelCP.AutoSize = true;
-            this.labelCP.Location = new System.Drawing.Point(24, 295);
+            this.labelCP.Location = new System.Drawing.Point(24, 268);
             this.labelCP.Name = "labelCP";
             this.labelCP.Size = new System.Drawing.Size(72, 13);
             this.labelCP.TabIndex = 78;
@@ -193,7 +182,7 @@
             // Dpto
             // 
             this.Dpto.Enabled = false;
-            this.Dpto.Location = new System.Drawing.Point(204, 240);
+            this.Dpto.Location = new System.Drawing.Point(204, 213);
             this.Dpto.Name = "Dpto";
             this.Dpto.ReadOnly = true;
             this.Dpto.Size = new System.Drawing.Size(47, 20);
@@ -202,7 +191,7 @@
             // Localidad
             // 
             this.Localidad.Enabled = false;
-            this.Localidad.Location = new System.Drawing.Point(92, 266);
+            this.Localidad.Location = new System.Drawing.Point(92, 239);
             this.Localidad.Name = "Localidad";
             this.Localidad.ReadOnly = true;
             this.Localidad.Size = new System.Drawing.Size(159, 20);
@@ -211,7 +200,7 @@
             // labelLocalidad
             // 
             this.labelLocalidad.AutoSize = true;
-            this.labelLocalidad.Location = new System.Drawing.Point(24, 269);
+            this.labelLocalidad.Location = new System.Drawing.Point(24, 242);
             this.labelLocalidad.Name = "labelLocalidad";
             this.labelLocalidad.Size = new System.Drawing.Size(53, 13);
             this.labelLocalidad.TabIndex = 77;
@@ -220,7 +209,7 @@
             // NroPiso
             // 
             this.NroPiso.Enabled = false;
-            this.NroPiso.Location = new System.Drawing.Point(112, 240);
+            this.NroPiso.Location = new System.Drawing.Point(112, 213);
             this.NroPiso.Name = "NroPiso";
             this.NroPiso.ReadOnly = true;
             this.NroPiso.Size = new System.Drawing.Size(53, 20);
@@ -229,7 +218,7 @@
             // labelNPiso
             // 
             this.labelNPiso.AutoSize = true;
-            this.labelNPiso.Location = new System.Drawing.Point(24, 243);
+            this.labelNPiso.Location = new System.Drawing.Point(24, 216);
             this.labelNPiso.Name = "labelNPiso";
             this.labelNPiso.Size = new System.Drawing.Size(82, 13);
             this.labelNPiso.TabIndex = 76;
@@ -238,7 +227,7 @@
             // Calle
             // 
             this.Calle.Enabled = false;
-            this.Calle.Location = new System.Drawing.Point(92, 188);
+            this.Calle.Location = new System.Drawing.Point(92, 161);
             this.Calle.Name = "Calle";
             this.Calle.ReadOnly = true;
             this.Calle.Size = new System.Drawing.Size(159, 20);
@@ -247,7 +236,7 @@
             // labelCalle
             // 
             this.labelCalle.AutoSize = true;
-            this.labelCalle.Location = new System.Drawing.Point(24, 191);
+            this.labelCalle.Location = new System.Drawing.Point(24, 164);
             this.labelCalle.Name = "labelCalle";
             this.labelCalle.Size = new System.Drawing.Size(49, 13);
             this.labelCalle.TabIndex = 74;
@@ -256,7 +245,7 @@
             // labelTel
             // 
             this.labelTel.AutoSize = true;
-            this.labelTel.Location = new System.Drawing.Point(24, 165);
+            this.labelTel.Location = new System.Drawing.Point(24, 138);
             this.labelTel.Name = "labelTel";
             this.labelTel.Size = new System.Drawing.Size(49, 13);
             this.labelTel.TabIndex = 73;
@@ -265,7 +254,7 @@
             // Mail
             // 
             this.Mail.Enabled = false;
-            this.Mail.Location = new System.Drawing.Point(92, 136);
+            this.Mail.Location = new System.Drawing.Point(92, 109);
             this.Mail.Name = "Mail";
             this.Mail.ReadOnly = true;
             this.Mail.Size = new System.Drawing.Size(159, 20);
@@ -274,7 +263,7 @@
             // labelMail
             // 
             this.labelMail.AutoSize = true;
-            this.labelMail.Location = new System.Drawing.Point(24, 139);
+            this.labelMail.Location = new System.Drawing.Point(24, 112);
             this.labelMail.Name = "labelMail";
             this.labelMail.Size = new System.Drawing.Size(26, 13);
             this.labelMail.TabIndex = 72;
@@ -316,19 +305,10 @@
             this.labelContacto.TabIndex = 69;
             this.labelContacto.Text = "Nombre de contacto";
             // 
-            // txtTipoDoc
-            // 
-            this.txtTipoDoc.Enabled = false;
-            this.txtTipoDoc.Location = new System.Drawing.Point(134, 83);
-            this.txtTipoDoc.Name = "txtTipoDoc";
-            this.txtTipoDoc.ReadOnly = true;
-            this.txtTipoDoc.Size = new System.Drawing.Size(117, 20);
-            this.txtTipoDoc.TabIndex = 82;
-            // 
             // labelDpto
             // 
             this.labelDpto.AutoSize = true;
-            this.labelDpto.Location = new System.Drawing.Point(171, 243);
+            this.labelDpto.Location = new System.Drawing.Point(171, 216);
             this.labelDpto.Name = "labelDpto";
             this.labelDpto.Size = new System.Drawing.Size(30, 13);
             this.labelDpto.TabIndex = 83;
@@ -337,7 +317,7 @@
             // Telefono
             // 
             this.Telefono.Enabled = false;
-            this.Telefono.Location = new System.Drawing.Point(92, 162);
+            this.Telefono.Location = new System.Drawing.Point(92, 135);
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             this.Telefono.Size = new System.Drawing.Size(159, 20);
@@ -347,11 +327,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(279, 401);
+            this.ClientSize = new System.Drawing.Size(273, 384);
             this.Controls.Add(this.Telefono);
             this.Controls.Add(this.labelDpto);
-            this.Controls.Add(this.txtTipoDoc);
-            this.Controls.Add(this.lblTipoDoc);
             this.Controls.Add(this.CodPostal);
             this.Controls.Add(this.CUIT);
             this.Controls.Add(this.labelNCalle);
@@ -392,7 +370,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label lblTipoDoc;
         private System.Windows.Forms.TextBox CodPostal;
         private System.Windows.Forms.MaskedTextBox CUIT;
         private System.Windows.Forms.Label labelNCalle;
@@ -417,7 +394,6 @@
         private System.Windows.Forms.Label labelRZ;
         private System.Windows.Forms.TextBox NombreContacto;
         private System.Windows.Forms.Label labelContacto;
-        private System.Windows.Forms.TextBox txtTipoDoc;
         private System.Windows.Forms.Label labelDpto;
         private System.Windows.Forms.TextBox Telefono;
 

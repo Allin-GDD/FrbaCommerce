@@ -245,8 +245,8 @@ namespace FrbaCommerce.Utiles
 
             //se fija si no esta repetido
             if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));
-            if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt, true) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt, true));
-            if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.CUIT, txtUtil.CUITAnt,false) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.CUITAnt, txtUtil.CUITAnt,false));
+            if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt));
+            if ((Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt) != null)) errores.Add(Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt));
             
 
 

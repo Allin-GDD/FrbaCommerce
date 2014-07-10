@@ -33,27 +33,25 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtNroDoc = new System.Windows.Forms.MaskedTextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cmbTipo_Doc = new System.Windows.Forms.ComboBox();
-            this.txtNroDoc = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtRazonSocial
             // 
-            this.txtRazonSocial.Location = new System.Drawing.Point(104, 26);
+            this.txtRazonSocial.Location = new System.Drawing.Point(121, 24);
             this.txtRazonSocial.Name = "txtRazonSocial";
-            this.txtRazonSocial.Size = new System.Drawing.Size(150, 20);
+            this.txtRazonSocial.Size = new System.Drawing.Size(178, 20);
             this.txtRazonSocial.TabIndex = 38;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(391, 120);
+            this.button2.Location = new System.Drawing.Point(394, 120);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(144, 23);
             this.button2.TabIndex = 29;
@@ -63,15 +61,15 @@
             // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(104, 57);
+            this.txtMail.Location = new System.Drawing.Point(382, 24);
             this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(150, 20);
+            this.txtMail.Size = new System.Drawing.Size(178, 20);
             this.txtMail.TabIndex = 40;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 60);
+            this.label5.Location = new System.Drawing.Point(326, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 36;
@@ -80,13 +78,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtNroDoc);
-            this.groupBox1.Controls.Add(this.cmbTipo_Doc);
             this.groupBox1.Controls.Add(this.txtMail);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtRazonSocial);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(580, 102);
@@ -94,27 +90,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de búsqueda";
             // 
+            // txtNroDoc
+            // 
+            this.txtNroDoc.Location = new System.Drawing.Point(255, 58);
+            this.txtNroDoc.Name = "txtNroDoc";
+            this.txtNroDoc.Size = new System.Drawing.Size(194, 20);
+            this.txtNroDoc.TabIndex = 44;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(118, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Número de Documento";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 29);
+            this.label1.Location = new System.Drawing.Point(30, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Razón Social";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(270, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "Tipo De Documento";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(69, 120);
+            this.button1.Location = new System.Drawing.Point(68, 120);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 23);
             this.button1.TabIndex = 28;
@@ -125,43 +128,18 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 159);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 149);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(580, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(580, 205);
             this.dataGridView1.TabIndex = 27;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(270, 60);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Número de Documento";
-            // 
-            // cmbTipo_Doc
-            // 
-            this.cmbTipo_Doc.FormattingEnabled = true;
-            this.cmbTipo_Doc.Location = new System.Drawing.Point(393, 26);
-            this.cmbTipo_Doc.Name = "cmbTipo_Doc";
-            this.cmbTipo_Doc.Size = new System.Drawing.Size(163, 21);
-            this.cmbTipo_Doc.TabIndex = 43;
-            this.cmbTipo_Doc.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_Doc_SelectedIndexChanged);
-            // 
-            // txtNroDoc
-            // 
-            this.txtNroDoc.Location = new System.Drawing.Point(393, 57);
-            this.txtNroDoc.Name = "txtNroDoc";
-            this.txtNroDoc.Size = new System.Drawing.Size(163, 20);
-            this.txtNroDoc.TabIndex = 44;
             // 
             // Listado_de_selección
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 395);
+            this.ClientSize = new System.Drawing.Size(612, 370);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
@@ -184,12 +162,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox txtNroDoc;
-        private System.Windows.Forms.ComboBox cmbTipo_Doc;
 
     }
 }

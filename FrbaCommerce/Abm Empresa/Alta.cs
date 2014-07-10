@@ -16,8 +16,6 @@ namespace FrbaCommerce.Abm_Empresa
         public Alta(decimal IdUsuario)
         {
             InitializeComponent();
-            Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
-            CUIT.Enabled = false;
             this.IdUsuario = IdUsuario;
         }
          public Int32 rolDeUsuario = 2;
@@ -82,7 +80,6 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Cod_Postal = Convert.ToString(CodPostal.Text);
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
             empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
-            empresa.Tipo_Doc = 2;
             //hace esto para que pueda existir gente que no vive en edificio
             if(!string.IsNullOrEmpty(txtNroPiso.Text))
             {
@@ -95,14 +92,8 @@ namespace FrbaCommerce.Abm_Empresa
              Utiles.LimpiarTexto.LimpiarTextBox(this);
              Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
              Utiles.LimpiarTexto.BlanquearControls(this);
-             Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
 
          }
 
-       private void cboTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
-      {
-          Utiles.Inicializar.alteraComboboxTipoDoc(cboTipoDoc, CUIT);
-      }
-
-         }
+           }
 }
