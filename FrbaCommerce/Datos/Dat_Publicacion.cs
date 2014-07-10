@@ -154,25 +154,23 @@ namespace FrbaCommerce.Datos
         
         }
         
-        public static Entidades.Ent_RolyId buscarPublicadorCod(Decimal codigo)
+        public static Decimal buscarUsuarioCod(Decimal codigo)
         {
 
 
-            Entidades.Ent_RolyId rolIdEnt = new Entidades.Ent_RolyId();
+            Decimal usuario;
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPublicadorCod", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCod", conn,
             new SqlParameter("@Codigo", codigo));
 
             SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                rolIdEnt.id = lectura.GetDecimal(0);
-                rolIdEnt.rol = lectura.GetString(1);
+            lectura.Read();
+          
+            usuario = lectura.GetDecimal(0);
 
-            }
 
             conn.Close();
-            return rolIdEnt;
+            return usuario;
 
         }
 
