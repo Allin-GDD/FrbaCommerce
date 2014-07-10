@@ -10,3 +10,5 @@ en tabla funcionalidad_rol cambie datos a not null e hice pk a ambos
 usuarioPreguntador en preguntasyrespuestas ahora es numeric y tiene fk con usuario
 agregado tablas Calificacion,Tipo_Pub y Estado y sus fk
 
+
+agregado tablas item_facturaComision y item_facturaPublicacion
