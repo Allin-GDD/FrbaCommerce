@@ -79,7 +79,7 @@ namespace FrbaCommerce.Abm_Empresa
 
                  Datos.Dat_Empresa.actualizarEmpresa(empresa, empresaAModificar);
 
-                 Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue), empresaAModificar);
+                 Datos.Dat_Usuario.actualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue), empresaAModificar);
                  Close();
              }
              catch (Exception ex) {

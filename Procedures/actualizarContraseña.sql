@@ -1,9 +1,9 @@
 CREATE PROCEDURE actualizarContraseña
-@Usuario nvarchar(50),
+@Usuario numeric(18,0),
 @Contraseña nvarchar(64)
 AS
 BEGIN
 UPDATE Usuario
 SET Password = @Contraseña
-WHERE Usuario = @Usuario
+WHERE Id_Usuario = @Usuario
 END

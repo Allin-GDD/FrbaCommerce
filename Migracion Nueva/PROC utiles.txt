@@ -17,3 +17,9 @@ listaDeEmpresas
 buscarUnSoloCliente
 actualizarCliente
 listaDeCliente
+
+EN LOGIN 
+buscarCamposDeUsuario
+actualizarIntentos
+actualizarEstadoDelUsuario
+actualizarContraseña

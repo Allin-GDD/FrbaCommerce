@@ -15,7 +15,7 @@ namespace FrbaCommerce.Datos
             List<String> listaDeUsuarios = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Usuario from Usuario", conexion);
+            SqlCommand Comando = new SqlCommand("Select usuario from Usuario", conexion);
             SqlDataReader lectura = Comando.ExecuteReader();
 
 
@@ -74,7 +74,7 @@ namespace FrbaCommerce.Datos
 
         }
         // cuando erra 3 veces al login
-        public static void ActualizarEstadoUsuario(Int16 estado, Decimal clienteAModificar)
+        public static void actualizarEstadoUsuario(Int16 estado, Decimal idUsuario)
         {
             int retorno = 0;
 
@@ -82,7 +82,7 @@ namespace FrbaCommerce.Datos
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoDelUsuario", conn,
                 new SqlParameter("@Estado", estado),
-                new SqlParameter("@Id", clienteAModificar));
+                new SqlParameter("@Id", idUsuario));
 
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
@@ -119,12 +119,12 @@ namespace FrbaCommerce.Datos
             return BitConverter.ToString(inputHashBytes).Replace("-", String.Empty).ToLower();
         }
 
-        public static void bloquearUsuario(int intentosFallidos, Decimal rol, Decimal Idusuario)
+        public static void bloquearUsuario(int intentosFallidos, Decimal Idusuario)
         {
             if (intentosFallidos == 3)
             {
 
-                Dat_Usuario.ActualizarEstadoUsuario(0, Convert.ToInt32(Idusuario));
+                Dat_Usuario.actualizarEstadoUsuario(0,Idusuario);
 
                 throw new Excepciones.ElUsuarioSeBloqueo("Se agotaron las posibilidades de logeo, el usuario ha sido bloquedo. Por favor comuniquese con el administrador");
             }
@@ -163,7 +163,7 @@ namespace FrbaCommerce.Datos
             }
         }
 
-        public static void actualizarIntentos(string usuario, int intentos)
+        public static void actualizarIntentos(decimal usuario, int intentos)
         {
             int retorno = 0;
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -195,7 +195,7 @@ namespace FrbaCommerce.Datos
 
             if (passwordIngresa == passwordOriginal && pusuario.Estado == 10)
             {
-                Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.Usuario, pusuario.Rol, pusuario.IdUsuario);
+                Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.IdUsuario);
                 ofrm.Hide();
                 flogin.ShowDialog();
                 ofrm.Show();
@@ -205,7 +205,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void actualizarContraseña(string usuario, string pw)
+        public static void actualizarContraseña(Decimal usuario, string pw)
         {
             int retorno = 0;
             String pwHash = hashearSHA256(pw);
@@ -229,17 +229,18 @@ namespace FrbaCommerce.Datos
 
             if (pusuario.Contraseña == contraseñaIngresada)
             {
-                Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, 0);
+                Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, 0);
                 login.Hide();
+                //ACA tiene que darle la opcion de que pueda elegir otro rol
                 Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
 
             }
             else
             {
                 int intentosFallidos = pusuario.Intentos + 1;
-                Datos.Dat_Usuario.actualizarIntentos(pusuario.Usuario, intentosFallidos);
+                Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, intentosFallidos);
 
-                Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos), pusuario.IdUsuario, pusuario.Rol);
+                Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos), pusuario.IdUsuario);
 
                 Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
             }

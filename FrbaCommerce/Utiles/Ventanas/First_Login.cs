@@ -11,22 +11,20 @@ namespace FrbaCommerce.Utiles.Ventanas
 {
     public partial class First_Login : Form
     {
-        public First_Login(String userName, Decimal rol, Decimal idUsuario)
+        public First_Login(Decimal idUsuario)
         {
             InitializeComponent();
-            label1.Text = "Bienvenido " + userName;
-            Entidades.Ent_Usuario usuario = new FrbaCommerce.Entidades.Ent_Usuario();
-            usuario.Usuario = userName;
-            usuario.Rol = rol;
-            usuario.IdUsuario = idUsuario;
-            usuario2 = usuario;
+            label1.Text = "Bienvenido";
+            idUsuarioAAct = idUsuario;
+
+         
         }
 
-        private Entidades.Ent_Usuario usuario2;
+        private Decimal idUsuarioAAct;
         private void button1_Click(object sender, EventArgs e)
         {
-            Datos.Dat_Usuario.actualizarContraseña(usuario2.Usuario, contraseña.Text);
-            Datos.Dat_Usuario.ActualizarEstadoUsuario(1, usuario2.IdUsuario);
+            Datos.Dat_Usuario.actualizarContraseña(idUsuarioAAct, contraseña.Text);
+            Datos.Dat_Usuario.actualizarEstadoUsuario(1, idUsuarioAAct);
 
             Mensajes.Exitos.ExitosAlActualizarLosDatos();
            

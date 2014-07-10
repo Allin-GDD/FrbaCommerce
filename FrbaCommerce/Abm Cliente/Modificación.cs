@@ -79,7 +79,7 @@ namespace FrbaCommerce.Abm_Cliente
                 inicializarCliente(cliente);
 
                 Datos.Dat_Cliente.actualizarCamposACliente(cliente, clienteAModificar);
-                Datos.Dat_Usuario.ActualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar);
+                Datos.Dat_Usuario.actualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar);
                 Close();
 
                 
