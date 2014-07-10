@@ -87,11 +87,11 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 foreach (Entidades.Ent_ListFactura item in items)
                 {
 
-                    agregarItemFactura(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
+                    agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
                     preciovisibilidad = item.PrecioVis;
                 }
                 // agrega el item del precio base de la visibilidad
-                agregarItemFactura(codigo, nfactura, 1, preciovisibilidad);
+                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
             }
 
 
@@ -108,7 +108,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)
         {
 
-           // try
+            try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicacionesSinFacturar", conn,
@@ -117,7 +117,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
                 conn.Close();
             }
-           // catch (Exception)
+            catch (Exception)
             {
                 Mensajes.Errores.NoHayConexion();
             }
@@ -235,7 +235,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                  
                  SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
                  new SqlParameter("@Id", Id),
-                 new SqlParameter("@Rol", Rol),
+                // new SqlParameter("@Rol", Rol),
                  new SqlParameter("@Visibilidad", codigo));
 
                  SqlDataReader lectura = cmd.ExecuteReader();
@@ -255,13 +255,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
          }
         //agrega el item factura
-         private static void agregarItemFactura(decimal codigo, decimal nfactura, decimal cantidad, double precio)
+         private static void agregarItemFacturaPublicacion(decimal codigo, decimal nfactura, decimal cantidad, double precio)
          {
              int retorno;
              using (SqlConnection conexion = DBConexion.obtenerConexion())
              {
 
-                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarItemFactura", conexion,
+                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarItemFacturaPublicacion", conexion,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Precio", precio),
                     new SqlParameter("@Nro_Fact", nfactura),
@@ -272,6 +272,23 @@ namespace FrbaCommerce.Facturar_Publicaciones
                  conexion.Close();
               }
         
+         }
+         private static void agregarItemFacturaComision(decimal codigo, decimal nfactura,double precio)
+         {
+             int retorno;
+             using (SqlConnection conexion = DBConexion.obtenerConexion())
+             {
+
+                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarItemFacturaComision", conexion,
+                    new SqlParameter("@Codigo", codigo),
+                    new SqlParameter("@Precio", precio),
+                    new SqlParameter("@Nro_Fact", nfactura));
+
+
+                 retorno = cmd.ExecuteNonQuery();
+                 conexion.Close();
+             }
+
          }
 
          private void button1_Click(object sender, EventArgs e)

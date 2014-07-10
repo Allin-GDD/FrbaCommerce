@@ -23,6 +23,8 @@ ABM Empresa(Ver, tipo de doc)
 ABM Rol OK
 ABM Visibilidad OK
 
+en agregarfactura hay fecha
+
 Las columnas de Func_Rol no tiene que ser PK, solo FK (no entiendo pq andan jaja)
 por que la empresa no tiene tipo de documento?
 Falta agregar en las donde cada usuario elige que hacer, que se fije si tiene
