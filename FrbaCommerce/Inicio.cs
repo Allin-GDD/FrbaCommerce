@@ -58,7 +58,7 @@ namespace FrbaCommerce
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-           Calificar_Vendedor.listadoDePublicaciones emp = new Calificar_Vendedor.listadoDePublicaciones(12);
+           Comprar_Ofertar.Buscar_Publicacion emp = new Comprar_Ofertar.Buscar_Publicacion(12,"Cliente");
             emp.Show();
         }
 

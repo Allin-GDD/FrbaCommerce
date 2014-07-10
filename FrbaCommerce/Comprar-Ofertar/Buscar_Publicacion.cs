@@ -138,7 +138,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
-                    new SqlParameter("@Rol", rolDeEste),
+                   // new SqlParameter("@Rol", rolDeEste),
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
@@ -152,7 +152,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDeMisPublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
-                    new SqlParameter("@Rol", rolDeEste),
+                    //new SqlParameter("@Rol", rolDeEste),
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
@@ -166,9 +166,10 @@ namespace FrbaCommerce.Comprar_Ofertar
                 //llena el datagrid y deja invisibles algunas columnas.
                 dataGridView1.DataSource = tabla;
                 dataGridView1.Columns["Codigo"].Visible = false;
-                dataGridView1.Columns["Id"].Visible = false;
+                dataGridView1.Columns["Usuario"].Visible = false;
                 dataGridView1.Columns["Preguntas_permitidas"].Visible = false;
-                dataGridView1.Columns["Publicador"].Visible = false;
+                dataGridView1.Columns["Tipo_Usuario"].Visible = false;
+               // dataGridView1.Columns["Publicador"].Visible = false;
                 dataGridView1.Refresh();
                 dataGridView1.ClearSelection();
 
@@ -347,8 +348,8 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             decimal codigoSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo"].Value);
-            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
-           // char publicador = Convert.ToChar(dataGridView1.CurrentRow.Cells["Publicador"].Value);
+            decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Usuario"].Value);
+            char TipoUsuario = Convert.ToChar(dataGridView1.CurrentRow.Cells["Tipo_Usuario"].Value);
             string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells["Tipo"].Value);
             if(botonCompraOferta)
             {
@@ -363,13 +364,13 @@ namespace FrbaCommerce.Comprar_Ofertar
                             oferta.Show();
                             if (tipo == "CompraInmediata")
                             {
-                                if (publicador == 'E')
+                                if (TipoUsuario == 'E')
                                 {
                                     VentanaCompraEmpresa ventana = new VentanaCompraEmpresa(codigoSeleccionado, idusuario);
                                     ventana.Show();
                                 }
 
-                                if (publicador == 'C')
+                                if (TipoUsuario == 'C')
                                 {
                                     VentanaCompra ventana = new VentanaCompra(codigoSeleccionado, idusuario);
                                     ventana.Show();
@@ -387,7 +388,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                             throw new Excepciones.InexistenciaUsuario("La publicación no permite preguntas");
                         }
                         decimal rolAsignado;
-                        if (publicador == 'E')
+                        if (TipoUsuario == 'E')
                         {
                             rolAsignado = 2;
                         }

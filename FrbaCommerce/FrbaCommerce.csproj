@@ -584,6 +584,12 @@
     <Compile Include="Utiles\Ventanas\CambiarPw.Designer.cs">
       <DependentUpon>CambiarPw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Ventanas\ElegirRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utiles\Ventanas\ElegirRol.Designer.cs">
+      <DependentUpon>ElegirRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utiles\Ventanas\ListaFuncionabilidades.cs">
       <SubType>Form</SubType>
     </Compile>
