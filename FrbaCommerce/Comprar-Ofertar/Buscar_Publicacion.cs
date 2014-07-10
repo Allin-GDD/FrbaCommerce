@@ -169,7 +169,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 dataGridView1.Columns["Usuario"].Visible = false;
                 dataGridView1.Columns["Preguntas_permitidas"].Visible = false;
                 dataGridView1.Columns["Tipo_Usuario"].Visible = false;
-               // dataGridView1.Columns["Publicador"].Visible = false;
+                dataGridView1.Columns["Publicador"].Visible = false;
                 dataGridView1.Refresh();
                 dataGridView1.ClearSelection();
 
