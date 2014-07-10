@@ -12,3 +12,18 @@ agregado tablas Calificacion,Tipo_Pub y Estado y sus fk
 
 
 agregado tablas item_facturaComision y item_facturaPublicacion
+
+
+
+
+Login OK
+Registro Usuario OK
+ABM Cliente OK
+ABM Empresa(Ver, tipo de doc)
+ABM Rol OK
+ABM Visibilidad OK
+
+Las columnas de Func_Rol no tiene que ser PK, solo FK (no entiendo pq andan jaja)
+por que la empresa no tiene tipo de documento?
+Falta agregar en las donde cada usuario elige que hacer, que se fije si tiene
+esa funcionalidad.

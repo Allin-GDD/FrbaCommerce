@@ -1,25 +1,30 @@
-darDeAltaUsuario
+EMPRESA
 agregarNuevaEmpresa
 agregarNuevaEmpresaUsuario
-agregarNuevoCliente
-agregarNuevoClienteUsuario
-
-
-darDeBajaAUsuario 		*ver que cambia en Publicacion
-estaHabilitado
-actualizarEstadoDelUsuario
-
 buscarUnaSolaEmpresa
 actualizarEmpresa
 listaDeEmpresas
 
-
+CLIENTE
+agregarNuevoCliente
+agregarNuevoClienteUsuario
 buscarUnSoloCliente
 actualizarCliente
 listaDeCliente
+
+USUARIO
+darDeAltaUsuario
+darDeBajaAUsuario
+estaHabilitado
+actualizarEstadoDelUsuario
+buscarMiIDUsuario
 
 EN LOGIN 
 buscarCamposDeUsuario
 actualizarIntentos
 actualizarEstadoDelUsuario
 actualizarContraseña
+
+EN ROL
+agregarNuevoRol
+
