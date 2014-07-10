@@ -145,9 +145,8 @@ namespace FrbaCommerce.Datos
             {
                 pUsuario.Contraseña = lectura.GetString(0);
                 pUsuario.IdUsuario = lectura.GetDecimal(1);
-                pUsuario.Rol = lectura.GetDecimal(2);
-                pUsuario.Intentos = lectura.GetInt16(3);
-                pUsuario.Estado = lectura.GetInt16(4);
+                pUsuario.Intentos = lectura.GetInt16(2);
+                pUsuario.Estado = lectura.GetInt16(3);
 
             }
             conn.Close();
@@ -232,7 +231,9 @@ namespace FrbaCommerce.Datos
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, 0);
                 login.Hide();
                 //ACA tiene que darle la opcion de que pueda elegir otro rol
-                Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
+                //Utiles.Ventanas.ElegirRol.controlDeRoles(pusuario.IdUsuario,login);
+
+                //Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
 
             }
             else

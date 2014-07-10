@@ -9,7 +9,6 @@ namespace FrbaCommerce.Entidades
     {
         public String Usuario { get; set; }
         public String Contraseña { get; set; }
-        public Decimal Rol { get; set; }
         public Decimal IdUsuario { get; set; }
         public Int16 Intentos { get; set; }
         public Int16 Estado { get; set; }
