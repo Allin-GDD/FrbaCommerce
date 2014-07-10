@@ -62,6 +62,12 @@ namespace FrbaCommerce
             emp.Show();
         }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Generar_Publicacion.Generar_Publi genpub = new Generar_Publicacion.Generar_Publi(1);
+            genpub.Show();
+        }
+
     }
 }
 
