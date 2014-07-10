@@ -4,7 +4,7 @@ create PROCEDURE listaDePublicaciones
 		@Tipo nvarchar(255),
 		@Visibilidad nvarchar(30),
 		--@Rol nvarchar(10),
-		@Rubro nvarchar(30),
+		@Rubro numeric (18,0),
 		@Id nvarchar(30)
 	AS
 	BEGIN
@@ -17,7 +17,7 @@ create PROCEDURE listaDePublicaciones
 	join Usuario on Usuario.Id_Usuario = p.Usuario
 			WHERE
 				p.Descripcion like '%'+@Descripcion+'%'
-				AND r.Codigo like '%'+@Rubro+'%'
+				AND (r.Codigo= @Rubro or @Rubro=0)
 				AND tp.Nombre like '%'+@Tipo+'%'
 				AND p.Visibilidad_Cod like '%'+@Visibilidad+'%'
 				and p.stock > 0

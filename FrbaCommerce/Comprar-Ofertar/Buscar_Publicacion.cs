@@ -117,14 +117,14 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            try
+           try
             {
   
                 pCO.Descripcion = textBox1.Text;
-                pCO.Rubro = "";
+                pCO.Rubro = 0;
                 if (txtRubro.Enabled)
                 {
-                    pCO.Rubro = Convert.ToString(Datos.Dat_Publicacion.obtenerCodRubro(txtRubro.Text));
+                    pCO.Rubro = Datos.Dat_Publicacion.obtenerCodRubro(txtRubro.Text);
                 }
                 pCO.Visibilidad = Convert.ToString(cmbVisib.SelectedValue);
                 pCO.Estado = cmbEstado.Text;
@@ -196,7 +196,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
 
             }
-            catch (Exception ex)
+           catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -17,7 +17,7 @@ create PROCEDURE listaDeMisPublicaciones
 	join Usuario on Usuario.Id_Usuario = p.Usuario
 			WHERE
 				p.Descripcion like '%'+@Descripcion+'%'
-				AND R.Descripcion like '%'+@Rubro+'%'
+				AND (R.Codigo = @Rubro or @Rubro=0)
 				AND TP.Nombre like '%'+@Tipo+'%'
 				AND p.Visibilidad_Cod like '%'+@Visibilidad+'%'
 				and p.stock > 0
