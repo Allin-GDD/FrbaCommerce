@@ -58,7 +58,7 @@ namespace FrbaCommerce
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Abm_Cliente.Listado_de_selección emp = new FrbaCommerce.Abm_Cliente.Listado_de_selección();
+            Facturar_Publicaciones.Facturar emp = new Facturar_Publicaciones.Facturar(12,"Cliente");
             emp.Show();
         }
 
