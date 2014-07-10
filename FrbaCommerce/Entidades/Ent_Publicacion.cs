@@ -9,6 +9,7 @@ namespace FrbaCommerce.Entidades
     {
         public Decimal Visibilidad { get; set; }
         public String Tipo { get; set; }
+        public Decimal Rubro { get; set; }
         public Decimal Stock  { get; set; }
         public Decimal Precio { get; set; }
         public String Descripcion { get; set; }
@@ -19,12 +20,13 @@ namespace FrbaCommerce.Entidades
         public Decimal Codigo { get; set; }
 
         public Ent_Publicacion() { }
-        public Ent_Publicacion(Decimal pVisibilidad, String pTipo, Decimal pStock, Decimal pPrecio, String pDescripcion, String pEstado, Boolean pPermitir_Preguntas, Decimal pUsuario, DateTime pFecha_Venc, Decimal pCodigo)
+        public Ent_Publicacion(Decimal pVisibilidad, String pTipo, Decimal pRubro, Decimal pStock, Decimal pPrecio, String pDescripcion, String pEstado, Boolean pPermitir_Preguntas, Decimal pUsuario, DateTime pFecha_Venc, Decimal pCodigo)
         {
 
 
             this.Visibilidad = pVisibilidad;
             this.Tipo = pTipo;
+            this.Rubro = pRubro;
             this.Stock = pStock;
             this.Precio = pPrecio;
             this.Descripcion = pDescripcion;
