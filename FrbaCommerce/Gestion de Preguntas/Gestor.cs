@@ -11,13 +11,13 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class Gestor : Form
     {
-        public Gestor(String usuario)
+        public Gestor(Decimal usuario)
         {
             InitializeComponent();
             this.usuario = usuario;
 
         }
-        private String usuario;
+        private Decimal usuario;
 
         private void button1_Click(object sender, EventArgs e)
         {

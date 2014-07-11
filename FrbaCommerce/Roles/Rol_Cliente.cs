@@ -70,8 +70,7 @@ namespace FrbaCommerce.Roles
              i = 10;
              if (funcionalidades.Any(x => x == i))
              {
-                 String user = Datos.Dat_Usuario.getNameUser(idcliente, 1);
-                 Generar_Publicacion.Generar_Publi genPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(user);
+                 Generar_Publicacion.Generar_Publi genPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(idcliente);
                  this.Hide();
                  genPub.ShowDialog();
                  Show();
@@ -100,7 +99,7 @@ namespace FrbaCommerce.Roles
 
         private void button2_Click(object sender, EventArgs e)
         { 
-            i = 11;
+            i = 16;
             if (funcionalidades.Any(x => x == i))
             {
                 bool isUsuario = true;

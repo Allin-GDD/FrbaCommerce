@@ -11,7 +11,7 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class VerRespuestas : Form
     {
-        public VerRespuestas(String usuario)
+        public VerRespuestas(Decimal usuario)
         {
             InitializeComponent();
             Datos.Dat_Preguntas.listaDePreguntaRespuesta(dataGridView1, usuario);

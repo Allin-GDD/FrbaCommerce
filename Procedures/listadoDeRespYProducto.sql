@@ -1,5 +1,5 @@
 CREATE PROCEDURE listadoDeRespYProducto
-@Id nvarchar(100)
+@Id numeric(18,0)
 AS
 BEGIN
   SELECT PyR.Pregunta, PyR.Respuesta, PyR.FechaRespuesta, PyR.UsuarioPregunta AS 'Usuario Pregunta',
@@ -8,8 +8,9 @@ BEGIN
     FROM Publicacion P 
 	JOIN Visibilidad V ON
 P.Visibilidad_Cod = V.Codigo 
-	JOIN Rubro R ON
-R.Codigo = P.Rubro_Cod 
+JOIN Publicacion_Rubro PR ON Pr.id_Publicacion = p.Codigo
+JOIN Rubro R ON
+R.Codigo = pr.id_Rubro
 	JOIN PreguntasYRespuestas PyR ON
 P.Codigo = PyR.Id_Publicacion
   WHERE PyR.UsuarioPregunta = @Id AND

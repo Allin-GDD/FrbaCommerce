@@ -28,3 +28,8 @@ actualizarContraseña
 EN ROL
 agregarNuevoRol
 
+
+
+EN PREG y RESP
+listadoDePreguntasAResponder
+listadoDeRespYProducto(*)

@@ -49,7 +49,7 @@ namespace FrbaCommerce.Roles
             if (funcionalidades.Any(x => x == i))
             {
             String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 2);
-            Generar_Publicacion.Generar_Publi grPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(user);
+            Generar_Publicacion.Generar_Publi grPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(idEmpresa);
             Hide();
             grPub.ShowDialog();
             Show();
@@ -82,27 +82,49 @@ namespace FrbaCommerce.Roles
 
         private void FacturarPublicaciones_Click(object sender, EventArgs e)
         {
+            i = 13;
+            if (funcionalidades.Any(x => x == i))
+            {
             Facturar_Publicaciones.Facturar fac = new FrbaCommerce.Facturar_Publicaciones.Facturar(idEmpresa,rol);
             Hide();
             fac.ShowDialog();
-            Show();
+            Show();}
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 2);
-            Gestion_de_Preguntas.ResponderPregunta resp = new FrbaCommerce.Gestion_de_Preguntas.ResponderPregunta(user);
+            i = 14;
+            if (funcionalidades.Any(x => x == i))
+            {
+            Gestion_de_Preguntas.ResponderPregunta resp = new FrbaCommerce.Gestion_de_Preguntas.ResponderPregunta(idEmpresa);
             Hide();
             resp.ShowDialog();
             Show();
+            }
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            i = 18;
+            if (funcionalidades.Any(x => x == i))
+            {
             Comprar_Ofertar.ListadoSubastasPendientes listSub = new FrbaCommerce.Comprar_Ofertar.ListadoSubastasPendientes(idEmpresa);
             Hide();
             listSub.ShowDialog();
-            Show();
+            Show(); 
+        }
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
 
         }
 

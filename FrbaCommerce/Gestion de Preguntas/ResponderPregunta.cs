@@ -12,12 +12,12 @@ namespace FrbaCommerce.Gestion_de_Preguntas
 {
     public partial class ResponderPregunta : Form
     {
-        public ResponderPregunta(String usuario)
+        public ResponderPregunta(Decimal usuario)
         {
             InitializeComponent();
             this.usuario = usuario;
         }
-        private String usuario;
+        private Decimal usuario;
         private void ResponderPregunta_Load(object sender, EventArgs e)
         {
             Datos.Dat_Preguntas.listadoDePreguntas(usuario, dataGridView1);

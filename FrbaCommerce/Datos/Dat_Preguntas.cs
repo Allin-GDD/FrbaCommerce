@@ -9,7 +9,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Preguntas
     {
-        public static void listadoDePreguntas(string usuario, DataGridView dataGridView1)
+        public static void listadoDePreguntas(Decimal usuario, DataGridView dataGridView1)
         {
             try
             {
@@ -59,7 +59,7 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
         }
 
-        public static void listaDePreguntaRespuesta(DataGridView dataGridView1, string usuario)
+        public static void listaDePreguntaRespuesta(DataGridView dataGridView1, Decimal usuario)
         {
             try
             {
