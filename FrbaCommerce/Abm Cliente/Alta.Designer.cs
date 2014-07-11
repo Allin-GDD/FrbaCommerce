@@ -31,8 +31,10 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelNCalle = new System.Windows.Forms.Label();
+            this.labelNPiso = new System.Windows.Forms.Label();
+            this.labelCP = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
@@ -55,9 +57,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.labelCP = new System.Windows.Forms.Label();
-            this.labelNPiso = new System.Windows.Forms.Label();
-            this.labelNCalle = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +86,6 @@
             this.groupBox1.Controls.Add(this.labelNPiso);
             this.groupBox1.Controls.Add(this.labelCP);
             this.groupBox1.Controls.Add(this.txtDNI);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.txtFechaNac);
             this.groupBox1.Controls.Add(this.cboTipoDoc);
@@ -117,20 +115,39 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
+            // labelNCalle
+            // 
+            this.labelNCalle.AutoSize = true;
+            this.labelNCalle.Location = new System.Drawing.Point(11, 217);
+            this.labelNCalle.Name = "labelNCalle";
+            this.labelNCalle.Size = new System.Drawing.Size(102, 13);
+            this.labelNCalle.TabIndex = 36;
+            this.labelNCalle.Text = "Número de domicilio";
+            // 
+            // labelNPiso
+            // 
+            this.labelNPiso.AutoSize = true;
+            this.labelNPiso.Location = new System.Drawing.Point(11, 243);
+            this.labelNPiso.Name = "labelNPiso";
+            this.labelNPiso.Size = new System.Drawing.Size(82, 13);
+            this.labelNPiso.TabIndex = 35;
+            this.labelNPiso.Text = "Número de Piso";
+            // 
+            // labelCP
+            // 
+            this.labelCP.AutoSize = true;
+            this.labelCP.Location = new System.Drawing.Point(11, 299);
+            this.labelCP.Name = "labelCP";
+            this.labelCP.Size = new System.Drawing.Size(72, 13);
+            this.labelCP.TabIndex = 34;
+            this.labelCP.Text = "Código Postal";
+            // 
             // txtDNI
             // 
             this.txtDNI.Location = new System.Drawing.Point(86, 111);
             this.txtDNI.Name = "txtDNI";
             this.txtDNI.Size = new System.Drawing.Size(162, 20);
-            this.txtDNI.TabIndex = 33;
-            // 
-            // textBox1
-            // 
-            this.textBox1.AutoSize = true;
-            this.textBox1.Location = new System.Drawing.Point(121, 0);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(0, 13);
-            this.textBox1.TabIndex = 32;
+            this.txtDNI.TabIndex = 14;
             // 
             // txtTelefono
             // 
@@ -312,33 +329,6 @@
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
             // 
-            // labelCP
-            // 
-            this.labelCP.AutoSize = true;
-            this.labelCP.Location = new System.Drawing.Point(11, 299);
-            this.labelCP.Name = "labelCP";
-            this.labelCP.Size = new System.Drawing.Size(72, 13);
-            this.labelCP.TabIndex = 34;
-            this.labelCP.Text = "Código Postal";
-            // 
-            // labelNPiso
-            // 
-            this.labelNPiso.AutoSize = true;
-            this.labelNPiso.Location = new System.Drawing.Point(11, 243);
-            this.labelNPiso.Name = "labelNPiso";
-            this.labelNPiso.Size = new System.Drawing.Size(82, 13);
-            this.labelNPiso.TabIndex = 35;
-            this.labelNPiso.Text = "Número de Piso";
-            // 
-            // labelNCalle
-            // 
-            this.labelNCalle.AutoSize = true;
-            this.labelNCalle.Location = new System.Drawing.Point(11, 217);
-            this.labelNCalle.Name = "labelNCalle";
-            this.labelNCalle.Size = new System.Drawing.Size(102, 13);
-            this.labelNCalle.TabIndex = 36;
-            this.labelNCalle.Text = "Número de domicilio";
-            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,7 +373,6 @@
         private System.Windows.Forms.ComboBox cboTipoDoc;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
         private System.Windows.Forms.MaskedTextBox txtFechaNac;
-        private System.Windows.Forms.Label textBox1;
         private System.Windows.Forms.MaskedTextBox txtDNI;
         private System.Windows.Forms.Label labelCP;
         private System.Windows.Forms.Label labelNPiso;
