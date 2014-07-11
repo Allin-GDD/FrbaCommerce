@@ -58,7 +58,7 @@ namespace FrbaCommerce.Datos
             return listaDeVisibilidades;
         }
 
-        public static void AgregarPublicacion(Entidades.Ent_Publicacion pPublicacion)
+        public static void AgregarPublicacion(Entidades.Ent_Publicacion pPublicacion) //funca
         {
             int retorno;
             using (SqlConnection conexion = DBConexion.obtenerConexion())

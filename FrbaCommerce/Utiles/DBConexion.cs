@@ -20,7 +20,16 @@ namespace FrbaCommerce
             conn.Open();
             return conn;
 
+       
+        }
+        public static DateTime fechaIngresadaPorElAdministrador(){
+         string[] lines = File.ReadAllLines(@"..\..\..\config.txt");
+
+            string fecha = lines[1];
             
+            return Convert.ToDateTime(fecha);
+
+        
         }
 
     }
