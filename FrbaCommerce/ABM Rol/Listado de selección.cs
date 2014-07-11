@@ -68,7 +68,6 @@ namespace FrbaCommerce.ABM_Rol
                 {
                     ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
                     this.Hide();
-                    //Ver eso, pq me tira un error
                     limpiarDataGrid();
                     mod.ShowDialog();
                     agregarDataGrid();

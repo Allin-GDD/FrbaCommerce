@@ -51,7 +51,7 @@ namespace FrbaCommerce.Roles
 
         private void button1_Click(object sender, EventArgs e)
         {
-             i = 14;
+             i = 20;
              if (funcionalidades.Any(x => x == i))
              {
             Calificar_Vendedor.listadoDePublicaciones cal = new FrbaCommerce.Calificar_Vendedor.listadoDePublicaciones(idcliente);
@@ -135,8 +135,7 @@ namespace FrbaCommerce.Roles
             i = 14;
             if (funcionalidades.Any(x => x == i))
             {
-            String user = Datos.Dat_Usuario.getNameUser(idcliente, 1);
-            Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
+            Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(idcliente);
             Hide();
             gestor.ShowDialog();
             Show();
