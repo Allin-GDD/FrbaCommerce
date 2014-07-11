@@ -21,6 +21,15 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         decimal idUsuario;
         private bool botonAceptar;
+
+        //busca las subastas que están pendientes
+        private void button1_Click(object sender, EventArgs e)
+        {
+            buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
+            this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
+
+        }
+        
         //Actualiza los datos de la compra
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -28,33 +37,38 @@ namespace FrbaCommerce.Comprar_Ofertar
             {
                 Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
                 Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id_Cliente"].Value);
-
+                
+        
 
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
                 {
-
                     agregarCompra(codigo, idSeleccionado);
                     
                     cambiar_ganador(codigo);
                 }
+                buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
+
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
             }
-           catch (Exception)
+                catch (Exception)
             {
 
                 Mensajes.Errores.NoHayDatosAmodificar();
             }
         }
-       private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
+     
+        private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
         {
 
             try
             {
+                
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaSubastasSinConfirmarGanador", conn,
                 new SqlParameter("@id_Cliente", idUsuario),
                 new SqlParameter("Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
 
+                
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }
             catch (Exception)
@@ -63,13 +77,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
 
         }
-        //busca las subastas que están pendientes
-        private void button1_Click(object sender, EventArgs e)
-        {
-            buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
-            this.botonAceptar = Utiles.Inicializar.agregarColumnaModificar(botonAceptar, dataGridView1);
-              
-        }
+        
         //modifica el con ganador osea el valor que indica si termino o no la subasta.
         private static void cambiar_ganador(decimal codigo)
         {
@@ -82,12 +90,16 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
         private static void agregarCompra(decimal codigo,decimal idSeleccionado)
         {
+            decimal i = 1;
             SqlConnection conn = DBConexion.obtenerConexion();
+            
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
-                    new SqlParameter("@Stock", 1),
+                    new SqlParameter("@Stock", i),
                     new SqlParameter("@Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
+
+                    int retorno = cmd.ExecuteNonQuery();
                       conn.Close();
         }
     }
