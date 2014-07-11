@@ -6,10 +6,11 @@ CREATE PROCEDURE agregarCompra
 
 AS
 BEGIN
-
-	insert into Calificacion
-	(Cod_Calificacion,Cant_Estrellas) values ((select MAX(Cod_Calificacion)+1 from Calificacion),0)
-
+	insert into Calificacion(Cod_Calificacion,Cant_Estrellas) 
+	values ((select MAX(Cod_Calificacion)+1 from Calificacion),0)
+	
+DECLARE @Cod_Calif numeric(18,0)
+SET @Cod_Calif = (select MAX(Cod_Calificacion) from Calificacion)
 
 	INSERT INTO Compra(
 	Codigo_Pub,
@@ -22,7 +23,5 @@ BEGIN
 	@Id,
 	@Fecha,
 	@Stock,
-	(select MAX(Cod_Calificacion) from Calificacion)	)
-	
-
+	@Cod_Calif)
 END
