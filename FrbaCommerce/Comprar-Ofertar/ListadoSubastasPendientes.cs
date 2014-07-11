@@ -17,6 +17,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             InitializeComponent();
             idUsuario = id;
             botonAceptar = false;
+            
         }
 
         decimal idUsuario;
@@ -34,7 +35,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
 
                     agregarCompra(codigo, idSeleccionado);
-                    
+                   
                     cambiar_ganador(codigo);
                 }
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
@@ -78,12 +79,13 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Codigo", codigo));
                 int retorno = cmd2.ExecuteNonQuery();
                 conn2.Close();
-
+            
         }
         private static void agregarCompra(decimal codigo,decimal idSeleccionado)
         {
+            
             SqlConnection conn = DBConexion.obtenerConexion();
-                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1),

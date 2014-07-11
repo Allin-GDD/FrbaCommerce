@@ -366,7 +366,7 @@ namespace FrbaCommerce.Utiles
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
 
-                if (lectura2 != null)
+                if (lectura2 !=null)
                 {
                     while (lectura2.Read())
                     {

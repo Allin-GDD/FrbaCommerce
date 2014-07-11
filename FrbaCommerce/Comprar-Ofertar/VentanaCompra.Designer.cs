@@ -55,9 +55,9 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtlocalidad = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.txttipodoc = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -312,22 +312,12 @@
             this.label22.TabIndex = 45;
             this.label22.Text = "Tipo de documento";
             // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 154);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(94, 21);
-            this.comboBox1.TabIndex = 46;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txttipodoc);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txtlocalidad);
             this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.txtusuario);
             this.groupBox1.Controls.Add(this.label10);
@@ -366,6 +356,15 @@
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // txttipodoc
+            // 
+            this.txttipodoc.Enabled = false;
+            this.txttipodoc.Location = new System.Drawing.Point(134, 154);
+            this.txttipodoc.Name = "txttipodoc";
+            this.txttipodoc.ReadOnly = true;
+            this.txttipodoc.Size = new System.Drawing.Size(101, 20);
+            this.txttipodoc.TabIndex = 46;
             // 
             // VentanaCompra
             // 
@@ -423,9 +422,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtlocalidad;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txttipodoc;
 
     }
 }

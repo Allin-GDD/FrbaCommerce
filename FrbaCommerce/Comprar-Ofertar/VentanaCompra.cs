@@ -23,7 +23,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             idusuario = idUsuario;
             this.codigo = codigoPub;
             cargarDatosDelVendedor();
-            Utiles.Inicializar.comboBoxTipoDoc(comboBox1);
+           // Utiles.Inicializar.comboBoxTipoDoc(comboBox1);
             
     
         }
@@ -60,7 +60,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
             decimal clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarCliente(clienteABuscar);
-            pcliente.Usuario = cargarUsuario(clienteABuscar);
+           // pcliente.Usuario = cargarUsuario(clienteABuscar);
             
 
             txtnombre.Text = pcliente.Nombre;
@@ -75,6 +75,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             txtlocalidad.Text = pcliente.Localidad;
             txtusuario.Text = pcliente.Usuario;
             txttel.Text = Convert.ToString(pcliente.Telefono);
+            txttipodoc.Text = pcliente.Tipo_dni;
         
 
         }
@@ -111,7 +112,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pcliente.Dni = lectura.GetDecimal(1);
+                pcliente.Usuario = lectura.GetString(0);
+                pcliente.Dni = Convert.ToDecimal(lectura.GetString(1));
                 pcliente.Nombre = lectura.GetString(2);
                 pcliente.Apellido = lectura.GetString(3);
                 pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
@@ -122,7 +124,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 pcliente.Dpto = lectura.GetString(9);
                 pcliente.Cod_Postal = lectura.GetString(10);
                 pcliente.Localidad = lectura.GetString(11);
-                pcliente.Tipo_dni = lectura.GetInt16(12);
+                pcliente.Tipo_dni = lectura.GetString(12);
                 pcliente.Telefono = lectura.GetString(13);
             }
             conn.Close();
