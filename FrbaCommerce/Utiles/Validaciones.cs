@@ -140,7 +140,7 @@ namespace FrbaCommerce.Utiles
                 foreach (Control control in controls)
                     if (control is MaskedTextBox)
                     {
-                        if (!(control as MaskedTextBox).MaskCompleted)
+                        if ((!(control as MaskedTextBox).MaskCompleted || !(control as MaskedTextBox).MaskFull)&& (control as MaskedTextBox).Enabled == true)
                         {
                             control.BackColor = Color.Coral;
                             i++;
@@ -238,7 +238,7 @@ namespace FrbaCommerce.Utiles
             List<String> errores = datosObligatorios(ofrm);
             //se fija si el tipo es correcto
             if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
-            if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.NroCalle));
+            if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle));
 
             //Se fija si la fecha esta dentro del rango     
             if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha));
@@ -247,8 +247,8 @@ namespace FrbaCommerce.Utiles
             if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));
             if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt));
             if ((Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt) != null)) errores.Add(Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt));
-            
 
+          
 
             Mensajes.Generales.evaluarErrores(errores);
 

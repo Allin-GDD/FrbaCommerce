@@ -34,7 +34,6 @@
             this.labelNCalle = new System.Windows.Forms.Label();
             this.labelNPiso = new System.Windows.Forms.Label();
             this.labelCP = new System.Windows.Forms.Label();
-            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.txtFechaNac = new System.Windows.Forms.MaskedTextBox();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
@@ -57,6 +56,7 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,10 +82,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Controls.Add(this.labelNCalle);
             this.groupBox1.Controls.Add(this.labelNPiso);
             this.groupBox1.Controls.Add(this.labelCP);
-            this.groupBox1.Controls.Add(this.txtDNI);
             this.groupBox1.Controls.Add(this.txtTelefono);
             this.groupBox1.Controls.Add(this.txtFechaNac);
             this.groupBox1.Controls.Add(this.cboTipoDoc);
@@ -141,13 +141,6 @@
             this.labelCP.Size = new System.Drawing.Size(72, 13);
             this.labelCP.TabIndex = 34;
             this.labelCP.Text = "Código Postal";
-            // 
-            // txtDNI
-            // 
-            this.txtDNI.Location = new System.Drawing.Point(86, 111);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(162, 20);
-            this.txtDNI.TabIndex = 14;
             // 
             // txtTelefono
             // 
@@ -329,6 +322,13 @@
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
             // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(87, 111);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(162, 20);
+            this.txtDNI.TabIndex = 37;
+            // 
             // Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,10 +373,10 @@
         private System.Windows.Forms.ComboBox cboTipoDoc;
         private System.Windows.Forms.MaskedTextBox txtTelefono;
         private System.Windows.Forms.MaskedTextBox txtFechaNac;
-        private System.Windows.Forms.MaskedTextBox txtDNI;
         private System.Windows.Forms.Label labelCP;
         private System.Windows.Forms.Label labelNPiso;
         private System.Windows.Forms.Label labelNCalle;
+        private System.Windows.Forms.MaskedTextBox txtDNI;
 
 
     }

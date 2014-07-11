@@ -204,12 +204,15 @@ namespace FrbaCommerce.Datos
                    Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
                   Utiles.Ventanas.Opciones.AbrirVentanas(rol.id , pusuario,login);
                                   }
-                else
+                else if (listaDeRoles.Count > 1)
                 {
-                   
+
                     Utiles.Ventanas.ElegirRol vent = new Utiles.Ventanas.ElegirRol(listaDeRoles, pusuario, login);
                     vent.ShowDialog();
 
+                }
+                else {
+                    throw new Excepciones.InexistenciaUsuario("El rol de usuario se encuentra inhabilitado");
                 }
 
             }

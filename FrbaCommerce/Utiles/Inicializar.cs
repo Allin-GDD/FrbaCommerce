@@ -260,8 +260,10 @@ namespace FrbaCommerce.Utiles
             {
                 txtDNI.Enabled = false;
                 txtDNI.Mask = "";
+                
+               
             }
-        }
+           }
     }
 
 }

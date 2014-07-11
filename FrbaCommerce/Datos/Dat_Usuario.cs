@@ -60,7 +60,7 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conexion,
                 new SqlParameter("@UsuarioName", usuario),
                 new SqlParameter("@Password", pw),
-                new SqlParameter("@IdRol", rolDeUsuario),
+                new SqlParameter("@Rol", rolDeUsuario),
                 new SqlParameter("@Intentos", retorno),
                 new SqlParameter("@Estado", estado)
                 );

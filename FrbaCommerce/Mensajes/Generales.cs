@@ -176,16 +176,16 @@ namespace FrbaCommerce.Mensajes
         {
             String ii = null;
 
-            {
+            
 
-                if (Doc == null && Datos.Dat_Dni.validarDni(Doc, tipo))
+                if (DocAnt == null && Datos.Dat_Dni.validarDni(Doc, tipo))
                 {
                     ii = ("El número de documento ingresado ya pertenece a otra Cliente");
                 }
 
                 return ii;
 
-            }
+            
         }
 
         internal static string evaluarCUIT(MaskedTextBox cuit, MaskedTextBox cuitAnt)
@@ -197,5 +197,9 @@ namespace FrbaCommerce.Mensajes
             }
             return ii;
         }
+
+       
+
+       
     }
 }

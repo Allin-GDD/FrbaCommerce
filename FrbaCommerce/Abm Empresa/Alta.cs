@@ -19,6 +19,7 @@ namespace FrbaCommerce.Abm_Empresa
             this.IdUsuario = IdUsuario;
         }
          public Int32 rolDeUsuario = 2;
+         public bool IsComplete;
     
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace FrbaCommerce.Abm_Empresa
 
             try
             {
+                IsComplete = false;
                 //Verifica si los datos ingresados no son nulos
                 Utiles.Validaciones.evaluarPersona(validaciones, this);
                                
@@ -43,6 +45,7 @@ namespace FrbaCommerce.Abm_Empresa
                 {//armo el if para que tire un mensaje de que el admin creo al cliente
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
                 }
+                IsComplete = true;
                 this.Close();
 
             }

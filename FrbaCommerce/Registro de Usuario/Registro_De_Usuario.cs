@@ -17,6 +17,7 @@ namespace FrbaCommerce.Registro_de_Usuario
             Utiles.Inicializar.comboBoxRol(cboRol);
         }
 
+        public bool validarAlta;
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             try
@@ -28,6 +29,7 @@ namespace FrbaCommerce.Registro_de_Usuario
                 String pwHash = Datos.Dat_Usuario.hashearSHA256(txtPass.Text);
                 
                 int estado = 1;
+            
                 Int16 rol = Convert.ToInt16(cboRol.SelectedValue);
 
                 Datos.Dat_Usuario.CrearNuevoUsuario(txtUser.Text, pwHash, rol, estado);
@@ -38,19 +40,23 @@ namespace FrbaCommerce.Registro_de_Usuario
                         Abm_Cliente.Alta altCli = new Abm_Cliente.Alta(idUsuario);
                         this.Hide();
                         altCli.ShowDialog();
+                        validarAlta = altCli.IsComplete;
                         break;
                     case 2:
                         Abm_Empresa.Alta altEmp = new Abm_Empresa.Alta(idUsuario);
                         altEmp.ShowDialog();
+                        validarAlta = altEmp.IsComplete;
                         this.Hide();
                         break;
                 }
-             
-                Mensajes.Exitos.UsuarioRegistrado();
-             
+
+                if (validarAlta)
+                {
+                    Mensajes.Exitos.UsuarioRegistrado();
+                }
                 Close();
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

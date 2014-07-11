@@ -12,5 +12,5 @@ SET @Id_Rol = (CASE @Rol
 				ELSE 3 
 				END)
 				
-INSERT INTO Usuario_Rol VALUES(@Id_Usuario, @Id_Rol)
+INSERT INTO Usuario_Rol VALUES(@Id_Usuario, @Id_Rol,1)
 END

@@ -49,7 +49,7 @@ namespace FrbaCommerce.Mensajes
 
               public static void UsuarioRegistrado()
               {
-                  MessageBox.Show("El usuario fue creado con exito", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  MessageBox.Show("El usuario fue creado con éxito", "Guardar Usuario", MessageBoxButtons.OK, MessageBoxIcon.Information);
               }
               public static void ComisionesCanceladas()
               {

@@ -22,6 +22,7 @@ namespace FrbaCommerce.Abm_Cliente
             txtDNI.Enabled = false;
 
         }
+        public bool IsComplete;
         private void btmGuardar_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
@@ -30,6 +31,7 @@ namespace FrbaCommerce.Abm_Cliente
 
             try
             {
+                IsComplete = false;
                 //Prueba todas las validaciones
                 Utiles.Validaciones.evaluarPersona(pUtiles, this);
                 
@@ -43,6 +45,7 @@ namespace FrbaCommerce.Abm_Cliente
                 {//armo el if para que tire un mensaje de que el admin creo al cliente
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
                     }
+                IsComplete = true;
                    
                 Close();
 
