@@ -123,7 +123,10 @@ namespace FrbaCommerce.Editar_Publicacion
 
                     Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarUsuarioCod(codigoPk));
                 }
-                Utiles.Validaciones.ValidarSiRubroYaPerteneceAPub(codigoPk, codRubroActual);
+                if (codRubroActual != codRubroInicial)
+                {
+                    Utiles.Validaciones.ValidarSiRubroYaPerteneceAPub(codigoPk, codRubroActual);
+                }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
                 Mensajes.Exitos.PublicacionEditada();
