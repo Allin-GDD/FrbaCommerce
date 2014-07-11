@@ -3,5 +3,5 @@ create PROCEDURE buscarIdPorPublicacion
 AS
 BEGIN
 
-select Id from Publicacion where Codigo = @Codigo
+select Usuario from Publicacion where Codigo = @Codigo
 end

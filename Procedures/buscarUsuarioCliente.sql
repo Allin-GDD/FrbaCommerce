@@ -5,5 +5,5 @@ BEGIN
 	SELECT usuario FROM Usuario
 		WHERE 
 		@Id =Id_Usuario
-		and Id_Rol = 1
+		and Tipo_usuario = 'C'
 END
