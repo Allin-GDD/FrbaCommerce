@@ -326,5 +326,35 @@ namespace FrbaCommerce.Datos
             dataGridView1.Columns["Codigo"].Visible = false;
         }
 
+
+        internal static bool verificarSiPertenece(decimal codigoPk, decimal codRubroActual)
+        {
+            Boolean seVerifica;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarSiRubroPertenece", conn,
+            
+            new SqlParameter("@codRubro", codRubroActual),
+            new SqlParameter("@codigo", codigoPk));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            if (lectura.GetInt32(0) > 0)
+            {
+                seVerifica = true;
+            }
+            else
+            {
+                seVerifica = false;
+            }
+
+
+            conn.Close();
+
+            return seVerifica;
+        }
     }
 }
+

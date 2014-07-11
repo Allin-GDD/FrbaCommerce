@@ -12,7 +12,8 @@ namespace FrbaCommerce.Editar_Publicacion
     public partial class Editar_Publicacion_Borrada : Form
     {
         private Boolean esGratuita;
-        private Decimal codRubro;
+        private Decimal codRubroInicial;
+        private Decimal codRubroActual;
         private Decimal codigoPk;
         private Decimal stockInicial = 0;
         private Boolean estaActiva = false;
@@ -23,7 +24,7 @@ namespace FrbaCommerce.Editar_Publicacion
             this.codigoPk = codigo;
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             inicializarValores();
-            codRubro = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
+            codRubroInicial = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
             if (cmbEstado.Text == "Publicada")
             {
                 estaActiva = true;
@@ -87,7 +88,7 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 publicacion.Stock = 1;
             }
-            publicacion.Rubro = codRubro;
+            publicacion.Rubro = codRubroActual;
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
@@ -115,13 +116,14 @@ namespace FrbaCommerce.Editar_Publicacion
             try
             {
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
-
+                
 
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006 && (esGratuita == false || estaActiva == false))
                 {
 
                     Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarUsuarioCod(codigoPk));
                 }
+                Utiles.Validaciones.ValidarSiRubroYaPerteneceAPub(codigoPk, codRubroActual);
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
                 Mensajes.Exitos.PublicacionEditada();
@@ -140,7 +142,7 @@ namespace FrbaCommerce.Editar_Publicacion
             list.ShowDialog();
             textBox1.Enabled = true;
             textBox1.Text = list.Result;
-            codRubro = list.ResultCodigo;
+            codRubroActual = list.ResultCodigo;
         }
 
         //Cambia algunos labels si se modifica el tipo de publicación correspondientemente

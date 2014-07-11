@@ -45,6 +45,7 @@ namespace FrbaCommerce.Generar_Publicacion
 
                     Utiles.Validaciones.ValidarVisibilidadGratuita(usuario);
                 }
+                
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
                 Mensajes.Exitos.ExitoAlGenerarPublicacion();
