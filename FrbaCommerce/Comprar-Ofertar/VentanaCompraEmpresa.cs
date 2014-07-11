@@ -163,7 +163,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                 new SqlParameter("@Codigo", codigo),
                 new SqlParameter("@Id", idusuario),
-                new SqlParameter("@Stock", stock));
+                new SqlParameter("@Stock", stock),
+                new SqlParameter("@Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
                 int retorno = cmd.ExecuteNonQuery();
 
                 

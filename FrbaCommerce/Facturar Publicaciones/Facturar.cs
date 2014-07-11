@@ -137,7 +137,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
                    new SqlParameter("@Codigo", codigo),
                    new SqlParameter("@Precio", precioFinal),
                    new SqlParameter("@Tipo_Pago",Convert.ToDecimal(tipopago)),
-                   new SqlParameter("@Nro_Fac", nfact));
+                   new SqlParameter("@Nro_Fac", nfact),
+                   new SqlParameter("@Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
                    
 
                 retorno = cmd.ExecuteNonQuery();

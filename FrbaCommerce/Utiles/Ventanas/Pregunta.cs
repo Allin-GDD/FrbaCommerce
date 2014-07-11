@@ -11,12 +11,12 @@ namespace FrbaCommerce.Utiles.Ventanas
 {
     public partial class Pregunta : Form
     {
-        public Pregunta(Decimal idUsuario, String rol, decimal codigoPublicacion, String publicador)
+        public Pregunta(Decimal idUsuario, char rol, decimal codigoPublicacion, String publicador)
         {
 
             InitializeComponent();
             Decimal rolAsignado;
-            if (rol == "E")
+            if (rol == 'E')
             {
                 rolAsignado = 2;
             }

@@ -138,12 +138,13 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
-                    new SqlParameter("@FechaActual",DBConexion.fechaIngresadaPorElAdministrador()),
+                    
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
-                    new SqlParameter("@Rubro", pCO.Rubro));
+                    new SqlParameter("@Rubro", pCO.Rubro),
+                    new SqlParameter("@FechaActual",DBConexion.fechaIngresadaPorElAdministrador()));
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
                     da.Fill(tabla);
                     conn.Close();

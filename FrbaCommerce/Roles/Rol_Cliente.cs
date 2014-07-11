@@ -135,14 +135,14 @@ namespace FrbaCommerce.Roles
             i = 14;
             if (funcionalidades.Any(x => x == i))
             {
-<<<<<<< HEAD
+
             String user = Datos.Dat_Usuario.getNameUser(idcliente, 1);
-         //   Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
-=======
+           // Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
+
             Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(idcliente);
->>>>>>> 2be1acfb216499749a6d1ae54517c19d33fa571d
+
             Hide();
-          //  gestor.ShowDialog();
+            gestor.ShowDialog();
             Show();
         }
             else
