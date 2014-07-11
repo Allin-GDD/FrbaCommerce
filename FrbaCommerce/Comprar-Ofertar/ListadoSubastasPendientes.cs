@@ -33,13 +33,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
                 {
 
+                    agregarCompra(codigo, idSeleccionado);
                     
-                    SqlConnection conn = DBConexion.obtenerConexion();
-                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
-                    new SqlParameter("@Codigo", codigo),
-                    new SqlParameter("@Id", idSeleccionado),
-                    new SqlParameter("@Stock", 1));
-                      conn.Close();
                     cambiar_ganador(codigo);
                 }
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
@@ -83,6 +78,16 @@ namespace FrbaCommerce.Comprar_Ofertar
                 int retorno = cmd2.ExecuteNonQuery();
                 conn2.Close();
 
+        }
+        private static void agregarCompra(decimal codigo,decimal idSeleccionado)
+        {
+            SqlConnection conn = DBConexion.obtenerConexion();
+                    SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
+                    new SqlParameter("@Codigo", codigo),
+                    new SqlParameter("@Id", idSeleccionado),
+                    new SqlParameter("@Stock", 1),
+                    new SqlParameter("@Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
+                      conn.Close();
         }
     }
 }

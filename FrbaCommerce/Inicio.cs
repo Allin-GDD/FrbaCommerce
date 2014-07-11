@@ -58,7 +58,7 @@ namespace FrbaCommerce
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-           Comprar_Ofertar.Buscar_Publicacion emp = new Comprar_Ofertar.Buscar_Publicacion(12,'C');
+           Comprar_Ofertar.ListadoSubastasPendientes emp = new Comprar_Ofertar.ListadoSubastasPendientes(12);
             emp.Show();
         }
 
