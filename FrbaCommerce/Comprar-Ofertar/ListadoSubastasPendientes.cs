@@ -52,7 +52,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaSubastasSinConfirmarGanador", conn,
-                new SqlParameter("@id_Cliente", idUsuario));
+                new SqlParameter("@id_Cliente", idUsuario),
+                new SqlParameter("Fecha", DBConexion.fechaIngresadaPorElAdministrador()));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
             }

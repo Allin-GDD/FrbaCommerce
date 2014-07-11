@@ -27,7 +27,8 @@ namespace FrbaCommerce.Login
                 Utiles.Validaciones.validarUsuario(Datos.Dat_Usuario.validarUserName(txtBoxUser.Text));
                 //busca los datos del usuario
                 Entidades.Ent_Usuario pusuario = Datos.Dat_Usuario.obtenerCamposDe(txtBoxUser.Text);
-
+                //valida si el rol esta habilitado
+                //Datos.Dat_Rol.validarEstadoRol(pusuario.IdUsuario);
                 //verifica si es la primera vez que ingresa al sistema
                 primerLogin = Datos.Dat_Usuario.validarPrimerIngreso(txtBoxPass.Text, pusuario.Contraseña, pusuario, this);
 

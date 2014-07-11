@@ -93,7 +93,7 @@ namespace FrbaCommerce.Datos
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
            new SqlParameter("@Rol", rol),
-           new SqlParameter("Habilitado",num));
+           new SqlParameter("@Filtrado",num));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 
             dataGridView1.Columns["Id"].Visible = false;

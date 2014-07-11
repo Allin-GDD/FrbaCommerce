@@ -1,6 +1,6 @@
-create PROCEDURE listaSubastasSinConfirmarGanador
-
-@id_Cliente numeric(18,0)
+CREATE PROCEDURE listaSubastasSinConfirmarGanador
+@id_Cliente numeric(18,0),
+@Fecha datetime
 AS
 BEGIN
 
@@ -11,7 +11,7 @@ from Oferta as Ofer
 inner join Publicacion
 on Ofer.Codigo_Pub = publicacion.Codigo
 where Publicacion.Usuario = @id_Cliente
-and GETDATE()>Ofer.Fecha
+and @Fecha>Ofer.Fecha
 and Ofer.Con_Ganador = 0
 group by Ofer.Codigo_Pub) AS Tabla
 ,Oferta

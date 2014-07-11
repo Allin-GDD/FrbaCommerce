@@ -3,6 +3,6 @@ CREATE PROCEDURE darDeBajaRol
 AS
 BEGIN
 UPDATE Rol
-SET Estado = 0
+SET Baja = 0, Estado = 0
 WHERE Id = @Rol
 END

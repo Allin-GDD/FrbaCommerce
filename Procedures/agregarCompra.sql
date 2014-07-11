@@ -1,4 +1,4 @@
-create PROCEDURE agregarCompra
+CREATE PROCEDURE agregarCompra
 		@Codigo numeric(18,0),
 		@Id numeric(18,0),
 		@Stock numeric(18,0),
