@@ -120,7 +120,7 @@ namespace FrbaCommerce.Editar_Publicacion
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006 && (esGratuita == false || estaActiva == false))
                 {
 
-                    Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarPublicadorCod(codigoPk).id, Datos.Dat_Publicacion.buscarPublicadorCod(codigoPk).rol);
+                    Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarUsuarioCod(codigoPk));
                 }
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);

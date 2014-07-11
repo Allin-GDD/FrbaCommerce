@@ -117,11 +117,11 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-           try
+            try
             {
   
                 pCO.Descripcion = textBox1.Text;
-                pCO.Rubro = 0;
+                
                 if (txtRubro.Enabled)
                 {
                     pCO.Rubro = Datos.Dat_Publicacion.obtenerCodRubro(txtRubro.Text);
@@ -169,7 +169,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 dataGridView1.Columns["Usuario"].Visible = false;
                 dataGridView1.Columns["Preguntas_permitidas"].Visible = false;
                 dataGridView1.Columns["Tipo_Usuario"].Visible = false;
-                dataGridView1.Columns["Publicador"].Visible = false;
+               // dataGridView1.Columns["Publicador"].Visible = false;
                 dataGridView1.Refresh();
                 dataGridView1.ClearSelection();
 
@@ -196,7 +196,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
 
             }
-           catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

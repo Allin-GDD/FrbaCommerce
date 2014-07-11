@@ -56,7 +56,7 @@ namespace FrbaCommerce.Utiles
         }
 
 
-        public static void ValidarTipoDecimalPublicacion(Decimal stockInicial, params TextBox[] parametroTxtBox)
+        public static void ValidarTipoDecimalPublicacion(Decimal stockInicial, params TextBox[] parametroTxtBox) //funca
         {
             int i = 0;
             int j = 0;
@@ -92,7 +92,7 @@ namespace FrbaCommerce.Utiles
                 throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
             }
         }
-        public static void ValidarVisibilidadGratuita(Decimal usuario)
+        public static void ValidarVisibilidadGratuita(Decimal usuario) //funca
         {
             if (Datos.Dat_Publicacion.verificarTresGratuitas(usuario))
             {

@@ -69,6 +69,7 @@ namespace FrbaCommerce.Datos
                    new SqlParameter("@Tipo", pPublicacion.Tipo),
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
+                   new SqlParameter("@Rubro", pPublicacion.Rubro),
                    new SqlParameter("@Descripcion", pPublicacion.Descripcion),
                    new SqlParameter("@Permitir_Preguntas", pPublicacion.Permitir_Preguntas),
                    new SqlParameter("@Fecha_Venc", Convert.ToDateTime(pPublicacion.Fecha_Venc)),
@@ -77,6 +78,7 @@ namespace FrbaCommerce.Datos
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();
             }
+
 
         }
         public static void EditarPublicacionBorrador(Entidades.Ent_Publicacion pPublicacion)
@@ -174,13 +176,13 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static string obtenerDescripcionRubro(Decimal rubro)
+        public static string obtenerDescripcionRubro(Decimal rubro) //funca
         {
 
             string rubroDevuelvo;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerDescripcionRubro", conn,
-
+                
             new SqlParameter("@IdRubro", rubro));
 
 
@@ -292,7 +294,7 @@ namespace FrbaCommerce.Datos
            return pPublicacion;
         }
 
-        public static Entidades.Ent_Fecha buscarDuracionVisibilidad(Decimal visibilidad)
+        public static Entidades.Ent_Fecha buscarDuracionVisibilidad(Decimal visibilidad) //funca
         {
 
             Decimal duracion;
