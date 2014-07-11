@@ -7,7 +7,3 @@ INNER JOIN Rol R ON FR.id_Rol = R.Id
 WHERE 
 R.Nombre = @rol
 END
-
-select *from Func_Rol
-
-select *from Funcionalidades

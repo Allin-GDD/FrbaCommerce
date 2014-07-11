@@ -15,11 +15,12 @@ namespace FrbaCommerce.Roles
         {
             InitializeComponent();
 
-            List<Int32> funcionalidades = Datos.Dat_Usuario.validarFuncionalidades("Admin");
+        funcionalidades = Datos.Dat_Usuario.validarFuncionalidades("Admin");
          
         }
 
-        private List<int> funcionalidades = new List<int>(); 
+        private List<int> funcionalidades = new List<int>();
+        private Int32 i;
         private void Salir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -27,11 +28,13 @@ namespace FrbaCommerce.Roles
 
         private void AbmCliente_Click(object sender, EventArgs e)
         {
-            if(funcionalidades.Contains(1)){
-            Roles.VentanaCliente cliente = new VentanaCliente();
-            this.Hide();
-            cliente.ShowDialog();
-            this.Show();
+            i = 1;
+            if (funcionalidades.Any(x => x == i))
+            {
+                Roles.VentanaCliente cliente = new VentanaCliente();
+                this.Hide();
+                cliente.ShowDialog();
+                this.Show();
             }
             else{
                 Mensajes.Errores.UsuarioNoTienePermisos();
@@ -40,7 +43,9 @@ namespace FrbaCommerce.Roles
 
         private void AbmEmpresa_Click(object sender, EventArgs e)
         {
-            if(funcionalidades.Contains(2)){
+            i = 2;
+            if (funcionalidades.Any(x => x == i))
+            {
             Roles.VentanaEmpresa empresa = new Roles.VentanaEmpresa();
             this.Hide();
             empresa.ShowDialog();
@@ -54,7 +59,9 @@ namespace FrbaCommerce.Roles
 
         private void button1_Click(object sender, EventArgs e)
         {
-             if(funcionalidades.Contains(4)){
+            i = 4;
+            if (funcionalidades.Any(x => x == i))
+            {
             VentanaVisibilidad ventana = new VentanaVisibilidad();
             this.Hide();
             ventana.ShowDialog();
@@ -67,7 +74,8 @@ namespace FrbaCommerce.Roles
 
         private void AbmRubro_Click(object sender, EventArgs e)
         {
-            if(funcionalidades.Contains(3))
+           i = 3;
+            if (funcionalidades.Any(x => x == i))
             {
             Roles.VentanaRol rol = new Roles.VentanaRol();
             this.Hide();
@@ -81,7 +89,8 @@ namespace FrbaCommerce.Roles
 
         private void ListadoEstadistico_Click(object sender, EventArgs e)
         {
-            if (funcionalidades.Contains(6))
+             i = 6;
+            if (funcionalidades.Any(x => x == i))
             {
                 Listado_Estadistico.ListadoEstadistico list = new Listado_Estadistico.ListadoEstadistico();
                 this.Hide();
@@ -97,7 +106,8 @@ namespace FrbaCommerce.Roles
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (funcionalidades.Contains(5))
+            i = 5;
+            if (funcionalidades.Any(x => x == i))
             {
                 Utiles.Ventanas.CambiarPw changpw = new FrbaCommerce.Utiles.Ventanas.CambiarPw(true);
                 Hide();

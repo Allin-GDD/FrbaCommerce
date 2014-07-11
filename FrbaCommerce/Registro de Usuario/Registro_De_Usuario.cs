@@ -61,6 +61,6 @@ namespace FrbaCommerce.Registro_de_Usuario
             Close();
         }
 
-     
+          
           }
 }

@@ -199,5 +199,48 @@ namespace FrbaCommerce.Datos
             }
             Mensajes.Generales.validarAlta(retorno);
         }
+
+        internal static void abrirVentanasSegunRol(Decimal pusuario, Form login)
+        {
+            List<Entidades.Entidad_Rol> listaDeRoles = new List<Entidades.Entidad_Rol>();
+            try
+            {
+                SqlConnection conexion = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerTodosLosRoles", conexion,
+                    new SqlParameter("@Id_Usuario", pusuario));
+                SqlDataReader lectura = cmd.ExecuteReader();
+                while (lectura.Read())
+                {
+                    Entidades.Entidad_Rol entRol = new Entidades.Entidad_Rol();
+                    entRol.id = lectura.GetDecimal(0);
+                    entRol.nombre = lectura.GetString(1);
+
+                    listaDeRoles.Add(entRol);
+                }
+                conexion.Close();
+
+                if (listaDeRoles.Count == 1)
+                {
+
+                 //   throw new Excepciones.ElUsuarioSeBloqueo(Convert.ToString(listaDeRoles.GetEnumerator.id));
+                    Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
+                  Utiles.Ventanas.Opciones.AbrirVentanas(rol.id , pusuario,login);
+                                  }
+                else
+                {
+                   
+                    Utiles.Ventanas.ElegirRol vent = new Utiles.Ventanas.ElegirRol(listaDeRoles, pusuario, login);
+                    vent.ShowDialog();
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+        }
     }
 }

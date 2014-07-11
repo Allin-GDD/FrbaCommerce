@@ -17,10 +17,12 @@ namespace FrbaCommerce.Roles
         {
             InitializeComponent();
             this.idEmpresa = id;
+            funcionalidades = Datos.Dat_Usuario.validarFuncionalidades("Cliente");
         }
         
         private Decimal idEmpresa;
-     
+        private List<int> funcionalidades = new List<int>();
+        private Int32 i;
 
         private void Salir_Click(object sender, EventArgs e)
         {
@@ -28,31 +30,53 @@ namespace FrbaCommerce.Roles
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        { i = 17;
+            if (funcionalidades.Any(x => x == i))
+            {
             Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, rol);
             Hide();
             co.ShowDialog();
             Show();
+            }
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
         }
 
         private void GnerarPubl_Click(object sender, EventArgs e)
-        {
+        {i = 10;
+            if (funcionalidades.Any(x => x == i))
+            {
             String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 2);
             Generar_Publicacion.Generar_Publi grPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(user);
             Hide();
             grPub.ShowDialog();
             Show();
+            }
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
         }
 
        
 
         private void button2_Click(object sender, EventArgs e)
         {
+            i = 16;
+            if (funcionalidades.Any(x => x == i))
+            {
              bool isEmpresa = true;
             Abm_Empresa.Modificación modif = new FrbaCommerce.Abm_Empresa.Modificación(idEmpresa,isEmpresa);
             Hide();
             modif.ShowDialog();
-            Show();
+            Show();  
+        }
+            else
+            {
+                Mensajes.Errores.UsuarioNoTienePermisos();
+            }
 
         }
 

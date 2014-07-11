@@ -230,10 +230,12 @@ namespace FrbaCommerce.Datos
             {
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, 0);
                 login.Hide();
-                //ACA tiene que darle la opcion de que pueda elegir otro rol
-                //Utiles.Ventanas.ElegirRol.controlDeRoles(pusuario.IdUsuario,login);
 
-                //Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
+                //ACA tiene que darle la opcion de que pueda elegir otro rol
+                Datos.Dat_Rol.abrirVentanasSegunRol(pusuario.IdUsuario,login);
+
+
+                // Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
 
             }
             else
@@ -278,7 +280,7 @@ namespace FrbaCommerce.Datos
             return user;
         }
 
-              internal static List<int> validarFuncionalidades(string p)
+        internal static List<Int32> validarFuncionalidades(string p)
         {
             List<Int32> func = new List<int>();
             SqlConnection conn = DBConexion.obtenerConexion();
@@ -289,6 +291,7 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 func.Add(lectura.GetInt32(0));
+                
             }
             return func;
         }

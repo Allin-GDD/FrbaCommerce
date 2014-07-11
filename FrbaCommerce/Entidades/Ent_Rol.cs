@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FrbaCommerce.Entidades
 {
-    class Entidad_Rol
+    public class Entidad_Rol
     {
         public String nombre { get; set; }
         public Decimal id { get; set; }

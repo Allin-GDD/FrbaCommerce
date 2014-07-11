@@ -51,7 +51,7 @@
             // 
             // Salir
             // 
-            this.Salir.Location = new System.Drawing.Point(60, 288);
+            this.Salir.Location = new System.Drawing.Point(50, 283);
             this.Salir.Name = "Salir";
             this.Salir.Size = new System.Drawing.Size(132, 22);
             this.Salir.TabIndex = 1;
