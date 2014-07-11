@@ -53,18 +53,18 @@ namespace FrbaCommerce.Comprar_Ofertar
        private static void buscarSubastasSinConfirmarGanador(decimal idUsuario, DataGridView dataGridView1)
         {
 
-            //try
-            //{
+            try
+            {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaSubastasSinConfirmarGanador", conn,
                 new SqlParameter("@id_Cliente", idUsuario));
 
                 Utiles.SQL.llenarDataGrid(dataGridView1, conn, cmd);
-            //}
-           // catch (Exception)
-            //{
-            //    Mensajes.Errores.NoHayConexion();
-            //}
+            }
+            catch (Exception)
+            {
+                Mensajes.Errores.NoHayConexion();
+            }
 
         }
         //busca las subastas que están pendientes

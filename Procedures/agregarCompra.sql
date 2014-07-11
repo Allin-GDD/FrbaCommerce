@@ -1,4 +1,4 @@
-CREATE PROCEDURE agregarCompra
+create PROCEDURE agregarCompra
 		@Codigo numeric(18,0),
 		@Id numeric(18,0),
 		@Stock numeric(18,0)
@@ -16,6 +16,10 @@ BEGIN
 	@Id,
 	GETDATE(),
 	@Stock,
-	0)	
+	(select MAX(Cod_Calificacion)+1 from Calificacion)	)
+	
+	insert into Calificacion
+	(Cod_Calificacion) values ((select MAX(Cod_Calificacion)+1 from Calificacion))
+
 
 END
