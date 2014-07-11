@@ -33,9 +33,9 @@ namespace FrbaCommerce.Roles
         { i = 17;
             if (funcionalidades.Any(x => x == i))
             {
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, rol);
+         //   Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idEmpresa, rol);
             Hide();
-            co.ShowDialog();
+            //co.ShowDialog();
             Show();
             }
             else

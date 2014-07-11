@@ -38,9 +38,9 @@ namespace FrbaCommerce.Roles
             short estado = Datos.Dat_Usuario.obtenerEstado(idcliente);
             Datos.Dat_Usuario.validarEstado(estado);
 
-            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,rol);
+          //  Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,rol);
              Hide();
-            co.ShowDialog();
+            //co.ShowDialog();
             Show();
              }
              else
@@ -136,9 +136,9 @@ namespace FrbaCommerce.Roles
             if (funcionalidades.Any(x => x == i))
             {
             String user = Datos.Dat_Usuario.getNameUser(idcliente, 1);
-            Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
+         //   Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
             Hide();
-            gestor.ShowDialog();
+          //  gestor.ShowDialog();
             Show();
         }
             else

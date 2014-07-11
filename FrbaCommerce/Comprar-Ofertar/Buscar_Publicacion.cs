@@ -20,9 +20,9 @@ namespace FrbaCommerce.Comprar_Ofertar
         int currentPage;
         int recNo;
         Boolean primeraVez;
-        string rolDeEste;
+        char rolDeEste;
 
-        public Buscar_Publicacion(decimal id, string rol)
+        public Buscar_Publicacion(decimal id, char rol)
         {
             InitializeComponent();
             //Inicializa el comboBox de visibilidades y le agrega la opción vacía para buscar sin el filtro
@@ -44,7 +44,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             botonCompraOferta = false;
             editarPublicacion = false;
             //Se fija si es empresa y le quita la posibilidad de buscar publicaciones de otros para comprar/ofertar, ya que solo puede editar sus publicaciones
-            if (rol == "E")
+            if (rol == 'E')
             {
                 checkBox1.Checked = true;
                 checkBox1.Enabled = false;
@@ -469,7 +469,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         private void button2_Click(object sender, EventArgs e)
         {
             Utiles.LimpiarTexto.LimpiarTextBox2(this);
-            if (rolDeEste == "C")
+            if (rolDeEste == 'C')
             {
                 Utiles.LimpiarTexto.SacarCheckBox(this);
             }
