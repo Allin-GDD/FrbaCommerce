@@ -138,7 +138,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listaDePublicaciones", conn,
                     new SqlParameter("@Descripcion", pCO.Descripcion),
-                   // new SqlParameter("@Rol", rolDeEste),
+                    new SqlParameter("@FechaActual",DBConexion.fechaIngresadaPorElAdministrador()),
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
