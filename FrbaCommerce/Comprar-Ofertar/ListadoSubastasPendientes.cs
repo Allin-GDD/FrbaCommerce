@@ -27,25 +27,27 @@ namespace FrbaCommerce.Comprar_Ofertar
             try
             {
                 Decimal codigo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Codigo_Pub"].Value);
-                Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id"].Value);
+                Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id_Cliente"].Value);
 
 
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
                 {
 
-                    cambiar_ganador(codigo);
+                    
                     SqlConnection conn = DBConexion.obtenerConexion();
                     SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCompra", conn,
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1));
-
+                    textBox1.Text = idSeleccionado.ToString();
+                    textBox2.Text = codigo.ToString();
                     conn.Close();
-
+                    cambiar_ganador(codigo);
                 }
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
             }
-            catch (Exception){
+           catch (Exception)
+            {
 
                 Mensajes.Errores.NoHayDatosAmodificar();
             }
