@@ -37,8 +37,8 @@ namespace FrbaCommerce.Generar_Publicacion
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
-            //try
-            //{
+            try
+            {
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006)
                 {
@@ -50,11 +50,11 @@ namespace FrbaCommerce.Generar_Publicacion
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
                 Mensajes.Exitos.ExitoAlGenerarPublicacion();
         
-            //}
-           // catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           // }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //Cambia labels según input en combox tipo de publicación.
@@ -97,7 +97,17 @@ namespace FrbaCommerce.Generar_Publicacion
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
             publicacion.Estado = Datos.Dat_Publicacion.obtenerCodEstadoPublicacion(Convert.ToString(cmbEstado.Text));
             publicacion.Usuario = usuario;
-            publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
+            
+            if (publicacion.Estado == 1)
+            {
+                publicacion.Fecha = DBConexion.fechaIngresadaPorElAdministrador();
+                publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
+            }
+            else
+            {
+                publicacion.Fecha = Convert.ToDateTime("01/01/1753");
+                publicacion.Fecha_Venc = Convert.ToDateTime("31/12/9999");
+            }
             
 
         }

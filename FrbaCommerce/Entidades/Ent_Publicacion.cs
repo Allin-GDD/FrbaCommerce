@@ -18,9 +18,10 @@ namespace FrbaCommerce.Entidades
         public Decimal Usuario { get; set; }
         public DateTime Fecha_Venc { get; set; }
         public Decimal Codigo { get; set; }
+        public DateTime Fecha { get; set; }
 
         public Ent_Publicacion() { }
-        public Ent_Publicacion(Decimal pVisibilidad, Decimal pTipo, Decimal pRubro, Decimal pStock, Decimal pPrecio, String pDescripcion, Decimal pEstado, Boolean pPermitir_Preguntas, Decimal pUsuario, DateTime pFecha_Venc, Decimal pCodigo)
+        public Ent_Publicacion(Decimal pVisibilidad, Decimal pTipo, Decimal pRubro, Decimal pStock, Decimal pPrecio, String pDescripcion, Decimal pEstado, Boolean pPermitir_Preguntas, Decimal pUsuario, DateTime pFecha_Venc, Decimal pCodigo, DateTime pFecha)
         {
 
 
@@ -35,6 +36,7 @@ namespace FrbaCommerce.Entidades
             this.Usuario = pUsuario;
             this.Fecha_Venc = pFecha_Venc;
             this.Codigo = pCodigo;
+            this.Fecha = pFecha;
         }
     }
 }

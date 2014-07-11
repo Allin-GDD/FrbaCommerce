@@ -4,6 +4,7 @@ CREATE PROCEDURE agregarNuevaPublicacion
 		@Tipo numeric(18,0),
 		@Stock numeric(18,0),
 		@Precio numeric(18,2),
+		@Fecha datetime,
 		@Estado numeric(18,0),
 		@Rubro numeric(18,0),
 		@Descripcion nvarchar(255),
@@ -40,7 +41,7 @@ BEGIN
 	@Estado,
 	@Descripcion,
 	@Permitir_Preguntas,
-	GETDATE(),
+	@Fecha,
 	@Fecha_Venc,
 	@Usuario)
 	

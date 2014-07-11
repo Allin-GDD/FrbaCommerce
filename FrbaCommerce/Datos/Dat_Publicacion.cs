@@ -67,6 +67,7 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaPublicacion", conexion,
                    new SqlParameter("@Visibilidad", pPublicacion.Visibilidad),
                    new SqlParameter("@Tipo", pPublicacion.Tipo),
+                   new SqlParameter("@Fecha", pPublicacion.Fecha),
                    new SqlParameter("@Estado", pPublicacion.Estado),
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
@@ -310,7 +311,7 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 duracion = lectura.GetInt16(5);
-                entFecha.fecha = DateTime.Now.AddDays(Convert.ToDouble(duracion));
+                entFecha.fecha = DBConexion.fechaIngresadaPorElAdministrador().AddDays(Convert.ToDouble(duracion));
             }
             conn.Close();
             return entFecha;
