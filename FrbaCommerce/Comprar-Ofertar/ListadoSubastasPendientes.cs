@@ -39,9 +39,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Codigo", codigo),
                     new SqlParameter("@Id", idSeleccionado),
                     new SqlParameter("@Stock", 1));
-                    textBox1.Text = idSeleccionado.ToString();
-                    textBox2.Text = codigo.ToString();
-                    conn.Close();
+                      conn.Close();
                     cambiar_ganador(codigo);
                 }
                 Mensajes.Exitos.ExitoAlGuardaLosDatos();
