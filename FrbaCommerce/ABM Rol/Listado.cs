@@ -21,7 +21,7 @@ namespace FrbaCommerce.ABM_Rol
         {
           try{
 
-            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text,dataGridView1);
+            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text,dataGridView1,0);
                }
             catch (Exception ex)
             {

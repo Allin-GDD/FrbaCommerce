@@ -23,12 +23,10 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
-                Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1);
-                this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
-                this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
+            agregarDataGrid();
                 
             }
-            catch (Exception ex)
+                catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -36,7 +34,9 @@ namespace FrbaCommerce.ABM_Rol
 
         private void agregarDataGrid()
         {
-           
+            Datos.Dat_Rol.filtarListaDeRoles(txtNombre.Text, dataGridView1,1);
+            this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+            this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -60,15 +60,13 @@ namespace FrbaCommerce.ABM_Rol
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-                {
+           
                 Decimal idSeleccionado = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Id"].Value);
 
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
                 {
                     ABM_Rol.Modificación mod = new ABM_Rol.Modificación(idSeleccionado);
                     this.Hide();
-                    limpiarDataGrid();
                     mod.ShowDialog();
                     agregarDataGrid();
                     Show();
@@ -77,17 +75,13 @@ namespace FrbaCommerce.ABM_Rol
                 {
                     ABM_Rol.Baja baj = new ABM_Rol.Baja(idSeleccionado);
                     this.Hide();
-                    limpiarDataGrid();
                     baj.ShowDialog();
                     agregarDataGrid();
                     Show();
 
                 }
-           }
-            catch
-            {
-               Mensajes.Errores.NoHayDatosAmodificar();
-            }
+           
+        
         }
     }
 }

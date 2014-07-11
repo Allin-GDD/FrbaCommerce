@@ -88,11 +88,12 @@ namespace FrbaCommerce.Datos
 
  
 
-        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1)
+        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
-           new SqlParameter("@Rol", rol));
+           new SqlParameter("@Rol", rol),
+           new SqlParameter("Habilitado",num));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 
             dataGridView1.Columns["Id"].Visible = false;
@@ -221,9 +222,7 @@ namespace FrbaCommerce.Datos
 
                 if (listaDeRoles.Count == 1)
                 {
-
-                 //   throw new Excepciones.ElUsuarioSeBloqueo(Convert.ToString(listaDeRoles.GetEnumerator.id));
-                    Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
+                   Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
                   Utiles.Ventanas.Opciones.AbrirVentanas(rol.id , pusuario,login);
                                   }
                 else

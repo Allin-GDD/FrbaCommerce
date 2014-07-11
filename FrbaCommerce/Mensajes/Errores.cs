@@ -49,7 +49,7 @@ namespace FrbaCommerce.Mensajes
 
         internal static void NoHayDatosAmodificar()
         {
-            MessageBox.Show("Los datos a modificar no son válidos", "Modificación", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
+            MessageBox.Show("Los datos a modificar no son válidos", "Modificación", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         internal static void UsuarioNoTienePermisos()
