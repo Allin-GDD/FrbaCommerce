@@ -54,12 +54,12 @@ namespace FrbaCommerce.Editar_Publicacion
             cmbVisib.DisplayMember = "Descripcion";
             cmbVisib.ValueMember = "Codigo";
             
-            cmbTipoPub.Text = publicacion.Tipo;
+            cmbTipoPub.Text = Datos.Dat_Publicacion.obtenerNombreTipoPublicacion(publicacion.Tipo);
 
             textBox3.Text = publicacion.Precio.ToString();
             textBox1.Text = Datos.Dat_Publicacion.obtenerDescripcionRubro(publicacion.Rubro);
 
-            if (publicacion.Tipo == "Compra inmediata")
+            if (publicacion.Tipo == 1)
             {
                 textBox2.Text = publicacion.Stock.ToString();
             }
@@ -78,7 +78,7 @@ namespace FrbaCommerce.Editar_Publicacion
         {
 
             publicacion.Visibilidad = Convert.ToInt16(cmbVisib.SelectedValue);
-            publicacion.Tipo = Convert.ToString(cmbTipoPub.Text);
+            publicacion.Tipo = Datos.Dat_Publicacion.obtenerCodTipoPublicacion(cmbTipoPub.Text);
 
             if (textBox2.Enabled == true)
             {
@@ -92,7 +92,7 @@ namespace FrbaCommerce.Editar_Publicacion
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
-            publicacion.Estado = Convert.ToString(cmbEstado.Text);
+            publicacion.Estado = Datos.Dat_Publicacion.obtenerCodEstadoPublicacion(cmbEstado.Text);
             publicacion.Codigo = codigoPk;
             
             publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
@@ -123,10 +123,7 @@ namespace FrbaCommerce.Editar_Publicacion
 
                     Utiles.Validaciones.ValidarVisibilidadGratuita(Datos.Dat_Publicacion.buscarUsuarioCod(codigoPk));
                 }
-                if (codRubroActual != codRubroInicial)
-                {
-                    Utiles.Validaciones.ValidarSiRubroYaPerteneceAPub(codigoPk, codRubroActual);
-                }
+                
                 inicializarPublicacion(publicacion);
                 Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
                 Mensajes.Exitos.PublicacionEditada();
@@ -141,7 +138,7 @@ namespace FrbaCommerce.Editar_Publicacion
         //LLeva a la selección de rubro
         private void button3_Click(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(codigoPk);
             list.ShowDialog();
             textBox1.Enabled = true;
             textBox1.Text = list.Result;

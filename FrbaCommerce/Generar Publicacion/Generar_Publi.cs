@@ -37,8 +37,8 @@ namespace FrbaCommerce.Generar_Publicacion
         private void button2_Click(object sender, EventArgs e)
         {
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
-            try
-            {
+            //try
+            //{
                 Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006)
                 {
@@ -50,11 +50,11 @@ namespace FrbaCommerce.Generar_Publicacion
                 Datos.Dat_Publicacion.AgregarPublicacion(publicacion);
                 Mensajes.Exitos.ExitoAlGenerarPublicacion();
         
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+           // catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           // }
         }
 
         //Cambia labels según input en combox tipo de publicación.
@@ -81,7 +81,7 @@ namespace FrbaCommerce.Generar_Publicacion
         {
 
             publicacion.Visibilidad = Convert.ToInt16(cmbVisib.SelectedValue);
-            publicacion.Tipo = Convert.ToString(cmbTipoPub.Text);
+            publicacion.Tipo = Datos.Dat_Publicacion.obtenerCodTipoPublicacion(Convert.ToString(cmbTipoPub.Text));
 
             if (textBox2.Enabled == true)
             {
@@ -95,7 +95,7 @@ namespace FrbaCommerce.Generar_Publicacion
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
-            publicacion.Estado = Convert.ToString(cmbEstado.Text);
+            publicacion.Estado = Datos.Dat_Publicacion.obtenerCodEstadoPublicacion(Convert.ToString(cmbEstado.Text));
             publicacion.Usuario = usuario;
             publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
             
@@ -106,7 +106,7 @@ namespace FrbaCommerce.Generar_Publicacion
         //Lleva a la ventana para buscar rubros y devuelve el valor seleccionado en el textbox correspondiente.
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0);
             list.ShowDialog();
             textBox1.Enabled = true;
             textBox1.Text = list.Result;

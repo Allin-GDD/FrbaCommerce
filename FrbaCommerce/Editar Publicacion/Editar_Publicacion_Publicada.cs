@@ -41,12 +41,12 @@ namespace FrbaCommerce.Editar_Publicacion
                 textBox5.Text = publ.Descripcion;
 
                 
-                if (publ.Tipo == "Compra Inmediata")
+                if (publ.Tipo == 1)
                 {
                     textBox2.Text = Convert.ToString(publ.Stock);
                     stockInicial = Convert.ToDecimal(textBox2.Text);
                 }
-                else if(publ.Tipo == "Subasta")
+                else if(publ.Tipo == 2)
                 {
                     textBox2.Enabled = false;
                     cmbEstado.Items.Remove("Pausada");
@@ -103,7 +103,7 @@ namespace FrbaCommerce.Editar_Publicacion
             }
             publicacion.Codigo = codigoPk;
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
-            publicacion.Estado = Convert.ToString(cmbEstado.Text);
+            publicacion.Estado = Datos.Dat_Publicacion.obtenerCodEstadoPublicacion(cmbEstado.Text);
 
         }
 

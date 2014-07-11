@@ -67,6 +67,7 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaPublicacion", conexion,
                    new SqlParameter("@Visibilidad", pPublicacion.Visibilidad),
                    new SqlParameter("@Tipo", pPublicacion.Tipo),
+                   new SqlParameter("@Estado", pPublicacion.Estado),
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
                    new SqlParameter("@Rubro", pPublicacion.Rubro),
@@ -257,7 +258,7 @@ namespace FrbaCommerce.Datos
 
             lectura.Read();
 
-            if (lectura.GetString(0) == "Pausada")
+            if (lectura.GetDecimal(0) == 3)
             {
                 verificado = true;
             }
@@ -282,7 +283,7 @@ namespace FrbaCommerce.Datos
             while (lectura.Read())
             {
                 pPublicacion.Visibilidad = lectura.GetDecimal(7);
-                pPublicacion.Tipo = lectura.GetString(6);
+                pPublicacion.Tipo = lectura.GetDecimal(6);
                 pPublicacion.Stock = lectura.GetDecimal(2);
                 pPublicacion.Descripcion = lectura.GetString(1);
                 pPublicacion.Precio = lectura.GetDecimal(5);
@@ -316,10 +317,11 @@ namespace FrbaCommerce.Datos
         }
 
 
-        public static void filtarListaDeRubros(string descripcionRubro, DataGridView dataGridView1)
+        public static void filtarListaDeRubros(string descripcionRubro, DataGridView dataGridView1, Decimal codigo)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRubro", conexion,
+           new SqlParameter("@codigo", codigo),
            new SqlParameter("@Descripcion", descripcionRubro));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 
@@ -327,33 +329,67 @@ namespace FrbaCommerce.Datos
         }
 
 
-        internal static bool verificarSiPertenece(decimal codigoPk, decimal codRubroActual)
+        internal static decimal obtenerCodTipoPublicacion(string tipo)
         {
-            Boolean seVerifica;
+            decimal tipoDevuelvo;
             SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarSiRubroPertenece", conn,
-            
-            new SqlParameter("@codRubro", codRubroActual),
-            new SqlParameter("@codigo", codigoPk));
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerCodTipoPublicacion", conn,
+
+            new SqlParameter("@tipo", tipo));
 
 
             SqlDataReader lectura = cmd.ExecuteReader();
 
             lectura.Read();
 
-            if (lectura.GetInt32(0) > 0)
-            {
-                seVerifica = true;
-            }
-            else
-            {
-                seVerifica = false;
-            }
+            tipoDevuelvo = lectura.GetDecimal(0);
 
 
             conn.Close();
 
-            return seVerifica;
+            return tipoDevuelvo;
+        }
+
+        internal static decimal obtenerCodEstadoPublicacion(string estado)
+        {
+            decimal estadoDevuelvo;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerCodEstadoPublicacion", conn,
+
+            new SqlParameter("@estado", estado));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            estadoDevuelvo = lectura.GetDecimal(0);
+
+
+            conn.Close();
+
+            return estadoDevuelvo;
+        }
+
+        internal static string obtenerNombreTipoPublicacion(decimal tipo)
+        {
+            string nombreTipoDevuelvo;
+            SqlConnection conn = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerNombreTipoPublicacion", conn,
+
+            new SqlParameter("@tipo", tipo));
+
+
+            SqlDataReader lectura = cmd.ExecuteReader();
+
+            lectura.Read();
+
+            nombreTipoDevuelvo = lectura.GetString(0);
+
+
+            conn.Close();
+
+            return nombreTipoDevuelvo;
         }
     }
 }
