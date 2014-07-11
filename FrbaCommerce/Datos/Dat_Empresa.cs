@@ -9,30 +9,7 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Empresa
     {
-      /*  public static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
-        {
-            List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
-
-            SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand Comando = new SqlCommand("Select Telefono from Empresa", conexion);
-            SqlDataReader lectura = Comando.ExecuteReader();
-
-
-            while (lectura.Read())
-            {
-                Entidades.Ent_Telefono pTelefono = new Entidades.Ent_Telefono();
-
-                pTelefono.Telefono = lectura.GetString(0);
-
-                listaDeTelefonos.Add(pTelefono);
-            }
-            return listaDeTelefonos;
-
-
-
-
-        }*/
-
+      
         public static List<string> obtenerTodosLosCuit()
         {
 

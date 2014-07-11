@@ -67,28 +67,7 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.validarAlta(retorno);
            }
 
-        public static Decimal obtenerIdRol(string nombre)
-        {
-            Decimal id = -1;
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdRol", conn,
-            new SqlParameter("@Rol_Nombre", nombre));
-            SqlDataReader lectura = cmd.ExecuteReader();
-
-            while (lectura.Read())
-            {
-
-                id = lectura.GetDecimal(0);
-            }
-
-            conn.Close();
-            return id;
-
-        }
-
- 
-
-        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
+       public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,

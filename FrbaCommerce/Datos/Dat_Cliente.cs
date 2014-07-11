@@ -59,7 +59,7 @@ namespace FrbaCommerce.Datos
             return listaDeTipos;
         }
 
-        public static List<Entidades.Ent_Doc> obtenerTodosLosDocCliente()
+          public static List<Entidades.Ent_Doc> obtenerTodosLosDocCliente()
         {
 
             List<Entidades.Ent_Doc> listaDeDni = new List<Entidades.Ent_Doc>();
@@ -83,38 +83,7 @@ namespace FrbaCommerce.Datos
             return listaDeDni;
         }
 
-        public static void AgregarCliente(Entidades.Ent_Cliente pCliente)
-        {
-            int retorno; 
-         
-            using (SqlConnection conexion = DBConexion.obtenerConexion())
-            {
-
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoCliente", conexion,
-                   new SqlParameter("@Dni", pCliente.Dni),
-                   new SqlParameter("@Nombre", pCliente.Nombre),
-                   new SqlParameter("@Apellido", pCliente.Apellido),
-                   new SqlParameter("@Fecha_Nac", pCliente.Fecha_Nac),
-                   new SqlParameter("@Mail", pCliente.Mail),
-                   new SqlParameter("@Dom_Calle", pCliente.Dom_Calle),
-                   new SqlParameter("@Nro_Calle", pCliente.Nro_Calle),
-                   new SqlParameter("@Piso", pCliente.Piso),
-                   new SqlParameter("@Depto", pCliente.Dpto),
-                   new SqlParameter("@Cod_Postal", pCliente.Cod_Postal),
-                   new SqlParameter("@Localidad", pCliente.Localidad),
-                   new SqlParameter("@Tipo_dni", pCliente.Tipo_dni),
-                   new SqlParameter("@Telefono", pCliente.Telefono));
-
-                retorno = cmd.ExecuteNonQuery();
-                conexion.Close();
-            }
-            
-
-            Mensajes.Generales.validarAlta(retorno);
-
-        }
-
-        public static void buscarListaDeCliente(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
+         public static void buscarListaDeCliente(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
         {
 
             try
@@ -136,7 +105,7 @@ namespace FrbaCommerce.Datos
             dataGridView1.Columns["Id_Usuario"].Visible = false;
 
         }
-       
+      
         public static Entidades.Ent_Cliente buscarCliente(Decimal id)
         {
 
