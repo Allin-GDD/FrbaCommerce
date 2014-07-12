@@ -84,6 +84,7 @@ namespace FrbaCommerce.Mensajes
         public static String evaluarFecha(MaskedTextBox Fecha, bool isCliente)
         {
             String ii = null;
+
             try
                
             {

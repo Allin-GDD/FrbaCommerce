@@ -158,7 +158,9 @@ namespace FrbaCommerce.Utiles
         {
 
             DateTime fechaLimiteInferior = new DateTime(1800, 1, 1, 0, 0, 0);
+
             DateTime fechaLimiteSuperior = new DateTime(4000,12,31,0,0,0);
+
             DateTime time = DateTime.Parse(fecha.Text);
 
 
