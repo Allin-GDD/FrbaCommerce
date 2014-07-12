@@ -9,12 +9,14 @@ BEGIN
 	INSERT INTO Oferta(
 	Codigo_Pub,
 	Fecha,
+	Monto,
 	Id_Cliente,
-	Monto)
+	Con_Ganador)
 	VALUES(
 	@Cod_Pub,
 	@Fecha,
+	@Monto,
 	@Id_Cli,
-	@Monto)	
+	0)	
 
 END

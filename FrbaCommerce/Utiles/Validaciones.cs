@@ -334,7 +334,6 @@ namespace FrbaCommerce.Utiles
 
             double precioBase = 0;
 
-
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarPrecio", conn,
@@ -359,6 +358,7 @@ namespace FrbaCommerce.Utiles
         public static void validarValorMayorAUltOferta(decimal codigoPub, double precioOfertado)
         {
             double precioMayorOferta = 0;
+            string s = "";
             using (SqlConnection conn2 = DBConexion.obtenerConexion())
             {
 
@@ -366,15 +366,19 @@ namespace FrbaCommerce.Utiles
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
 
-                if (lectura2 !=null)
+             //   if (lectura2 != null)
                 {
                     while (lectura2.Read())
                     {
-                        precioMayorOferta = Convert.ToDouble(lectura2.GetDecimal(0));
+                       
+                        
+                         s = lectura2.IsDBNull(0) ? "" : Convert.ToString(lectura2.GetValue(0));
+                       
 
 
                     }
-                }
+                    if (s.Equals("")) { } else { precioMayorOferta = Convert.ToDouble(s); }
+               }
                 if (precioOfertado <= precioMayorOferta)
                 {
                     throw new Excepciones.ValorMenor("El valor ingresado es menor a la última oferta realizada");
