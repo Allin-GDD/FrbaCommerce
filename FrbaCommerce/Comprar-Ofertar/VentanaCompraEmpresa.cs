@@ -56,7 +56,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_VendedorEmpresa pcliente = new Entidades.Ent_VendedorEmpresa();
             decimal clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarEmpresa(clienteABuscar);
-            pcliente.Usuario = cargarUsuario(clienteABuscar);
+          //  pcliente.Usuario = cargarUsuario(clienteABuscar);
             
 
             
@@ -102,7 +102,8 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             Entidades.Ent_VendedorEmpresa pEmpresa = new Entidades.Ent_VendedorEmpresa();
 
-            try {
+            //try 
+            {
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaSolaEmpresa", conn,
             new SqlParameter("@Id", id));
@@ -110,6 +111,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
+                pEmpresa.Usuario = lectura.GetString(0);
                 pEmpresa.RazonSocial = lectura.GetString(1);
                 pEmpresa.CUIT = lectura.GetString(2);
                 pEmpresa.Fecha_Creacion = Convert.ToString(lectura.GetDateTime(3));
@@ -123,10 +125,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 pEmpresa.Telefono = lectura.GetString(11);
                 pEmpresa.Ciudad = lectura.GetString(12);
                 pEmpresa.NombreContacto = lectura.GetString(13);
+                
             }
             conn.Close();
             }
-            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
+           // catch (Exception) { Mensajes.Errores.NoHayConexion(); }
             return pEmpresa;
         }
 

@@ -1,4 +1,4 @@
-CREATE PROCEDURE listaSubastasSinConfirmarGanador
+create PROCEDURE listaSubastasSinConfirmarGanador
 @id_Cliente numeric(18,0),
 @Fecha datetime
 AS

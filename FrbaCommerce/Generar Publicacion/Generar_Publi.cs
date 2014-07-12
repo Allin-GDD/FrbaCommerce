@@ -81,7 +81,7 @@ namespace FrbaCommerce.Generar_Publicacion
         {
 
             publicacion.Visibilidad = Convert.ToInt16(cmbVisib.SelectedValue);
-            publicacion.Tipo = Convert.ToString(cmbTipoPub.Text);
+            publicacion.Tipo = Datos.Dat_Publicacion.obtenerCodTipoPublicacion(Convert.ToString(cmbTipoPub.Text));
 
             if (textBox2.Enabled == true)
             {
@@ -95,9 +95,19 @@ namespace FrbaCommerce.Generar_Publicacion
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
-            publicacion.Estado = Convert.ToString(cmbEstado.Text);
+            publicacion.Estado = Datos.Dat_Publicacion.obtenerCodEstadoPublicacion(Convert.ToString(cmbEstado.Text));
             publicacion.Usuario = usuario;
-            publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
+            
+            if (publicacion.Estado == 1)
+            {
+                publicacion.Fecha = DBConexion.fechaIngresadaPorElAdministrador();
+                publicacion.Fecha_Venc = Datos.Dat_Publicacion.buscarDuracionVisibilidad(publicacion.Visibilidad).fecha;
+            }
+            else
+            {
+                publicacion.Fecha = Convert.ToDateTime("01/01/1753");
+                publicacion.Fecha_Venc = Convert.ToDateTime("31/12/9999");
+            }
             
 
         }
@@ -106,7 +116,7 @@ namespace FrbaCommerce.Generar_Publicacion
         //Lleva a la ventana para buscar rubros y devuelve el valor seleccionado en el textbox correspondiente.
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro();
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0);
             list.ShowDialog();
             textBox1.Enabled = true;
             textBox1.Text = list.Result;

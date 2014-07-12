@@ -17,7 +17,7 @@ namespace FrbaCommerce.Entidades
         public Decimal Piso { get; set; }
         public String Dpto { get; set; }
         public String Cod_Postal { get; set; }
-        public Int16 Tipo_dni { get; set; }
+        public String Tipo_dni { get; set; }
         public String Telefono { get; set; }
         public String Localidad { get; set; }
         public String Usuario { get; set; }

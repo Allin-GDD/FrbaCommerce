@@ -1,9 +1,11 @@
 CREATE PROCEDURE agregarNuevaPublicacion
 		
 		@Visibilidad numeric(18,0),
-		@Tipo nvarchar(255),
+		@Tipo numeric(18,0),
 		@Stock numeric(18,0),
 		@Precio numeric(18,2),
+		@Fecha datetime,
+		@Estado numeric(18,0),
 		@Rubro numeric(18,0),
 		@Descripcion nvarchar(255),
 		@Permitir_Preguntas bit,
@@ -15,7 +17,7 @@ BEGIN
 	
 	DECLARE @idPub numeric(18,0)
 	
-	SET @idPub = (SELECT MAX(Codigo) from Publicacion) + 1
+	SET @idPub = (SELECT MAX(Codigo)+1 from Publicacion)
 	
 	INSERT INTO Publicacion(
 	Codigo,
@@ -23,10 +25,10 @@ BEGIN
 	Tipo,
 	Stock,
 	Precio,
+	Estado,
 	Descripcion,
 	Preguntas_permitidas,
 	Fecha,
-	Estado,
 	Fecha_Venc,
 	Usuario)
 	
@@ -36,10 +38,10 @@ BEGIN
 	@Tipo,
 	@Stock,
 	@Precio,
+	@Estado,
 	@Descripcion,
 	@Permitir_Preguntas,
-	GETDATE(),
-	'Borrador',
+	@Fecha,
 	@Fecha_Venc,
 	@Usuario)
 	

@@ -59,7 +59,8 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevaOferta", conexion,
                    new SqlParameter("@Cod_Pub", pOferta.Codigo_Pub),
                    new SqlParameter("@Monto", pOferta.Monto),
-                   new SqlParameter("@Id_Cli", pOferta.Id_Cli));
+                   new SqlParameter("@Id_Cli", pOferta.Id_Cli),
+                   new SqlParameter("@Fecha",DBConexion.fechaIngresadaPorElAdministrador()));
               
                 retorno = cmd.ExecuteNonQuery();
                 conexion.Close();

@@ -366,7 +366,7 @@ namespace FrbaCommerce.Utiles
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
 
-                if (lectura2 != null)
+                if (lectura2 !=null)
                 {
                     while (lectura2.Read())
                     {
@@ -426,13 +426,7 @@ namespace FrbaCommerce.Utiles
             return ii;
         }
 
-        internal static void ValidarSiRubroYaPerteneceAPub(decimal codigoPk, decimal codRubroActual)
-        {
-            if (Datos.Dat_Publicacion.verificarSiPertenece(codigoPk,codRubroActual))
-            {
-                throw new Excepciones.ValoresConTiposDiferentes("No puede tener más de tres publicaciones gratuitas activas a la vez.");
-            }
-        }
+       
     }
 }
 
