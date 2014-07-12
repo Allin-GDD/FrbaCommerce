@@ -117,8 +117,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-           // try
-           // {
+            try
+            {
   
                 pCO.Descripcion = textBox1.Text;
 
@@ -201,11 +201,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 agregarColumnas();
 
 
-          //  }
-           // catch (Exception ex)
-          //  {
-          //      MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           // }
+           }
+            catch (Exception ex)
+           {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }
