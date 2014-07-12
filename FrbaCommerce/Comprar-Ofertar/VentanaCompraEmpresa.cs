@@ -27,28 +27,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
         }
 
-        private string cargarUsuario(decimal id)
-        {
-           string usuario = "";
-           using (SqlConnection conexion = DBConexion.obtenerConexion())
-           {
-               
-               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioEmpresa", conexion,
-               new SqlParameter("@Id", id));
-
-               SqlDataReader lectura = cmd.ExecuteReader();
-               while (lectura.Read())
-               {
-
-                   usuario = lectura.GetString(0);
-
-               }
-               conexion.Close();
-           }
-            return usuario;
-            }
-        
-
+     
         private void cargarDatosDelVendedor()
         {
             
@@ -56,7 +35,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_VendedorEmpresa pcliente = new Entidades.Ent_VendedorEmpresa();
             decimal clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarEmpresa(clienteABuscar);
-          //  pcliente.Usuario = cargarUsuario(clienteABuscar);
+       
             
 
             

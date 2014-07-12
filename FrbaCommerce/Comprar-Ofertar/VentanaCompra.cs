@@ -23,35 +23,13 @@ namespace FrbaCommerce.Comprar_Ofertar
             idusuario = idUsuario;
             this.codigo = codigoPub;
             cargarDatosDelVendedor();
-           // Utiles.Inicializar.comboBoxTipoDoc(comboBox1);
-            
+          
     
         }
         
         
         
 
-        private string cargarUsuario(decimal id)
-        {
-           string usuario = "";
-           using (SqlConnection conexion = DBConexion.obtenerConexion())
-           {
-               
-               SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUsuarioCliente", conexion,
-               new SqlParameter("@Id", id));
-
-               SqlDataReader lectura = cmd.ExecuteReader();
-               while (lectura.Read())
-               {
-
-                   usuario = lectura.GetString(0);
-
-               }
-               conexion.Close();
-           }
-            return usuario;
-            }
-        
 
         private void cargarDatosDelVendedor()
         {
@@ -60,7 +38,7 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_Vendedor pcliente = new Entidades.Ent_Vendedor();
             decimal clienteABuscar = buscaridVendedor(codigo);
             pcliente = buscarCliente(clienteABuscar);
-           // pcliente.Usuario = cargarUsuario(clienteABuscar);
+        
             
 
             txtnombre.Text = pcliente.Nombre;
