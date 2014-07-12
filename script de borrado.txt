@@ -1,0 +1,26 @@
+--para borrar
+
+drop table Compra
+drop table Oferta
+drop table Clientes
+drop table Empresa
+drop table Tipo_Doc
+drop table Tipo_Pago
+drop table Item_FacturaComision
+drop table Item_FacturaPublicacion
+drop table Factura
+drop table PreguntasYRespuestas
+drop table Funcionalidades
+drop table func_rol
+drop table calificacion
+drop table Usuario
+drop table Rol
+drop table Usuario_Rol
+drop table Publicacion
+drop table estado
+drop table tipo_publicacion
+drop table publicacion_rubro
+drop table Visibilidad
+drop table Rubro
+drop table rol
+drop table usuario
