@@ -33,7 +33,7 @@ namespace FrbaCommerce
             Login.Login Log1 = new Login.Login();
             this.Hide();
             Log1.ShowDialog();
-            this.Show();
+            //this.Show();
 
         }
 
@@ -66,6 +66,12 @@ namespace FrbaCommerce
         {
             Generar_Publicacion.Generar_Publi genpub = new Generar_Publicacion.Generar_Publi(1);
             genpub.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Editar_Publicacion.Editar_Publicacion_Publicada pp = new FrbaCommerce.Editar_Publicacion.Editar_Publicacion_Publicada(12353);
+            pp.Show();
         }
 
     }

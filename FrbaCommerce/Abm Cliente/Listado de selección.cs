@@ -27,26 +27,32 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-              Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
+             
             try
             {
-                pCliente.Nombre = txtNombre.Text;
-                pCliente.Apellido = txtApellido.Text;
-                pCliente.Dni = txtDNI.Text;
-                pCliente.Mail = txtMail.Text;
-                pCliente.Tipo_doc = Convert.ToInt16(cmbTipoDoc.SelectedValue);
-
-                Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
-                
-                //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-                this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
-                this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
+                cargarDatagrid();
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cargarDatagrid()
+        {
+            Entidades.Ent_ListadoCliente pCliente = new Entidades.Ent_ListadoCliente();
+            pCliente.Nombre = txtNombre.Text;
+            pCliente.Apellido = txtApellido.Text;
+            pCliente.Dni = txtDNI.Text;
+            pCliente.Mail = txtMail.Text;
+            pCliente.Tipo_doc = Convert.ToInt16(cmbTipoDoc.SelectedValue);
+
+            Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
+
+            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+            this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
+            this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
         }
            
          
@@ -75,7 +81,7 @@ namespace FrbaCommerce.Abm_Cliente
                 Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(idSeleccionado, false);
                 this.Hide();
                 mod.ShowDialog();
-                this.Refresh();
+                cargarDatagrid();
 
                 Show();
               
@@ -87,7 +93,7 @@ namespace FrbaCommerce.Abm_Cliente
                 Abm_Cliente.Baja baj = new Abm_Cliente.Baja(idSeleccionado);
                 this.Hide();
                 baj.ShowDialog();
-                this.Refresh();
+                cargarDatagrid();
                 Show();
                 
             }

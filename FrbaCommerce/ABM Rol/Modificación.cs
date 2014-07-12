@@ -29,7 +29,7 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
-                //CAMBIA EL NOMBRE Y DEVUEVE EL ROL QUE TIENE
+                
                 Utiles.LimpiarTexto.BlanquearControls(this);
                 List<String> errores = new List<string>();
                   if (nombreRolAnt != txtNombre.Text)
@@ -49,6 +49,7 @@ namespace FrbaCommerce.ABM_Rol
 
                 //CAMBIA EL ESTADO DE ROL (HABILITADO O DESHABILITADO)
                 Datos.Dat_Rol.actualizarEstadoRol(Convert.ToInt32(cmbHabilitado.SelectedValue), IdRol);
+                reiniciarAppSiEsAdminYQuitoFunc();
                 this.Close();
                 
            }
@@ -56,6 +57,16 @@ namespace FrbaCommerce.ABM_Rol
                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+            private void reiniciarAppSiEsAdminYQuitoFunc()
+            {
+                if (chkQuitar.Checked && txtNombre.Text == "Admin")
+                {
+
+                    MessageBox.Show("La aplicación se reiniciará", "Reinicio de aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Application.Restart();
+                }
+            }
 
             private void btnLimpiar_Click(object sender, EventArgs e)
             {

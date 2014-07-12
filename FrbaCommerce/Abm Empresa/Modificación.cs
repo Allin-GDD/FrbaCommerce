@@ -17,7 +17,7 @@ namespace FrbaCommerce.Abm_Empresa
             InitializeComponent();
 
             this.empresaAModificar = idSeleccionado;
-            CUIT.Enabled = false;
+            CUIT.Enabled = true;
 
             cargarDatosDelClienteSeleccionado();
 

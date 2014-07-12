@@ -14,7 +14,6 @@ namespace FrbaCommerce.Abm_Empresa
         public Listado()
         {
             InitializeComponent();
-            txtNroDoc.Enabled = false;
         }
 
         private void button2_Click(object sender, EventArgs e)

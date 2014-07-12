@@ -52,7 +52,7 @@ namespace FrbaCommerce.Datos
         public static Entidades.Ent_Empresa buscarEmpresa(Decimal id)
         {
             Entidades.Ent_Empresa pEmpresa = new Entidades.Ent_Empresa();
-            try {
+           
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarUnaSolaEmpresa", conn,
             new SqlParameter("@Id", id));
@@ -73,11 +73,9 @@ namespace FrbaCommerce.Datos
                 pEmpresa.Telefono = lectura.GetString(10);
                 pEmpresa.Ciudad = lectura.GetString(11);
                 pEmpresa.NombreContacto = lectura.GetString(12);
-                pEmpresa.Tipo_DocNombre = lectura.GetString(13);
             }
             conn.Close();
-            }
-            catch (Exception) { Mensajes.Errores.NoHayConexion(); }
+           
             return pEmpresa;
         }
 

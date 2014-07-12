@@ -4,12 +4,12 @@ CREATE PROCEDURE darDeBajaAUsuario
 AS
 BEGIN
 UPDATE Usuario
-SET Baja = 0
+SET Baja = 0, Estado = 0
 WHERE Id_Usuario = @Id_Usuario
 
 UPDATE Publicacion
-SET Estado = 'Finalizada'
-WHERE Id = @Id_Usuario
+SET Estado = 4
+WHERE Publicacion.Usuario = @Id_Usuario
 
 IF(@Id_Rol = 1)
 BEGIN
