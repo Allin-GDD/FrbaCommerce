@@ -118,7 +118,14 @@ namespace FrbaCommerce.Editar_Publicacion
                 }
                 
                 inicializarPublicacion(publicacion);
-                Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
+                if (publicacion.Estado == 2)
+                {
+                    Datos.Dat_Publicacion.EditarPublicacionBorrador(publicacion);
+                }
+                else
+                {
+                    Datos.Dat_Publicacion.EditarPublicacionBorradorAPublicada(publicacion);
+                }
                 Mensajes.Exitos.PublicacionEditada();
 
             }
