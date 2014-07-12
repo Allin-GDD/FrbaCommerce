@@ -92,7 +92,6 @@ namespace FrbaCommerce.Datos
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.editarPublicacionBorrador", conexion,
                    new SqlParameter("@Visibilidad", pPublicacion.Visibilidad),
                    new SqlParameter("@Tipo", pPublicacion.Tipo),
-                   new SqlParameter("@Rubro", pPublicacion.Rubro),
                    new SqlParameter("@Stock", pPublicacion.Stock),
                    new SqlParameter("@Precio", pPublicacion.Precio),
                    new SqlParameter("@Descripcion", pPublicacion.Descripcion),
@@ -318,11 +317,12 @@ namespace FrbaCommerce.Datos
         }
 
 
-        public static void filtarListaDeRubros(string descripcionRubro, DataGridView dataGridView1, Decimal codigo)
+        public static void filtarListaDeRubros(string descripcionRubro, DataGridView dataGridView1, Decimal codigo, String flag)
         {
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRubro", conexion,
            new SqlParameter("@codigo", codigo),
+           new SqlParameter("@flag", flag),
            new SqlParameter("@Descripcion", descripcionRubro));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 
@@ -391,6 +391,38 @@ namespace FrbaCommerce.Datos
             conn.Close();
 
             return nombreTipoDevuelvo;
+        }
+
+        internal static void AgregarRubro(TextBox textBox1, Decimal codPublicacion)
+        {
+            int retorno;
+            decimal rubro;
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+                rubro = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarPublicacionRubro", conexion,
+                new SqlParameter("@codigo", codPublicacion),
+                new SqlParameter("@rubro", rubro));
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
+        }
+
+        internal static void QuitarRubro(TextBox textBox1, Decimal codPublicacion)
+        {
+            int retorno;
+            decimal rubro;
+            using (SqlConnection conexion = DBConexion.obtenerConexion())
+            {
+                rubro = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.quitarPublicacionRubro", conexion,
+                new SqlParameter("@codigo", codPublicacion),
+                new SqlParameter("@rubro", rubro));
+
+                retorno = cmd.ExecuteNonQuery();
+                conexion.Close();
+            }
         }
     }
 }

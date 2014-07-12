@@ -28,6 +28,14 @@ namespace FrbaCommerce.Mensajes
         {
             MessageBox.Show("Publicación generada exitosamente", "Publicacion generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        public static void ExitoAlGenerarRubro()
+        {
+            MessageBox.Show("Rubro agregado exitosamente.", "Publicacion generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void ExitoAlQuitarRubro()
+        {
+            MessageBox.Show("Rubro quitado exitosamente.", "Publicacion generada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
         public static void PublicacionEditada()
         {
             MessageBox.Show("Publicación editada exitosamente", "Publicacion editada", MessageBoxButtons.OK, MessageBoxIcon.Information);

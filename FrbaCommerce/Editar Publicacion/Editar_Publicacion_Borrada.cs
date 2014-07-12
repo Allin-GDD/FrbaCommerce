@@ -12,8 +12,6 @@ namespace FrbaCommerce.Editar_Publicacion
     public partial class Editar_Publicacion_Borrada : Form
     {
         private Boolean esGratuita;
-        private Decimal codRubroInicial;
-        private Decimal codRubroActual;
         private Decimal codigoPk;
         private Decimal stockInicial = 0;
         private Boolean estaActiva = false;
@@ -24,7 +22,6 @@ namespace FrbaCommerce.Editar_Publicacion
             this.codigoPk = codigo;
             Utiles.Inicializar.comboBoxVisibilidad(cmbVisib);
             inicializarValores();
-            codRubroInicial = Datos.Dat_Publicacion.obtenerCodRubro(textBox1.Text);
             if (cmbEstado.Text == "Publicada")
             {
                 estaActiva = true;
@@ -57,7 +54,6 @@ namespace FrbaCommerce.Editar_Publicacion
             cmbTipoPub.Text = Datos.Dat_Publicacion.obtenerNombreTipoPublicacion(publicacion.Tipo);
 
             textBox3.Text = publicacion.Precio.ToString();
-            textBox1.Text = Datos.Dat_Publicacion.obtenerDescripcionRubro(publicacion.Rubro);
 
             if (publicacion.Tipo == 1)
             {
@@ -88,7 +84,6 @@ namespace FrbaCommerce.Editar_Publicacion
             {
                 publicacion.Stock = 1;
             }
-            publicacion.Rubro = codRubroActual;
             publicacion.Precio = Convert.ToDecimal(textBox3.Text);
             publicacion.Descripcion = Convert.ToString(textBox5.Text);
             publicacion.Permitir_Preguntas = Convert.ToBoolean(checkBox1.Checked);
@@ -105,8 +100,6 @@ namespace FrbaCommerce.Editar_Publicacion
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
             Utiles.LimpiarTexto.SacarCheckBox(this);
-            textBox1.Enabled = false;
-            textBox1.BackColor = Color.WhiteSmoke;
         }
 
         //Al aceptar hace las validaciones correspondientes, luego inicializa y finalmente edita la publicación en la base de datos.
@@ -115,7 +108,7 @@ namespace FrbaCommerce.Editar_Publicacion
             Entidades.Ent_Publicacion publicacion = new Entidades.Ent_Publicacion();
             try
             {
-                Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox1, textBox2, textBox3, textBox5);
+                Utiles.Validaciones.ValidarTipoDecimalPublicacion(stockInicial, textBox2, textBox3, textBox5);
                 
 
                 if (cmbEstado.Text == "Publicada" && Convert.ToInt16(cmbVisib.SelectedValue) == 10006 && (esGratuita == false || estaActiva == false))
@@ -138,11 +131,8 @@ namespace FrbaCommerce.Editar_Publicacion
         //LLeva a la selección de rubro
         private void button3_Click(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(codigoPk);
+            Editar_Publicacion.Agregar_Quitar_Rubros list = new Editar_Publicacion.Agregar_Quitar_Rubros(codigoPk);
             list.ShowDialog();
-            textBox1.Enabled = true;
-            textBox1.Text = list.Result;
-            codRubroActual = list.ResultCodigo;
         }
 
         //Cambia algunos labels si se modifica el tipo de publicación correspondientemente

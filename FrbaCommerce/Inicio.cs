@@ -70,8 +70,9 @@ namespace FrbaCommerce
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Editar_Publicacion.Editar_Publicacion_Publicada pp = new FrbaCommerce.Editar_Publicacion.Editar_Publicacion_Publicada(12353);
-            pp.Show();
+
+            Editar_Publicacion.Editar_Publicacion_Borrada ediborr = new Editar_Publicacion.Editar_Publicacion_Borrada(68390);
+            ediborr.Show();
         }
 
     }

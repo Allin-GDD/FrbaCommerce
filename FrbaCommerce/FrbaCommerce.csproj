@@ -141,6 +141,12 @@
     <Compile Include="Datos\Dat_Rol.cs" />
     <Compile Include="Datos\Dat_Dni.cs" />
     <Compile Include="Datos\Dat_Telefonos.cs" />
+    <Compile Include="Editar Publicacion\Agregar_Quitar_Rubros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\Agregar_Quitar_Rubros.Designer.cs">
+      <DependentUpon>Agregar_Quitar_Rubros.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\Ent_ListFactura.cs" />
     <Compile Include="Entidades\Ent_Fecha.cs" />
     <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaOferta.resx">
       <DependentUpon>VentanaOferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\Agregar_Quitar_Rubros.resx">
+      <DependentUpon>Agregar_Quitar_Rubros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\Editar_Publicacion_Borrada.resx">
       <DependentUpon>Editar_Publicacion_Borrada.cs</DependentUpon>

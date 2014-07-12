@@ -116,7 +116,7 @@ namespace FrbaCommerce.Generar_Publicacion
         //Lleva a la ventana para buscar rubros y devuelve el valor seleccionado en el textbox correspondiente.
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0);
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0,"generar");
             list.ShowDialog();
             textBox1.Enabled = true;
             textBox1.Text = list.Result;
