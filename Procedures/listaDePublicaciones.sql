@@ -1,4 +1,4 @@
-CREATE PROCEDURE listaDePublicaciones
+create PROCEDURE listaDePublicaciones
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
@@ -24,7 +24,7 @@ CREATE PROCEDURE listaDePublicaciones
 				and p.stock > 0
  				and e.Nombre like '%'+@Estado+'%'
  				and p.Fecha_Venc > @FechaActual
- 				and p.Fecha < @FechaActual
+ 				--and p.Fecha < @FechaActual
  				and (p.Usuario <> @Id )
 				
 			order by Visibilidad_Cod
