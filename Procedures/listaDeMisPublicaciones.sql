@@ -1,4 +1,4 @@
-create PROCEDURE listaDeMisPublicaciones
+CREATE PROCEDURE listaDeMisPublicaciones
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),

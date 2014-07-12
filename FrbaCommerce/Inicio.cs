@@ -75,6 +75,12 @@ namespace FrbaCommerce
             ediborr.Show();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Comprar_Ofertar.Buscar_Publicacion buspub = new Comprar_Ofertar.Buscar_Publicacion(1, 'C');
+            buspub.Show();
+        }
+
     }
 }
 

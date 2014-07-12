@@ -250,13 +250,13 @@ namespace FrbaCommerce.Datos
         }
 
         // busca al usuario en la bd
-        public static String getNameUser(decimal idUsuario, decimal rolAsignado)
+        public static String getNameUser(decimal idUsuario, char tipoUsuario)
         {
             String user = null;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarNombreUsuario", conn,
             new SqlParameter("@IdUsuario", idUsuario),
-            new SqlParameter("@IdRol", rolAsignado));
+            new SqlParameter("@TipoUsuario", tipoUsuario));
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {

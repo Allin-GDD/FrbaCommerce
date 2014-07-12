@@ -136,7 +136,7 @@ namespace FrbaCommerce.Roles
             if (funcionalidades.Any(x => x == i))
             {
 
-            String user = Datos.Dat_Usuario.getNameUser(idcliente, 1);
+            String user = Datos.Dat_Usuario.getNameUser(idcliente, 'C');
            // Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(user);
 
             Gestion_de_Preguntas.Gestor gestor = new FrbaCommerce.Gestion_de_Preguntas.Gestor(idcliente);

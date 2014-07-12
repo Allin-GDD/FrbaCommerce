@@ -11,32 +11,22 @@ namespace FrbaCommerce.Utiles.Ventanas
 {
     public partial class Pregunta : Form
     {
-        public Pregunta(Decimal idUsuario, char rol, decimal codigoPublicacion, String publicador)
+        public Pregunta(Decimal idUsuario, char rol, decimal codigoPublicacion)
         {
 
             InitializeComponent();
-            Decimal rolAsignado;
-            if (rol == 'E')
-            {
-                rolAsignado = 2;
-            }
-            else {
-                rolAsignado = 1;
-            }
 
-            this.Publicador = publicador;
             this.codigoPub = codigoPublicacion;
-            usuario = Datos.Dat_Usuario.getNameUser(idUsuario, rolAsignado);
+            usuario = Datos.Dat_Usuario.getNameUser(idUsuario, rol);
         }
 
-        private String Publicador;
         private String usuario;
         private Decimal codigoPub; 
 
         private void button1_Click(object sender, EventArgs e)
         {
            if(String.IsNullOrEmpty(txtPregunta.Text)) throw new Excepciones.NulidadDeCamposACompletar("De escribir una pregunta");
-           Datos.Dat_Preguntas.AgregarPregunta(usuario, codigoPub,txtPregunta.Text,Publicador);
+           Datos.Dat_Preguntas.AgregarPregunta(usuario, codigoPub,txtPregunta.Text);
            Close();
         }
 

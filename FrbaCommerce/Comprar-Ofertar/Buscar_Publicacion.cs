@@ -388,18 +388,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                         {
                             throw new Excepciones.InexistenciaUsuario("La publicación no permite preguntas");
                         }
-                        decimal rolAsignado;
-                        if (TipoUsuario == 'E')
-                        {
-                            rolAsignado = 2;
-                        }
-                        else
-                        {
-                            rolAsignado = 1;
-                        }
 
-                        String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, rolAsignado);
-                        Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado, vendedor);
+                        String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, TipoUsuario);
+                        Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado);
                         preg.ShowDialog();
 
                     }
@@ -476,6 +467,9 @@ namespace FrbaCommerce.Comprar_Ofertar
             }
             txtRubro.Enabled = false;
             txtRubro.BackColor = Color.WhiteSmoke;
+            cmbVisib.SelectedValue = "";
+            cmbEstado.Text = "";
+            cmbTipoPub.Text = "";
         }
 
 
