@@ -27,9 +27,9 @@ namespace FrbaCommerce.Abm_Empresa
                 cmbHabilitado.Visible = false;
 
             }
-            else { 
+         
             Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado);
-            }
+            
         }
 
         public Entidades.Ent_Empresa empresaAnt;

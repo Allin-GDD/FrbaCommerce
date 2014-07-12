@@ -13,7 +13,9 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public Listado()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+
+            //inicializo el comboBox Tipo de documento con los tipos que hay en la BD por defecto.
             Utiles.Inicializar.comboBoxTipoDoc(cmbTipoDoc);
             txtDNI.Enabled = false;
          }
@@ -41,13 +43,13 @@ namespace FrbaCommerce.Abm_Cliente
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
-        {
+        {//Limpia los textbox, datagrid
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.LimpiarDataGrid(dataGridView1);
         }
 
         private void cmbTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        { //Según la selección del comboBox, se irá editando la MaskedTextBox dependiendo de lo que se elija. 
             Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipoDoc, txtDNI);
         }
 

@@ -51,7 +51,10 @@ namespace FrbaCommerce.Abm_Cliente
         {
             try
             {
-             //Esto da de baja el el cliente, usuario, y todas sus publicaciones pasan al estado de finalizadas
+             //Da de baja al cliente, los campos como el número de documento, tipo de documento y teléfono pasan a estar en null. Para que un futuro se puedan volve a usar.
+             //El usuario se da de baja
+             //y todas sus publicaciones pasan al estado de finalizadas
+
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAUsuario", conn,
                 new SqlParameter("@Id", clienteADarDeBaja),

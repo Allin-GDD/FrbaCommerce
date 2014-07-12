@@ -123,7 +123,8 @@
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
             this.Name = "Agregar_Quitar_Rubros";
-            this.Text = "Agregar_Quitar_Rubros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Agregar o Quitar Rubros";
             this.ResumeLayout(false);
             this.PerformLayout();
 

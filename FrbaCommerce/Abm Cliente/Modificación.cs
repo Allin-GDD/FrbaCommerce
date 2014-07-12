@@ -18,17 +18,20 @@ namespace FrbaCommerce.Abm_Cliente
             
             InitializeComponent();
             this.clienteAModificar = idSeleccionado;
+            //inicializo el comboBox Tipo de documento con los tipos que hay en la BD por defecto.
             Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
             txtDNI.Enabled = false;
             cargarDatosDelClienteSeleccionado();
 
-
+            //El modificar lo puede ejecutar tanto el usuario como el administrador. 
+            //Si lo ejecuta el administrador se mostrarán la opción de habilitar si lo hace el cliente se pondrán ocultos
             if (isUsuario)
             {
                 lblHabil.Visible = false;
                 cmbHabilitado.Visible = false;
             }
-            else { Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado); }
+             Utiles.Inicializar.comboBoxHabilitado(cmbHabilitado, idSeleccionado); 
+           
 
 
         }
@@ -73,6 +76,7 @@ namespace FrbaCommerce.Abm_Cliente
             {
                 Ent_TxtPersona validaciones = new Ent_TxtPersona();
                 iniciarCheckText(validaciones);
+                //hace todas las validaciones
                 Utiles.Validaciones.evaluarPersona(validaciones, this);
 
                 //Inicializa el cliente con datos correctos
