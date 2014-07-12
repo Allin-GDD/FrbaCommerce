@@ -1,4 +1,4 @@
-ALTER PROCEDURE agregarNuevoClienteUsuario
+create PROCEDURE agregarNuevoClienteUsuario
 		@Dni nvarchar(64),
 		@Nombre nvarchar(255),
 		@Apellido nvarchar(255),
