@@ -9,7 +9,7 @@ CREATE PROCEDURE listaDePublicaciones
 		@FechaActual datetime
 	AS
 	BEGIN
-		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, tp.Cod_Tipo as 'Tipo', v.Descripcion AS 'Visibilidad', e.Nombre as 'Estado', r.Descripcion as 'Rubro', p.Preguntas_permitidas,p.Usuario,Usuario.tipo_Usuario FROM Publicacion as P
+		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, tp.Nombre as 'Tipo', v.Descripcion AS 'Visibilidad', e.Nombre as 'Estado', r.Descripcion as 'Rubro', p.Preguntas_permitidas,p.Usuario,Usuario.tipo_Usuario FROM Publicacion as P
 	join Publicacion_Rubro pr on pr.id_Publicacion = p.Codigo
 	JOIN Rubro r ON r.Codigo = pr.id_Rubro
 	JOIN Visibilidad V ON p.Visibilidad_Cod = v.Codigo
@@ -24,10 +24,9 @@ CREATE PROCEDURE listaDePublicaciones
 				and p.stock > 0
  				and e.Nombre like '%'+@Estado+'%'
  				and p.Fecha_Venc > @FechaActual
- 				and p.Fecha < @FechaActual
+ 				--and p.Fecha < @FechaActual
  				and (p.Usuario <> @Id )
 				
 			order by Visibilidad_Cod
 
 	END
-

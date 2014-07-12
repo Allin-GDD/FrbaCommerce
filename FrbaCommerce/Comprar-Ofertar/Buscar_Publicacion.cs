@@ -19,7 +19,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         int pageSize;
         int currentPage;
         int recNo;
-        Boolean primeraVez;
+        //Boolean primeraVez;
         char rolDeEste;
 
         public Buscar_Publicacion(decimal id, char rol)
@@ -51,7 +51,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 checkBox1.Visible = false;
             }
             idusuario = id;
-            primeraVez = true;
+            //primeraVez = true;
 
         }
         private decimal idusuario;
@@ -117,8 +117,8 @@ namespace FrbaCommerce.Comprar_Ofertar
             Entidades.Ent_ListadoPublicacion pCO = new Entidades.Ent_ListadoPublicacion();
 
 
-            try
-            {
+           // try
+           // {
   
                 pCO.Descripcion = textBox1.Text;
                 
@@ -170,6 +170,10 @@ namespace FrbaCommerce.Comprar_Ofertar
                 dataGridView1.Columns["Usuario"].Visible = false;
                 dataGridView1.Columns["Preguntas_permitidas"].Visible = false;
                 dataGridView1.Columns["Tipo_Usuario"].Visible = false;
+                if (checkBox1.Checked == true)
+                {
+                    dataGridView1.Columns["Visibilidad_Cod"].Visible = false;
+                }
                // dataGridView1.Columns["Publicador"].Visible = false;
                 dataGridView1.Refresh();
                 dataGridView1.ClearSelection();
@@ -196,11 +200,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                 agregarColumnas();
 
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+          //  }
+           // catch (Exception ex)
+          //  {
+          //      MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+           // }
 
 
         }
@@ -210,28 +214,28 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             if (checkBox1.Checked == false)
             {
-                if (editarPublicacion == true && primeraVez == false)
+                if (editarPublicacion == true /*&& primeraVez == false*/)
                 {
                     dataGridView1.Columns.Remove("btnEditar");
 
                 }
-                primeraVez = false;
+                //primeraVez = false;
                 editarPublicacion = false;
                 this.botonCompraOferta = Utiles.Inicializar.agregarColumnaCompraOferta(botonCompraOferta, dataGridView1);
                 this.botonPregunta = Utiles.Inicializar.agregarColumnaPregunta(botonPregunta, dataGridView1);
             }
             else
             {
-                if (botonCompraOferta == true && primeraVez == false)
+                if (botonCompraOferta == true && botonPregunta == true/* && primeraVez == false*/)
                 {
                     dataGridView1.Columns.Remove("btnPregunta");
                     dataGridView1.Columns.Remove("btn");
                     
-                    botonPregunta = false;
+                    
 
                 }
-                primeraVez = false;
-
+                //primeraVez = false;
+                botonPregunta = false;
                 botonCompraOferta = false;
                 this.editarPublicacion = Utiles.Inicializar.agregarColumnaEditarPublicacion(editarPublicacion, dataGridView1);
             }
@@ -400,14 +404,14 @@ namespace FrbaCommerce.Comprar_Ofertar
                 
                 }
             }
-            else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked && obtenerEstadoPub(codigoSeleccionado) != "Finalizada")
+            else if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEditar"].ColumnIndex && checkBox1.Checked && obtenerEstadoPub(codigoSeleccionado) != 4)
             {
-                if (obtenerEstadoPub(codigoSeleccionado) == "Publicada" || obtenerEstadoPub(codigoSeleccionado) == "Pausada")
+                if (obtenerEstadoPub(codigoSeleccionado) == 1 || obtenerEstadoPub(codigoSeleccionado) == 3)
                 {
                     Editar_Publicacion.Editar_Publicacion_Publicada ventana = new Editar_Publicacion.Editar_Publicacion_Publicada(codigoSeleccionado);
                     ventana.Show();
                 }
-                else if (obtenerEstadoPub(codigoSeleccionado) == "Borrador")
+                else if (obtenerEstadoPub(codigoSeleccionado) == 2)
                 {
                     Editar_Publicacion.Editar_Publicacion_Borrada ventana = new Editar_Publicacion.Editar_Publicacion_Borrada(codigoSeleccionado);
                     ventana.Show();
@@ -418,9 +422,9 @@ namespace FrbaCommerce.Comprar_Ofertar
         }
 
         //Devuelve el estado a partir del código con un stored procedure.
-        private string obtenerEstadoPub(Decimal codigo)
+        private Decimal obtenerEstadoPub(Decimal codigo)
         {
-            string estado;
+            Decimal estado;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.verificarEstado", conn,
 
@@ -431,7 +435,7 @@ namespace FrbaCommerce.Comprar_Ofertar
 
             lectura.Read();
 
-            estado = lectura.GetString(0);
+            estado = lectura.GetDecimal(0);
 
 
             conn.Close();
