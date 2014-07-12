@@ -64,14 +64,14 @@ namespace FrbaCommerce.Utiles
             Decimal num = 0;
             foreach (TextBox parametro in parametroTxtBox)
             {
-                if (parametro.Name == "textBox2" && parametro.Enabled)
+                if (parametro.Name == "textBox2" && parametro.Enabled && Decimal.TryParse(parametro.Text, out expectedDecimal))
                 {
                     num = Convert.ToDecimal(parametro.Text);
-                }
-                if (num < stockInicial && parametro.Name == "textBox2" && parametro.Enabled == true)
-                {
-                    parametro.BackColor = Color.Coral;
-                    j++;
+                    if (num < stockInicial)
+                    {
+                        parametro.BackColor = Color.Coral;
+                        j++;
+                    }
                 }
                 if ((!Decimal.TryParse(parametro.Text, out expectedDecimal) && parametro.Enabled == true && parametro.Name != "textBox5" && parametro.Name != "textBox1") || (string.IsNullOrEmpty(parametro.Text) && parametro.Name != "textBox1" && parametro.Enabled == true) || (string.IsNullOrEmpty(parametro.Text) && parametro.Name == "textBox1"))
                 {
@@ -82,14 +82,14 @@ namespace FrbaCommerce.Utiles
                 {
                     parametro.BackColor = Color.White;
                 }
-            }
-            if (j > 0)
-            {
-                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos, el stock no puede ser menor al publicado anteriormente");
-            }
-            else if (i > 0 && j == 0)
+            }if (i > 0 && j == 0)
             {
                 throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos");
+            }
+
+            else if (j > 0)
+            {
+                throw new Excepciones.ValoresConTiposDiferentes("Complete los campos señalados con datos válidos, el stock no puede ser menor al publicado anteriormente");
             }
         }
         public static void ValidarVisibilidadGratuita(Decimal usuario) //funca
