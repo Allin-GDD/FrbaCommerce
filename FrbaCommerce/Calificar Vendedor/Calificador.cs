@@ -26,12 +26,12 @@ namespace FrbaCommerce.Calificar_Vendedor
                 decimal puntaje = Convert.ToDecimal(textBox1.Text);
                 Utiles.Validaciones.ValidarTipoDecimal(textBox1);
                 validarPuntaje(puntaje);
-                decimal cod_calificacion = obternerCodCalificacionMax()+1;
+             //   decimal cod_calificacion = obternerCodCalificacionMax()+1;
 
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarCalificacion", conn,
                 new SqlParameter("@Id", idCompra),
-                new SqlParameter("@Cal_Cod", cod_calificacion),
+              //  new SqlParameter("@Cal_Cod", cod_calificacion),
                 new SqlParameter("@Cant_Est", puntaje),
                 new SqlParameter("@Desc", textBox2.Text));
                 int retorno = cmd.ExecuteNonQuery();
