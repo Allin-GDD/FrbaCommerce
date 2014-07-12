@@ -81,8 +81,9 @@ namespace FrbaCommerce.Abm_Cliente
 
                 //Inicializa el cliente con datos correctos
                 inicializarCliente(cliente);
-
+                //actualiza los datos, por los ingresados
                 Datos.Dat_Cliente.actualizarCamposACliente(cliente, clienteAModificar);
+                //cambia el estado del usuario si es Administrador
                 Datos.Dat_Usuario.actualizarEstadoUsuario(Convert.ToInt16(cmbHabilitado.SelectedValue),clienteAModificar);
                 Close();
 

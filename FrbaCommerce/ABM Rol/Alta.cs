@@ -20,9 +20,10 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
-
-                Utiles.Validaciones.evaluarRol(txtNombre, this); //Verifica si lo puso bien y si ya no existe el rol
-                Datos.Dat_Rol.agregarRolConFunc(txtNombre.Text, idFuncionabilidad); //agregar el rol y la func que elija
+                //Verifica si lo puso bien y si ya no existe el rol
+                Utiles.Validaciones.evaluarRol(txtNombre, this);
+                //agregar el rol y la func que elija
+                Datos.Dat_Rol.agregarRolConFunc(txtNombre.Text, idFuncionabilidad); 
               
                 Close();
             }

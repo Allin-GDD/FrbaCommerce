@@ -162,7 +162,7 @@
             // lblHabil
             // 
             this.lblHabil.AutoSize = true;
-            this.lblHabil.Location = new System.Drawing.Point(16, 147);
+            this.lblHabil.Location = new System.Drawing.Point(40, 142);
             this.lblHabil.Name = "lblHabil";
             this.lblHabil.Size = new System.Drawing.Size(54, 13);
             this.lblHabil.TabIndex = 63;
@@ -172,7 +172,7 @@
             // 
             this.cmbHabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHabilitado.FormattingEnabled = true;
-            this.cmbHabilitado.Location = new System.Drawing.Point(136, 144);
+            this.cmbHabilitado.Location = new System.Drawing.Point(160, 139);
             this.cmbHabilitado.Name = "cmbHabilitado";
             this.cmbHabilitado.Size = new System.Drawing.Size(62, 21);
             this.cmbHabilitado.TabIndex = 64;

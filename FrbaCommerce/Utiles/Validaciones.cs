@@ -389,39 +389,7 @@ namespace FrbaCommerce.Utiles
 
         }
 
-        public static void verificarMismoUsuario(decimal codigo, decimal id)
-        {
-            decimal idusuario = 0;
-
-            using (SqlConnection conexion = DBConexion.obtenerConexion())
-            {
-
-                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdUsuario", conexion,
-                   new SqlParameter("@Cod_Pub", codigo));
-                SqlDataReader lectura = cmd.ExecuteReader();
-                string publicador;
-                publicador = "E";
-                while (lectura.Read())
-                {
-
-                    idusuario = lectura.GetDecimal(0);
-                    publicador = lectura.GetString(1);
-                }
-
-
-                if (id == idusuario && publicador == "C")
-                {
-                    throw new Excepciones.DuplicacionDeDatos("No se puede realizar una oferta a una publicacion propia");
-
-                }
-                conexion.Close();
-            }
-
-        }
-
-
-
-        internal static string evaluarCheck(CheckBox chk, TextBox txt)
+         internal static string evaluarCheck(CheckBox chk, TextBox txt)
         {
             String ii = null;
             if (chk.Checked) {

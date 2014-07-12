@@ -91,10 +91,12 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
       private void buttonLimpiar_Click(object sender, EventArgs e)
-         {
-             Utiles.LimpiarTexto.LimpiarTextBox(this);
-             Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
-             Utiles.LimpiarTexto.BlanquearControls(this);
+        {   //borra tos los campos de textbox.
+            Utiles.LimpiarTexto.LimpiarTextBox(this);
+            //borra tos los campos de maskedtextbox.
+            Utiles.LimpiarTexto.LimpiarMaskedTextBox(this);
+            //pone en color blanco aquellos campos que fueron marcado como erróneos.
+            Utiles.LimpiarTexto.BlanquearControls(this);
 
          }
 

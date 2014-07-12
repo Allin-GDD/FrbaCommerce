@@ -24,15 +24,11 @@ namespace FrbaCommerce.Abm_Visibilidad
             IniciarCheckText(txtVisi);
 
             try
-            {
+            {               //Verifica si lo que se estan ingresando es correcto
                 Utiles.Validaciones.evaluarVisibilidad(this, txtVisi, null, null);
-                //Verifica si lo que se estan ingresando es correcto
-
-                //Inicializa la visibilidad con datos correctos
+                           //Inicializa la visibilidad con datos correctos
                 inicializarVisibilidad(visibilidad);
-
-
-                //Agrega la visibilidad a la DB
+                            //Agrega la visibilidad a la DB
                 Datos.Dat_Visibilidad.AgregarVisibilidad(visibilidad);
 
                 this.Close();
