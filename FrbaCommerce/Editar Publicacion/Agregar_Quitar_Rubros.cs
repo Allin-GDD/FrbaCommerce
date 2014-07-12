@@ -90,6 +90,7 @@ namespace FrbaCommerce.Editar_Publicacion
                     Datos.Dat_Publicacion.QuitarRubro(textBox1, codPublicacion);
                     Mensajes.Exitos.ExitoAlQuitarRubro();
                 }
+                Close();
             }
             catch (Exception ex)
             {

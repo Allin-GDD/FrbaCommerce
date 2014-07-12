@@ -121,11 +121,12 @@ namespace FrbaCommerce.Comprar_Ofertar
            // {
   
                 pCO.Descripcion = textBox1.Text;
-                
+
                 if (txtRubro.Enabled)
                 {
                     pCO.Rubro = Datos.Dat_Publicacion.obtenerCodRubro(txtRubro.Text);
                 }
+                else { pCO.Rubro = 0; }
                 pCO.Visibilidad = Convert.ToString(cmbVisib.SelectedValue);
                 pCO.Estado = cmbEstado.Text;
                 pCO.Tipo = cmbTipoPub.Text;

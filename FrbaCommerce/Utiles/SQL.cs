@@ -25,11 +25,9 @@ namespace FrbaCommerce.Utiles
         }
 
      public static SqlCommand crearProcedure(string nombre, SqlConnection conexion, params SqlParameter[] parametrosDelSP)
-        {
-            //Recibo una lista de parametros de longitud variable para instanciar el SP de forma comoda.
-            //Instancio un SP
+        {//Recibo una lista de parametros del procedure, con el nombre del sp y la conexión a utilizar
             SqlCommand sp = new SqlCommand(nombre, conexion) { CommandType = CommandType.StoredProcedure };
-            //Le agrego sus parametros.
+          
             foreach (SqlParameter parametro in parametrosDelSP)
             {
                 agregarSqlParameter(parametro, sp);

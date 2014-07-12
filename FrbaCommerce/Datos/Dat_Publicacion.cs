@@ -223,7 +223,6 @@ namespace FrbaCommerce.Datos
         }
         public static string obtenerVisibilidad(Decimal visib)
         {
-
             string visibilidadDevuelvo;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerVisibilidad", conn,

@@ -58,7 +58,7 @@ namespace FrbaCommerce
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            Calificar_Vendedor.listadoDePublicaciones emp = new Calificar_Vendedor.listadoDePublicaciones(2);
+            Historial_Cliente.Historial_Cliente emp = new Historial_Cliente.Historial_Cliente(2);
             emp.Show();
         }
 
@@ -70,9 +70,7 @@ namespace FrbaCommerce
 
         private void button5_Click(object sender, EventArgs e)
         {
-
-            Editar_Publicacion.Editar_Publicacion_Borrada ediborr = new Editar_Publicacion.Editar_Publicacion_Borrada(68390);
-            ediborr.Show();
+            Close();
         }
 
         private void button6_Click(object sender, EventArgs e)

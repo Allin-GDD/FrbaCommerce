@@ -202,7 +202,7 @@ namespace FrbaCommerce.Datos
                 if (listaDeRoles.Count == 1)
                 {
                    Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
-                  Utiles.Ventanas.Opciones.AbrirVentanas(rol.id , pusuario,login);
+                  Utiles.Ventanas.Opciones.AbrirVentanas(rol.id ,pusuario,login);
                                   }
                 else if (listaDeRoles.Count > 1)
                 {

@@ -13,7 +13,9 @@ namespace FrbaCommerce.Abm_Cliente
     {
         public Listado_de_selección()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+
+            //inicializo el comboBox Tipo de documento con los tipos que hay en la BD por defecto.
             Utiles.Inicializar.comboBoxTipoDoc(cmbTipoDoc);
             txtDNI.Enabled = false;
 
@@ -48,9 +50,10 @@ namespace FrbaCommerce.Abm_Cliente
             pCliente.Mail = txtMail.Text;
             pCliente.Tipo_doc = Convert.ToInt16(cmbTipoDoc.SelectedValue);
 
+            //Llena el datagrid según los datos seleccionados
             Datos.Dat_Cliente.buscarListaDeCliente(pCliente, dataGridView1);
 
-            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+            //Agrega los botones de Modificar y editar
             this.botonModificar = Utiles.Inicializar.agregarColumnaModificar(botonModificar, dataGridView1);
             this.botonDelete = Utiles.Inicializar.agregarColumnaEliminar(botonDelete, dataGridView1);
         }
@@ -58,7 +61,7 @@ namespace FrbaCommerce.Abm_Cliente
          
 
         private void btnLimpiar_Click(object sender, EventArgs e)
-        {
+        {//Limpia los textbox, datagrid e inicializar los valores de los botones.
             Utiles.LimpiarTexto.LimpiarTextBox(this);
                    
             bool valor = Utiles.LimpiarTexto.LimpiarDataGridBoton(dataGridView1);
@@ -75,7 +78,7 @@ namespace FrbaCommerce.Abm_Cliente
            try{ 
             Decimal idSeleccionado = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Id_Usuario"].Value);
 
-
+               //Según el botón seleccionado, ejecutará la acción ( Modificar o baja)
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
             {
                 Abm_Cliente.Modificación mod = new Abm_Cliente.Modificación(idSeleccionado, false);
@@ -84,9 +87,7 @@ namespace FrbaCommerce.Abm_Cliente
                 cargarDatagrid();
 
                 Show();
-              
-                
-
+      
             }
             if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnDelete"].ColumnIndex)
             {
@@ -107,6 +108,7 @@ namespace FrbaCommerce.Abm_Cliente
 
         private void cmbTipoDoc_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Según la selección del comboBox, se irá editando la MaskedTextBox dependiendo de lo que se elija. 
             Utiles.Inicializar.alteraComboboxTipoDoc(cmbTipoDoc, txtDNI);
         }
 
