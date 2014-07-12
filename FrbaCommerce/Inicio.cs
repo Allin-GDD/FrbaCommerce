@@ -33,7 +33,7 @@ namespace FrbaCommerce
             Login.Login Log1 = new Login.Login();
             this.Hide();
             Log1.ShowDialog();
-            //this.Show();
+            this.Show();
 
         }
 

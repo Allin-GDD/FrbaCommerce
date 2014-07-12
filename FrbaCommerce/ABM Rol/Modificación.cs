@@ -63,8 +63,8 @@ namespace FrbaCommerce.ABM_Rol
                 if (chkQuitar.Checked && txtNombre.Text == "Admin")
                 {
 
-                    MessageBox.Show("La aplicación se reiniciará", "Reinicio de aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Application.Restart();
+                    MessageBox.Show("La aplicación debe ser reiniciada para que se ejecuten los cambios", "Reinicio de aplicación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                 }
             }
 
