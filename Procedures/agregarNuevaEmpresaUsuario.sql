@@ -15,10 +15,9 @@ CREATE PROCEDURE agregarNuevaEmpresaUsuario
 		@IdUsuario numeric(18,0)
 AS
 BEGIN
-
 IF(@IdUsuario = 0)
 BEGIN
-EXEC darDeAltaUsuario @Mail, @Cuit, 1 , 10, 0, 0
+EXEC darDeAltaUsuario @Mail, @Cuit, 2 , 10, 0
 SET @IdUsuario = (SELECT Id_Usuario FROM Usuario WHERE 
 Usuario = @Mail AND Password = @Cuit)
 END

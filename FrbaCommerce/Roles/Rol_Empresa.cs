@@ -48,7 +48,6 @@ namespace FrbaCommerce.Roles
         {i = 10;
             if (funcionalidades.Any(x => x == i))
             {
-            String user = Datos.Dat_Usuario.getNameUser(idEmpresa, 'E');
             Generar_Publicacion.Generar_Publi grPub = new FrbaCommerce.Generar_Publicacion.Generar_Publi(idEmpresa);
             Hide();
             grPub.ShowDialog();

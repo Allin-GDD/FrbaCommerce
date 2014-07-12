@@ -75,7 +75,7 @@ namespace FrbaCommerce.Datos
 
         }
 
-        public static void AgregarPregunta(string usuario, decimal codigoPub, string pregunta)
+        public static void AgregarPregunta(Decimal usuario, decimal codigoPub, string pregunta)
         {
            SqlConnection conn = DBConexion.obtenerConexion();
            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarUnaPregunta", conn,

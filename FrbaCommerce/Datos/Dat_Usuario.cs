@@ -54,7 +54,6 @@ namespace FrbaCommerce.Datos
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario,int estado)
         {
             int retorno = 0;
-            // String pwHash = hashearSHA256(pw);
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeAltaUsuario", conexion,
@@ -231,20 +230,17 @@ namespace FrbaCommerce.Datos
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, 0);
                 login.Hide();
 
-                //ACA tiene que darle la opcion de que pueda elegir otro rol
+                    //Si tiene mas de un rol, le da a elegir el rol que quiera, sino abre directarmente el único rol que tiene
                 Datos.Dat_Rol.abrirVentanasSegunRol(pusuario.IdUsuario,login);
-
-
-                // Utiles.Ventanas.Opciones.AbrirVentanas(pusuario.Rol, login, pusuario.IdUsuario);
-
             }
             else
             {
+                //aumenta los intentos fallidos
                 int intentosFallidos = pusuario.Intentos + 1;
                 Datos.Dat_Usuario.actualizarIntentos(pusuario.IdUsuario, intentosFallidos);
-
+                //se fija si hay que bloquear al usuario por intentos fallidos
                 Datos.Dat_Usuario.bloquearUsuario(Convert.ToInt16(intentosFallidos), pusuario.IdUsuario);
-
+                //muestra el mensaje de que se bloqueo
                 Mensajes.Errores.ErrorEnlaContraseña(intentosFallidos);
             }
         }
