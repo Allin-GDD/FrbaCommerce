@@ -158,7 +158,7 @@ namespace FrbaCommerce.Utiles
         {
 
             DateTime fechaLimiteInferior = new DateTime(1800, 1, 1, 0, 0, 0);
-            DateTime fechaLimiteSuperior = Convert.ToDateTime(DBConexion.fechaIngresadaPorElAdministrador());
+            DateTime fechaLimiteSuperior = new DateTime(4000,12,31,0,0,0);
             DateTime time = DateTime.Parse(fecha.Text);
 
 
@@ -235,13 +235,15 @@ namespace FrbaCommerce.Utiles
         //Evalua todas validaciones de los clientes y empresa
         public static void evaluarPersona(Entidades.Ent_TxtPersona txtUtil, Form ofrm)
         {
+            bool isCliente = false;
+            if (txtUtil.CUIT == null) { isCliente = true; }
             List<String> errores = datosObligatorios(ofrm);
             //se fija si el tipo es correcto
             if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
             if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle));
 
             //Se fija si la fecha esta dentro del rango     
-            if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha));
+            if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha, isCliente) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha, isCliente));
             
             // Se fija si el mail tiene un @
             if ((Mensajes.Generales.evaluarMail(txtUtil.Mail) != null)) errores.Add(Mensajes.Generales.evaluarMail(txtUtil.Mail));
@@ -369,7 +371,7 @@ namespace FrbaCommerce.Utiles
                       new SqlParameter("@Cod_Pub", codigoPub));
                 SqlDataReader lectura2 = cmd2.ExecuteReader();
 
-             //   if (lectura2 != null)
+        
                 {
                     while (lectura2.Read())
                     {
@@ -402,6 +404,24 @@ namespace FrbaCommerce.Utiles
         }
 
 
+
+         internal static bool ValidarFechaParaUSuario(MaskedTextBox fecha)
+         {
+             DateTime fechaLimite = DBConexion.fechaIngresadaPorElAdministrador();
+             DateTime time = DateTime.Parse(fecha.Text);
+
+
+             int i = time.CompareTo(fechaLimite);
+             if (i > 0)
+             {
+
+                 fecha.BackColor = Color.Coral;
+                 return true;
+
+             }
+             return false;
+
+         }
     }
 }
 

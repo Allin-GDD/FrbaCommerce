@@ -31,6 +31,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             this.labelNCalle = new System.Windows.Forms.Label();
             this.labelNPiso = new System.Windows.Forms.Label();
             this.labelCP = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.txtDNI = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,6 +114,13 @@
             this.groupBox1.TabIndex = 88;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
+            // 
+            // txtDNI
+            // 
+            this.txtDNI.Location = new System.Drawing.Point(87, 111);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(162, 20);
+            this.txtDNI.TabIndex = 14;
             // 
             // labelNCalle
             // 
@@ -321,13 +328,6 @@
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
-            // 
-            // txtDNI
-            // 
-            this.txtDNI.Location = new System.Drawing.Point(87, 111);
-            this.txtDNI.Name = "txtDNI";
-            this.txtDNI.Size = new System.Drawing.Size(162, 20);
-            this.txtDNI.TabIndex = 37;
             // 
             // Alta
             // 
