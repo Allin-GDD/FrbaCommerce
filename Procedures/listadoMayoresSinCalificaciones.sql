@@ -13,6 +13,8 @@ CREATE PROCEDURE listadoMayoresSinCalificaciones
 	 MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) OR
 	  MONTH(C.Fecha) = 3 + 3*(@Trimestre-1)) AND 
 	  CA.Cant_Estrellas IS NULL
+	  AND U.Baja <> 0
+		AND U.Estado <> 0
     GROUP BY U.Usuario
     ORDER BY [Cantidad sin calificar] DESC
   

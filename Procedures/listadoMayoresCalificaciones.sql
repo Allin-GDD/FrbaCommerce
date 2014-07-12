@@ -13,6 +13,8 @@ CREATE PROCEDURE listadoMayoresCalificaciones
 		OR MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) 
 		OR MONTH(C.Fecha) = 3 + 3*(@Trimestre-1))
 		AND Ca.Cant_Estrellas IS NOT NULL
+		AND U.Baja <> 0
+		AND U.Estado <> 0
 
 GROUP BY u.Usuario  
 ORDER BY [Promedio calificación] DESC

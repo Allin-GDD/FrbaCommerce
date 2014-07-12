@@ -13,6 +13,8 @@ WHERE p.Estado <> 4 AND p.Estado <> 2
 AND p.Visibilidad_Cod = @Visibilidad
 AND YEAR(p.Fecha) = @Año 
 AND MONTH(p.Fecha) = @Mes
+AND U.Baja <> 0
+AND U.Estado <> 0
 group by u.Usuario, v.Descripcion
 order by [Stock Total] DESC
 END
@@ -24,6 +26,8 @@ INNER JOIN Visibilidad V on v.Codigo = p.Visibilidad_Cod
 WHERE p.Estado <> 4 AND p.Estado <> 2
 AND YEAR(p.Fecha) = @Año 
 AND MONTH(p.Fecha) = @Mes
+AND U.Baja <> 0
+AND U.Estado <> 0
 group by u.Usuario, v.Descripcion
 order by [Stock Total] DESC, v.Descripcion
 END
