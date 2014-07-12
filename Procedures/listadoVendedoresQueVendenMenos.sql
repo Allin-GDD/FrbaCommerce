@@ -4,19 +4,26 @@ CREATE PROCEDURE listadoVendedoresQueVendenMenos
 @Mes int
 AS
 BEGIN
-
-SELECT TOP 5 u.Usuario ,SUM(Stock) as 'Stock Total' from (publicacion P
-INNER JOIN Usuario U ON ((p.Id = u.Id_Usuario) AND (P.Publicador = (CASE WHEN U.Id_Rol = 1 THEN 
-        'C'
-    WHEN U.Id_Rol = 2 THEN
-        'E'
-    END))
-    ) 
-    )
-WHERE p.Estado <> 'Finalizado' AND p.Estado <> 'Borrador'
-AND p.Visibilidad_Cod = @Visibilidad AND 
-YEAR(p.Fecha) = @Año AND
-MONTH(p.Fecha) = @Mes
-group by u.Usuario
+IF(@Visibilidad <> 0)
+BEGIN
+SELECT TOP 5 u.Usuario, SUM(Stock) as 'Stock Total', v.Descripcion as 'Visibilidad' from publicacion P
+INNER JOIN Usuario U ON p.Usuario = U.Id_Usuario
+INNER JOIN Visibilidad V on v.Codigo = p.Visibilidad_Cod
+WHERE p.Estado <> 4 AND p.Estado <> 2
+AND p.Visibilidad_Cod = @Visibilidad
+AND YEAR(p.Fecha) = @Año 
+AND MONTH(p.Fecha) = @Mes
+group by u.Usuario, v.Descripcion
 order by [Stock Total] DESC
+END
+
+ELSE 
+SELECT TOP 5 u.Usuario, SUM(Stock) as 'Stock Total', v.Descripcion as 'Visibilidad' from publicacion P
+INNER JOIN Usuario U ON p.Usuario = U.Id_Usuario
+INNER JOIN Visibilidad V on v.Codigo = p.Visibilidad_Cod
+WHERE p.Estado <> 4 AND p.Estado <> 2
+AND YEAR(p.Fecha) = @Año 
+AND MONTH(p.Fecha) = @Mes
+group by u.Usuario, v.Descripcion
+order by [Stock Total] DESC, v.Descripcion
 END

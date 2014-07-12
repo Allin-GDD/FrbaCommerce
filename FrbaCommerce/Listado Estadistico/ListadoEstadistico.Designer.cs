@@ -136,10 +136,11 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(504, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(243, 157);
+            this.dataGridView1.Size = new System.Drawing.Size(378, 157);
             this.dataGridView1.TabIndex = 13;
             // 
             // cmbMes
@@ -165,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 192);
+            this.ClientSize = new System.Drawing.Size(904, 192);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.cmbMes);
             this.Controls.Add(this.dataGridView1);
