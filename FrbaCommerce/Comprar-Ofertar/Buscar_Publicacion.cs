@@ -399,9 +399,17 @@ namespace FrbaCommerce.Comprar_Ofertar
                             }
                         if (tipo == "Subasta")
                         {
+                            try
+                            {
+                                Utiles.Validaciones.validarDistintoOfertadorUltOferta(codigoSeleccionado, idusuario);
+                           
 
                             Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
-                            oferta.Show();
+                            oferta.Show();}
+                              catch (Exception ex)
+                          {
+                             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                          }
                         }
                     }
                 }

@@ -45,6 +45,7 @@ namespace FrbaCommerce.Comprar_Ofertar
            {
               MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
+           this.Close();
         }
     }
 }

@@ -56,7 +56,7 @@ namespace FrbaCommerce.Datos
             new SqlParameter("@Respuesta", respuesta));
 
             int retorno = cmd.ExecuteNonQuery();
-            Mensajes.Generales.validarAlta(retorno);
+           // Mensajes.Generales.validarAlta(retorno);
         }
 
         public static void listaDePreguntaRespuesta(DataGridView dataGridView1, Decimal usuario)

@@ -361,7 +361,39 @@ namespace FrbaCommerce.Utiles
                 conn.Close();
             }
         }
+        public static void validarDistintoOfertadorUltOferta(decimal codigoPub, decimal id)
+        {
+            decimal idultofertador = 0;
+            string s = "";
+            using (SqlConnection conn2 = DBConexion.obtenerConexion())
+            {
 
+                SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarIdMaximaOferta", conn2,
+                      new SqlParameter("@Cod_Pub", codigoPub));
+                SqlDataReader lectura2 = cmd2.ExecuteReader();
+
+                //   if (lectura2 != null)
+                {
+                    while (lectura2.Read())
+                    {
+
+
+                        s = lectura2.IsDBNull(0) ? "" : Convert.ToString(lectura2.GetValue(0));
+
+
+
+                    }
+                    if (s.Equals("")) { } else { idultofertador = Convert.ToDecimal(s); }
+                }
+                if (id == idultofertador)
+                {
+                    throw new Excepciones.ValorMenor("Usted posee la oferta ganadora hasta el momento");
+
+                }
+                conn2.Close();
+            }
+
+        }
         public static void validarValorMayorAUltOferta(decimal codigoPub, double precioOfertado)
         {
             double precioMayorOferta = 0;
