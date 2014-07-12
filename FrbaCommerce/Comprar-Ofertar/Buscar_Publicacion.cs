@@ -395,7 +395,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                         }
 
                         String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, TipoUsuario);
-                        Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario, rolDeEste, codigoSeleccionado);
+                        Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario,codigoSeleccionado);
                         preg.ShowDialog();
 
                     }

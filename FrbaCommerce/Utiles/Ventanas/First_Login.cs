@@ -14,7 +14,6 @@ namespace FrbaCommerce.Utiles.Ventanas
         public First_Login(Decimal idUsuario)
         {
             InitializeComponent();
-            label1.Text = "Bienvenido";
             idUsuarioAAct = idUsuario;
 
          
