@@ -5,8 +5,8 @@ create procedure esBonificada
 as
 begin
 select Codigo,Usuario,Visibilidad_Cod,Fecha, RowNumber  
-from (select Codigo, Usuario, Visibilidad_Cod, Fecha,row_number() over(order by usuario,Visibilidad_Cod,Fecha)as RowNumber
-  from Publicacion) as Pub 
-where RowNumber % 10 = 0 AND  Usuario= @Id AND Visibilidad_Cod = @Visibilidad AND Codigo > 68380
-order by Usuario, Visibilidad_Cod, Fecha
+from (select Codigo, Usuario, Visibilidad_Cod, Fecha,row_number() over(order by Codigo,usuario,Visibilidad_Cod,Fecha)as RowNumber
+  from Publicacion
+  where Usuario = @Id AND Visibilidad_Cod = @Visibilidad) as Pub 
+where RowNumber % 10 = 0
 end
