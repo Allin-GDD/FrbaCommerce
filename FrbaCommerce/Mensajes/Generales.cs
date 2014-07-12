@@ -84,6 +84,7 @@ namespace FrbaCommerce.Mensajes
         public static String evaluarFecha(MaskedTextBox Fecha)
         {
             String ii = null;
+
             try
             {
                 if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(Fecha))

@@ -158,7 +158,7 @@ namespace FrbaCommerce.Utiles
         {
 
             DateTime fechaLimiteInferior = new DateTime(1800, 1, 1, 0, 0, 0);
-            DateTime fechaLimiteSuperior = Convert.ToDateTime(DBConexion.fechaIngresadaPorElAdministrador());
+            DateTime fechaLimiteSuperior = DBConexion.fechaIngresadaPorElAdministrador();
             DateTime time = DateTime.Parse(fecha.Text);
 
 

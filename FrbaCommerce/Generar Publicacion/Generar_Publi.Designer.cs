@@ -35,7 +35,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.cmbTipoPub = new System.Windows.Forms.ComboBox();
@@ -47,6 +46,7 @@
             this.cmbVisib = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,13 +114,6 @@
             this.checkBox1.Text = "Permitir preguntas";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(89, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(67, 20);
-            this.textBox2.TabIndex = 15;
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(89, 177);
@@ -151,6 +144,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.cmbEstado);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button3);
@@ -161,7 +155,6 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.cmbTipoPub);
-            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(3, 5);
@@ -240,6 +233,13 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(89, 146);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(67, 20);
+            this.textBox2.TabIndex = 29;
+            // 
             // Generar_Publi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -270,7 +270,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.ComboBox cmbTipoPub;
@@ -282,5 +281,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
