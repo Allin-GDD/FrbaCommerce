@@ -35,7 +35,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static int validarUserName(String userName)
-        {//se fija si nombre de usuario que ingreso ya no existe
+        {//se fija si nombre de usuario que ingreso ya existe
             List<String> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
             int retorno = 0;
 
