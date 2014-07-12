@@ -16,10 +16,12 @@ namespace FrbaCommerce.Generar_Publicacion
         public string Result = string.Empty;
         public Decimal ResultCodigo;
         public Decimal codigoPub;
-        public BuscarRubro(Decimal codigo)
+        public string flag;
+        public BuscarRubro(Decimal codigo, String bandera)
         {
             InitializeComponent();
             codigoPub = codigo;
+            flag = bandera;
         }
 
         //Busca los rubros existentes en la base de datos segun la descripción ingresada como filtro.
@@ -28,7 +30,7 @@ namespace FrbaCommerce.Generar_Publicacion
             try
             {
 
-                Datos.Dat_Publicacion.filtarListaDeRubros(txtNombre.Text, dataGridView1, codigoPub);
+                Datos.Dat_Publicacion.filtarListaDeRubros(txtNombre.Text, dataGridView1, codigoPub, flag);
             }
             catch (Exception ex)
             {

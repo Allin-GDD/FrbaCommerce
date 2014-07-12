@@ -338,7 +338,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         //Te lleva a la selección del filtro rubro.
         private void button1_Click(object sender, EventArgs e)
         {
-            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0);
+            Generar_Publicacion.BuscarRubro list = new Generar_Publicacion.BuscarRubro(0,"buscar");
             list.ShowDialog();
             txtRubro.Enabled = true;
             txtRubro.Text = list.Result;
