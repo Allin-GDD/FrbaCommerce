@@ -70,6 +70,17 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
+        public static String evaluarMail(TextBox textBox)
+        {
+            String ii = null;
+            string st = Convert.ToString(textBox);
+            if (st.IndexOf('@')==0)
+            {
+                ii = ("El tipo de mail no es valido");
+            }
+            return ii;
+        }
+
         public static String evaluarFecha(MaskedTextBox Fecha)
         {
             String ii = null;

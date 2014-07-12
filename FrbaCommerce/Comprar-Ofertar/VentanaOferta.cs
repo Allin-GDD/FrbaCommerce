@@ -26,7 +26,7 @@ namespace FrbaCommerce.Comprar_Ofertar
         {
             Entidades.Ent_Oferta oferta = new FrbaCommerce.Entidades.Ent_Oferta();
            
-          // try
+           try
 
             {
                 Utiles.Validaciones.ValidarTipoDouble(textBox1);
@@ -41,9 +41,9 @@ namespace FrbaCommerce.Comprar_Ofertar
                Datos.Dat_CompraOferta.AgregarOferta(oferta);
          }
 
-          //  catch (Exception ex)
+           catch (Exception ex)
            {
-           //     MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
         }
     }

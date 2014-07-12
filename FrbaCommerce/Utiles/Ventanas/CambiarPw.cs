@@ -31,9 +31,11 @@ namespace FrbaCommerce.Utiles.Ventanas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Utiles.Validaciones.validarDatosObligatorios(this);
-            Utiles.Validaciones.controlDeUsuario(Datos.Dat_Usuario.validarUserName(txtUser.Text));
             
+                Utiles.Validaciones.validarDatosObligatorios(this);
+                Utiles.Validaciones.controlDeUsuario(Datos.Dat_Usuario.validarUserName(txtUser.Text));
+            
+         
             if (txtNewPw1.Text != txtNewPw2.Text) {
 
                 txtNewPw2.BackColor = Color.Coral;

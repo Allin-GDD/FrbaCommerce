@@ -52,13 +52,13 @@
             this.txtDpto = new System.Windows.Forms.TextBox();
             this.labelDpto = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CUIT = new System.Windows.Forms.MaskedTextBox();
             this.labelLocalidad = new System.Windows.Forms.Label();
             this.txtNroPiso = new System.Windows.Forms.TextBox();
             this.labelNPiso = new System.Windows.Forms.Label();
             this.Calle = new System.Windows.Forms.TextBox();
             this.labelCalle = new System.Windows.Forms.Label();
             this.labelTel = new System.Windows.Forms.Label();
-            this.CUIT = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,9 +112,9 @@
             this.labelFCreacion.AutoSize = true;
             this.labelFCreacion.Location = new System.Drawing.Point(6, 318);
             this.labelFCreacion.Name = "labelFCreacion";
-            this.labelFCreacion.Size = new System.Drawing.Size(96, 13);
+            this.labelFCreacion.Size = new System.Drawing.Size(139, 13);
             this.labelFCreacion.TabIndex = 28;
-            this.labelFCreacion.Text = "Fecha de creación";
+            this.labelFCreacion.Text = "Fecha de creación empresa";
             // 
             // Ciudad
             // 
@@ -134,10 +134,10 @@
             // 
             // FecCre
             // 
-            this.FecCre.Location = new System.Drawing.Point(116, 311);
+            this.FecCre.Location = new System.Drawing.Point(156, 311);
             this.FecCre.Mask = "00/00/0000";
             this.FecCre.Name = "FecCre";
-            this.FecCre.Size = new System.Drawing.Size(117, 20);
+            this.FecCre.Size = new System.Drawing.Size(77, 20);
             this.FecCre.TabIndex = 13;
             this.FecCre.ValidatingType = typeof(System.DateTime);
             // 
@@ -234,9 +234,9 @@
             this.labelCUIT.AutoSize = true;
             this.labelCUIT.Location = new System.Drawing.Point(6, 80);
             this.labelCUIT.Name = "labelCUIT";
-            this.labelCUIT.Size = new System.Drawing.Size(62, 13);
+            this.labelCUIT.Size = new System.Drawing.Size(32, 13);
             this.labelCUIT.TabIndex = 18;
-            this.labelCUIT.Text = "Documento";
+            this.labelCUIT.Text = "CUIT";
             // 
             // txtDpto
             // 
@@ -291,6 +291,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Campos de rol";
             // 
+            // CUIT
+            // 
+            this.CUIT.Location = new System.Drawing.Point(74, 77);
+            this.CUIT.Mask = "00-00000000-0";
+            this.CUIT.Name = "CUIT";
+            this.CUIT.Size = new System.Drawing.Size(159, 20);
+            this.CUIT.TabIndex = 63;
+            // 
             // labelLocalidad
             // 
             this.labelLocalidad.AutoSize = true;
@@ -340,14 +348,6 @@
             this.labelTel.Size = new System.Drawing.Size(49, 13);
             this.labelTel.TabIndex = 20;
             this.labelTel.Text = "Teléfono";
-            // 
-            // CUIT
-            // 
-            this.CUIT.Location = new System.Drawing.Point(74, 77);
-            this.CUIT.Mask = "00-00000000-00";
-            this.CUIT.Name = "CUIT";
-            this.CUIT.Size = new System.Drawing.Size(159, 20);
-            this.CUIT.TabIndex = 63;
             // 
             // Modificación
             // 

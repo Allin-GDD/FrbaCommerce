@@ -66,6 +66,7 @@ namespace FrbaCommerce.Abm_Empresa
             validaciones.TelefonoAnt = null;
             validaciones.DNIAnt = null;
             validaciones.CUITAnt = null;
+            validaciones.Mail = Mail;
         }
 
      
@@ -99,6 +100,7 @@ namespace FrbaCommerce.Abm_Empresa
             Utiles.LimpiarTexto.BlanquearControls(this);
 
          }
+
 
            }
 }

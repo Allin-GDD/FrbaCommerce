@@ -156,9 +156,9 @@
             this.labelCUIT.AutoSize = true;
             this.labelCUIT.Location = new System.Drawing.Point(24, 86);
             this.labelCUIT.Name = "labelCUIT";
-            this.labelCUIT.Size = new System.Drawing.Size(62, 13);
+            this.labelCUIT.Size = new System.Drawing.Size(32, 13);
             this.labelCUIT.TabIndex = 71;
-            this.labelCUIT.Text = "Documento";
+            this.labelCUIT.Text = "CUIT";
             // 
             // FecCre
             // 

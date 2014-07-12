@@ -158,7 +158,7 @@ namespace FrbaCommerce.Utiles
         {
 
             DateTime fechaLimiteInferior = new DateTime(1800, 1, 1, 0, 0, 0);
-            DateTime fechaLimiteSuperior = new DateTime(4000, 1, 1, 0, 0, 0);
+            DateTime fechaLimiteSuperior = Convert.ToDateTime(DBConexion.fechaIngresadaPorElAdministrador());
             DateTime time = DateTime.Parse(fecha.Text);
 
 
@@ -242,6 +242,9 @@ namespace FrbaCommerce.Utiles
 
             //Se fija si la fecha esta dentro del rango     
             if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha));
+            
+            // Se fija si el mail tiene un @
+            if ((Mensajes.Generales.evaluarMail(txtUtil.Mail) != null)) errores.Add(Mensajes.Generales.evaluarMail(txtUtil.Mail));
 
             //se fija si no esta repetido
             if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));

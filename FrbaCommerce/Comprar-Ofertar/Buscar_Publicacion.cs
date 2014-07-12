@@ -382,12 +382,8 @@ namespace FrbaCommerce.Comprar_Ofertar
                 {// es la pocision del boton 
                     if (idusuario != idvendedor)
                     {
-                        if (tipo == "Subasta")
-                        {
-
-                            Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
-                            oferta.Show();
-                            if (tipo == "CompraInmediata")
+                        
+                        if (tipo == "Compra Inmediata")
                             {
                                 if (TipoUsuario == 'E')
                                 {
@@ -401,6 +397,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                                     ventana.Show();
                                 }
                             }
+                        if (tipo == "Subasta")
+                        {
+
+                            Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
+                            oferta.Show();
                         }
                     }
                 }

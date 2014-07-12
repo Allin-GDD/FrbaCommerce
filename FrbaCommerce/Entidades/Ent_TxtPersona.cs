@@ -20,5 +20,6 @@ namespace FrbaCommerce.Entidades
         public MaskedTextBox DNIAnt { get; set; }
         public MaskedTextBox Telefono { get; set; }
         public MaskedTextBox TelefonoAnt { get; set; }
+        public TextBox Mail { get; set; }
     }
 }
