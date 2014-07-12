@@ -79,12 +79,21 @@ namespace FrbaCommerce.Comprar_Ofertar
                 endRec = pageSize * currentPage;
             }
             startRec = recNo;
-
+            try
+                {
             //Copia las filas de la tabla fuente para llenar la tabla temporal.
             for (i = startRec; i < endRec; i++)
             {
-                dtTemp.ImportRow(dtSource.Rows[i]);
-                recNo += 1;
+                
+                    dtTemp.ImportRow(dtSource.Rows[i]);
+                    recNo += 1;
+               
+            }
+                }
+            catch (Exception)
+            {
+                MessageBox.Show(" No hay publicaciones que cumplan con los filtros seleccionados", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             dataGridView1.DataSource = dtTemp;
             DisplayPageInfo();
@@ -146,6 +155,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro),
                     new SqlParameter("@FechaActual",DBConexion.fechaIngresadaPorElAdministrador()));
+
+                    if (cmd.ExecuteNonQuery() == 0) {
+                        throw new Excepciones.NulidadDeCamposACompletar("No hay publicaciones que cumplan con los filtros seleccionados");
+                        
+                    }
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
                     da.Fill(tabla);
                     conn.Close();
@@ -160,6 +174,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
                     new SqlParameter("@Id", Convert.ToString(idusuario)),
                     new SqlParameter("@Rubro", pCO.Rubro));
+                    if (cmd.ExecuteNonQuery() == 0)
+                    {
+                        throw new Excepciones.NulidadDeCamposACompletar("No hay publicaciones que cumplan con los filtros seleccionados");
+
+                    }
                     SqlDataAdapter da = new SqlDataAdapter { SelectCommand = cmd };
                     da.Fill(tabla);
                     conn.Close();
@@ -394,7 +413,6 @@ namespace FrbaCommerce.Comprar_Ofertar
                             throw new Excepciones.InexistenciaUsuario("La publicación no permite preguntas");
                         }
 
-                        String vendedor = Datos.Dat_Usuario.getNameUser(idvendedor, TipoUsuario);
                         Utiles.Ventanas.Pregunta preg = new FrbaCommerce.Utiles.Ventanas.Pregunta(idusuario,codigoSeleccionado);
                         preg.ShowDialog();
 

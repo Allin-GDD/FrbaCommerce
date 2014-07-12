@@ -43,8 +43,6 @@ namespace FrbaCommerce.Abm_Cliente
         private void cargarDatosDelClienteSeleccionado()
         {
             clienteAnt = Datos.Dat_Cliente.buscarCliente(clienteAModificar);
-            
-
             txtNombre.Text = clienteAnt.Nombre;
             txtApellido.Text = clienteAnt.Apellido;
             txtDNI.Text = Convert.ToString(clienteAnt.Dni);

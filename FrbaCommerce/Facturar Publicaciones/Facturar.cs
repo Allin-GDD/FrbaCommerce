@@ -14,9 +14,9 @@ namespace FrbaCommerce.Facturar_Publicaciones
     {
         public string Tipo;
         decimal idUsuario;
-        string rolEste;
+        char rolEste;
 
-        public Facturar( decimal id,string rol)
+        public Facturar( decimal id,char rol)
         {
             InitializeComponent();
             idUsuario = id;

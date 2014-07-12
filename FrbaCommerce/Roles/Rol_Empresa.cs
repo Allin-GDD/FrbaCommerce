@@ -11,7 +11,7 @@ namespace FrbaCommerce.Roles
 {
     public partial class Rol_Empresa : Form
     {
-        string rol = "E";
+        char rol = 'E';
        
         public Rol_Empresa(Decimal id)
         {

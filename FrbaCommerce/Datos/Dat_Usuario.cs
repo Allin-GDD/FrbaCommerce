@@ -11,7 +11,7 @@ namespace FrbaCommerce.Datos
     class Dat_Usuario
     {
         public static List<String> obtenerTodosLosUsuarios()
-        {
+        {//arma un listado con todos los usuarios creados, para evitar repetidos
             List<String> listaDeUsuarios = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
@@ -35,7 +35,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static int validarUserName(String userName)
-        {
+        {//se fija si nombre de usuario que ingreso ya no existe
             List<String> listaDeUsuarios = Datos.Dat_Usuario.obtenerTodosLosUsuarios();
             int retorno = 0;
 
@@ -52,7 +52,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void CrearNuevoUsuario(string usuario, string pw, decimal rolDeUsuario,int estado)
-        {
+        {//agrega un nuevo usuario
             int retorno = 0;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {
@@ -72,9 +72,8 @@ namespace FrbaCommerce.Datos
             Mensajes.Generales.valirUsuarioCliente(retorno);
 
         }
-        // cuando erra 3 veces al login
         public static void actualizarEstadoUsuario(Int16 estado, Decimal idUsuario)
-        {
+        {//actualiza los estados del usuario
             int retorno = 0;
 
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -119,7 +118,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void bloquearUsuario(int intentosFallidos, Decimal Idusuario)
-        {
+        {//bloquea al usuario que fallo 3 veces la contreseña
             if (intentosFallidos == 3)
             {
 
@@ -162,7 +161,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void actualizarIntentos(decimal usuario, int intentos)
-        {
+        {//actualiza los intentos de usuario
             int retorno = 0;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
@@ -190,7 +189,7 @@ namespace FrbaCommerce.Datos
 
         public static bool validarPrimerIngreso(string passwordIngresa, string passwordOriginal, Entidades.Ent_Usuario pusuario, Form ofrm)
         {
-
+            //si es la primera vez que ingresa, le muestra una pantalla para que cambie su contraseña
             if (passwordIngresa == passwordOriginal && pusuario.Estado == 10)
             {
                 Utiles.Ventanas.First_Login flogin = new Utiles.Ventanas.First_Login(pusuario.IdUsuario);
@@ -204,7 +203,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void actualizarContraseña(Decimal usuario, string pw)
-        {
+        {//actualiza la contraseña, (siempre la va a hashear)
             int retorno = 0;
             String pwHash = hashearSHA256(pw);
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -245,24 +244,10 @@ namespace FrbaCommerce.Datos
             }
         }
 
-        // busca al usuario en la bd
-        public static String getNameUser(decimal idUsuario, char tipoUsuario)
-        {
-            String user = null;
-            SqlConnection conn = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarNombreUsuario", conn,
-            new SqlParameter("@IdUsuario", idUsuario),
-            new SqlParameter("@TipoUsuario", tipoUsuario));
-            SqlDataReader lectura = cmd.ExecuteReader();
-            while (lectura.Read())
-            {
-                user = lectura.GetString(0);
-            }
-            return user;
-        }
+       
 
         internal static decimal getIdUsuario(string p)
-        {
+        {//Devuelve el Id_Usuario a partir del nombre de usuario
             Decimal user = 0;
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarMiIDUsuario", conn,
@@ -277,7 +262,7 @@ namespace FrbaCommerce.Datos
         }
 
         internal static List<Int32> validarFuncionalidades(string p)
-        {
+        {//listado de funcionalidades
             List<Int32> func = new List<int>();
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.buscarFuncionalidades", conn,

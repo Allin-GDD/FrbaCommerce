@@ -11,7 +11,7 @@ namespace FrbaCommerce.Datos
     {
 
         public static List<Entidades.Entidad_Rol> ObtenerTodosLosRoles()
-        {
+        {//listado de todos los roles
 
             List<Entidades.Entidad_Rol> listaDeRoles = new List<Entidades.Entidad_Rol>();
 
@@ -36,7 +36,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static bool verificarSiElRolYaExiste(string nuevoRol)
-        {
+        {//verifica si el rol ya esta en la tabla rol, para evitar repetidos
             List<Entidades.Entidad_Rol> listaDeRoles = ObtenerTodosLosRoles();
 
             foreach (Entidades.Entidad_Rol rol in listaDeRoles)
@@ -51,7 +51,7 @@ namespace FrbaCommerce.Datos
 
   
         public static void agregarFuncionalidad(Decimal rol, int func)
-        {
+        {//le agrega una funcionalidad a un determinado rol
             int retorno;
 
             Utiles.Validaciones.ValidarFuncionalidadRepetida(rol, func);
@@ -68,7 +68,7 @@ namespace FrbaCommerce.Datos
            }
 
        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
-        {
+        {//llena datagrid según un determinado filtro.
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
            new SqlParameter("@Rol", rol),
@@ -79,7 +79,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void darDeBajaRol(decimal rolADarDeBaja)
-        {
+        {//da de baja a un determinado rol
             int retorno;
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaRol", conexion,
@@ -92,7 +92,7 @@ namespace FrbaCommerce.Datos
         {
             string nombre = null;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
-            {
+            {//devuelve el nombre de un rol
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerNombreIdRol", conexion,
                new SqlParameter("@Id_Rol", rolADarDeBaja));
                 SqlDataReader lectura = cmd.ExecuteReader();
@@ -109,18 +109,19 @@ namespace FrbaCommerce.Datos
         }
 
         public static void removerFuncionalidad(decimal rol, int func)
-        {
+        {//quita de la tabla relación Rol_Func una determinada funcionalidad
             int retorno = 0;
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.quitarRol", conexion,
                 new SqlParameter("@Id_Rol", rol),
                 new SqlParameter("@funcionalidad", func));
             retorno = cmd.ExecuteNonQuery();
-            Mensajes.Generales.validarBaja(retorno);//VER BIEN EL MENSAJE
+            Mensajes.Generales.validarBaja(retorno);
         }
 
         public static void actualizarEstadoRol(int estado, decimal rol)
-        {   try
+        {  //cambia estado a un rol
+            try
         {
             int retorno = 0;
             SqlConnection conexion = DBConexion.obtenerConexion();
@@ -136,7 +137,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static int obtenerEstado(decimal idSeleccionado)
-        {
+        {//obtiene el estado de un rol
             int estado = -1;
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerEstado", conexion,
@@ -150,7 +151,7 @@ namespace FrbaCommerce.Datos
         }
 
         internal static void agregarRolConFunc(string nuevoRol, int idFuncionabilidad)
-        {
+        {//agrega un determinado rol y su respectiva funcionalidad inicial
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
@@ -166,7 +167,7 @@ namespace FrbaCommerce.Datos
         }
 
         internal static void reemplazarNombre(Decimal idRol, string nombreRolNuevo)
-        {
+        {//le cambia el nombre al rol
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
@@ -181,7 +182,8 @@ namespace FrbaCommerce.Datos
         }
 
         internal static void abrirVentanasSegunRol(Decimal pusuario, Form login)
-        {
+        {//En el login según la cantidad de roles que tenga el usuario determina si abre una ventana para que elija un rol o
+            //directamete abre la ventana para el rol correspondiente
             List<Entidades.Entidad_Rol> listaDeRoles = new List<Entidades.Entidad_Rol>();
             try
             {

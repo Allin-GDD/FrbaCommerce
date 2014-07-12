@@ -12,7 +12,7 @@ namespace FrbaCommerce.Datos
       
         public static List<string> obtenerTodosLosCuit()
         {
-
+            //Listado de todos los CUIT de la tabla Empresa
             List<String> listaDeCuit = new List<String>();
 
             SqlConnection conexion = DBConexion.obtenerConexion();
@@ -29,7 +29,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void buscarListaDeEmpresa(Entidades.Ent_ListadoEmpresa pEmpresa, DataGridView dataGridView1)
-        {
+        {//llena datagrid con los datos filtrados
             try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
@@ -50,7 +50,7 @@ namespace FrbaCommerce.Datos
             }
 
         public static Entidades.Ent_Empresa buscarEmpresa(Decimal id)
-        {
+        {//obtiene una sola empresa
             Entidades.Ent_Empresa pEmpresa = new Entidades.Ent_Empresa();
            
             SqlConnection conn = DBConexion.obtenerConexion();
@@ -81,7 +81,7 @@ namespace FrbaCommerce.Datos
 
         internal static void actualizarEmpresa(Entidades.Ent_Empresa pEmpresa, Decimal empresaAModificar)
         {    
-
+            //Actualiza una determinada empresa
             int retorno;
             try
             {
@@ -114,7 +114,7 @@ namespace FrbaCommerce.Datos
                     }
 
         internal static void crearEmpresaUsuario(FrbaCommerce.Entidades.Ent_Empresa pEmpresa, decimal IdUsuario)
-        {
+        {//Agrega un nueva nueva empresa en la tabla Empresa
              int retorno;
             using (SqlConnection conexion = DBConexion.obtenerConexion())
             {

@@ -30,7 +30,7 @@ namespace FrbaCommerce.Datos
         }
 
         internal static List<Entidades.Ent_Funcionalidad> listadoDeFuncionalidades(decimal IdRol)
-        {
+        {//listado de todas las funcionalidades que tiene determinado rol
             List<Entidades.Ent_Funcionalidad> func = new List<FrbaCommerce.Entidades.Ent_Funcionalidad>();
 
             using (SqlConnection conn = DBConexion.obtenerConexion())

@@ -11,7 +11,7 @@ namespace FrbaCommerce.Roles
 {
     public partial class Rol_Cliente : Form
     {
-        string rol = "C";
+        char rol = 'C';
         
         public Rol_Cliente(decimal id)
         {
@@ -38,9 +38,9 @@ namespace FrbaCommerce.Roles
             short estado = Datos.Dat_Usuario.obtenerEstado(idcliente);
             Datos.Dat_Usuario.validarEstado(estado);
 
-          //  Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,rol);
+            Comprar_Ofertar.Buscar_Publicacion co = new FrbaCommerce.Comprar_Ofertar.Buscar_Publicacion(idcliente,rol);
              Hide();
-            //co.ShowDialog();
+            co.ShowDialog();
             Show();
              }
              else

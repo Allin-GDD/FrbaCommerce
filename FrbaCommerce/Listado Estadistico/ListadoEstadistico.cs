@@ -38,7 +38,7 @@ namespace FrbaCommerce.Listado_Estadistico
     
 
         private void cmbTipolist_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {//según el tipo de listado se activaran o no los textbox y combobox correspondientes
                          if(cmbTipolist.SelectedItem.ToString() == "Vendedores con mayor cantidad de productos no vendidos")
                          {
                 cmbMes.Enabled = true;
@@ -101,7 +101,7 @@ namespace FrbaCommerce.Listado_Estadistico
             Int16 año = Convert.ToInt16(dateTimePicker2.Text);
 
             dataGridView1.DataSource = null;
-
+            //cada cual llena el datagrid con los datos ingresados en el filtro
             if (tipo1) { Datos.Dat_Listados.vendedoresQueMEnosVenden(año, Convert.ToDecimal(cmbVisibilidad.SelectedValue), Convert.ToInt32(cmbMes.SelectedValue), dataGridView1); }
             if (tipo2) { Datos.Dat_Listados.vendedoresMayorFacturacion(año, filtroTrimestre,dataGridView1); }
             if (tipo3) { Datos.Dat_Listados.vendedoresConMayoresCalificaciones(año, filtroTrimestre,dataGridView1); }
@@ -110,7 +110,7 @@ namespace FrbaCommerce.Listado_Estadistico
         }
 
         private void cmbTrimestre_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {//altera el combobox de mes, segun el trimestre que se elija
             if (cmbTrimestre.SelectedItem.ToString() == "Primer Trimestre") {
 
                 cmbMes.DataSource = null;

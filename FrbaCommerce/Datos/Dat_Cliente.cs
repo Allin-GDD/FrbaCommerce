@@ -40,7 +40,7 @@ namespace FrbaCommerce.Datos
 
         public static List<Entidades.Ent_TipoDeDoc> ObtenerTipoDoc()
         {
-
+            //Listado de todos los tipos de documento existentes en la bd (tabla Tipo_Doc)
 
             List<Entidades.Ent_TipoDeDoc> listaDeTipos = new List<Entidades.Ent_TipoDeDoc>();
 
@@ -60,7 +60,7 @@ namespace FrbaCommerce.Datos
         }
 
           public static List<Entidades.Ent_Doc> obtenerTodosLosDocCliente()
-        {
+        {//Listado de todos los tipo de doc y numero de doc de la tabla Cliente
 
             List<Entidades.Ent_Doc> listaDeDni = new List<Entidades.Ent_Doc>();
 
@@ -85,7 +85,7 @@ namespace FrbaCommerce.Datos
 
          public static void buscarListaDeCliente(Entidades.Ent_ListadoCliente pListado, DataGridView dataGridView1)
         {
-
+             //llena datagrid con los clientes según el filtro
             try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
@@ -107,7 +107,7 @@ namespace FrbaCommerce.Datos
         }
       
         public static Entidades.Ent_Cliente buscarCliente(Decimal id)
-        {
+        {//busca un solo cliente
 
             Entidades.Ent_Cliente pcliente = new Entidades.Ent_Cliente();
 
@@ -118,7 +118,7 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pcliente.Tipo_DocNom = lectura.GetString(0);
+                pcliente.Tipo_DocNom = lectura.GetString(12);
                 pcliente.Dni = lectura.GetString(1);
                 pcliente.Nombre = lectura.GetString(2);
                 pcliente.Apellido = lectura.GetString(3);
@@ -130,15 +130,14 @@ namespace FrbaCommerce.Datos
                 pcliente.Dpto = lectura.GetString(9);
                 pcliente.Cod_Postal = lectura.GetString(10);
                 pcliente.Localidad = lectura.GetString(11);
-                pcliente.Telefono = lectura.GetString(12);
-              
+                pcliente.Telefono = lectura.GetString(13);
             }
             conn.Close();
             return pcliente;
         }
                
         public static void actualizarCamposACliente(Entidades.Ent_Cliente pCliente, Decimal clienteAModificar)
-        {
+        {//actualiza campos del un determinado cliente
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
@@ -167,7 +166,7 @@ namespace FrbaCommerce.Datos
         }
 
         public static void crearClienteUsuario(Entidades.Ent_Cliente pCliente, Decimal usuario)
-        {
+        {//agrega a la tabla cliente un nuevo cliente
             int retorno;
 
             using (SqlConnection conexion = DBConexion.obtenerConexion())
