@@ -30,20 +30,7 @@ namespace FrbaCommerce.Abm_Visibilidad
         {
             try
             {
-
-                Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
-
-
-                pvisibilidad.Codigo = textBox1.Text;
-                pvisibilidad.Descripcion = textBox2.Text;
-                pvisibilidad.Precio = textBox3.Text;
-                pvisibilidad.Porcentaje = textBox4.Text;
-
-                Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad,dataGridView1);
-
-                //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
-                this.modificar = Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
-                this.eliminar = Utiles.Inicializar.agregarColumnaEliminar(eliminar, dataGridView1);
+                cargarDatagrid();
             }
             catch (Exception ex)
             {
@@ -51,6 +38,24 @@ namespace FrbaCommerce.Abm_Visibilidad
             }
   
 
+        }
+
+        private void cargarDatagrid()
+        {
+
+            Entidades.Ent_ListadoVisibilidad pvisibilidad = new Entidades.Ent_ListadoVisibilidad();
+
+
+            pvisibilidad.Codigo = textBox1.Text;
+            pvisibilidad.Descripcion = textBox2.Text;
+            pvisibilidad.Precio = textBox3.Text;
+            pvisibilidad.Porcentaje = textBox4.Text;
+
+            Datos.Dat_Visibilidad.buscarListaDeVisibilidades(pvisibilidad, dataGridView1);
+
+            //LE METO UN BOOLEANDO PQ SINO LOS SIGUE AGREGANDO
+            this.modificar = Utiles.Inicializar.agregarColumnaModificar(modificar, dataGridView1);
+            this.eliminar = Utiles.Inicializar.agregarColumnaEliminar(eliminar, dataGridView1);
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -63,6 +68,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                 Abm_Visibilidad.Modificación mod = new Abm_Visibilidad.Modificación(codigoSeleccionado);
                 this.Hide();
                 mod.ShowDialog();
+                cargarDatagrid();
                 Show();
                 
 
@@ -72,7 +78,7 @@ namespace FrbaCommerce.Abm_Visibilidad
                 Abm_Visibilidad.Baja baj = new Abm_Visibilidad.Baja(codigoSeleccionado);
                 this.Hide();
                 baj.ShowDialog();
-                this.Refresh();
+                cargarDatagrid();
                 Show();
             }
         }
