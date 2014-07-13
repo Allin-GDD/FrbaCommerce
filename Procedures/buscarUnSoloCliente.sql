@@ -1,4 +1,4 @@
-create PROCEDURE buscarUnSoloCliente
+CREATE PROCEDURE buscarUnSoloCliente
 @Id numeric(18,0)
 AS
 BEGIN

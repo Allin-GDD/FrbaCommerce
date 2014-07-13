@@ -36,8 +36,9 @@ namespace FrbaCommerce.Abm_Cliente
 
         }
         public Entidades.Ent_Cliente clienteAnt;
-        public MaskedTextBox DniAnt;
-        public MaskedTextBox TelefonoAnt;
+        public String DniAnt;
+        public String TelefonoAnt;
+        public short TipoDoc;
         public Decimal clienteAModificar;
 
         private void cargarDatosDelClienteSeleccionado()
@@ -57,9 +58,8 @@ namespace FrbaCommerce.Abm_Cliente
             txtLocalidad.Text = clienteAnt.Localidad;
             cboTipoDoc.Text = clienteAnt.Tipo_DocNom;
 
-            this.DniAnt = txtDNI;
-            this.TelefonoAnt = txtTelefono;
-        
+            this.DniAnt = clienteAnt.Dni;
+            this.TelefonoAnt = clienteAnt.Telefono;    
            
         }
 
@@ -70,6 +70,7 @@ namespace FrbaCommerce.Abm_Cliente
         {
             Entidades.Ent_Cliente cliente = new Entidades.Ent_Cliente();
 
+            
             try
             {
                 Ent_TxtPersona validaciones = new Ent_TxtPersona();
@@ -105,6 +106,7 @@ namespace FrbaCommerce.Abm_Cliente
             validaciones.Piso = txtNroPiso;
             validaciones.CUIT = null;
             validaciones.CUITAnt = null;
+            validaciones.TipoDoc = Convert.ToInt16(cboTipoDoc.SelectedValue);
             validaciones.DNIAnt = this.DniAnt;
             validaciones.TelefonoAnt = this.TelefonoAnt;
         }

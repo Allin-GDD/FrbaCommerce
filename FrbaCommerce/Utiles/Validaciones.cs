@@ -237,6 +237,9 @@ namespace FrbaCommerce.Utiles
         //Evalua todas validaciones de los clientes y empresa
         public static void evaluarPersona(Entidades.Ent_TxtPersona txtUtil, Form ofrm)
         {
+            bool isCliente = false;
+            if (txtUtil.CUIT == null) isCliente = true;
+
             List<String> errores = datosObligatorios(ofrm);
             //se fija si el tipo es correcto
             if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
@@ -247,9 +250,9 @@ namespace FrbaCommerce.Utiles
             
             // Se fija si el mail tiene un @
             if ((Mensajes.Generales.evaluarMail(txtUtil.Mail) != null)) errores.Add(Mensajes.Generales.evaluarMail(txtUtil.Mail));
-
             //se fija si no esta repetido
-            if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt));
+            if ((Mensajes.Generales.evaluarRazonSocial(txtUtil.RazonSocial, txtUtil.RazonSocialAnt) != null)) errores.Add(Mensajes.Generales.evaluarRazonSocial(txtUtil.RazonSocial,txtUtil.RazonSocialAnt));
+            if ((Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt,isCliente) != null)) errores.Add(Mensajes.Generales.evaluarTel(txtUtil.Telefono, txtUtil.TelefonoAnt,isCliente));
             if ((Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt) != null)) errores.Add(Mensajes.Generales.evaluarDocumento(txtUtil.TipoDoc, txtUtil.DNI, txtUtil.DNIAnt));
             if ((Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt) != null)) errores.Add(Mensajes.Generales.evaluarCUIT(txtUtil.CUIT, txtUtil.CUITAnt));
 

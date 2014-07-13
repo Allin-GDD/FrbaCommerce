@@ -103,14 +103,18 @@ namespace FrbaCommerce.Mensajes
             }
         }
 
-        public static String evaluarTel(MaskedTextBox Telefono, MaskedTextBox TelefonoAnt)
+        public static String evaluarTel(MaskedTextBox Telefono, String TelefonoAnt,bool isCliente)
         {
             String ii = null;
-            if ((TelefonoAnt == null) && Datos.Dat_Telefonos.validarTelefono(Telefono.Text))
-            {
+           if(TelefonoAnt == null || TelefonoAnt != Telefono.Text)
+
+           {
+                if(Datos.Dat_Telefonos.validarTelefono(Telefono.Text,isCliente)){
                 Telefono.BackColor = Color.Coral;
                 ii = ("El teléfono ingresado pertenece a otro usuario");
             }
+            }
+            
             return ii;
         }
 
@@ -188,13 +192,13 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
-        internal static String evaluarDocumento(short tipo, MaskedTextBox Doc, MaskedTextBox DocAnt)
+        internal static String evaluarDocumento(short tipo, MaskedTextBox Doc, String DocAnt)
         {
             String ii = null;
 
-            
+            //throw new Excepciones.ElUsuarioSeBloqueo(DocAnt + " " + Doc.Text+" "+Convert.ToString(tipo));
 
-                if (DocAnt == null && Datos.Dat_Dni.validarDni(Doc, tipo))
+                if ((DocAnt == null || DocAnt != Doc.Text )&& Datos.Dat_Dni.validarDni(Doc, tipo))
                 {
                     ii = ("El número de documento ingresado ya pertenece a otra Cliente");
                 }
@@ -204,18 +208,28 @@ namespace FrbaCommerce.Mensajes
             
         }
 
-        internal static string evaluarCUIT(MaskedTextBox cuit, MaskedTextBox cuitAnt)
+        internal static string evaluarCUIT(MaskedTextBox cuit, String cuitAnt)
         {
             String ii = null;
-            if (cuitAnt == null && Datos.Dat_Cuit.validarCuit(cuit))
+            if ((cuitAnt == null ||cuitAnt != cuit.Text ) && Datos.Dat_Cuit.validarCuit(cuit))
             {
                 ii = ("El número de documento ingresado ya pertenece a otra Empresa");
             }
             return ii;
         }
 
-       
 
-       
+
+
+
+        internal static string evaluarRazonSocial(TextBox razonSocial, String razonSocialAnt)
+        {    
+            String ii = null;
+            if ((razonSocialAnt == null || razonSocialAnt != razonSocial.Text) && Datos.Dat_Empresa.validarRazonSocial(razonSocial))
+            {
+                ii = ("La razón social ingresada pertenece a otra Empresa");
+            }
+            return ii;
+        }
     }
 }

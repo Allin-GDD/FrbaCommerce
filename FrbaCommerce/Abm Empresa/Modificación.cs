@@ -33,8 +33,9 @@ namespace FrbaCommerce.Abm_Empresa
         }
 
         public Entidades.Ent_Empresa empresaAnt;
-        public MaskedTextBox CUITAnt;
-        public MaskedTextBox TelefonoAnt;
+        public String CUITAnt;
+        public String RazonAnt;
+        public String TelefonoAnt;
 
         private void cargarDatosDelClienteSeleccionado()
         {
@@ -55,8 +56,9 @@ namespace FrbaCommerce.Abm_Empresa
             FecCre.Text = Convert.ToString(empresaAnt.Fecha_Creacion);
 
 
-            this.CUITAnt = CUIT;
-            this.TelefonoAnt = Telefono;
+            this.CUITAnt = empresaAnt.CUIT;
+            this.TelefonoAnt = empresaAnt.Telefono;
+            this.RazonAnt = empresaAnt.RazonSocial;
     
         }
         public Decimal empresaAModificar;
@@ -67,11 +69,10 @@ namespace FrbaCommerce.Abm_Empresa
              Entidades.Ent_Empresa empresa = new Entidades.Ent_Empresa();
              Entidades.Ent_TxtPersona validaciones = new Entidades.Ent_TxtPersona();
              iniciarCheckText(validaciones);
-
              try
              {
                  Utiles.Validaciones.evaluarPersona(validaciones, this);
-                 //Inicializa el cliente con datos correctos
+                //Inicializa el cliente con datos correctos
                  inicializarEmpresa(empresa);
 
                  Datos.Dat_Empresa.actualizarEmpresa(empresa, empresaAModificar);
@@ -88,6 +89,7 @@ namespace FrbaCommerce.Abm_Empresa
         {
             
             validaciones.DNI = null;
+            validaciones.Mail = Mail;
             validaciones.Telefono = Telefono;
             validaciones.Fecha = FecCre;
             validaciones.Piso = txtNroPiso;
@@ -95,7 +97,9 @@ namespace FrbaCommerce.Abm_Empresa
             validaciones.CUIT = CUIT;
             validaciones.CUITAnt = this.CUITAnt;
             validaciones.DNIAnt = null;
+            validaciones.RazonSocial = RazonSocial;
             validaciones.TelefonoAnt = this.TelefonoAnt;
+            validaciones.RazonSocialAnt = this.RazonAnt;
         }
 
         private void inicializarEmpresa(Entidades.Ent_Empresa empresa)

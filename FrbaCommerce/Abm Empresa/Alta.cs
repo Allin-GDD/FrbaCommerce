@@ -67,6 +67,8 @@ namespace FrbaCommerce.Abm_Empresa
             validaciones.DNIAnt = null;
             validaciones.CUITAnt = null;
             validaciones.Mail = Mail;
+            validaciones.RazonSocialAnt = null;
+            validaciones.RazonSocial = RazonSocial;
         }
 
      

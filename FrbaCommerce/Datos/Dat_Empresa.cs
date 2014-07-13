@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace FrbaCommerce.Datos
 {
@@ -139,6 +140,64 @@ namespace FrbaCommerce.Datos
             }
             Mensajes.Generales.validarAlta(retorno);
         }
+
+        internal static bool validarRazonSocial(TextBox razonSocial)
+        {
+            List<String> listaDeRazon = Datos.Dat_Empresa.obtenerTodasLasRazones();
+
+            foreach (String razon in listaDeRazon)
+            {
+                if (razonSocial != null && razonSocial.Text == razon)
+                {
+                    razonSocial.BackColor = Color.Coral;
+                    return true;
+                }
+            }
+            return false;
         }
+
+        private static List<string> obtenerTodasLasRazones()
+        {
+            //Listado de todos los CUIT de la tabla Empresa
+            List<String> listaDeRazones = new List<String>();
+
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand Comando = new SqlCommand("Select Razon_Social from Empresa", conexion);
+            SqlDataReader lectura = Comando.ExecuteReader();
+
+            while (lectura.Read())
+            {
+                listaDeRazones.Add(lectura.GetString(0));
+            }
+
+
+            return listaDeRazones;
+        }
+
+        internal static List<Entidades.Ent_Telefono> obtenerTodosLosTelefonos()
+        {
+
+            List<Entidades.Ent_Telefono> listaDeTelefonos = new List<Entidades.Ent_Telefono>();
+
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand Comando = new SqlCommand("Select Telefono from Empresa", conexion);
+            SqlDataReader lectura = Comando.ExecuteReader();
+
+
+            while (lectura.Read())
+            {
+                Entidades.Ent_Telefono pTelefono = new Entidades.Ent_Telefono();
+
+                if (!lectura.IsDBNull(0))
+                {
+                    pTelefono.Telefono = lectura.GetString(0);
+
+                    listaDeTelefonos.Add(pTelefono);
+                }
+
+            }
+            return listaDeTelefonos;
+        }
+    }
     }
 

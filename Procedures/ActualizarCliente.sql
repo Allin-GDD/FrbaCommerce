@@ -1,6 +1,6 @@
 CREATE PROCEDURE actualizarCliente
 		@Id numeric(18,0),
-		@Dni numeric(18,0),
+		@Dni nvarchar(255),
 		@Nombre nvarchar(255),
 		@Apellido nvarchar(255),
 		@Fecha_Nac Datetime,

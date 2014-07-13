@@ -110,7 +110,7 @@
             // labelFCreacion
             // 
             this.labelFCreacion.AutoSize = true;
-            this.labelFCreacion.Location = new System.Drawing.Point(6, 318);
+            this.labelFCreacion.Location = new System.Drawing.Point(6, 314);
             this.labelFCreacion.Name = "labelFCreacion";
             this.labelFCreacion.Size = new System.Drawing.Size(139, 13);
             this.labelFCreacion.TabIndex = 28;
@@ -289,7 +289,7 @@
             this.groupBox1.Size = new System.Drawing.Size(244, 381);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Campos de rol";
+            this.groupBox1.Text = "Campos de empresa";
             // 
             // CUIT
             // 

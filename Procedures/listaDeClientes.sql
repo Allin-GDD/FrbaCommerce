@@ -13,7 +13,7 @@ CREATE PROCEDURE listaDeCliente
 				c.Nombre like '%'+@Nombre+'%'
 				AND Apellido like '%'+@Apellido+'%'
 				AND Nro_Documento like '%'+@Dni+'%'
-				AND Nro_Documento <> 0
+				AND Nro_Documento <> '0'
 				AND Mail like '%'+@Mail+'%'
 				AND ((c.Tipo_Doc = @Tipo_dni AND @Tipo_dni <>0) OR @Tipo_dni = 0)
 				

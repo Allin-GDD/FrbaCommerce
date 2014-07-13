@@ -248,14 +248,9 @@ namespace FrbaCommerce.Utiles
             if (cboTipoDoc.Text == "CUIT" || cboTipoDoc.Text == "CUIL")
             {
                 txtDNI.Enabled = true;
-                txtDNI.Mask = "##-########-##";
+                txtDNI.Mask = "##-########-#";
             }
 
-            if (cboTipoDoc.Text == "PAS")
-            {
-                txtDNI.Enabled = true;
-                txtDNI.Mask = "LLL-######";
-            }
             if (cboTipoDoc.Text == "")
             {
                 txtDNI.Enabled = false;
