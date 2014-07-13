@@ -81,16 +81,16 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
-        public static String evaluarFecha(MaskedTextBox Fecha, bool isCliente)
+        public static String evaluarFecha(MaskedTextBox Fecha)
         {
             String ii = null;
 
             try
                
             {
-                if (isCliente && Fecha.MaskCompleted && Utiles.Validaciones.ValidarFechaParaUSuario(Fecha)) {
-                    ii = ("La fecha deberá ser menor a la fecha del sistema");    
-                }
+                if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFechaParaUsuario(Fecha)) {
+                    ii = ("La fecha deberá ser menor a la fecha del sistema"); }
+                
                 else if (Fecha.MaskCompleted && Utiles.Validaciones.ValidarFecha(Fecha))
                 { ii = ("La fecha está fuera del rango disponible"); }
                 return ii;

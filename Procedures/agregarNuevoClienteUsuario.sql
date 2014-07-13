@@ -1,4 +1,4 @@
-create PROCEDURE agregarNuevoClienteUsuario
+CREATE PROCEDURE agregarNuevoClienteUsuario
 		@Dni nvarchar(64),
 		@Nombre nvarchar(255),
 		@Apellido nvarchar(255),

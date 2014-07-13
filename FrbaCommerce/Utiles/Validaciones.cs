@@ -237,15 +237,13 @@ namespace FrbaCommerce.Utiles
         //Evalua todas validaciones de los clientes y empresa
         public static void evaluarPersona(Entidades.Ent_TxtPersona txtUtil, Form ofrm)
         {
-            bool isCliente = false;
-            if (txtUtil.CUIT == null) { isCliente = true; }
             List<String> errores = datosObligatorios(ofrm);
             //se fija si el tipo es correcto
             if ((Mensajes.Generales.evaluarNroPiso(txtUtil.Piso) != null)) errores.Add(Mensajes.Generales.evaluarNroPiso(txtUtil.Piso));
             if ((Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle) != null)) errores.Add(Mensajes.Generales.evaluarNroCalle(txtUtil.NroCalle));
 
             //Se fija si la fecha esta dentro del rango     
-            if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha, isCliente) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha, isCliente));
+            if ((Mensajes.Generales.evaluarFecha(txtUtil.Fecha) != null)) errores.Add(Mensajes.Generales.evaluarFecha(txtUtil.Fecha));
             
             // Se fija si el mail tiene un @
             if ((Mensajes.Generales.evaluarMail(txtUtil.Mail) != null)) errores.Add(Mensajes.Generales.evaluarMail(txtUtil.Mail));
@@ -439,14 +437,14 @@ namespace FrbaCommerce.Utiles
 
 
 
-         internal static bool ValidarFechaParaUSuario(MaskedTextBox fecha)
+         internal static bool ValidarFechaParaUsuario(MaskedTextBox fecha)
          {
              DateTime fechaLimite = DBConexion.fechaIngresadaPorElAdministrador();
              DateTime time = DateTime.Parse(fecha.Text);
 
 
              int i = time.CompareTo(fechaLimite);
-             if (i > 0)
+             if (i >= 0)
              {
 
                  fecha.BackColor = Color.Coral;
@@ -455,6 +453,11 @@ namespace FrbaCommerce.Utiles
              }
              return false;
 
+         }
+
+         internal static bool ValidarFechaParaEmpresa(MaskedTextBox Fecha)
+         {
+             throw new NotImplementedException();
          }
     }
 }
