@@ -40,7 +40,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 decimal cantidadmax = Convert.ToDecimal(textBox1.Text);
                 
                 Tipo = Convert.ToString(comboBox1.SelectedValue);
-                buscarFacturasTop(idUsuario, cantidadmax, Tipo);
+               
+                List<Entidades.Ent_FacturaTop> listaEntFacTop = buscarFacturasTop(idUsuario, cantidadmax, Tipo);
+                foreach (Entidades.Ent_FacturaTop entidad in listaEntFacTop)
+                {
+                    unaFactura(entidad.Codigo, Tipo, entidad.Visibilidad, idUsuario);
+                    
+                }
                 Mensajes.Exitos.ComisionesCanceladas();
                 Close();
             }
@@ -52,7 +58,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         }
 
-        private void buscarFacturasTop(decimal id, decimal cantidad, string tipo)
+        private List<Entidades.Ent_FacturaTop> buscarFacturasTop(decimal id, decimal cantidad, string tipo)
         {
             List<Entidades.Ent_FacturaTop> listaEntFacTop = new List<Entidades.Ent_FacturaTop>();
             SqlConnection conn = DBConexion.obtenerConexion();
@@ -72,46 +78,36 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
             lectura.Close();
             conn.Close();
-            foreach (Entidades.Ent_FacturaTop entidad in listaEntFacTop)
-            {
-                unaFactura(entidad.Codigo, tipo, entidad.Visibilidad, id, entidad.rol);
-            }
+
+            return listaEntFacTop;
         }
 
 
-        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id, string rol)
+        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id)
         {
             decimal nfactura = 0;
             double precioFinal;
             //se fija si es bonificada la publicacion para ver si es gratis o no
-            if (esBonificada(codigo,visibilidad, id,rol))
-            {
-                precioFinal = 0;
-            }
+            if (esBonificada(codigo,visibilidad, id))
+            { precioFinal = 0;
+                 }
             else
+            {  precioFinal = buscarPrecioFinalFactura(codigo);
+                            }
+
+            //agrega la factura
+            nfactura = agregarFactura(codigo, precioFinal, tipo);
+            List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
+            double preciovisibilidad = 0;
+            //agrega todos los items
+            foreach (Entidades.Ent_ListFactura item in items)
             {
-                precioFinal = buscarPrecioFinalFactura(codigo);
-                List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
-                double preciovisibilidad = 0;
-                //agrega todos los items
-                foreach (Entidades.Ent_ListFactura item in items)
-                {
 
-                    agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
-                    preciovisibilidad = item.PrecioVis;
-                }
-                // agrega el item del precio base de la visibilidad
-                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
+                agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
+                preciovisibilidad = item.PrecioVis;
             }
-
-
-            if (!string.IsNullOrEmpty(tipo))
-            {
-                //agrega la factura
-                nfactura = agregarFactura(codigo, precioFinal, tipo);
-            }
-
-
+            // agrega el item del precio base de la visibilidad
+            agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
 
         }
         //lista todas las que no fueron facturadas.
@@ -166,7 +162,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         {
 
                 Entidades.Ent_ListFactura pfact = new Entidades.Ent_ListFactura();
-                double precioBase = 0;
+              double precioBase = 0;
               double aFacturar=0;
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.publicacionAFacturar", conn,
@@ -240,30 +236,31 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
          
         //Se fija si la factura en cuestión es bonificada (osea cada diez del mismo tipo de visibilidad te regalan una)
-         private static bool esBonificada(decimal codigo,Decimal visibilidad,Decimal Id, string Rol)
+         private static bool esBonificada(decimal codigo,Decimal visibilidad,Decimal Id)
          {
-             int retorno;
-             Boolean esBonif = false;
+              
+              List<Decimal> codigosBonificados = new List<decimal>();
              using (SqlConnection conexion = DBConexion.obtenerConexion())
              {
                  
-                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
+                 SqlCommand cmd2 = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
                  new SqlParameter("@Id", Id),
-                // new SqlParameter("@Rol", Rol),
                  new SqlParameter("@Visibilidad", visibilidad));
 
-                 SqlDataReader lectura = cmd.ExecuteReader();
+                 SqlDataReader lectura = cmd2.ExecuteReader();
 
                  while (lectura.Read())
                  {
-                     if (lectura.GetDecimal(0) == codigo)
-                     {
-                         esBonif = true;
-                     }
-                 }
-                 retorno = cmd.ExecuteNonQuery();
+                  codigosBonificados.Add (lectura.GetDecimal(0));
+                  }
                  conexion.Close();
                  lectura.Close();
+             }
+             Boolean esBonif = false;
+                foreach(Decimal codigoBonificado in codigosBonificados){
+                    if(codigoBonificado == codigo){
+                    esBonif = true;
+                }
              }
 
              return esBonif;
