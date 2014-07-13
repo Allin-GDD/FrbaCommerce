@@ -66,6 +66,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                 unaFactura(lectura.GetDecimal(0), tipo,lectura.GetDecimal(1),id,lectura.GetString(2));
             }
+            lectura.Close();
             conn.Close();
         }
 
@@ -177,7 +178,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                 }
                 conn.Close();
-
+                lectura.Close();
         
                 return aFacturar+precioBase;
           
@@ -191,9 +192,10 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 SqlDataReader lectura = cmd.ExecuteReader();
                 lectura.Read();
              //   throw new Excepciones.DuplicacionDeDatos(Convert.ToString(lectura.GetDecimal(0)));
-                
+                decimal num = lectura.GetDecimal(0);
                 conexion.Close();
-                return (lectura.GetDecimal(0) + 1);
+                lectura.Close();
+                return (num + 1);
             }
         }
 
@@ -223,7 +225,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             }
 
             conn.Close();
-
+            lectura.Close();
             return lista;
             
 
@@ -253,6 +255,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                  }
                  retorno = cmd.ExecuteNonQuery();
                  conexion.Close();
+                 lectura.Close();
              }
 
              return esBonif;
