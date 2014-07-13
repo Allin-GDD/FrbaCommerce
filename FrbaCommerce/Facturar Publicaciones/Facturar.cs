@@ -66,6 +66,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
                 unaFactura(lectura.GetDecimal(0), tipo,lectura.GetDecimal(1),id,lectura.GetString(2));
             }
+            conn.Close();
         }
 
 
@@ -190,7 +191,9 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 SqlDataReader lectura = cmd.ExecuteReader();
                 lectura.Read();
              //   throw new Excepciones.DuplicacionDeDatos(Convert.ToString(lectura.GetDecimal(0)));
-                return (lectura.GetDecimal(0) +1);
+                
+                conexion.Close();
+                return (lectura.GetDecimal(0) + 1);
             }
         }
 
@@ -296,6 +299,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
          {
              Close();
          }
+
 
         }
 }

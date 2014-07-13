@@ -1,4 +1,4 @@
-CREATE PROCEDURE agregarCompra
+create PROCEDURE agregarCompra
 		@Codigo numeric(18,0),
 		@Id numeric(18,0),
 		@Stock numeric(18,0),
@@ -17,11 +17,13 @@ SET @Cod_Calif = (select MAX(Cod_Calificacion) from Calificacion)
 	Id_Cliente,
 	Fecha,
 	Cantidad,
-	Calificacion_Codigo)
+	Calificacion_Codigo,
+	facturada)
 	VALUES(
 	@Codigo,
 	@Id,
 	@Fecha,
 	@Stock,
-	@Cod_Calif)
+	@Cod_Calif,
+	0)
 END
