@@ -147,6 +147,7 @@
     <Compile Include="Editar Publicacion\Agregar_Quitar_Rubros.Designer.cs">
       <DependentUpon>Agregar_Quitar_Rubros.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entidades\Ent_FacturaTop.cs" />
     <Compile Include="Entidades\Ent_ListFactura.cs" />
     <Compile Include="Entidades\Ent_Fecha.cs" />
     <Compile Include="Entidades\Ent_ListadoPublicacion.cs" />

@@ -54,7 +54,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private void buscarFacturasTop(decimal id, decimal cantidad, string tipo)
         {
-
+            List<Entidades.Ent_FacturaTop> listaEntFacTop = new List<Entidades.Ent_FacturaTop>();
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.facturasTop", conn,
             new SqlParameter("@Id", id),
@@ -63,11 +63,19 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
             while (lectura.Read())
             {
+                Entidades.Ent_FacturaTop entidadFac = new Entidades.Ent_FacturaTop();
+                entidadFac.Codigo = lectura.GetDecimal(0);
+                entidadFac.Visibilidad = lectura.GetDecimal(1);
+                entidadFac.rol = lectura.GetString(2);
+                listaEntFacTop.Add(entidadFac);
 
-                unaFactura(lectura.GetDecimal(0), tipo,lectura.GetDecimal(1),id,lectura.GetString(2));
             }
             lectura.Close();
             conn.Close();
+            foreach (Entidades.Ent_FacturaTop entidad in listaEntFacTop)
+            {
+                unaFactura(entidad.Codigo, tipo, entidad.Visibilidad, id, entidad.rol);
+            }
         }
 
 
@@ -242,7 +250,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                  SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.esBonificada", conexion,
                  new SqlParameter("@Id", Id),
                 // new SqlParameter("@Rol", Rol),
-                 new SqlParameter("@Visibilidad", codigo));
+                 new SqlParameter("@Visibilidad", visibilidad));
 
                  SqlDataReader lectura = cmd.ExecuteReader();
 
