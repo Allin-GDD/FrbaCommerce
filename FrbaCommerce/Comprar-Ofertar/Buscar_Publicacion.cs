@@ -152,7 +152,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                     new SqlParameter("@Estado", pCO.Estado),
                     new SqlParameter("@Tipo", pCO.Tipo),
                     new SqlParameter("@Visibilidad", pCO.Visibilidad),
-                    new SqlParameter("@Id", Convert.ToString(idusuario)),
+                    new SqlParameter("@Id", idusuario),
                     new SqlParameter("@Rubro", pCO.Rubro),
                     new SqlParameter("@FechaActual",DBConexion.fechaIngresadaPorElAdministrador()));
 
@@ -223,7 +223,7 @@ namespace FrbaCommerce.Comprar_Ofertar
            }
             catch (Exception ex)
            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

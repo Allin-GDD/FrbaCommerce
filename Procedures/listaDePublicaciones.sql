@@ -1,11 +1,11 @@
-craete PROCEDURE listaDePublicaciones
+create PROCEDURE listaDePublicaciones
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
 		@Visibilidad nvarchar(30),
 		--@Rol nvarchar(10),
 		@Rubro numeric (18,0),
-		@Id nvarchar(30),
+		@Id numeric (18,0),
 		@FechaActual datetime
 	AS
 	BEGIN
