@@ -30,7 +30,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // segun la cantidad de facturas seleccionadas busca el top y las cancela
+             //segun la cantidad de facturas seleccionadas busca el top y las cancela
             try
             {
                 Utiles.Validaciones.validarDatosObligatorios(this);

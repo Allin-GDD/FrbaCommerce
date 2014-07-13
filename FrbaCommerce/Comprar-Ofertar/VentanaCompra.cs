@@ -94,7 +94,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 pcliente.Dni = Convert.ToDecimal(lectura.GetString(1));
                 pcliente.Nombre = lectura.GetString(2);
                 pcliente.Apellido = lectura.GetString(3);
-                pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
+              //  pcliente.Fecha_Nac = Convert.ToString(lectura.GetDateTime(4));
                 pcliente.Mail = lectura.GetString(5);
                 pcliente.Dom_Calle = lectura.GetString(6);
                 pcliente.Nro_Calle = lectura.GetDecimal(7);
