@@ -27,6 +27,7 @@ create PROCEDURE listaDePublicaciones
  				--and p.Fecha < @FechaActual
  				and (p.Usuario <> @Id )
  				and e.Nombre = 'Publicada'
+ 				
 				
 			order by Visibilidad_Cod
 
