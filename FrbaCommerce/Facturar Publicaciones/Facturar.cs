@@ -23,7 +23,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             rolEste = rol;
             Tipo = null;
             Utiles.Inicializar.comboBoxTipoFormaDePago(comboBox1);
-            buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
+          
             
         }
 
@@ -298,6 +298,11 @@ namespace FrbaCommerce.Facturar_Publicaciones
          private void button1_Click(object sender, EventArgs e)
          {
              Close();
+         }
+
+         private void button3_Click(object sender, EventArgs e)
+         {
+             buscarPublicacionesSinFacturar(idUsuario, dataGridView1);
          }
 
 
