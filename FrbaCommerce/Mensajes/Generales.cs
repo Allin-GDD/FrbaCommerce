@@ -196,9 +196,7 @@ namespace FrbaCommerce.Mensajes
         {
             String ii = null;
 
-            //throw new Excepciones.ElUsuarioSeBloqueo(DocAnt + " " + Doc.Text+" "+Convert.ToString(tipo));
-
-                if ((DocAnt == null || DocAnt != Doc.Text )&& Datos.Dat_Dni.validarDni(Doc, tipo))
+               if ((DocAnt == null || DocAnt != Doc.Text )&& Datos.Dat_Dni.validarDni(Doc, tipo))
                 {
                     ii = ("El número de documento ingresado ya pertenece a otra Cliente");
                 }
