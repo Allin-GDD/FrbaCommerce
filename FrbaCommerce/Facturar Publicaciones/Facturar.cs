@@ -64,7 +64,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.facturasTop", conn,
             new SqlParameter("@Id", id),
-            new SqlParameter("@Cant", cantidad));
+            new SqlParameter("@Cant", cantidad),
+            new SqlParameter("@fecha", DBConexion.fechaIngresadaPorElAdministrador()));
             SqlDataReader lectura = cmd.ExecuteReader();
 
             while (lectura.Read())
@@ -97,7 +98,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                             }
 
             //agrega la factura
-
+            
             cambiarFacturada(codcompra);
             nfactura = agregarFactura(codigo, precioFinal, tipo);
             List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
