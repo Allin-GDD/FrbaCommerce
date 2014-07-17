@@ -61,19 +61,19 @@ namespace FrbaCommerce.Datos
             SqlDataReader lectura = cmd.ExecuteReader();
             while (lectura.Read())
             {
-                pEmpresa.RazonSocial = lectura.GetString(0);
-                pEmpresa.CUIT = lectura.GetString(1);
-                pEmpresa.Fecha_Creacion = lectura.GetDateTime(2);
-                pEmpresa.Mail = lectura.GetString(3);
-                pEmpresa.Dom_Calle = lectura.GetString(4);
-                pEmpresa.Nro_Calle = lectura.GetDecimal(5);
-                pEmpresa.Piso = lectura.GetDecimal(6);
-                pEmpresa.Dpto = lectura.GetString(7);
-                pEmpresa.Cod_Postal = lectura.GetString(8);
-                pEmpresa.Localidad = lectura.GetString(9);
-                pEmpresa.Telefono = lectura.GetString(10);
-                pEmpresa.Ciudad = lectura.GetString(11);
-                pEmpresa.NombreContacto = lectura.GetString(12);
+                pEmpresa.RazonSocial = lectura.GetString(1);
+                pEmpresa.CUIT = lectura.GetString(2);
+                pEmpresa.Fecha_Creacion = lectura.GetDateTime(3);
+                pEmpresa.Mail = lectura.GetString(4);
+                pEmpresa.Dom_Calle = lectura.GetString(5);
+                pEmpresa.Nro_Calle = lectura.GetDecimal(6);
+                pEmpresa.Piso = lectura.GetDecimal(7);
+                pEmpresa.Dpto = lectura.GetString(8);
+                pEmpresa.Cod_Postal = lectura.GetString(9);
+                pEmpresa.Localidad = lectura.GetString(10);
+                pEmpresa.Telefono = lectura.GetString(11);
+                pEmpresa.Ciudad = lectura.GetString(12);
+                pEmpresa.NombreContacto = lectura.GetString(13);
             }
             conn.Close();
            
