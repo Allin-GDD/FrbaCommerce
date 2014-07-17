@@ -52,22 +52,5 @@ namespace FrbaCommerce.ABM_Rol
             listView1.Clear();
             Utiles.Inicializar.listViewFunc(listView1);
         }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades(0);
-            list.ShowDialog();
-            txtFunc.Text = list.Result;
-            idFuncionabilidad = list.ResultCodigo;
-           
-        }*/
-     
-
-
     }
 }
