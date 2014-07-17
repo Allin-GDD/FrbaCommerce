@@ -49,8 +49,8 @@ namespace FrbaCommerce.Datos
             return false;
         }
 
-  
-        public static void agregarFuncionalidad(Decimal rol, int func)
+
+        public static int agregarFuncionalidad(Decimal rol, int func)
         {//le agrega una funcionalidad a un determinado rol
             int retorno;
 
@@ -64,15 +64,15 @@ namespace FrbaCommerce.Datos
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            Mensajes.Generales.validarAlta(retorno);
-           }
+            return retorno;
+        }
 
-       public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
+        public static void filtarListaDeRoles(string rol, DataGridView dataGridView1, int num)
         {//llena datagrid según un determinado filtro.
             SqlConnection conexion = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.filtrarRol", conexion,
            new SqlParameter("@Rol", rol),
-           new SqlParameter("@Filtrado",num));
+           new SqlParameter("@Filtrado", num));
             Utiles.SQL.llenarDataGrid(dataGridView1, conexion, cmd);
 
             dataGridView1.Columns["Id"].Visible = false;
@@ -122,14 +122,14 @@ namespace FrbaCommerce.Datos
         public static void actualizarEstadoRol(int estado, decimal rol)
         {  //cambia estado a un rol
             try
-        {
-            int retorno = 0;
-            SqlConnection conexion = DBConexion.obtenerConexion();
-            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoRol", conexion,
-                new SqlParameter("@Id_Rol", rol),
-                new SqlParameter("@Estado", estado));
-            retorno = cmd.ExecuteNonQuery();
-               }
+            {
+                int retorno = 0;
+                SqlConnection conexion = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.actualizarEstadoRol", conexion,
+                    new SqlParameter("@Id_Rol", rol),
+                    new SqlParameter("@Estado", estado));
+                retorno = cmd.ExecuteNonQuery();
+            }
             catch (Exception)
             {
                 MessageBox.Show("Error al actualizar el estado del rol", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -150,7 +150,7 @@ namespace FrbaCommerce.Datos
             return estado;
         }
 
-        internal static void agregarRol(string nuevoRol)
+        internal static int agregarRol(string nuevoRol)
         {//agrega un determinado rol y su respectiva funcionalidad inicial
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
@@ -161,8 +161,7 @@ namespace FrbaCommerce.Datos
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
             }
-
-            Mensajes.Generales.validarAlta(retorno);
+            return retorno;
         }
 
         internal static void reemplazarNombre(Decimal idRol, string nombreRolNuevo)
@@ -202,9 +201,9 @@ namespace FrbaCommerce.Datos
 
                 if (listaDeRoles.Count == 1)
                 {
-                   Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
-                  Utiles.Ventanas.Opciones.AbrirVentanas(rol.id ,pusuario,login);
-                                  }
+                    Entidades.Entidad_Rol rol = listaDeRoles.ElementAt(0);
+                    Utiles.Ventanas.Opciones.AbrirVentanas(rol.id, pusuario, login);
+                }
                 else if (listaDeRoles.Count > 1)
                 {
 
@@ -212,17 +211,32 @@ namespace FrbaCommerce.Datos
                     vent.ShowDialog();
 
                 }
-                else {
+                else
+                {
                     throw new Excepciones.InexistenciaUsuario("El rol de usuario se encuentra inhabilitado");
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                
-                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
+        }
+
+        internal static Decimal obtenerIdRol(string RolNombre)
+        {
+            Decimal rol = 0;
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.obtenerIdRol", conexion,
+                new SqlParameter("@NombreRol", RolNombre));
+            SqlDataReader lectura = cmd.ExecuteReader();
+            while (lectura.Read())
+            {
+                rol = lectura.GetDecimal(0);
+            }
+            return rol;
         }
     }
 }

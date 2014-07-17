@@ -9,13 +9,15 @@ namespace FrbaCommerce.Datos
 {
     class Dat_Funcionalidad
     {
-         //agrega una funcionalidad con su rol
+        //agrega una funcionalidad con su rol
 
         public static void chequeoDeAddFuncionalidad(CheckBox chkAgregar, decimal rol, int func)
         {
             if (chkAgregar.Checked)
             {
-                Datos.Dat_Rol.agregarFuncionalidad(rol, func);
+                int i = Datos.Dat_Rol.agregarFuncionalidad(rol, func);
+
+                Mensajes.Generales.validarAlta(i);
             }
         }
 
@@ -25,7 +27,7 @@ namespace FrbaCommerce.Datos
             if (chkQuitar.Checked)
             {
                 Datos.Dat_Rol.removerFuncionalidad(rol, func);
-               
+
             }
         }
 
@@ -34,7 +36,6 @@ namespace FrbaCommerce.Datos
             List<Entidades.Ent_Funcionalidad> func = new List<FrbaCommerce.Entidades.Ent_Funcionalidad>();
 
             using (SqlConnection conn = DBConexion.obtenerConexion())
-         
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.listadodeFunc", conn,
                 new SqlParameter("@Id_Rol", IdRol));
@@ -51,9 +52,24 @@ namespace FrbaCommerce.Datos
                 conn.Close();
                 return func;
             }
-           
+
         }
 
-     
+
+
+        internal static void agregarFuncionabilidadesARol(decimal IdRol, ListView listView1)
+        {
+         
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.Checked)
+                {
+                    int p;
+                   p = Datos.Dat_Rol.agregarFuncionalidad(IdRol, Convert.ToInt32(item.SubItems[1].Text));
+             
+                }
+            }
+
+        }
     }
 }

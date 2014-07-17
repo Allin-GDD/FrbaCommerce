@@ -20,7 +20,7 @@ namespace FrbaCommerce.ABM_Rol
 
             
         }
-        private Int32 idFuncionabilidad;
+        private Decimal IdRol;
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -28,10 +28,14 @@ namespace FrbaCommerce.ABM_Rol
                 
                 //Verifica si lo puso bien y si ya no existe el rol
                 Utiles.Validaciones.evaluarRol(txtNombre, this,listView1);
-                //agregar el rol y la func que elija
-                Datos.Dat_Rol.agregarRol(txtNombre.Text); 
-                
+                //agregar el rol
+                int i = Datos.Dat_Rol.agregarRol(txtNombre.Text);
+                IdRol = Datos.Dat_Rol.obtenerIdRol(txtNombre.Text);
+                //Agrega todas las funcionalidades marcadas
+                Datos.Dat_Funcionalidad.agregarFuncionabilidadesARol(IdRol, listView1);
 
+
+                Mensajes.Generales.validarAlta(i);
                 Close();
             }
             catch (Exception ex)
