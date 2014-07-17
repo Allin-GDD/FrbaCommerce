@@ -39,6 +39,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.cmbTipoPub = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.cmbVisib = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -164,6 +164,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Publicación";
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(89, 146);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(67, 20);
+            this.textBox2.TabIndex = 29;
+            // 
             // cmbEstado
             // 
             this.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -212,6 +219,7 @@
             this.cmbVisib.Name = "cmbVisib";
             this.cmbVisib.Size = new System.Drawing.Size(177, 21);
             this.cmbVisib.TabIndex = 25;
+            this.cmbVisib.SelectedIndexChanged += new System.EventHandler(this.cmbVisib_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -232,13 +240,6 @@
             this.button2.Text = "Aceptar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(89, 146);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(67, 20);
-            this.textBox2.TabIndex = 29;
             // 
             // Generar_Publi
             // 
