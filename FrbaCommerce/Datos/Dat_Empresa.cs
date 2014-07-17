@@ -63,7 +63,7 @@ namespace FrbaCommerce.Datos
             {
                 pEmpresa.RazonSocial = lectura.GetString(0);
                 pEmpresa.CUIT = lectura.GetString(1);
-                pEmpresa.Fecha_Creacion = Convert.ToString(lectura.GetDateTime(2));
+                pEmpresa.Fecha_Creacion = lectura.GetDateTime(2);
                 pEmpresa.Mail = lectura.GetString(3);
                 pEmpresa.Dom_Calle = lectura.GetString(4);
                 pEmpresa.Nro_Calle = lectura.GetDecimal(5);

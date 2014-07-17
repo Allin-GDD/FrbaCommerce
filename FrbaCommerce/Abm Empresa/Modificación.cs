@@ -115,7 +115,7 @@ namespace FrbaCommerce.Abm_Empresa
             empresa.Localidad = Convert.ToString(Localidad.Text);
             empresa.Cod_Postal = Convert.ToString(CodPostal.Text);
             empresa.Ciudad = Convert.ToString(Ciudad.Text);
-            empresa.Fecha_Creacion = Convert.ToString(FecCre.Text);
+            empresa.Fecha_Creacion = Convert.ToDateTime(FecCre.Text);
             //hace esto para que pueda existir gente que no vive en edificio
             if (!string.IsNullOrEmpty(txtNroPiso.Text))
             {
