@@ -396,6 +396,11 @@ namespace FrbaCommerce.Comprar_Ofertar
                                     VentanaCompra ventana = new VentanaCompra(codigoSeleccionado, idusuario);
                                     ventana.Show();
                                 }
+                                if (TipoUsuario == 'A')
+                                {
+                                    VentanaCompraAdmin ventana = new VentanaCompraAdmin(codigoSeleccionado, idusuario);
+                                    ventana.Show();
+                                }
                             }
                         if (tipo == "Subasta")
                         {

@@ -114,6 +114,12 @@
     <Compile Include="Comprar-Ofertar\VentanaCompra.Designer.cs">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompraAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar-Ofertar\VentanaCompraAdmin.Designer.cs">
+      <DependentUpon>VentanaCompraAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar-Ofertar\VentanaCompraEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompra.resx">
       <DependentUpon>VentanaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comprar-Ofertar\VentanaCompraAdmin.resx">
+      <DependentUpon>VentanaCompraAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar-Ofertar\VentanaCompraEmpresa.resx">
       <DependentUpon>VentanaCompraEmpresa.cs</DependentUpon>

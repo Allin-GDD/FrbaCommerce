@@ -93,6 +93,7 @@ namespace FrbaCommerce.Comprar_Ofertar
                 pEmpresa.Usuario = lectura.GetString(0);
                 pEmpresa.RazonSocial = lectura.GetString(1);
                 pEmpresa.CUIT = lectura.GetString(2);
+
                 pEmpresa.Mail = lectura.GetString(4);
                 pEmpresa.Dom_Calle = lectura.GetString(5);
                 pEmpresa.Nro_Calle = lectura.GetDecimal(6);
