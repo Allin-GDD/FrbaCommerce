@@ -219,7 +219,7 @@
             this.cmbVisib.Name = "cmbVisib";
             this.cmbVisib.Size = new System.Drawing.Size(177, 21);
             this.cmbVisib.TabIndex = 25;
-      
+
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(25, 393);
