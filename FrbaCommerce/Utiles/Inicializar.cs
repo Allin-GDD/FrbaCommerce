@@ -259,6 +259,20 @@ namespace FrbaCommerce.Utiles
                
             }
            }
+
+        internal static void listViewFunc(ListView listView1)
+        {
+            List<Entidades.Ent_Funcionalidad> dt = Datos.Dat_Funcionalidad.listadoDeFuncionalidades(0);
+
+            foreach (Entidades.Ent_Funcionalidad ent in dt)
+            {
+
+                ListViewItem item = new ListViewItem(Convert.ToString(ent.funcionalidad));
+                item.SubItems.Add(Convert.ToString(ent.id));
+
+                listView1.Items.Add(item);
+            }
+        }
     }
 
 }

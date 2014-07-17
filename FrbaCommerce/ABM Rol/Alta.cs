@@ -14,7 +14,10 @@ namespace FrbaCommerce.ABM_Rol
         public Alta()
         {
             InitializeComponent();
-           
+            listView1.CheckBoxes = true;
+            Utiles.Inicializar.listViewFunc(listView1);
+            
+
             
         }
         private Int32 idFuncionabilidad;
@@ -22,11 +25,13 @@ namespace FrbaCommerce.ABM_Rol
         {
             try
             {
+                
                 //Verifica si lo puso bien y si ya no existe el rol
-                Utiles.Validaciones.evaluarRol(txtNombre, this);
+                Utiles.Validaciones.evaluarRol(txtNombre, this,listView1);
                 //agregar el rol y la func que elija
-                Datos.Dat_Rol.agregarRolConFunc(txtNombre.Text, idFuncionabilidad); 
-              
+                Datos.Dat_Rol.agregarRol(txtNombre.Text); 
+                
+
                 Close();
             }
             catch (Exception ex)
@@ -40,18 +45,24 @@ namespace FrbaCommerce.ABM_Rol
 
             Utiles.LimpiarTexto.LimpiarTextBox(this);
             Utiles.LimpiarTexto.BlanquearControls(this);
+            listView1.Clear();
+            Utiles.Inicializar.listViewFunc(listView1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /*private void button1_Click(object sender, EventArgs e)
         {
             Utiles.Ventanas.ListaFuncionabilidades list = new FrbaCommerce.Utiles.Ventanas.ListaFuncionabilidades(0);
             list.ShowDialog();
             txtFunc.Text = list.Result;
             idFuncionabilidad = list.ResultCodigo;
            
-        }
-
-       
+        }*/
+     
 
 
     }

@@ -293,10 +293,22 @@ namespace FrbaCommerce.Utiles
             }
             return ii;
         }
-        public static void evaluarRol(TextBox txtNombre, Form ofrm)
+        public static void evaluarRol(TextBox txtNombre, Form ofrm, ListView listView1)
         {
             List<String> errores = datosObligatorios(ofrm);
+            int i = 0;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.Checked)
+                {
+                    i++;
+                }
 
+            }
+            if (i == 0)
+            {
+                errores.Add("No se han seleccionado ninguna funcionalidad");
+            }
 
             if (Datos.Dat_Rol.verificarSiElRolYaExiste(txtNombre.Text))
             {
@@ -462,7 +474,8 @@ namespace FrbaCommerce.Utiles
          {
              throw new NotImplementedException();
          }
-    }
+
+           }
 }
 
           

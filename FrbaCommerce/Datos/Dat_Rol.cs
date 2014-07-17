@@ -150,14 +150,13 @@ namespace FrbaCommerce.Datos
             return estado;
         }
 
-        internal static void agregarRolConFunc(string nuevoRol, int idFuncionabilidad)
+        internal static void agregarRol(string nuevoRol)
         {//agrega un determinado rol y su respectiva funcionalidad inicial
             int retorno;
             using (SqlConnection conn = DBConexion.obtenerConexion())
             {
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarNuevoRol", conn,
-                new SqlParameter("@Rol_Nombre", nuevoRol),
-                new SqlParameter("@Id_Func", idFuncionabilidad));
+                new SqlParameter("@Rol_Nombre", nuevoRol));
 
                 retorno = cmd.ExecuteNonQuery();
                 conn.Close();
