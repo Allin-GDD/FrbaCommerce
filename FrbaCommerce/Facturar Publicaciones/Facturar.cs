@@ -44,7 +44,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 List<Entidades.Ent_FacturaTop> listaEntFacTop = buscarFacturasTop(idUsuario, cantidadmax, Tipo);
                 foreach (Entidades.Ent_FacturaTop entidad in listaEntFacTop)
                 {
-                    unaFactura(entidad.Codigo, Tipo, entidad.Visibilidad, idUsuario,entidad.CompraCod);
+                    unaFactura(entidad.Codigo, Tipo, entidad.Visibilidad, idUsuario);
                     
                 }
                 Mensajes.Exitos.ComisionesCanceladas();
@@ -64,8 +64,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.facturasTop", conn,
             new SqlParameter("@Id", id),
-            new SqlParameter("@Cant", cantidad),
-            new SqlParameter("@fecha", DBConexion.fechaIngresadaPorElAdministrador()));
+            new SqlParameter("@Cant", cantidad));
             SqlDataReader lectura = cmd.ExecuteReader();
 
             while (lectura.Read())
@@ -74,7 +73,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 entidadFac.Codigo = lectura.GetDecimal(0);
                 entidadFac.Visibilidad = lectura.GetDecimal(1);
                 entidadFac.rol = lectura.GetString(2);
-                entidadFac.CompraCod = lectura.GetDecimal(3);
+             //   entidadFac.CompraCod = lectura.GetDecimal(3);
                 listaEntFacTop.Add(entidadFac);
 
             }
@@ -85,7 +84,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
 
 
-        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id,decimal codcompra)
+        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id)
         {
             decimal nfactura = 0;
             double precioFinal;
@@ -99,7 +98,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
             //agrega la factura
             
-            cambiarFacturada(codcompra);
+            cambiarFacturada(codigo);
             nfactura = agregarFactura(codigo, precioFinal, tipo);
             List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
             double preciovisibilidad = 0;

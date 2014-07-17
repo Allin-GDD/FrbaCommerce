@@ -4,5 +4,5 @@ as
 begin
 update compra
 set Facturada = 1
-where ID=@codcompra
+where Codigo_Pub = @codcompra
 end
