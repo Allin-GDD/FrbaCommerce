@@ -19,7 +19,7 @@ namespace FrbaCommerce.Entidades
         public String Localidad { get; set; }
         public String Cod_Postal { get; set; }
         public String Ciudad { get; set; }
-        public String Fecha_Creacion { get; set; }
+        public DateTime Fecha_Creacion { get; set; }
         public Int16 Tipo_Doc { get; set; }
         public String Usuario { get; set; }
     }

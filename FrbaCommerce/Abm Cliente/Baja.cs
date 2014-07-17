@@ -57,8 +57,8 @@ namespace FrbaCommerce.Abm_Cliente
 
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.darDeBajaAUsuario", conn,
-                new SqlParameter("@Id", clienteADarDeBaja),
-                new SqlParameter("@Rol", 1));
+                new SqlParameter("@Id_Usuario", clienteADarDeBaja),
+                new SqlParameter("@Id_Rol", 1));
                 int retorno = cmd.ExecuteNonQuery();
                 conn.Close();
 

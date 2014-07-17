@@ -11,7 +11,7 @@ namespace FrbaCommerce.Entidades
         public String Apellido { get; set; }
         public String Mail { get; set; }
         public String Dni { get; set; }
-        public String Fecha_Nac { get; set; }
+        public DateTime Fecha_Nac { get; set; }
         public String Dom_Calle { get; set; }
         public Decimal Nro_Calle { get; set; }
         public Decimal Piso { get; set; }
@@ -23,7 +23,7 @@ namespace FrbaCommerce.Entidades
         public String Tipo_DocNom { get; set; }
     
     public Ent_Cliente() {}
-    public Ent_Cliente(String pNombre, String pApellido, String pDni, Int16 pTipo_dni, String pMail, String pFecha_Nac,String pDom_Calle, Decimal pNro_Calle, Decimal pPiso, String pDpto, String pCod_Postal, String pTelefono, String pLocalidad, String pTipo_DocNom)
+    public Ent_Cliente(String pNombre, String pApellido, String pDni, Int16 pTipo_dni, String pMail, DateTime pFecha_Nac, String pDom_Calle, Decimal pNro_Calle, Decimal pPiso, String pDpto, String pCod_Postal, String pTelefono, String pLocalidad, String pTipo_DocNom)
     {
 
       

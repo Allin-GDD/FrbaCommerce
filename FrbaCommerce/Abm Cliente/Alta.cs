@@ -81,7 +81,7 @@ namespace FrbaCommerce.Abm_Cliente
             cliente.Apellido = Convert.ToString(txtApellido.Text);
             cliente.Dni = Convert.ToString(txtDNI.Text);
             cliente.Tipo_dni = Convert.ToInt16(cboTipoDoc.SelectedValue);
-            cliente.Fecha_Nac = Convert.ToString(txtFechaNac.Text);
+            cliente.Fecha_Nac = Convert.ToDateTime(txtFechaNac.Text);
             cliente.Mail = Convert.ToString(txtMail.Text);
             cliente.Dom_Calle = Convert.ToString(txtCalle.Text);
             cliente.Nro_Calle = Convert.ToInt32(txtNroCalle.Text);
