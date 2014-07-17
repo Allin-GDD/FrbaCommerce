@@ -24,7 +24,7 @@ namespace FrbaCommerce.Abm_Visibilidad
             IniciarCheckText(txtVisi);
 
             try
-            {               //Verifica si lo que se estan ingresando es correcto
+            {   //Verifica si lo que se estan ingresando es correcto
                 Utiles.Validaciones.evaluarVisibilidad(this, txtVisi, null, null);
                            //Inicializa la visibilidad con datos correctos
                 inicializarVisibilidad(visibilidad);
@@ -55,8 +55,8 @@ namespace FrbaCommerce.Abm_Visibilidad
 
             visibilidad.Codigo = Convert.ToDecimal(txtCodigo.Text);
             visibilidad.Descripcion = Convert.ToString(txtDescripcion.Text);
-            visibilidad.Porcentaje = Convert.ToDouble(txtPrecio.Text);
-            visibilidad.Precio = Convert.ToDouble(txtPorcentaje.Text);
+            visibilidad.Porcentaje = Convert.ToDouble(txtPorcentaje.Text);
+            visibilidad.Precio = Convert.ToDouble(txtPrecio.Text);
             visibilidad.Vencimiento = Convert.ToDecimal(txtTiempVenc.Text);
 
         }

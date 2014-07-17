@@ -120,21 +120,24 @@ namespace FrbaCommerce.Mensajes
 
 
 
-        public static List<String> evaluarCodVisibilidad(TextBox codigo, TextBox codigoAnt)
+        public static List<String> evaluarCodVisibilidad(TextBox codigo, String codigoAnt)
         {
             List<String> errores = new List<string>();
             if (!string.IsNullOrEmpty(codigo.Text) && Utiles.Validaciones.ValidarTipoDecimal(codigo))
             {
                 errores.Add("El tipo de Código no es válido");
             }
-            if (!string.IsNullOrEmpty(codigo.Text) && !Utiles.Validaciones.ValidarTipoDecimal(codigo) && (codigoAnt == null || (codigoAnt != null && codigoAnt.Text != codigo.Text)))
+
+            if (!string.IsNullOrEmpty(codigo.Text) && !Utiles.Validaciones.ValidarTipoDecimal(codigo))
             {
-                if (Datos.Dat_Visibilidad.buscarVisibilidad(Convert.ToInt32(codigo.Text)) != null)
+                if (codigoAnt == null || (codigoAnt != codigo.Text))
                 {
-                    errores.Add("El código ya es utilizado por otro rol");
+                    if (Datos.Dat_Visibilidad.validarCodigoDeVis(codigo))
+                    {
+                        errores.Add("El código ya es utilizado por otro rol");
+                    }
                 }
             }
-
             return errores;
         }
 
@@ -169,10 +172,10 @@ namespace FrbaCommerce.Mensajes
             return ii;
         }
 
-        public static String evaluarDescripVisib(TextBox descp, TextBox descpAnt)
+        public static String evaluarDescripVisib(TextBox descp, String descpAnt)
         {
             String ii = null;
-            if (!string.IsNullOrEmpty(descp.Text) && (descpAnt == null || (descpAnt != null && descpAnt.Text != descp.Text)))
+            if (!string.IsNullOrEmpty(descp.Text) && (descpAnt == null || (descpAnt != null && descpAnt != descp.Text)))
             {
                 if (Datos.Dat_Visibilidad.validarDescripcion(descp))
                 {

@@ -127,5 +127,33 @@ namespace FrbaCommerce.Datos
             return false;
         }
 
+
+        internal static bool validarCodigoDeVis(TextBox codigoAverificar)
+        {
+            //Listado de todos los CUIT de la tabla Empresa
+            List<Decimal> listaDeCodDeVisib = new List<Decimal>();
+
+            SqlConnection conexion = DBConexion.obtenerConexion();
+            SqlCommand Comando = new SqlCommand("select Codigo from Visibilidad", conexion);
+            SqlDataReader lectura = Comando.ExecuteReader();
+
+            while (lectura.Read())
+            {
+                listaDeCodDeVisib.Add(lectura.GetDecimal(0));
+            }
+            conexion.Close();
+
+            foreach (Decimal codigo in listaDeCodDeVisib)
+            {
+                if (Convert.ToDecimal(codigoAverificar.Text) == codigo)
+                {
+                    codigoAverificar.BackColor = Color.Coral;
+                    return true;
+                }
+            }
+            return false;
+
+        
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace FrbaCommerce.ABM_Rol
         public Alta()
         {
             InitializeComponent();
+           
+            
         }
         private Int32 idFuncionabilidad;
         private void btnGuardar_Click(object sender, EventArgs e)

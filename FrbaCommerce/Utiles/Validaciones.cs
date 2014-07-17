@@ -311,7 +311,7 @@ namespace FrbaCommerce.Utiles
 
         //////////////////////////////////////////////////////////////////////////////////////////////
 
-        public static void evaluarVisibilidad(Form ofrm, Entidades.Ent_TxtVisibilidad util, TextBox codigoAnt, TextBox descripcionAnt)
+        public static void evaluarVisibilidad(Form ofrm, Entidades.Ent_TxtVisibilidad util, String codigoAnt, String descripcionAnt)
         {
             List<String> errores = datosObligatorios(ofrm);
 

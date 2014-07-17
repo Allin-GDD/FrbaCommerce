@@ -20,8 +20,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             cargarDatosVisibilidadSeleccionada();
         }
         private Entidades.Ent_Visibilidad visibilidadAnt;
-        private TextBox codigoAnt;
-        private TextBox DescripAnt;
+        private String codigoAnt;
+        private String DescripAnt;
 
         private void cargarDatosVisibilidadSeleccionada()
         {
@@ -33,9 +33,8 @@ namespace FrbaCommerce.Abm_Visibilidad
             txtPorcentaje.Text = Convert.ToString(visibilidadAnt.Porcentaje);
             txtTiempVenc.Text = Convert.ToString(visibilidadAnt.Vencimiento);
 
-            this.codigoAnt = txtCodigo;
-            this.DescripAnt = txtDescripcion;
-
+            this.codigoAnt = Convert.ToString(visibilidadAnt.Codigo);
+            this.DescripAnt = visibilidadAnt.Descripcion;
 
         }
         public Int32 visibilidadAModificar;
