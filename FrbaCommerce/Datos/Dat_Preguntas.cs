@@ -53,7 +53,8 @@ namespace FrbaCommerce.Datos
             SqlConnection conn = DBConexion.obtenerConexion();
             SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.agregarRespuesta", conn,
             new SqlParameter("@Id", IdPreyRes),
-            new SqlParameter("@Respuesta", respuesta));
+            new SqlParameter("@Respuesta", respuesta),
+            new SqlParameter("@Fecha",DBConexion.fechaIngresadaPorElAdministrador()));
 
             int retorno = cmd.ExecuteNonQuery();
            // Mensajes.Generales.validarAlta(retorno);
