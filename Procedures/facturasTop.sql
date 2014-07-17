@@ -11,7 +11,6 @@ select top (@Cant)
  join Usuario on Usuario.Id_Usuario=Publicacion.Usuario
 where Facturada = 0
 and Id_Usuario = @Id
-and ( publicacion.Estado ='Finalizada')
+and  publicacion.Estado =4
 order by publicacion.Fecha desc
-
 end

@@ -97,7 +97,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                             }
 
             //agrega la factura
-            
+
             cambiarFacturada(codigo);
             nfactura = agregarFactura(codigo, precioFinal, tipo);
             List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
@@ -117,12 +117,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
 
         private static void cambiarFacturada(decimal codcompra)
         {
+            int retorno = 0;
             try
             {
                 SqlConnection conn = DBConexion.obtenerConexion();
                 SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarAFacturada", conn,
                 new SqlParameter("@codcompra", codcompra));
-
+                retorno = cmd.ExecuteNonQuery();
                 
                 conn.Close();
             }
