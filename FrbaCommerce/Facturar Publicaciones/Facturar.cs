@@ -44,7 +44,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 List<Entidades.Ent_FacturaTop> listaEntFacTop = buscarFacturasTop(idUsuario, cantidadmax, Tipo);
                 foreach (Entidades.Ent_FacturaTop entidad in listaEntFacTop)
                 {
-                    unaFactura(entidad.Codigo, Tipo, entidad.Visibilidad, idUsuario);
+                    unaFactura(entidad.Codigo, Tipo, entidad.Visibilidad, idUsuario,entidad.CompraCod);
                     
                 }
                 Mensajes.Exitos.ComisionesCanceladas();
@@ -73,6 +73,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 entidadFac.Codigo = lectura.GetDecimal(0);
                 entidadFac.Visibilidad = lectura.GetDecimal(1);
                 entidadFac.rol = lectura.GetString(2);
+                entidadFac.CompraCod = lectura.GetDecimal(3);
                 listaEntFacTop.Add(entidadFac);
 
             }
@@ -83,7 +84,7 @@ namespace FrbaCommerce.Facturar_Publicaciones
         }
 
 
-        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id)
+        private static void unaFactura(decimal codigo, string tipo,Decimal visibilidad,Decimal id,decimal codcompra)
         {
             decimal nfactura = 0;
             double precioFinal;
@@ -96,6 +97,8 @@ namespace FrbaCommerce.Facturar_Publicaciones
                             }
 
             //agrega la factura
+
+            cambiarFacturada(codcompra);
             nfactura = agregarFactura(codigo, precioFinal, tipo);
             List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
             double preciovisibilidad = 0;
@@ -109,6 +112,24 @@ namespace FrbaCommerce.Facturar_Publicaciones
             // agrega el item del precio base de la visibilidad
             agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
 
+        }
+
+
+        private static void cambiarFacturada(decimal codcompra)
+        {
+            try
+            {
+                SqlConnection conn = DBConexion.obtenerConexion();
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.dbo.cambiarAFacturada", conn,
+                new SqlParameter("@codcompra", codcompra));
+
+                
+                conn.Close();
+            }
+            catch (Exception)
+            {
+                Mensajes.Errores.NoHayConexion();
+            }
         }
         //lista todas las que no fueron facturadas.
         private static void buscarPublicacionesSinFacturar(decimal idUsuario, DataGridView dataGridView1)

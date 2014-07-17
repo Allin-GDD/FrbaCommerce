@@ -10,5 +10,6 @@ namespace FrbaCommerce.Entidades
         public Decimal Codigo { get; set; }
         public Decimal Visibilidad { get; set; }
         public string rol { get; set; }
+        public Decimal CompraCod { get; set; }
     }
 }

@@ -5,10 +5,11 @@ create procedure facturasTop
 as
 begin
 select top (@Cant) 
- Codigo,Visibilidad_Cod,Usuario.Usuario from Publicacion 
+ Codigo,Visibilidad_Cod,Usuario.Usuario,c.Id from Compra c
+ join Publicacion on Publicacion.Codigo = c.Codigo_Pub
  join Usuario on Usuario.Id_Usuario=Publicacion.Usuario
-where Codigo not in(select Pub_Cod from Factura)
+where Facturada = 0
 and Id_Usuario = @Id
-order by Fecha desc
+order by c.Fecha desc
 
 end
