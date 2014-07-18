@@ -102,15 +102,13 @@ namespace FrbaCommerce.Facturar_Publicaciones
             decimal prueba=0;
              foreach (Entidades.Ent_ListFactura item in items)
                 {
-
+                    preciovisibilidad = item.PrecioVis;
                     prueba = item.Cantidad;
                 }
-            if(prueba==0)
-            {
-                nfactura = agregarFactura(codigo, precioFinal, tipo);
-                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
-            }
-            else
+
+             nfactura = agregarFactura(codigo, precioFinal, tipo);
+          
+            if(prueba!=0)
             {
                 cambiarFacturada(codigo);
                 
@@ -120,11 +118,12 @@ namespace FrbaCommerce.Facturar_Publicaciones
                 {
 
                     agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
-                    preciovisibilidad = item.PrecioVis;
+ 
                 }
                 // agrega el item del precio base de la visibilidad
-                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
+   
             }
+            agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
 
         }
 
