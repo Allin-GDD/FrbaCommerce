@@ -1650,12 +1650,12 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-alter PROCEDURE [allin].[listaSubastasSinConfirmarGanador]
+CREATE PROCEDURE [allin].[listaSubastasSinConfirmarGanador]
 @id_Cliente numeric(18,0),
 @Fecha datetime
 AS
 BEGIN
-SELECT Tabla.Codigo_Pub,SUM(Tabla.Monto),SUM(Tabla.Id_Cliente)
+SELECT Tabla.Codigo_Pub,SUM(Tabla.Monto) as 'Monto',SUM(Tabla.Id_Cliente) as 'Id_Cliente'
  from
 	(SELECT Oferta.Codigo_Pub,Oferta.Monto,Oferta.Id_Cliente
  	FROM 
