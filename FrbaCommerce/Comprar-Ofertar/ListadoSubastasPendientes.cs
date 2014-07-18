@@ -43,8 +43,10 @@ namespace FrbaCommerce.Comprar_Ofertar
 
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btnEdit"].ColumnIndex)
                 {
-                    agregarCompra(codigo, idSeleccionado);
-                   
+                    if (idSeleccionado != 0)
+                    {
+                        agregarCompra(codigo, idSeleccionado);
+                    }
                     cambiar_ganador(codigo);
                 }
                 buscarSubastasSinConfirmarGanador(idUsuario, dataGridView1);
