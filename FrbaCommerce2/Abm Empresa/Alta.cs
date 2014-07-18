@@ -16,6 +16,7 @@ namespace FrbaCommerce.Abm_Empresa
         public Alta(decimal IdUsuario)
         {
             InitializeComponent();
+            Datos.Dat_Usuario.actualizarBajaUsuario(0, IdUsuario);
             this.IdUsuario = IdUsuario;
         }
          public Int32 rolDeUsuario = 2;
@@ -46,6 +47,7 @@ namespace FrbaCommerce.Abm_Empresa
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
                 }
                 IsComplete = true;
+                Datos.Dat_Usuario.actualizarBajaUsuario(1, IdUsuario); 
                 this.Close();
 
             }

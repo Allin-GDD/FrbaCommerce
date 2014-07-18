@@ -376,14 +376,20 @@ namespace FrbaCommerce.Comprar_Ofertar
             decimal idvendedor = Convert.ToDecimal(dataGridView1.CurrentRow.Cells["Usuario"].Value);
             char TipoUsuario = Convert.ToChar(dataGridView1.CurrentRow.Cells["Tipo_Usuario"].Value);
             string tipo = Convert.ToString(dataGridView1.CurrentRow.Cells["Tipo"].Value);
+            string estadoPub = Convert.ToString(dataGridView1.CurrentRow.Cells["Estado"].Value);
             if(botonCompraOferta)
             {
                 if (e.ColumnIndex == dataGridView1.CurrentRow.Cells["btn"].ColumnIndex && checkBox1.Checked == false)
                 {// es la pocision del boton 
                     if (idusuario != idvendedor)
                     {
-                        
-                        if (tipo == "Compra Inmediata")
+                        if (estadoPub == "Pausada")
+                        {
+                            throw new Excepciones.DuplicacionDeDatos("La publicación esta pausada");
+                        }
+                        if (estadoPub == "Publicada")
+                        {
+                            if (tipo == "Compra Inmediata")
                             {
                                 if (TipoUsuario == 'E')
                                 {
@@ -402,19 +408,21 @@ namespace FrbaCommerce.Comprar_Ofertar
                                     ventana.Show();
                                 }
                             }
-                        if (tipo == "Subasta")
-                        {
-                            try
+                            if (tipo == "Subasta")
                             {
-                                Utiles.Validaciones.validarDistintoOfertadorUltOferta(codigoSeleccionado, idusuario);
-                           
+                                try
+                                {
+                                    Utiles.Validaciones.validarDistintoOfertadorUltOferta(codigoSeleccionado, idusuario);
 
-                            Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
-                            oferta.Show();}
-                              catch (Exception ex)
-                          {
-                             MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                          }
+
+                                    Comprar_Ofertar.VentanaOferta oferta = new Comprar_Ofertar.VentanaOferta(codigoSeleccionado, idusuario);
+                                    oferta.Show();
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                     }
                 }

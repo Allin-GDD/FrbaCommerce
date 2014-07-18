@@ -17,6 +17,7 @@ namespace FrbaCommerce.Abm_Cliente
         public Alta(Decimal IdUsuario)
         {
             InitializeComponent();
+            Datos.Dat_Usuario.actualizarBajaUsuario(0, IdUsuario);
             //inicializo el comboBox Tipo de documento con los tipos que hay en la BD por defecto.
             Utiles.Inicializar.comboBoxTipoDoc(cboTipoDoc);
             this.IdUsuario = IdUsuario;
@@ -47,7 +48,7 @@ namespace FrbaCommerce.Abm_Cliente
                     Mensajes.Exitos.usuarioCreadoPorAdminOk();
                     }
                 IsComplete = true;
-                   
+                Datos.Dat_Usuario.actualizarBajaUsuario(1, IdUsuario);  
                 Close();
 
             }

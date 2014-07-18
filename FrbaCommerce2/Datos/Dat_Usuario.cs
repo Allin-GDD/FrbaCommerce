@@ -91,6 +91,21 @@ namespace FrbaCommerce.Datos
             }
         }
 
+        public static void actualizarBajaUsuario(Int16 estado, Decimal idUsuario)
+        {//actualiza los estados del usuario
+            int retorno = 0;
+
+            using (SqlConnection conn = DBConexion.obtenerConexion())
+            {
+                SqlCommand cmd = Utiles.SQL.crearProcedure("GD1C2014.allin.actualizarBajaDelUsuario", conn,
+                new SqlParameter("@Baja", estado),
+                new SqlParameter("@Id", idUsuario));
+
+                retorno = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+        }
+
         public static short obtenerEstado(Decimal id)
         {
             Int16 estado = -1;
