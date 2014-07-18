@@ -1475,7 +1475,7 @@ CREATE PROCEDURE [allin].[listadoMayoresSinCalificaciones]
 	 (MONTH(C.Fecha) = 1 + 3*(@Trimestre-1)OR 
 	 MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) OR
 	  MONTH(C.Fecha) = 3 + 3*(@Trimestre-1)) AND 
-	  CA.Cant_Estrellas IS NULL
+	  CA.Cant_Estrellas = 0
 	  AND U.Baja <> 0
 		AND U.Estado <> 0
     GROUP BY U.Usuario
@@ -1526,7 +1526,7 @@ CREATE PROCEDURE [allin].[listadoMayoresCalificaciones]
 		AND(MONTH(C.Fecha) = 1 + 3*(@Trimestre-1) 
 		OR MONTH(C.Fecha) = 2 + 3*(@Trimestre-1) 
 		OR MONTH(C.Fecha) = 3 + 3*(@Trimestre-1))
-		AND Ca.Cant_Estrellas IS NOT NULL
+		AND Ca.Cant_Estrellas IS NOT NULL AND Ca.Cant_Estrellas <> 0
 		AND U.Baja <> 0
 		AND U.Estado <> 0
 
@@ -1907,7 +1907,7 @@ create PROCEDURE [allin].[historialCalificacionesRecibidas]
 	JOIN [allin].Compra C ON
     P.Codigo = C.Codigo_Pub
     JOIN [allin].Usuario U ON
-    u.Id_Usuario = p.Usuario
+    u.Id_Usuario = c.Id_Cliente
    join [allin].Calificacion cal on cal.Cod_Calificacion=c.Calificacion_Codigo
 	
     WHERE P.Usuario = @Id
