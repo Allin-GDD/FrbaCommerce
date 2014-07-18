@@ -1009,8 +1009,9 @@ CREATE PROCEDURE [allin].[buscarUnaSolaEmpresa]
 @Id numeric (18,0)
 AS 
 BEGIN
-SELECT e.Id_Usuario,e.Razon_Social, e.Nro_Documento, e.Fecha_Creacion, e.Mail, e.Dom_Calle,
+SELECT u.Usuario,e.Razon_Social, e.Nro_Documento, e.Fecha_Creacion, e.Mail, e.Dom_Calle,
  e.Nro_Calle, e.Piso, e.Depto, e.Cod_Postal, e.Localidad, e.Telefono, e.Ciudad, e.Nombre_Contacto FROM [allin].Empresa e
+ join allin.Usuario U on e.Id_Usuario = u.Id_Usuario
 
 WHERE e.Id_Usuario = @Id
 END
