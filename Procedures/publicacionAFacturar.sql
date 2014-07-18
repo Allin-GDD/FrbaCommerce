@@ -15,6 +15,6 @@ else
 begin
  (select @Codigo as 'Codigo_Pub',0 as 'Cantidad', 0 as 'Porcentaje', 0 as 'precioPub', Visibilidad.Precio as 'precioVis' from Visibilidad,Publicacion
  where Visibilidad.Codigo= Publicacion.Visibilidad_Cod and Publicacion.Codigo = @Codigo)
-   
+
 end
 end

@@ -97,20 +97,34 @@ namespace FrbaCommerce.Facturar_Publicaciones
                             }
 
             //agrega la factura
-
-            cambiarFacturada(codigo);
-            nfactura = agregarFactura(codigo, precioFinal, tipo);
             List<Entidades.Ent_ListFactura> items = buscarItemsFactura(codigo);
             double preciovisibilidad = 0;
-            //agrega todos los items
-            foreach (Entidades.Ent_ListFactura item in items)
-            {
+            decimal prueba=0;
+             foreach (Entidades.Ent_ListFactura item in items)
+                {
 
-                agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
-                preciovisibilidad = item.PrecioVis;
+                    prueba = item.Cantidad;
+                }
+            if(prueba==0)
+            {
+                nfactura = agregarFactura(codigo, precioFinal, tipo);
+                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
             }
-            // agrega el item del precio base de la visibilidad
-            agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
+            else
+            {
+                cambiarFacturada(codigo);
+                
+                
+                //agrega todos los items
+                foreach (Entidades.Ent_ListFactura item in items)
+                {
+
+                    agregarItemFacturaPublicacion(item.Codigo, nfactura, item.Cantidad, item.Precio * Convert.ToDouble(item.Cantidad) * item.Porcentaje);
+                    preciovisibilidad = item.PrecioVis;
+                }
+                // agrega el item del precio base de la visibilidad
+                agregarItemFacturaComision(codigo, nfactura, preciovisibilidad);
+            }
 
         }
 
