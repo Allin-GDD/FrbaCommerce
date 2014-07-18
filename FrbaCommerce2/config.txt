@@ -1,2 +1,2 @@
-Data source = localhost\SQLSERVER2008R2; Initial catalog = GD1C2014 ; User Id = gd; Password = gd2014
-21/07/2015
+Data source = localhost\SQLSERVER2008; Initial catalog = GD1C2014 ; User Id = gd; Password = gd2014
+21/07/2014
