@@ -1,6 +1,5 @@
 create procedure listaDePublicacionesSinFacturar
-
-@id numeric (18,0)
+@id numeric(18,0)
 as
 begin
 
