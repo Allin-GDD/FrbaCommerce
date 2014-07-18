@@ -1,4 +1,4 @@
-create PROCEDURE listaDePublicaciones
+alter PROCEDURE [allin].[listaDePublicaciones]
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
@@ -26,7 +26,7 @@ create PROCEDURE listaDePublicaciones
  				and p.Fecha_Venc > @FechaActual
  				--and p.Fecha < @FechaActual
  				and (p.Usuario <> @Id )
- 				and e.Nombre = 'Publicada'
+ 				and e.Nombre = 'Publicada' 
  				
 				
 			order by Visibilidad_Cod
