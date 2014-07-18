@@ -1,0 +1,26 @@
+--para borrar
+drop schema allin
+drop table allin.Compra
+drop table allin.Oferta
+drop table allin.Clientes
+drop table allin.Empresa
+drop table allin.Tipo_Doc
+drop table allin.Tipo_Pago
+drop table allin.Item_FacturaComision
+drop table allin.Item_FacturaPublicacion
+drop table allin.Factura
+drop table allin.PreguntasYRespuestas
+drop table allin.Funcionalidades
+drop table allin.func_rol
+drop table allin.calificacion
+drop table allin.Usuario
+drop table allin.Rol
+drop table allin.Usuario_Rol
+drop table allin.Publicacion
+drop table allin.estado
+drop table allin.tipo_publicacion
+drop table allin.publicacion_rubro
+drop table allin.Visibilidad
+drop table allin.Rubro
+drop table allin.rol
+drop table allin.usuario

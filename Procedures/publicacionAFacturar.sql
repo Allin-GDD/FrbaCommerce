@@ -1,4 +1,4 @@
-alter procedure publicacionAFacturar
+create procedure publicacionAFacturar
 @Codigo numeric (18,0)
 as
 begin

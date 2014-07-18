@@ -1580,15 +1580,28 @@ create procedure [allin].[publicacionAFacturar]
 @Codigo numeric (18,0)
 as
 begin
-
+if(exists (select Codigo_Pub from Compra where Codigo_Pub = @Codigo))
+begin
 select Compra.Codigo_Pub,compra.Cantidad,tabla.Porcentaje,precioPub, precioVis from 
-
-(select [allin].Publicacion.Codigo,[allin].Visibilidad.Porcentaje,[allin].Visibilidad.Precio as 'precioVis', [allin].Publicacion.Precio as 'precioPub' from [allin].Visibilidad,[allin].Publicacion
-
-where  [allin].Visibilidad.Codigo= [allin].Publicacion.Visibilidad_Cod and [allin].Publicacion.Codigo = @Codigo
-)as tabla,[allin].Compra where [allin].compra.Codigo_Pub = tabla.Codigo 
+(select Publicacion.Codigo,Visibilidad.Porcentaje,Visibilidad.Precio as 'precioVis',
+ Publicacion.Precio as 'precioPub' from Visibilidad,Publicacion
+ where Visibilidad.Codigo= Publicacion.Visibilidad_Cod and Publicacion.Codigo = @Codigo)as tabla,Compra where compra.Codigo_Pub = tabla.Codigo 
+end
+else
+begin
+  declare @Cantidad numeric(18,0)
+  set @Cantidad = 0
+  declare @Visib numeric(18,2)
+  set @Visib = 0
+  declare @PrecioPub numeric(18,2)
+  set @PrecioPub = 0
+ (select @Codigo as 'Codigo_Pub',@Cantidad as 'Cantidad', @Visib as 'Porcentaje', @PrecioPub as 'precioPub',
+  Visibilidad.Precio as 'precioVis' from Visibilidad,Publicacion
+ where Visibilidad.Codigo= Publicacion.Visibilidad_Cod and Publicacion.Codigo = @Codigo)
 
 end
+end
+
 GO
 /****** Object:  StoredProcedure [allin].[nroFactura]    Script Date: 07/13/2014 03:35:33 ******/
 SET ANSI_NULLS ON
@@ -1602,6 +1615,20 @@ begin
  SELECT MAX(numero) from [allin].Factura 
 end
 GO
+/****** Object:  StoredProcedure [allin].[cambiarAFacturada]    Script Date: 07/13/2014 03:35:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [allin].[cambiarAFacturada] 
+@codcompra numeric (18,0)
+as
+begin
+update compra
+set Facturada = 1
+where Codigo_Pub = @codcompra
+end
+GO
 /****** Object:  StoredProcedure [allin].[listaSubastasSinConfirmarGanador]    Script Date: 07/13/2014 03:35:33 ******/
 SET ANSI_NULLS ON
 GO
@@ -1613,40 +1640,52 @@ create PROCEDURE [allin].[listaSubastasSinConfirmarGanador]
 AS
 BEGIN
 
-SELECT Oferta.Codigo_Pub,Oferta.Monto,Oferta.Id_Cliente
-FROM 
-(SELECT Ofer.Codigo_Pub,MAX(Ofer.Monto) as Monto 
-from [allin].Oferta as Ofer
-inner join [allin].Publicacion
-on Ofer.Codigo_Pub = [allin].publicacion.Codigo
-where [allin].Publicacion.Usuario = @id_Cliente
-and @Fecha>Ofer.Fecha
-and Ofer.Con_Ganador = 0
-group by Ofer.Codigo_Pub) AS Tabla
-,[allin].Oferta
-WHERE Tabla.Codigo_Pub = [allin].Oferta.Codigo_Pub
-AND   Tabla.Monto = [allin].Oferta.Monto
-END
+  if exists (select O.Codigo_Pub from Oferta O
+			join Publicacion P on O.Codigo_Pub = P.Codigo
+			where @id_Cliente = P.Usuario)
+  begin
+	SELECT Oferta.Codigo_Pub,Oferta.Monto,Oferta.Id_Cliente
+	FROM 
+	(SELECT Ofer.Codigo_Pub,MAX(Ofer.Monto) as Monto 
+	from Oferta as Ofer
+	inner join Publicacion
+	on Ofer.Codigo_Pub = publicacion.Codigo
+	where Publicacion.Usuario = @id_Cliente
+	and @Fecha>Publicacion.Fecha_Venc
+	and Ofer.Con_Ganador = 0
+	group by Ofer.Codigo_Pub) AS Tabla
+	,Oferta
+	WHERE Tabla.Codigo_Pub = Oferta.Codigo_Pub
+	AND   Tabla.Monto = Oferta.Monto
+  end
+  else
+  begin
+	select Codigo as 'Codigo_Pub', 0 as 'Monto', 0 as 'Id_Cliente'
+	from Publicacion
+	where @Fecha>Fecha_Venc and Estado <> 4 and @id_Cliente = Usuario
+  end
+end
 GO
 /****** Object:  StoredProcedure [allin].[facturasTop]    Script Date: 07/13/2014 03:35:32 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create procedure [allin].[facturasTop]
+create procedure [allin].[facturasTop] 
 
 @Id numeric (18,0),
 @Cant int 
 as
 begin
 select top (@Cant) 
- Codigo,Visibilidad_Cod,Usuario.Usuario from [allin].Publicacion 
- join [allin].Usuario on Usuario.Id_Usuario=[allin].Publicacion.Usuario
-where Codigo not in(select Pub_Cod from [allin].Factura)
-and Id_Usuario = @Id
-order by Fecha desc
-
+ Codigo,Visibilidad_Cod,Usuario.Usuario from 
+ Publicacion
+ join Usuario on Usuario.Id_Usuario=Publicacion.Usuario
+where Publicacion.Codigo not in (select Pub_Cod from Factura) and Id_Usuario = @Id
+and  publicacion.Estado =4
+order by publicacion.Fecha desc
 end
+
 GO
 /****** Object:  StoredProcedure [allin].[listaDePubSinCalificar]    Script Date: 07/13/2014 03:35:33 ******/
 SET ANSI_NULLS ON
@@ -1674,16 +1713,16 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 create procedure [allin].[listaDePublicacionesSinFacturar]
-
-@id numeric (18,0)
+@id numeric(18,0)
 as
 begin
-select Codigo,Descripcion,Tipo_Publicacion.Nombre Tipo,Estado.Nombre Estado from [allin].Publicacion 
-join [allin].Tipo_Publicacion on Tipo=[allin].Tipo_Publicacion.Cod_Tipo
-join [allin].Estado on [allin].Estado.Cod_Estado = [allin].publicacion.Estado
-join [allin].Compra on [allin].compra.Codigo_Pub=[allin].Publicacion.Codigo
-where Compra.facturada = 0
-and [allin].Publicacion.Usuario = @id
+
+		select Codigo,Descripcion,Tipo_Publicacion.Nombre Tipo,Estado.Nombre Estado from Publicacion 
+		join Tipo_Publicacion on Tipo=Tipo_Publicacion.Cod_Tipo
+		join Estado on Estado.Cod_Estado = publicacion.Estado
+		where estado.Nombre='Finalizada'
+		and Publicacion.Usuario = @id and Publicacion.Codigo not in (select Pub_Cod from Factura)
+
 end
 GO
 /****** Object:  StoredProcedure [allin].[listaDePublicaciones]    Script Date: 07/13/2014 03:35:33 ******/
@@ -1729,28 +1768,29 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [allin].[listaDeMisPublicaciones]
+create PROCEDURE [allin].[listaDeMisPublicaciones]
 		@Descripcion nvarchar(255),
 		@Estado nvarchar(255),
 		@Tipo nvarchar(255),
 		@Visibilidad nvarchar(30),
+		
 		@Rubro nvarchar(30),
 		@Id nvarchar(30)
 	AS
 	BEGIN
-		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, tp.Nombre as 'Tipo' , v.Descripcion AS 'Visibilidad', p.Visibilidad_Cod, e.Nombre 'Estado', r.Descripcion as 'Rubro', p.Preguntas_permitidas,p.Usuario,Usuario.Tipo_Usuario FROM [allin].Publicacion as P
-	join [allin].Publicacion_Rubro pr on pr.id_Publicacion = p.Codigo
-	JOIN [allin].Rubro r ON r.Codigo = pr.id_Rubro
-	JOIN [allin].Visibilidad V ON p.Visibilidad_Cod = v.Codigo
-	join [allin].Estado e on e.Cod_Estado=p.Estado
-	join [allin].Tipo_Publicacion tp on tp.Cod_Tipo = p.Tipo
-	join [allin].Usuario on Usuario.Id_Usuario = p.Usuario
+		SELECT P.Codigo, p.Descripcion, p.Stock, p.Fecha, p.Fecha_Venc, p.Precio, tp.Nombre as 'Tipo' , v.Descripcion AS 'Visibilidad', p.Visibilidad_Cod, e.Nombre 'Estado', r.Descripcion as 'Rubro', p.Preguntas_permitidas,p.Usuario,Usuario.Tipo_Usuario FROM Publicacion as P
+	join Publicacion_Rubro pr on pr.id_Publicacion = p.Codigo
+	JOIN Rubro r ON r.Codigo = pr.id_Rubro
+	JOIN Visibilidad V ON p.Visibilidad_Cod = v.Codigo
+	join Estado e on e.Cod_Estado=p.Estado
+	join Tipo_Publicacion tp on tp.Cod_Tipo = p.Tipo
+	join Usuario on Usuario.Id_Usuario = p.Usuario
 			WHERE
 				p.Descripcion like '%'+@Descripcion+'%'
 				AND (R.Codigo = @Rubro or @Rubro=0)
 				AND TP.Nombre like '%'+@Tipo+'%'
 				AND p.Visibilidad_Cod like '%'+@Visibilidad+'%'
-				and p.stock > 0
+				--and p.stock > 0
  				and E.Nombre like '%'+@Estado+'%'
 				and (p.Usuario = @Id )
 				
@@ -1931,9 +1971,9 @@ create procedure [allin].[cambiarConGanador]
 @Codigo numeric (18,0)
 as
 begin
-update [allin].Oferta SET Con_Ganador = 1 WHERE Codigo_Pub = @Codigo
+update Oferta SET Con_Ganador = 1 WHERE Codigo_Pub = @Codigo
+update Publicacion set Estado = 4 where Codigo = @Codigo
 end
-GO
 /****** Object:  StoredProcedure [allin].[buscarMaximaOferta]    Script Date: 07/13/2014 03:35:32 ******/
 SET ANSI_NULLS ON
 GO
