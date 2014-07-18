@@ -175,6 +175,21 @@ CREATE TABLE [allin].[Usuario_Rol](
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+/****** Object:  StoredProcedure [allin].[actualizarBajaDelUsuario]    Script Date: 07/18/2014 16:35:59 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [allin].[actualizarBajaDelUsuario]
+@Baja smallint,
+@Id numeric(18,0)
+AS
+BEGIN
+UPDATE allin.Usuario
+SET Baja = @Baja
+WHERE Id_Usuario = @Id
+END
+GO
 /****** Object:  StoredProcedure [allin].[obtenerVisibilidad]    Script Date: 07/13/2014 03:35:33 ******/
 SET ANSI_NULLS ON
 GO
@@ -1756,7 +1771,7 @@ create PROCEDURE [allin].[listaDePublicaciones]
  				and e.Nombre like '%'+@Estado+'%'
  				and p.Fecha_Venc > @FechaActual
  				and (p.Usuario <> @Id )
- 				and e.Nombre = 'Publicada'
+ 				and (e.Nombre = 'Publicada'or e.Nombre = 'Pausada')
  				
 				
 			order by Visibilidad_Cod
