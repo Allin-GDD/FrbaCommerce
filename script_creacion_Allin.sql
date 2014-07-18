@@ -1668,7 +1668,7 @@ BEGIN
 	on Ofer.Codigo_Pub = publicacion.Codigo
 	where Publicacion.Usuario = @id_Cliente
 	and @Fecha>Publicacion.Fecha_Venc
-	and Ofer.Con_Ganador = 0
+	and Ofer.Con_Ganador = 0 and publicacion.Tipo = 2
 	group by Ofer.Codigo_Pub) AS Tabla
 	,Oferta
 	WHERE Tabla.Codigo_Pub = Oferta.Codigo_Pub
@@ -1678,7 +1678,7 @@ BEGIN
   begin
 	select Codigo as 'Codigo_Pub', 0 as 'Monto', 0 as 'Id_Cliente'
 	from Publicacion
-	where @Fecha>Fecha_Venc and Estado <> 4 and @id_Cliente = Usuario
+	where @Fecha>Fecha_Venc and Estado <> 4 and @id_Cliente = Usuario and publicacion.Tipo = 2
   end
 end
 GO
