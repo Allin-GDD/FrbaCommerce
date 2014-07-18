@@ -1650,36 +1650,32 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create PROCEDURE [allin].[listaSubastasSinConfirmarGanador]
+alter PROCEDURE [allin].[listaSubastasSinConfirmarGanador]
 @id_Cliente numeric(18,0),
 @Fecha datetime
 AS
 BEGIN
-
-  if exists (select O.Codigo_Pub from Oferta O
-			join Publicacion P on O.Codigo_Pub = P.Codigo
-			where @id_Cliente = P.Usuario)
-  begin
-	SELECT Oferta.Codigo_Pub,Oferta.Monto,Oferta.Id_Cliente
-	FROM 
-	(SELECT Ofer.Codigo_Pub,MAX(Ofer.Monto) as Monto 
-	from Oferta as Ofer
-	inner join Publicacion
+SELECT Tabla.Codigo_Pub,SUM(Tabla.Monto),SUM(Tabla.Id_Cliente)
+ from
+	(SELECT Oferta.Codigo_Pub,Oferta.Monto,Oferta.Id_Cliente
+ 	FROM 
+ 	(SELECT Ofer.Codigo_Pub,MAX(Ofer.Monto) as Monto 
+	from allin.Oferta as Ofer
+	inner join allin.Publicacion
 	on Ofer.Codigo_Pub = publicacion.Codigo
-	where Publicacion.Usuario = @id_Cliente
-	and @Fecha>Publicacion.Fecha_Venc
-	and Ofer.Con_Ganador = 0 and publicacion.Tipo = 2
+	where Publicacion.Usuario = @id_cliente
+	and @fecha>Publicacion.Fecha_Venc
+	and Ofer.Con_Ganador = 0 and Tipo = 2
 	group by Ofer.Codigo_Pub) AS Tabla
-	,Oferta
-	WHERE Tabla.Codigo_Pub = Oferta.Codigo_Pub
-	AND   Tabla.Monto = Oferta.Monto
-  end
-  else
-  begin
+	,allin.Oferta
+	WHERE Tabla.Codigo_Pub = allin.Oferta.Codigo_Pub
+	AND Tabla.Monto = Oferta.Monto
+	union all
 	select Codigo as 'Codigo_Pub', 0 as 'Monto', 0 as 'Id_Cliente'
-	from Publicacion
-	where @Fecha>Fecha_Venc and Estado <> 4 and @id_Cliente = Usuario and publicacion.Tipo = 2
-  end
+	from allin.Publicacion
+	where @fecha>Fecha_Venc and Estado <> 4 and @id_cliente = Usuario and Tipo = 2)
+	as tabla
+	group by tabla.Codigo_Pub
 end
 GO
 /****** Object:  StoredProcedure [allin].[facturasTop]    Script Date: 07/13/2014 03:35:32 ******/
